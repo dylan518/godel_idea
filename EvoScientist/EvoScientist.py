@@ -22,7 +22,7 @@ from deepagents.backends import FilesystemBackend, CompositeBackend
 from langchain.chat_models import init_chat_model
 
 from .backends import CustomSandboxBackend, MergedReadOnlyBackend
-from .middleware import create_skills_middleware
+from .middleware import create_skills_middleware, create_memory_middleware
 from .prompts import RESEARCHER_INSTRUCTIONS, get_system_prompt
 from .utils import load_subagents
 from .tools import tavily_search, think_tool
@@ -40,6 +40,7 @@ MAX_ITERATIONS = 3  # Max delegation rounds
 
 # Workspace settings
 WORKSPACE_DIR = "./workspace/"
+MEMORY_DIR = "./workspace/memory/"  # Shared across sessions (not per-session)
 SKILLS_DIR = str(Path(__file__).parent / "skills")
 SUBAGENTS_CONFIG = Path(__file__).parent / "subagent.yaml"
 
@@ -82,10 +83,19 @@ _skills_backend = MergedReadOnlyBackend(
     secondary_dir=SKILLS_DIR,                           # package built-in, fallback
 )
 
-# Composite backend: workspace as default, skills mounted at /skills/
+# Memory backend: persistent filesystem for long-term memory (shared across sessions)
+_memory_backend = FilesystemBackend(
+    root_dir=MEMORY_DIR,
+    virtual_mode=True,
+)
+
+# Composite backend: workspace as default, skills and memory mounted
 backend = CompositeBackend(
     default=_workspace_backend,
-    routes={"/skills/": _skills_backend},
+    routes={
+        "/skills/": _skills_backend,
+        "/memory/": _memory_backend,
+    },
 )
 
 tool_registry = {
@@ -110,7 +120,10 @@ _AGENT_KWARGS = dict(
     tools=[think_tool],
     backend=backend,
     subagents=subagents,
-    middleware=[create_skills_middleware(SKILLS_DIR, WORKSPACE_DIR)],
+    middleware=[
+        create_memory_middleware(MEMORY_DIR, extraction_model=chat_model),
+        create_skills_middleware(SKILLS_DIR, WORKSPACE_DIR),
+    ],
     system_prompt=SYSTEM_PROMPT,
 )
 
@@ -138,11 +151,22 @@ def create_cli_agent(workspace_dir: str | None = None):
             primary_dir=str(Path(workspace_dir) / "skills"),
             secondary_dir=SKILLS_DIR,
         )
+        # Memory always uses SHARED directory (not per-session) for cross-session persistence
+        mem_backend = FilesystemBackend(
+            root_dir=MEMORY_DIR,
+            virtual_mode=True,
+        )
         be = CompositeBackend(
             default=ws_backend,
-            routes={"/skills/": sk_backend},
+            routes={
+                "/skills/": sk_backend,
+                "/memory/": mem_backend,
+            },
         )
-        mw = [create_skills_middleware(SKILLS_DIR, workspace_dir)]
+        mw = [
+            create_memory_middleware(MEMORY_DIR, extraction_model=chat_model),
+            create_skills_middleware(SKILLS_DIR, workspace_dir),
+        ]
         kwargs = dict(
             _AGENT_KWARGS,
             backend=be,
