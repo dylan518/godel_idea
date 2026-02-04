@@ -49,7 +49,6 @@ evoscientist = "EvoScientist.cli:main"
 EvoScientist = "EvoScientist.cli:main"
 evosci = "EvoScientist.cli:main"
 EvoSci = "EvoScientist.cli:main"
-evosci-serve = "EvoScientist.serve:main"
 
 [build-system]
 requires = ["setuptools>=68.0"]
