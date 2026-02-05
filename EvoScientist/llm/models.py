@@ -13,11 +13,11 @@ from langchain.chat_models import init_chat_model
 
 # Model registry: short_name -> (model_id, provider)
 MODELS: dict[str, tuple[str, str]] = {
-    # Anthropic
-    "claude-sonnet-4-5": ("claude-sonnet-4-5-20250929", "anthropic"),
+    # Anthropic (ordered by capability)
+    "claude-opus-4-6": ("claude-opus-4-6", "anthropic"),
     "claude-opus-4-5": ("claude-opus-4-5-20251101", "anthropic"),
-    "claude-3-5-sonnet": ("claude-3-5-sonnet-20241022", "anthropic"),
-    "claude-3-5-haiku": ("claude-3-5-haiku-20241022", "anthropic"),
+    "claude-sonnet-4-5": ("claude-sonnet-4-5-20250929", "anthropic"),
+    "claude-haiku-4-5": ("claude-haiku-4-5-20251001", "anthropic"),
     # OpenAI
     "gpt-4o": ("gpt-4o", "openai"),
     "gpt-4o-mini": ("gpt-4o-mini", "openai"),

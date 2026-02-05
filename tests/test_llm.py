@@ -24,10 +24,10 @@ class TestModelsRegistry:
     def test_models_has_expected_keys(self):
         """Test that MODELS contains expected model short names."""
         expected_keys = [
-            "claude-sonnet-4-5",
+            "claude-opus-4-6",
             "claude-opus-4-5",
-            "claude-3-5-sonnet",
-            "claude-3-5-haiku",
+            "claude-sonnet-4-5",
+            "claude-haiku-4-5",
             "gpt-4o",
             "gpt-4o-mini",
             "o1",

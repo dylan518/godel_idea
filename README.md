@@ -45,10 +45,10 @@
 
 | Provider | Short Name | Model ID |
 |----------|-----------|----------|
-| Anthropic | `claude-sonnet-4-5` | `claude-sonnet-4-5-20250929` |
+| Anthropic | `claude-opus-4-6` | `claude-opus-4-6` |
 | Anthropic | `claude-opus-4-5` | `claude-opus-4-5-20251101` |
-| Anthropic | `claude-3-5-sonnet` | `claude-3-5-sonnet-20241022` |
-| Anthropic | `claude-3-5-haiku` | `claude-3-5-haiku-20241022` |
+| Anthropic | `claude-sonnet-4-5` | `claude-sonnet-4-5-20250929` |
+| Anthropic | `claude-haiku-4-5` | `claude-haiku-4-5-20251001` |
 | OpenAI | `gpt-4o` | `gpt-4o` |
 | OpenAI | `gpt-4o-mini` | `gpt-4o-mini` |
 | OpenAI | `o1` | `o1` |

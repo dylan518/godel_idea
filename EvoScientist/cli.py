@@ -463,10 +463,19 @@ def cmd_interactive(
 
     def _process_channel_message(msg: ChannelMessage) -> None:
         """Process a message from a channel with full Live streaming."""
+        # Move past the current prompt line to avoid interference with prompt_toolkit
+        # Then move back up and clear that line
+        sys.stdout.write("\n\033[A\033[2K\r")
+        sys.stdout.flush()
+        # Display prompt with channel source on second line
+        console.print(f"[bold blue]>[/bold blue] {msg.content}")
+        console.print(Text.assemble(
+            ("[", "dim"),
+            (f"{msg.channel_type}: Received from ", "dim"),
+            (msg.sender, "cyan"),
+            ("]", "dim"),
+        ))
         _print_separator()
-        # Display prompt with channel source tag
-        source_tag = f"[{msg.channel_type}: {msg.sender}]"
-        console.print(f"[bold blue]>[/bold blue] {msg.content} [dim]{source_tag}[/dim]")
         console.print()
 
         try:
@@ -477,6 +486,13 @@ def cmd_interactive(
 
             # Set response for channel handler to retrieve
             _ChannelState.set_response(msg.msg_id, response_text or "")
+            # Show replied indicator
+            console.print(Text.assemble(
+                ("[", "dim"),
+                (f"{msg.channel_type}: Replied to ", "dim"),
+                (msg.sender, "cyan"),
+                ("]", "dim"),
+            ))
         except Exception as e:
             console.print(f"[red]Channel processing error: {e}[/red]")
             _ChannelState.set_response(msg.msg_id, f"Error: {e}")
