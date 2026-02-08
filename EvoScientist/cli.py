@@ -975,7 +975,7 @@ def _load_agent(workspace_dir: str | None = None):
 # Typer app
 # =============================================================================
 
-app = typer.Typer(no_args_is_help=False, add_completion=False)
+app = typer.Typer(no_args_is_help=False, add_completion=False, context_settings={"help_option_names": ["-h", "--help"]})
 
 # Config subcommand group
 config_app = typer.Typer(help="Configuration management commands", invoke_without_command=True)
@@ -1280,16 +1280,17 @@ def mcp_remove(
 @app.callback(invoke_without_command=True)
 def _main_callback(
     ctx: typer.Context,
-    prompt: Optional[str] = typer.Option(None, "-p", "--prompt", help="Query to execute (single-shot mode)"),
-    thread_id: Optional[str] = typer.Option(None, "--thread-id", help="Thread ID for conversation persistence"),
-    no_thinking: bool = typer.Option(False, "--no-thinking", help="Disable thinking display"),
-    workdir: Optional[str] = typer.Option(None, "--workdir", help="Override workspace directory for this session"),
-    use_cwd: bool = typer.Option(False, "--use-cwd", help="Use current working directory as workspace"),
     mode: Optional[str] = typer.Option(
         None,
+        "-m",
         "--mode",
-        help="Workspace mode: 'daemon' (persistent, default) or 'run' (isolated per-session)"
+        help="Workspace mode: 'daemon' (persistent, default) or 'run' (isolated per-session)",
     ),
+    prompt: Optional[str] = typer.Option(None, "-p", "--prompt", help="Query to execute (single-shot mode)"),
+    thread_id: Optional[str] = typer.Option(None, "--thread-id", help="Thread ID for conversation persistence"),
+    workdir: Optional[str] = typer.Option(None, "--workdir", help="Override workspace directory for this session"),
+    use_cwd: bool = typer.Option(False, "--use-cwd", help="Use current working directory as workspace"),
+    no_thinking: bool = typer.Option(False, "--no-thinking", help="Disable thinking display"),
 ):
     """EvoScientist Agent - AI-powered research & code execution CLI."""
     # If a subcommand was invoked, don't run the default behavior

@@ -22,10 +22,10 @@ from EvoScientist.config import EvoScientistConfig
 
 
 class TestConstants:
-    def test_steps_has_seven_items(self):
-        """Test that STEPS contains exactly 7 steps."""
-        assert len(STEPS) == 7
-        assert STEPS == ["Provider", "API Key", "Model", "Tavily Key", "Workspace", "Parameters", "Channels"]
+    def test_steps_has_eight_items(self):
+        """Test that STEPS contains exactly 8 steps."""
+        assert len(STEPS) == 8
+        assert STEPS == ["Provider", "API Key", "Model", "Tavily Key", "Workspace", "Parameters", "Skills", "Channels"]
 
     def test_wizard_style_is_style_instance(self):
         """Test that WIZARD_STYLE is a prompt_toolkit Style."""
@@ -444,6 +444,59 @@ class TestSetupImessage:
         assert result is False
 
 
+class TestStepSkills:
+    def test_returns_empty_when_none_selected(self):
+        """Test skills step returns empty list when user selects nothing."""
+        from EvoScientist.onboard import _step_skills
+
+        with mock.patch("EvoScientist.onboard.questionary") as mock_q, \
+             mock.patch("EvoScientist.onboard.console"):
+            mock_q.checkbox.return_value.ask.return_value = []
+            result = _step_skills()
+
+        assert result == []
+
+    def test_installs_selected_skills(self):
+        """Test skills step installs selected skills and returns sources."""
+        from EvoScientist.onboard import _step_skills, _RECOMMENDED_SKILLS
+
+        source = _RECOMMENDED_SKILLS[0]["source"]
+
+        with mock.patch("EvoScientist.onboard.questionary") as mock_q, \
+             mock.patch("EvoScientist.onboard.console"), \
+             mock.patch("EvoScientist.tools.skills_manager.install_skill") as mock_install:
+            mock_q.checkbox.return_value.ask.return_value = [source]
+            mock_install.return_value = {"success": True, "name": "test"}
+            result = _step_skills()
+
+        assert result == [source]
+        mock_install.assert_called_once_with(source)
+
+    def test_handles_install_failure(self):
+        """Test skills step handles installation errors gracefully."""
+        from EvoScientist.onboard import _step_skills, _RECOMMENDED_SKILLS
+
+        source = _RECOMMENDED_SKILLS[0]["source"]
+
+        with mock.patch("EvoScientist.onboard.questionary") as mock_q, \
+             mock.patch("EvoScientist.onboard.console"), \
+             mock.patch("EvoScientist.tools.skills_manager.install_skill") as mock_install:
+            mock_q.checkbox.return_value.ask.return_value = [source]
+            mock_install.side_effect = Exception("network error")
+            result = _step_skills()
+
+        assert result == []
+
+    def test_raises_keyboard_interrupt_on_cancel(self):
+        """Test skills step raises KeyboardInterrupt on cancel."""
+        from EvoScientist.onboard import _step_skills
+
+        with mock.patch("EvoScientist.onboard.questionary") as mock_q:
+            mock_q.checkbox.return_value.ask.return_value = None
+            with pytest.raises(KeyboardInterrupt):
+                _step_skills()
+
+
 class TestStepChannels:
     def test_returns_disabled_when_skip(self):
         """Test channels step returns disabled when user selects skip."""
@@ -591,6 +644,7 @@ class TestRunOnboard:
                 "3",  # Max concurrent
                 "3",  # Max iterations
             ]
+            mock_q.checkbox.return_value.ask.return_value = []  # Skills: skip
 
             result = run_onboard(skip_validation=True)
 
@@ -636,6 +690,7 @@ class TestRunOnboard:
                 False,  # Save config - NO
             ]
             mock_q.text.return_value.ask.side_effect = ["3", "3"]
+            mock_q.checkbox.return_value.ask.return_value = []  # Skills: skip
 
             result = run_onboard(skip_validation=True)
 

@@ -53,7 +53,7 @@ CONFIRM_STYLE = Style.from_dict({
     "text": "",
 })
 
-STEPS = ["Provider", "API Key", "Model", "Tavily Key", "Workspace", "Parameters", "Channels"]
+STEPS = ["Provider", "API Key", "Model", "Tavily Key", "Workspace", "Parameters", "Skills", "Channels"]
 
 
 # =============================================================================
@@ -617,6 +617,170 @@ def _step_parameters(config: EvoScientistConfig) -> tuple[int, int, bool]:
     return max_concurrent, max_iterations, show_thinking
 
 
+_RECOMMENDED_SKILLS = [
+    {
+        "label": "ML Paper Writing",
+        "source": "Orchestra-Research/AI-Research-SKILLs@20-ml-paper-writing",
+    },
+    {
+        "label": "Literature Review",
+        "source": "https://github.com/K-Dense-AI/claude-scientific-writer/tree/main/skills/literature-review",
+    },
+    {
+        "label": "Scientific Brainstorming",
+        "source": "https://github.com/K-Dense-AI/claude-scientific-skills/tree/main/scientific-skills/scientific-brainstorming",
+    },
+]
+
+
+def _check_npx() -> bool:
+    """Check if npx is available on the system.
+
+    Returns:
+        True if npx is found and working.
+    """
+    try:
+        result = subprocess.run(
+            ["npx", "--version"],
+            capture_output=True, text=True, timeout=10,
+        )
+        return result.returncode == 0
+    except (FileNotFoundError, subprocess.TimeoutExpired):
+        return False
+
+
+def _detect_node_install_method() -> tuple[str, str]:
+    """Detect the best way to install Node.js for this environment.
+
+    Returns:
+        Tuple of (method_name, install_command).
+    """
+    # Check if inside a conda environment
+    if os.environ.get("CONDA_PREFIX"):
+        return "conda", "conda install -y nodejs"
+
+    # macOS with Homebrew
+    if sys.platform == "darwin":
+        try:
+            result = subprocess.run(
+                ["brew", "--version"],
+                capture_output=True, text=True, timeout=5,
+            )
+            if result.returncode == 0:
+                return "brew", "brew install node"
+        except (FileNotFoundError, subprocess.TimeoutExpired):
+            pass
+
+    return "manual", "https://nodejs.org"
+
+
+def _install_node(method: str, command: str) -> bool:
+    """Install Node.js using the detected method.
+
+    Returns:
+        True if installation succeeded.
+    """
+    if method == "manual":
+        return False
+
+    try:
+        proc = subprocess.run(
+            command.split(),
+            timeout=120,
+        )
+        return proc.returncode == 0
+    except FileNotFoundError:
+        console.print(f"  [red]✗ {method} not found[/red]")
+        return False
+    except subprocess.TimeoutExpired:
+        console.print("  [red]✗ Installation timed out[/red]")
+        return False
+    except Exception as e:
+        console.print(f"  [red]✗ Installation failed: {e}[/red]")
+        return False
+
+
+def _step_skills() -> list[str]:
+    """Step 7: Optionally install recommended skills.
+
+    Shows checkbox first. If user selects nothing, checks npx as an
+    easter egg — confirms skill discovery is available, or offers to
+    install Node.js if missing.
+
+    Returns:
+        List of skill sources that were selected (empty if skipped).
+    """
+    choices = [
+        Choice(title=skill["label"], value=skill["source"])
+        for skill in _RECOMMENDED_SKILLS
+    ]
+
+    selected = questionary.checkbox(
+        "Install predefined skills:",
+        choices=choices,
+        style=WIZARD_STYLE,
+    ).ask()
+
+    if selected is None:
+        raise KeyboardInterrupt()
+
+    if not selected:
+        # Easter egg: verify skill discovery environment
+        console.print("  [dim]Checking skill discovery environment...[/dim]")
+        has_npx = _check_npx()
+        if has_npx:
+            _print_step_skipped("Skills", "none selected — good choice!")
+            console.print("  [green]✓ npx found — skill discovery available[/green]")
+            console.print("  [yellow bold]* Less is more[/yellow bold] [dim](EvoScientist can discover and install skills on its own)[/dim]")
+        else:
+            console.print("  [yellow]✗ npx not found — skill discovery requires Node.js[/yellow]")
+
+            method, command = _detect_node_install_method()
+
+            if method != "manual":
+                console.print()
+                install_node = questionary.confirm(
+                    f"Install Node.js via {method}? ({command})",
+                    default=True,
+                    style=WIZARD_STYLE,
+                ).ask()
+
+                if install_node is None:
+                    raise KeyboardInterrupt()
+
+                if install_node:
+                    console.print()
+                    if _install_node(method, command):
+                        console.print()
+                        if _check_npx():
+                            console.print("  [green]✓ npx now available — skill discovery ready[/green]")
+                        else:
+                            console.print("  [yellow]✗ npx still not found after install[/yellow]")
+            else:
+                console.print(f"  [dim]  Install Node.js: {command}[/dim]")
+
+            _print_step_skipped("Skills", "none selected")
+
+        return []
+
+    from .tools.skills_manager import install_skill
+
+    installed = []
+    for source in selected:
+        label = next(s["label"] for s in _RECOMMENDED_SKILLS if s["source"] == source)
+        try:
+            result = install_skill(source)
+            if result.get("success"):
+                _print_step_result("Skill", label)
+                installed.append(source)
+            else:
+                _print_step_result("Skill", f"{label} — {result.get('error', 'failed')}", success=False)
+        except Exception as e:
+            _print_step_result("Skill", f"{label} — {e}", success=False)
+
+    return installed
+
+
 def validate_imessage() -> tuple[bool, str]:
     """Validate iMessage environment by checking for the imsg CLI.
 
@@ -924,7 +1088,10 @@ def run_onboard(skip_validation: bool = False) -> bool:
         config.max_iterations = max_iterations
         config.show_thinking = show_thinking
 
-        # Step 7: Channels
+        # Step 7: Skills
+        _step_skills()
+
+        # Step 8: Channels
         imessage_enabled, imessage_allowed_senders = _step_channels(config)
         config.imessage_enabled = imessage_enabled
         config.imessage_allowed_senders = imessage_allowed_senders
