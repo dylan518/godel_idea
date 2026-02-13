@@ -64,6 +64,7 @@ class EvoScientistConfig:
     nvidia_api_key: str = ""
     google_api_key: str = ""
     siliconflow_api_key: str = ""
+    openrouter_api_key: str = ""
     tavily_api_key: str = ""
 
     # LLM Settings
@@ -215,6 +216,7 @@ _ENV_MAPPINGS = {
     "nvidia_api_key": "NVIDIA_API_KEY",
     "google_api_key": "GOOGLE_API_KEY",
     "siliconflow_api_key": "SILICONFLOW_API_KEY",
+    "openrouter_api_key": "OPENROUTER_API_KEY",
     "tavily_api_key": "TAVILY_API_KEY",
     "default_mode": "EVOSCIENTIST_DEFAULT_MODE",
     "default_workdir": "EVOSCIENTIST_WORKSPACE_DIR",
@@ -285,5 +287,7 @@ def apply_config_to_env(config: EvoScientistConfig) -> None:
         os.environ["GOOGLE_API_KEY"] = config.google_api_key
     if config.siliconflow_api_key and not os.environ.get("SILICONFLOW_API_KEY"):
         os.environ["SILICONFLOW_API_KEY"] = config.siliconflow_api_key
+    if config.openrouter_api_key and not os.environ.get("OPENROUTER_API_KEY"):
+        os.environ["OPENROUTER_API_KEY"] = config.openrouter_api_key
     if config.tavily_api_key and not os.environ.get("TAVILY_API_KEY"):
         os.environ["TAVILY_API_KEY"] = config.tavily_api_key

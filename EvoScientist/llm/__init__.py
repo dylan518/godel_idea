@@ -8,6 +8,7 @@ from .models import (
     MODELS,
     DEFAULT_MODEL,
     get_chat_model,
+    get_models_for_provider,
     list_models,
     get_model_info,
 )
@@ -16,6 +17,7 @@ __all__ = [
     "MODELS",
     "DEFAULT_MODEL",
     "get_chat_model",
+    "get_models_for_provider",
     "list_models",
     "get_model_info",
 ]

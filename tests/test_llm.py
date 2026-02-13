@@ -6,9 +6,11 @@ from EvoScientist.llm import (
     MODELS,
     DEFAULT_MODEL,
     get_chat_model,
+    get_models_for_provider,
     list_models,
     get_model_info,
 )
+from EvoScientist.llm.models import _MODEL_ENTRIES
 
 
 # =============================================================================
@@ -21,41 +23,35 @@ class TestModelsRegistry:
         """Test that MODELS is a dictionary."""
         assert isinstance(MODELS, dict)
 
-    def test_models_has_all_providers(self):
-        """Test that MODELS covers all supported providers."""
-        providers = {p for _, (_, p) in MODELS.items()}
+    def test_entries_has_all_providers(self):
+        """Test that _MODEL_ENTRIES covers native providers."""
+        providers = {p for _, _, p in _MODEL_ENTRIES}
         assert "anthropic" in providers
         assert "openai" in providers
         assert "google-genai" in providers
         assert "nvidia" in providers
 
-    def test_models_values_are_tuples(self):
-        """Test that MODELS values are (model_id, provider) tuples."""
-        for name, value in MODELS.items():
-            assert isinstance(value, tuple), f"MODELS['{name}'] is not a tuple"
-            assert len(value) == 2, f"MODELS['{name}'] doesn't have 2 elements"
-            model_id, provider = value
-            assert isinstance(model_id, str), f"model_id for '{name}' is not a string"
-            assert isinstance(provider, str), f"provider for '{name}' is not a string"
-            assert provider in ("anthropic", "openai", "google-genai", "nvidia", "siliconflow"), f"Unknown provider for '{name}': {provider}"
+    def test_entries_are_valid_tuples(self):
+        """Test that _MODEL_ENTRIES contains valid (name, model_id, provider) tuples."""
+        valid_providers = {"anthropic", "openai", "google-genai", "nvidia"}
+        for entry in _MODEL_ENTRIES:
+            assert len(entry) == 3, f"Entry {entry} doesn't have 3 elements"
+            name, model_id, provider = entry
+            assert isinstance(name, str)
+            assert isinstance(model_id, str)
+            assert provider in valid_providers, f"Unknown provider '{provider}' for '{name}'"
 
-    def test_anthropic_models_have_anthropic_provider(self):
-        """Test that claude models use anthropic provider."""
-        for name, (model_id, provider) in MODELS.items():
-            if name.startswith("claude"):
-                assert provider == "anthropic", f"Claude model '{name}' doesn't use anthropic provider"
+    def test_get_models_for_provider(self):
+        """Test that get_models_for_provider returns correct models."""
+        anthropic_models = get_models_for_provider("anthropic")
+        assert len(anthropic_models) > 0
+        for name, model_id in anthropic_models:
+            assert isinstance(name, str)
+            assert isinstance(model_id, str)
 
-    def test_openai_models_have_openai_provider(self):
-        """Test that gpt models use openai provider."""
-        for name, (model_id, provider) in MODELS.items():
-            if name.startswith("gpt"):
-                assert provider == "openai", f"OpenAI model '{name}' doesn't use openai provider"
-
-    def test_google_models_have_google_provider(self):
-        """Test that gemini models use google-genai provider."""
-        for name, (model_id, provider) in MODELS.items():
-            if name.startswith("gemini"):
-                assert provider == "google-genai", f"Google model '{name}' doesn't use google-genai provider"
+        # Third-party providers have no registered models (user types model name)
+        openrouter_models = get_models_for_provider("openrouter")
+        assert len(openrouter_models) == 0
 
 
 # =============================================================================
