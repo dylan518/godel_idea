@@ -2,7 +2,6 @@
 
 import asyncio
 import hashlib
-import json
 import time
 import xml.etree.ElementTree as ET
 
@@ -239,6 +238,22 @@ class TestWeChatCrypto:
 
     Uses a deterministic 43-char EncodingAESKey.
     """
+
+    # Skip encryption tests when no crypto backend is available
+    _has_crypto = False
+    try:
+        from Crypto.Cipher import AES as _aes  # noqa: F401
+        _has_crypto = True
+    except ImportError:
+        try:
+            import pyaes as _pyaes  # noqa: F401
+            _has_crypto = True
+        except ImportError:
+            pass
+    pytestmark = pytest.mark.skipif(
+        not _has_crypto,
+        reason="pycryptodome or pyaes required for encryption tests",
+    )
 
     @pytest.fixture
     def crypto(self):

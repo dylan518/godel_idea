@@ -1,8 +1,6 @@
 """Telegram channel implementation using python-telegram-bot."""
 
-import asyncio
 import logging
-import re
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
@@ -37,6 +35,9 @@ class TelegramChannel(Channel):
         self._bot_username: str = ""
 
     async def start(self) -> None:
+        if not self.config.bot_token:
+            raise ChannelError("Telegram bot token is required")
+
         try:
             from telegram.ext import (
                 ApplicationBuilder,
@@ -48,9 +49,6 @@ class TelegramChannel(Channel):
                 "python-telegram-bot not installed. "
                 "Install with: pip install evoscientist[telegram]"
             )
-
-        if not self.config.bot_token:
-            raise ChannelError("Telegram bot token is required")
 
         builder = ApplicationBuilder().token(self.config.bot_token)
         if self.config.proxy:

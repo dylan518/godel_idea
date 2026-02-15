@@ -715,11 +715,12 @@ class Channel(ChannelPlugin, ABC):
         """Decide whether to process a message based on mention gating."""
         if self.require_mention == "off":
             return True
+        # Both "always" and "group" allow DMs through unconditionally
+        if not raw.is_group:
+            return True
         if self.require_mention == "always":
             return raw.was_mentioned
         # "group" — require mention only in groups
-        if not raw.is_group:
-            return True
         return raw.was_mentioned
 
     _mention_pattern: str | None = None
@@ -757,6 +758,42 @@ class Channel(ChannelPlugin, ABC):
 
     # ── Inbound message pipeline ──────────────────────────────────────
 
+    async def _build_inbound_async(self, raw: RawIncoming) -> InboundMessage | None:
+        """Async version: run *raw* through inbound middlewares and convert."""
+        context: dict = {"channel": self}
+        current: RawIncoming | None = raw
+        for mw in self._inbound_middlewares:
+            if current is None:
+                return None
+            current = await mw.process_inbound(current, context)
+        if current is None:
+            return None
+        return self._raw_to_inbound(current)
+
+    def _build_inbound(self, raw: RawIncoming) -> InboundMessage | None:
+        """Run *raw* through inbound middlewares and convert to InboundMessage.
+
+        Synchronous wrapper around :meth:`_build_inbound_async`.  Safe to
+        call from both sync and async contexts.
+        """
+        import asyncio
+        import concurrent.futures
+
+        try:
+            asyncio.get_running_loop()
+            # Inside a running loop — run in a worker thread
+            with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
+                return pool.submit(
+                    lambda: asyncio.run(self._build_inbound_async(raw))
+                ).result()
+        except RuntimeError:
+            # No running loop — safe to create one
+            loop = asyncio.new_event_loop()
+            try:
+                return loop.run_until_complete(self._build_inbound_async(raw))
+            finally:
+                loop.close()
+
     def _raw_to_inbound(self, raw: RawIncoming) -> InboundMessage | None:
         """Convert a RawIncoming to InboundMessage (pure transformation, no filtering).
 
@@ -785,15 +822,7 @@ class Channel(ChannelPlugin, ABC):
 
         Convenience method for subclass ``_on_message`` handlers.
         """
-        context: dict = {"channel": self}
-        current: RawIncoming | None = raw
-        for mw in self._inbound_middlewares:
-            if current is None:
-                return
-            current = await mw.process_inbound(current, context)
-        if current is None:
-            return
-        msg = self._raw_to_inbound(current)
+        msg = self._build_inbound(raw)
         if msg is None:
             return
         if raw.message_id:
