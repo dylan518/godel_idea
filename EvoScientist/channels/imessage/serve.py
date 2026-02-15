@@ -50,9 +50,20 @@ def create_agent_handler(
         on_todo: Optional async callback for todo list updates.
             Signature: async def on_todo(sender: str, content: str, metadata: dict) -> None
     """
+    import os
     from langchain_core.messages import HumanMessage
+    from ...config import get_effective_config, apply_config_to_env
+    from ...paths import set_workspace_root, ensure_dirs
     from ...EvoScientist import create_cli_agent
     from ...stream.events import stream_agent_events
+
+    # Apply config so default_workdir is respected in non-CLI entry points
+    config = get_effective_config()
+    apply_config_to_env(config)
+    if config.default_workdir:
+        workdir = os.path.abspath(os.path.expanduser(config.default_workdir))
+        set_workspace_root(workdir)
+    ensure_dirs()
 
     agent = create_cli_agent()
     sessions: dict[str, str] = {}  # sender -> thread_id

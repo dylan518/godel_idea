@@ -204,12 +204,15 @@ def __getattr__(name: str):
 def create_cli_agent(workspace_dir: str | None = None, checkpointer=None):
     """Create agent with checkpointer for CLI multi-turn support.
 
+    A fresh backend is constructed on every call using the current
+    ``paths.WORKSPACE_ROOT`` (or the explicit *workspace_dir*), so
+    runtime ``set_workspace_root()`` changes are always respected.
+
     Args:
-        workspace_dir: Optional per-session workspace directory. If provided,
-            creates a fresh backend rooted at this path. If None, uses the
-            module-level default backend.
-        checkpointer: Optional LangGraph checkpointer. If None, falls back
-            to ``InMemorySaver`` (non-persistent).
+        workspace_dir: Per-session workspace directory. If ``None``,
+            defaults to the current ``paths.WORKSPACE_ROOT``.
+        checkpointer: Optional LangGraph checkpointer. If ``None``,
+            falls back to ``InMemorySaver`` (non-persistent).
     """
     from . import paths as _paths
 
@@ -221,31 +224,34 @@ def create_cli_agent(workspace_dir: str | None = None, checkpointer=None):
     _mem_dir = str(_paths.MEMORY_DIR)
     _usr_skills_dir = str(_paths.USER_SKILLS_DIR)
 
-    if workspace_dir:
-        set_active_workspace(workspace_dir)
-        ws_backend = CustomSandboxBackend(
-            root_dir=workspace_dir,
-            virtual_mode=True,
-            timeout=300,
-        )
-        sk_backend = MergedReadOnlyBackend(
-            primary_dir=_usr_skills_dir,
-            secondary_dir=SKILLS_DIR,
-        )
-        # Memory always uses SHARED directory (not per-session) for cross-session persistence
-        mem_backend = FilesystemBackend(
-            root_dir=_mem_dir,
-            virtual_mode=True,
-        )
-        be = CompositeBackend(
-            default=ws_backend,
-            routes={
-                "/skills/": sk_backend,
-                "/memory/": mem_backend,
-            },
-        )
-    else:
-        be = backend
+    # Default to current WORKSPACE_ROOT when no explicit dir is provided
+    if workspace_dir is None:
+        workspace_dir = str(_paths.WORKSPACE_ROOT)
+
+    # Always construct fresh backends from current paths (avoids stale
+    # module-level backend when workspace root changed at runtime).
+    set_active_workspace(workspace_dir)
+    ws_backend = CustomSandboxBackend(
+        root_dir=workspace_dir,
+        virtual_mode=True,
+        timeout=300,
+    )
+    sk_backend = MergedReadOnlyBackend(
+        primary_dir=_usr_skills_dir,
+        secondary_dir=SKILLS_DIR,
+    )
+    # Memory always uses SHARED directory (not per-session) for cross-session persistence
+    mem_backend = FilesystemBackend(
+        root_dir=_mem_dir,
+        virtual_mode=True,
+    )
+    be = CompositeBackend(
+        default=ws_backend,
+        routes={
+            "/skills/": sk_backend,
+            "/memory/": mem_backend,
+        },
+    )
 
     mw = [
         create_memory_middleware(_mem_dir, extraction_model=chat_model),
