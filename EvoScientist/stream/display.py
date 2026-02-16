@@ -617,6 +617,7 @@ def _run_streaming(
     state = StreamState()
     _thinking_sent = False
     _todo_sent = False
+    _media_sent: set[str] = set()  # track sent media paths to avoid duplicates
     _MIN_THINKING_LEN = 200
 
     async def _consume() -> None:
@@ -654,13 +655,16 @@ def _run_streaming(
                 wf_path = ""
                 for tc in reversed(state.tool_calls):
                     if tc.get("name") == "write_file":
-                        wf_path = tc.get("args", {}).get("path", "")
-                        break
+                        p = tc.get("args", {}).get("path", "")
+                        if p and p not in _media_sent:
+                            wf_path = p
+                            break
                 if wf_path:
                     ext = os.path.splitext(wf_path)[1].lower()
                     if ext in _MEDIA_EXTENSIONS:
                         real_path = str(resolve_virtual_path(wf_path))
                         if os.path.isfile(real_path):
+                            _media_sent.add(wf_path)
                             on_file_write(real_path)
 
             # Send media file to channel when read_file returns an image
@@ -671,8 +675,10 @@ def _run_streaming(
                 rf_path = ""
                 for tc in reversed(state.tool_calls):
                     if tc.get("name") == "read_file":
-                        rf_path = tc.get("args", {}).get("file_path", "") or tc.get("args", {}).get("path", "")
-                        break
+                        p = tc.get("args", {}).get("file_path", "") or tc.get("args", {}).get("path", "")
+                        if p and p not in _media_sent:
+                            rf_path = p
+                            break
                 if rf_path:
                     ext = os.path.splitext(rf_path)[1].lower()
                     if ext in _MEDIA_EXTENSIONS:
@@ -680,6 +686,7 @@ def _run_streaming(
                         if not os.path.isfile(real_path):
                             real_path = str(resolve_virtual_path(rf_path))
                         if os.path.isfile(real_path):
+                            _media_sent.add(rf_path)
                             on_file_write(real_path)
 
             live.update(create_streaming_display(
