@@ -28,7 +28,7 @@ def create_from_config(config) -> EmailChannel:
         smtp_port=config.email_smtp_port,
         smtp_username=config.email_smtp_username,
         smtp_password=config.email_smtp_password,
-        smtp_use_tls=config.email_smtp_use_tls,
+        smtp_starttls=config.email_smtp_use_tls,
         from_address=config.email_from_address,
         poll_interval=config.email_poll_interval,
         mark_seen=config.email_mark_seen,

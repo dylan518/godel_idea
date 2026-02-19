@@ -40,6 +40,8 @@ class SignalChannel(Channel):
         self._writer: asyncio.StreamWriter | None = None
         self._rpc_id = 0
         self._daemon_proc = None
+        # Pending RPC responses: rpc_id -> Future
+        self._pending_rpcs: dict[int, asyncio.Future] = {}
         # Cache message_id → sender for reaction targetAuthor (bounded)
         self._msg_senders: dict[str, str] = {}
         self._msg_senders_order: deque = deque(maxlen=200)
@@ -51,8 +53,13 @@ class SignalChannel(Channel):
         # Try to start signal-cli daemon if not already running
         await self._ensure_daemon()
 
-        # Connect to JSON RPC socket
-        await self._connect()
+        try:
+            # Connect to JSON RPC socket
+            await self._connect()
+        except Exception:
+            # If connect fails after daemon was started, clean up the daemon
+            await self._cleanup()
+            raise
 
         self._running = True
         logger.info(f"Signal channel started (phone: {self.config.phone_number})")
@@ -65,6 +72,11 @@ class SignalChannel(Channel):
         if hasattr(self, "_listen_task") and self._listen_task:
             self._listen_task.cancel()
             self._listen_task = None
+        # Cancel any pending RPC futures
+        for fut in self._pending_rpcs.values():
+            if not fut.done():
+                fut.cancel()
+        self._pending_rpcs.clear()
         if self._writer:
             self._writer.close()
             try:
@@ -136,13 +148,25 @@ class SignalChannel(Channel):
             raise ChannelError(f"Cannot connect to signal-cli: {e}")
 
     async def _listen_loop(self) -> None:
-        """Listen for incoming JSON RPC notifications."""
+        """Listen for incoming JSON RPC notifications and responses."""
         while self._running and self._reader:
             try:
                 line = await self._reader.readline()
                 if not line:
                     break
                 data = json.loads(line.decode())
+                # Dispatch RPC response if it has an 'id' matching a pending call
+                rpc_id = data.get("id")
+                if rpc_id is not None and rpc_id in self._pending_rpcs:
+                    fut = self._pending_rpcs.pop(rpc_id)
+                    if not fut.done():
+                        if "error" in data:
+                            fut.set_exception(
+                                RuntimeError(f"signal-cli RPC error: {data['error']}")
+                            )
+                        else:
+                            fut.set_result(data.get("result"))
+                    continue
                 await self._handle_rpc(data)
             except asyncio.CancelledError:
                 break
@@ -343,22 +367,35 @@ class SignalChannel(Channel):
     def _is_ready(self) -> bool:
         return self._writer is not None and not self._writer.is_closing()
 
-    async def _rpc_call(self, method: str, params: dict) -> dict | None:
-        """Send a JSON RPC call to signal-cli."""
+    async def _rpc_call(self, method: str, params: dict, timeout: float = 10.0) -> dict | None:
+        """Send a JSON RPC call to signal-cli and wait for the response."""
         if not self._writer:
             return None
 
         self._rpc_id += 1
+        rpc_id = self._rpc_id
         request = {
             "jsonrpc": "2.0",
-            "id": self._rpc_id,
+            "id": rpc_id,
             "method": method,
             "params": params,
         }
+
+        # Register a Future before sending so the listen loop can resolve it
+        loop = asyncio.get_running_loop()
+        fut: asyncio.Future = loop.create_future()
+        self._pending_rpcs[rpc_id] = fut
+
         line = json.dumps(request) + "\n"
         self._writer.write(line.encode())
         await self._writer.drain()
-        return None  # We don't wait for response in this simple impl
+
+        try:
+            return await asyncio.wait_for(fut, timeout=timeout)
+        except asyncio.TimeoutError:
+            self._pending_rpcs.pop(rpc_id, None)
+            logger.warning(f"Signal RPC '{method}' timed out after {timeout}s")
+            return None
 
     async def _send_chunk(
         self, chat_id, formatted_text, raw_text, reply_to, metadata,

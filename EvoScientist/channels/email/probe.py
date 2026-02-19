@@ -57,6 +57,7 @@ async def validate_email_smtp(
     loop = asyncio.get_event_loop()
 
     def _check():
+        server = None
         try:
             if use_tls:
                 server = smtplib.SMTP(host, port, timeout=10)
@@ -65,11 +66,19 @@ async def validate_email_smtp(
                 ctx = ssl.create_default_context()
                 server = smtplib.SMTP_SSL(host, port, context=ctx, timeout=10)
             server.login(username, password)
-            server.quit()
             return True, "SMTP credentials valid"
-        except smtplib.SMTPAuthenticationError as e:
-            return False, f"SMTP auth failed: {e}"
+        except smtplib.SMTPAuthenticationError:
+            return False, "SMTP auth failed"
         except Exception as e:
             return False, f"SMTP error: {e}"
+        finally:
+            if server is not None:
+                try:
+                    server.quit()
+                except Exception:
+                    try:
+                        server.close()
+                    except Exception:
+                        pass
 
     return await loop.run_in_executor(None, _check)
