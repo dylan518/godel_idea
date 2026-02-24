@@ -67,13 +67,13 @@ Going beyond traditional human-in-the-loop systems, EvoScientist introduces an A
 - [🔌 MCP Integration](#-mcp-integration)
 - [📱 Channels](#-channels)
 - [📚 Acknowledgments](#-acknowledgments)
-- [🏛️ EvoScientist Team](#-evoscientist-team)
+- [👥 EvoScientist Team](#-evoscientist-team)
 - [🤝 Contributing](#-contributing)
 
 ## 📦 Installation
 
 > [!NOTE]
-> Requires **Python 3.11+**. A virtual environment is recommended.
+> Requires **Python 3.11+**. A virtual environment is strongly recommended — EvoScientist experiments may install ML libraries (PyTorch, transformers, etc.) that can conflict with your system packages.
 
 ### Quick Install
 
@@ -108,6 +108,8 @@ git pull && pip install -e ".[dev]"
 ```
 
 </details>
+
+<p align="right"><a href="#top">🔝Back to top</a></p>
 
 ## 🔑 Configuration
 
@@ -147,6 +149,8 @@ cp .env.example .env  # then fill in your keys
 > Never commit `.env` files with real keys. It is already in `.gitignore`.
 
 </details>
+
+<p align="right"><a href="#top">🔝Back to top</a></p>
 
 ## ⚡ Quick Start
 
@@ -211,6 +215,8 @@ for state in EvoScientist_agent.stream(
 
 </details>
 
+<p align="right"><a href="#top">🔝Back to top</a></p>
+
 ## 🔌 MCP Integration
 
 Add external tools via [MCP](https://modelcontextprotocol.io/) servers with a single command:
@@ -224,7 +230,9 @@ EvoSci mcp add sequential-thinking npx -- -y @modelcontextprotocol/server-sequen
 ```
 
 > [!NOTE]
-> For command options, config fields, tool routing, wildcard filtering, and troubleshooting, see the **[MCP Integration Guide](./EvoScientist/mcp)**.
+> For command options, config fields, tool routing, wildcard filtering, and troubleshooting, see the **[MCP Integration Guide](https://github.com/EvoScientist/EvoScientist/tree/main/EvoScientist/mcp#model-context-protocol-integration)**.
+
+<p align="right"><a href="#top">🔝Back to top</a></p>
 
 ## 📱 Channels
 
@@ -247,7 +255,9 @@ channel_enabled: "telegram,discord,slack"
 The channel can also be started interactively with `/channel` in the CLI session.
 
 > [!NOTE]
-> For per-channel setup guides, capability matrix, architecture details, and troubleshooting, see the **[Channel Integration Guide](./EvoScientist/channels)**.
+> For per-channel setup guides, capability matrix, architecture details, and troubleshooting, see the **[Channel Integration Guide](https://github.com/EvoScientist/EvoScientist/tree/main/EvoScientist/channels#channels)**.
+
+<p align="right"><a href="#top">🔝Back to top</a></p>
 
 ## 📚 Acknowledgments
 
@@ -260,7 +270,7 @@ We thank the authors for their valuable contributions to the open-source communi
 
 <p align="right"><a href="#top">🔝Back to top</a></p>
 
-## 🏛️ EvoScientist Team
+## 👥 EvoScientist Team
 
 <table>
   <tbody>
@@ -313,7 +323,7 @@ For any enquiries or collaboration opportunities, please contact: [**EvoScientis
 
 ## 🤝 Contributing
 
-<img alt="EvoScientist Logo" style="float: right;" src=".github/assets/EvoScientist_team.png" width="20%" />
+<img align="right" alt="EvoScientist Team" src=".github/assets/EvoScientist_team.png" width="20%" />
 
 We welcome contributions from developers and researchers at all levels. Please refer to our [Contributing Guidelines](./CONTRIBUTING.md) to get started and help make EvoScientist more accessible.
 
