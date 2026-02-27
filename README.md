@@ -34,7 +34,7 @@
 
 <div align="center">
 
-**English | [简体中文](./README.zh-cn.md)**
+**English | [简体中文](./README.zh-CN.md)**
 
 </div>
 
@@ -72,7 +72,7 @@ Going beyond traditional human-in-the-loop systems, EvoScientist introduces an A
 - [🔌 MCP Integration](#-mcp-integration)
 - [📱 Channels](#-channels)
 - [📚 Acknowledgments](#-acknowledgments)
-- [🧪 EvoScientist Team](#-evoscientist-team)
+- [🌍 Project Roles](#-project-roles)
 - [🤝 Contributing](#-contributing)
 
 ## 📦 Installation

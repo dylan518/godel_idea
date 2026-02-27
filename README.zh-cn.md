@@ -41,6 +41,8 @@
 
 **[English](./README.md) | 简体中文**
 
+
+
 </div>
 
 **EvoScientist 旨在通过构建自我进化的 AI 科学家来驱动 Vibe Research——让 AI 自主探索、生成洞见并持续迭代优化。
@@ -354,7 +356,16 @@ channel_enabled: "telegram,discord,slack"
                width="100" height="100"
                style="object-fit: cover; border-radius: 20%;" alt="Yougang Lyu"/>
           <br />
-          <sub><b>Yougang Lyu</b><sup>§1</sup></sub>
+          <sub><b>Yougang Lyu</b><sup>§</sup></sub>
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://xiaohuiyan.github.io/">
+          <img src="https://xiaohuiyan.github.io/img/me.jpg"
+               width="100" height="100"
+               style="object-fit: cover; border-radius: 20%;" alt="Xiaohui Yan"/>
+          <br />
+          <sub><b>Xiaohui Yan</b><sup>§</sup></sub>
         </a>
       </td>
     </tr>
@@ -363,11 +374,11 @@ channel_enabled: "telegram,discord,slack"
 
 #### Collaborators
 
-Jan Piotrowski<sup>1</sup>, Wiktor Cupiał<sup>1</sup>, Yuyue Zhao<sup>1</sup>, Xinhao Yi<sup>2</sup>, Jakub Kaliski<sup>1</sup>, Jakub Filipiuk<sup>1</sup>, Shuyu Guo<sup>1</sup>, Andreas Sauter<sup>1</sup>, Jacopo Urbani<sup>1</sup>, Zaiqiao Meng<sup>2</sup>, Zhaochun Ren, Lun Zhou<sup>1</sup>, Xiaohui Yan<sup>§1</sup>
+Jan Piotrowski, Wiktor Cupiał, Yuyue Zhao, Xinhao Yi, Jakub Kaliski, Jakub Filipiuk, Shuyu Guo, Andreas Sauter, Jacopo Urbani, Zaiqiao Meng, Lun Zhou
 
 > <sup>†</sup>Project Lead & Engineering Lead <sup>‡</sup>Core Developer <sup>§</sup>Project Correspondent
 
-> <sup>1</sup>Xiaoyi DeepResearch Team <sup>2</sup>EvoAgentX Team
+> *Xiaoyi DeepResearch Team* 及更广泛的开源社区共同为本项目做出贡献。
 
 如有任何咨询或合作意向，请联系：[**EvoScientist.ai@gmail.com**](mailto:evoscientist.ai@gmail.com)
 
