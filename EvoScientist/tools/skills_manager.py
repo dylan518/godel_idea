@@ -170,6 +170,29 @@ def _validate_skill_dir(path: Path) -> bool:
     return (path / "SKILL.md").is_file()
 
 
+def _scan_skill_dirs(root: Path) -> list[Path]:
+    """Scan *root* up to 2 levels deep for directories containing SKILL.md.
+
+    Level 1: direct children of *root*.
+    Level 2: grandchildren inside non-skill child directories.
+
+    Both levels are always scanned so mixed-depth repos are fully discovered.
+    """
+    found: list[Path] = []
+    for child in sorted(root.iterdir()):
+        if not child.is_dir():
+            continue
+        if _validate_skill_dir(child):
+            found.append(child)
+        else:
+            # Non-skill directory — scan its children (level 2)
+            found.extend(
+                gc for gc in sorted(child.iterdir())
+                if gc.is_dir() and _validate_skill_dir(gc)
+            )
+    return found
+
+
 def _find_skill_in_tree(root: str, skill_name: str) -> Path | None:
     """Walk a directory tree to find a subdirectory named *skill_name* containing SKILL.md.
 
@@ -248,12 +271,7 @@ def _install_from_local(source: str, dest_dir: str) -> dict:
         return {"success": False, "error": f"Not a directory: {source}"}
 
     if not _validate_skill_dir(source_path):
-        # No SKILL.md at root — check immediate subdirectories for batch install
-        found = [
-            entry
-            for entry in sorted(source_path.iterdir())
-            if entry.is_dir() and _validate_skill_dir(entry)
-        ]
+        found = _scan_skill_dirs(source_path)
         if len(found) == 1:
             return _install_single_local(found[0], dest_dir)
         if found:
@@ -344,19 +362,13 @@ def _install_from_github(source: str, dest_dir: str) -> dict:
 
         # Validate — if the direct path doesn't have SKILL.md, try auto-resolve
         if not skill_source.exists() or not _validate_skill_dir(skill_source):
-            # If the path directory exists, scan its children for skills
             if skill_source.is_dir():
-                found_children = sorted(
-                    entry.name
-                    for entry in skill_source.iterdir()
-                    if entry.is_dir() and _validate_skill_dir(entry)
-                )
-                if len(found_children) == 1:
-                    skill_source = skill_source / found_children[0]
-                elif found_children:
-                    skill_dirs = [skill_source / s for s in found_children]
+                found_dirs = _scan_skill_dirs(skill_source)
+                if len(found_dirs) == 1:
+                    skill_source = found_dirs[0]
+                elif found_dirs:
                     return _batch_install_local(
-                        skill_dirs, dest_dir, ignore_fn=ignore_git
+                        found_dirs, dest_dir, ignore_fn=ignore_git
                     )
 
             # Still not resolved — try tree search by name hint

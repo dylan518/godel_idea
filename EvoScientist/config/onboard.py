@@ -863,50 +863,34 @@ def _step_parameters(config: EvoScientistConfig) -> tuple[int, int, bool]:
 
 
 _RECOMMENDED_SKILLS = [
-    # ── Ideation ──
+    # ── Official (EvoScientist) ──
     {
-        "label": "Scientific Brainstorming  (generate & refine research ideas)",
-        "source": "https://github.com/K-Dense-AI/claude-scientific-skills/tree/main/scientific-skills/scientific-brainstorming",
+        "label": "EvoSci Skills  (optimized for EvoScientist — paper planning, writing, review, etc.)",
+        "source": "EvoScientist/EvoSkills@skills",
+    },
+    # ── Third-party (K-Dense) ──
+    {
+        "label": "Scientific Skills  (147+ research & experiment skills, third party by K-Dense)",
+        "source": "K-Dense-AI/claude-scientific-skills@scientific-skills",
     },
     {
-        "label": "Scientific Critical Thinking  (evaluate claims & arguments rigorously)",
-        "source": "https://github.com/K-Dense-AI/claude-scientific-writer/tree/main/skills/scientific-critical-thinking",
+        "label": "Scientific Writer  (23 writing, review & presentation skills, third party by K-Dense)",
+        "source": "K-Dense-AI/claude-scientific-writer@skills",
     },
-    # ── Literature & Data ──
+    # ── Third-party (Anthropic) ──
     {
-        "label": "Literature Review  (systematic survey of existing work)",
-        "source": "https://github.com/K-Dense-AI/claude-scientific-writer/tree/main/skills/literature-review",
+        "label": "Anthropic Skills  (co-authoring, design, etc., third party by Anthropic)",
+        "source": "anthropics/skills@skills",
     },
+    # ── Third-party (HuggingFace) ──
     {
-        "label": "BioRxiv Database  (search & retrieve preprints)",
-        "source": "https://github.com/K-Dense-AI/claude-scientific-skills/tree/main/scientific-skills/biorxiv-database",
+        "label": "HuggingFace Skills  (dataset creation, model training & evaluation, third party by HuggingFace)",
+        "source": "huggingface/skills@skills",
     },
+    # ── Third-party (Orchestra Research) ──
     {
-        "label": "Citation Management  (organize references & generate BibTeX)",
-        "source": "https://github.com/K-Dense-AI/claude-scientific-writer/tree/main/skills/citation-management",
-    },
-    # ── Experimentation ──
-    {
-        "label": "HuggingFace Model Trainer  (fine-tune & train models on HF)",
-        "source": "https://github.com/huggingface/skills/tree/main/skills/hugging-face-model-trainer",
-    },
-    # ── Writing & Presentation ──
-    {
-        "label": "ML Paper Writing  (draft publication-ready ML/AI papers)",
-        "source": "Orchestra-Research/AI-Research-SKILLs@20-ml-paper-writing",
-    },
-    {
-        "label": "Doc Co-authoring  (structured collaborative writing workflow)",
-        "source": "https://github.com/anthropics/skills/tree/main/skills/doc-coauthoring",
-    },
-    {
-        "label": "Scientific Slides  (create research presentations)",
-        "source": "https://github.com/K-Dense-AI/claude-scientific-writer/tree/main/skills/scientific-slides",
-    },
-    # ── Review ──
-    {
-        "label": "Peer Review  (critique & improve manuscripts)",
-        "source": "https://github.com/K-Dense-AI/claude-scientific-writer/tree/main/skills/peer-review",
+        "label": "AI Research Skills  (85 skills for training, evaluation, deployment, etc., third party by Orchestra Research)",
+        "source": "Orchestra-Research/AI-Research-SKILLs",
     },
 ]
 
@@ -1068,7 +1052,7 @@ def _step_skills() -> list[str]:
         console.print("  [green]✓ All recommended skills are already installed.[/green]")
         return []
 
-    selected = _checkbox_ask(choices, "Install predefined skills:")
+    selected = _checkbox_ask(choices, "Install or Sync predefined skills:")
 
     if selected is None:
         raise KeyboardInterrupt()

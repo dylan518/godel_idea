@@ -18,8 +18,12 @@ Usage:
 """
 
 import json
+import logging
 from datetime import datetime
 from pathlib import Path
+
+# Suppress noisy warnings from deepagents skill loader (non-string frontmatter fields, etc.)
+logging.getLogger("deepagents.middleware.skills").setLevel(logging.ERROR)
 
 from .config import get_effective_config, apply_config_to_env
 from .prompts import RESEARCHER_INSTRUCTIONS, get_system_prompt
