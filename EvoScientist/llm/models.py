@@ -44,6 +44,7 @@ _MODEL_ENTRIES: list[tuple[str, str, str]] = [
     # Google GenAI
     ("gemini-3.1-pro", "gemini-3.1-pro-preview", "google-genai"),
     ("gemini-3.1-pro-customtools", "gemini-3.1-pro-preview-customtools", "google-genai"),
+    ("gemini-3.1-flash-lite", "gemini-3.1-flash-lite-preview", "google-genai"),
     ("gemini-3-pro", "gemini-3-pro-preview", "google-genai"),
     ("gemini-3-flash", "gemini-3-flash-preview", "google-genai"),
     ("gemini-2.5-flash", "gemini-2.5-flash", "google-genai"),
