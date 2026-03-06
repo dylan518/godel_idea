@@ -15,13 +15,13 @@
       --border: #e8e6dc;
       --text: #141413;
       --text-muted: #b0aea5;
-      --accent: #d97757;
-      --accent-hover: #c4613f;
+      --accent: #1e88e5;
+      --accent-hover: #1565c0;
       --green: #788c5d;
       --green-bg: #eef2e8;
       --red: #c44;
       --red-bg: #fceaea;
-      --header-bg: #141413;
+      --header-bg: #1a237e;
       --header-text: #faf9f5;
       --radius: 6px;
     }
@@ -110,7 +110,7 @@
     }
     .config-badge.config-primary {
       background: rgba(33, 150, 243, 0.12);
-      color: #1976d2;
+      color: #1e88e5;
     }
     .config-badge.config-baseline {
       background: rgba(255, 193, 7, 0.15);
@@ -545,7 +545,7 @@
     <div class="header">
       <div>
         <h1>Eval Review: <span id="skill-name"></span></h1>
-        <div class="instructions">Review each output and leave feedback below. Navigate with arrow keys or buttons. When done, copy feedback and paste into Claude Code.</div>
+        <div class="instructions">Review each output and leave feedback below. Navigate with arrow keys or buttons. When done, copy feedback and paste into EvoScientist.</div>
       </div>
       <div class="progress" id="progress"></div>
     </div>
@@ -634,7 +634,7 @@
   <div class="done-overlay" id="done-overlay">
     <div class="done-card">
       <h2>Review Complete</h2>
-      <p>Your feedback has been saved. Go back to your Claude Code session and tell Claude you're done reviewing.</p>
+      <p>Your feedback has been saved. Go back to your EvoScientist session and tell the agent you're done reviewing.</p>
       <div class="btn-row">
         <button onclick="closeDoneDialog()">OK</button>
       </div>
