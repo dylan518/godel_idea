@@ -32,6 +32,8 @@ class TestModelsRegistry:
         assert "nvidia" in providers
         assert "siliconflow" in providers
         assert "openrouter" in providers
+        assert "zhipu" in providers
+        assert "zhipu-code" in providers
 
     def test_entries_are_valid_tuples(self):
         """Test that _MODEL_ENTRIES contains valid (name, model_id, provider) tuples."""

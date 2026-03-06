@@ -77,12 +77,12 @@ _MODEL_ENTRIES: list[tuple[str, str, str]] = [
     ("qwen3.5-122b", "qwen/qwen3.5-122b-a10b", "openrouter"),
     ("gemini-3-flash", "google/gemini-3-flash-preview", "openrouter"),
     ("claude-sonnet-4.6", "anthropic/claude-sonnet-4.6", "openrouter"),
-    # Zhipu (智谱)
-    ("glm-5", "glm-5", "zhipu"),
-    ("glm-4.7", "glm-4.7", "zhipu"),
-    # Zhipu Code Plan (智谱代码计划)
+    # Zhipu CodePlan (智谱代码计划 — coding-only endpoint)
     ("glm-5", "glm-5", "zhipu-code"),
     ("glm-4.7", "glm-4.7", "zhipu-code"),
+    # Zhipu (智谱 — general endpoint, default for simple lookups)
+    ("glm-5", "glm-5", "zhipu"),
+    ("glm-4.7", "glm-4.7", "zhipu"),
 ]
 
 # Public dict for simple lookups (last entry wins for duplicate names).

@@ -335,6 +335,9 @@ def validate_openrouter_key(api_key: str) -> tuple[bool, str]:
 def validate_zhipu_key(api_key: str) -> tuple[bool, str]:
     """Validate a ZhipuAI API key by making a test request.
 
+    Uses the general endpoint for validation — both zhipu and zhipu-code
+    share the same API key, only the base_url differs at runtime.
+
     Returns:
         Tuple of (is_valid, message).
     """
@@ -526,23 +529,8 @@ def _step_provider(config: EvoScientistConfig) -> str:
     ]
 
     # Set default based on current config
-    default = (
-        config.provider
-        if config.provider
-        in [
-            "anthropic",
-            "openai",
-            "google-genai",
-            "nvidia",
-            "siliconflow",
-            "openrouter",
-            "zhipu",
-            "zhipu-code",
-            "ollama",
-            "custom",
-        ]
-        else "anthropic"
-    )
+    valid_providers = {c.value for c in choices}
+    default = config.provider if config.provider in valid_providers else "anthropic"
 
     provider = questionary.select(
         "Select your LLM provider:",
@@ -2044,44 +2032,24 @@ def run_onboard(skip_validation: bool = False) -> bool:
             config.ollama_base_url = ollama_url
 
         # Step 2b: Provider API Key (skip for Ollama — no key needed)
+        # Maps provider name → config attribute for the API key.
+        _PROVIDER_KEY_ATTR = {
+            "anthropic": "anthropic_api_key",
+            "nvidia": "nvidia_api_key",
+            "google-genai": "google_api_key",
+            "siliconflow": "siliconflow_api_key",
+            "openrouter": "openrouter_api_key",
+            "zhipu": "zhipu_api_key",
+            "zhipu-code": "zhipu_api_key",
+            "custom": "custom_api_key",
+        }
         if provider != "ollama":
             new_key = _step_provider_api_key(config, provider, skip_validation)
+            key_attr = _PROVIDER_KEY_ATTR.get(provider, "openai_api_key")
             if new_key is not None:
-                if provider == "anthropic":
-                    config.anthropic_api_key = new_key
-                elif provider == "nvidia":
-                    config.nvidia_api_key = new_key
-                elif provider == "google-genai":
-                    config.google_api_key = new_key
-                elif provider == "siliconflow":
-                    config.siliconflow_api_key = new_key
-                elif provider == "openrouter":
-                    config.openrouter_api_key = new_key
-                elif provider in ("zhipu", "zhipu-code"):
-                    config.zhipu_api_key = new_key
-                elif provider == "custom":
-                    config.custom_api_key = new_key
-                else:
-                    config.openai_api_key = new_key
-            else:
-                if provider == "anthropic":
-                    current = config.anthropic_api_key
-                elif provider == "nvidia":
-                    current = config.nvidia_api_key
-                elif provider == "google-genai":
-                    current = config.google_api_key
-                elif provider == "siliconflow":
-                    current = config.siliconflow_api_key
-                elif provider == "openrouter":
-                    current = config.openrouter_api_key
-                elif provider in ("zhipu", "zhipu-code"):
-                    current = config.zhipu_api_key
-                elif provider == "custom":
-                    current = config.custom_api_key
-                else:
-                    current = config.openai_api_key
-                if not current:
-                    _print_step_skipped("API Key", "not set")
+                setattr(config, key_attr, new_key)
+            elif not getattr(config, key_attr):
+                _print_step_skipped("API Key", "not set")
 
         # Step 3: Model
         model = _step_model(
