@@ -20,7 +20,7 @@ EvoScientist is a multi-agent AI system for automated scientific experimentation
 | License | MIT |
 | Framework | [DeepAgents](https://github.com/langchain-ai/deepagents) + [LangChain](https://python.langchain.com/) + [LangGraph](https://langchain-ai.github.io/langgraph/) |
 | Default model | `claude-sonnet-4-6` (Anthropic) |
-| Tests | ~837 across 35 files, no API keys needed |
+| Tests | ~890 across 36 files, no API keys needed |
 | Config file | `~/.config/evoscientist/config.yaml` |
 
 ### Sub-Agents (defined in `EvoScientist/subagent.yaml`)
@@ -110,6 +110,8 @@ Implementation: `config/settings.py` — `get_effective_config()` merges all fou
 python -m EvoScientist          # interactive mode (daemon workspace)
 python -m EvoScientist -p "..."  # single-shot query
 EvoSci                           # alias (same as above)
+EvoSci serve                     # headless mode (channels only, no interactive prompt)
+EvoSci serve --auto-approve      # headless with auto-approve
 langgraph dev                    # LangGraph dev server
 ```
 
@@ -145,7 +147,7 @@ EvoScientist/EvoScientist/
 |-- cli/                 # CLI module
 |   |-- _app.py          # Typer app instances (main + sub-apps)
 |   |-- interactive.py   # Main interactive loop, Rich Live display
-|   |-- commands.py      # Workspace handling, config CLI, MCP commands
+|   |-- commands.py      # Workspace handling, config CLI, MCP commands, serve command (headless channel processing)
 |   |-- agent.py         # Agent loading and session workspace creation
 |   |-- channel.py       # Queue-based channel integration (shares agent session)
 |   |-- mcp_ui.py        # MCP server management UI
@@ -230,7 +232,7 @@ EvoScientist/EvoScientist/
 
 ### Tests
 
-35 test files under `tests/`, following `test_*.py` naming. Tests are placed near the affected domain:
+36 test files under `tests/`, following `test_*.py` naming. Tests are placed near the affected domain:
 
 ```txt
 tests/
@@ -350,7 +352,11 @@ Rich rendering (display.py) / TUI widgets (cli/widgets/)
 - **`_send_chunk(chat_id, formatted_text, raw_text, reply_to, metadata)`** — Send a single message chunk to the channel
 - **Text chunking** — `chunk_text()` splits messages at code block boundaries > paragraph breaks > newlines > spaces > hard cut
 
-**Dual-thread design**: Bus thread enqueues `ChannelMessage` on a thread-safe queue. Main CLI thread polls queue, processes with `_run_streaming` (Rich Live, real-time), sets response. Bus thread publishes outbound.
+**Dual-thread design**: Bus thread enqueues `ChannelMessage` on a thread-safe queue. The consuming thread polls the queue, processes with `run_streaming` (Rich Live, real-time), sets response via `_set_channel_response()`. Bus thread publishes outbound.
+
+Two consumer implementations exist:
+- **Interactive mode** (`cli/interactive.py` — `_process_channel_message()`): async queue polling with CLI display integration (prompt clearing, separators, prompt redraw).
+- **Serve mode** (`cli/commands.py` — `_serve_process_message()`): synchronous `queue.get(timeout=1.0)` loop with minimal log output. Same channel callbacks (thinking, todo, media, HITL) but no interactive prompt manipulation.
 
 **Display format** (in `cli/interactive.py`):
 
@@ -419,14 +425,15 @@ Each pattern includes WHY it exists, so contributors understand the reason behin
 
 ### 7. Channel = Text Injection into CLI
 
-**Where**: `cli/interactive.py` — `_process_channel_message()`
+**Where**: `cli/interactive.py` — `_process_channel_message()`, `cli/commands.py` — `_serve_process_message()`
 
 **Why**: Channel messages must look exactly as if the user typed them at the prompt. The CLI is the only rendering engine; channels are just different input sources. This ensures consistent behavior regardless of input source.
 
 **Rules**:
-- Use `_run_streaming` (Rich Live, real-time) — NOT `_astream_to_console` (static, end-of-stream).
+- Use `run_streaming` (Rich Live, real-time) — NOT `_astream_to_console` (static, end-of-stream).
 - Labels use `dim` style; sender ID in `cyan`.
-- After response, manually redraw the prompt via `sys.stdout.write` (prompt_toolkit doesn't know the terminal was modified by Rich Live).
+- In interactive mode, after response, manually redraw the prompt via `sys.stdout.write` (prompt_toolkit doesn't know the terminal was modified by Rich Live).
+- In serve mode, no prompt manipulation — just `console.print` log lines for monitoring.
 
 ### 8. Incremental JSON Parsing
 
@@ -446,11 +453,11 @@ Each pattern includes WHY it exists, so contributors understand the reason behin
 
 ### 10. Dual-Thread Channel Architecture
 
-**Where**: `channels/bus/`, `cli/channel.py`, `cli/interactive.py`
+**Where**: `channels/bus/`, `cli/channel.py`, `cli/interactive.py`, `cli/commands.py`
 
-**Why**: Channel I/O (network polling) must not block the CLI's Rich Live display loop. A dedicated bus thread handles inbound/outbound messages via a thread-safe queue, while the CLI thread polls the queue and processes messages with full streaming support.
+**Why**: Channel I/O (network polling) must not block the agent processing loop. A dedicated bus thread handles inbound/outbound messages via a thread-safe queue, while the main thread polls the queue and processes messages with full streaming support. This pattern is used in both interactive mode (`_process_channel_message`) and serve mode (`_serve_process_message`).
 
-**Rule**: Never perform blocking I/O in the CLI's main thread. Use the message bus queue.
+**Rule**: Never perform blocking I/O in the main thread. Use the message bus queue.
 
 ---
 
@@ -765,7 +772,7 @@ Prefer inline `# noqa: RULE` for individual exceptions over `per-file-ignores` i
 ### Running Tests
 
 ```bash
-# All tests (~837 tests, no API keys needed)
+# All tests (~890 tests, no API keys needed)
 pytest -v
 
 # Single file
