@@ -2,6 +2,7 @@
 
 import logging
 import os
+import queue
 import re
 from datetime import datetime
 from pathlib import Path
@@ -15,8 +16,17 @@ from rich.markup import escape
 from ..stream.display import console
 from ..paths import ensure_dirs, set_workspace_root
 from ._app import app, config_app, mcp_app, channel_app
+from ._constants import build_metadata
 from .agent import _deduplicate_run_name, _create_session_workspace, _load_agent, _shorten_path
-from .channel import _channels_stop, _start_channels_bus_mode
+from .channel import (
+    ChannelMessage,
+    _channels_stop,
+    _message_queue,
+    _set_channel_response,
+    _start_channels_bus_mode,
+    channel_hitl_prompt,
+)
+from .tui_runtime import run_streaming
 from .mcp_ui import (
     _mcp_list_servers,
     _mcp_add_server_from_kwargs,
@@ -80,6 +90,110 @@ def channel_setup():
 
 
 # =============================================================================
+# Serve helpers
+# =============================================================================
+
+_serve_logger = logging.getLogger(__name__)
+
+
+def _serve_process_message(
+    msg: ChannelMessage,
+    *,
+    agent: Any,
+    thread_id: str,
+    model: str | None,
+    workspace_dir: str,
+    show_thinking: bool,
+) -> None:
+    """Process a single channel message in headless serve mode.
+
+    Headless equivalent of interactive.py's ``_process_channel_message``.
+    No CLI prompt manipulation — just log lines for monitoring.
+    """
+    import asyncio
+
+    from .channel import _bus_loop
+
+    console.print(
+        f"[dim][{msg.channel_type}] {msg.sender}: "
+        f"{escape(msg.content[:80])}[/dim]"
+    )
+
+    # -- channel callback helpers (same pattern as interactive.py) --
+
+    def _send_to_channel(coro, label: str, timeout: int = 15) -> None:
+        loop = _bus_loop
+        if not loop:
+            return
+        try:
+            asyncio.run_coroutine_threadsafe(coro, loop).result(timeout=timeout)
+        except Exception as e:
+            _serve_logger.debug(f"{label} send failed: {e}")
+
+    def _send_thinking(thinking: str) -> None:
+        ch = msg.channel_ref
+        if ch and ch.send_thinking:
+            _send_to_channel(
+                ch.send_thinking_message(
+                    sender=msg.chat_id,
+                    thinking=thinking,
+                    metadata=msg.metadata,
+                ),
+                "Thinking",
+            )
+
+    def _send_todo(items: list[dict]) -> None:
+        from ..channels.consumer import _format_todo_list
+
+        if msg.channel_ref:
+            _send_to_channel(
+                msg.channel_ref.send_todo_message(
+                    sender=msg.chat_id,
+                    content=_format_todo_list(items),
+                    metadata=msg.metadata,
+                ),
+                "Todo",
+            )
+
+    def _send_media(file_path: str) -> None:
+        if msg.channel_ref:
+            _send_to_channel(
+                msg.channel_ref.send_media(
+                    recipient=msg.chat_id,
+                    file_path=file_path,
+                    metadata=msg.metadata,
+                ),
+                "Media",
+                timeout=30,
+            )
+
+    def _hitl_prompt(action_requests: list) -> list[dict] | None:
+        return channel_hitl_prompt(action_requests, msg)
+
+    meta = build_metadata(workspace_dir, model)
+    try:
+        response = run_streaming(
+            ui_backend="cli",
+            agent=agent,
+            message=msg.content,
+            thread_id=thread_id,
+            show_thinking=show_thinking,
+            interactive=True,
+            metadata=meta,
+            on_thinking=_send_thinking,
+            on_todo=_send_todo,
+            on_file_write=_send_media,
+            hitl_prompt_fn=_hitl_prompt,
+        )
+    except Exception as e:
+        response = f"Error: {e}"
+        console.print(f"[red]Serve error: {e}[/red]")
+
+    _set_channel_response(msg.msg_id, response)
+    console.print(f"[dim][{msg.channel_type}] Replied to {msg.sender}[/dim]")
+
+
+# =============================================================================
 # Serve command (headless mode)
 # =============================================================================
 
@@ -95,7 +209,6 @@ def serve(
     Press Ctrl+C to shut down.
     """
     import nest_asyncio  # type: ignore[import-untyped]
-    import uuid
     nest_asyncio.apply()
 
     from dotenv import load_dotenv, find_dotenv  # type: ignore[import-untyped]
@@ -127,7 +240,8 @@ def serve(
 
     console.print("[dim]Loading agent...[/dim]")
     agent = _load_agent(workspace_dir=ws, config=config)
-    tid = str(uuid.uuid4())
+    from ..sessions import generate_thread_id
+    tid = generate_thread_id()
 
     _start_channels_bus_mode(
         config,
@@ -141,10 +255,20 @@ def serve(
     console.print(f"[dim]Workspace: {_shorten_path(ws)}[/dim]")
     console.print("[dim]Press Ctrl+C to stop.[/dim]\n")
 
-    import time
     try:
         while True:
-            time.sleep(1)
+            try:
+                msg = _message_queue.get(timeout=1.0)
+            except queue.Empty:
+                continue
+            _serve_process_message(
+                msg,
+                agent=agent,
+                thread_id=tid,
+                model=config.model,
+                workspace_dir=ws,
+                show_thinking=effective_channel_thinking,
+            )
     except KeyboardInterrupt:
         console.print("\n[dim]Shutting down...[/dim]")
     finally:

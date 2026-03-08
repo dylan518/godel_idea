@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import time
 from types import SimpleNamespace
 
 from EvoScientist.cli import commands
@@ -52,14 +51,18 @@ def _run_serve_once(
     def _fake_channels_stop():
         captured["stopped"] = True
 
-    def _interrupt_sleep(_seconds):
-        raise KeyboardInterrupt()
+    class _InterruptQueue:
+        """A fake queue whose get() immediately raises KeyboardInterrupt."""
+
+        def get(self, timeout=None):
+            raise KeyboardInterrupt()
 
     monkeypatch.setattr(commands, "set_workspace_root", _fake_set_workspace_root)
     monkeypatch.setattr(commands, "ensure_dirs", _fake_ensure_dirs)
     monkeypatch.setattr(commands, "_load_agent", _fake_load_agent)
     monkeypatch.setattr(commands, "_start_channels_bus_mode", _fake_start_channels_bus_mode)
     monkeypatch.setattr(commands, "_channels_stop", _fake_channels_stop)
+    monkeypatch.setattr(commands, "_message_queue", _InterruptQueue())
 
     monkeypatch.setattr(config_mod, "get_effective_config", lambda *_a, **_k: config)
     monkeypatch.setattr(config_mod, "apply_config_to_env", lambda _cfg: None)
@@ -69,8 +72,6 @@ def _run_serve_once(
 
     if cwd is not None:
         monkeypatch.setattr(commands.os, "getcwd", lambda: cwd)
-
-    monkeypatch.setattr(time, "sleep", _interrupt_sleep)
 
     commands.serve(no_thinking=no_thinking, workdir=workdir)
     return order, captured
