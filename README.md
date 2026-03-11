@@ -362,6 +362,8 @@ We thank the authors for their valuable contributions to the open-source communi
 
 ## 🌍 Project Roles
 
+#### Core Contributors
+
 <table>
   <tbody>
     <tr>
@@ -371,9 +373,8 @@ We thank the authors for their valuable contributions to the open-source communi
                width="100" height="100"
                style="object-fit: cover; border-radius: 20%;" alt="Xi Zhang"/>
           <br />
-          <sub><b>Xi Zhang</b><sup>†§</sup></sub>
+          <sub><b>Xi Zhang</b></sub>
         </a>
-      </td>
       </td>
       <td align="center">
         <a href="https://youganglyu.github.io/">
@@ -381,7 +382,7 @@ We thank the authors for their valuable contributions to the open-source communi
                width="100" height="100"
                style="object-fit: cover; border-radius: 20%;" alt="Yougang Lyu"/>
           <br />
-          <sub><b>Yougang Lyu</b><sup>‡§</sup></sub>
+          <sub><b>Yougang Lyu</b></sub>
         </a>
       </td>
       <td align="center">
@@ -390,7 +391,7 @@ We thank the authors for their valuable contributions to the open-source communi
                width="100" height="100"
                style="object-fit: cover; border-radius: 20%;" alt="Dinos Papakostas"/>
           <br />
-          <sub><b>Dinos Papakostas</b><sup>‡</sup></sub>
+          <sub><b>Dinos Papakostas</b></sub>
         </a>
       </td>
       <td align="center">
@@ -399,7 +400,7 @@ We thank the authors for their valuable contributions to the open-source communi
                width="100" height="100"
                style="object-fit: cover; border-radius: 20%;" alt="Yuyue Zhao"/>
           <br />
-          <sub><b>Yuyue Zhao</b><sup>‡</sup></sub>
+          <sub><b>Yuyue Zhao</b></sub>
         </a>
       </td>
       <td align="center">
@@ -408,15 +409,16 @@ We thank the authors for their valuable contributions to the open-source communi
                width="100" height="100"
                style="object-fit: cover; border-radius: 20%;" alt="Ziheng Zhang"/>
           <br />
-          <sub><b>Ziheng Zhang</b><sup>‡</sup></sub>
+          <sub><b>Ziheng Zhang</b></sub>
         </a>
+      </td>
       <td align="center">
         <a href="https://xiaohuiyan.github.io/">
           <img src="https://xiaohuiyan.github.io/img/me.jpg"
                width="100" height="100"
                style="object-fit: cover; border-radius: 20%;" alt="Xiaohui Yan"/>
           <br />
-          <sub><b>Xiaohui Yan</b><sup>§</sup></sub>
+          <sub><b>Xiaohui Yan</b></sub>
         </a>
       </td>
     </tr>
@@ -426,8 +428,6 @@ We thank the authors for their valuable contributions to the open-source communi
 #### Contributors
 
 Jan Piotrowski, Wiktor Cupiał, Jakub Kaliski, Jakub Filipiuk, Xinhao Yi, Shuyu Guo, Andreas Sauter, Wenxiang Hu, Jacopo Urbani, Zaiqiao Meng, Jun Luo, Lun Zhou
-
-> <sup>†</sup>Project Lead & Engineering Lead <sup>‡</sup>Core Developer <sup>§</sup>Project Owner
 
 > *Xiaoyi DeepResearch Team* and the wider open-source community contribute to this project.
 
@@ -464,3 +464,7 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 <p align="right"><a href="#top">🔝Back to top</a></p>
 
 ---
+
+<p align="center">
+  Created and maintained by <a href="https://github.com/x-izhang"><b>Xi Zhang</b></a>, built with the open-source community.
+</p>
