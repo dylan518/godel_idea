@@ -1,6 +1,5 @@
 """Tests for EvoScientist/backends.py — validate_command, path conversion, resolve_path."""
 
-
 import re
 from pathlib import Path
 
@@ -12,6 +11,7 @@ from EvoScientist.backends import (
 
 
 # === validate_command ===
+
 
 class TestValidateCommand:
     def test_safe_ls(self):
@@ -61,6 +61,7 @@ class TestValidateCommand:
 
 
 # === convert_virtual_paths_in_command ===
+
 
 class TestConvertVirtualPaths:
     def test_absolute_to_relative(self):
@@ -144,12 +145,14 @@ class TestConvertVirtualPaths:
     def test_system_path_without_workspace_unchanged(self):
         """System paths not referencing workspace fall through to normal ./"""
         result = convert_virtual_paths_in_command(
-            "cat /tmp/somefile", workspace_name="workspace",
+            "cat /tmp/somefile",
+            workspace_name="workspace",
         )
         assert result == "cat ./tmp/somefile"
 
 
 # === CustomSandboxBackend._resolve_path ===
+
 
 class TestResolvePath:
     def test_strip_workspace_prefix(self, tmp_workspace):
@@ -200,6 +203,7 @@ class TestResolvePath:
 
 # === CustomSandboxBackend.id ===
 
+
 class TestSandboxId:
     def test_sandbox_has_id(self, tmp_workspace):
         backend = CustomSandboxBackend(root_dir=tmp_workspace, virtual_mode=True)
@@ -218,11 +222,12 @@ class TestSandboxId:
 
     def test_sandbox_id_hex_suffix(self, tmp_workspace):
         backend = CustomSandboxBackend(root_dir=tmp_workspace, virtual_mode=True)
-        suffix = backend.id[len("evosci-"):]
+        suffix = backend.id[len("evosci-") :]
         assert re.fullmatch(r"[0-9a-f]{8}", suffix)
 
 
 # === execute() literal cwd sanitization ===
+
 
 class TestExecuteCwdSanitization:
     def test_literal_workspace_path_replaced(self, tmp_workspace):
@@ -238,11 +243,13 @@ class TestExecuteCwdSanitization:
 
 # === execute() output truncation ===
 
+
 class TestExecuteTruncation:
     def test_execute_truncates_large_output(self, tmp_workspace):
         backend = CustomSandboxBackend(
             root_dir=tmp_workspace,
-            virtual_mode=True, max_output_bytes=100,
+            virtual_mode=True,
+            max_output_bytes=100,
         )
         # Generate output larger than 100 bytes
         resp = backend.execute("python3 -c \"print('A' * 200)\"")
@@ -255,7 +262,8 @@ class TestExecuteTruncation:
     def test_execute_no_truncation_small_output(self, tmp_workspace):
         backend = CustomSandboxBackend(
             root_dir=tmp_workspace,
-            virtual_mode=True, max_output_bytes=100_000,
+            virtual_mode=True,
+            max_output_bytes=100_000,
         )
         resp = backend.execute("echo hello")
         assert resp.truncated is False
@@ -264,25 +272,31 @@ class TestExecuteTruncation:
 
 # === execute() stderr attribution ===
 
+
 class TestExecuteStderr:
     def test_execute_stderr_attribution(self, tmp_workspace):
         backend = CustomSandboxBackend(
-            root_dir=tmp_workspace, virtual_mode=True,
+            root_dir=tmp_workspace,
+            virtual_mode=True,
         )
-        resp = backend.execute("python3 -c \"import sys; sys.stderr.write('warning\\n')\"")
+        resp = backend.execute(
+            "python3 -c \"import sys; sys.stderr.write('warning\\n')\""
+        )
         assert "[stderr] warning" in resp.output
 
     def test_execute_nonzero_exit_code_in_output(self, tmp_workspace):
         backend = CustomSandboxBackend(
-            root_dir=tmp_workspace, virtual_mode=True,
+            root_dir=tmp_workspace,
+            virtual_mode=True,
         )
-        resp = backend.execute("python3 -c \"raise SystemExit(42)\"")
+        resp = backend.execute('python3 -c "raise SystemExit(42)"')
         assert resp.exit_code == 42
         assert "Exit code: 42" in resp.output
 
     def test_execute_mixed_stdout_stderr(self, tmp_workspace):
         backend = CustomSandboxBackend(
-            root_dir=tmp_workspace, virtual_mode=True,
+            root_dir=tmp_workspace,
+            virtual_mode=True,
         )
         resp = backend.execute(
             "python3 -c \"import sys; print('out'); sys.stderr.write('err\\n')\""
@@ -292,7 +306,8 @@ class TestExecuteStderr:
 
     def test_execute_success_no_exit_code(self, tmp_workspace):
         backend = CustomSandboxBackend(
-            root_dir=tmp_workspace, virtual_mode=True,
+            root_dir=tmp_workspace,
+            virtual_mode=True,
         )
         resp = backend.execute("echo ok")
         assert resp.exit_code == 0
@@ -300,6 +315,7 @@ class TestExecuteStderr:
 
 
 # === execute() timeout kwarg ===
+
 
 class TestExecuteTimeout:
     def test_execute_accepts_timeout_kwarg(self, tmp_workspace):
@@ -315,11 +331,13 @@ class TestExecuteTimeout:
 
     def test_execute_accepts_timeout_introspection(self):
         from deepagents.backends.protocol import execute_accepts_timeout
+
         execute_accepts_timeout.cache_clear()
         assert execute_accepts_timeout(CustomSandboxBackend) is True
 
 
 # === '..' traversal false-positive fix ===
+
 
 class TestTraversalFalsePositiveFix:
     def test_dotdot_in_filename_allowed(self):
@@ -336,6 +354,7 @@ class TestTraversalFalsePositiveFix:
 
 
 # === Pipeline command validation ===
+
 
 class TestPipelineCommandValidation:
     def test_pipe_blocked_command(self):
@@ -370,6 +389,7 @@ class TestPipelineCommandValidation:
 
 
 # === execute() timeout recovery guidance ===
+
 
 class TestExecuteTimeoutRecovery:
     def test_timeout_includes_recovery_guidance(self, tmp_workspace):

@@ -17,7 +17,14 @@ from .tracker import ToolCallTracker
 from .utils import DisplayLimits, is_success
 
 # Image media types returned by DeepAgents read_file
-_IMAGE_MEDIA_TYPES = {"image/png", "image/jpeg", "image/gif", "image/webp", "image/bmp", "image/svg+xml"}
+_IMAGE_MEDIA_TYPES = {
+    "image/png",
+    "image/jpeg",
+    "image/gif",
+    "image/webp",
+    "image/bmp",
+    "image/svg+xml",
+}
 
 
 def _extract_tool_content(msg) -> tuple[str, bool]:
@@ -119,10 +126,10 @@ async def stream_agent_events(
     full_response = ""
 
     # Track sub-agent names
-    _key_to_name: dict[str, str] = {}     # subagent_key -> display name (cache)
-    _announced_names: list[str] = []       # ordered queue of announced task names
-    _assigned_names: set[str] = set()      # names already assigned to a namespace
-    _announced_task_ids: list[str] = []     # ordered task tool_call_ids
+    _key_to_name: dict[str, str] = {}  # subagent_key -> display name (cache)
+    _announced_names: list[str] = []  # ordered queue of announced task names
+    _assigned_names: set[str] = set()  # names already assigned to a namespace
+    _announced_task_ids: list[str] = []  # ordered task tool_call_ids
     _task_id_to_name: dict[str, str] = {}  # tool_call_id -> sub-agent name
     _subagent_trackers: dict[str, ToolCallTracker] = {}  # namespace_key -> tracker
 
@@ -210,7 +217,13 @@ async def stream_agent_events(
         if meta_task_id:
             return f"task:{meta_task_id}"
         if metadata:
-            for key in ("parent_run_id", "root_run_id", "run_id", "graph_id", "node_id"):
+            for key in (
+                "parent_run_id",
+                "root_run_id",
+                "run_id",
+                "graph_id",
+                "node_id",
+            ):
                 val = metadata.get(key)
                 if val:
                     return f"{key}:{val}"
@@ -239,8 +252,12 @@ async def stream_agent_events(
                 lc_name = lc_name.strip()
             # Filter out generic/framework names
             if lc_name and lc_name not in (
-                "sub-agent", "agent", "tools", "EvoScientist",
-                "LangGraph", "",
+                "sub-agent",
+                "agent",
+                "tools",
+                "EvoScientist",
+                "LangGraph",
+                "",
             ):
                 _key_to_name[key] = lc_name
                 return lc_name
@@ -287,6 +304,7 @@ async def stream_agent_events(
             content_blocks: list[dict[str, Any]] = []
             if message:
                 content_blocks.append({"type": "text", "text": message})
+
             def _read_file_b64(path: str) -> str:
                 with open(path, "rb") as fh:
                     return base64.b64encode(fh.read()).decode("ascii")
@@ -294,22 +312,30 @@ async def stream_agent_events(
             file_refs: list[str] = []
             for path in media:
                 ext = os.path.splitext(path)[1].lower()
-                is_image = ext in _IMAGE_EXTS and await asyncio.to_thread(os.path.isfile, path)
+                is_image = ext in _IMAGE_EXTS and await asyncio.to_thread(
+                    os.path.isfile, path
+                )
                 if is_image:
                     fsize = await asyncio.to_thread(os.path.getsize, path)
                     if fsize <= _MAX_INLINE_SIZE:
                         mime = mimetypes.guess_type(path)[0] or "image/png"
                         b64 = await asyncio.to_thread(_read_file_b64, path)
-                        content_blocks.append({"type": "image_url", "image_url": {
-                            "url": f"data:{mime};base64,{b64}",
-                        }})
+                        content_blocks.append(
+                            {
+                                "type": "image_url",
+                                "image_url": {
+                                    "url": f"data:{mime};base64,{b64}",
+                                },
+                            }
+                        )
                     else:
                         file_refs.append(path)
                 else:
                     file_refs.append(path)
             if file_refs:
                 ref_text = "\n".join(
-                    f"[attached file: {os.path.basename(p)}] path: {p}" for p in file_refs
+                    f"[attached file: {os.path.basename(p)}] path: {p}"
+                    for p in file_refs
                 )
                 content_blocks.append({"type": "text", "text": ref_text})
             if content_blocks:
@@ -378,9 +404,15 @@ async def stream_agent_events(
                                 if isinstance(interrupt_value, dict)
                                 else getattr(interrupt_value, "tool_call_id", "")
                             )
-                            ns_parts = interrupt_obj.get("ns", [""]) if isinstance(interrupt_obj, dict) else getattr(interrupt_obj, "ns", [""])
+                            ns_parts = (
+                                interrupt_obj.get("ns", [""])
+                                if isinstance(interrupt_obj, dict)
+                                else getattr(interrupt_obj, "ns", [""])
+                            )
                             interrupt_id = str(ns_parts[0]) if ns_parts else "default"
-                            yield emitter.ask_user_interrupt(interrupt_id, questions, tc_id).data
+                            yield emitter.ask_user_interrupt(
+                                interrupt_id, questions, tc_id
+                            ).data
                             continue
 
                         # Standard HITL approval interrupt
@@ -388,12 +420,20 @@ async def stream_agent_events(
                             action_reqs = interrupt_value.get("action_requests", [])
                             review_cfgs = interrupt_value.get("review_configs", [])
                         else:
-                            action_reqs = getattr(interrupt_value, "action_requests", [])
+                            action_reqs = getattr(
+                                interrupt_value, "action_requests", []
+                            )
                             review_cfgs = getattr(interrupt_value, "review_configs", [])
                         if action_reqs:
-                            ns_parts = interrupt_obj.get("ns", [""]) if isinstance(interrupt_obj, dict) else getattr(interrupt_obj, "ns", [""])
+                            ns_parts = (
+                                interrupt_obj.get("ns", [""])
+                                if isinstance(interrupt_obj, dict)
+                                else getattr(interrupt_obj, "ns", [""])
+                            )
                             interrupt_id = str(ns_parts[0]) if ns_parts else "default"
-                            yield emitter.interrupt(interrupt_id, action_reqs, review_cfgs).data
+                            yield emitter.interrupt(
+                                interrupt_id, action_reqs, review_cfgs
+                            ).data
                 continue
             if mode_str != "messages":
                 continue
@@ -410,7 +450,10 @@ async def stream_agent_events(
             # Accumulate summarization middleware chunks and emit text incrementally.
             # The summarization LLM streams AIMessageChunks; content may be a
             # plain string or a list of content blocks (provider-dependent).
-            if isinstance(metadata, dict) and metadata.get("lc_source") == "summarization":
+            if (
+                isinstance(metadata, dict)
+                and metadata.get("lc_source") == "summarization"
+            ):
                 if not _summarization_in_progress:
                     _summarization_in_progress = True
                 chunk_text = _extract_summarization_text(msg)
@@ -422,14 +465,24 @@ async def stream_agent_events(
             subagent_tracker = None
             if subagent:
                 tracker_key = _get_subagent_key(namespace, metadata) or str(namespace)
-                subagent_tracker = _subagent_trackers.setdefault(tracker_key, ToolCallTracker())
+                subagent_tracker = _subagent_trackers.setdefault(
+                    tracker_key, ToolCallTracker()
+                )
 
             # Extract token usage from main-agent AIMessages
             if isinstance(msg, (AIMessageChunk, AIMessage)) and not subagent:
                 usage = getattr(msg, "usage_metadata", None)
                 if usage:
-                    inp = usage.get("input_tokens", 0) if isinstance(usage, dict) else getattr(usage, "input_tokens", 0)
-                    out = usage.get("output_tokens", 0) if isinstance(usage, dict) else getattr(usage, "output_tokens", 0)
+                    inp = (
+                        usage.get("input_tokens", 0)
+                        if isinstance(usage, dict)
+                        else getattr(usage, "input_tokens", 0)
+                    )
+                    out = (
+                        usage.get("output_tokens", 0)
+                        if isinstance(usage, dict)
+                        else getattr(usage, "output_tokens", 0)
+                    )
                     if inp or out:
                         yield emitter.usage_stats(inp, out).data
 
@@ -440,7 +493,10 @@ async def stream_agent_events(
                     for ev in _process_chunk_content(msg, emitter, subagent_tracker):
                         if ev.type == "tool_call":
                             yield emitter.subagent_tool_call(
-                                subagent, ev.data["name"], ev.data["args"], ev.data.get("id", "")
+                                subagent,
+                                ev.data["name"],
+                                ev.data["args"],
+                                ev.data.get("id", ""),
                             ).data
                         # Skip text/thinking from sub-agents (too noisy)
 
@@ -453,7 +509,10 @@ async def stream_agent_events(
                             if not name and not tool_id:
                                 continue
                             yield emitter.subagent_tool_call(
-                                subagent, name, args if isinstance(args, dict) else {}, tool_id
+                                subagent,
+                                name,
+                                args if isinstance(args, dict) else {},
+                                tool_id,
                             ).data
                 else:
                     # Main agent content
@@ -463,15 +522,21 @@ async def stream_agent_events(
                         yield ev.data
 
                     if hasattr(msg, "tool_calls") and msg.tool_calls:
-                        for ev in _process_tool_calls(msg.tool_calls, emitter, main_tracker):
+                        for ev in _process_tool_calls(
+                            msg.tool_calls, emitter, main_tracker
+                        ):
                             yield ev.data
                             # Detect task tool calls -> announce sub-agent
                             tc_data = ev.data
                             if tc_data.get("name") == "task":
                                 started_name = _register_task_tool_call(tc_data)
                                 if started_name:
-                                    desc = str(tc_data.get("args", {}).get("description", "")).strip()
-                                    yield emitter.subagent_start(started_name, desc).data
+                                    desc = str(
+                                        tc_data.get("args", {}).get("description", "")
+                                    ).strip()
+                                    yield emitter.subagent_start(
+                                        started_name, desc
+                                    ).data
 
             # Process ToolMessage (tool execution result)
             elif hasattr(msg, "type") and msg.type == "tool":
@@ -487,9 +552,11 @@ async def stream_agent_events(
                             ).data
                     name = getattr(msg, "name", "unknown")
                     raw_content, _is_img = _extract_tool_content(msg)
-                    content = raw_content[:DisplayLimits.TOOL_RESULT_MAX]
+                    content = raw_content[: DisplayLimits.TOOL_RESULT_MAX]
                     success = is_success(content)
-                    yield emitter.subagent_tool_result(subagent, name, content, success).data
+                    yield emitter.subagent_tool_result(
+                        subagent, name, content, success
+                    ).data
                 else:
                     for ev in _process_tool_result(msg, emitter, main_tracker):
                         yield ev.data
@@ -497,7 +564,9 @@ async def stream_agent_events(
                         if ev.type == "tool_call" and ev.data.get("name") == "task":
                             started_name = _register_task_tool_call(ev.data)
                             if started_name:
-                                desc = str(ev.data.get("args", {}).get("description", "")).strip()
+                                desc = str(
+                                    ev.data.get("args", {}).get("description", "")
+                                ).strip()
                                 yield emitter.subagent_start(started_name, desc).data
                     # Check if this is a task result -> sub-agent ended
                     name = getattr(msg, "name", "")
@@ -514,7 +583,9 @@ async def stream_agent_events(
     yield emitter.done(full_response).data
 
 
-def _process_chunk_content(chunk, emitter: StreamEventEmitter, tracker: ToolCallTracker):
+def _process_chunk_content(
+    chunk, emitter: StreamEventEmitter, tracker: ToolCallTracker
+):
     """Process content blocks from an AI message chunk."""
     content = chunk.content
 
@@ -587,7 +658,9 @@ def _process_chunk_content(chunk, emitter: StreamEventEmitter, tracker: ToolCall
                 tracker.append_json_delta(partial_args, block.get("index", 0))
 
 
-def _process_tool_calls(tool_calls: list, emitter: StreamEventEmitter, tracker: ToolCallTracker):
+def _process_tool_calls(
+    tool_calls: list, emitter: StreamEventEmitter, tracker: ToolCallTracker
+):
     """Process tool_calls from chunk.tool_calls attribute."""
     for tc in tool_calls:
         tool_id = tc.get("id", "")
@@ -612,7 +685,7 @@ def _process_tool_result(chunk, emitter: StreamEventEmitter, tracker: ToolCallTr
 
     name = getattr(chunk, "name", "unknown")
     raw_content, _is_img = _extract_tool_content(chunk)
-    content = raw_content[:DisplayLimits.TOOL_RESULT_MAX]
+    content = raw_content[: DisplayLimits.TOOL_RESULT_MAX]
     if len(raw_content) > DisplayLimits.TOOL_RESULT_MAX:
         content += "\n... (truncated)"
 

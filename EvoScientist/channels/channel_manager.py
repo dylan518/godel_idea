@@ -33,6 +33,7 @@ logger = logging.getLogger(__name__)
 # Account management (formerly account.py)
 # ═════════════════════════════════════════════════════════════════════
 
+
 @dataclass
 class ChannelAccountSnapshot:
     """Point-in-time snapshot of a single account's connection state."""
@@ -125,13 +126,16 @@ class AccountManager:
         try:
             account_config = config
             if plugin.config_adapter is not None and config is not None:
-                account_config = plugin.config_adapter.resolve_account(config, account_id)
+                account_config = plugin.config_adapter.resolve_account(
+                    config, account_id
+                )
 
             await plugin.start(account_config, account_id=account_id)
             state.status = "running"
             state.started_at = time.monotonic()
             state.snapshot = ChannelAccountSnapshot(
-                account_id=account_id, channel=channel_id,
+                account_id=account_id,
+                channel=channel_id,
             )
             state.snapshot.mark_connected()
             logger.info(f"Account {key} started")
@@ -194,7 +198,8 @@ class AccountManager:
 
         for account_id in adapter.list_account_ids(config):
             if adapter.is_enabled(
-                adapter.resolve_account(config, account_id), config,
+                adapter.resolve_account(config, account_id),
+                config,
             ):
                 try:
                     await self.start_account(channel_id, account_id, config)
@@ -217,23 +222,26 @@ class AccountManager:
                 logger.error(f"Failed to stop account {cid}:{aid}: {e}")
 
     def get_state(
-        self, channel_id: str, account_id: str,
+        self,
+        channel_id: str,
+        account_id: str,
     ) -> AccountState | None:
         """Get the runtime state for a specific account."""
         return self._states.get(self._key(channel_id, account_id))
 
     def list_accounts(
-        self, channel_id: str | None = None,
+        self,
+        channel_id: str | None = None,
     ) -> list[AccountState]:
         """List account states, optionally filtered by channel."""
         if channel_id is None:
             return list(self._states.values())
-        return [
-            s for s in self._states.values() if s.channel_id == channel_id
-        ]
+        return [s for s in self._states.values() if s.channel_id == channel_id]
 
     def get_snapshot(
-        self, channel_id: str, account_id: str,
+        self,
+        channel_id: str,
+        account_id: str,
     ) -> ChannelAccountSnapshot | None:
         """Get the connection snapshot for a specific account."""
         state = self._states.get(self._key(channel_id, account_id))
@@ -286,6 +294,7 @@ def build_outbound_pipeline(
 
 # ── Per-channel health tracking ──────────────────────────────────────
 
+
 @dataclass
 class ChannelHealth:
     """Tracks send success / failure metrics for a single channel."""
@@ -298,6 +307,7 @@ class ChannelHealth:
 
 
 # ── Minimal HTTP health-check server ────────────────────────────────
+
 
 class _HealthServer:
     """Zero-dependency HTTP health-check endpoint using ``asyncio.start_server``.
@@ -318,7 +328,9 @@ class _HealthServer:
     async def start(self) -> None:
         self._start_time = time.monotonic()
         self._server = await asyncio.start_server(
-            self._handle_connection, "0.0.0.0", self._port,
+            self._handle_connection,
+            "0.0.0.0",
+            self._port,
         )
         addrs = [s.getsockname() for s in self._server.sockets]
         logger.info(f"Health server listening on {addrs}")
@@ -449,8 +461,7 @@ def create_channel(name: str, config) -> Channel:
     factory = _CHANNEL_REGISTRY.get(name)
     if not factory:
         raise ValueError(
-            f"Unknown channel type: {name}. "
-            f"Available: {list(_CHANNEL_REGISTRY.keys())}"
+            f"Unknown channel type: {name}. Available: {list(_CHANNEL_REGISTRY.keys())}"
         )
     return factory(config)
 
@@ -503,6 +514,7 @@ def _ensure_channels_registered(types: list[str] | None = None) -> None:
 
 
 # ── Shared webhook server ─────────────────────────────────────────
+
 
 class SharedWebhookServer:
     """Single aiohttp server that hosts routes from multiple HTTP channels.
@@ -601,7 +613,9 @@ class ChannelManager:
             bus = MessageBus()
         shared_webhook_port = getattr(config, "shared_webhook_port", 0) or 0
         manager = cls(bus, shared_webhook_port=shared_webhook_port)
-        types = [t.strip() for t in (config.channel_enabled or "").split(",") if t.strip()]
+        types = [
+            t.strip() for t in (config.channel_enabled or "").split(",") if t.strip()
+        ]
         if not types:
             raise ValueError("No channels enabled")
         _ensure_channels_registered(types)
@@ -666,9 +680,7 @@ class ChannelManager:
         # Start shared webhook server before individual channels
         await self._setup_shared_webhook()
 
-        self._dispatch_task = asyncio.create_task(
-            self._dispatch_outbound()
-        )
+        self._dispatch_task = asyncio.create_task(self._dispatch_outbound())
 
         now = datetime.now()
         for name, channel in self._channels.items():
@@ -777,8 +789,7 @@ class ChannelManager:
             channel._shared_webhook_server = True  # type: ignore[attr-defined]
             all_routes.extend(routes)
             logger.debug(
-                f"Shared webhook: collected {len(routes)} route(s) "
-                f"from '{name}'"
+                f"Shared webhook: collected {len(routes)} route(s) from '{name}'"
             )
 
         if not all_routes:
@@ -791,7 +802,9 @@ class ChannelManager:
         await self._shared_webhook_server.start(all_routes)
 
     def register_health_provider(
-        self, name: str, provider: Callable[[], dict],
+        self,
+        name: str,
+        provider: Callable[[], dict],
     ) -> None:
         """Register a callable that returns extra data for ``/healthz``."""
         self._health_providers[name] = provider
@@ -804,7 +817,8 @@ class ChannelManager:
         while True:
             try:
                 msg: OutboundMessage = await asyncio.wait_for(
-                    self.bus.consume_outbound(), timeout=1.0,
+                    self.bus.consume_outbound(),
+                    timeout=1.0,
                 )
             except asyncio.TimeoutError:
                 continue
@@ -848,9 +862,7 @@ class ChannelManager:
                             )
                             delivery_failed = True
                     except Exception as e:
-                        logger.error(
-                            f"Error sending media to {msg.channel}: {e}"
-                        )
+                        logger.error(f"Error sending media to {msg.channel}: {e}")
                         delivery_failed = True
 
                 if delivery_failed:
@@ -862,9 +874,7 @@ class ChannelManager:
                     health.consecutive_failures = 0
                     health.total_successes += 1
             except Exception as e:
-                logger.error(
-                    f"Error sending to {msg.channel}: {e}"
-                )
+                logger.error(f"Error sending to {msg.channel}: {e}")
                 health = self._health.get(msg.channel)
                 if health is not None:
                     health.consecutive_failures += 1

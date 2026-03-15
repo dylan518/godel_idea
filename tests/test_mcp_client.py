@@ -567,9 +567,7 @@ class TestParseMcpAddArgs:
         assert r["tools"] == ["a", "b"]
 
     def test_expose_to_flag(self):
-        r = parse_mcp_add_args(
-            ["srv", "http://x", "--expose-to", "main,code-agent"]
-        )
+        r = parse_mcp_add_args(["srv", "http://x", "--expose-to", "main,code-agent"])
         assert r["expose_to"] == ["main", "code-agent"]
 
     def test_header_flag(self):
@@ -597,7 +595,9 @@ class TestParseMcpAddArgs:
         assert r["env"] == {"FOO": "${FOO}"}
 
     def test_env_ref_and_env_combined(self):
-        r = parse_mcp_add_args(["srv", "cmd", "--env", "DEBUG=true", "--env-ref", "API_KEY"])
+        r = parse_mcp_add_args(
+            ["srv", "cmd", "--env", "DEBUG=true", "--env-ref", "API_KEY"]
+        )
         assert r["env"] == {"DEBUG": "true", "API_KEY": "${API_KEY}"}
 
     def test_missing_command_or_url_raises(self):

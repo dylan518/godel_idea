@@ -5,7 +5,9 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-async def validate_telegram_token(token: str, proxy: str | None = None) -> tuple[bool, str]:
+async def validate_telegram_token(
+    token: str, proxy: str | None = None
+) -> tuple[bool, str]:
     """Validate a Telegram bot token via the getMe API.
 
     Returns:

@@ -143,9 +143,7 @@ class TestValidateQuestions:
         from EvoScientist.middleware.ask_user import _validate_questions
 
         with pytest.raises(ValueError, match="non-empty 'choices' list"):
-            _validate_questions(
-                [{"question": "Q?", "type": "multiple_choice"}]
-            )
+            _validate_questions([{"question": "Q?", "type": "multiple_choice"}])
 
     def test_text_with_choices_raises(self):
         from EvoScientist.middleware.ask_user import _validate_questions

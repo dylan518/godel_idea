@@ -42,6 +42,7 @@ logger = logging.getLogger(__name__)
 
 # ── Markdown → plain text (fallback for WeChat text messages) ────
 
+
 def _strip_markdown(text: str) -> str:
     """Strip Markdown formatting for plain-text WeChat messages."""
     # Remove code blocks
@@ -65,9 +66,11 @@ def _strip_markdown(text: str) -> str:
 
 # ── Config dataclasses ───────────────────────────────────────────
 
+
 @dataclass
 class WeComConfig(BaseChannelConfig):
     """Configuration for WeCom (企业微信) backend."""
+
     corp_id: str = ""
     agent_id: str = ""
     secret: str = ""
@@ -79,6 +82,7 @@ class WeComConfig(BaseChannelConfig):
 @dataclass
 class WeChatMPConfig(BaseChannelConfig):
     """Configuration for WeChat Official Account (公众号) backend."""
+
     app_id: str = ""
     app_secret: str = ""
     token: str = ""
@@ -87,6 +91,7 @@ class WeChatMPConfig(BaseChannelConfig):
 
 
 # ── Unified WeChat Channel ───────────────────────────────────────
+
 
 class WeChatChannel(Channel, WebhookMixin, TokenMixin):
     capabilities = WECHAT_CAPS
@@ -119,7 +124,9 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
         self._site = None
         self._http_client = None
         self._crypto = None  # WeChatCrypto instance (optional)
-        self._typing_message_ids: dict[str, list[str]] = {}  # chat_id → [msgid, ...] for typing recall
+        self._typing_message_ids: dict[
+            str, list[str]
+        ] = {}  # chat_id → [msgid, ...] for typing recall
 
     # ── Lifecycle ─────────────────────────────────────────────────
 
@@ -143,6 +150,7 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
         self._validate_config()
 
         import httpx
+
         self._http_client = httpx.AsyncClient(
             timeout=15,
             proxy=self._get_proxy(),
@@ -151,6 +159,7 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
         # Set up message encryption if configured
         if self.config.encoding_aes_key and self.config.token:
             from .crypto import WeChatCrypto
+
             app_id = self._get_app_id()
             self._crypto = WeChatCrypto(
                 token=self.config.token,
@@ -169,7 +178,9 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
             self._runner = web.AppRunner(app)
             await self._runner.setup()
             self._site = web.TCPSite(
-                self._runner, "0.0.0.0", self.config.webhook_port,
+                self._runner,
+                "0.0.0.0",
+                self.config.webhook_port,
             )
             await self._site.start()
 
@@ -272,7 +283,9 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
         """
         from aiohttp import web
 
-        signature = request.query.get("msg_signature") or request.query.get("signature", "")
+        signature = request.query.get("msg_signature") or request.query.get(
+            "signature", ""
+        )
         timestamp = request.query.get("timestamp", "")
         nonce = request.query.get("nonce", "")
         echostr = request.query.get("echostr", "")
@@ -363,7 +376,9 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
         msg_id = xml_data.get("MsgId", "")
         create_time = xml_data.get("CreateTime", "")
 
-        logger.info(f"WeChat message received: type={msg_type}, from={from_user}, id={msg_id}, keys={list(xml_data.keys())}")
+        logger.info(
+            f"WeChat message received: type={msg_type}, from={from_user}, id={msg_id}, keys={list(xml_data.keys())}"
+        )
 
         if not from_user:
             return
@@ -400,7 +415,8 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
             media_id = xml_data.get("MediaId", "")
             if pic_url:
                 local, ann = await self._download_attachment(
-                    pic_url, f"wechat_{msg_id}.jpg",
+                    pic_url,
+                    f"wechat_{msg_id}.jpg",
                 )
                 if local:
                     media_paths.append(local)
@@ -408,7 +424,8 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
                     annotations.append(ann)
             elif media_id:
                 local, ann = await self._download_wechat_media(
-                    media_id, f"wechat_image_{msg_id}",
+                    media_id,
+                    f"wechat_image_{msg_id}",
                 )
                 if local:
                     media_paths.append(local)
@@ -420,7 +437,9 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
             recognition = xml_data.get("Recognition", "")
             media_id = xml_data.get("MediaId", "")
             if media_id:
-                local, ann = await self._download_wechat_media(media_id, f"wechat_voice_{msg_id}")
+                local, ann = await self._download_wechat_media(
+                    media_id, f"wechat_voice_{msg_id}"
+                )
                 if local:
                     media_paths.append(local)
                 if ann:
@@ -433,7 +452,9 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
         elif msg_type in ("video", "shortvideo"):
             media_id = xml_data.get("MediaId", "")
             if media_id:
-                local, ann = await self._download_wechat_media(media_id, f"wechat_{msg_type}_{msg_id}")
+                local, ann = await self._download_wechat_media(
+                    media_id, f"wechat_{msg_type}_{msg_id}"
+                )
                 if local:
                     media_paths.append(local)
                 if ann:
@@ -447,11 +468,16 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
             text = f"[位置] {label} ({lat}, {lon})"
         elif msg_type == "file":
             media_id = xml_data.get("MediaId", "")
-            file_name = xml_data.get("FileName", "") or xml_data.get("Title", f"wechat_file_{msg_id}")
-            logger.info(f"WeChat file message: name={file_name}, media_id={media_id!r}, keys={list(xml_data.keys())}")
+            file_name = xml_data.get("FileName", "") or xml_data.get(
+                "Title", f"wechat_file_{msg_id}"
+            )
+            logger.info(
+                f"WeChat file message: name={file_name}, media_id={media_id!r}, keys={list(xml_data.keys())}"
+            )
             if media_id:
                 local, ann = await self._download_wechat_media(
-                    media_id, f"wechat_file_{msg_id}_{file_name}",
+                    media_id,
+                    f"wechat_file_{msg_id}_{file_name}",
                 )
                 logger.info(f"WeChat file download result: local={local}, ann={ann}")
                 if local:
@@ -489,28 +515,32 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
 
         # Parse timestamp
         try:
-            timestamp = datetime.fromtimestamp(
-                int(create_time)
-            ) if create_time else datetime.now()
+            timestamp = (
+                datetime.fromtimestamp(int(create_time))
+                if create_time
+                else datetime.now()
+            )
         except (ValueError, TypeError, OSError):
             timestamp = datetime.now()
 
-        await self._enqueue_raw(RawIncoming(
-            sender_id=from_user,
-            chat_id=chat_id,
-            text=text,
-            media_files=media_paths,
-            content_annotations=annotations,
-            timestamp=timestamp,
-            message_id=msg_id,
-            is_group=is_group,
-            was_mentioned=was_mentioned,
-            metadata={
-                "chat_id": chat_id,
-                "to_user": to_user,
-                "backend": self._backend,
-            },
-        ))
+        await self._enqueue_raw(
+            RawIncoming(
+                sender_id=from_user,
+                chat_id=chat_id,
+                text=text,
+                media_files=media_paths,
+                content_annotations=annotations,
+                timestamp=timestamp,
+                message_id=msg_id,
+                is_group=is_group,
+                was_mentioned=was_mentioned,
+                metadata={
+                    "chat_id": chat_id,
+                    "to_user": to_user,
+                    "backend": self._backend,
+                },
+            )
+        )
 
     # ── Send (template method overrides) ──────────────────────────
 
@@ -521,7 +551,12 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
         return _strip_markdown(text)
 
     async def _send_chunk(
-        self, chat_id, formatted_text, raw_text, reply_to, metadata,
+        self,
+        chat_id,
+        formatted_text,
+        raw_text,
+        reply_to,
+        metadata,
     ):
         token = await self._ensure_token()
 
@@ -548,13 +583,13 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
     # ── WeCom send ────────────────────────────────────────────────
 
     async def _wecom_send_text(
-        self, token: str, user_id: str, text: str,
+        self,
+        token: str,
+        user_id: str,
+        text: str,
     ) -> None:
         """Send a text message via WeCom API."""
-        url = (
-            f"https://qyapi.weixin.qq.com/cgi-bin/message/send"
-            f"?access_token={token}"
-        )
+        url = f"https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token={token}"
         body = {
             "touser": user_id,
             "msgtype": "text",
@@ -564,7 +599,10 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
         await self._post_api(url, body)
 
     async def _wecom_send_markdown(
-        self, token: str, user_id: str, text: str,
+        self,
+        token: str,
+        user_id: str,
+        text: str,
     ) -> None:
         """Send a markdown message via WeCom API.
 
@@ -572,10 +610,7 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
         (no code blocks, no images). Falls back to text if the
         message is too complex.
         """
-        url = (
-            f"https://qyapi.weixin.qq.com/cgi-bin/message/send"
-            f"?access_token={token}"
-        )
+        url = f"https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token={token}"
         body = {
             "touser": user_id,
             "msgtype": "markdown",
@@ -587,13 +622,13 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
     # ── WeCom group send ────────────────────────────────────────────
 
     async def _wecom_send_group_text(
-        self, token: str, chatid: str, text: str,
+        self,
+        token: str,
+        chatid: str,
+        text: str,
     ) -> None:
         """Send a text message to a WeCom group chat."""
-        url = (
-            f"https://qyapi.weixin.qq.com/cgi-bin/appchat/send"
-            f"?access_token={token}"
-        )
+        url = f"https://qyapi.weixin.qq.com/cgi-bin/appchat/send?access_token={token}"
         body = {
             "chatid": chatid,
             "msgtype": "text",
@@ -602,13 +637,13 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
         await self._post_api(url, body)
 
     async def _wecom_send_group_markdown(
-        self, token: str, chatid: str, text: str,
+        self,
+        token: str,
+        chatid: str,
+        text: str,
     ) -> None:
         """Send a markdown message to a WeCom group chat."""
-        url = (
-            f"https://qyapi.weixin.qq.com/cgi-bin/appchat/send"
-            f"?access_token={token}"
-        )
+        url = f"https://qyapi.weixin.qq.com/cgi-bin/appchat/send?access_token={token}"
         body = {
             "chatid": chatid,
             "msgtype": "markdown",
@@ -619,7 +654,10 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
     # ── MP send ───────────────────────────────────────────────────
 
     async def _mp_send_text(
-        self, token: str, openid: str, text: str,
+        self,
+        token: str,
+        openid: str,
+        text: str,
     ) -> None:
         """Send a text message via WeChat MP customer service API."""
         url = (
@@ -689,7 +727,9 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
                 # MP doesn't support file via customer service API;
                 # send caption as text instead
                 if caption:
-                    await self._mp_send_text(token, chat_id, f"[文件] {path.name}\n{caption}")
+                    await self._mp_send_text(
+                        token, chat_id, f"[文件] {path.name}\n{caption}"
+                    )
                 return True
             body = {
                 "touser": chat_id,
@@ -712,7 +752,9 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
         return True
 
     async def _upload_media(
-        self, token: str, file_path: str,
+        self,
+        token: str,
+        file_path: str,
     ) -> str | None:
         """Upload a media file and return the media_id."""
         path = Path(file_path)
@@ -739,9 +781,7 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
                 )
             data = resp.json()
             if data.get("errcode", 0) != 0 and "media_id" not in data:
-                logger.error(
-                    f"WeChat media upload failed: {data.get('errmsg')}"
-                )
+                logger.error(f"WeChat media upload failed: {data.get('errmsg')}")
                 return None
             return data.get("media_id")
         except Exception as e:
@@ -751,7 +791,9 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
     # ── Media download helper ────────────────────────────────────
 
     async def _download_wechat_media(
-        self, media_id: str, filename: str,
+        self,
+        media_id: str,
+        filename: str,
     ) -> tuple[str | None, str | None]:
         """Download media by media_id via WeChat/WeCom media API."""
         token = await self._ensure_token()
@@ -790,14 +832,11 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
                     data = resp.json()
                     if data.get("errcode", 0) != 0:
                         raise RuntimeError(
-                            f"WeChat API error after retry: "
-                            f"{data.get('errmsg')}"
+                            f"WeChat API error after retry: {data.get('errmsg')}"
                         )
                     return data
             else:
-                raise RuntimeError(
-                    f"WeChat API error ({errcode}): {errmsg}"
-                )
+                raise RuntimeError(f"WeChat API error ({errcode}): {errmsg}")
 
         return data
 
@@ -861,5 +900,3 @@ class WeChatChannel(Channel, WebhookMixin, TokenMixin):
             except Exception:
                 pass
         await super().stop_typing(chat_id)
-
-

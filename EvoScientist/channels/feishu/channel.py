@@ -50,43 +50,59 @@ def _parse_inline_text(text: str) -> list[dict]:
     elements: list[dict] = []
     # Pattern order matters: code first (protect content), then bold, strikethrough, link, italic
     pattern = re.compile(
-        r"`([^`]+)`"                    # inline code
-        r"|\*\*(.+?)\*\*"              # bold
-        r"|~~(.+?)~~"                   # strikethrough
-        r"|\[([^\]]+)\]\(([^)]+)\)"     # link
-        r"|_(.+?)_"                     # italic
+        r"`([^`]+)`"  # inline code
+        r"|\*\*(.+?)\*\*"  # bold
+        r"|~~(.+?)~~"  # strikethrough
+        r"|\[([^\]]+)\]\(([^)]+)\)"  # link
+        r"|_(.+?)_"  # italic
     )
     pos = 0
     for m in pattern.finditer(text):
         # Plain text before this match
         if m.start() > pos:
-            elements.append({"tag": "text", "text": text[pos:m.start()]})
+            elements.append({"tag": "text", "text": text[pos : m.start()]})
 
         if m.group(1) is not None:
             # inline code → code_block would be block-level; use text with style
-            elements.append({
-                "tag": "text", "text": m.group(1),
-                "style": ["code_block"],
-            })
+            elements.append(
+                {
+                    "tag": "text",
+                    "text": m.group(1),
+                    "style": ["code_block"],
+                }
+            )
         elif m.group(2) is not None:
-            elements.append({
-                "tag": "text", "text": m.group(2),
-                "style": ["bold"],
-            })
+            elements.append(
+                {
+                    "tag": "text",
+                    "text": m.group(2),
+                    "style": ["bold"],
+                }
+            )
         elif m.group(3) is not None:
-            elements.append({
-                "tag": "text", "text": m.group(3),
-                "style": ["strikethrough"],
-            })
+            elements.append(
+                {
+                    "tag": "text",
+                    "text": m.group(3),
+                    "style": ["strikethrough"],
+                }
+            )
         elif m.group(4) is not None:
-            elements.append({
-                "tag": "a", "text": m.group(4), "href": m.group(5),
-            })
+            elements.append(
+                {
+                    "tag": "a",
+                    "text": m.group(4),
+                    "href": m.group(5),
+                }
+            )
         elif m.group(6) is not None:
-            elements.append({
-                "tag": "text", "text": m.group(6),
-                "style": ["italic"],
-            })
+            elements.append(
+                {
+                    "tag": "text",
+                    "text": m.group(6),
+                    "style": ["italic"],
+                }
+            )
         pos = m.end()
 
     # Remaining plain text
@@ -161,11 +177,15 @@ def _markdown_to_feishu_post(text: str) -> dict | None:
             else:
                 # End of code block
                 code_text = "\n".join(code_lines)
-                paragraphs.append([{
-                    "tag": "code_block",
-                    "language": code_lang or "plain",
-                    "text": code_text,
-                }])
+                paragraphs.append(
+                    [
+                        {
+                            "tag": "code_block",
+                            "language": code_lang or "plain",
+                            "text": code_text,
+                        }
+                    ]
+                )
                 in_code_block = False
                 code_lines = []
                 code_lang = ""
@@ -193,11 +213,15 @@ def _markdown_to_feishu_post(text: str) -> dict | None:
     # Flush remaining
     if in_code_block and code_lines:
         code_text = "\n".join(code_lines)
-        paragraphs.append([{
-            "tag": "code_block",
-            "language": code_lang or "plain",
-            "text": code_text,
-        }])
+        paragraphs.append(
+            [
+                {
+                    "tag": "code_block",
+                    "language": code_lang or "plain",
+                    "text": code_text,
+                }
+            ]
+        )
     elif current_paragraph:
         paragraphs.append(current_paragraph)
 
@@ -225,12 +249,12 @@ class FeishuChannel(Channel, WebhookMixin, TokenMixin):
     name = "feishu"
     _ready_attrs = ("_http_client", "_access_token")
     _non_retryable_patterns = (
-        "app_access_token is empty",   # invalid credentials
-        "10003",                        # invalid app_id
-        "10014",                        # invalid app_secret
-        "99991401",                     # permission denied
-        "99991663",                     # no permission
-        "99991672",                     # feature not enabled
+        "app_access_token is empty",  # invalid credentials
+        "10003",  # invalid app_id
+        "10014",  # invalid app_secret
+        "99991401",  # permission denied
+        "99991663",  # no permission
+        "99991672",  # feature not enabled
     )
     _rate_limit_patterns = ("99991400", "rate limit", "频率限制")
     _rate_limit_delay = 2.0
@@ -263,9 +287,7 @@ class FeishuChannel(Channel, WebhookMixin, TokenMixin):
             raise ChannelError(f"Failed to get Feishu access token: {e}")
 
         if data.get("code") != 0:
-            raise ChannelError(
-                f"Feishu auth error: {data.get('msg', 'unknown')}"
-            )
+            raise ChannelError(f"Feishu auth error: {data.get('msg', 'unknown')}")
         return data["tenant_access_token"], data.get("expire", 7200)
 
     # ── Lifecycle ─────────────────────────────────────────────────
@@ -293,8 +315,7 @@ class FeishuChannel(Channel, WebhookMixin, TokenMixin):
 
         self._running = True
         logger.info(
-            f"Feishu channel started "
-            f"(webhook on port {self.config.webhook_port})"
+            f"Feishu channel started (webhook on port {self.config.webhook_port})"
         )
 
     async def _cleanup(self) -> None:
@@ -320,7 +341,12 @@ class FeishuChannel(Channel, WebhookMixin, TokenMixin):
             return False
 
     async def _send_chunk(
-        self, chat_id, formatted_text, raw_text, reply_to, metadata,
+        self,
+        chat_id,
+        formatted_text,
+        raw_text,
+        reply_to,
+        metadata,
     ):
         token = await self._ensure_token()
         headers = {"Authorization": f"Bearer {token}"}
@@ -329,13 +355,15 @@ class FeishuChannel(Channel, WebhookMixin, TokenMixin):
         # If reply_to is set, try the reply API first
         if reply_to:
             reply_url = (
-                f"{self.config.feishu_domain}"
-                f"/open-apis/im/v1/messages/{reply_to}/reply"
+                f"{self.config.feishu_domain}/open-apis/im/v1/messages/{reply_to}/reply"
             )
             if post_content is not None:
                 body = {"msg_type": "post", "content": json.dumps(post_content)}
             else:
-                body = {"msg_type": "text", "content": json.dumps({"text": formatted_text})}
+                body = {
+                    "msg_type": "text",
+                    "content": json.dumps({"text": formatted_text}),
+                }
             if await self._feishu_send(reply_url, body, headers):
                 return
 
@@ -369,7 +397,10 @@ class FeishuChannel(Channel, WebhookMixin, TokenMixin):
     _IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".gif", ".bmp", ".webp"}
 
     async def _download_media(
-        self, message_id: str, file_key: str, msg_type: str,
+        self,
+        message_id: str,
+        file_key: str,
+        msg_type: str,
     ) -> str | None:
         """Download an image or file attachment from Feishu.
 
@@ -386,9 +417,7 @@ class FeishuChannel(Channel, WebhookMixin, TokenMixin):
         try:
             resp = await self._http_client.get(url, headers=headers, timeout=30)
             if resp.status_code != 200:
-                logger.warning(
-                    f"Feishu media download failed: HTTP {resp.status_code}"
-                )
+                logger.warning(f"Feishu media download failed: HTTP {resp.status_code}")
                 return None
 
             # Check attachment size before writing to disk
@@ -402,10 +431,9 @@ class FeishuChannel(Channel, WebhookMixin, TokenMixin):
                 except (ValueError, TypeError):
                     pass
             from ..base import MAX_ATTACHMENT_BYTES
+
             if len(resp.content) > MAX_ATTACHMENT_BYTES:
-                logger.warning(
-                    f"Feishu media too large: {len(resp.content)} bytes"
-                )
+                logger.warning(f"Feishu media too large: {len(resp.content)} bytes")
                 return None
 
             # Determine extension from Content-Type or default
@@ -426,13 +454,19 @@ class FeishuChannel(Channel, WebhookMixin, TokenMixin):
             return None
 
     async def _upload_feishu_resource(
-        self, url: str, headers: dict, file_path: str,
-        field_name: str, extra_data: dict,
+        self,
+        url: str,
+        headers: dict,
+        file_path: str,
+        field_name: str,
+        extra_data: dict,
     ) -> dict | None:
         """Upload a file to Feishu API. Returns response data or None on failure."""
         with open(file_path, "rb") as f:
             resp = await self._http_client.post(
-                url, headers=headers, data=extra_data,
+                url,
+                headers=headers,
+                data=extra_data,
                 files={field_name: (Path(file_path).name, f)},
             )
         data = resp.json()
@@ -465,7 +499,11 @@ class FeishuChannel(Channel, WebhookMixin, TokenMixin):
         if is_image:
             upload_url = f"{self.config.feishu_domain}/open-apis/im/v1/images"
             data = await self._upload_feishu_resource(
-                upload_url, headers, file_path, "image", {"image_type": "message"},
+                upload_url,
+                headers,
+                file_path,
+                "image",
+                {"image_type": "message"},
             )
             if not data:
                 return False
@@ -477,7 +515,10 @@ class FeishuChannel(Channel, WebhookMixin, TokenMixin):
         else:
             upload_url = f"{self.config.feishu_domain}/open-apis/im/v1/files"
             data = await self._upload_feishu_resource(
-                upload_url, headers, file_path, "file",
+                upload_url,
+                headers,
+                file_path,
+                "file",
                 {"file_type": "stream", "file_name": path.name},
             )
             if not data:
@@ -504,7 +545,9 @@ class FeishuChannel(Channel, WebhookMixin, TokenMixin):
 
     # ── ACK reaction ───────────────────────────────────────────────
 
-    async def _send_ack_reaction(self, chat_id: str, message_id: str, emoji: str = "THUMBSUP") -> None:
+    async def _send_ack_reaction(
+        self, chat_id: str, message_id: str, emoji: str = "THUMBSUP"
+    ) -> None:
         """Send an acknowledgment reaction via Feishu Open API."""
         try:
             token = await self._ensure_token()
@@ -517,7 +560,9 @@ class FeishuChannel(Channel, WebhookMixin, TokenMixin):
         except Exception as e:
             logger.debug(f"Feishu ack reaction failed: {e}")
 
-    async def _remove_ack_reaction(self, chat_id: str, message_id: str, emoji: str = "THUMBSUP") -> None:
+    async def _remove_ack_reaction(
+        self, chat_id: str, message_id: str, emoji: str = "THUMBSUP"
+    ) -> None:
         """Remove ACK reaction via Feishu Open API.
 
         Feishu's DELETE /reactions endpoint requires the reaction_id, which
@@ -633,11 +678,7 @@ class FeishuChannel(Channel, WebhookMixin, TokenMixin):
         """Handle im.message.receive_v1 event (v2 schema)."""
         sender_info = event.get("sender", {})
         sender_id_info = sender_info.get("sender_id", {})
-        sender_id = (
-            sender_id_info.get("open_id")
-            or sender_id_info.get("user_id")
-            or ""
-        )
+        sender_id = sender_id_info.get("open_id") or sender_id_info.get("user_id") or ""
         sender_type = sender_info.get("sender_type", "")
 
         # Skip bot's own messages
@@ -739,27 +780,31 @@ class FeishuChannel(Channel, WebhookMixin, TokenMixin):
         # Parse timestamp (milliseconds)
         create_time = message.get("create_time", "")
         try:
-            timestamp = datetime.fromtimestamp(
-                int(create_time) / 1000
-            ) if create_time else datetime.now()
+            timestamp = (
+                datetime.fromtimestamp(int(create_time) / 1000)
+                if create_time
+                else datetime.now()
+            )
         except (ValueError, TypeError, OSError):
             timestamp = datetime.now()
 
-        await self._enqueue_raw(RawIncoming(
-            sender_id=sender_id,
-            chat_id=chat_id,
-            text=text,
-            media_files=media_paths,
-            content_annotations=annotations,
-            timestamp=timestamp,
-            message_id=message_id,
-            metadata={
-                "chat_id": chat_id,
-                "chat_type": message.get("chat_type", ""),
-            },
-            is_group=is_group,
-            was_mentioned=was_mentioned,
-        ))
+        await self._enqueue_raw(
+            RawIncoming(
+                sender_id=sender_id,
+                chat_id=chat_id,
+                text=text,
+                media_files=media_paths,
+                content_annotations=annotations,
+                timestamp=timestamp,
+                message_id=message_id,
+                metadata={
+                    "chat_id": chat_id,
+                    "chat_type": message.get("chat_type", ""),
+                },
+                is_group=is_group,
+                was_mentioned=was_mentioned,
+            )
+        )
 
     async def _on_message_v1(self, event: dict) -> None:
         """Handle v1 schema message event (legacy)."""
@@ -782,19 +827,21 @@ class FeishuChannel(Channel, WebhookMixin, TokenMixin):
         chat_id = event.get("open_chat_id", "")
         message_id = event.get("open_message_id", "")
 
-        await self._enqueue_raw(RawIncoming(
-            sender_id=sender_id,
-            chat_id=chat_id,
-            text=text,
-            timestamp=datetime.now(),
-            message_id=message_id,
-            metadata={
-                "chat_id": chat_id,
-                "chat_type": event.get("chat_type", ""),
-            },
-            is_group=is_group,
-            was_mentioned=was_mentioned,
-        ))
+        await self._enqueue_raw(
+            RawIncoming(
+                sender_id=sender_id,
+                chat_id=chat_id,
+                text=text,
+                timestamp=datetime.now(),
+                message_id=message_id,
+                metadata={
+                    "chat_id": chat_id,
+                    "chat_type": event.get("chat_type", ""),
+                },
+                is_group=is_group,
+                was_mentioned=was_mentioned,
+            )
+        )
 
     @staticmethod
     def _extract_post_text(content: dict) -> str:

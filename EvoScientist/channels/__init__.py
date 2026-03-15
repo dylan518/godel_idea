@@ -7,7 +7,12 @@ This module provides an extensible interface for different messaging channels
 from .base import Channel, RawIncoming, IncomingMessage, OutgoingMessage, chunk_text
 from .bus import MessageBus, InboundMessage, OutboundMessage
 from .capabilities import ChannelCapabilities
-from .channel_manager import ChannelManager, register_channel, create_channel, available_channels
+from .channel_manager import (
+    ChannelManager,
+    register_channel,
+    create_channel,
+    available_channels,
+)
 from .consumer import InboundConsumer
 from .formatter import UnifiedFormatter
 from .middleware import TypingManager

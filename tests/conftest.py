@@ -1,6 +1,5 @@
 """Shared fixtures for EvoScientist tests."""
 
-
 import asyncio
 
 import pytest
@@ -44,11 +43,37 @@ def sample_events():
     return [
         {"type": "thinking", "content": "Let me think..."},
         {"type": "text", "content": "Here is the answer."},
-        {"type": "tool_call", "id": "tc_001", "name": "execute", "args": {"command": "ls"}},
-        {"type": "tool_result", "name": "execute", "content": "[OK] done", "success": True},
-        {"type": "subagent_start", "name": "research-agent", "description": "Find papers"},
-        {"type": "subagent_tool_call", "subagent": "research-agent", "name": "tavily_search", "args": {"query": "test"}, "id": "tc_sa_001"},
-        {"type": "subagent_tool_result", "subagent": "research-agent", "name": "tavily_search", "content": "Results...", "success": True},
+        {
+            "type": "tool_call",
+            "id": "tc_001",
+            "name": "execute",
+            "args": {"command": "ls"},
+        },
+        {
+            "type": "tool_result",
+            "name": "execute",
+            "content": "[OK] done",
+            "success": True,
+        },
+        {
+            "type": "subagent_start",
+            "name": "research-agent",
+            "description": "Find papers",
+        },
+        {
+            "type": "subagent_tool_call",
+            "subagent": "research-agent",
+            "name": "tavily_search",
+            "args": {"query": "test"},
+            "id": "tc_sa_001",
+        },
+        {
+            "type": "subagent_tool_result",
+            "subagent": "research-agent",
+            "name": "tavily_search",
+            "content": "Results...",
+            "success": True,
+        },
         {"type": "subagent_end", "name": "research-agent"},
         {"type": "done", "response": "Here is the answer."},
     ]

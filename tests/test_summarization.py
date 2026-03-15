@@ -199,35 +199,49 @@ class TestExtractSummarizationText:
     def test_string_content(self):
         class Msg:
             content = "hello world"
+
         assert _extract_summarization_text(Msg()) == "hello world"
 
     def test_content_blocks(self):
         class Msg:
-            content = [{"type": "text", "text": "part1"}, {"type": "text", "text": "part2"}]
+            content = [
+                {"type": "text", "text": "part1"},
+                {"type": "text", "text": "part2"},
+            ]
+
         assert _extract_summarization_text(Msg()) == "part1part2"
 
     def test_content_blocks_with_index(self):
         """Content blocks may include 'index' field — should still extract text."""
+
         class Msg:
             content = [{"type": "text", "text": " vs", "index": 1}]
+
         assert _extract_summarization_text(Msg()) == " vs"
 
     def test_empty_list(self):
         class Msg:
             content = []
+
         assert _extract_summarization_text(Msg()) == ""
 
     def test_no_content_attr(self):
         class Msg:
             pass
+
         assert _extract_summarization_text(Msg()) == ""
 
     def test_mixed_block_types(self):
         class Msg:
-            content = [{"type": "text", "text": "hello"}, {"type": "image", "url": "..."}]
+            content = [
+                {"type": "text", "text": "hello"},
+                {"type": "image", "url": "..."},
+            ]
+
         assert _extract_summarization_text(Msg()) == "hello"
 
     def test_string_blocks_in_list(self):
         class Msg:
             content = ["hello", "world"]
+
         assert _extract_summarization_text(Msg()) == "helloworld"

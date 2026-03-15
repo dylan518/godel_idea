@@ -18,12 +18,14 @@ __all__ = ["DingTalkChannel", "DingTalkConfig"]
 def create_from_config(config) -> DingTalkChannel:
     allowed = _parse_csv(config.dingtalk_allowed_senders)
     proxy = config.dingtalk_proxy if config.dingtalk_proxy else None
-    return DingTalkChannel(DingTalkConfig(
-        client_id=config.dingtalk_client_id,
-        client_secret=config.dingtalk_client_secret,
-        allowed_senders=allowed,
-        proxy=proxy,
-    ))
+    return DingTalkChannel(
+        DingTalkConfig(
+            client_id=config.dingtalk_client_id,
+            client_secret=config.dingtalk_client_secret,
+            allowed_senders=allowed,
+            proxy=proxy,
+        )
+    )
 
 
 register_channel("dingtalk", create_from_config)

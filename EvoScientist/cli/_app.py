@@ -9,7 +9,9 @@ app = typer.Typer(
 )
 
 # Config subcommand group
-config_app = typer.Typer(help="Configuration management commands", invoke_without_command=True)
+config_app = typer.Typer(
+    help="Configuration management commands", invoke_without_command=True
+)
 app.add_typer(config_app, name="config")
 
 # MCP subcommand group

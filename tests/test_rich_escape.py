@@ -14,5 +14,7 @@ class TestRichMarkupEscape:
     def test_error_format_with_brackets(self):
         """Error content with markup-like text shouldn't crash."""
         formatter = ToolResultFormatter()
-        result = formatter.format("test", "Error: expected [int] got [str]", max_length=800)
+        result = formatter.format(
+            "test", "Error: expected [int] got [str]", max_length=800
+        )
         assert result.elements

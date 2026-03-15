@@ -20,7 +20,13 @@ from rich.text import Text  # type: ignore[import-untyped]
 
 from ..paths import resolve_virtual_path
 from .formatter import ToolResultFormatter
-from .state import StreamState, SubAgentState, _build_todo_stats, _parse_todo_items, _INTERNAL_TOOLS
+from .state import (
+    StreamState,
+    SubAgentState,
+    _build_todo_stats,
+    _parse_todo_items,
+    _INTERNAL_TOOLS,
+)
 from .utils import DisplayLimits, ToolStatus, format_tool_compact, is_success
 from .diff_format import build_edit_diff
 from .events import stream_agent_events
@@ -33,8 +39,8 @@ from .events import stream_agent_events
 _MEDIA_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp", ".svg", ".pdf"}
 
 console = Console(
-    legacy_windows=(sys.platform == 'win32'),
-    no_color=os.getenv('NO_COLOR') is not None,
+    legacy_windows=(sys.platform == "win32"),
+    no_color=os.getenv("NO_COLOR") is not None,
 )
 
 formatter = ToolResultFormatter()
@@ -43,6 +49,7 @@ formatter = ToolResultFormatter()
 # ---------------------------------------------------------------------------
 # Todo formatting
 # ---------------------------------------------------------------------------
+
 
 def _format_single_todo(item: dict) -> Text:
     """Format a single todo item with status symbol."""
@@ -76,6 +83,7 @@ def _format_single_todo(item: dict) -> Text:
 # ---------------------------------------------------------------------------
 # Tool result formatting
 # ---------------------------------------------------------------------------
+
 
 def format_tool_result_compact(
     _name: str,
@@ -148,12 +156,13 @@ def format_tool_result_compact(
 # Tool call line rendering
 # ---------------------------------------------------------------------------
 
+
 def _render_tool_call_line(tc: dict, tr: dict | None) -> Text:
     """Render a single tool call line with status indicator."""
-    is_task = tc.get('name', '').lower() == 'task'
+    is_task = tc.get("name", "").lower() == "task"
 
     if tr is not None:
-        content = tr.get('content', '')
+        content = tr.get("content", "")
         if is_success(content):
             style = "bold green"
             indicator = "\u2713" if is_task else ToolStatus.SUCCESS.value
@@ -165,19 +174,19 @@ def _render_tool_call_line(tc: dict, tr: dict | None) -> Text:
         indicator = "\u25b6" if is_task else ToolStatus.RUNNING.value
 
     # Try to get display name from args first
-    tool_compact = format_tool_compact(tc['name'], tc.get('args'))
+    tool_compact = format_tool_compact(tc["name"], tc.get("args"))
 
     # If args were empty and we have a result, try to infer memory operations from result
-    tool_name = tc.get('name', '').lower()
-    if tool_name in ('write_file', 'edit_file') and tr is not None:
-        result_content = tr.get('content', '')
-        if '/MEMORY.md' in result_content or 'MEMORY.md' in result_content:
+    tool_name = tc.get("name", "").lower()
+    if tool_name in ("write_file", "edit_file") and tr is not None:
+        result_content = tr.get("content", "")
+        if "/MEMORY.md" in result_content or "MEMORY.md" in result_content:
             tool_compact = "Updating memory"
-    elif tool_name == 'read_file' and tr is not None:
-        result_content = tr.get('content', '')
+    elif tool_name == "read_file" and tr is not None:
+        result_content = tr.get("content", "")
         # read_file result doesn't contain path, check if args is empty and result looks like memory
-        args = tc.get('args') or {}
-        if not args.get('path') and '# EvoScientist Memory' in result_content:
+        args = tc.get("args") or {}
+        if not args.get("path") and "# EvoScientist Memory" in result_content:
             tool_compact = "Reading memory"
 
     tool_text = Text()
@@ -190,7 +199,8 @@ def _render_tool_call_line(tc: dict, tr: dict | None) -> Text:
 # Sub-agent section rendering
 # ---------------------------------------------------------------------------
 
-def _render_subagent_section(sa: 'SubAgentState', compact: bool = False) -> list:
+
+def _render_subagent_section(sa: "SubAgentState", compact: bool = False) -> list:
     """Render a sub-agent's activity as a bordered section.
 
     Args:
@@ -241,8 +251,8 @@ def _render_subagent_section(sa: 'SubAgentState', compact: bool = False) -> list
         return elements
 
     # --- Full mode: bordered section for Live streaming ---
-    MAX_SA_VISIBLE = 3       # max completed tools shown
-    MAX_SA_RUNNING = 2       # max running tools shown
+    MAX_SA_VISIBLE = 3  # max completed tools shown
+    MAX_SA_RUNNING = 2  # max running tools shown
 
     # Header
     header = Text()
@@ -255,7 +265,11 @@ def _render_subagent_section(sa: 'SubAgentState', compact: bool = False) -> list
 
     # Completed tools — collapse older ones into a summary
     slots = max(0, MAX_SA_VISIBLE - len(pending))
-    hidden = completed[:-slots] if slots and len(completed) > slots else (completed if not slots else [])
+    hidden = (
+        completed[:-slots]
+        if slots and len(completed) > slots
+        else (completed if not slots else [])
+    )
     visible = completed[-slots:] if slots else []
 
     if hidden:
@@ -288,7 +302,9 @@ def _render_subagent_section(sa: 'SubAgentState', compact: bool = False) -> list
     hidden_running = len(pending) - MAX_SA_RUNNING
     if hidden_running > 0:
         run_summary = Text("\u2502 ", style=BORDER)
-        run_summary.append(f"\u25cf {hidden_running} more running...", style="dim yellow")
+        run_summary.append(
+            f"\u25cf {hidden_running} more running...", style="dim yellow"
+        )
         elements.append(run_summary)
         pending = pending[-MAX_SA_RUNNING:]
 
@@ -316,6 +332,7 @@ def _render_subagent_section(sa: 'SubAgentState', compact: bool = False) -> list
 # ---------------------------------------------------------------------------
 # Todo panel
 # ---------------------------------------------------------------------------
+
 
 def _render_todo_panel(todo_items: list[dict]) -> Panel:
     """Render a bordered Task List panel from todo items.
@@ -355,6 +372,7 @@ def _render_todo_panel(todo_items: list[dict]) -> Panel:
 # Streaming display layout
 # ---------------------------------------------------------------------------
 
+
 def create_streaming_display(
     thinking_text: str = "",
     response_text: str = "",
@@ -392,7 +410,7 @@ def create_streaming_display(
         return Group(*elements)
 
     # Thinking panel
-    _show_thinking = (final_show_thinking if is_final else show_thinking)
+    _show_thinking = final_show_thinking if is_final else show_thinking
     if _show_thinking and thinking_text:
         thinking_title = "Thinking"
         display_thinking = thinking_text.rstrip()
@@ -400,18 +418,26 @@ def create_streaming_display(
             # Final frame: middle-elision truncation
             if len(display_thinking) > final_thinking_max_length:
                 half = final_thinking_max_length // 2
-                display_thinking = display_thinking[:half] + "\n\n... (truncated) ...\n\n" + display_thinking[-half:]
+                display_thinking = (
+                    display_thinking[:half]
+                    + "\n\n... (truncated) ...\n\n"
+                    + display_thinking[-half:]
+                )
         else:
             if is_thinking:
                 thinking_title += " ..."
             if len(display_thinking) > DisplayLimits.THINKING_STREAM:
-                display_thinking = "..." + display_thinking[-DisplayLimits.THINKING_STREAM:]
-        elements.append(Panel(
-            Text(display_thinking, style="dim"),
-            title=thinking_title,
-            border_style="blue",
-            padding=(0, 1),
-        ))
+                display_thinking = (
+                    "..." + display_thinking[-DisplayLimits.THINKING_STREAM :]
+                )
+        elements.append(
+            Panel(
+                Text(display_thinking, style="dim"),
+                title=thinking_title,
+                border_style="blue",
+                padding=(0, 1),
+            )
+        )
 
     # Summarization panel (context was compressed by LangGraph middleware)
     if summarization_text:
@@ -420,12 +446,14 @@ def create_streaming_display(
         char_label = f"{n / 1000:.1f}k chars" if n >= 1000 else f"{n:,} chars"
         if n > 300:
             summary_display = summary_display[:300] + " ..."
-        elements.append(Panel(
-            Text(summary_display, style="dim italic"),
-            title=f"Context Summarized ({char_label})",
-            border_style="#f59e0b",
-            padding=(0, 1),
-        ))
+        elements.append(
+            Panel(
+                Text(summary_display, style="dim italic"),
+                title=f"Context Summarized ({char_label})",
+                border_style="#f59e0b",
+                padding=(0, 1),
+            )
+        )
 
     # Tool calls and results paired display
     # Collapse older completed tools to prevent overflow in Live mode
@@ -435,22 +463,22 @@ def create_streaming_display(
 
     if tool_calls:
         # Split into categories
-        completed_regular = []   # completed non-task tools
-        task_tools = []          # task tools (always visible)
-        running_regular = []     # running non-task tools
+        completed_regular = []  # completed non-task tools
+        task_tools = []  # task tools (always visible)
+        running_regular = []  # running non-task tools
 
         for i, tc in enumerate(tool_calls):
             has_result = i < len(tool_results)
             tr = tool_results[i] if has_result else None
-            is_task = tc.get('name') == 'task'
+            is_task = tc.get("name") == "task"
 
             # Skip internal middleware tools
-            if tc.get('name') in _INTERNAL_TOOLS:
+            if tc.get("name") in _INTERNAL_TOOLS:
                 continue
 
             if is_task:
                 # Skip task calls with empty args (still streaming)
-                if tc.get('args'):
+                if tc.get("args"):
                     task_tools.append((tc, tr))
             elif has_result:
                 completed_regular.append((tc, tr))
@@ -463,22 +491,26 @@ def create_streaming_display(
 
             for tc, tr in completed_regular:
                 elements.append(_render_tool_call_line(tc, tr))
-                content = tr.get('content', '') if tr else ''
-                if tr and (not is_success(content) or tc.get('name') == 'edit_file'):
+                content = tr.get("content", "") if tr else ""
+                if tr and (not is_success(content) or tc.get("name") == "edit_file"):
                     result_elements = format_tool_result_compact(
-                        tr['name'], content, max_lines=10,
-                        tool_args=tc.get('args'),
+                        tr["name"],
+                        content,
+                        max_lines=10,
+                        tool_args=tc.get("args"),
                     )
                     elements.extend(result_elements)
 
             # Task tools with compact sub-agent summaries
             for tc, tr in task_tools:
                 elements.append(_render_tool_call_line(tc, tr))
-                sa_name = tc.get('args', {}).get('subagent_type', '')
-                task_desc = tc.get('args', {}).get('description', '')
+                sa_name = tc.get("args", {}).get("subagent_type", "")
+                task_desc = tc.get("args", {}).get("description", "")
                 matched_sa = None
                 for sa in subagents:
-                    if sa.name == sa_name or (task_desc and task_desc in (sa.description or '')):
+                    if sa.name == sa_name or (
+                        task_desc and task_desc in (sa.description or "")
+                    ):
                         matched_sa = sa
                         break
                 if matched_sa:
@@ -494,11 +526,15 @@ def create_streaming_display(
             # Streaming mode: collapse older tools, show spinners
             # --- Completed regular tools (collapsible) ---
             slots = max(0, MAX_VISIBLE_TOOLS - len(running_regular))
-            hidden = completed_regular[:-slots] if slots and len(completed_regular) > slots else (completed_regular if not slots else [])
+            hidden = (
+                completed_regular[:-slots]
+                if slots and len(completed_regular) > slots
+                else (completed_regular if not slots else [])
+            )
             visible = completed_regular[-slots:] if slots else []
 
             if hidden:
-                ok = sum(1 for _, tr in hidden if is_success(tr.get('content', '')))
+                ok = sum(1 for _, tr in hidden if is_success(tr.get("content", "")))
                 fail = len(hidden) - ok
                 summary = Text()
                 summary.append(f"\u2713 {ok} completed", style="dim green")
@@ -508,11 +544,13 @@ def create_streaming_display(
 
             for tc, tr in visible:
                 elements.append(_render_tool_call_line(tc, tr))
-                content = tr.get('content', '') if tr else ''
-                if tr and (not is_success(content) or tc.get('name') == 'edit_file'):
+                content = tr.get("content", "") if tr else ""
+                if tr and (not is_success(content) or tc.get("name") == "edit_file"):
                     result_elements = format_tool_result_compact(
-                        tr['name'], content, max_lines=5,
-                        tool_args=tc.get('args'),
+                        tr["name"],
+                        content,
+                        max_lines=5,
+                        tool_args=tc.get("args"),
                     )
                     elements.extend(result_elements)
 
@@ -520,7 +558,9 @@ def create_streaming_display(
             hidden_running = len(running_regular) - MAX_VISIBLE_RUNNING
             if hidden_running > 0:
                 summary = Text()
-                summary.append(f"\u25cf {hidden_running} more running...", style="dim yellow")
+                summary.append(
+                    f"\u25cf {hidden_running} more running...", style="dim yellow"
+                )
                 elements.append(summary)
                 running_regular = running_regular[-MAX_VISIBLE_RUNNING:]
 
@@ -535,7 +575,7 @@ def create_streaming_display(
     _n_visible = 0
     _n_visible_done = 0
     for i, tc in enumerate(tool_calls):
-        if tc.get('name') in _INTERNAL_TOOLS:
+        if tc.get("name") in _INTERNAL_TOOLS:
             continue
         _n_visible += 1
         if i < len(tool_results):
@@ -598,11 +638,18 @@ def create_streaming_display(
                 elements.extend(_render_subagent_section(sa, compact=not sa.is_active))
 
         # Processing state after tool execution
-        if is_processing and not is_thinking and not is_responding and not response_text:
+        if (
+            is_processing
+            and not is_thinking
+            and not is_responding
+            and not response_text
+        ):
             # Check if any sub-agent is active
             any_active = any(sa.is_active for sa in subagents)
             if not any_active:
-                elements.append(Spinner("dots", text=" Analyzing results...", style="cyan"))
+                elements.append(
+                    Spinner("dots", text=" Analyzing results...", style="cyan")
+                )
 
         # Stream response in real-time as tokens arrive (all tools done)
         if response_text and all_done:
@@ -618,6 +665,7 @@ def create_streaming_display(
 # Final results display
 # ---------------------------------------------------------------------------
 
+
 def display_final_results(
     state: StreamState,
     thinking_max_length: int = DisplayLimits.THINKING_FINAL,
@@ -629,22 +677,30 @@ def display_final_results(
         display_thinking = state.thinking_text.rstrip()
         if len(display_thinking) > thinking_max_length:
             half = thinking_max_length // 2
-            display_thinking = display_thinking[:half] + "\n\n... (truncated) ...\n\n" + display_thinking[-half:]
-        console.print(Panel(
-            Text(display_thinking, style="dim"),
-            title="Thinking",
-            border_style="blue",
-        ))
+            display_thinking = (
+                display_thinking[:half]
+                + "\n\n... (truncated) ...\n\n"
+                + display_thinking[-half:]
+            )
+        console.print(
+            Panel(
+                Text(display_thinking, style="dim"),
+                title="Thinking",
+                border_style="blue",
+            )
+        )
 
     if state.summarization_text:
         summary_display = state.summarization_text.rstrip()
         if len(summary_display) > 500:
             summary_display = summary_display[:500] + " ..."
-        console.print(Panel(
-            Text(summary_display, style="dim italic"),
-            title="Context Summarized",
-            border_style="#f59e0b",
-        ))
+        console.print(
+            Panel(
+                Text(summary_display, style="dim italic"),
+                title="Context Summarized",
+                border_style="#f59e0b",
+            )
+        )
 
     if show_tools and state.tool_calls:
         shown_sa_names: set[str] = set()
@@ -652,9 +708,9 @@ def display_final_results(
         for i, tc in enumerate(state.tool_calls):
             has_result = i < len(state.tool_results)
             tr = state.tool_results[i] if has_result else None
-            content = tr.get('content', '') if tr is not None else ''
-            tool_name = tc.get('name', '')
-            is_task = tool_name.lower() == 'task'
+            content = tr.get("content", "") if tr is not None else ""
+            tool_name = tc.get("name", "")
+            is_task = tool_name.lower() == "task"
 
             # Skip internal middleware tools
             if tool_name in _INTERNAL_TOOLS:
@@ -663,11 +719,13 @@ def display_final_results(
             # Task tools: show delegation line + compact sub-agent summary
             if is_task:
                 console.print(_render_tool_call_line(tc, tr))
-                sa_name = tc.get('args', {}).get('subagent_type', '')
-                task_desc = tc.get('args', {}).get('description', '')
+                sa_name = tc.get("args", {}).get("subagent_type", "")
+                task_desc = tc.get("args", {}).get("description", "")
                 matched_sa = None
                 for sa in state.subagents:
-                    if sa.name == sa_name or (task_desc and task_desc in (sa.description or '')):
+                    if sa.name == sa_name or (
+                        task_desc and task_desc in (sa.description or "")
+                    ):
                         matched_sa = sa
                         break
                 if matched_sa:
@@ -680,10 +738,10 @@ def display_final_results(
             console.print(_render_tool_call_line(tc, tr))
             if has_result and tr is not None:
                 result_elements = format_tool_result_compact(
-                    tr['name'],
+                    tr["name"],
                     content,
                     max_lines=10,
-                    tool_args=tc.get('args'),
+                    tool_args=tc.get("args"),
                 )
                 for elem in result_elements:
                     console.print(elem)
@@ -764,6 +822,7 @@ def _resolve_hitl_approval(
 
     # Config-level auto-approve
     from ..config.settings import load_config
+
     cfg = load_config()
     if cfg.auto_approve:
         return [{"type": "approve"} for _ in action_requests]
@@ -771,13 +830,18 @@ def _resolve_hitl_approval(
     # Per-tool auto-approval: only execute needs manual approval
     shell_allow_list = (
         [s.strip() for s in cfg.shell_allow_list.split(",") if s.strip()]
-        if cfg.shell_allow_list else []
+        if cfg.shell_allow_list
+        else []
     )
 
     needs_prompt = False
     for req in action_requests:
-        name = req.get("name", "") if isinstance(req, dict) else getattr(req, "name", "")
-        args = req.get("args", {}) if isinstance(req, dict) else getattr(req, "args", {})
+        name = (
+            req.get("name", "") if isinstance(req, dict) else getattr(req, "name", "")
+        )
+        args = (
+            req.get("args", {}) if isinstance(req, dict) else getattr(req, "args", {})
+        )
 
         if name != "execute":
             continue  # Non-execute tools auto-approve
@@ -807,21 +871,29 @@ def _prompt_hitl_approval(action_requests: list) -> list[dict] | None:
     console.print()
     panel_text = Text()
     for i, req in enumerate(action_requests):
-        name = req.get("name", "") if isinstance(req, dict) else getattr(req, "name", "")
-        args = req.get("args", {}) if isinstance(req, dict) else getattr(req, "args", {})
+        name = (
+            req.get("name", "") if isinstance(req, dict) else getattr(req, "name", "")
+        )
+        args = (
+            req.get("args", {}) if isinstance(req, dict) else getattr(req, "args", {})
+        )
         desc = format_tool_compact(name, args if isinstance(args, dict) else {})
         if panel_text.plain:
             panel_text.append("\n")
         panel_text.append(f"  {i + 1}. {desc}", style="yellow")
     panel_text.append("\n\n")
-    panel_text.append("  [1] Approve  [2] Reject  [3] Approve all (session)", style="dim")
+    panel_text.append(
+        "  [1] Approve  [2] Reject  [3] Approve all (session)", style="dim"
+    )
 
-    console.print(Panel(
-        panel_text,
-        title="Approval Required",
-        border_style="yellow",
-        padding=(0, 1),
-    ))
+    console.print(
+        Panel(
+            panel_text,
+            title="Approval Required",
+            border_style="yellow",
+            padding=(0, 1),
+        )
+    )
 
     try:
         choice = input("  Choose [1/2/3, Enter=Approve]: ").strip() or "1"
@@ -843,6 +915,7 @@ def _prompt_hitl_approval(action_requests: list) -> list[dict] | None:
 # Async-to-sync bridge
 # ---------------------------------------------------------------------------
 
+
 def _create_event_loop() -> asyncio.AbstractEventLoop:
     """Create and set the event loop for asyncio.
 
@@ -852,6 +925,7 @@ def _create_event_loop() -> asyncio.AbstractEventLoop:
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
     return loop
+
 
 def _get_event_loop() -> asyncio.AbstractEventLoop:
     """Get the event loop for asyncio.
@@ -865,6 +939,7 @@ def _get_event_loop() -> asyncio.AbstractEventLoop:
     if loop.is_closed():
         loop = _create_event_loop()
     return loop
+
 
 def _resolve_ask_user_prompt(ask_user_data: dict) -> dict:
     """Interactive console Q&A for ask_user events.
@@ -880,11 +955,13 @@ def _resolve_ask_user_prompt(ask_user_data: dict) -> dict:
         return {"answers": [], "status": "answered"}
 
     console.print()
-    console.print(Panel(
-        Text("Quick check-in from EvoScientist", style="bold"),
-        border_style="cyan",
-        padding=(0, 1),
-    ))
+    console.print(
+        Panel(
+            Text("Quick check-in from EvoScientist", style="bold"),
+            border_style="cyan",
+            padding=(0, 1),
+        )
+    )
     console.print()
 
     answers: list[str] = []
@@ -903,12 +980,18 @@ def _resolve_ask_user_prompt(ask_user_data: dict) -> dict:
                     letter = chr(ord("A") + j)
                     console.print(Text(f"     {letter}. {label}", style="dim"))
                 other_letter = chr(ord("A") + len(choices))
-                console.print(Text(f"     {other_letter}. Other (type your answer)", style="dim"))
+                console.print(
+                    Text(f"     {other_letter}. Other (type your answer)", style="dim")
+                )
 
                 letters = "/".join(chr(ord("A") + k) for k in range(len(choices) + 1))
-                raw = pt_prompt(HTML(f"  <b><style fg='#1565c0'>Choice [{letters}]:</style></b> ")).strip()
+                raw = pt_prompt(
+                    HTML(f"  <b><style fg='#1565c0'>Choice [{letters}]:</style></b> ")
+                ).strip()
                 if raw.upper() == other_letter:
-                    raw = pt_prompt(HTML("  <b><style fg='#42a5f5'>&gt; Your answer:</style></b> ")).strip()
+                    raw = pt_prompt(
+                        HTML("  <b><style fg='#42a5f5'>&gt; Your answer:</style></b> ")
+                    ).strip()
                     answers.append(raw)
                 elif len(raw) == 1 and raw.upper().isalpha():
                     idx = ord(raw.upper()) - ord("A")
@@ -919,7 +1002,9 @@ def _resolve_ask_user_prompt(ask_user_data: dict) -> dict:
                 else:
                     answers.append(raw)
             else:
-                raw = pt_prompt(HTML("  <b><style fg='#42a5f5'>&gt; Answer:</style></b> ")).strip()
+                raw = pt_prompt(
+                    HTML("  <b><style fg='#42a5f5'>&gt; Answer:</style></b> ")
+                ).strip()
                 answers.append(raw)
             console.print()
     except (EOFError, KeyboardInterrupt):
@@ -970,6 +1055,7 @@ def _run_streaming(
         The final response text.
     """
     import nest_asyncio
+
     nest_asyncio.apply()
 
     state = _state if _state is not None else StreamState()
@@ -981,36 +1067,49 @@ def _run_streaming(
 
     async def _consume() -> None:
         nonlocal _thinking_sent, _todo_sent
-        async for event in stream_agent_events(agent, message, thread_id, metadata=metadata):
+        async for event in stream_agent_events(
+            agent, message, thread_id, metadata=metadata
+        ):
             event_type = state.handle_event(event)
 
             # Send thinking to channel when transitioning away from thinking
-            if (on_thinking and not _thinking_sent
-                    and state.thinking_text
-                    and event_type != "thinking"
-                    and len(state.thinking_text) >= _MIN_THINKING_LEN):
+            if (
+                on_thinking
+                and not _thinking_sent
+                and state.thinking_text
+                and event_type != "thinking"
+                and len(state.thinking_text) >= _MIN_THINKING_LEN
+            ):
                 on_thinking(state.thinking_text.rstrip())
                 _thinking_sent = True
 
             # Send todo list to channel on first write_todos tool_call
-            if (on_todo and not _todo_sent
-                    and event_type == "tool_call"
-                    and event.get("name") == "write_todos"
-                    and state.todo_items):
+            if (
+                on_todo
+                and not _todo_sent
+                and event_type == "tool_call"
+                and event.get("name") == "write_todos"
+                and state.todo_items
+            ):
                 # Flush thinking before todo if not sent yet
-                if (on_thinking and not _thinking_sent
-                        and state.thinking_text
-                        and len(state.thinking_text) >= _MIN_THINKING_LEN):
+                if (
+                    on_thinking
+                    and not _thinking_sent
+                    and state.thinking_text
+                    and len(state.thinking_text) >= _MIN_THINKING_LEN
+                ):
                     on_thinking(state.thinking_text.rstrip())
                     _thinking_sent = True
                 on_todo(state.todo_items)
                 _todo_sent = True
 
             # Send media file to channel when write_file succeeds
-            if (on_file_write
-                    and event_type == "tool_result"
-                    and event.get("name") == "write_file"
-                    and event.get("success")):
+            if (
+                on_file_write
+                and event_type == "tool_result"
+                and event.get("name") == "write_file"
+                and event.get("success")
+            ):
                 wf_path = ""
                 for tc in reversed(state.tool_calls):
                     if tc.get("name") == "write_file":
@@ -1027,14 +1126,18 @@ def _run_streaming(
                             on_file_write(real_path)
 
             # Send media file to channel when read_file returns an image
-            if (on_file_write
-                    and event_type == "tool_result"
-                    and event.get("name") == "read_file"
-                    and event.get("success")):
+            if (
+                on_file_write
+                and event_type == "tool_result"
+                and event.get("name") == "read_file"
+                and event.get("success")
+            ):
                 rf_path = ""
                 for tc in reversed(state.tool_calls):
                     if tc.get("name") == "read_file":
-                        p = tc.get("args", {}).get("file_path", "") or tc.get("args", {}).get("path", "")
+                        p = tc.get("args", {}).get("file_path", "") or tc.get(
+                            "args", {}
+                        ).get("path", "")
                         if p and p not in _media_sent:
                             rf_path = p
                             break
@@ -1048,13 +1151,20 @@ def _run_streaming(
                             _media_sent.add(rf_path)
                             on_file_write(real_path)
 
-            live.update(create_streaming_display(
-                **state.get_display_args(),
-                show_thinking=show_thinking,
-                response_markdown=state.get_response_markdown(),
-            ))
+            live.update(
+                create_streaming_display(
+                    **state.get_display_args(),
+                    show_thinking=show_thinking,
+                    response_markdown=state.get_response_markdown(),
+                )
+            )
 
-    with Live(console=console, auto_refresh=False, transient=False, vertical_overflow="visible") as live:
+    with Live(
+        console=console,
+        auto_refresh=False,
+        transient=False,
+        vertical_overflow="visible",
+    ) as live:
         live.update(create_streaming_display(is_waiting=True))
         try:
             loop = _get_event_loop()
@@ -1081,7 +1191,10 @@ def _run_streaming(
                 except asyncio.CancelledError:
                     pass
                 # Render clean final frame before Live exits (no spinners, expanded tools)
-                if state.pending_interrupt is not None or state.pending_ask_user is not None:
+                if (
+                    state.pending_interrupt is not None
+                    or state.pending_ask_user is not None
+                ):
                     # Interrupted: render current state (not final) so it
                     # looks continuous when prompt appears.
                     final_display = create_streaming_display(
@@ -1123,6 +1236,7 @@ def _run_streaming(
         else:
             result = _resolve_ask_user_prompt(state.pending_ask_user)
         from langgraph.types import Command  # type: ignore[import-untyped]
+
         state.pending_ask_user = None
         return _run_streaming(
             agent=agent,
@@ -1144,10 +1258,12 @@ def _run_streaming(
     # HITL: check for pending interrupt and handle approval
     if state.pending_interrupt is not None and _hitl_depth < _MAX_HITL_ITERATIONS:
         decisions = _resolve_hitl_approval(
-            state.pending_interrupt, prompt_fn=hitl_prompt_fn,
+            state.pending_interrupt,
+            prompt_fn=hitl_prompt_fn,
         )
         if decisions is not None:
             from langgraph.types import Command  # type: ignore[import-untyped]
+
             state.pending_interrupt = None
             return _run_streaming(
                 agent=agent,
@@ -1180,6 +1296,7 @@ def _run_streaming(
 # ---------------------------------------------------------------------------
 # Thread-safe static streaming (for background channels)
 # ---------------------------------------------------------------------------
+
 
 async def _astream_to_console(
     agent: Any,
@@ -1231,14 +1348,22 @@ async def _astream_to_console(
         dt = state.thinking_text.rstrip()
         if len(dt) > 500:
             dt = dt[:250] + "\n\u2026truncated\u2026\n" + dt[-250:]
-        console.print(Panel(Text(dt, style="dim"), title="Thinking", border_style="blue"))
+        console.print(
+            Panel(Text(dt, style="dim"), title="Thinking", border_style="blue")
+        )
 
     # Summarization
     if state.summarization_text:
         st = state.summarization_text.rstrip()
         if len(st) > 500:
             st = st[:500] + " ..."
-        console.print(Panel(Text(st, style="dim italic"), title="Context Summarized", border_style="#f59e0b"))
+        console.print(
+            Panel(
+                Text(st, style="dim italic"),
+                title="Context Summarized",
+                border_style="#f59e0b",
+            )
+        )
 
     # 1) Regular (non-task) tools — above Task List
     for i, tc in enumerate(state.tool_calls):

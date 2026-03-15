@@ -43,6 +43,7 @@ class DingTalkChannel(Channel, WebSocketMixin, TokenMixin):
 
     async def start(self) -> None:
         import httpx
+
         if not self.config.client_id or not self.config.client_secret:
             raise ChannelError("DingTalk client_id and client_secret are required")
         self._http_client = httpx.AsyncClient(timeout=15, proxy=self.config.proxy)
@@ -54,10 +55,13 @@ class DingTalkChannel(Channel, WebSocketMixin, TokenMixin):
     # ── TokenMixin ────────────────────────────────────────────────
 
     async def _fetch_token(self) -> tuple[str, int]:
-        data = await self._api_post(TOKEN_URL, {
-            "appKey": self.config.client_id,
-            "appSecret": self.config.client_secret,
-        })
+        data = await self._api_post(
+            TOKEN_URL,
+            {
+                "appKey": self.config.client_id,
+                "appSecret": self.config.client_secret,
+            },
+        )
         token = data.get("accessToken")
         if not token:
             raise ChannelError(f"DingTalk auth error: {data}")
@@ -87,12 +91,17 @@ class DingTalkChannel(Channel, WebSocketMixin, TokenMixin):
     # ── WebSocketMixin ────────────────────────────────────────────
 
     async def _get_ws_url(self) -> str:
-        resp = await self._http_client.post(GATEWAY_URL, json={
-            "clientId": self.config.client_id,
-            "clientSecret": self.config.client_secret,
-            "subscriptions": [{"type": "CALLBACK", "topic": "/v1.0/im/bot/messages/get"}],
-            "ua": "dingtalk-sdk-python/v0.24.3-union",
-        })
+        resp = await self._http_client.post(
+            GATEWAY_URL,
+            json={
+                "clientId": self.config.client_id,
+                "clientSecret": self.config.client_secret,
+                "subscriptions": [
+                    {"type": "CALLBACK", "topic": "/v1.0/im/bot/messages/get"}
+                ],
+                "ua": "dingtalk-sdk-python/v0.24.3-union",
+            },
+        )
         data = resp.json()
         endpoint, ticket = data.get("endpoint"), data.get("ticket")
         if not endpoint or not ticket:
@@ -107,11 +116,25 @@ class DingTalkChannel(Channel, WebSocketMixin, TokenMixin):
 
         # System ping
         if data.get("type") == "SYSTEM" and headers.get("topic") == "ping":
-            await self._ws_send_json({"code": 200, "headers": headers, "message": "OK", "data": data.get("data", "")})
+            await self._ws_send_json(
+                {
+                    "code": 200,
+                    "headers": headers,
+                    "message": "OK",
+                    "data": data.get("data", ""),
+                }
+            )
             return
 
         # ACK
-        await self._ws_send_json({"code": 200, "headers": {"contentType": "application/json", "messageId": msg_id}, "message": "OK", "data": "{}"})
+        await self._ws_send_json(
+            {
+                "code": 200,
+                "headers": {"contentType": "application/json", "messageId": msg_id},
+                "message": "OK",
+                "data": "{}",
+            }
+        )
 
         if data.get("type") != "CALLBACK":
             return
@@ -119,7 +142,9 @@ class DingTalkChannel(Channel, WebSocketMixin, TokenMixin):
         payload = data.get("data", "{}")
         payload = json.loads(payload) if isinstance(payload, str) else payload
         text_obj = payload.get("text", {})
-        content = (text_obj.get("content", "") if isinstance(text_obj, dict) else str(text_obj)).strip()
+        content = (
+            text_obj.get("content", "") if isinstance(text_obj, dict) else str(text_obj)
+        ).strip()
         if not content:
             raw_content = payload.get("content", "")
             content = raw_content.strip() if isinstance(raw_content, str) else ""
@@ -133,12 +158,21 @@ class DingTalkChannel(Channel, WebSocketMixin, TokenMixin):
         # "fileContent"/"imageContent" key.
         raw_content_obj = payload.get("content")
         if isinstance(raw_content_obj, dict) and raw_content_obj not in [
-            payload.get(k) for k in ("imageContent", "fileContent", "videoContent", "audioContent")
+            payload.get(k)
+            for k in ("imageContent", "fileContent", "videoContent", "audioContent")
         ]:
             msg_type = payload.get("msgtype") or payload.get("msgType") or ""
             media_label = msg_type or "file"
-            file_size = raw_content_obj.get("fileSize") or raw_content_obj.get("downloadSize") or 0
-            file_name = raw_content_obj.get("fileName") or raw_content_obj.get("name") or f"dingtalk_{msg_type}"
+            file_size = (
+                raw_content_obj.get("fileSize")
+                or raw_content_obj.get("downloadSize")
+                or 0
+            )
+            file_name = (
+                raw_content_obj.get("fileName")
+                or raw_content_obj.get("name")
+                or f"dingtalk_{msg_type}"
+            )
             download_code = raw_content_obj.get("downloadCode") or ""
             download_url = raw_content_obj.get("downloadUrl") or ""
             # downloadCode is NOT a URL — resolve it via DingTalk API first
@@ -155,7 +189,8 @@ class DingTalkChannel(Channel, WebSocketMixin, TokenMixin):
                 except Exception:
                     dl_headers = None
                 local, ann = await self._download_attachment(
-                    download_url, f"dingtalk_{file_name}",
+                    download_url,
+                    f"dingtalk_{file_name}",
                     headers=dl_headers,
                     file_size=int(file_size) if file_size else None,
                 )
@@ -183,7 +218,11 @@ class DingTalkChannel(Channel, WebSocketMixin, TokenMixin):
                     download_url = download_code
                 # DingTalk audioContent is voice messages
                 media_label = "voice" if att_key == "audioContent" else att_key
-                if download_url and (self.config.include_attachments if hasattr(self.config, 'include_attachments') else True):
+                if download_url and (
+                    self.config.include_attachments
+                    if hasattr(self.config, "include_attachments")
+                    else True
+                ):
                     # DingTalk download URLs require access token
                     try:
                         dl_token = await self._ensure_token()
@@ -191,7 +230,8 @@ class DingTalkChannel(Channel, WebSocketMixin, TokenMixin):
                     except Exception:
                         dl_headers = None
                     local, ann = await self._download_attachment(
-                        download_url, f"dingtalk_{file_name}",
+                        download_url,
+                        f"dingtalk_{file_name}",
                         headers=dl_headers,
                         file_size=int(file_size) if file_size else None,
                     )
@@ -231,17 +271,32 @@ class DingTalkChannel(Channel, WebSocketMixin, TokenMixin):
                         break
 
         try:
-            ts = datetime.fromtimestamp(int(create_time) / 1000) if create_time else datetime.now()
+            ts = (
+                datetime.fromtimestamp(int(create_time) / 1000)
+                if create_time
+                else datetime.now()
+            )
         except (ValueError, TypeError, OSError):
             ts = datetime.now()
 
-        await self._enqueue_raw(RawIncoming(
-            sender_id=sender_id, chat_id=chat_id, text=content, timestamp=ts,
-            message_id=msg_id, is_group=is_group, was_mentioned=was_mentioned,
-            media_files=media_paths,
-            content_annotations=annotations,
-            metadata={"chat_id": chat_id, "sender_nick": payload.get("senderNick", ""), "backend": "dingtalk"},
-        ))
+        await self._enqueue_raw(
+            RawIncoming(
+                sender_id=sender_id,
+                chat_id=chat_id,
+                text=content,
+                timestamp=ts,
+                message_id=msg_id,
+                is_group=is_group,
+                was_mentioned=was_mentioned,
+                media_files=media_paths,
+                content_annotations=annotations,
+                metadata={
+                    "chat_id": chat_id,
+                    "sender_nick": payload.get("senderNick", ""),
+                    "backend": "dingtalk",
+                },
+            )
+        )
 
     # _send_typing_action: inherited no-op (DingTalk has no typing API)
     # _format_chunk: inherited from base (UnifiedFormatter)
@@ -250,12 +305,16 @@ class DingTalkChannel(Channel, WebSocketMixin, TokenMixin):
 
     async def _send_chunk(self, chat_id, formatted_text, raw_text, reply_to, metadata):
         token = await self._ensure_token()
-        data = await self._api_post(SEND_URL, {
-            "robotCode": self.config.client_id,
-            "userIds": [chat_id],
-            "msgKey": "sampleMarkdown",
-            "msgParam": json.dumps({"text": raw_text, "title": "EvoScientist"}),
-        }, headers={"x-acs-dingtalk-access-token": token})
+        data = await self._api_post(
+            SEND_URL,
+            {
+                "robotCode": self.config.client_id,
+                "userIds": [chat_id],
+                "msgKey": "sampleMarkdown",
+                "msgParam": json.dumps({"text": raw_text, "title": "EvoScientist"}),
+            },
+            headers={"x-acs-dingtalk-access-token": token},
+        )
         return data
 
     # ── Media send ────────────────────────────────────────────────
@@ -284,53 +343,76 @@ class DingTalkChannel(Channel, WebSocketMixin, TokenMixin):
             # Try uploading image to get media_id for native image message
             media_id = await self._upload_dingtalk_media(token, file_path, "image")
             if media_id:
-                await self._api_post(MEDIA_SEND_URL, {
-                    "robotCode": self.config.client_id,
-                    "userIds": [chat_id],
-                    "msgKey": "sampleImageMsg",
-                    "msgParam": json.dumps({"photoURL": media_id}),
-                }, headers=headers)
+                await self._api_post(
+                    MEDIA_SEND_URL,
+                    {
+                        "robotCode": self.config.client_id,
+                        "userIds": [chat_id],
+                        "msgKey": "sampleImageMsg",
+                        "msgParam": json.dumps({"photoURL": media_id}),
+                    },
+                    headers=headers,
+                )
             else:
                 # Fallback to markdown with file path
-                await self._api_post(MEDIA_SEND_URL, {
-                    "robotCode": self.config.client_id,
-                    "userIds": [chat_id],
-                    "msgKey": "sampleMarkdown",
-                    "msgParam": json.dumps({
-                        "text": f"![image]({file_path})" + (f"\n{caption}" if caption else ""),
-                        "title": caption or "Image",
-                    }),
-                }, headers=headers)
+                await self._api_post(
+                    MEDIA_SEND_URL,
+                    {
+                        "robotCode": self.config.client_id,
+                        "userIds": [chat_id],
+                        "msgKey": "sampleMarkdown",
+                        "msgParam": json.dumps(
+                            {
+                                "text": f"![image]({file_path})"
+                                + (f"\n{caption}" if caption else ""),
+                                "title": caption or "Image",
+                            }
+                        ),
+                    },
+                    headers=headers,
+                )
         else:
             # Non-image: send as markdown with filename
             name = Path(file_path).name
             text = f"[文件] {name}" + (f"\n{caption}" if caption else "")
-            await self._api_post(MEDIA_SEND_URL, {
-                "robotCode": self.config.client_id,
-                "userIds": [chat_id],
-                "msgKey": "sampleMarkdown",
-                "msgParam": json.dumps({"text": text, "title": name}),
-            }, headers=headers)
+            await self._api_post(
+                MEDIA_SEND_URL,
+                {
+                    "robotCode": self.config.client_id,
+                    "userIds": [chat_id],
+                    "msgKey": "sampleMarkdown",
+                    "msgParam": json.dumps({"text": text, "title": name}),
+                },
+                headers=headers,
+            )
 
         if caption and ext in self._IMAGE_EXTS:
             # Send caption separately for image messages
-            await self._api_post(MEDIA_SEND_URL, {
-                "robotCode": self.config.client_id,
-                "userIds": [chat_id],
-                "msgKey": "sampleMarkdown",
-                "msgParam": json.dumps({"text": caption, "title": "Caption"}),
-            }, headers=headers)
+            await self._api_post(
+                MEDIA_SEND_URL,
+                {
+                    "robotCode": self.config.client_id,
+                    "userIds": [chat_id],
+                    "msgKey": "sampleMarkdown",
+                    "msgParam": json.dumps({"text": caption, "title": "Caption"}),
+                },
+                headers=headers,
+            )
         return True
 
     async def _upload_dingtalk_media(
-        self, token: str, file_path: str, media_type: str = "image",
+        self,
+        token: str,
+        file_path: str,
+        media_type: str = "image",
     ) -> str | None:
         """Upload a file to DingTalk media API and return the media_id."""
         try:
             url = f"{MEDIA_UPLOAD_URL}?access_token={token}&type={media_type}"
             with open(file_path, "rb") as f:
                 resp = await self._http_client.post(
-                    url, files={"media": (Path(file_path).name, f)},
+                    url,
+                    files={"media": (Path(file_path).name, f)},
                 )
             data = resp.json()
             return data.get("media_id")

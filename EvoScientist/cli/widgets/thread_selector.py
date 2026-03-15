@@ -26,6 +26,7 @@ if TYPE_CHECKING:
 # Helpers
 # ---------------------------------------------------------------------------
 
+
 def build_row_text(
     thread: dict,
     *,
@@ -66,6 +67,7 @@ def build_row_text(
 # ---------------------------------------------------------------------------
 # Widget
 # ---------------------------------------------------------------------------
+
 
 class ThreadPickerWidget(Widget):
     """Inline thread picker — mounts in chat, keyboard-driven.
@@ -164,7 +166,9 @@ class ThreadPickerWidget(Widget):
     def _update_rows(self) -> None:
         for i, (thread, widget) in enumerate(zip(self._threads, self._row_widgets)):
             is_current = thread["thread_id"] == self._current_thread
-            text = build_row_text(thread, selected=(i == self._selected), current=is_current)
+            text = build_row_text(
+                thread, selected=(i == self._selected), current=is_current
+            )
             widget.update(text)
             widget.remove_class("picker-row-selected")
             if i == self._selected:

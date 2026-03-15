@@ -16,6 +16,7 @@ from EvoScientist.middleware.tool_error_handler import (
 # Helpers
 # ---------------------------------------------------------------------------
 
+
 def _make_request(tool_name: str = "my_mcp_tool", call_id: str = "tc_001"):
     """Create a minimal ToolCallRequest-like object."""
     req = MagicMock()
@@ -152,6 +153,7 @@ class TestWrapToolCallAsync:
     @staticmethod
     def _run(coro):
         from tests.conftest import run_async
+
         return run_async(coro)
 
     def test_success_passes_through(self):

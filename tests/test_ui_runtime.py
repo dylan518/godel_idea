@@ -2,7 +2,11 @@
 
 from dataclasses import dataclass
 
-from EvoScientist.cli.tui_runtime import normalize_ui_backend, resolve_ui_backend, run_streaming
+from EvoScientist.cli.tui_runtime import (
+    normalize_ui_backend,
+    resolve_ui_backend,
+    run_streaming,
+)
 
 
 def test_normalize_ui_backend_defaults_to_cli():
@@ -28,12 +32,16 @@ def test_normalize_ui_backend_unknown_falls_back_to_cli():
 
 
 def test_resolve_ui_backend_falls_back_when_textual_unavailable(monkeypatch):
-    monkeypatch.setattr("EvoScientist.cli.tui_runtime._has_textual_support", lambda: False)
+    monkeypatch.setattr(
+        "EvoScientist.cli.tui_runtime._has_textual_support", lambda: False
+    )
     assert resolve_ui_backend("tui") == "cli"
 
 
 def test_resolve_ui_backend_keeps_tui_when_available(monkeypatch):
-    monkeypatch.setattr("EvoScientist.cli.tui_runtime._has_textual_support", lambda: True)
+    monkeypatch.setattr(
+        "EvoScientist.cli.tui_runtime._has_textual_support", lambda: True
+    )
     assert resolve_ui_backend("tui") == "tui"
 
 
@@ -46,13 +54,17 @@ class _BrokenBackend:
 
 
 def test_run_streaming_falls_back_to_cli_on_runtime_error(monkeypatch):
-    monkeypatch.setattr("EvoScientist.cli.tui_runtime.get_backend", lambda *a, **k: _BrokenBackend())
+    monkeypatch.setattr(
+        "EvoScientist.cli.tui_runtime.get_backend", lambda *a, **k: _BrokenBackend()
+    )
 
     class _RichStub:
         def run_streaming(self, **kwargs):  # noqa: ANN003, ANN201
             return "fallback-ok"
 
-    monkeypatch.setattr("EvoScientist.cli.tui_runtime.RichStreamingBackend", lambda: _RichStub())
+    monkeypatch.setattr(
+        "EvoScientist.cli.tui_runtime.RichStreamingBackend", lambda: _RichStub()
+    )
 
     result = run_streaming(
         ui_backend="tui",

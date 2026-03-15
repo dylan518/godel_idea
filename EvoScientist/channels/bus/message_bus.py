@@ -51,7 +51,9 @@ class MessageBus:
     # ── subscriber routing ──
 
     def subscribe_outbound(
-        self, channel: str, callback: OutboundCallback,
+        self,
+        channel: str,
+        callback: OutboundCallback,
     ) -> None:
         """Register a callback for outbound messages targeting *channel*."""
         if channel not in self._outbound_subscribers:
@@ -67,7 +69,8 @@ class MessageBus:
         while self._running:
             try:
                 msg = await asyncio.wait_for(
-                    self.outbound.get(), timeout=1.0,
+                    self.outbound.get(),
+                    timeout=1.0,
                 )
             except asyncio.TimeoutError:
                 continue
@@ -79,9 +82,7 @@ class MessageBus:
                 try:
                     await callback(msg)
                 except Exception as e:
-                    logger.error(
-                        f"Error dispatching to {msg.channel}: {e}"
-                    )
+                    logger.error(f"Error dispatching to {msg.channel}: {e}")
 
     def stop(self) -> None:
         """Stop the dispatcher loop."""

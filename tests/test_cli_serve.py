@@ -62,7 +62,9 @@ def _run_serve_once(
     monkeypatch.setattr(commands, "set_workspace_root", _fake_set_workspace_root)
     monkeypatch.setattr(commands, "ensure_dirs", _fake_ensure_dirs)
     monkeypatch.setattr(commands, "_load_agent", _fake_load_agent)
-    monkeypatch.setattr(commands, "_start_channels_bus_mode", _fake_start_channels_bus_mode)
+    monkeypatch.setattr(
+        commands, "_start_channels_bus_mode", _fake_start_channels_bus_mode
+    )
     monkeypatch.setattr(commands, "_channels_stop", _fake_channels_stop)
     monkeypatch.setattr(commands, "_message_queue", _InterruptQueue())
 
@@ -79,7 +81,9 @@ def _run_serve_once(
     return order, captured
 
 
-def test_serve_workdir_has_highest_priority_and_sets_root_before_ensure(monkeypatch, tmp_path):
+def test_serve_workdir_has_highest_priority_and_sets_root_before_ensure(
+    monkeypatch, tmp_path
+):
     cfg_ws = tmp_path / "cfg_ws"
     cli_ws = tmp_path / "cli_ws"
     config = _make_config(default_workdir=str(cfg_ws), channel_send_thinking=True)

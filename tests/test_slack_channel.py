@@ -75,5 +75,6 @@ class TestSlackChannel:
 class TestSlackChannelRegistration:
     def test_slack_registered(self):
         from EvoScientist.channels.channel_manager import available_channels
+
         channels = available_channels()
         assert "slack" in channels

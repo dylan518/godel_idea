@@ -39,8 +39,7 @@ class SlackChannel(Channel):
             raise ChannelError("Slack bot token is required")
         if not self.config.app_token:
             raise ChannelError(
-                "Slack app token is required for Socket Mode "
-                "(starts with xapp-)"
+                "Slack app token is required for Socket Mode (starts with xapp-)"
             )
 
         try:
@@ -62,7 +61,8 @@ class SlackChannel(Channel):
         # Get bot user ID for filtering own messages
         try:
             auth = await asyncio.wait_for(
-                self._web_client.auth_test(), timeout=15,
+                self._web_client.auth_test(),
+                timeout=15,
             )
             self._bot_user_id = auth["user_id"]
         except asyncio.TimeoutError:
@@ -93,19 +93,22 @@ class SlackChannel(Channel):
                 if event_type == "message" and "subtype" not in event:
                     is_dm = event.get("channel_type") == "im"
                     await self._on_message(
-                        event, is_group=not is_dm, was_mentioned=is_dm,
+                        event,
+                        is_group=not is_dm,
+                        was_mentioned=is_dm,
                     )
                 elif event_type == "app_mention":
                     await self._on_message(
-                        event, is_group=True, was_mentioned=True,
+                        event,
+                        is_group=True,
+                        was_mentioned=True,
                     )
 
-        self._socket_client.socket_mode_request_listeners.append(
-            _event_handler
-        )
+        self._socket_client.socket_mode_request_listeners.append(_event_handler)
         try:
             await asyncio.wait_for(
-                self._socket_client.connect(), timeout=30,
+                self._socket_client.connect(),
+                timeout=30,
             )
         except asyncio.TimeoutError:
             raise ChannelError(
@@ -159,7 +162,6 @@ class SlackChannel(Channel):
 
     # ── Send (template method overrides) ──────────────────────────
 
-
     async def _send_chunk(self, chat_id, formatted_text, raw_text, reply_to, metadata):
         kwargs = dict(channel=chat_id)
         # Always route to thread if thread_ts is present in metadata,
@@ -195,22 +197,30 @@ class SlackChannel(Channel):
 
     # ── ACK Reactions ───────────────────────────────────────────────
 
-    async def _send_ack_reaction(self, chat_id: str, message_id: str, emoji: str = "eyes") -> None:
+    async def _send_ack_reaction(
+        self, chat_id: str, message_id: str, emoji: str = "eyes"
+    ) -> None:
         """Add an emoji reaction to acknowledge receipt."""
         if self._web_client and message_id:
             try:
                 await self._web_client.reactions_add(
-                    channel=chat_id, timestamp=message_id, name=emoji,
+                    channel=chat_id,
+                    timestamp=message_id,
+                    name=emoji,
                 )
             except Exception as e:
                 logger.debug(f"Slack ACK reaction failed: {e}")
 
-    async def _remove_ack_reaction(self, chat_id: str, message_id: str, emoji: str = "eyes") -> None:
+    async def _remove_ack_reaction(
+        self, chat_id: str, message_id: str, emoji: str = "eyes"
+    ) -> None:
         """Remove the ACK reaction after replying."""
         if self._web_client and message_id:
             try:
                 await self._web_client.reactions_remove(
-                    channel=chat_id, timestamp=message_id, name=emoji,
+                    channel=chat_id,
+                    timestamp=message_id,
+                    name=emoji,
                 )
             except Exception as e:
                 logger.debug(f"Slack remove ACK reaction failed: {e}")
@@ -253,11 +263,10 @@ class SlackChannel(Channel):
                     "url_private"
                 )
                 if url and self._web_client:
-                    headers = {
-                        "Authorization": f"Bearer {self.config.bot_token}"
-                    }
+                    headers = {"Authorization": f"Bearer {self.config.bot_token}"}
                     local_path, annotation = await self._download_attachment(
-                        url, f"{file_info.get('id', 'unknown')}_{filename}",
+                        url,
+                        f"{file_info.get('id', 'unknown')}_{filename}",
                         headers=headers,
                         file_size=file_size,
                     )
@@ -273,18 +282,20 @@ class SlackChannel(Channel):
         except (ValueError, TypeError):
             timestamp = datetime.now()
 
-        await self._enqueue_raw(RawIncoming(
-            sender_id=user_id,
-            chat_id=channel_id,
-            text=text,
-            media_files=media_paths,
-            content_annotations=annotations,
-            timestamp=timestamp,
-            message_id=ts,
-            metadata={"chat_id": channel_id, "thread_ts": thread_ts},
-            is_group=is_group,
-            was_mentioned=was_mentioned,
-        ))
+        await self._enqueue_raw(
+            RawIncoming(
+                sender_id=user_id,
+                chat_id=channel_id,
+                text=text,
+                media_files=media_paths,
+                content_annotations=annotations,
+                timestamp=timestamp,
+                message_id=ts,
+                metadata={"chat_id": channel_id, "thread_ts": thread_ts},
+                is_group=is_group,
+                was_mentioned=was_mentioned,
+            )
+        )
         logger.info(
             f"Slack message queued: sender={user_id}, "
             f"channel={channel_id}, content={text[:50]}"

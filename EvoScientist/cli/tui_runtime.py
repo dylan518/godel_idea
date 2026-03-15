@@ -26,6 +26,7 @@ def normalize_ui_backend(value: str | None) -> str:
 def _has_textual_support() -> bool:
     try:
         import textual  # noqa: F401
+
         return True
     except Exception:
         return False
@@ -37,14 +38,16 @@ def resolve_ui_backend(value: str | None, *, warn_fallback: bool = False) -> str
     if requested == "tui" and not _has_textual_support():
         if warn_fallback:
             console.print(
-                '[yellow]TUI is unavailable (missing textual package). '
-                'Falling back to CLI.[/yellow]'
+                "[yellow]TUI is unavailable (missing textual package). "
+                "Falling back to CLI.[/yellow]"
             )
         return DEFAULT_UI_BACKEND
     return requested
 
 
-def get_backend(name: str | None, *, warn_fallback: bool = False) -> StreamingTUIBackend:
+def get_backend(
+    name: str | None, *, warn_fallback: bool = False
+) -> StreamingTUIBackend:
     """Instantiate a streaming backend by name.
 
     Note: The Textual TUI is now a full interactive app (tui_interactive.py),

@@ -14,7 +14,9 @@ def _cmd_list_skills() -> None:
     if not skills:
         console.print("[dim]No skills available.[/dim]")
         console.print("[dim]Install with:[/dim] /install-skill <path-or-url>")
-        console.print(f"[dim]Skills directory:[/dim] [cyan]{_shorten_path(str(USER_SKILLS_DIR))}[/cyan]")
+        console.print(
+            f"[dim]Skills directory:[/dim] [cyan]{_shorten_path(str(USER_SKILLS_DIR))}[/cyan]"
+        )
         console.print()
         return
 
@@ -34,7 +36,9 @@ def _cmd_list_skills() -> None:
         for skill in system_skills:
             console.print(f"  [cyan]{skill.name}[/cyan] - {skill.description}")
 
-    console.print(f"\n[dim]User skills folder:[/dim] [green]{_shorten_path(str(USER_SKILLS_DIR))}[/green]")
+    console.print(
+        f"\n[dim]User skills folder:[/dim] [green]{_shorten_path(str(USER_SKILLS_DIR))}[/green]"
+    )
     console.print()
 
 
@@ -46,7 +50,9 @@ def _cmd_install_skill(source: str) -> None:
         console.print("[red]Usage:[/red] /install-skill <path-or-url>")
         console.print("[dim]Examples:[/dim]")
         console.print("  /install-skill ./my-skill")
-        console.print("  /install-skill https://github.com/user/repo/tree/main/skill-name")
+        console.print(
+            "  /install-skill https://github.com/user/repo/tree/main/skill-name"
+        )
         console.print("  /install-skill user/repo@skill-name")
         console.print()
         return
@@ -59,8 +65,12 @@ def _cmd_install_skill(source: str) -> None:
         # Batch install — multiple skills
         for item in result.get("installed", []):
             console.print(f"[green]Installed:[/green] {item['name']}")
-            console.print(f"  [dim]Description:[/dim] {item.get('description', '(none)')}")
-            console.print(f"  [dim]Path:[/dim] [cyan]{_shorten_path(item['path'])}[/cyan]")
+            console.print(
+                f"  [dim]Description:[/dim] {item.get('description', '(none)')}"
+            )
+            console.print(
+                f"  [dim]Path:[/dim] [cyan]{_shorten_path(item['path'])}[/cyan]"
+            )
         for item in result.get("failed", []):
             console.print(f"[red]Failed:[/red] {item['name']} — {item['error']}")
         installed_count = len(result.get("installed", []))

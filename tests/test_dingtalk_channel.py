@@ -80,6 +80,7 @@ class TestDingTalkChannel:
 
     def test_capabilities(self):
         from EvoScientist.channels.capabilities import DINGTALK
+
         config = DingTalkConfig()
         channel = DingTalkChannel(config)
         assert channel.capabilities is DINGTALK
@@ -268,6 +269,7 @@ class TestDingTalkSendChunk:
 class TestDingTalkChannelRegistration:
     def test_dingtalk_registered(self):
         from EvoScientist.channels.channel_manager import available_channels
+
         channels = available_channels()
         assert "dingtalk" in channels
 
@@ -275,16 +277,19 @@ class TestDingTalkChannelRegistration:
 class TestDingTalkProbe:
     def test_missing_credentials(self):
         from EvoScientist.channels.dingtalk.probe import validate_dingtalk
+
         ok, msg = _run(validate_dingtalk("", ""))
         assert ok is False
         assert "required" in msg
 
     def test_missing_client_id(self):
         from EvoScientist.channels.dingtalk.probe import validate_dingtalk
+
         ok, msg = _run(validate_dingtalk("", "secret"))
         assert ok is False
 
     def test_missing_client_secret(self):
         from EvoScientist.channels.dingtalk.probe import validate_dingtalk
+
         ok, msg = _run(validate_dingtalk("id", ""))
         assert ok is False

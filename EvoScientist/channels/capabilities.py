@@ -27,35 +27,35 @@ class ChannelCapabilities:
     max_file_size: int = 20 * 1024 * 1024  # 20 MB
 
     # ── Interaction capabilities ────────────────────────────────────
-    streaming: bool = False       # edit-in-place streaming output
-    threading: bool = False       # message threads / topics
-    reactions: bool = False       # emoji reactions on messages
-    typing: bool = False          # typing indicator API
+    streaming: bool = False  # edit-in-place streaming output
+    threading: bool = False  # message threads / topics
+    reactions: bool = False  # emoji reactions on messages
+    typing: bool = False  # typing indicator API
     inline_buttons: bool = False  # inline keyboard / action buttons
 
     # ── Media capabilities ──────────────────────────────────────────
-    media_send: bool = False      # can send files/images
-    media_receive: bool = False   # can receive files/images
-    voice: bool = False           # platform has voice/audio messages that arrive as downloadable files (receive only, not bot sending)
-    stickers: bool = False        # supports sticker receive (not bot sending)
-    location: bool = False        # supports location message receive (not bot sending)
-    video: bool = False           # video messages
+    media_send: bool = False  # can send files/images
+    media_receive: bool = False  # can receive files/images
+    voice: bool = False  # platform has voice/audio messages that arrive as downloadable files (receive only, not bot sending)
+    stickers: bool = False  # supports sticker receive (not bot sending)
+    location: bool = False  # supports location message receive (not bot sending)
+    video: bool = False  # video messages
 
     # ── Group features ──────────────────────────────────────────────
-    groups: bool = False          # group chat support
-    mentions: bool = False        # @mention detection
+    groups: bool = False  # group chat support
+    mentions: bool = False  # @mention detection
 
     # ── Rich text ───────────────────────────────────────────────────
-    markdown: bool = False        # supports Markdown rendering
-    html: bool = False            # supports HTML rendering
+    markdown: bool = False  # supports Markdown rendering
+    html: bool = False  # supports HTML rendering
 
     # ── Extended capabilities ────────────────────────────────────────
-    chat_types: tuple[str, ...] = ()   # ("direct", "group", "channel", "thread")
-    edit: bool = False                  # message editing after send
-    unsend: bool = False                # message recall / unsend
-    block_streaming: bool = False       # block edit-in-place streaming
-    native_commands: bool = False       # platform-native slash commands
-    polls: bool = False                 # poll / vote messages
+    chat_types: tuple[str, ...] = ()  # ("direct", "group", "channel", "thread")
+    edit: bool = False  # message editing after send
+    unsend: bool = False  # message recall / unsend
+    block_streaming: bool = False  # block edit-in-place streaming
+    native_commands: bool = False  # platform-native slash commands
+    polls: bool = False  # poll / vote messages
 
     def supports(self, feature: str) -> bool:
         """Check if a feature is supported by name."""
@@ -70,7 +70,7 @@ TELEGRAM = ChannelCapabilities(
     format_type="html",
     max_text_length=4000,
     streaming=False,  # could edit messages, but not implemented yet
-    threading=False,   # topics exist but not used yet
+    threading=False,  # topics exist but not used yet
     reactions=True,
     typing=True,
     media_send=True,
@@ -209,12 +209,12 @@ EMAIL = ChannelCapabilities(
 IMESSAGE = ChannelCapabilities(
     format_type="plain",
     max_text_length=999_999,
-    typing=False,      # Apple does not expose typing indicator API
+    typing=False,  # Apple does not expose typing indicator API
     media_send=True,
     media_receive=True,
     voice=True,
     groups=True,
-    mentions=False,    # iMessage has no @mention concept
-    reactions=False,   # imsg CLI cannot send tapback reactions
+    mentions=False,  # iMessage has no @mention concept
+    reactions=False,  # imsg CLI cannot send tapback reactions
     chat_types=("direct", "group"),
 )

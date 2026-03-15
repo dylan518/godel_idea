@@ -44,7 +44,9 @@ class SingleAccountConfigAdapter:
         return ["default"]
 
     def resolve_account(
-        self, config: Any, account_id: str | None = None,
+        self,
+        config: Any,
+        account_id: str | None = None,
     ) -> Any:
         return config
 
@@ -59,10 +61,7 @@ class SingleAccountConfigAdapter:
             return bool(account)
         # dataclass / object — check that at least one field is truthy
         if hasattr(account, "__dataclass_fields__"):
-            return any(
-                getattr(account, f, None)
-                for f in account.__dataclass_fields__
-            )
+            return any(getattr(account, f, None) for f in account.__dataclass_fields__)
         return True
 
 
@@ -101,7 +100,9 @@ class MultiAccountConfigAdapter:
         return list(self._get_accounts_map(config).keys())
 
     def resolve_account(
-        self, config: Any, account_id: str | None = None,
+        self,
+        config: Any,
+        account_id: str | None = None,
     ) -> Any:
         accounts = self._get_accounts_map(config)
         if account_id is None:

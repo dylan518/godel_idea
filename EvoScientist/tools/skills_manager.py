@@ -140,7 +140,9 @@ def _clone_repo(repo: str, ref: str | None, dest: str) -> None:
     cmd += [clone_url, dest]
 
     try:
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=_CLONE_TIMEOUT)
+        result = subprocess.run(
+            cmd, capture_output=True, text=True, timeout=_CLONE_TIMEOUT
+        )
     except subprocess.TimeoutExpired:
         raise RuntimeError(f"git clone timed out after {_CLONE_TIMEOUT}s for {repo}")
     if result.returncode != 0:
@@ -187,7 +189,8 @@ def _scan_skill_dirs(root: Path) -> list[Path]:
         else:
             # Non-skill directory — scan its children (level 2)
             found.extend(
-                gc for gc in sorted(child.iterdir())
+                gc
+                for gc in sorted(child.iterdir())
                 if gc.is_dir() and _validate_skill_dir(gc)
             )
     return found
@@ -281,9 +284,7 @@ def _install_from_local(source: str, dest_dir: str) -> dict:
     return _install_single_local(source_path, dest_dir)
 
 
-def _install_single_local(
-    source_path: Path, dest_dir: str, *, ignore_fn=None
-) -> dict:
+def _install_single_local(source_path: Path, dest_dir: str, *, ignore_fn=None) -> dict:
     """Install one skill directory into *dest_dir*."""
     skill_info = _parse_skill_md(source_path / "SKILL.md")
     skill_name = _sanitize_name(skill_info["name"])
@@ -379,14 +380,18 @@ def _install_from_github(source: str, dest_dir: str) -> dict:
                     if resolved:
                         skill_source = resolved
                     else:
-                        return {"success": False, "error": f"No SKILL.md found at '{path}' (also searched subdirectories) in: {source}"}
+                        return {
+                            "success": False,
+                            "error": f"No SKILL.md found at '{path}' (also searched subdirectories) in: {source}",
+                        }
                 else:
-                    return {"success": False, "error": f"No SKILL.md found in: {source}"}
+                    return {
+                        "success": False,
+                        "error": f"No SKILL.md found in: {source}",
+                    }
 
         # Single skill — install it
-        result = _install_single_local(
-            skill_source, dest_dir, ignore_fn=ignore_git
-        )
+        result = _install_single_local(skill_source, dest_dir, ignore_fn=ignore_git)
         if result.get("success"):
             result["source"] = source
         return result

@@ -23,10 +23,14 @@ async def validate_signal(
 
     # Check signal-cli binary
     loop = asyncio.get_event_loop()
+
     def _check():
         try:
             result = subprocess.run(
-                [cli_path, "--version"], capture_output=True, text=True, timeout=5,
+                [cli_path, "--version"],
+                capture_output=True,
+                text=True,
+                timeout=5,
             )
             if result.returncode == 0:
                 return True, f"signal-cli {result.stdout.strip()}"

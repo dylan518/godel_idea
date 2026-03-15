@@ -13,6 +13,7 @@ from EvoScientist.stream.utils import (
 
 # === is_success ===
 
+
 class TestIsSuccess:
     def test_ok_prefix(self):
         assert is_success("[OK] all good") is True
@@ -51,7 +52,10 @@ class TestIsSuccess:
         assert is_success("Error invoking tool 'write_file'") is False
 
     def test_failed_to_uninstall(self):
-        assert is_success("Failed to uninstall skill: Skill not found: latex-paper-en") is False
+        assert (
+            is_success("Failed to uninstall skill: Skill not found: latex-paper-en")
+            is False
+        )
 
     def test_failed_to_install(self):
         assert is_success("Failed to install skill: git clone failed: ...") is False
@@ -62,6 +66,7 @@ class TestIsSuccess:
 
 
 # === format_tool_compact ===
+
 
 class TestFormatToolCompact:
     def test_no_args(self):
@@ -130,7 +135,9 @@ class TestFormatToolCompact:
         assert format_tool_compact("read_todos", {}) == "read_todos()"
 
     def test_task_with_type_and_desc(self):
-        result = format_tool_compact("task", {"subagent_type": "research-agent", "description": "Find papers"})
+        result = format_tool_compact(
+            "task", {"subagent_type": "research-agent", "description": "Find papers"}
+        )
         assert "Cooking with research-agent" in result
         assert "Find papers" in result
 
@@ -166,6 +173,7 @@ class TestFormatToolCompact:
 
 # === truncate ===
 
+
 class TestTruncate:
     def test_within_limit(self):
         assert truncate("hello", 10) == "hello"
@@ -181,6 +189,7 @@ class TestTruncate:
 
 # === _shorten_path ===
 
+
 class TestShortenPath:
     def test_short_path(self):
         assert _shorten_path("src/main.py") == "src/main.py"
@@ -193,6 +202,7 @@ class TestShortenPath:
 
 
 # === has_args ===
+
 
 class TestHasArgs:
     def test_none(self):
@@ -207,6 +217,7 @@ class TestHasArgs:
 
 # === count_lines ===
 
+
 class TestCountLines:
     def test_empty(self):
         assert count_lines("") == 0
@@ -219,6 +230,7 @@ class TestCountLines:
 
 
 # === truncate_with_line_hint ===
+
 
 class TestTruncateWithLineHint:
     def test_within_limit(self):

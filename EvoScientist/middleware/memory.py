@@ -62,23 +62,31 @@ class EvoMemoryState(AgentState):
 
     evo_memory_content: NotRequired[Annotated[str, PrivateStateAttr]]
 
+
 # ---------------------------------------------------------------------------
 # Structured extraction schemas
 # ---------------------------------------------------------------------------
 
+
 class UserProfile(BaseModel):
     """Extracted user profile information."""
+
     name: str | None = Field(None, description="User's name")
     role: str | None = Field(None, description="User's role (e.g. researcher, student)")
-    institution: str | None = Field(None, description="User's institution or organization")
+    institution: str | None = Field(
+        None, description="User's institution or organization"
+    )
     language: str | None = Field(None, description="User's preferred language")
 
 
 class ResearchPreferences(BaseModel):
     """Extracted research preference information."""
+
     primary_domain: str | None = Field(None, description="Primary research domain")
     sub_fields: str | None = Field(None, description="Research sub-fields")
-    preferred_frameworks: str | None = Field(None, description="Preferred software frameworks")
+    preferred_frameworks: str | None = Field(
+        None, description="Preferred software frameworks"
+    )
     preferred_models: str | None = Field(None, description="Preferred AI/ML models")
     hardware: str | None = Field(None, description="Available hardware (GPUs, etc.)")
     constraints: str | None = Field(None, description="Resource or time constraints")
@@ -86,6 +94,7 @@ class ResearchPreferences(BaseModel):
 
 class ExperimentConclusion(BaseModel):
     """Extracted experiment conclusion (only when a complete experiment was run)."""
+
     title: str = Field(description="Experiment name")
     question: str | None = Field(None, description="Research question")
     method: str | None = Field(None, description="Method summary")
@@ -99,10 +108,19 @@ class ExtractedMemory(BaseModel):
 
     Only fields with genuinely new information should be populated.
     """
-    user_profile: UserProfile | None = Field(None, description="New user profile information")
-    research_preferences: ResearchPreferences | None = Field(None, description="New research preferences")
-    experiment_conclusion: ExperimentConclusion | None = Field(None, description="Completed experiment conclusion")
-    learned_preferences: list[str] | None = Field(None, description="New preferences or habits observed")
+
+    user_profile: UserProfile | None = Field(
+        None, description="New user profile information"
+    )
+    research_preferences: ResearchPreferences | None = Field(
+        None, description="New research preferences"
+    )
+    experiment_conclusion: ExperimentConclusion | None = Field(
+        None, description="Completed experiment conclusion"
+    )
+    learned_preferences: list[str] | None = Field(
+        None, description="New preferences or habits observed"
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -289,6 +307,7 @@ def _normalize_item(value: str) -> str:
 # Helper: merge extracted JSON into MEMORY.md markdown
 # ---------------------------------------------------------------------------
 
+
 def _merge_memory(existing_md: str, extracted: dict[str, Any]) -> str:
     """Merge extracted fields into the existing MEMORY.md content.
 
@@ -338,6 +357,7 @@ def _merge_memory(existing_md: str, extracted: dict[str, Any]) -> str:
     should_add_exp = bool(exp and isinstance(exp, dict) and exp.get("title"))
     if should_add_exp:
         from datetime import datetime
+
         date_str = datetime.now().strftime("%Y-%m-%d")
         title = str(exp.get("title", "Untitled")).strip()
         entry = f"\n### [{date_str}] {title}\n"
@@ -353,9 +373,17 @@ def _merge_memory(existing_md: str, extracted: dict[str, Any]) -> str:
         if exp_start is not None and exp_end is not None:
             exp_section = result[exp_start:exp_end]
             exp_lines = [
-                line for line in exp_section.splitlines() if "(No experiments yet)" not in line
+                line
+                for line in exp_section.splitlines()
+                if "(No experiments yet)" not in line
             ]
-            result = result[:exp_start] + "\n" + "\n".join(exp_lines).strip("\n") + "\n" + result[exp_end:]
+            result = (
+                result[:exp_start]
+                + "\n"
+                + "\n".join(exp_lines).strip("\n")
+                + "\n"
+                + result[exp_end:]
+            )
 
         # De-duplicate by title if already present
         if re.search(rf"### \[[0-9-]+\] {re.escape(title)}\b", result):
@@ -382,7 +410,8 @@ def _merge_memory(existing_md: str, extracted: dict[str, Any]) -> str:
         if start is not None and end is not None:
             section = result[start:end]
             section_lines = [
-                line for line in section.splitlines()
+                line
+                for line in section.splitlines()
                 if line.strip() and line.strip() not in {"- (none yet)", "- (none)"}
             ]
             existing_items = {
@@ -411,6 +440,7 @@ def _merge_memory(existing_md: str, extracted: dict[str, Any]) -> str:
 # ---------------------------------------------------------------------------
 # Middleware
 # ---------------------------------------------------------------------------
+
 
 class EvoMemoryMiddleware(AgentMiddleware):
     """Middleware that injects and auto-extracts long-term memory.
@@ -496,7 +526,11 @@ class EvoMemoryMiddleware(AgentMiddleware):
         """Read MEMORY.md content (raw bytes → str)."""
         try:
             responses = backend.download_files([self._memory_path])
-            if responses and responses[0].content is not None and responses[0].error is None:
+            if (
+                responses
+                and responses[0].content is not None
+                and responses[0].error is None
+            ):
                 return responses[0].content.decode("utf-8")
         except Exception as e:  # noqa: BLE001
             logger.debug("Failed to read memory at %s: %s", self._memory_path, e)
@@ -505,13 +539,19 @@ class EvoMemoryMiddleware(AgentMiddleware):
     async def _aread_memory(self, backend: BackendProtocol) -> str:
         try:
             responses = await backend.adownload_files([self._memory_path])
-            if responses and responses[0].content is not None and responses[0].error is None:
+            if (
+                responses
+                and responses[0].content is not None
+                and responses[0].error is None
+            ):
                 return responses[0].content.decode("utf-8")
         except Exception as e:  # noqa: BLE001
             logger.debug("Failed to read memory at %s: %s", self._memory_path, e)
         return ""
 
-    def _write_memory(self, backend: BackendProtocol, old_content: str, new_content: str) -> None:
+    def _write_memory(
+        self, backend: BackendProtocol, old_content: str, new_content: str
+    ) -> None:
         """Write updated MEMORY.md (edit if exists, write if new)."""
         try:
             if old_content:
@@ -523,10 +563,14 @@ class EvoMemoryMiddleware(AgentMiddleware):
         except Exception as e:  # noqa: BLE001
             logger.warning("Exception writing memory: %s", e)
 
-    async def _awrite_memory(self, backend: BackendProtocol, old_content: str, new_content: str) -> None:
+    async def _awrite_memory(
+        self, backend: BackendProtocol, old_content: str, new_content: str
+    ) -> None:
         try:
             if old_content:
-                result = await backend.aedit(self._memory_path, old_content, new_content)
+                result = await backend.aedit(
+                    self._memory_path, old_content, new_content
+                )
             else:
                 result = await backend.awrite(self._memory_path, new_content)
             if result and result.error:
@@ -610,26 +654,34 @@ class EvoMemoryMiddleware(AgentMiddleware):
             # Fallback for non-Pydantic or unusual model classes
             return model.bind(**{k: v for k, v in updates.items() if v is not None})
 
-    def _extract(self, model: BaseChatModel, memory: str, messages: list[AnyMessage]) -> dict[str, Any]:
+    def _extract(
+        self, model: BaseChatModel, memory: str, messages: list[AnyMessage]
+    ) -> dict[str, Any]:
         """Run LLM extraction on recent messages using structured output."""
         prompt = self._build_extraction_prompt(memory, messages)
         try:
             plain_model = self._disable_thinking(model)
             so_kwargs = self._structured_output_kwargs(plain_model)
-            structured_model = plain_model.with_structured_output(ExtractedMemory, **so_kwargs)
+            structured_model = plain_model.with_structured_output(
+                ExtractedMemory, **so_kwargs
+            )
             result = structured_model.invoke(prompt)
             return result.model_dump(exclude_none=True)
         except Exception as e:  # noqa: BLE001
             logger.warning("Memory extraction failed: %s", e)
             return {}
 
-    async def _aextract(self, model: BaseChatModel, memory: str, messages: list[AnyMessage]) -> dict[str, Any]:
+    async def _aextract(
+        self, model: BaseChatModel, memory: str, messages: list[AnyMessage]
+    ) -> dict[str, Any]:
         """Async: Run LLM extraction on recent messages using structured output."""
         prompt = self._build_extraction_prompt(memory, messages)
         try:
             plain_model = self._disable_thinking(model)
             so_kwargs = self._structured_output_kwargs(plain_model)
-            structured_model = plain_model.with_structured_output(ExtractedMemory, **so_kwargs)
+            structured_model = plain_model.with_structured_output(
+                ExtractedMemory, **so_kwargs
+            )
             result = await structured_model.ainvoke(prompt)
             return result.model_dump(exclude_none=True)
         except Exception as e:  # noqa: BLE001
@@ -660,6 +712,7 @@ class EvoMemoryMiddleware(AgentMiddleware):
             memory_content = "(No memory saved yet. Create `/memory/MEMORY.md` when you learn important information.)"
 
         from deepagents.middleware._utils import append_to_system_message
+
         injection = MEMORY_INJECTION_TEMPLATE.format(memory_content=memory_content)
         new_system = append_to_system_message(request.system_message, injection)
         return request.override(system_message=new_system)
@@ -747,6 +800,7 @@ class EvoMemoryMiddleware(AgentMiddleware):
 # ---------------------------------------------------------------------------
 # Factory
 # ---------------------------------------------------------------------------
+
 
 def create_memory_middleware(
     memory_dir: str | None = None,

@@ -38,6 +38,7 @@ AGENT_NAME = "EvoScientist"
 # Paths & ID generation
 # ---------------------------------------------------------------------------
 
+
 def get_db_path() -> Path:
     """Return ``~/.config/evoscientist/sessions.db``, creating parents."""
     db_dir = Path.home() / ".config" / "evoscientist"
@@ -54,6 +55,7 @@ def generate_thread_id() -> str:
 # Checkpointer context manager
 # ---------------------------------------------------------------------------
 
+
 @asynccontextmanager
 async def get_checkpointer() -> AsyncIterator[AsyncSqliteSaver]:
     """Yield an ``AsyncSqliteSaver`` connected to the global sessions DB."""
@@ -64,6 +66,7 @@ async def get_checkpointer() -> AsyncIterator[AsyncSqliteSaver]:
 # ---------------------------------------------------------------------------
 # Internal helpers
 # ---------------------------------------------------------------------------
+
 
 async def _table_exists(conn: aiosqlite.Connection, table: str) -> bool:
     query = "SELECT 1 FROM sqlite_master WHERE type='table' AND name=?"
@@ -158,6 +161,7 @@ def _format_relative_time(iso_ts: str | None) -> str:
 # ---------------------------------------------------------------------------
 # Thread CRUD
 # ---------------------------------------------------------------------------
+
 
 async def list_threads(
     limit: int = 20,

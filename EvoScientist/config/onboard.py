@@ -532,7 +532,14 @@ def _step_provider(config: EvoScientistConfig) -> str:
             value="zhipu-code",
         ),
         Choice(title="Ollama (local models)", value="ollama"),
-        Choice(title="Other (OpenAI-compatible)", value="custom"),
+        Choice(
+            title="OpenAI-compatible (third-party OpenAI endpoint)",
+            value="custom-openai",
+        ),
+        Choice(
+            title="Claude-compatible (third-party Anthropic endpoint)",
+            value="custom-anthropic",
+        ),
     ]
 
     # Set default based on current config
@@ -592,9 +599,15 @@ def _provider_key_info(config: EvoScientistConfig, provider: str):
             config.zhipu_api_key or os.environ.get("ZHIPU_API_KEY", ""),
             validate_zhipu_key,
         ),
-        "custom": (
-            "Custom",
-            config.custom_api_key or os.environ.get("CUSTOM_API_KEY", ""),
+        "custom-openai": (
+            "OpenAI-compatible",
+            config.custom_openai_api_key or os.environ.get("CUSTOM_OPENAI_API_KEY", ""),
+            None,
+        ),
+        "custom-anthropic": (
+            "Custom Anthropic",
+            config.custom_anthropic_api_key
+            or os.environ.get("CUSTOM_ANTHROPIC_API_KEY", ""),
             None,
         ),
         "ollama": ("Ollama", "__no_key__", None),
@@ -682,13 +695,15 @@ def _step_anthropic_auth_mode(config: EvoScientistConfig) -> str:
     if not is_ccproxy_available():
         console.print(
             "  [dim]OAuth via ccproxy not available. "
-            "Install with: pip install \"evoscientist[oauth]\"[/dim]"
+            'Install with: pip install "evoscientist[oauth]"[/dim]'
         )
         return "api_key"
 
     choices = [
         Choice(title="API Key (direct Anthropic access)", value="api_key"),
-        Choice(title="Claude Code OAuth (via ccproxy — no API key needed)", value="oauth"),
+        Choice(
+            title="Claude Code OAuth (via ccproxy — no API key needed)", value="oauth"
+        ),
     ]
 
     current = config.anthropic_auth_mode
@@ -768,16 +783,17 @@ def _step_provider_api_key(
     )
 
 
-def _step_base_url(config: EvoScientistConfig) -> str:
+def _step_base_url(config: EvoScientistConfig, current_value: str | None = None) -> str:
     """Prompt for custom provider base URL.
 
     Args:
         config: Current configuration.
+        current_value: Current base URL value (if None, defaults to empty).
 
     Returns:
         Base URL string.
     """
-    current = config.custom_base_url
+    current = current_value if current_value is not None else ""
     hint = f"Current: {current}" if current else ""
     default = current if current else ""
 
@@ -1472,7 +1488,9 @@ def _step_mcp_servers() -> list[str]:
                 console.print(f"  [dim]Installing {pip_pkg}...[/dim]")
                 if not _install_pip_package(pip_pkg):
                     _print_step_result(
-                        "MCP", f"{name} — {_pip_install_hint()} {pip_pkg} failed", success=False
+                        "MCP",
+                        f"{name} — {_pip_install_hint()} {pip_pkg} failed",
+                        success=False,
                     )
                     continue
 
@@ -1803,7 +1821,11 @@ def _step_channels(config: EvoScientistConfig) -> dict[str, object]:
                 console.print("  [yellow]✗ Required package not installed.[/yellow]")
                 # Determine packages to install
                 _pip_pkgs = _CHANNEL_PIP_DEPS.get(pip_extra, []) if pip_extra else []
-                _pkg_display = " ".join(f'"{p}"' for p in _pip_pkgs) if _pip_pkgs else f'"evoscientist[{pip_extra}]"'
+                _pkg_display = (
+                    " ".join(f'"{p}"' for p in _pip_pkgs)
+                    if _pip_pkgs
+                    else f'"evoscientist[{pip_extra}]"'
+                )
                 install_now = questionary.confirm(
                     f"Install {_pkg_display} now?",
                     default=True,
@@ -1813,9 +1835,7 @@ def _step_channels(config: EvoScientistConfig) -> dict[str, object]:
                 if install_now is None:
                     raise KeyboardInterrupt()
                 if install_now:
-                    console.print(
-                        f"  [dim]Installing {_pkg_display}...[/dim]"
-                    )
+                    console.print(f"  [dim]Installing {_pkg_display}...[/dim]")
                     if _pip_pkgs:
                         _ok = all(_install_pip_package(p) for p in _pip_pkgs)
                     else:
@@ -1827,14 +1847,16 @@ def _step_channels(config: EvoScientistConfig) -> dict[str, object]:
                             console.print("  [green]✓ Installed successfully.[/green]")
                             _pkg_ready = True
                         except ImportError:
-                            console.print("  [red]✗ Package installed but import failed.[/red]")
+                            console.print(
+                                "  [red]✗ Package installed but import failed.[/red]"
+                            )
                             console.print(
                                 "  [dim]Try restarting and running:[/dim] evosci channel setup"
                             )
                     else:
                         console.print("  [red]✗ Installation failed.[/red]")
                         console.print(
-                            f'  [dim]Run manually:[/dim] {_pip_install_hint()} {_pkg_display}'
+                            f"  [dim]Run manually:[/dim] {_pip_install_hint()} {_pkg_display}"
                         )
             if not _pkg_ready:
                 continue
@@ -2154,11 +2176,20 @@ def run_onboard(skip_validation: bool = False) -> bool:
         provider = _step_provider(config)
         config.provider = provider
 
-        # Step 2a: Base URL (custom or ollama provider)
+        # Step 2a: Base URL (custom-openai, custom-anthropic, or ollama provider)
         ollama_detected_models: list[str] = []
-        if provider == "custom":
-            base_url = _step_base_url(config)
-            config.custom_base_url = base_url
+        if provider == "custom-openai":
+            current_base_url = config.custom_openai_base_url or os.environ.get(
+                "CUSTOM_OPENAI_BASE_URL", ""
+            )
+            base_url = _step_base_url(config, current_value=current_base_url)
+            config.custom_openai_base_url = base_url
+        elif provider == "custom-anthropic":
+            current_base_url = config.custom_anthropic_base_url or os.environ.get(
+                "CUSTOM_ANTHROPIC_BASE_URL", ""
+            )
+            base_url = _step_base_url(config, current_value=current_base_url)
+            config.custom_anthropic_base_url = base_url
         elif provider == "ollama":
             ollama_url, ollama_detected_models = _step_ollama_base_url(config)
             config.ollama_base_url = ollama_url
@@ -2178,11 +2209,11 @@ def run_onboard(skip_validation: bool = False) -> bool:
             "openrouter": "openrouter_api_key",
             "zhipu": "zhipu_api_key",
             "zhipu-code": "zhipu_api_key",
-            "custom": "custom_api_key",
+            "custom-openai": "custom_openai_api_key",
+            "custom-anthropic": "custom_anthropic_api_key",
         }
-        _skip_api_key = (
-            provider == "ollama"
-            or (provider == "anthropic" and config.anthropic_auth_mode == "oauth")
+        _skip_api_key = provider == "ollama" or (
+            provider == "anthropic" and config.anthropic_auth_mode == "oauth"
         )
         if not _skip_api_key:
             new_key = _step_provider_api_key(config, provider, skip_validation)

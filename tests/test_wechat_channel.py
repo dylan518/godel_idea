@@ -27,6 +27,7 @@ from tests.conftest import run_async as _run
 
 # ── Config tests ──────────────────────────────────────────────────
 
+
 class TestWeComConfig:
     def test_default_values(self):
         config = WeComConfig()
@@ -70,6 +71,7 @@ class TestWeChatMPConfig:
 
 
 # ── Channel init / lifecycle tests ────────────────────────────────
+
 
 class TestWeChatChannelInit:
     def test_wecom_init(self):
@@ -130,6 +132,7 @@ class TestWeChatChannelInit:
 
 # ── Markdown stripping tests ──────────────────────────────────────
 
+
 class TestStripMarkdown:
     def test_plain_text(self):
         assert _strip_markdown("hello world") == "hello world"
@@ -166,6 +169,7 @@ class TestStripMarkdown:
 
 
 # ── XML parsing tests ─────────────────────────────────────────────
+
 
 class TestParseXml:
     def test_basic_text_message(self):
@@ -213,6 +217,7 @@ class TestParseXml:
 
 # ── Crypto tests ──────────────────────────────────────────────────
 
+
 class TestPKCS7:
     def test_pad_unpad_roundtrip(self):
         data = b"hello"
@@ -237,10 +242,12 @@ class TestWeChatCrypto:
     _has_crypto = False
     try:
         from Crypto.Cipher import AES as _aes  # noqa: F401
+
         _has_crypto = True
     except ImportError:
         try:
             import pyaes as _pyaes  # noqa: F401
+
             _has_crypto = True
         except ImportError:
             pass
@@ -308,12 +315,15 @@ class TestWeChatCrypto:
 
 # ── Message processing tests ──────────────────────────────────────
 
+
 class TestMessageProcessing:
     """Test the _process_message method with various XML payloads."""
 
     def _make_channel(self):
         config = WeComConfig(
-            corp_id="corp", agent_id="1", secret="s",
+            corp_id="corp",
+            agent_id="1",
+            secret="s",
         )
         return WeChatChannel(config, backend="wecom")
 
@@ -321,14 +331,16 @@ class TestMessageProcessing:
         channel = self._make_channel()
 
         async def _test():
-            await channel._process_message({
-                "MsgType": "text",
-                "Content": "Hello!",
-                "FromUserName": "user1",
-                "ToUserName": "bot",
-                "MsgId": "100",
-                "CreateTime": str(int(time.time())),
-            })
+            await channel._process_message(
+                {
+                    "MsgType": "text",
+                    "Content": "Hello!",
+                    "FromUserName": "user1",
+                    "ToUserName": "bot",
+                    "MsgId": "100",
+                    "CreateTime": str(int(time.time())),
+                }
+            )
             # Check message was enqueued
             assert not channel._queue.empty()
             msg = await asyncio.wait_for(channel._queue.get(), timeout=1.0)
@@ -342,16 +354,18 @@ class TestMessageProcessing:
         channel = self._make_channel()
 
         async def _test():
-            await channel._process_message({
-                "MsgType": "location",
-                "Location_X": "39.9",
-                "Location_Y": "116.4",
-                "Label": "Beijing",
-                "FromUserName": "user1",
-                "ToUserName": "bot",
-                "MsgId": "101",
-                "CreateTime": str(int(time.time())),
-            })
+            await channel._process_message(
+                {
+                    "MsgType": "location",
+                    "Location_X": "39.9",
+                    "Location_Y": "116.4",
+                    "Label": "Beijing",
+                    "FromUserName": "user1",
+                    "ToUserName": "bot",
+                    "MsgId": "101",
+                    "CreateTime": str(int(time.time())),
+                }
+            )
             msg = await asyncio.wait_for(channel._queue.get(), timeout=1.0)
             assert "Beijing" in msg.content
             assert "39.9" in msg.content
@@ -362,14 +376,16 @@ class TestMessageProcessing:
         channel = self._make_channel()
 
         async def _test():
-            await channel._process_message({
-                "MsgType": "voice",
-                "Recognition": "你好世界",
-                "FromUserName": "user1",
-                "ToUserName": "bot",
-                "MsgId": "102",
-                "CreateTime": str(int(time.time())),
-            })
+            await channel._process_message(
+                {
+                    "MsgType": "voice",
+                    "Recognition": "你好世界",
+                    "FromUserName": "user1",
+                    "ToUserName": "bot",
+                    "MsgId": "102",
+                    "CreateTime": str(int(time.time())),
+                }
+            )
             msg = await asyncio.wait_for(channel._queue.get(), timeout=1.0)
             assert "你好世界" in msg.content
 
@@ -379,16 +395,18 @@ class TestMessageProcessing:
         channel = self._make_channel()
 
         async def _test():
-            await channel._process_message({
-                "MsgType": "link",
-                "Title": "Test Link",
-                "Description": "A description",
-                "Url": "https://example.com",
-                "FromUserName": "user1",
-                "ToUserName": "bot",
-                "MsgId": "103",
-                "CreateTime": str(int(time.time())),
-            })
+            await channel._process_message(
+                {
+                    "MsgType": "link",
+                    "Title": "Test Link",
+                    "Description": "A description",
+                    "Url": "https://example.com",
+                    "FromUserName": "user1",
+                    "ToUserName": "bot",
+                    "MsgId": "103",
+                    "CreateTime": str(int(time.time())),
+                }
+            )
             msg = await asyncio.wait_for(channel._queue.get(), timeout=1.0)
             assert "Test Link" in msg.content
             assert "https://example.com" in msg.content
@@ -399,14 +417,16 @@ class TestMessageProcessing:
         channel = self._make_channel()
 
         async def _test():
-            await channel._process_message({
-                "MsgType": "event",
-                "Event": "subscribe",
-                "FromUserName": "user1",
-                "ToUserName": "bot",
-                "MsgId": "",
-                "CreateTime": str(int(time.time())),
-            })
+            await channel._process_message(
+                {
+                    "MsgType": "event",
+                    "Event": "subscribe",
+                    "FromUserName": "user1",
+                    "ToUserName": "bot",
+                    "MsgId": "",
+                    "CreateTime": str(int(time.time())),
+                }
+            )
             msg = await asyncio.wait_for(channel._queue.get(), timeout=1.0)
             assert "关注" in msg.content
 
@@ -416,14 +436,16 @@ class TestMessageProcessing:
         channel = self._make_channel()
 
         async def _test():
-            await channel._process_message({
-                "MsgType": "event",
-                "Event": "unsubscribe",
-                "FromUserName": "user1",
-                "ToUserName": "bot",
-                "MsgId": "",
-                "CreateTime": str(int(time.time())),
-            })
+            await channel._process_message(
+                {
+                    "MsgType": "event",
+                    "Event": "unsubscribe",
+                    "FromUserName": "user1",
+                    "ToUserName": "bot",
+                    "MsgId": "",
+                    "CreateTime": str(int(time.time())),
+                }
+            )
             assert channel._queue.empty()
 
         _run(_test())
@@ -432,12 +454,14 @@ class TestMessageProcessing:
         channel = self._make_channel()
 
         async def _test():
-            await channel._process_message({
-                "MsgType": "text",
-                "Content": "",
-                "FromUserName": "",
-                "ToUserName": "bot",
-            })
+            await channel._process_message(
+                {
+                    "MsgType": "text",
+                    "Content": "",
+                    "FromUserName": "",
+                    "ToUserName": "bot",
+                }
+            )
             assert channel._queue.empty()
 
         _run(_test())
@@ -445,8 +469,10 @@ class TestMessageProcessing:
 
 # ── Registration test ─────────────────────────────────────────────
 
+
 class TestChannelRegistration:
     def test_wechat_registered(self):
         from EvoScientist.channels.channel_manager import available_channels
+
         channels = available_channels()
         assert "wechat" in channels

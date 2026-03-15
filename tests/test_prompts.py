@@ -1,6 +1,10 @@
 """Tests for EvoScientist/prompts.py."""
 
-from EvoScientist.prompts import get_system_prompt, EXPERIMENT_WORKFLOW, DELEGATION_STRATEGY
+from EvoScientist.prompts import (
+    get_system_prompt,
+    EXPERIMENT_WORKFLOW,
+    DELEGATION_STRATEGY,
+)
 
 
 class TestGetSystemPrompt:

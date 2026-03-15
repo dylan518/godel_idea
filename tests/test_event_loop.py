@@ -111,9 +111,11 @@ class TestMultipleStreamingCalls:
             pass
 
         # Patch the stream_agent_events function
-        with patch('EvoScientist.stream.display.stream_agent_events', side_effect=mock_stream):
+        with patch(
+            "EvoScientist.stream.display.stream_agent_events", side_effect=mock_stream
+        ):
             # Patch Live to avoid terminal output during tests
-            with patch('EvoScientist.stream.display.Live'):
+            with patch("EvoScientist.stream.display.Live"):
                 # First call
                 _run_streaming(
                     agent=mock_agent,

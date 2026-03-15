@@ -41,13 +41,17 @@ class TestStreamEventEmitter:
         assert ev.data["description"] == "Find papers"
 
     def test_subagent_tool_call(self):
-        ev = StreamEventEmitter.subagent_tool_call("research-agent", "tavily_search", {"query": "q"}, "tc2")
+        ev = StreamEventEmitter.subagent_tool_call(
+            "research-agent", "tavily_search", {"query": "q"}, "tc2"
+        )
         assert ev.type == "subagent_tool_call"
         assert ev.data["subagent"] == "research-agent"
         assert ev.data["name"] == "tavily_search"
 
     def test_subagent_tool_result(self):
-        ev = StreamEventEmitter.subagent_tool_result("research-agent", "tavily_search", "results", True)
+        ev = StreamEventEmitter.subagent_tool_result(
+            "research-agent", "tavily_search", "results", True
+        )
         assert ev.type == "subagent_tool_result"
         assert ev.data["subagent"] == "research-agent"
 

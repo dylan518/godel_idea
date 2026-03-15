@@ -127,7 +127,9 @@ class DiscordChannel(Channel):
 
     # ── ACK Reactions ───────────────────────────────────────────────
 
-    async def _send_ack_reaction(self, chat_id: str, message_id: str, emoji: str = "👀") -> None:
+    async def _send_ack_reaction(
+        self, chat_id: str, message_id: str, emoji: str = "👀"
+    ) -> None:
         msg = self._message_cache.get(message_id)
         if msg:
             try:
@@ -135,7 +137,9 @@ class DiscordChannel(Channel):
             except Exception as e:
                 logger.debug(f"Discord ACK reaction failed: {e}")
 
-    async def _remove_ack_reaction(self, chat_id: str, message_id: str, emoji: str = "👀") -> None:
+    async def _remove_ack_reaction(
+        self, chat_id: str, message_id: str, emoji: str = "👀"
+    ) -> None:
         msg = self._message_cache.get(message_id)
         if msg and self._client and self._client.user:
             try:
@@ -155,7 +159,6 @@ class DiscordChannel(Channel):
 
     # ── Send ────────────────────────────────────────────────────────
 
-
     async def _send_chunk(self, chat_id, formatted_text, raw_text, reply_to, metadata):
         import discord
 
@@ -168,7 +171,8 @@ class DiscordChannel(Channel):
         if reply_to:
             try:
                 ref = discord.MessageReference(
-                    message_id=int(reply_to), channel_id=target_id,
+                    message_id=int(reply_to),
+                    channel_id=target_id,
                 )
             except (ValueError, TypeError):
                 pass
@@ -179,8 +183,11 @@ class DiscordChannel(Channel):
         await self._send_with_format_fallback(_send, formatted_text, raw_text)
 
     async def _send_media_impl(
-        self, recipient: str, file_path: str,
-        caption: str = "", metadata: dict | None = None,
+        self,
+        recipient: str,
+        file_path: str,
+        caption: str = "",
+        metadata: dict | None = None,
     ) -> bool:
         import discord
 
@@ -222,7 +229,8 @@ class DiscordChannel(Channel):
         if self.config.include_attachments and message.attachments:
             for attachment in message.attachments:
                 too_large = self._check_attachment_size(
-                    attachment.size or 0, attachment.filename,
+                    attachment.size or 0,
+                    attachment.filename,
                 )
                 if too_large:
                     annotations.append(too_large)
@@ -235,7 +243,9 @@ class DiscordChannel(Channel):
                     annotations.append(f"[attachment: {file_path}]")
                 except Exception as e:
                     logger.warning(f"Failed to download Discord attachment: {e}")
-                    annotations.append(f"[attachment: {attachment.filename} - download failed]")
+                    annotations.append(
+                        f"[attachment: {attachment.filename} - download failed]"
+                    )
 
         # Detect thread context
         thread_id = ""
@@ -245,11 +255,17 @@ class DiscordChannel(Channel):
             thread_id = channel_id  # the thread IS the channel
             parent_channel_id = str(message.channel.parent.id)
 
-        await self._enqueue_raw(RawIncoming(
-            sender_id=user_id, chat_id=parent_channel_id, text=text,
-            media_files=media_paths, content_annotations=annotations,
-            timestamp=message.created_at or datetime.now(),
-            message_id=str(message.id),
-            metadata={"chat_id": parent_channel_id, "thread_id": thread_id},
-            is_group=not is_dm, was_mentioned=was_mentioned,
-        ))
+        await self._enqueue_raw(
+            RawIncoming(
+                sender_id=user_id,
+                chat_id=parent_channel_id,
+                text=text,
+                media_files=media_paths,
+                content_annotations=annotations,
+                timestamp=message.created_at or datetime.now(),
+                message_id=str(message.id),
+                metadata={"chat_id": parent_channel_id, "thread_id": thread_id},
+                is_group=not is_dm,
+                was_mentioned=was_mentioned,
+            )
+        )

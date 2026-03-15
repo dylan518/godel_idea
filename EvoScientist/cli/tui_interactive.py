@@ -70,8 +70,8 @@ def _shorten_path(path: str) -> str:
     if not path:
         return path
     from .agent import _shorten_path as _sp
-    return _sp(path)
 
+    return _sp(path)
 
 
 def _build_welcome_banner(
@@ -113,9 +113,14 @@ def _build_welcome_banner(
             info.append(value, style="magenta")
     # Directory line
     import os
+
     effective_dir = workspace_dir or os.getcwd()
     home = os.path.expanduser("~")
-    dir_display = effective_dir.replace(home, "~", 1) if effective_dir.startswith(home) else effective_dir
+    dir_display = (
+        effective_dir.replace(home, "~", 1)
+        if effective_dir.startswith(home)
+        else effective_dir
+    )
     info.append("\n  ", style="dim")
     info.append("Directory: ", style="dim")
     info.append(dir_display, style="magenta")
@@ -146,7 +151,9 @@ def _build_welcome_banner(
             lines.append(line)
         body = Text("\n").join(lines)
         border = "green" if all_ok else "dim"
-        panel = Panel(body, title="[bold]Channels[/bold]", border_style=border, expand=False)
+        panel = Panel(
+            body, title="[bold]Channels[/bold]", border_style=border, expand=False
+        )
         return Group(banner, Text(""), panel, slogan)
 
     # No channels — append slogan directly to banner
@@ -305,7 +312,9 @@ def run_textual_interactive(
             self._started_channel_types: list[str] = []
             self._busy = False
             self._run_task: Any = None  # asyncio.Task for current _run_turn
-            self._queued_messages: list[str] = []  # queued messages to send after current turn
+            self._queued_messages: list[
+                str
+            ] = []  # queued messages to send after current turn
             self._comp_items: list[tuple[str, str]] = []
             self._comp_index: int = -1
             self._hitl_auto_approve: bool = False
@@ -344,10 +353,13 @@ def run_textual_interactive(
                 self._append_system(self._resume_warning, style="yellow")
             elif self._resumed:
                 self._append_system(
-                    f"Resumed session: {self._conversation_tid}", style="green",
+                    f"Resumed session: {self._conversation_tid}",
+                    style="green",
                 )
                 self.call_later(
-                    lambda: asyncio.ensure_future(self._render_history(self._conversation_tid))
+                    lambda: asyncio.ensure_future(
+                        self._render_history(self._conversation_tid)
+                    )
                 )
             # Auto-start channels
             self._start_channels()
@@ -368,9 +380,7 @@ def run_textual_interactive(
                         send_thinking=self._channel_send_thinking,
                     )
                     types = [
-                        t.strip()
-                        for t in cfg.channel_enabled.split(",")
-                        if t.strip()
+                        t.strip() for t in cfg.channel_enabled.split(",") if t.strip()
                     ]
                     self._started_channel_types = types
                     self._render_welcome()
@@ -387,7 +397,9 @@ def run_textual_interactive(
             if self._busy:
                 _message_queue.put(msg)
                 return
-            self.call_later(lambda m=msg: asyncio.ensure_future(self._process_channel_message(m)))
+            self.call_later(
+                lambda m=msg: asyncio.ensure_future(self._process_channel_message(m))
+            )
 
         # ── Widget helpers ─────────────────────────────────────
 
@@ -523,7 +535,7 @@ def run_textual_interactive(
             subagent_widgets: dict[str, SubAgentWidget] = {}
 
             # Transient indicator widgets (auto-removed on state transitions)
-            narration_w: Static | None = None   # dim italic intermediate text
+            narration_w: Static | None = None  # dim italic intermediate text
             processing_w: Static | None = None  # "Analyzing results..."
 
             # Tool collapsing (matches CLI MAX_VISIBLE_TOOLS)
@@ -617,7 +629,8 @@ def run_textual_interactive(
                     collapse_summary_w.display = True
 
             def _find_or_rename_sa_widget(
-                resolved_name: str, description: str = "",
+                resolved_name: str,
+                description: str = "",
             ) -> SubAgentWidget | None:
                 """Look up a sub-agent widget, renaming 'sub-agent' entry if needed."""
                 if resolved_name in subagent_widgets:
@@ -672,13 +685,13 @@ def run_textual_interactive(
                             and state.todo_items
                         ):
                             if (
-                                    on_thinking_cb
-                                    and not _thinking_sent
-                                    and state.thinking_text
-                                    and len(state.thinking_text) >= _MIN_THINKING_LEN
+                                on_thinking_cb
+                                and not _thinking_sent
+                                and state.thinking_text
+                                and len(state.thinking_text) >= _MIN_THINKING_LEN
                             ):
-                                    on_thinking_cb(state.thinking_text.rstrip())
-                                    _thinking_sent = True
+                                on_thinking_cb(state.thinking_text.rstrip())
+                                _thinking_sent = True
                             on_todo_cb(state.todo_items)
                             _todo_sent = True
 
@@ -689,13 +702,19 @@ def run_textual_interactive(
                         ):
                             tool_name = event.get("name", "")
                             if tool_name in ("write_file", "read_file"):
-                                    _forward_media_to_channel(
-                                        state, tool_name, _media_sent, on_media_cb,
-                                    )
+                                _forward_media_to_channel(
+                                    state,
+                                    tool_name,
+                                    _media_sent,
+                                    on_media_cb,
+                                )
 
                         # -- Remove loading spinner on first content event --
                         if not loading_removed and event_type in (
-                            "thinking", "text", "tool_call", "summarization",
+                            "thinking",
+                            "text",
+                            "tool_call",
+                            "summarization",
                         ):
                             await loading.cleanup()
                             loading_removed = True
@@ -703,8 +722,8 @@ def run_textual_interactive(
                         # -- Widget dispatch --
                         if event_type == "thinking":
                             if thinking_w is None:
-                                    thinking_w = ThinkingWidget(show_thinking=show_thinking)
-                                    await container.mount(thinking_w)
+                                thinking_w = ThinkingWidget(show_thinking=show_thinking)
+                                await container.mount(thinking_w)
                             thinking_w.append_text(event.get("content", ""))
 
                         elif event_type == "summarization":
@@ -717,38 +736,43 @@ def run_textual_interactive(
 
                         elif event_type == "text":
                             # Finalize summarization widget when regular text resumes
-                            if summarization_w is not None and summarization_w._is_active:
+                            if (
+                                summarization_w is not None
+                                and summarization_w._is_active
+                            ):
                                 summarization_w.finalize()
                             if thinking_w is not None and thinking_w._is_active:
-                                    thinking_w.finalize()
+                                thinking_w.finalize()
                             # Clear processing indicator
                             await _remove_w(processing_w)
                             processing_w = None
 
                             if has_used_tools and not _is_final_response(state):
-                                    # Tools still running — show intermediate narration
-                                    await _remove_w(narration_w)
-                                    narration_w = None
-                                    last_line = state.latest_text.strip().split("\n")[-1].strip()
-                                    if last_line:
-                                        if len(last_line) > 60:
-                                            last_line = last_line[:57] + "\u2026"
-                                        narration_w = Static(
-                                            Text(f"    {last_line}", style="dim italic"),
-                                        )
-                                        await container.mount(narration_w)
+                                # Tools still running — show intermediate narration
+                                await _remove_w(narration_w)
+                                narration_w = None
+                                last_line = (
+                                    state.latest_text.strip().split("\n")[-1].strip()
+                                )
+                                if last_line:
+                                    if len(last_line) > 60:
+                                        last_line = last_line[:57] + "\u2026"
+                                    narration_w = Static(
+                                        Text(f"    {last_line}", style="dim italic"),
+                                    )
+                                    await container.mount(narration_w)
                             else:
-                                    # Stream final response incrementally (both
-                                    # text-only replies and post-tool responses).
-                                    await _remove_w(narration_w)
-                                    narration_w = None
-                                    if assistant_w is None:
-                                        assistant_w = AssistantMessage(state.response_text)
-                                        await container.mount(assistant_w)
-                                    else:
-                                        await assistant_w.append_content(
-                                            event.get("content", ""),
-                                        )
+                                # Stream final response incrementally (both
+                                # text-only replies and post-tool responses).
+                                await _remove_w(narration_w)
+                                narration_w = None
+                                if assistant_w is None:
+                                    assistant_w = AssistantMessage(state.response_text)
+                                    await container.mount(assistant_w)
+                                else:
+                                    await assistant_w.append_content(
+                                        event.get("content", ""),
+                                    )
 
                         elif event_type == "tool_call":
                             tool_name = event.get("name", "unknown")
@@ -756,7 +780,7 @@ def run_textual_interactive(
                             tool_args = event.get("args", {})
                             # Finalize thinking if still active
                             if thinking_w is not None and thinking_w._is_active:
-                                    thinking_w.finalize()
+                                thinking_w.finalize()
                             # Clear transient indicators
                             await _remove_w(narration_w)
                             narration_w = None
@@ -764,35 +788,35 @@ def run_textual_interactive(
                             processing_w = None
                             # Remove early AssistantMessage (text arrived before tools)
                             if assistant_w is not None:
-                                    try:
-                                        await assistant_w.remove()
-                                    except Exception:
-                                        pass
-                                    assistant_w = None
+                                try:
+                                    await assistant_w.remove()
+                                except Exception:
+                                    pass
+                                assistant_w = None
                             # Skip internal tools and task (handled by SubAgentWidget)
                             if tool_name not in _INTERNAL_TOOLS and tool_name != "task":
-                                    has_used_tools = True
-                                    if tool_id and tool_id in tool_widgets:
-                                        # Re-emitted with updated args — update in place
-                                        existing = tool_widgets[tool_id]
-                                        existing._tool_name = tool_name
-                                        existing._tool_args = tool_args
-                                        try:
-                                            existing._render_header()
-                                        except Exception:
-                                            pass
-                                    else:
-                                        w = ToolCallWidget(tool_name, tool_args, tool_id)
-                                        await container.mount(w)
-                                        if tool_id:
-                                            tool_widgets[tool_id] = w
+                                has_used_tools = True
+                                if tool_id and tool_id in tool_widgets:
+                                    # Re-emitted with updated args — update in place
+                                    existing = tool_widgets[tool_id]
+                                    existing._tool_name = tool_name
+                                    existing._tool_args = tool_args
+                                    try:
+                                        existing._render_header()
+                                    except Exception:
+                                        pass
+                                else:
+                                    w = ToolCallWidget(tool_name, tool_args, tool_id)
+                                    await container.mount(w)
+                                    if tool_id:
+                                        tool_widgets[tool_id] = w
                             # Update todo widget on write_todos
                             if tool_name == "write_todos" and state.todo_items:
-                                    if todo_w is None:
-                                        todo_w = TodoWidget(state.todo_items)
-                                        await container.mount(todo_w)
-                                    else:
-                                        todo_w.update_items(state.todo_items)
+                                if todo_w is None:
+                                    todo_w = TodoWidget(state.todo_items)
+                                    await container.mount(todo_w)
+                                else:
+                                    todo_w.update_items(state.todo_items)
 
                         elif event_type == "tool_result":
                             result_name = event.get("name", "unknown")
@@ -803,71 +827,77 @@ def run_textual_interactive(
                             matched_tid = ""
                             result_idx = len(state.tool_results) - 1
                             if 0 <= result_idx < len(state.tool_calls):
-                                    tc = state.tool_calls[result_idx]
-                                    tid = tc.get("id", "")
-                                    if tid and tid in tool_widgets:
-                                        tw = tool_widgets[tid]
-                                        if tw._status == "running":
-                                            if result_success:
-                                                    tw.set_success(result_content)
-                                            else:
-                                                    tw.set_error(result_content)
-                                            matched = True
-                                            matched_tid = tid
+                                tc = state.tool_calls[result_idx]
+                                tid = tc.get("id", "")
+                                if tid and tid in tool_widgets:
+                                    tw = tool_widgets[tid]
+                                    if tw._status == "running":
+                                        if result_success:
+                                            tw.set_success(result_content)
+                                        else:
+                                            tw.set_error(result_content)
+                                        matched = True
+                                        matched_tid = tid
                             # Fallback: match first running widget with same name
                             if not matched:
-                                    for fid, tw in tool_widgets.items():
-                                        if tw.tool_name == result_name and tw._status == "running":
-                                            if result_success:
-                                                    tw.set_success(result_content)
-                                            else:
-                                                    tw.set_error(result_content)
-                                            matched = True
-                                            matched_tid = fid
-                                            break
+                                for fid, tw in tool_widgets.items():
+                                    if (
+                                        tw.tool_name == result_name
+                                        and tw._status == "running"
+                                    ):
+                                        if result_success:
+                                            tw.set_success(result_content)
+                                        else:
+                                            tw.set_error(result_content)
+                                        matched = True
+                                        matched_tid = fid
+                                        break
                             # Track completion order for collapsing
                             if matched_tid and matched_tid not in completed_tool_order:
-                                    completed_tool_order.append(matched_tid)
-                                    await _collapse_completed_tools()
+                                completed_tool_order.append(matched_tid)
+                                await _collapse_completed_tools()
                             # Update todo from results
-                            if result_name in ("write_todos", "read_todos") and state.todo_items:
-                                    if todo_w is None:
-                                        todo_w = TodoWidget(state.todo_items)
-                                        await container.mount(todo_w)
-                                    else:
-                                        todo_w.update_items(state.todo_items)
+                            if (
+                                result_name in ("write_todos", "read_todos")
+                                and state.todo_items
+                            ):
+                                if todo_w is None:
+                                    todo_w = TodoWidget(state.todo_items)
+                                    await container.mount(todo_w)
+                                else:
+                                    todo_w.update_items(state.todo_items)
                             # Show "Analyzing results..." if all tools done, no text yet
                             if (
-                                    _is_final_response(state)
-                                    and not state.response_text
-                                    and processing_w is None
+                                _is_final_response(state)
+                                and not state.response_text
+                                and processing_w is None
                             ):
-                                    processing_w = Static(
-                                        Text("\u25cf Analyzing results...", style="cyan"),
-                                    )
-                                    await container.mount(processing_w)
+                                processing_w = Static(
+                                    Text("\u25cf Analyzing results...", style="cyan"),
+                                )
+                                await container.mount(processing_w)
 
                         elif event_type == "subagent_start":
                             sa_name = event.get("name", "sub-agent")
                             sa_desc = event.get("description", "")
                             existing = _find_or_rename_sa_widget(sa_name, sa_desc)
                             if existing is None:
-                                    sa_w = SubAgentWidget(sa_name, sa_desc)
-                                    await container.mount(sa_w)
-                                    subagent_widgets[sa_name] = sa_w
+                                sa_w = SubAgentWidget(sa_name, sa_desc)
+                                await container.mount(sa_w)
+                                subagent_widgets[sa_name] = sa_w
 
                         elif event_type == "subagent_tool_call":
                             sa_name = event.get("subagent", "sub-agent")
                             sa_name = state._resolve_subagent_name(sa_name)
                             sa_w = _find_or_rename_sa_widget(sa_name)
                             if sa_w is None:
-                                    sa_w = SubAgentWidget(sa_name)
-                                    await container.mount(sa_w)
-                                    subagent_widgets[sa_name] = sa_w
+                                sa_w = SubAgentWidget(sa_name)
+                                await container.mount(sa_w)
+                                subagent_widgets[sa_name] = sa_w
                             await sa_w.add_tool_call(
-                                    event.get("name", "unknown"),
-                                    event.get("args", {}),
-                                    event.get("id", ""),
+                                event.get("name", "unknown"),
+                                event.get("args", {}),
+                                event.get("id", ""),
                             )
 
                         elif event_type == "subagent_tool_result":
@@ -875,19 +905,19 @@ def run_textual_interactive(
                             sa_name = state._resolve_subagent_name(sa_name)
                             sa_w = _find_or_rename_sa_widget(sa_name)
                             if sa_w is not None:
-                                    sa_w.complete_tool(
-                                        event.get("name", "unknown"),
-                                        event.get("content", ""),
-                                        event.get("success", True),
-                                        event.get("id", ""),
-                                    )
+                                sa_w.complete_tool(
+                                    event.get("name", "unknown"),
+                                    event.get("content", ""),
+                                    event.get("success", True),
+                                    event.get("id", ""),
+                                )
 
                         elif event_type == "subagent_end":
                             sa_name = event.get("name", "sub-agent")
                             sa_name = state._resolve_subagent_name(sa_name)
                             sa_w = _find_or_rename_sa_widget(sa_name)
                             if sa_w is not None:
-                                    sa_w.finalize()
+                                sa_w.finalize()
 
                         elif event_type == "ask_user":
                             questions = event.get("questions", [])
@@ -905,6 +935,7 @@ def run_textual_interactive(
                                 else:
                                     # Interactive TUI: display widget, collect via arrow keys
                                     from .widgets.ask_user_widget import AskUserWidget
+
                                     _prompt = self.query_one("#prompt", Input)
                                     _prompt.disabled = True
                                     ask_w = AskUserWidget(questions)
@@ -918,6 +949,7 @@ def run_textual_interactive(
                                         pass
                                     _prompt.disabled = False
                                 from langgraph.types import Command  # type: ignore[import-untyped]
+
                                 _stream_input = Command(resume=result)
                                 _hitl_resuming = True
                                 break  # re-enter outer HITL loop
@@ -928,41 +960,53 @@ def run_textual_interactive(
 
                             # HITL: check session auto-approve first
                             if self._hitl_auto_approve:
-                                    from langgraph.types import Command  # type: ignore[import-untyped]
-                                    _stream_input = Command(resume={"decisions": [{"type": "approve"} for _ in range(n)]})
-                                    _hitl_resuming = True
-                                    break  # re-enter outer HITL loop
+                                from langgraph.types import Command  # type: ignore[import-untyped]
+
+                                _stream_input = Command(
+                                    resume={
+                                        "decisions": [
+                                            {"type": "approve"} for _ in range(n)
+                                        ]
+                                    }
+                                )
+                                _hitl_resuming = True
+                                break  # re-enter outer HITL loop
 
                             # Channel messages: use channel-based text approval
                             if channel_hitl_fn is not None:
+                                self._append_system(
+                                    "Waiting for channel user approval...",
+                                    style="dim italic",
+                                )
+                                decisions = await asyncio.to_thread(
+                                    channel_hitl_fn,
+                                    action_reqs,
+                                )
+                                if decisions is not None:
+                                    from langgraph.types import Command  # type: ignore[import-untyped]
+
+                                    _stream_input = Command(
+                                        resume={"decisions": decisions}
+                                    )
+                                    _hitl_resuming = True
+                                    break  # re-enter outer HITL loop
+                                else:
+                                    state.pending_interrupt = None
+                                    for tw in tool_widgets.values():
+                                        if tw._status == "running":
+                                            tw.set_rejected()
                                     self._append_system(
-                                        "Waiting for channel user approval...",
-                                        style="dim italic",
+                                        "Tool execution rejected by channel user.",
+                                        style="yellow",
                                     )
-                                    decisions = await asyncio.to_thread(
-                                        channel_hitl_fn, action_reqs,
-                                    )
-                                    if decisions is not None:
-                                        from langgraph.types import Command  # type: ignore[import-untyped]
-                                        _stream_input = Command(resume={"decisions": decisions})
-                                        _hitl_resuming = True
-                                        break  # re-enter outer HITL loop
-                                    else:
-                                        state.pending_interrupt = None
-                                        for tw in tool_widgets.values():
-                                            if tw._status == "running":
-                                                tw.set_rejected()
-                                        self._append_system(
-                                            "Tool execution rejected by channel user.",
-                                            style="yellow",
-                                        )
-                                    continue
+                                continue
 
                             # Interactive TUI: mount approval widget
                             # Disable main prompt so it can't steal focus
                             _prompt = self.query_one("#prompt", Input)
                             _prompt.disabled = True
                             from .widgets.approval_widget import ApprovalWidget
+
                             approval_w = ApprovalWidget(action_reqs)
                             await container.mount(approval_w)
                             _schedule_scroll()
@@ -970,24 +1014,31 @@ def run_textual_interactive(
                             await approval_w.remove()
                             _prompt.disabled = False
                             if decided_event and decided_event.decisions is not None:
-                                    if decided_event.auto_approve_session:
-                                        self._hitl_auto_approve = True
-                                    from langgraph.types import Command  # type: ignore[import-untyped]
-                                    _stream_input = Command(resume={"decisions": decided_event.decisions})
-                                    _hitl_resuming = True
-                                    break  # re-enter outer HITL loop with resume
+                                if decided_event.auto_approve_session:
+                                    self._hitl_auto_approve = True
+                                from langgraph.types import Command  # type: ignore[import-untyped]
+
+                                _stream_input = Command(
+                                    resume={"decisions": decided_event.decisions}
+                                )
+                                _hitl_resuming = True
+                                break  # re-enter outer HITL loop with resume
                             else:
-                                    state.pending_interrupt = None
-                                    for tw in tool_widgets.values():
-                                        if tw._status == "running":
-                                            tw.set_rejected()
-                                    self._append_system(
-                                        "Tool execution rejected.", style="yellow",
-                                    )
+                                state.pending_interrupt = None
+                                for tw in tool_widgets.values():
+                                    if tw._status == "running":
+                                        tw.set_rejected()
+                                self._append_system(
+                                    "Tool execution rejected.",
+                                    style="yellow",
+                                )
 
                         elif event_type == "done":
                             # Finalize summarization if still active
-                            if summarization_w is not None and summarization_w._is_active:
+                            if (
+                                summarization_w is not None
+                                and summarization_w._is_active
+                            ):
                                 summarization_w.finalize()
                             # Clean up transient indicators
                             await _remove_w(narration_w)
@@ -996,28 +1047,35 @@ def run_textual_interactive(
                             processing_w = None
                             # Mount final response
                             if assistant_w is None and state.response_text:
-                                    # Strip trailing standalone "..."
-                                    clean = state.response_text.strip()
-                                    while clean.endswith("\n...") or clean.rstrip() == "...":
-                                        clean = clean.rstrip().removesuffix("...").rstrip()
-                                    assistant_w = AssistantMessage(clean or state.response_text)
-                                    await container.mount(assistant_w)
-                                    # Markdown rendering is async and needs multiple
-                                    # layout cycles to compute final height.  Schedule
-                                    # repeated deferred scrolls so long content stays
-                                    # visible even when Markdown takes time to lay out.
-                                    for delay in (0.15, 0.4, 0.8, 1.5):
-                                        self.set_timer(
-                                            delay,
-                                            lambda: self.call_after_refresh(
-                                                    lambda: container.scroll_end(animate=False),
-                                            ),
-                                        )
+                                # Strip trailing standalone "..."
+                                clean = state.response_text.strip()
+                                while (
+                                    clean.endswith("\n...") or clean.rstrip() == "..."
+                                ):
+                                    clean = clean.rstrip().removesuffix("...").rstrip()
+                                assistant_w = AssistantMessage(
+                                    clean or state.response_text
+                                )
+                                await container.mount(assistant_w)
+                                # Markdown rendering is async and needs multiple
+                                # layout cycles to compute final height.  Schedule
+                                # repeated deferred scrolls so long content stays
+                                # visible even when Markdown takes time to lay out.
+                                for delay in (0.15, 0.4, 0.8, 1.5):
+                                    self.set_timer(
+                                        delay,
+                                        lambda: self.call_after_refresh(
+                                            lambda: container.scroll_end(animate=False),
+                                        ),
+                                    )
                             # Mount token usage stats
                             if state.total_input_tokens or state.total_output_tokens:
-                                    await container.mount(
-                                        UsageWidget(state.total_input_tokens, state.total_output_tokens)
+                                await container.mount(
+                                    UsageWidget(
+                                        state.total_input_tokens,
+                                        state.total_output_tokens,
                                     )
+                                )
 
                         elif event_type == "error":
                             error_msg = event.get("message", "Unknown error")
@@ -1033,12 +1091,17 @@ def run_textual_interactive(
                     pass
                 except Exception as exc:
                     error_msg = str(exc)
-                    if "authentication" in error_msg.lower() or "api_key" in error_msg.lower():
+                    if (
+                        "authentication" in error_msg.lower()
+                        or "api_key" in error_msg.lower()
+                    ):
                         self._append_system(
-                            "Error: API key not configured.", style="red",
+                            "Error: API key not configured.",
+                            style="red",
                         )
                         self._append_system(
-                            "Run EvoSci onboard to set up your API key.", style="dim",
+                            "Run EvoSci onboard to set up your API key.",
+                            style="dim",
                         )
                     else:
                         self._append_system(f"Error: {exc}", style="red")
@@ -1066,9 +1129,9 @@ def run_textual_interactive(
                     for sa_w in subagent_widgets.values():
                         if sa_w._is_active:
                             try:
-                                    sa_w.finalize()
+                                sa_w.finalize()
                             except Exception:
-                                    pass
+                                pass
                     # Finalize thinking widget
                     if thinking_w is not None and thinking_w._is_active:
                         try:
@@ -1096,7 +1159,7 @@ def run_textual_interactive(
                         self.set_timer(
                             delay,
                             lambda: self.call_after_refresh(
-                                    lambda: container.scroll_end(animate=False),
+                                lambda: container.scroll_end(animate=False),
                             ),
                         )
 
@@ -1164,7 +1227,8 @@ def run_textual_interactive(
                 future.add_done_callback(
                     lambda f: (
                         _channel_logger.debug(f"{label} send failed: {f.exception()}")
-                        if f.exception() else None
+                        if f.exception()
+                        else None
                     )
                 )
 
@@ -1173,7 +1237,9 @@ def run_textual_interactive(
                 if ch and ch.send_thinking:
                     _send_to_channel(
                         ch.send_thinking_message(
-                            sender=msg.chat_id, thinking=thinking, metadata=msg.metadata,
+                            sender=msg.chat_id,
+                            thinking=thinking,
+                            metadata=msg.metadata,
                         ),
                         "Thinking",
                     )
@@ -1222,7 +1288,9 @@ def run_textual_interactive(
             try:
                 response = await self._stream_with_widgets(
                     msg.content,
-                    on_thinking_cb=_send_thinking if self._channel_send_thinking else None,
+                    on_thinking_cb=_send_thinking
+                    if self._channel_send_thinking
+                    else None,
                     on_todo_cb=_send_todo,
                     on_media_cb=_send_media,
                     skip_user_message=True,
@@ -1310,7 +1378,9 @@ def run_textual_interactive(
                 parts.append(("\u276f ", "bold"))
                 parts.append((preview, ""))
                 parts.append(("\n", ""))
-            parts.append(("  [press up to edit last \u00b7 esc to cancel last]", "dim italic"))
+            parts.append(
+                ("  [press up to edit last \u00b7 esc to cancel last]", "dim italic")
+            )
             queued_w.update(Text.assemble(*parts))
             queued_w.display = True
 
@@ -1321,6 +1391,7 @@ def run_textual_interactive(
             if self._ask_user_future and not self._ask_user_future.done():
                 try:
                     from .widgets.ask_user_widget import AskUserWidget
+
                     ask_w = self.query_one(AskUserWidget)
                     ask_w.action_cancel()
                 except Exception:
@@ -1332,6 +1403,7 @@ def run_textual_interactive(
             if focused is not None:
                 from .widgets.approval_widget import ApprovalWidget
                 from .widgets.thread_selector import ThreadPickerWidget
+
                 if isinstance(focused, ApprovalWidget):
                     focused.action_select_reject()
                     return
@@ -1350,6 +1422,7 @@ def run_textual_interactive(
                 from .widgets.approval_widget import ApprovalWidget
                 from .widgets.ask_user_widget import AskUserWidget
                 from .widgets.thread_selector import ThreadPickerWidget
+
                 if isinstance(focused, ApprovalWidget):
                     focused.action_move_up()
                     return
@@ -1374,6 +1447,7 @@ def run_textual_interactive(
                 from .widgets.approval_widget import ApprovalWidget
                 from .widgets.ask_user_widget import AskUserWidget
                 from .widgets.thread_selector import ThreadPickerWidget
+
                 if isinstance(focused, ApprovalWidget):
                     focused.action_move_down()
                     return
@@ -1486,7 +1560,9 @@ def run_textual_interactive(
                     _ch_mod._cli_thread_id = self._conversation_tid
                 self._render_welcome()
                 self._render_status()
-                self._append_system(f"New session: {self._conversation_tid}", style="green")
+                self._append_system(
+                    f"New session: {self._conversation_tid}", style="green"
+                )
                 return
 
             if cmd == "/clear":
@@ -1531,6 +1607,7 @@ def run_textual_interactive(
 
             if cmd == "/compact":
                 from .commands import compact_conversation, render_compact_result
+
                 self._append_system("Compacting conversation...")
                 result = await compact_conversation(
                     agent=self._agent,
@@ -1596,7 +1673,9 @@ def run_textual_interactive(
                 return
 
             container = self.query_one("#chat", VerticalScroll)
-            await container.mount(SystemMessage("── Conversation history ──", msg_style="dim"))
+            await container.mount(
+                SystemMessage("── Conversation history ──", msg_style="dim")
+            )
             for message in messages:
                 msg_type = getattr(message, "type", None)
                 content = getattr(message, "content", "") or ""
@@ -1616,15 +1695,17 @@ def run_textual_interactive(
                 elif msg_type == "ai":
                     tool_calls = getattr(message, "tool_calls", None) or []
                     if content:
-                        await container.mount(
-                            Static(Text(content, style="dim"))
-                        )
+                        await container.mount(Static(Text(content, style="dim")))
                     if tool_calls:
                         names = [tc.get("name", "?") for tc in tool_calls]
                         await container.mount(
-                            Static(Text(f"  \u25b6 {', '.join(names)}", style="dim italic"))
+                            Static(
+                                Text(f"  \u25b6 {', '.join(names)}", style="dim italic")
+                            )
                         )
-            await container.mount(SystemMessage("── End of history ──", msg_style="dim"))
+            await container.mount(
+                SystemMessage("── End of history ──", msg_style="dim")
+            )
             container.scroll_end(animate=False)
 
         async def _cmd_resume(self, arg: str) -> None:
@@ -1731,15 +1812,22 @@ def run_textual_interactive(
             skills = list_skills(include_system=True)
             if not skills:
                 self._append_system("No skills available.", style="dim")
-                self._append_system("Install with: /install-skill <path-or-url>", style="dim")
-                self._append_system(f"Skills directory: {_shorten_path(str(USER_SKILLS_DIR))}", style="dim")
+                self._append_system(
+                    "Install with: /install-skill <path-or-url>", style="dim"
+                )
+                self._append_system(
+                    f"Skills directory: {_shorten_path(str(USER_SKILLS_DIR))}",
+                    style="dim",
+                )
                 return
 
             user_skills = [s for s in skills if s.source == "user"]
             system_skills = [s for s in skills if s.source == "system"]
 
             if user_skills:
-                table = Table(title=f"User Skills ({len(user_skills)})", show_header=True)
+                table = Table(
+                    title=f"User Skills ({len(user_skills)})", show_header=True
+                )
                 table.add_column("Name", style="green")
                 table.add_column("Description", style="dim")
                 for s in user_skills:
@@ -1747,7 +1835,9 @@ def run_textual_interactive(
                 self._mount_renderable(table)
 
             if system_skills:
-                table = Table(title=f"Built-in Skills ({len(system_skills)})", show_header=True)
+                table = Table(
+                    title=f"Built-in Skills ({len(system_skills)})", show_header=True
+                )
                 table.add_column("Name", style="cyan")
                 table.add_column("Description", style="dim")
                 for s in system_skills:
@@ -1763,14 +1853,18 @@ def run_textual_interactive(
             from ..tools.skills_manager import install_skill
 
             if not source:
-                self._append_system("Usage: /install-skill <path-or-url>", style="yellow")
+                self._append_system(
+                    "Usage: /install-skill <path-or-url>", style="yellow"
+                )
                 self._append_system("Examples:", style="dim")
                 self._append_system("  /install-skill ./my-skill", style="dim")
                 self._append_system(
                     "  /install-skill https://github.com/user/repo/tree/main/skill-name",
                     style="dim",
                 )
-                self._append_system("  /install-skill user/repo@skill-name", style="dim")
+                self._append_system(
+                    "  /install-skill user/repo@skill-name", style="dim"
+                )
                 return
 
             self._append_system(f"Installing skill from: {source}", style="dim")
@@ -1781,7 +1875,9 @@ def run_textual_interactive(
                     f"Description: {result.get('description', '(none)')}",
                     style="dim",
                 )
-                self._append_system(f"Path: {_shorten_path(result['path'])}", style="dim")
+                self._append_system(
+                    f"Path: {_shorten_path(result['path'])}", style="dim"
+                )
                 self._append_system("Reload with /new to apply.", style="dim")
             else:
                 self._append_system(f"Failed: {result['error']}", style="red")
@@ -1790,7 +1886,9 @@ def run_textual_interactive(
             from ..tools.skills_manager import uninstall_skill
 
             if not name:
-                self._append_system("Usage: /uninstall-skill <skill-name>", style="yellow")
+                self._append_system(
+                    "Usage: /uninstall-skill <skill-name>", style="yellow"
+                )
                 self._append_system("Use /skills to see installed skills.", style="dim")
                 return
 
@@ -1821,11 +1919,19 @@ def run_textual_interactive(
                 self._mcp_remove(subargs.strip())
             else:
                 self._append_system("MCP commands:", style="bold")
-                self._append_system("  /mcp              List configured servers", style="dim")
-                self._append_system("  /mcp list         List configured servers", style="dim")
-                self._append_system("  /mcp config       Show detailed server config", style="dim")
+                self._append_system(
+                    "  /mcp              List configured servers", style="dim"
+                )
+                self._append_system(
+                    "  /mcp list         List configured servers", style="dim"
+                )
+                self._append_system(
+                    "  /mcp config       Show detailed server config", style="dim"
+                )
                 self._append_system("  /mcp add ...      Add a server", style="dim")
-                self._append_system("  /mcp edit ...     Edit an existing server", style="dim")
+                self._append_system(
+                    "  /mcp edit ...     Edit an existing server", style="dim"
+                )
                 self._append_system("  /mcp remove ...   Remove a server", style="dim")
 
         def _mcp_list(self) -> None:
@@ -1835,7 +1941,10 @@ def run_textual_interactive(
             config = load_mcp_config()
             if not config:
                 self._append_system("No MCP servers configured.", style="dim")
-                self._append_system("Add one with: /mcp add <name> <command-or-url> [args...]", style="dim")
+                self._append_system(
+                    "Add one with: /mcp add <name> <command-or-url> [args...]",
+                    style="dim",
+                )
                 return
 
             table = Table(title="MCP Servers", show_header=True)
@@ -1872,7 +1981,11 @@ def run_textual_interactive(
 
             servers = {name: config[name]} if name else config
             for srv_name, srv in servers.items():
-                table = Table(title=f"MCP Server: {srv_name}", show_header=True, title_style="bold cyan")
+                table = Table(
+                    title=f"MCP Server: {srv_name}",
+                    show_header=True,
+                    title_style="bold cyan",
+                )
                 table.add_column("Setting", style="cyan")
                 table.add_column("Value")
                 table.add_row("transport", str(srv.get("transport", "(not set)")))
@@ -1902,7 +2015,9 @@ def run_textual_interactive(
             from ..mcp import parse_mcp_add_args, add_mcp_server
 
             if not args_str.strip():
-                self._append_system("Usage: /mcp add <name> <command-or-url> [args...]", style="yellow")
+                self._append_system(
+                    "Usage: /mcp add <name> <command-or-url> [args...]", style="yellow"
+                )
                 return
 
             try:
@@ -1973,7 +2088,9 @@ def run_textual_interactive(
                 if running and _ch_mod._manager:
                     detailed = _ch_mod._manager.get_detailed_status()
                     table = Table(
-                        title="Channel Status", show_header=True, expand=False,
+                        title="Channel Status",
+                        show_header=True,
+                        expand=False,
                     )
                     table.add_column("Channel", style="cyan")
                     table.add_column("Status")
@@ -1985,13 +2102,15 @@ def run_textual_interactive(
                         secs = info.get("uptime_seconds", 0)
                         mins, s = divmod(int(secs), 60)
                         hours, mins = divmod(mins, 60)
-                        uptime = (
-                            f"{hours}h{mins:02d}m" if hours else f"{mins}m{s:02d}s"
-                        )
+                        uptime = f"{hours}h{mins:02d}m" if hours else f"{mins}m{s:02d}s"
                         rx = str(info.get("received", 0))
                         tx = str(info.get("sent", 0))
                         table.add_row(
-                            ch_name, "[green]running[/green]", uptime, rx, tx,
+                            ch_name,
+                            "[green]running[/green]",
+                            uptime,
+                            rx,
+                            tx,
                         )
                     self._mount_renderable(table)
                 else:
@@ -1999,14 +2118,15 @@ def run_textual_interactive(
                 return
 
             if args.startswith("stop"):
-                stop_type = args[len("stop"):].strip() or None
+                stop_type = args[len("stop") :].strip() or None
                 if not _channels_is_running():
                     self._append_system("No channel running", style="dim")
                     return
                 if stop_type:
                     if not _channels_is_running(stop_type):
                         self._append_system(
-                            f"{stop_type} is not running", style="dim",
+                            f"{stop_type} is not running",
+                            style="dim",
                         )
                         return
                     _channels_stop(stop_type)
@@ -2018,15 +2138,16 @@ def run_textual_interactive(
                     _channels_stop()
                     self._started_channel_types.clear()
                     self._append_system(
-                        f"{', '.join(running)} stopped", style="dim",
+                        f"{', '.join(running)} stopped",
+                        style="dim",
                     )
                 self._render_welcome()
                 return
 
             # Start channel(s)
             app_config = load_config()
-            channel_type = args if args else (
-                app_config.channel_enabled if app_config else ""
+            channel_type = (
+                args if args else (app_config.channel_enabled if app_config else "")
             )
             if not channel_type:
                 self._append_system("No channel configured.", style="yellow")
@@ -2036,9 +2157,7 @@ def run_textual_interactive(
                 )
                 return
 
-            requested = [
-                t.strip() for t in channel_type.split(",") if t.strip()
-            ]
+            requested = [t.strip() for t in channel_type.split(",") if t.strip()]
 
             if _channels_is_running():
                 running = _channels_running_list()
@@ -2068,9 +2187,7 @@ def run_textual_interactive(
                         self._conversation_tid,
                         send_thinking=self._channel_send_thinking,
                     )
-                    results = [
-                        (ct, True, "connected (bus)") for ct in requested
-                    ]
+                    results = [(ct, True, "connected (bus)") for ct in requested]
                 except Exception as e:
                     results = [(ct, False, str(e)) for ct in requested]
                 finally:
@@ -2084,16 +2201,19 @@ def run_textual_interactive(
             self._render_welcome()
 
         def _render_channel_results(
-            self, results: list[tuple[str, bool, str]],
+            self,
+            results: list[tuple[str, bool, str]],
         ) -> None:
             for name, ok, detail in results:
                 if ok:
                     self._append_system(
-                        f"\u25cf {name}  {detail}", style="green",
+                        f"\u25cf {name}  {detail}",
+                        style="green",
                     )
                 else:
                     self._append_system(
-                        f"\u2717 {name}  {detail}", style="yellow",
+                        f"\u2717 {name}  {detail}",
+                        style="yellow",
                     )
 
         # ── Quit handling ──────────────────────────────────────
@@ -2134,9 +2254,7 @@ def run_textual_interactive(
                 started = self._started_channel_types
                 if running or started:
                     all_types = list(dict.fromkeys(running + started))
-                    channels_info = [
-                        (ct, True, "connected (bus)") for ct in all_types
-                    ]
+                    channels_info = [(ct, True, "connected (bus)") for ct in all_types]
                 else:
                     from ..config import load_config
 
@@ -2148,9 +2266,7 @@ def run_textual_interactive(
                             if t.strip()
                         ]
                         if types:
-                            channels_info = [
-                                (ct, False, "configured") for ct in types
-                            ]
+                            channels_info = [(ct, False, "configured") for ct in types]
             except Exception:
                 pass
 
@@ -2187,8 +2303,17 @@ def run_textual_interactive(
     # ── Media forwarding helper (module-level) ──────────────
 
     _MEDIA_EXTENSIONS = {
-        ".png", ".jpg", ".jpeg", ".gif", ".bmp", ".webp", ".svg",
-        ".pdf", ".mp3", ".wav", ".mp4",
+        ".png",
+        ".jpg",
+        ".jpeg",
+        ".gif",
+        ".bmp",
+        ".webp",
+        ".svg",
+        ".pdf",
+        ".mp3",
+        ".wav",
+        ".mp4",
     }
 
     def _forward_media_to_channel(

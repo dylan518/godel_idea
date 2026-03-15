@@ -555,8 +555,7 @@ def _filter_tools(tools: list, allowed_names: list[str] | None) -> list:
 
     # Check if any pattern contains wildcard characters
     has_wildcards = any(
-        any(char in pattern for char in "*?[]")
-        for pattern in allowed_names
+        any(char in pattern for char in "*?[]") for pattern in allowed_names
     )
 
     if not has_wildcards:

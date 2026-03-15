@@ -107,13 +107,16 @@ class StreamState:
     def get_response_markdown(self):
         """Return cached Markdown object, only re-parsing when text changes."""
         from rich.markdown import Markdown  # type: ignore[import-untyped]
+
         text = (self.response_text or "").strip()
         if text != self._cached_md_text:
             self._cached_md_text = text
             self._cached_md = Markdown(text) if text else None
         return self._cached_md
 
-    def _get_or_create_subagent(self, name: str, description: str = "") -> SubAgentState:
+    def _get_or_create_subagent(
+        self, name: str, description: str = ""
+    ) -> SubAgentState:
         if name not in self._subagent_map:
             # Case 1: real name arrives, "sub-agent" entry exists -> rename it
             if name != "sub-agent" and "sub-agent" in self._subagent_map:
@@ -127,7 +130,8 @@ class StreamState:
             #         exists with no tool calls -> merge into it
             if name == "sub-agent":
                 active_named = [
-                    sa for sa in self.subagents
+                    sa
+                    for sa in self.subagents
                     if sa.is_active and sa.name != "sub-agent"
                 ]
                 if len(active_named) == 1 and not active_named[0].tool_calls:
@@ -151,8 +155,7 @@ class StreamState:
         if name != "sub-agent":
             return name
         active_named = [
-            sa.name for sa in self.subagents
-            if sa.is_active and sa.name != "sub-agent"
+            sa.name for sa in self.subagents if sa.is_active and sa.name != "sub-agent"
         ]
         if len(active_named) == 1:
             return active_named[0]
@@ -214,10 +217,12 @@ class StreamState:
             if result_name not in _INTERNAL_TOOLS:
                 self.is_processing = True
             result_content = event.get("content", "")
-            self.tool_results.append({
-                "name": result_name,
-                "content": result_content,
-            })
+            self.tool_results.append(
+                {
+                    "name": result_name,
+                    "content": result_content,
+                }
+            )
             # Update todo list from write_todos / read_todos results (fallback)
             if result_name in ("write_todos", "read_todos"):
                 parsed = _parse_todo_items(result_content)
@@ -344,7 +349,7 @@ def _parse_todo_items(content: str) -> list[dict] | None:
     if bracket_start != -1:
         bracket_end = content.rfind("]")
         if bracket_end > bracket_start:
-            embedded = content[bracket_start:bracket_end + 1]
+            embedded = content[bracket_start : bracket_end + 1]
             result = _try_parse(embedded)
             if result:
                 return result
@@ -356,7 +361,7 @@ def _parse_todo_items(content: str) -> list[dict] | None:
             start = line.find("[")
             end = line.rfind("]")
             if end > start:
-                result = _try_parse(line[start:end + 1])
+                result = _try_parse(line[start : end + 1])
                 if result:
                     return result
 

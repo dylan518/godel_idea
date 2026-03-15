@@ -12,6 +12,7 @@ from typing import Union
 
 class IMessageService(Enum):
     """iMessage service type."""
+
     IMESSAGE = "imessage"
     SMS = "sms"
     AUTO = "auto"
@@ -20,6 +21,7 @@ class IMessageService(Enum):
 @dataclass
 class ChatIdTarget:
     """Target by chat ID."""
+
     kind: str = "chat_id"
     chat_id: int = 0
 
@@ -27,6 +29,7 @@ class ChatIdTarget:
 @dataclass
 class ChatGuidTarget:
     """Target by chat GUID."""
+
     kind: str = "chat_guid"
     chat_guid: str = ""
 
@@ -34,6 +37,7 @@ class ChatGuidTarget:
 @dataclass
 class ChatIdentifierTarget:
     """Target by chat identifier."""
+
     kind: str = "chat_identifier"
     chat_identifier: str = ""
 
@@ -41,6 +45,7 @@ class ChatIdentifierTarget:
 @dataclass
 class HandleTarget:
     """Target by handle (phone/email)."""
+
     kind: str = "handle"
     to: str = ""
     service: IMessageService = IMessageService.AUTO
@@ -111,22 +116,22 @@ def normalize_handle(raw: str) -> str:
     # Strip service prefixes
     for prefix, _ in SERVICE_PREFIXES:
         if lowered.startswith(prefix):
-            return normalize_handle(trimmed[len(prefix):])
+            return normalize_handle(trimmed[len(prefix) :])
 
     # Normalize chat_id/chat_guid/chat_identifier prefixes
     for prefix in CHAT_ID_PREFIXES:
         if lowered.startswith(prefix):
-            value = trimmed[len(prefix):].strip()
+            value = trimmed[len(prefix) :].strip()
             return f"chat_id:{value}"
 
     for prefix in CHAT_GUID_PREFIXES:
         if lowered.startswith(prefix):
-            value = trimmed[len(prefix):].strip()
+            value = trimmed[len(prefix) :].strip()
             return f"chat_guid:{value}"
 
     for prefix in CHAT_IDENTIFIER_PREFIXES:
         if lowered.startswith(prefix):
-            value = trimmed[len(prefix):].strip()
+            value = trimmed[len(prefix) :].strip()
             return f"chat_identifier:{value}"
 
     # Email - lowercase
@@ -172,7 +177,7 @@ def parse_target(raw: str) -> IMessageTarget:
     # Check service prefixes first
     for prefix, service in SERVICE_PREFIXES:
         if lower.startswith(prefix):
-            remainder = trimmed[len(prefix):].strip()
+            remainder = trimmed[len(prefix) :].strip()
             if not remainder:
                 raise ValueError(f"{prefix} target is required")
 
@@ -181,7 +186,9 @@ def parse_target(raw: str) -> IMessageTarget:
             # Check if remainder is a chat target
             is_chat = any(
                 remainder_lower.startswith(p)
-                for p in CHAT_ID_PREFIXES + CHAT_GUID_PREFIXES + CHAT_IDENTIFIER_PREFIXES
+                for p in CHAT_ID_PREFIXES
+                + CHAT_GUID_PREFIXES
+                + CHAT_IDENTIFIER_PREFIXES
             )
             if is_chat:
                 return parse_target(remainder)
@@ -191,7 +198,7 @@ def parse_target(raw: str) -> IMessageTarget:
     # Check chat_id prefixes
     for prefix in CHAT_ID_PREFIXES:
         if lower.startswith(prefix):
-            value = trimmed[len(prefix):].strip()
+            value = trimmed[len(prefix) :].strip()
             try:
                 chat_id = int(value)
                 return ChatIdTarget(chat_id=chat_id)
@@ -201,7 +208,7 @@ def parse_target(raw: str) -> IMessageTarget:
     # Check chat_guid prefixes
     for prefix in CHAT_GUID_PREFIXES:
         if lower.startswith(prefix):
-            value = trimmed[len(prefix):].strip()
+            value = trimmed[len(prefix) :].strip()
             if not value:
                 raise ValueError("chat_guid is required")
             return ChatGuidTarget(chat_guid=value)
@@ -209,7 +216,7 @@ def parse_target(raw: str) -> IMessageTarget:
     # Check chat_identifier prefixes
     for prefix in CHAT_IDENTIFIER_PREFIXES:
         if lower.startswith(prefix):
-            value = trimmed[len(prefix):].strip()
+            value = trimmed[len(prefix) :].strip()
             if not value:
                 raise ValueError("chat_identifier is required")
             return ChatIdentifierTarget(chat_identifier=value)

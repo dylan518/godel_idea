@@ -86,7 +86,9 @@ class QQChannel(Channel):
 
     async def _run_bot(self) -> None:
         try:
-            await self._client.start(appid=self.config.app_id, secret=self.config.app_secret)
+            await self._client.start(
+                appid=self.config.app_id, secret=self.config.app_secret
+            )
         except Exception as e:
             logger.error(f"QQ auth failed: {e}")
             self._running = False
@@ -130,7 +132,8 @@ class QQChannel(Channel):
                 content_type = getattr(att, "content_type", "") or ""
                 if url:
                     local, ann = await self._download_attachment(
-                        url, f"qq_{filename}",
+                        url,
+                        f"qq_{filename}",
                     )
                     if local:
                         media_paths.append(local)
@@ -142,23 +145,25 @@ class QQChannel(Channel):
             if not content and not media_paths and not annotations:
                 return
 
-            await self._enqueue_raw(RawIncoming(
-                sender_id=sender_id,
-                chat_id=chat_id,
-                text=content,
-                media_files=media_paths,
-                content_annotations=annotations,
-                timestamp=datetime.now(),
-                message_id=message.id,
-                is_group=(msg_type == "group"),
-                was_mentioned=True,
-                metadata={
-                    "chat_id": chat_id,
-                    "msg_type": msg_type,
-                    "event_id": message.id,
-                    "backend": "qq",
-                },
-            ))
+            await self._enqueue_raw(
+                RawIncoming(
+                    sender_id=sender_id,
+                    chat_id=chat_id,
+                    text=content,
+                    media_files=media_paths,
+                    content_annotations=annotations,
+                    timestamp=datetime.now(),
+                    message_id=message.id,
+                    is_group=(msg_type == "group"),
+                    was_mentioned=True,
+                    metadata={
+                        "chat_id": chat_id,
+                        "msg_type": msg_type,
+                        "event_id": message.id,
+                        "backend": "qq",
+                    },
+                )
+            )
         except Exception as e:
             logger.error(f"Error handling QQ message: {e}")
 
@@ -185,13 +190,19 @@ class QQChannel(Channel):
         seq = self._next_msg_seq(msg_id)
         if msg_type == "group":
             await self._client.api.post_group_message(
-                group_openid=chat_id, msg_type=0,
-                content=raw_text, msg_id=msg_id, msg_seq=seq,
+                group_openid=chat_id,
+                msg_type=0,
+                content=raw_text,
+                msg_id=msg_id,
+                msg_seq=seq,
             )
         else:
             await self._client.api.post_c2c_message(
-                openid=chat_id, msg_type=0,
-                content=raw_text, msg_id=msg_id, msg_seq=seq,
+                openid=chat_id,
+                msg_type=0,
+                content=raw_text,
+                msg_id=msg_id,
+                msg_seq=seq,
             )
 
     # _send_typing_action: inherited no-op (QQ Bot API has no typing indicator)
@@ -200,9 +211,20 @@ class QQChannel(Channel):
 
     # qq-botpy file_type constants: 1=image, 2=video, 3=audio
     _FILE_TYPE_MAP = {
-        ".jpg": 1, ".jpeg": 1, ".png": 1, ".gif": 1, ".webp": 1, ".bmp": 1,
-        ".mp4": 2, ".mov": 2, ".avi": 2,
-        ".mp3": 3, ".ogg": 3, ".m4a": 3, ".wav": 3, ".silk": 3,
+        ".jpg": 1,
+        ".jpeg": 1,
+        ".png": 1,
+        ".gif": 1,
+        ".webp": 1,
+        ".bmp": 1,
+        ".mp4": 2,
+        ".mov": 2,
+        ".avi": 2,
+        ".mp3": 3,
+        ".ogg": 3,
+        ".m4a": 3,
+        ".wav": 3,
+        ".silk": 3,
     }
 
     async def _send_media_impl(
@@ -221,6 +243,7 @@ class QQChannel(Channel):
             raise ChannelError("QQ client not initialized")
 
         from pathlib import Path
+
         chat_id = self._resolve_media_chat_id(recipient, metadata)
         msg_type = (metadata or {}).get("msg_type", "c2c")
         ext = Path(file_path).suffix.lower()

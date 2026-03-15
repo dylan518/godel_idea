@@ -122,7 +122,9 @@ class SubAgentWidget(Vertical):
         line = Text()
         if self._is_active:
             char = _SPINNER_FRAMES[self._frame]
-            line.append(f"\u250c \u25b6 {self._display_name()} {char}", style="bold cyan")
+            line.append(
+                f"\u250c \u25b6 {self._display_name()} {char}", style="bold cyan"
+            )
         else:
             line.append(f"\u2713 {self._display_name()}", style="bold green")
             line.append(f"  ({self._tool_count} tools)", style="dim")
@@ -225,11 +227,21 @@ class SubAgentWidget(Vertical):
         # Determine how many completed slots are available
         running_visible = self._running_ids[-_MAX_VISIBLE_RUNNING:]
         completed_slots = max(0, _MAX_VISIBLE_COMPLETED - len(running_visible))
-        completed_visible = self._completed_ids[-completed_slots:] if completed_slots else []
-        completed_hidden = self._completed_ids[:-completed_slots] if completed_slots and len(self._completed_ids) > completed_slots else (self._completed_ids if not completed_slots else [])
+        completed_visible = (
+            self._completed_ids[-completed_slots:] if completed_slots else []
+        )
+        completed_hidden = (
+            self._completed_ids[:-completed_slots]
+            if completed_slots and len(self._completed_ids) > completed_slots
+            else (self._completed_ids if not completed_slots else [])
+        )
 
         # Running tools to hide
-        running_hidden = self._running_ids[:-_MAX_VISIBLE_RUNNING] if len(self._running_ids) > _MAX_VISIBLE_RUNNING else []
+        running_hidden = (
+            self._running_ids[:-_MAX_VISIBLE_RUNNING]
+            if len(self._running_ids) > _MAX_VISIBLE_RUNNING
+            else []
+        )
 
         # Apply visibility
         visible_keys = set(completed_visible) | set(running_visible)
@@ -269,7 +281,9 @@ class SubAgentWidget(Vertical):
             if hidden_running_count > 0:
                 if total_hidden > 0:
                     line.append(" | ", style="dim")
-                line.append(f"\u25cf {hidden_running_count} more running...", style="dim yellow")
+                line.append(
+                    f"\u25cf {hidden_running_count} more running...", style="dim yellow"
+                )
             summary_w.update(line)
             summary_w.add_class("--visible")
         else:

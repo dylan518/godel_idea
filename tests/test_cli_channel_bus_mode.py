@@ -59,7 +59,9 @@ def test_cmd_channel_running_path_passes_send_thinking(monkeypatch):
     config = SimpleNamespace(channel_enabled="telegram")
 
     monkeypatch.setattr(config_mod, "load_config", lambda: config)
-    monkeypatch.setattr(channel_cli, "_channels_is_running", lambda _channel_type=None: True)
+    monkeypatch.setattr(
+        channel_cli, "_channels_is_running", lambda _channel_type=None: True
+    )
     monkeypatch.setattr(channel_cli, "_channels_running_list", lambda: [])
     monkeypatch.setattr(channel_cli, "_print_channel_panel", lambda _rows: None)
     monkeypatch.setattr(
@@ -93,7 +95,9 @@ def test_cmd_channel_start_path_passes_send_thinking(monkeypatch):
     config = SimpleNamespace(channel_enabled="telegram")
 
     monkeypatch.setattr(config_mod, "load_config", lambda: config)
-    monkeypatch.setattr(channel_cli, "_channels_is_running", lambda _channel_type=None: False)
+    monkeypatch.setattr(
+        channel_cli, "_channels_is_running", lambda _channel_type=None: False
+    )
     monkeypatch.setattr(channel_cli, "_print_channel_panel", lambda _rows: None)
     monkeypatch.setattr(
         channel_cli,

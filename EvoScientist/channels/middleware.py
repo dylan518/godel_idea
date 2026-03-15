@@ -28,6 +28,7 @@ _logger = logging.getLogger(__name__)
 
 # ── Task cancellation helper ─────────────────────────────────────────
 
+
 async def _cancel_task(task: asyncio.Task) -> None:
     """Cancel an asyncio task and await its completion.
 
@@ -129,6 +130,7 @@ class DedupCache:
 
 # ── Group history buffer ─────────────────────────────────────────────
 
+
 @dataclass
 class HistoryEntry:
     sender_id: str
@@ -177,6 +179,7 @@ class GroupHistoryBuffer:
 
 
 # ── Typing indicator manager ─────────────────────────────────────────
+
 
 class TypingManager:
     """Manages background typing-indicator loops per chat_id.
@@ -228,6 +231,7 @@ class TypingManager:
 
 
 # ── Pairing manager ─────────────────────────────────────────────────
+
 
 @dataclass
 class PairingRequest:
@@ -309,7 +313,9 @@ class PairingManager:
 
     def _cleanup_expired(self):
         now = time.monotonic()
-        expired = [c for c, r in self._pending.items() if now - r.created_at > self.CODE_EXPIRY]
+        expired = [
+            c for c, r in self._pending.items() if now - r.created_at > self.CODE_EXPIRY
+        ]
         for c in expired:
             del self._pending[c]
 
@@ -321,11 +327,14 @@ class PairingManager:
 
 # ── Inbound middleware base ──────────────────────────────────────────
 
+
 class InboundMiddleware:
     """Base class for inbound message processing middleware."""
 
     async def process_inbound(
-        self, raw: RawIncoming, context: dict[str, Any],
+        self,
+        raw: RawIncoming,
+        context: dict[str, Any],
     ) -> RawIncoming | None:
         """Process an inbound raw message.
 
@@ -339,7 +348,9 @@ class OutboundMiddlewareBase:
     """Base class for outbound message processing middleware."""
 
     async def process_outbound(
-        self, message: OutboundMessage, context: dict[str, Any],
+        self,
+        message: OutboundMessage,
+        context: dict[str, Any],
     ) -> OutboundMessage | None:
         """Process an outbound message.
 
@@ -351,6 +362,7 @@ class OutboundMiddlewareBase:
 
 # ── Dedup ────────────────────────────────────────────────────────────
 
+
 class DedupMiddleware(InboundMiddleware):
     """Message deduplication using a bounded TTL cache."""
 
@@ -361,11 +373,15 @@ class DedupMiddleware(InboundMiddleware):
         ttl_seconds: float = 3600.0,
     ) -> None:
         self._cache = DedupCache(
-            max_size=max_size, trim_to=trim_to, ttl_seconds=ttl_seconds,
+            max_size=max_size,
+            trim_to=trim_to,
+            ttl_seconds=ttl_seconds,
         )
 
     async def process_inbound(
-        self, raw: RawIncoming, context: dict[str, Any],
+        self,
+        raw: RawIncoming,
+        context: dict[str, Any],
     ) -> RawIncoming | None:
         if raw.message_id and self._cache.is_duplicate(raw.message_id):
             _logger.debug(f"Dedup: skipping duplicate message {raw.message_id}")
@@ -374,6 +390,7 @@ class DedupMiddleware(InboundMiddleware):
 
 
 # ── Debounce ─────────────────────────────────────────────────────────
+
 
 class DebounceMiddleware:
     """Per-sender message batching with configurable timing.
@@ -471,6 +488,7 @@ class DebounceMiddleware:
 
 # ── Chunking ─────────────────────────────────────────────────────────
 
+
 class ChunkingMiddleware(OutboundMiddlewareBase):
     """Auto-split messages respecting format expansion.
 
@@ -480,6 +498,7 @@ class ChunkingMiddleware(OutboundMiddlewareBase):
 
     def __init__(self, capabilities: Any) -> None:
         from .capabilities import ChannelCapabilities
+
         self._capabilities: ChannelCapabilities = capabilities
 
     def prepare_chunks(
@@ -516,6 +535,7 @@ class ChunkingMiddleware(OutboundMiddlewareBase):
 
 # ── Formatting ───────────────────────────────────────────────────────
 
+
 class FormattingMiddleware(OutboundMiddlewareBase):
     """Markdown -> channel format conversion.
 
@@ -525,6 +545,7 @@ class FormattingMiddleware(OutboundMiddlewareBase):
     def __init__(self, capabilities: Any) -> None:
         from .formatter import UnifiedFormatter
         from .capabilities import ChannelCapabilities
+
         caps: ChannelCapabilities = capabilities
         self._formatter = UnifiedFormatter.for_channel(caps.format_type)
 
@@ -533,13 +554,16 @@ class FormattingMiddleware(OutboundMiddlewareBase):
         return self._formatter.format(text)
 
     async def process_outbound(
-        self, message: OutboundMessage, context: dict[str, Any],
+        self,
+        message: OutboundMessage,
+        context: dict[str, Any],
     ) -> OutboundMessage | None:
         formatted = self._formatter.format(message.content)
         return dataclasses.replace(message, content=formatted)
 
 
 # ── Retry ────────────────────────────────────────────────────────────
+
 
 class RetryMiddleware:
     """Exponential backoff send retry.
@@ -549,6 +573,7 @@ class RetryMiddleware:
 
     def __init__(self, channel_name: str = "unknown") -> None:
         from .retry import DEFAULT_RETRY, RETRY_PRESETS
+
         self._config = RETRY_PRESETS.get(channel_name, DEFAULT_RETRY)
         self._channel_name = channel_name
 
@@ -576,6 +601,7 @@ class RetryMiddleware:
 
 # ── Typing ───────────────────────────────────────────────────────────
 
+
 class TypingMiddleware:
     """Typing indicator management.
 
@@ -600,6 +626,7 @@ class TypingMiddleware:
 
 
 # ── ACK Reaction ─────────────────────────────────────────────────────
+
 
 class AckReactionMiddleware:
     """ACK emoji reaction with configurable scope.
@@ -661,6 +688,7 @@ class AckReactionMiddleware:
 
 # ── Mention Gating ───────────────────────────────────────────────────
 
+
 class MentionGatingMiddleware(InboundMiddleware):
     """Filter messages based on mention policy.
 
@@ -679,7 +707,9 @@ class MentionGatingMiddleware(InboundMiddleware):
         self._strip_fn = strip_fn
 
     async def process_inbound(
-        self, raw: RawIncoming, context: dict[str, Any],
+        self,
+        raw: RawIncoming,
+        context: dict[str, Any],
     ) -> RawIncoming | None:
         if not self._should_process(raw):
             return None
@@ -701,6 +731,7 @@ class MentionGatingMiddleware(InboundMiddleware):
 
 # ── AllowList ────────────────────────────────────────────────────────
 
+
 class AllowListMiddleware(InboundMiddleware):
     """Sender and channel allow-list enforcement."""
 
@@ -715,7 +746,9 @@ class AllowListMiddleware(InboundMiddleware):
         self.dm_policy = dm_policy
 
     async def process_inbound(
-        self, raw: RawIncoming, context: dict[str, Any],
+        self,
+        raw: RawIncoming,
+        context: dict[str, Any],
     ) -> RawIncoming | None:
         # Channel allow-list
         if self.allowed_channels and str(raw.chat_id) not in self.allowed_channels:
@@ -747,6 +780,7 @@ class AllowListMiddleware(InboundMiddleware):
 
 # ── Group History ────────────────────────────────────────────────────
 
+
 class GroupHistoryMiddleware(InboundMiddleware):
     """Buffer non-mentioned group messages, inject as context when mentioned."""
 
@@ -756,11 +790,14 @@ class GroupHistoryMiddleware(InboundMiddleware):
         max_age_seconds: int = 3600,
     ) -> None:
         self._buffer = GroupHistoryBuffer(
-            max_per_chat=max_per_chat, max_age_seconds=max_age_seconds,
+            max_per_chat=max_per_chat,
+            max_age_seconds=max_age_seconds,
         )
 
     async def process_inbound(
-        self, raw: RawIncoming, context: dict[str, Any],
+        self,
+        raw: RawIncoming,
+        context: dict[str, Any],
     ) -> RawIncoming | None:
         if not raw.is_group:
             return raw
@@ -786,13 +823,16 @@ class GroupHistoryMiddleware(InboundMiddleware):
         if history_context:
             raw = dataclasses.replace(
                 raw,
-                text=history_context + "\n\n[Current message - respond to this]\n" + raw.text,
+                text=history_context
+                + "\n\n[Current message - respond to this]\n"
+                + raw.text,
             )
         self._buffer.clear(raw.chat_id)
         return raw
 
 
 # ── Pairing ──────────────────────────────────────────────────────────
+
 
 class PairingMiddleware(InboundMiddleware):
     """DM pairing flow management.
@@ -814,7 +854,9 @@ class PairingMiddleware(InboundMiddleware):
         self._background_tasks: set[asyncio.Task] = set()
 
     async def process_inbound(
-        self, raw: RawIncoming, context: dict[str, Any],
+        self,
+        raw: RawIncoming,
+        context: dict[str, Any],
     ) -> RawIncoming | None:
         if raw.is_group:
             return raw  # pairing only applies to DMs

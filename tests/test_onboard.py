@@ -25,16 +25,29 @@ class TestConstants:
     def test_steps_has_ten_items(self):
         """Test that STEPS contains exactly 10 steps."""
         assert len(STEPS) == 10
-        assert STEPS == ["UI", "Provider", "API Key", "Model", "Tavily Key", "Workspace", "Thinking", "Skills", "MCP Servers", "Channels"]
+        assert STEPS == [
+            "UI",
+            "Provider",
+            "API Key",
+            "Model",
+            "Tavily Key",
+            "Workspace",
+            "Thinking",
+            "Skills",
+            "MCP Servers",
+            "Channels",
+        ]
 
     def test_wizard_style_is_style_instance(self):
         """Test that WIZARD_STYLE is a prompt_toolkit Style."""
         from prompt_toolkit.styles import Style
+
         assert isinstance(WIZARD_STYLE, Style)
 
     def test_confirm_style_is_style_instance(self):
         """Test that CONFIRM_STYLE is a prompt_toolkit Style."""
         from prompt_toolkit.styles import Style
+
         assert isinstance(CONFIRM_STYLE, Style)
 
     def test_confirm_style_differs_from_wizard(self):
@@ -288,8 +301,10 @@ class TestPromptAndValidateApiKey:
 
         validate_fn = Mock(return_value=(True, "Valid"))
 
-        with patch("EvoScientist.config.onboard.questionary") as mock_q, \
-             patch("EvoScientist.config.onboard.console"):
+        with (
+            patch("EvoScientist.config.onboard.questionary") as mock_q,
+            patch("EvoScientist.config.onboard.console"),
+        ):
             mock_q.password.return_value.ask.return_value = ""  # keep existing
             result = _prompt_and_validate_api_key(
                 "Enter key:",
@@ -328,9 +343,11 @@ class TestValidateImessage:
         version_result = Mock(returncode=0, stdout="imsg 1.2.3")
         rpc_result = Mock(returncode=0)
 
-        with patch("EvoScientist.config.onboard.sys") as mock_sys, \
-             patch("EvoScientist.channels.imessage.probe.shutil") as mock_shutil, \
-             patch("EvoScientist.config.onboard.subprocess") as mock_sub:
+        with (
+            patch("EvoScientist.config.onboard.sys") as mock_sys,
+            patch("EvoScientist.channels.imessage.probe.shutil") as mock_shutil,
+            patch("EvoScientist.config.onboard.subprocess") as mock_sub,
+        ):
             mock_sys.platform = "darwin"
             mock_shutil.which.return_value = "/opt/homebrew/bin/imsg"
             mock_sub.run.side_effect = [version_result, rpc_result]
@@ -344,8 +361,10 @@ class TestValidateImessage:
         """Test validate_imessage returns not_installed when imsg CLI missing."""
         from EvoScientist.config.onboard import validate_imessage
 
-        with patch("EvoScientist.config.onboard.sys") as mock_sys, \
-             patch("EvoScientist.channels.imessage.probe.shutil") as mock_shutil:
+        with (
+            patch("EvoScientist.config.onboard.sys") as mock_sys,
+            patch("EvoScientist.channels.imessage.probe.shutil") as mock_shutil,
+        ):
             mock_sys.platform = "darwin"
             mock_shutil.which.return_value = None
             valid, msg = validate_imessage()
@@ -371,9 +390,11 @@ class TestValidateImessage:
         version_result = Mock(returncode=0, stdout="imsg 0.1.0")
         rpc_result = Mock(returncode=1)
 
-        with patch("EvoScientist.config.onboard.sys") as mock_sys, \
-             patch("EvoScientist.channels.imessage.probe.shutil") as mock_shutil, \
-             patch("EvoScientist.config.onboard.subprocess") as mock_sub:
+        with (
+            patch("EvoScientist.config.onboard.sys") as mock_sys,
+            patch("EvoScientist.channels.imessage.probe.shutil") as mock_shutil,
+            patch("EvoScientist.config.onboard.subprocess") as mock_sub,
+        ):
             mock_sys.platform = "darwin"
             mock_shutil.which.return_value = "/usr/local/bin/imsg"
             mock_sub.run.side_effect = [version_result, rpc_result]
@@ -399,8 +420,10 @@ class TestInstallImsg:
         """Test _install_imsg handles missing Homebrew."""
         from EvoScientist.config.onboard import _install_imsg
 
-        with patch("EvoScientist.config.onboard.subprocess") as mock_sub, \
-             patch("EvoScientist.config.onboard.console"):
+        with (
+            patch("EvoScientist.config.onboard.subprocess") as mock_sub,
+            patch("EvoScientist.config.onboard.console"),
+        ):
             mock_sub.run.side_effect = FileNotFoundError()
             mock_sub.TimeoutExpired = subprocess.TimeoutExpired
             result = _install_imsg()
@@ -424,8 +447,13 @@ class TestSetupImessage:
         """Test _setup_imessage returns True when already installed."""
         from EvoScientist.config.onboard import _setup_imessage
 
-        with patch("EvoScientist.config.onboard.validate_imessage", return_value=(True, "imsg at /bin/imsg")), \
-             patch("EvoScientist.config.onboard.console"):
+        with (
+            patch(
+                "EvoScientist.config.onboard.validate_imessage",
+                return_value=(True, "imsg at /bin/imsg"),
+            ),
+            patch("EvoScientist.config.onboard.console"),
+        ):
             result = _setup_imessage()
 
         assert result is True
@@ -434,8 +462,13 @@ class TestSetupImessage:
         """Test _setup_imessage returns False on non-macOS."""
         from EvoScientist.config.onboard import _setup_imessage
 
-        with patch("EvoScientist.config.onboard.validate_imessage", return_value=(False, "iMessage requires macOS")), \
-             patch("EvoScientist.config.onboard.console"):
+        with (
+            patch(
+                "EvoScientist.config.onboard.validate_imessage",
+                return_value=(False, "iMessage requires macOS"),
+            ),
+            patch("EvoScientist.config.onboard.console"),
+        ):
             result = _setup_imessage()
 
         assert result is False
@@ -444,10 +477,12 @@ class TestSetupImessage:
         """Test _setup_imessage installs and re-validates successfully."""
         from EvoScientist.config.onboard import _setup_imessage
 
-        with patch("EvoScientist.config.onboard.validate_imessage") as mock_val, \
-             patch("EvoScientist.config.onboard._install_imsg", return_value=True), \
-             patch("EvoScientist.config.onboard.questionary") as mock_q, \
-             patch("EvoScientist.config.onboard.console"):
+        with (
+            patch("EvoScientist.config.onboard.validate_imessage") as mock_val,
+            patch("EvoScientist.config.onboard._install_imsg", return_value=True),
+            patch("EvoScientist.config.onboard.questionary") as mock_q,
+            patch("EvoScientist.config.onboard.console"),
+        ):
             mock_val.side_effect = [
                 (False, "not_installed"),  # First check
                 (True, "imsg at /bin/imsg"),  # After install
@@ -461,9 +496,14 @@ class TestSetupImessage:
         """Test _setup_imessage returns False when user declines install."""
         from EvoScientist.config.onboard import _setup_imessage
 
-        with patch("EvoScientist.config.onboard.validate_imessage", return_value=(False, "not_installed")), \
-             patch("EvoScientist.config.onboard.questionary") as mock_q, \
-             patch("EvoScientist.config.onboard.console"):
+        with (
+            patch(
+                "EvoScientist.config.onboard.validate_imessage",
+                return_value=(False, "not_installed"),
+            ),
+            patch("EvoScientist.config.onboard.questionary") as mock_q,
+            patch("EvoScientist.config.onboard.console"),
+        ):
             mock_q.confirm.return_value.ask.return_value = False
             result = _setup_imessage()
 
@@ -475,8 +515,10 @@ class TestStepSkills:
         """Test skills step returns empty list when user selects nothing."""
         from EvoScientist.config.onboard import _step_skills
 
-        with patch("EvoScientist.config.onboard.questionary") as mock_q, \
-             patch("EvoScientist.config.onboard.console"):
+        with (
+            patch("EvoScientist.config.onboard.questionary") as mock_q,
+            patch("EvoScientist.config.onboard.console"),
+        ):
             mock_q.checkbox.return_value.ask.return_value = []
             result = _step_skills()
 
@@ -488,9 +530,11 @@ class TestStepSkills:
 
         source = _RECOMMENDED_SKILLS[0]["source"]
 
-        with patch("EvoScientist.config.onboard.questionary") as mock_q, \
-             patch("EvoScientist.config.onboard.console"), \
-             patch("EvoScientist.tools.skills_manager.install_skill") as mock_install:
+        with (
+            patch("EvoScientist.config.onboard.questionary") as mock_q,
+            patch("EvoScientist.config.onboard.console"),
+            patch("EvoScientist.tools.skills_manager.install_skill") as mock_install,
+        ):
             mock_q.checkbox.return_value.ask.return_value = [source]
             mock_install.return_value = {"success": True, "name": "test"}
             result = _step_skills()
@@ -504,9 +548,11 @@ class TestStepSkills:
 
         source = _RECOMMENDED_SKILLS[0]["source"]
 
-        with patch("EvoScientist.config.onboard.questionary") as mock_q, \
-             patch("EvoScientist.config.onboard.console"), \
-             patch("EvoScientist.tools.skills_manager.install_skill") as mock_install:
+        with (
+            patch("EvoScientist.config.onboard.questionary") as mock_q,
+            patch("EvoScientist.config.onboard.console"),
+            patch("EvoScientist.tools.skills_manager.install_skill") as mock_install,
+        ):
             mock_q.checkbox.return_value.ask.return_value = [source]
             mock_install.side_effect = Exception("network error")
             result = _step_skills()
@@ -542,8 +588,10 @@ class TestStepChannels:
 
         config = EvoScientistConfig()
 
-        with patch("EvoScientist.config.onboard.questionary") as mock_q, \
-             patch("EvoScientist.config.onboard._setup_imessage", return_value=True):
+        with (
+            patch("EvoScientist.config.onboard.questionary") as mock_q,
+            patch("EvoScientist.config.onboard._setup_imessage", return_value=True),
+        ):
             mock_q.checkbox.return_value.ask.return_value = ["imessage"]
             mock_q.text.return_value.ask.return_value = ""
             result = _step_channels(config)
@@ -557,8 +605,10 @@ class TestStepChannels:
 
         config = EvoScientistConfig()
 
-        with patch("EvoScientist.config.onboard.questionary") as mock_q, \
-             patch("EvoScientist.config.onboard._setup_imessage", return_value=True):
+        with (
+            patch("EvoScientist.config.onboard.questionary") as mock_q,
+            patch("EvoScientist.config.onboard._setup_imessage", return_value=True),
+        ):
             mock_q.checkbox.return_value.ask.return_value = ["imessage"]
             mock_q.text.return_value.ask.return_value = "+1234567890,+0987654321"
             result = _step_channels(config)
@@ -573,8 +623,10 @@ class TestStepChannels:
 
         config = EvoScientistConfig()
 
-        with patch("EvoScientist.config.onboard.questionary") as mock_q, \
-             patch("EvoScientist.config.onboard._setup_imessage", return_value=False):
+        with (
+            patch("EvoScientist.config.onboard.questionary") as mock_q,
+            patch("EvoScientist.config.onboard._setup_imessage", return_value=False),
+        ):
             mock_q.checkbox.return_value.ask.return_value = ["imessage"]
             mock_q.confirm.return_value.ask.return_value = False
             result = _step_channels(config)
@@ -588,8 +640,10 @@ class TestStepChannels:
 
         config = EvoScientistConfig()
 
-        with patch("EvoScientist.config.onboard.questionary") as mock_q, \
-             patch("EvoScientist.config.onboard._setup_imessage", return_value=False):
+        with (
+            patch("EvoScientist.config.onboard.questionary") as mock_q,
+            patch("EvoScientist.config.onboard._setup_imessage", return_value=False),
+        ):
             mock_q.checkbox.return_value.ask.return_value = ["imessage"]
             mock_q.confirm.return_value.ask.return_value = True
             mock_q.text.return_value.ask.return_value = ""
@@ -615,16 +669,22 @@ class TestStepChannels:
 
         config = EvoScientistConfig()
 
-        _real_import = __builtins__.__import__ if hasattr(__builtins__, '__import__') else __import__
+        _real_import = (
+            __builtins__.__import__
+            if hasattr(__builtins__, "__import__")
+            else __import__
+        )
 
         def _fake_import(name, *args, **kwargs):
             if name == "telegram":
                 return  # pretend installed
             return _real_import(name, *args, **kwargs)
 
-        with patch("EvoScientist.config.onboard.questionary") as mock_q, \
-             patch("EvoScientist.config.onboard._probe_channel"), \
-             patch("builtins.__import__", side_effect=_fake_import):
+        with (
+            patch("EvoScientist.config.onboard.questionary") as mock_q,
+            patch("EvoScientist.config.onboard._probe_channel"),
+            patch("builtins.__import__", side_effect=_fake_import),
+        ):
             mock_q.checkbox.return_value.ask.return_value = ["telegram"]
             mock_q.text.return_value.ask.return_value = "test-token"
             result = _step_channels(config)
@@ -638,16 +698,22 @@ class TestStepChannels:
 
         config = EvoScientistConfig()
 
-        _real_import = __builtins__.__import__ if hasattr(__builtins__, '__import__') else __import__
+        _real_import = (
+            __builtins__.__import__
+            if hasattr(__builtins__, "__import__")
+            else __import__
+        )
 
         def _fake_import(name, *args, **kwargs):
             if name == "discord":
                 return  # pretend installed
             return _real_import(name, *args, **kwargs)
 
-        with patch("EvoScientist.config.onboard.questionary") as mock_q, \
-             patch("EvoScientist.config.onboard._probe_channel"), \
-             patch("builtins.__import__", side_effect=_fake_import):
+        with (
+            patch("EvoScientist.config.onboard.questionary") as mock_q,
+            patch("EvoScientist.config.onboard._probe_channel"),
+            patch("builtins.__import__", side_effect=_fake_import),
+        ):
             mock_q.checkbox.return_value.ask.return_value = ["discord"]
             mock_q.text.return_value.ask.return_value = "discord-token"
             result = _step_channels(config)
@@ -659,18 +725,28 @@ class TestStepChannels:
 class TestStepMcpServersNpxFailure:
     def test_npx_failure_skips_npx_servers(self):
         """When _ensure_npx returns False, npx-dependent servers must be skipped."""
-        from EvoScientist.config.onboard import _step_mcp_servers, _RECOMMENDED_MCP_SERVERS
+        from EvoScientist.config.onboard import (
+            _step_mcp_servers,
+            _RECOMMENDED_MCP_SERVERS,
+        )
 
         # Pick server names: one npx-based, one non-npx (URL-based)
-        npx_name = next(s["name"] for s in _RECOMMENDED_MCP_SERVERS if s.get("command") == "npx")
+        npx_name = next(
+            s["name"] for s in _RECOMMENDED_MCP_SERVERS if s.get("command") == "npx"
+        )
         url_name = next(s["name"] for s in _RECOMMENDED_MCP_SERVERS if "url" in s)
 
-        with patch("EvoScientist.config.onboard._checkbox_ask", return_value=[npx_name, url_name]), \
-             patch("EvoScientist.config.onboard._ensure_npx", return_value=False), \
-             patch("EvoScientist.config.onboard._check_npx", return_value=False), \
-             patch("EvoScientist.mcp.client._load_user_config", return_value={}), \
-             patch("EvoScientist.mcp.client.add_mcp_server") as mock_add, \
-             patch("EvoScientist.config.onboard.console"):
+        with (
+            patch(
+                "EvoScientist.config.onboard._checkbox_ask",
+                return_value=[npx_name, url_name],
+            ),
+            patch("EvoScientist.config.onboard._ensure_npx", return_value=False),
+            patch("EvoScientist.config.onboard._check_npx", return_value=False),
+            patch("EvoScientist.mcp.client._load_user_config", return_value={}),
+            patch("EvoScientist.mcp.client.add_mcp_server") as mock_add,
+            patch("EvoScientist.config.onboard.console"),
+        ):
             result = _step_mcp_servers()
 
         # The npx server must NOT have been added
@@ -683,17 +759,24 @@ class TestStepMcpServersNpxFailure:
 
     def test_npx_failure_returns_empty_when_all_npx(self):
         """When all selected servers are npx-based and npx fails, return []."""
-        from EvoScientist.config.onboard import _step_mcp_servers, _RECOMMENDED_MCP_SERVERS
+        from EvoScientist.config.onboard import (
+            _step_mcp_servers,
+            _RECOMMENDED_MCP_SERVERS,
+        )
 
-        npx_names = [s["name"] for s in _RECOMMENDED_MCP_SERVERS if s.get("command") == "npx"]
+        npx_names = [
+            s["name"] for s in _RECOMMENDED_MCP_SERVERS if s.get("command") == "npx"
+        ]
         assert len(npx_names) >= 1, "Test requires at least one npx server"
 
-        with patch("EvoScientist.config.onboard._checkbox_ask", return_value=npx_names), \
-             patch("EvoScientist.config.onboard._ensure_npx", return_value=False), \
-             patch("EvoScientist.config.onboard._check_npx", return_value=False), \
-             patch("EvoScientist.mcp.client._load_user_config", return_value={}), \
-             patch("EvoScientist.mcp.client.add_mcp_server") as mock_add, \
-             patch("EvoScientist.config.onboard.console"):
+        with (
+            patch("EvoScientist.config.onboard._checkbox_ask", return_value=npx_names),
+            patch("EvoScientist.config.onboard._ensure_npx", return_value=False),
+            patch("EvoScientist.config.onboard._check_npx", return_value=False),
+            patch("EvoScientist.mcp.client._load_user_config", return_value={}),
+            patch("EvoScientist.mcp.client.add_mcp_server") as mock_add,
+            patch("EvoScientist.config.onboard.console"),
+        ):
             result = _step_mcp_servers()
 
         assert result == []
@@ -736,10 +819,12 @@ class TestRunOnboard:
         """Test that run_onboard returns True when config is saved."""
         from EvoScientist.config.onboard import run_onboard
 
-        with patch("EvoScientist.config.onboard.questionary") as mock_q, \
-             patch("EvoScientist.config.onboard.load_config") as mock_load, \
-             patch("EvoScientist.config.onboard.save_config") as mock_save, \
-             patch("EvoScientist.config.onboard.console"):
+        with (
+            patch("EvoScientist.config.onboard.questionary") as mock_q,
+            patch("EvoScientist.config.onboard.load_config") as mock_load,
+            patch("EvoScientist.config.onboard.save_config") as mock_save,
+            patch("EvoScientist.config.onboard.console"),
+        ):
             # Setup mock config
             mock_load.return_value = EvoScientistConfig()
 
@@ -773,9 +858,11 @@ class TestRunOnboard:
         """Test that run_onboard returns False when cancelled."""
         from EvoScientist.config.onboard import run_onboard
 
-        with patch("EvoScientist.config.onboard.questionary") as mock_q, \
-             patch("EvoScientist.config.onboard.load_config") as mock_load, \
-             patch("EvoScientist.config.onboard.console"):
+        with (
+            patch("EvoScientist.config.onboard.questionary") as mock_q,
+            patch("EvoScientist.config.onboard.load_config") as mock_load,
+            patch("EvoScientist.config.onboard.console"),
+        ):
             mock_load.return_value = EvoScientistConfig()
 
             # First selection returns None (Ctrl+C)
@@ -789,10 +876,12 @@ class TestRunOnboard:
         """Test that run_onboard returns False when user declines to save."""
         from EvoScientist.config.onboard import run_onboard
 
-        with patch("EvoScientist.config.onboard.questionary") as mock_q, \
-             patch("EvoScientist.config.onboard.load_config") as mock_load, \
-             patch("EvoScientist.config.onboard.save_config") as mock_save, \
-             patch("EvoScientist.config.onboard.console"):
+        with (
+            patch("EvoScientist.config.onboard.questionary") as mock_q,
+            patch("EvoScientist.config.onboard.load_config") as mock_load,
+            patch("EvoScientist.config.onboard.save_config") as mock_save,
+            patch("EvoScientist.config.onboard.console"),
+        ):
             mock_load.return_value = EvoScientistConfig()
 
             mock_q.select.return_value.ask.side_effect = [

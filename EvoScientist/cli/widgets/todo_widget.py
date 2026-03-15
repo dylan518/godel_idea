@@ -51,9 +51,7 @@ class TodoWidget(Static):
             if i > 0:
                 lines.append("\n")
             status = str(item.get("status", "todo")).lower()
-            content = str(
-                item.get("content", item.get("task", item.get("title", "")))
-            )
+            content = str(item.get("content", item.get("task", item.get("title", ""))))
 
             if status in ("done", "completed", "complete"):
                 symbol = "\u2713"
@@ -68,10 +66,12 @@ class TodoWidget(Static):
             lines.append(f"{symbol} ", style=style)
             lines.append(content, style=style)
 
-        self.update(Panel(
-            lines,
-            title="Task List",
-            title_align="center",
-            border_style="cyan",
-            padding=(0, 1),
-        ))
+        self.update(
+            Panel(
+                lines,
+                title="Task List",
+                title_align="center",
+                border_style="cyan",
+                padding=(0, 1),
+            )
+        )

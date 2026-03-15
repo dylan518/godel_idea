@@ -92,13 +92,15 @@ async def retry_async(
             delay = max(config.min_delay_s, min(jittered, config.max_delay_s))
 
             if on_retry is not None:
-                on_retry(RetryInfo(
-                    attempt=attempt,
-                    max_attempts=config.attempts,
-                    delay_s=delay,
-                    error=exc,
-                    label=label,
-                ))
+                on_retry(
+                    RetryInfo(
+                        attempt=attempt,
+                        max_attempts=config.attempts,
+                        delay_s=delay,
+                        error=exc,
+                        label=label,
+                    )
+                )
 
             await asyncio.sleep(delay)
 

@@ -330,6 +330,7 @@ Finding one with context [1]. Another insight [2].
 # Combined exports
 # =============================================================================
 
+
 def get_system_prompt() -> str:
     """Generate the complete system prompt.
 

@@ -137,7 +137,9 @@ class AskUserWidget(Widget):
         if total == 1:
             title = ">>> Quick check-in from EvoScientist <<<"
         else:
-            title = ">>> Question 1/{} — Quick check-in from EvoScientist <<<".format(total)
+            title = ">>> Question 1/{} — Quick check-in from EvoScientist <<<".format(
+                total
+            )
 
         self._title_w = Static(title, classes="ask-title")
         yield self._title_w
@@ -212,7 +214,9 @@ class AskUserWidget(Widget):
                 )
 
         # Question text
-        suffix = " [dim](required)[/dim]" if self._required else " [dim](optional)[/dim]"
+        suffix = (
+            " [dim](required)[/dim]" if self._required else " [dim](optional)[/dim]"
+        )
         if self._question_w:
             self._question_w.update(
                 f"[bold]{index + 1}. {escape_markup(q_text)}[/bold]{suffix}"

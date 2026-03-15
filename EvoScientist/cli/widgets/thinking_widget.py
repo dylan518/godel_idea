@@ -90,8 +90,12 @@ class ThinkingWidget(Static):
             display = self._content.rstrip()
             if len(display) > _MAX_EXPANDED_CHARS:
                 half = _MAX_EXPANDED_CHARS // 2
-                display = display[:half] + "\n\n... (truncated) ...\n\n" + display[-half:]
-            body = Text(display, style="dim") if display else Text("(empty)", style="dim")
+                display = (
+                    display[:half] + "\n\n... (truncated) ...\n\n" + display[-half:]
+                )
+            body = (
+                Text(display, style="dim") if display else Text("(empty)", style="dim")
+            )
 
         self.update(Panel(body, title=title, border_style="blue", padding=(0, 1)))
 

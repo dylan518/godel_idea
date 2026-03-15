@@ -18,6 +18,7 @@ from .capabilities import ChannelCapabilities
 
 # ── Channel metadata ─────────────────────────────────────────────────
 
+
 @dataclass
 class ChannelMeta:
     """Channel metadata for registry and UI."""
@@ -30,6 +31,7 @@ class ChannelMeta:
 
 
 # ── Adapter Protocols (slots) ────────────────────────────────────────
+
 
 @runtime_checkable
 class ConfigAdapter(Protocol):
@@ -45,7 +47,9 @@ class ConfigAdapter(Protocol):
 class SecurityAdapter(Protocol):
     """DM policy and security warnings."""
 
-    def resolve_dm_policy(self, ctx: Any) -> str: ...  # "open" | "allowlist" | "pairing"
+    def resolve_dm_policy(
+        self, ctx: Any
+    ) -> str: ...  # "open" | "allowlist" | "pairing"
     def collect_warnings(self, ctx: Any) -> list[str]: ...
 
 
@@ -142,6 +146,7 @@ class OnboardingAdapter(Protocol):
 
 # ── Reload policy ────────────────────────────────────────────────────
 
+
 @dataclass
 class ReloadPolicy:
     """Declares which config prefixes trigger a channel reload."""
@@ -151,6 +156,7 @@ class ReloadPolicy:
 
 
 # ── ChannelPlugin ────────────────────────────────────────────────────
+
 
 class ChannelPlugin:
     """Declarative channel plugin with optional adapter slots.
@@ -192,7 +198,9 @@ class ChannelPlugin:
         # Provide default SingleAccountConfigAdapter if not overridden
         if self.config_adapter is None:
             from .config import SingleAccountConfigAdapter
+
             self.config_adapter = SingleAccountConfigAdapter()
+
     security: SecurityAdapter | None = None
     groups: GroupAdapter | None = None
     mentions: MentionAdapter | None = None
@@ -219,8 +227,18 @@ class ChannelPlugin:
     def filled_slots(self) -> list[str]:
         """Return names of adapter slots that are not None."""
         slot_names = [
-            "config_adapter", "security", "groups", "mentions", "outbound",
-            "threading", "streaming", "directory", "status", "heartbeat",
-            "actions", "pairing", "onboarding",
+            "config_adapter",
+            "security",
+            "groups",
+            "mentions",
+            "outbound",
+            "threading",
+            "streaming",
+            "directory",
+            "status",
+            "heartbeat",
+            "actions",
+            "pairing",
+            "onboarding",
         ]
         return [s for s in slot_names if getattr(self, s, None) is not None]

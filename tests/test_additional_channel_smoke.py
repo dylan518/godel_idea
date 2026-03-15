@@ -4,7 +4,10 @@ import pytest
 
 from EvoScientist.channels.base import ChannelError, OutboundMessage
 from EvoScientist.channels.email.channel import EmailChannel, EmailConfig
-from EvoScientist.channels.imessage.channel_rpc import IMessageChannelRpc, IMessageConfig
+from EvoScientist.channels.imessage.channel_rpc import (
+    IMessageChannelRpc,
+    IMessageConfig,
+)
 from EvoScientist.channels.qq.channel import QQChannel, QQConfig
 from EvoScientist.channels.signal.channel import SignalChannel, SignalConfig
 
@@ -14,7 +17,9 @@ from tests.conftest import run_async as _run
 class TestEmailChannelSmoke:
     def test_start_raises_without_required_imap_settings(self):
         channel = EmailChannel(EmailConfig())
-        with pytest.raises(ChannelError, match="imap_host and imap_username are required"):
+        with pytest.raises(
+            ChannelError, match="imap_host and imap_username are required"
+        ):
             _run(channel.start())
 
     def test_send_returns_false_when_smtp_not_ready(self):

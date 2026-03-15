@@ -5,7 +5,14 @@ from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 
-from ..base import Channel, RawIncoming, ChannelError, IMAGE_EXTS, VIDEO_EXTS, AUDIO_EXTS
+from ..base import (
+    Channel,
+    RawIncoming,
+    ChannelError,
+    IMAGE_EXTS,
+    VIDEO_EXTS,
+    AUDIO_EXTS,
+)
 from ..capabilities import TELEGRAM as TELEGRAM_CAPS
 from ..config import BaseChannelConfig
 
@@ -52,7 +59,9 @@ class TelegramChannel(Channel):
 
         builder = ApplicationBuilder().token(self.config.bot_token)
         if self.config.proxy:
-            builder = builder.proxy(self.config.proxy).get_updates_proxy(self.config.proxy)
+            builder = builder.proxy(self.config.proxy).get_updates_proxy(
+                self.config.proxy
+            )
         self._app = builder.build()
 
         # Accept text and media message types
@@ -96,7 +105,8 @@ class TelegramChannel(Channel):
         """Send typing action via Telegram Bot API."""
         if self._app:
             await self._app.bot.send_chat_action(
-                chat_id=int(chat_id), action="typing",
+                chat_id=int(chat_id),
+                action="typing",
             )
 
     # ── Send (template method overrides) ──────────────────────────
@@ -106,7 +116,8 @@ class TelegramChannel(Channel):
 
         async def _send(text):
             await self._app.bot.send_message(
-                chat_id=int(chat_id), text=text,
+                chat_id=int(chat_id),
+                text=text,
                 parse_mode="HTML" if text == formatted_text else None,
                 reply_to_message_id=reply_id,
             )
@@ -133,22 +144,29 @@ class TelegramChannel(Channel):
         for exts, (method, param) in self._MEDIA_SENDERS.items():
             if ext in exts:
                 await getattr(self._app.bot, method)(
-                    chat_id=chat_id, caption=cap, **{param: file_path},
+                    chat_id=chat_id,
+                    caption=cap,
+                    **{param: file_path},
                 )
                 return True
         await self._app.bot.send_document(
-            chat_id=chat_id, document=file_path, caption=cap,
+            chat_id=chat_id,
+            document=file_path,
+            caption=cap,
         )
         return True
 
     def _get_bot_identifier(self) -> str | None:
         return self._bot_username or None
 
-    async def _send_ack_reaction(self, chat_id: str, message_id: str, emoji: str = "👀") -> None:
+    async def _send_ack_reaction(
+        self, chat_id: str, message_id: str, emoji: str = "👀"
+    ) -> None:
         """Send an acknowledgment reaction via Telegram."""
         if self._app:
             try:
                 from telegram import ReactionTypeEmoji
+
                 await self._app.bot.set_message_reaction(
                     chat_id=int(chat_id),
                     message_id=int(message_id),
@@ -157,7 +175,9 @@ class TelegramChannel(Channel):
             except Exception as e:
                 logger.debug(f"Telegram ACK reaction failed: {e}")
 
-    async def _remove_ack_reaction(self, chat_id: str, message_id: str, emoji: str = "👀") -> None:
+    async def _remove_ack_reaction(
+        self, chat_id: str, message_id: str, emoji: str = "👀"
+    ) -> None:
         """Remove the ack reaction by setting empty reaction list."""
         if self._app:
             try:
@@ -222,12 +242,10 @@ class TelegramChannel(Channel):
             # Location is not a downloadable file — handle separately
             if message.location and not media_file:
                 loc = message.location
-                annotations.append(
-                    f"[位置] ({loc.latitude}, {loc.longitude})"
-                )
+                annotations.append(f"[位置] ({loc.latitude}, {loc.longitude})")
 
             if media_file and self._app:
-                file_size = getattr(media_file, 'file_size', 0) or 0
+                file_size = getattr(media_file, "file_size", 0) or 0
                 too_large = self._check_attachment_size(file_size, media_type)
                 if too_large:
                     annotations.append(too_large)
@@ -238,47 +256,53 @@ class TelegramChannel(Channel):
                         )
                         ext = self._get_extension(
                             media_type,
-                            getattr(media_file, 'mime_type', None),
+                            getattr(media_file, "mime_type", None),
                         )
-                        file_path = self._media_path(
-                            f"{media_file.file_id[:16]}{ext}"
-                        )
+                        file_path = self._media_path(f"{media_file.file_id[:16]}{ext}")
                         await file.download_to_drive(str(file_path))
 
                         media_paths.append(str(file_path))
                         annotations.append(f"[{media_type}: {file_path}]")
-                        logger.debug(
-                            f"Downloaded {media_type} to {file_path}"
-                        )
+                        logger.debug(f"Downloaded {media_type} to {file_path}")
                     except Exception as e:
                         logger.error(f"Failed to download media: {e}")
-                        annotations.append(
-                            f"[{media_type}: download failed]"
-                        )
+                        annotations.append(f"[{media_type}: download failed]")
 
         text_content = "\n".join(content_parts) if content_parts else ""
 
-        await self._enqueue_raw(RawIncoming(
-            sender_id=user_id,
-            chat_id=chat_id,
-            text=text_content,
-            media_files=media_paths,
-            content_annotations=annotations,
-            timestamp=message.date or datetime.now(),
-            message_id=str(message.message_id),
-            metadata={"chat_id": chat_id},
-            is_group=is_group,
-            was_mentioned=was_mentioned,
-        ))
+        await self._enqueue_raw(
+            RawIncoming(
+                sender_id=user_id,
+                chat_id=chat_id,
+                text=text_content,
+                media_files=media_paths,
+                content_annotations=annotations,
+                timestamp=message.date or datetime.now(),
+                message_id=str(message.message_id),
+                metadata={"chat_id": chat_id},
+                is_group=is_group,
+                was_mentioned=was_mentioned,
+            )
+        )
 
     _MIME_TO_EXT = {
-        "image/jpeg": ".jpg", "image/png": ".png", "image/gif": ".gif",
-        "image/webp": ".webp", "audio/ogg": ".ogg", "audio/mpeg": ".mp3",
-        "audio/mp4": ".m4a", "video/mp4": ".mp4", "video/quicktime": ".mov",
+        "image/jpeg": ".jpg",
+        "image/png": ".png",
+        "image/gif": ".gif",
+        "image/webp": ".webp",
+        "audio/ogg": ".ogg",
+        "audio/mpeg": ".mp3",
+        "audio/mp4": ".m4a",
+        "video/mp4": ".mp4",
+        "video/quicktime": ".mov",
     }
     _TYPE_TO_EXT = {
-        "image": ".jpg", "voice": ".ogg", "audio": ".mp3",
-        "video": ".mp4", "file": "", "sticker": ".webp",
+        "image": ".jpg",
+        "voice": ".ogg",
+        "audio": ".mp3",
+        "video": ".mp4",
+        "file": "",
+        "sticker": ".webp",
     }
 
     @staticmethod

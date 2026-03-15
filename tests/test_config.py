@@ -188,11 +188,14 @@ class TestLoadSaveReset:
         config_path.parent.mkdir(parents=True, exist_ok=True)
 
         with open(config_path, "w") as f:
-            yaml.safe_dump({
-                "provider": "openai",
-                "unknown_field": "should_be_ignored",
-                "another_bad": 123,
-            }, f)
+            yaml.safe_dump(
+                {
+                    "provider": "openai",
+                    "unknown_field": "should_be_ignored",
+                    "another_bad": 123,
+                },
+                f,
+            )
 
         config = load_config()
         assert config.provider == "openai"

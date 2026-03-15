@@ -438,11 +438,17 @@ class TestWidgetImports(unittest.TestCase):
             UserMessage,
             SystemMessage,
         )
+
         # All should be classes
         for cls in (
-            LoadingWidget, ThinkingWidget, AssistantMessage,
-            ToolCallWidget, SubAgentWidget, TodoWidget,
-            UserMessage, SystemMessage,
+            LoadingWidget,
+            ThinkingWidget,
+            AssistantMessage,
+            ToolCallWidget,
+            SubAgentWidget,
+            TodoWidget,
+            UserMessage,
+            SystemMessage,
         ):
             assert isinstance(cls, type), f"{cls} is not a class"
 

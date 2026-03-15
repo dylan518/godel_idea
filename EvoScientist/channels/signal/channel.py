@@ -109,13 +109,21 @@ class SignalChannel(Channel):
         cmd = [self.config.cli_path, "-u", self.config.phone_number]
         if self.config.config_dir:
             cmd.extend(["--config", self.config.config_dir])
-        cmd.extend(["daemon", "--tcp",
-                     f"localhost:{self.config.rpc_port}", "--no-receive-stdout"])
+        cmd.extend(
+            [
+                "daemon",
+                "--tcp",
+                f"localhost:{self.config.rpc_port}",
+                "--no-receive-stdout",
+            ]
+        )
 
         logger.info(f"Starting signal-cli daemon: {' '.join(cmd)}")
         try:
             self._daemon_proc = subprocess.Popen(
-                cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                cmd,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
             )
         except FileNotFoundError:
             raise ChannelError(
@@ -128,7 +136,8 @@ class SignalChannel(Channel):
             await asyncio.sleep(1)
             try:
                 reader, writer = await asyncio.open_connection(
-                    "localhost", self.config.rpc_port,
+                    "localhost",
+                    self.config.rpc_port,
                 )
                 writer.close()
                 await writer.wait_closed()
@@ -143,7 +152,8 @@ class SignalChannel(Channel):
         """Connect to signal-cli JSON RPC socket."""
         try:
             self._reader, self._writer = await asyncio.open_connection(
-                "localhost", self.config.rpc_port,
+                "localhost",
+                self.config.rpc_port,
             )
         except Exception as e:
             raise ChannelError(f"Cannot connect to signal-cli: {e}")
@@ -199,7 +209,10 @@ class SignalChannel(Channel):
         timestamp = envelope.get("timestamp", 0)
 
         # Ignore messages from self
-        if source_number == self.config.phone_number or source == self.config.phone_number:
+        if (
+            source_number == self.config.phone_number
+            or source == self.config.phone_number
+        ):
             logger.debug("Ignoring message from self")
             return
 
@@ -209,12 +222,20 @@ class SignalChannel(Channel):
             text = data_msg.get("message", "")
             group_info = data_msg.get("groupInfo", {})
             is_group = bool(group_info)
-            chat_id = group_info.get("groupId", source_number) if is_group else source_number
+            chat_id = (
+                group_info.get("groupId", source_number) if is_group else source_number
+            )
             msg_ts = data_msg.get("timestamp", timestamp)
 
             media_paths: list[str] = []
             annotations: list[str] = []
-            _VOICE_TYPES = {"audio/aac", "audio/ogg", "audio/mp4", "audio/mpeg", "audio/opus"}
+            _VOICE_TYPES = {
+                "audio/aac",
+                "audio/ogg",
+                "audio/mp4",
+                "audio/mpeg",
+                "audio/opus",
+            }
             attachments = data_msg.get("attachments", [])
             for att in attachments:
                 att_size = att.get("size", 0)
@@ -225,19 +246,26 @@ class SignalChannel(Channel):
                 media_label = "voice" if is_voice else "attachment"
                 if att_file:
                     from pathlib import Path as _Path
+
                     att_path = _Path(att_file)
                     if att_path.exists():
                         from ..base import MAX_ATTACHMENT_BYTES
+
                         if att_path.stat().st_size > MAX_ATTACHMENT_BYTES:
-                            annotations.append(f"[{media_label}: {att_name} - too large ({att_path.stat().st_size} bytes)]")
+                            annotations.append(
+                                f"[{media_label}: {att_name} - too large ({att_path.stat().st_size} bytes)]"
+                            )
                         else:
                             local = self._media_path(f"signal_{att_name}")
                             import shutil
+
                             shutil.copy2(str(att_path), str(local))
                             media_paths.append(str(local))
                             annotations.append(f"[{media_label}: {local}]")
                     else:
-                        annotations.append(f"[{media_label}: {att_name} - file not found]")
+                        annotations.append(
+                            f"[{media_label}: {att_name} - file not found]"
+                        )
                 elif att_size:
                     too_large = self._check_attachment_size(att_size, att_name)
                     if too_large:
@@ -261,31 +289,40 @@ class SignalChannel(Channel):
             if is_group:
                 mentions = data_msg.get("mentions", [])
                 for m in mentions:
-                    if m.get("uuid") == self.config.phone_number or m.get("number") == self.config.phone_number:
+                    if (
+                        m.get("uuid") == self.config.phone_number
+                        or m.get("number") == self.config.phone_number
+                    ):
                         was_mentioned = True
                         break
 
             # Cache message_id → sender for reaction targetAuthor
             self._cache_msg_sender(str(msg_ts), source_number)
 
-            logger.info("Signal message from %s: %s", source_number, text[:50] if text else "[media]")
-            await self._enqueue_raw(RawIncoming(
-                sender_id=source_number,
-                chat_id=chat_id,
-                text=text,
-                content_annotations=annotations,
-                media_files=media_paths,
-                timestamp=ts,
-                message_id=str(msg_ts),
-                is_group=is_group,
-                was_mentioned=was_mentioned,
-                metadata={
-                    "chat_id": chat_id,
-                    "source_name": source_name,
-                    "sender_id": source_number,
-                    "backend": "signal",
-                },
-            ))
+            logger.info(
+                "Signal message from %s: %s",
+                source_number,
+                text[:50] if text else "[media]",
+            )
+            await self._enqueue_raw(
+                RawIncoming(
+                    sender_id=source_number,
+                    chat_id=chat_id,
+                    text=text,
+                    content_annotations=annotations,
+                    media_files=media_paths,
+                    timestamp=ts,
+                    message_id=str(msg_ts),
+                    is_group=is_group,
+                    was_mentioned=was_mentioned,
+                    metadata={
+                        "chat_id": chat_id,
+                        "source_name": source_name,
+                        "sender_id": source_number,
+                        "backend": "signal",
+                    },
+                )
+            )
 
     # ── Typing indicator ────────────────────────────────────────────
 
@@ -313,7 +350,9 @@ class SignalChannel(Channel):
         self._msg_senders[message_id] = sender
         self._msg_senders_order.append(message_id)
 
-    async def _send_ack_reaction(self, chat_id: str, message_id: str, emoji: str = "👀") -> None:
+    async def _send_ack_reaction(
+        self, chat_id: str, message_id: str, emoji: str = "👀"
+    ) -> None:
         """Send an acknowledgment reaction via signal-cli sendReaction."""
         target_author = self._msg_senders.get(message_id, "")
         if not target_author:
@@ -333,7 +372,9 @@ class SignalChannel(Channel):
         except Exception as e:
             logger.debug(f"Signal ack reaction failed: {e}")
 
-    async def _remove_ack_reaction(self, chat_id: str, message_id: str, emoji: str = "👀") -> None:
+    async def _remove_ack_reaction(
+        self, chat_id: str, message_id: str, emoji: str = "👀"
+    ) -> None:
         """Remove ACK reaction via signal-cli sendReaction --remove."""
         target_author = self._msg_senders.get(message_id, "")
         if not target_author:
@@ -369,7 +410,9 @@ class SignalChannel(Channel):
     def _is_ready(self) -> bool:
         return self._writer is not None and not self._writer.is_closing()
 
-    async def _rpc_call(self, method: str, params: dict, timeout: float = 10.0) -> dict | None:
+    async def _rpc_call(
+        self, method: str, params: dict, timeout: float = 10.0
+    ) -> dict | None:
         """Send a JSON RPC call to signal-cli and wait for the response."""
         if not self._writer:
             return None
@@ -400,7 +443,12 @@ class SignalChannel(Channel):
             return None
 
     async def _send_chunk(
-        self, chat_id, formatted_text, raw_text, reply_to, metadata,
+        self,
+        chat_id,
+        formatted_text,
+        raw_text,
+        reply_to,
+        metadata,
     ):
         # Determine if group or individual
         params: dict[str, Any] = {
@@ -429,7 +477,7 @@ class SignalChannel(Channel):
             # Remove phone number if directly mentioned as text
             text = re.sub(rf"@?{re.escape(phone)}\s*", "", text).strip()
         # Remove Unicode Object Replacement Character used as mention placeholder
-        text = text.replace("\uFFFC", "").strip()
+        text = text.replace("\ufffc", "").strip()
         return text
 
     # ── Media send ────────────────────────────────────────────────

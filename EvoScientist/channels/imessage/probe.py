@@ -42,7 +42,8 @@ async def get_cli_version(cli_path: str) -> str | None:
     """
     try:
         proc = await asyncio.create_subprocess_exec(
-            cli_path, "--version",
+            cli_path,
+            "--version",
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
         )
@@ -63,7 +64,9 @@ async def check_rpc_support(cli_path: str) -> bool:
     """
     try:
         proc = await asyncio.create_subprocess_exec(
-            cli_path, "rpc", "--help",
+            cli_path,
+            "rpc",
+            "--help",
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
         )

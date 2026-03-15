@@ -72,11 +72,25 @@ class TestCompactCutoffZero:
         mock_middleware_cls = MagicMock(return_value=mock_middleware_inst)
 
         with (
-            patch("EvoScientist.EvoScientist._ensure_chat_model", return_value=MagicMock()),
-            patch("EvoScientist.EvoScientist._get_default_backend", return_value=MagicMock()),
-            patch("deepagents.middleware.summarization.SummarizationMiddleware", mock_middleware_cls),
-            patch("deepagents.middleware.summarization.compute_summarization_defaults", return_value={"keep": ("messages", 6)}),
-            patch("langchain_core.messages.utils.count_tokens_approximately", return_value=500),
+            patch(
+                "EvoScientist.EvoScientist._ensure_chat_model", return_value=MagicMock()
+            ),
+            patch(
+                "EvoScientist.EvoScientist._get_default_backend",
+                return_value=MagicMock(),
+            ),
+            patch(
+                "deepagents.middleware.summarization.SummarizationMiddleware",
+                mock_middleware_cls,
+            ),
+            patch(
+                "deepagents.middleware.summarization.compute_summarization_defaults",
+                return_value={"keep": ("messages", 6)},
+            ),
+            patch(
+                "langchain_core.messages.utils.count_tokens_approximately",
+                return_value=500,
+            ),
         ):
             result = _run(compact_conversation(agent=agent, thread_id="tid-1"))
 
@@ -93,7 +107,9 @@ class TestCompactNegligibleSavings:
 
         agent = MagicMock()
         msgs = [MagicMock() for _ in range(15)]
-        snapshot = SimpleNamespace(values={"messages": msgs, "_summarization_event": None})
+        snapshot = SimpleNamespace(
+            values={"messages": msgs, "_summarization_event": None}
+        )
         agent.aget_state = AsyncMock(return_value=snapshot)
 
         mock_middleware_inst = MagicMock()
@@ -108,11 +124,25 @@ class TestCompactNegligibleSavings:
         token_values = iter([200, 22000])
 
         with (
-            patch("EvoScientist.EvoScientist._ensure_chat_model", return_value=MagicMock()),
-            patch("EvoScientist.EvoScientist._get_default_backend", return_value=MagicMock()),
-            patch("deepagents.middleware.summarization.SummarizationMiddleware", mock_middleware_cls),
-            patch("deepagents.middleware.summarization.compute_summarization_defaults", return_value={"keep": ("messages", 6)}),
-            patch("langchain_core.messages.utils.count_tokens_approximately", side_effect=lambda x: next(token_values)),
+            patch(
+                "EvoScientist.EvoScientist._ensure_chat_model", return_value=MagicMock()
+            ),
+            patch(
+                "EvoScientist.EvoScientist._get_default_backend",
+                return_value=MagicMock(),
+            ),
+            patch(
+                "deepagents.middleware.summarization.SummarizationMiddleware",
+                mock_middleware_cls,
+            ),
+            patch(
+                "deepagents.middleware.summarization.compute_summarization_defaults",
+                return_value={"keep": ("messages", 6)},
+            ),
+            patch(
+                "langchain_core.messages.utils.count_tokens_approximately",
+                side_effect=lambda x: next(token_values),
+            ),
         ):
             result = _run(compact_conversation(agent=agent, thread_id="tid-1"))
 
@@ -128,7 +158,9 @@ class TestCompactNegligibleSavings:
 
         agent = MagicMock()
         msgs = [MagicMock() for _ in range(10)]
-        snapshot = SimpleNamespace(values={"messages": msgs, "_summarization_event": None})
+        snapshot = SimpleNamespace(
+            values={"messages": msgs, "_summarization_event": None}
+        )
         agent.aget_state = AsyncMock(return_value=snapshot)
         agent.aupdate_state = AsyncMock()
 
@@ -149,11 +181,25 @@ class TestCompactNegligibleSavings:
         token_values = iter([5000, 15000, 500])
 
         with (
-            patch("EvoScientist.EvoScientist._ensure_chat_model", return_value=MagicMock()),
-            patch("EvoScientist.EvoScientist._get_default_backend", return_value=MagicMock()),
-            patch("deepagents.middleware.summarization.SummarizationMiddleware", mock_middleware_cls),
-            patch("deepagents.middleware.summarization.compute_summarization_defaults", return_value={"keep": ("messages", 6)}),
-            patch("langchain_core.messages.utils.count_tokens_approximately", side_effect=lambda x: next(token_values)),
+            patch(
+                "EvoScientist.EvoScientist._ensure_chat_model", return_value=MagicMock()
+            ),
+            patch(
+                "EvoScientist.EvoScientist._get_default_backend",
+                return_value=MagicMock(),
+            ),
+            patch(
+                "deepagents.middleware.summarization.SummarizationMiddleware",
+                mock_middleware_cls,
+            ),
+            patch(
+                "deepagents.middleware.summarization.compute_summarization_defaults",
+                return_value={"keep": ("messages", 6)},
+            ),
+            patch(
+                "langchain_core.messages.utils.count_tokens_approximately",
+                side_effect=lambda x: next(token_values),
+            ),
         ):
             result = _run(compact_conversation(agent=agent, thread_id="tid-1"))
 
@@ -170,7 +216,9 @@ class TestCompactSuccess:
 
         agent = MagicMock()
         msgs = [MagicMock() for _ in range(20)]
-        snapshot = SimpleNamespace(values={"messages": msgs, "_summarization_event": None})
+        snapshot = SimpleNamespace(
+            values={"messages": msgs, "_summarization_event": None}
+        )
         agent.aget_state = AsyncMock(return_value=snapshot)
         agent.aupdate_state = AsyncMock()
 
@@ -183,7 +231,9 @@ class TestCompactSuccess:
         mock_middleware_inst._determine_cutoff_index.return_value = 15
         mock_middleware_inst._partition_messages.return_value = (to_summarize, to_keep)
         mock_middleware_inst._acreate_summary = AsyncMock(return_value="Summary text")
-        mock_middleware_inst._aoffload_to_backend = AsyncMock(return_value="/conversation_history/tid.md")
+        mock_middleware_inst._aoffload_to_backend = AsyncMock(
+            return_value="/conversation_history/tid.md"
+        )
         mock_middleware_inst._build_new_messages_with_path.return_value = [summary_msg]
         mock_middleware_inst._compute_state_cutoff.return_value = 15
 
@@ -193,11 +243,25 @@ class TestCompactSuccess:
         token_values = iter([5000, 1000, 200])
 
         with (
-            patch("EvoScientist.EvoScientist._ensure_chat_model", return_value=MagicMock()),
-            patch("EvoScientist.EvoScientist._get_default_backend", return_value=MagicMock()),
-            patch("deepagents.middleware.summarization.SummarizationMiddleware", mock_middleware_cls),
-            patch("deepagents.middleware.summarization.compute_summarization_defaults", return_value={"keep": ("messages", 6)}),
-            patch("langchain_core.messages.utils.count_tokens_approximately", side_effect=lambda x: next(token_values)),
+            patch(
+                "EvoScientist.EvoScientist._ensure_chat_model", return_value=MagicMock()
+            ),
+            patch(
+                "EvoScientist.EvoScientist._get_default_backend",
+                return_value=MagicMock(),
+            ),
+            patch(
+                "deepagents.middleware.summarization.SummarizationMiddleware",
+                mock_middleware_cls,
+            ),
+            patch(
+                "deepagents.middleware.summarization.compute_summarization_defaults",
+                return_value={"keep": ("messages", 6)},
+            ),
+            patch(
+                "langchain_core.messages.utils.count_tokens_approximately",
+                side_effect=lambda x: next(token_values),
+            ),
         ):
             result = _run(compact_conversation(agent=agent, thread_id="tid-1"))
 
@@ -222,7 +286,9 @@ class TestCompactSuccess:
 
         agent = MagicMock()
         msgs = [MagicMock() for _ in range(10)]
-        snapshot = SimpleNamespace(values={"messages": msgs, "_summarization_event": None})
+        snapshot = SimpleNamespace(
+            values={"messages": msgs, "_summarization_event": None}
+        )
         agent.aget_state = AsyncMock(return_value=snapshot)
         agent.aupdate_state = AsyncMock()
 
@@ -233,18 +299,34 @@ class TestCompactSuccess:
         mock_middleware_inst._determine_cutoff_index.return_value = 7
         mock_middleware_inst._partition_messages.return_value = (msgs[:7], msgs[7:])
         mock_middleware_inst._acreate_summary = AsyncMock(return_value="Summary")
-        mock_middleware_inst._aoffload_to_backend = AsyncMock(side_effect=RuntimeError("write failed"))
+        mock_middleware_inst._aoffload_to_backend = AsyncMock(
+            side_effect=RuntimeError("write failed")
+        )
         mock_middleware_inst._build_new_messages_with_path.return_value = [summary_msg]
         mock_middleware_inst._compute_state_cutoff.return_value = 7
 
         mock_middleware_cls = MagicMock(return_value=mock_middleware_inst)
 
         with (
-            patch("EvoScientist.EvoScientist._ensure_chat_model", return_value=MagicMock()),
-            patch("EvoScientist.EvoScientist._get_default_backend", return_value=MagicMock()),
-            patch("deepagents.middleware.summarization.SummarizationMiddleware", mock_middleware_cls),
-            patch("deepagents.middleware.summarization.compute_summarization_defaults", return_value={"keep": ("messages", 6)}),
-            patch("langchain_core.messages.utils.count_tokens_approximately", return_value=1000),
+            patch(
+                "EvoScientist.EvoScientist._ensure_chat_model", return_value=MagicMock()
+            ),
+            patch(
+                "EvoScientist.EvoScientist._get_default_backend",
+                return_value=MagicMock(),
+            ),
+            patch(
+                "deepagents.middleware.summarization.SummarizationMiddleware",
+                mock_middleware_cls,
+            ),
+            patch(
+                "deepagents.middleware.summarization.compute_summarization_defaults",
+                return_value={"keep": ("messages", 6)},
+            ),
+            patch(
+                "langchain_core.messages.utils.count_tokens_approximately",
+                return_value=1000,
+            ),
         ):
             result = _run(compact_conversation(agent=agent, thread_id="tid-1"))
 
@@ -271,7 +353,9 @@ class TestRenderCompactResult:
     def test_render_noop_no_tokens(self):
         from EvoScientist.cli.commands import CompactResult, render_compact_result
 
-        result = CompactResult("noop", "Nothing to compact — no messages in conversation.")
+        result = CompactResult(
+            "noop", "Nothing to compact — no messages in conversation."
+        )
         text = render_compact_result(result)
         assert "Nothing to compact" in text.plain
 
@@ -286,7 +370,8 @@ class TestRenderCompactResult:
         from EvoScientist.cli.commands import CompactResult, render_compact_result
 
         result = CompactResult(
-            "ok", "Compacted",
+            "ok",
+            "Compacted",
             messages_compacted=15,
             messages_kept=5,
             tokens_before=6000,

@@ -16,11 +16,13 @@ __all__ = ["QQChannel", "QQConfig"]
 
 def create_from_config(config) -> QQChannel:
     allowed = _parse_csv(config.qq_allowed_senders)
-    return QQChannel(QQConfig(
-        app_id=config.qq_app_id,
-        app_secret=config.qq_app_secret,
-        allowed_senders=allowed,
-    ))
+    return QQChannel(
+        QQConfig(
+            app_id=config.qq_app_id,
+            app_secret=config.qq_app_secret,
+            allowed_senders=allowed,
+        )
+    )
 
 
 register_channel("qq", create_from_config)

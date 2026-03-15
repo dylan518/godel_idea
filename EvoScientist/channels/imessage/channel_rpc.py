@@ -32,7 +32,7 @@ class _IMessageAllowListMiddleware:
     does not cover.
     """
 
-    def __init__(self, channel: 'IMessageChannelRpc'):
+    def __init__(self, channel: "IMessageChannelRpc"):
         self._channel = channel
 
     async def process_inbound(self, raw, context):
@@ -80,6 +80,7 @@ class IMessageChannelRpc(Channel):
         iMessage doesn't need MentionGating (always sets was_mentioned=True).
         """
         from ..middleware import DedupMiddleware, GroupHistoryMiddleware
+
         middlewares = []
         middlewares.append(DedupMiddleware())
         middlewares.append(_IMessageAllowListMiddleware(self))
@@ -150,6 +151,7 @@ class IMessageChannelRpc(Channel):
                     fname = att_path.name
                     # Check file size before copying
                     from ..base import MAX_ATTACHMENT_BYTES
+
                     if att_path.stat().st_size > MAX_ATTACHMENT_BYTES:
                         annotations.append(
                             f"[{media_label}: {fname} - too large "
@@ -159,12 +161,15 @@ class IMessageChannelRpc(Channel):
                         local = self._media_path(f"imsg_{fname}")
                         try:
                             import shutil
+
                             shutil.copy2(str(att_path), str(local))
                             media_paths.append(str(local))
                             annotations.append(f"[{media_label}: {local}]")
                         except Exception as e:
                             logger.warning(f"Failed to copy iMessage attachment: {e}")
-                            annotations.append(f"[{media_label}: {fname} - copy failed]")
+                            annotations.append(
+                                f"[{media_label}: {fname} - copy failed]"
+                            )
                 else:
                     annotations.append(f"[{media_label}: {file_path} - not found]")
 
@@ -173,18 +178,20 @@ class IMessageChannelRpc(Channel):
 
         is_group = message.get("is_group", False)
 
-        await self._enqueue_raw(RawIncoming(
-            sender_id=sender,
-            chat_id=str(metadata.get("chat_id", sender)),
-            text=text,
-            media_files=media_paths,
-            content_annotations=annotations,
-            timestamp=timestamp,
-            message_id=str(message.get("id", "")),
-            metadata=metadata,
-            is_group=is_group,
-            was_mentioned=True,  # iMessage has no mention concept
-        ))
+        await self._enqueue_raw(
+            RawIncoming(
+                sender_id=sender,
+                chat_id=str(metadata.get("chat_id", sender)),
+                text=text,
+                media_files=media_paths,
+                content_annotations=annotations,
+                timestamp=timestamp,
+                message_id=str(message.get("id", "")),
+                metadata=metadata,
+                is_group=is_group,
+                was_mentioned=True,  # iMessage has no mention concept
+            )
+        )
 
     # ── Sender filtering ──────────────────────────────────────────
 
@@ -362,7 +369,6 @@ class IMessageChannelRpc(Channel):
     def _format_chunk(self, text: str) -> str:
         """iMessage uses plain text; no formatting conversion needed."""
         return text
-
 
     def _extract_retry_after(self, exc: Exception) -> float | None:
         """iMessage-specific retry logic.

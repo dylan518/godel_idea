@@ -16,7 +16,9 @@ def _mcp_list_servers() -> None:
 
     if not config:
         console.print("[dim]No MCP servers configured.[/dim]")
-        console.print("[dim]Add one with:[/dim] /mcp add <name> <command-or-url> [args...]")
+        console.print(
+            "[dim]Add one with:[/dim] /mcp add <name> <command-or-url> [args...]"
+        )
         console.print()
         return
 
@@ -51,7 +53,9 @@ def _mcp_add_server_from_kwargs(
 
     try:
         entry = add_mcp_server(**kwargs)
-        console.print(f"[green]Added MCP server:[/green] [cyan]{kwargs['name']}[/cyan] ({entry['transport']})")
+        console.print(
+            f"[green]Added MCP server:[/green] [cyan]{kwargs['name']}[/cyan] ({entry['transport']})"
+        )
         if show_reload_hint:
             console.print("[dim]Reload with /new to apply.[/dim]")
         return True
@@ -70,7 +74,9 @@ def _mcp_edit_server_fields(
     from ..mcp import edit_mcp_server
 
     if not fields:
-        console.print("[red]No fields to edit. Use --transport, --command, --url, --tools, --expose-to, etc.[/red]")
+        console.print(
+            "[red]No fields to edit. Use --transport, --command, --url, --tools, --expose-to, etc.[/red]"
+        )
         return False
 
     try:
@@ -185,20 +191,30 @@ def _cmd_mcp_add(args_str: str) -> None:
     if not args_str.strip():
         console.print("[bold]Usage:[/bold] /mcp add <name> <command-or-url> [args...]")
         console.print()
-        console.print("[dim]Transport is auto-detected: URLs \u2192 http, commands \u2192 stdio[/dim]")
+        console.print(
+            "[dim]Transport is auto-detected: URLs \u2192 http, commands \u2192 stdio[/dim]"
+        )
         console.print()
         console.print("[bold]Examples:[/bold]")
-        console.print("  /mcp add sequential-thinking npx -y @modelcontextprotocol/server-sequential-thinking")
+        console.print(
+            "  /mcp add sequential-thinking npx -y @modelcontextprotocol/server-sequential-thinking"
+        )
         console.print("  /mcp add docs-langchain https://docs.langchain.com/mcp")
-        console.print("  /mcp add my-sse http://localhost:9090/sse --transport sse --expose-to research-agent")
+        console.print(
+            "  /mcp add my-sse http://localhost:9090/sse --transport sse --expose-to research-agent"
+        )
         console.print()
         console.print("[dim]Options:[/dim]")
         console.print("  --transport T          Transport type (default: auto-detect)")
-        console.print("  --tools t1,t2          Tool allowlist (supports wildcards: *_exa, read_*)")
+        console.print(
+            "  --tools t1,t2          Tool allowlist (supports wildcards: *_exa, read_*)"
+        )
         console.print("  --expose-to a1,a2      Target agents (default: main)")
         console.print("  --header Key:Value     HTTP header (repeatable)")
         console.print("  --env KEY=VALUE        Env var for stdio (repeatable)")
-        console.print("  --env-ref KEY          Env var as runtime ${KEY} reference (repeatable)")
+        console.print(
+            "  --env-ref KEY          Env var as runtime ${KEY} reference (repeatable)"
+        )
         console.print()
         return
 
@@ -219,8 +235,12 @@ def _cmd_mcp_edit(args_str: str) -> None:
     if not args_str.strip():
         console.print("[bold]Usage:[/bold] /mcp edit <name> --<field> <value> ...")
         console.print()
-        console.print("[dim]Fields:[/dim] --transport, --command, --url, --args, --tools, --expose-to, --header, --env")
-        console.print("[dim]Use[/dim] --tools none [dim]or[/dim] --expose-to none [dim]to clear a field.[/dim]")
+        console.print(
+            "[dim]Fields:[/dim] --transport, --command, --url, --args, --tools, --expose-to, --header, --env"
+        )
+        console.print(
+            "[dim]Use[/dim] --tools none [dim]or[/dim] --expose-to none [dim]to clear a field.[/dim]"
+        )
         console.print()
         console.print("[bold]Examples:[/bold]")
         console.print("  /mcp edit filesystem --expose-to main,code-agent")

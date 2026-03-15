@@ -14,8 +14,12 @@ def _shorten_path(path: str) -> str:
     try:
         cwd = os.getcwd()
         if path.startswith(cwd):
-            rel = path[len(cwd):].lstrip(os.sep)
-            return os.path.join(os.path.basename(cwd), rel) if rel else os.path.basename(cwd)
+            rel = path[len(cwd) :].lstrip(os.sep)
+            return (
+                os.path.join(os.path.basename(cwd), rel)
+                if rel
+                else os.path.basename(cwd)
+            )
         return path
     except Exception:
         return path
@@ -25,6 +29,7 @@ def _deduplicate_run_name(name: str, runs_dir: Path | None = None) -> str:
     """Return *name* if available, otherwise *name_1*, *name_2*, etc."""
     if runs_dir is None:
         from ..paths import RUNS_DIR
+
         runs_dir = RUNS_DIR
     if not (runs_dir / name).exists():
         return name
@@ -44,6 +49,7 @@ def _create_session_workspace(name: str | None = None) -> str:
     """
     if name:
         from ..paths import RUNS_DIR
+
         session_id = _deduplicate_run_name(name, RUNS_DIR)
     else:
         session_id = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -63,4 +69,7 @@ def _load_agent(workspace_dir: str | None = None, checkpointer=None, config=None
             ``create_cli_agent`` to avoid double config loading.
     """
     from ..EvoScientist import create_cli_agent
-    return create_cli_agent(workspace_dir=workspace_dir, checkpointer=checkpointer, config=config)
+
+    return create_cli_agent(
+        workspace_dir=workspace_dir, checkpointer=checkpointer, config=config
+    )

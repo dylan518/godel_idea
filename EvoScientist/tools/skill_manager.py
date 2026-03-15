@@ -44,7 +44,12 @@ def skill_manager(
     Returns:
         Result message
     """
-    from .skills_manager import install_skill, list_skills, uninstall_skill, get_skill_info
+    from .skills_manager import (
+        install_skill,
+        list_skills,
+        uninstall_skill,
+        get_skill_info,
+    )
 
     if action == "install":
         if not source:
@@ -117,4 +122,6 @@ def skill_manager(
         )
 
     else:
-        return f"Unknown action: {action}. Use 'install', 'list', 'uninstall', or 'info'."
+        return (
+            f"Unknown action: {action}. Use 'install', 'list', 'uninstall', or 'info'."
+        )

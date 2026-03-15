@@ -78,7 +78,6 @@ def format_messages(messages):
             console.print(Panel(content, title=f"📝 {msg_type}", border_style="white"))
 
 
-
 def show_prompt(prompt_text: str, title: str = "Prompt", border_style: str = "blue"):
     """Display a prompt with rich formatting and XML tag highlighting.
 
@@ -160,7 +159,9 @@ def load_subagents(
         if "system_prompt_ref" in spec:
             ref = spec["system_prompt_ref"]
             if ref not in prompt_refs:
-                raise ValueError(f"Unknown system_prompt_ref '{ref}' for subagent '{name}'")
+                raise ValueError(
+                    f"Unknown system_prompt_ref '{ref}' for subagent '{name}'"
+                )
             subagent["system_prompt"] = prompt_refs[ref]
         else:
             subagent["system_prompt"] = spec.get("system_prompt", "")

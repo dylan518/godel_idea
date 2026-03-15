@@ -30,7 +30,9 @@ def main():
     import warnings
 
     warnings.filterwarnings("ignore", message=".*not known to support tools.*")
-    warnings.filterwarnings("ignore", message=".*type is unknown and inference may fail.*")
+    warnings.filterwarnings(
+        "ignore", message=".*type is unknown and inference may fail.*"
+    )
     from .commands import _configure_logging
 
     _configure_logging()

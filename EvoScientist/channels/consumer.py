@@ -28,7 +28,9 @@ _MAX_CHAT_LOCKS = 10_000
 _MAX_SESSIONS = 10_000
 _MAX_HITL_ROUNDS = 50
 _HITL_APPROVAL_TIMEOUT = 120.0  # seconds to wait for HITL approval reply
-_ASK_USER_TIMEOUT = 300.0  # seconds to wait for ask_user reply (longer for thinking time)
+_ASK_USER_TIMEOUT = (
+    300.0  # seconds to wait for ask_user reply (longer for thinking time)
+)
 
 
 @dataclass
@@ -86,6 +88,7 @@ def _should_auto_approve(action_requests: list[dict]) -> bool:
 
     try:
         from ..config.settings import load_config
+
         cfg = load_config()
     except Exception:
         return False  # fail-closed
@@ -95,14 +98,19 @@ def _should_auto_approve(action_requests: list[dict]) -> bool:
 
     shell_allow_list = (
         [s.strip() for s in cfg.shell_allow_list.split(",") if s.strip()]
-        if cfg.shell_allow_list else []
+        if cfg.shell_allow_list
+        else []
     )
 
     for req in action_requests:
-        name = req.get("name", "") if isinstance(req, dict) else getattr(req, "name", "")
+        name = (
+            req.get("name", "") if isinstance(req, dict) else getattr(req, "name", "")
+        )
         if name != "execute":
             continue
-        args = req.get("args", {}) if isinstance(req, dict) else getattr(req, "args", {})
+        args = (
+            req.get("args", {}) if isinstance(req, dict) else getattr(req, "args", {})
+        )
         command = args.get("command", "") if isinstance(args, dict) else ""
         cmd = command.strip()
         if not any(cmd.startswith(prefix) for prefix in shell_allow_list):
@@ -114,8 +122,12 @@ def _format_approval_prompt(action_requests: list[dict]) -> str:
     """Format an approval prompt as a text message for channel users."""
     lines = ["\u26a0\ufe0f Approval Required\n"]
     for i, req in enumerate(action_requests, 1):
-        name = req.get("name", "") if isinstance(req, dict) else getattr(req, "name", "")
-        args = req.get("args", {}) if isinstance(req, dict) else getattr(req, "args", {})
+        name = (
+            req.get("name", "") if isinstance(req, dict) else getattr(req, "name", "")
+        )
+        args = (
+            req.get("args", {}) if isinstance(req, dict) else getattr(req, "args", {})
+        )
         if isinstance(args, dict):
             command = args.get("command", args.get("path", ""))
         else:
@@ -148,6 +160,7 @@ def _parse_approval_reply(text: str) -> str | None:
 @dataclass
 class _PendingInterrupt:
     """Stored state for a pending HITL interrupt awaiting channel user reply."""
+
     thread_id: str
     action_requests: list
     event: asyncio.Event  # set when user replies
@@ -157,6 +170,7 @@ class _PendingInterrupt:
 @dataclass
 class _PendingAskUserReply:
     """Stored state for a pending ask_user question awaiting channel user reply."""
+
     event: asyncio.Event  # set when user replies
     reply: str | None = None  # raw reply text
 
@@ -221,7 +235,9 @@ class InboundConsumer:
         self._on_message_received = on_message_received
         self._on_streaming_event = on_streaming_event
         self._on_message_sent = on_message_sent
-        self._sessions: OrderedDict[str, str] = OrderedDict()  # sender_id -> thread_id (LRU)
+        self._sessions: OrderedDict[str, str] = (
+            OrderedDict()
+        )  # sender_id -> thread_id (LRU)
 
         # Per-chat locks: same chat is processed serially (bounded)
         self._chat_locks: dict[str, asyncio.Lock] = {}
@@ -282,14 +298,14 @@ class InboundConsumer:
         """
         self._stopping = False
         self._workers = [
-            asyncio.create_task(self._worker(i))
-            for i in range(self._max_concurrent)
+            asyncio.create_task(self._worker(i)) for i in range(self._max_concurrent)
         ]
         try:
             while not self._stopping:
                 try:
                     msg = await asyncio.wait_for(
-                        self.bus.consume_inbound(), timeout=1.0,
+                        self.bus.consume_inbound(),
+                        timeout=1.0,
                     )
                 except asyncio.TimeoutError:
                     continue
@@ -318,7 +334,8 @@ class InboundConsumer:
         # Wait for workers to finish, then force-cancel stragglers
         if self._workers:
             done, still_running = await asyncio.wait(
-                self._workers, timeout=self._drain_timeout,
+                self._workers,
+                timeout=self._drain_timeout,
             )
             for task in still_running:
                 task.cancel()
@@ -417,8 +434,12 @@ class InboundConsumer:
 
                 async for event in _timeout_aiter(
                     stream_agent_events(
-                        self.agent, stream_input, thread_id,
-                        media=msg.media or None if isinstance(stream_input, str) else None,
+                        self.agent,
+                        stream_input,
+                        thread_id,
+                        media=msg.media or None
+                        if isinstance(stream_input, str)
+                        else None,
                     ),
                     self._inference_timeout,
                 ):
@@ -475,7 +496,9 @@ class InboundConsumer:
                     full_thinking = "".join(thinking_buffer)
                     if full_thinking:
                         await channel.send_thinking_message(
-                            msg.sender_id, full_thinking, msg.metadata,
+                            msg.sender_id,
+                            full_thinking,
+                            msg.metadata,
                         )
 
                 # No interrupt — normal completion
@@ -499,9 +522,12 @@ class InboundConsumer:
                 # ask_user: send questions to channel user, collect answers
                 if interrupt_data.get("type") == "ask_user":
                     result = await self._resolve_ask_user(
-                        msg, interrupt_data, session_key,
+                        msg,
+                        interrupt_data,
+                        session_key,
                     )
                     from langgraph.types import Command  # type: ignore[import-untyped]
+
                     stream_input = Command(resume=result)
                     continue
 
@@ -512,23 +538,31 @@ class InboundConsumer:
                 # Session auto-approve (user previously chose "Approve all")
                 if session_key in self._auto_approve_sessions:
                     from langgraph.types import Command  # type: ignore[import-untyped]
-                    stream_input = Command(resume={"decisions": [{"type": "approve"} for _ in range(n)]})
+
+                    stream_input = Command(
+                        resume={"decisions": [{"type": "approve"} for _ in range(n)]}
+                    )
                     continue
 
                 # Config auto-approve (auto_approve, non-execute, allow_list)
                 if _should_auto_approve(action_reqs):
                     from langgraph.types import Command  # type: ignore[import-untyped]
-                    stream_input = Command(resume={"decisions": [{"type": "approve"} for _ in range(n)]})
+
+                    stream_input = Command(
+                        resume={"decisions": [{"type": "approve"} for _ in range(n)]}
+                    )
                     continue
 
                 # Needs user approval — send prompt to channel
                 prompt_text = _format_approval_prompt(action_reqs)
-                await self.bus.publish_outbound(OutboundMessage(
-                    channel=msg.channel,
-                    chat_id=msg.chat_id,
-                    content=prompt_text,
-                    metadata=msg.metadata,
-                ))
+                await self.bus.publish_outbound(
+                    OutboundMessage(
+                        channel=msg.channel,
+                        chat_id=msg.chat_id,
+                        content=prompt_text,
+                        metadata=msg.metadata,
+                    )
+                )
 
                 # Wait for user reply
                 pending = _PendingInterrupt(
@@ -552,19 +586,24 @@ class InboundConsumer:
                 decision = pending.decision or "approve"
 
                 if decision == "reject":
-                    await self.bus.publish_outbound(OutboundMessage(
-                        channel=msg.channel,
-                        chat_id=msg.chat_id,
-                        content="Tool execution rejected.",
-                        metadata=msg.metadata,
-                    ))
+                    await self.bus.publish_outbound(
+                        OutboundMessage(
+                            channel=msg.channel,
+                            chat_id=msg.chat_id,
+                            content="Tool execution rejected.",
+                            metadata=msg.metadata,
+                        )
+                    )
                     return
 
                 if decision == "auto":
                     self._auto_approve_sessions.add(session_key)
 
                 from langgraph.types import Command  # type: ignore[import-untyped]
-                stream_input = Command(resume={"decisions": [{"type": "approve"} for _ in range(n)]})
+
+                stream_input = Command(
+                    resume={"decisions": [{"type": "approve"} for _ in range(n)]}
+                )
                 # continue to next HITL round
 
         except asyncio.TimeoutError:
@@ -573,22 +612,26 @@ class InboundConsumer:
                 f"Inference timeout ({self._inference_timeout}s idle) "
                 f"for {msg.sender_id} in {session_key}"
             )
-            await self.bus.publish_outbound(OutboundMessage(
-                channel=msg.channel,
-                chat_id=msg.chat_id,
-                content="Sorry, the response timed out. Please try again.",
-                metadata=msg.metadata,
-            ))
+            await self.bus.publish_outbound(
+                OutboundMessage(
+                    channel=msg.channel,
+                    chat_id=msg.chat_id,
+                    content="Sorry, the response timed out. Please try again.",
+                    metadata=msg.metadata,
+                )
+            )
 
         except Exception as e:
             self._metrics.total_failures += 1
             logger.error(f"Agent error: {e}")
-            await self.bus.publish_outbound(OutboundMessage(
-                channel=msg.channel,
-                chat_id=msg.chat_id,
-                content="Sorry, something went wrong. Please try again later.",
-                metadata=msg.metadata,
-            ))
+            await self.bus.publish_outbound(
+                OutboundMessage(
+                    channel=msg.channel,
+                    chat_id=msg.chat_id,
+                    content="Sorry, something went wrong. Please try again later.",
+                    metadata=msg.metadata,
+                )
+            )
         finally:
             if channel:
                 await channel.stop_typing(msg.chat_id)
@@ -623,7 +666,9 @@ class InboundConsumer:
     # ── ask_user helpers ──
 
     async def _wait_for_ask_user_reply(
-        self, session_key: str, timeout: float,
+        self,
+        session_key: str,
+        timeout: float,
     ) -> str | None:
         """Register a pending ask_user slot and wait for the user to reply.
 
@@ -684,38 +729,37 @@ class InboundConsumer:
                     lines.append(f"   {letter}. {label}")
                 other_letter = chr(ord("A") + len(choices))
                 lines.append(f"   {other_letter}. Other")
-                letters = "/".join(
-                    chr(ord("A") + k) for k in range(len(choices) + 1)
-                )
-                lines.append(
-                    f"\nReply with a letter ({letters}), or 'cancel'."
-                )
+                letters = "/".join(chr(ord("A") + k) for k in range(len(choices) + 1))
+                lines.append(f"\nReply with a letter ({letters}), or 'cancel'.")
             else:
                 skip_hint = " Leave empty to skip." if not required else ""
-                lines.append(
-                    f"\nReply with your answer, or 'cancel'.{skip_hint}"
-                )
+                lines.append(f"\nReply with your answer, or 'cancel'.{skip_hint}")
 
             # -- Send question --
-            await self.bus.publish_outbound(OutboundMessage(
-                channel=msg.channel,
-                chat_id=msg.chat_id,
-                content="\n".join(lines),
-                metadata=msg.metadata,
-            ))
+            await self.bus.publish_outbound(
+                OutboundMessage(
+                    channel=msg.channel,
+                    chat_id=msg.chat_id,
+                    content="\n".join(lines),
+                    metadata=msg.metadata,
+                )
+            )
 
             # -- Wait for user reply --
             reply = await self._wait_for_ask_user_reply(
-                session_key, _ASK_USER_TIMEOUT,
+                session_key,
+                _ASK_USER_TIMEOUT,
             )
 
             if not reply:
-                await self.bus.publish_outbound(OutboundMessage(
-                    channel=msg.channel,
-                    chat_id=msg.chat_id,
-                    content="\u23f0 Response timed out.",
-                    metadata=msg.metadata,
-                ))
+                await self.bus.publish_outbound(
+                    OutboundMessage(
+                        channel=msg.channel,
+                        chat_id=msg.chat_id,
+                        content="\u23f0 Response timed out.",
+                        metadata=msg.metadata,
+                    )
+                )
                 return {"status": "cancelled"}
 
             raw = reply.strip()
@@ -728,22 +772,27 @@ class InboundConsumer:
                 other_letter = chr(ord("A") + len(choices))
                 if len(raw) == 1 and raw.upper() == other_letter:
                     # "Other" selected — ask for free-form input
-                    await self.bus.publish_outbound(OutboundMessage(
-                        channel=msg.channel,
-                        chat_id=msg.chat_id,
-                        content="Please type your answer:",
-                        metadata=msg.metadata,
-                    ))
-                    other_reply = await self._wait_for_ask_user_reply(
-                        session_key, _ASK_USER_TIMEOUT,
-                    )
-                    if not other_reply:
-                        await self.bus.publish_outbound(OutboundMessage(
+                    await self.bus.publish_outbound(
+                        OutboundMessage(
                             channel=msg.channel,
                             chat_id=msg.chat_id,
-                            content="\u23f0 Response timed out.",
+                            content="Please type your answer:",
                             metadata=msg.metadata,
-                        ))
+                        )
+                    )
+                    other_reply = await self._wait_for_ask_user_reply(
+                        session_key,
+                        _ASK_USER_TIMEOUT,
+                    )
+                    if not other_reply:
+                        await self.bus.publish_outbound(
+                            OutboundMessage(
+                                channel=msg.channel,
+                                chat_id=msg.chat_id,
+                                content="\u23f0 Response timed out.",
+                                metadata=msg.metadata,
+                            )
+                        )
                         return {"status": "cancelled"}
                     if other_reply.strip().lower() == "cancel":
                         return {"status": "cancelled"}
@@ -766,5 +815,5 @@ class InboundConsumer:
     def _evict_chat_locks(self) -> None:
         """Remove chat locks that are not currently held."""
         stale = [k for k, lock in self._chat_locks.items() if not lock.locked()]
-        for k in stale[:max(1, len(stale) // 2)]:
+        for k in stale[: max(1, len(stale) // 2)]:
             del self._chat_locks[k]

@@ -69,7 +69,8 @@ def copy_selection_to_clipboard(app: App) -> None:
         except (AttributeError, TypeError, ValueError, IndexError) as exc:
             logger.debug(
                 "Failed to get selection from %s: %s",
-                type(widget).__name__, exc,
+                type(widget).__name__,
+                exc,
             )
             continue
         if not result:
@@ -88,6 +89,7 @@ def copy_selection_to_clipboard(app: App) -> None:
 
     try:
         import pyperclip
+
         copy_methods.insert(0, pyperclip.copy)
     except ImportError:
         pass
@@ -104,7 +106,9 @@ def copy_selection_to_clipboard(app: App) -> None:
                 markup=False,
             )
         except (OSError, RuntimeError, TypeError) as exc:
-            logger.debug("Clipboard method %s failed: %s", getattr(fn, "__name__", repr(fn)), exc)
+            logger.debug(
+                "Clipboard method %s failed: %s", getattr(fn, "__name__", repr(fn)), exc
+            )
             continue
         else:
             return

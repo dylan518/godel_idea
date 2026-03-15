@@ -54,30 +54,35 @@ class TestFormatRelativeTime(unittest.TestCase):
 
     def test_recent(self):
         from datetime import datetime, timezone
+
         now = datetime.now(timezone.utc).isoformat()
         result = _format_relative_time(now)
         self.assertIn("just now", result)
 
     def test_minutes(self):
         from datetime import datetime, timedelta, timezone
+
         ts = (datetime.now(timezone.utc) - timedelta(minutes=5)).isoformat()
         result = _format_relative_time(ts)
         self.assertIn("min ago", result)
 
     def test_hours(self):
         from datetime import datetime, timedelta, timezone
+
         ts = (datetime.now(timezone.utc) - timedelta(hours=2)).isoformat()
         result = _format_relative_time(ts)
         self.assertIn("hour", result)
 
     def test_days(self):
         from datetime import datetime, timedelta, timezone
+
         ts = (datetime.now(timezone.utc) - timedelta(days=3)).isoformat()
         result = _format_relative_time(ts)
         self.assertIn("day", result)
 
     def test_months(self):
         from datetime import datetime, timedelta, timezone
+
         ts = (datetime.now(timezone.utc) - timedelta(days=65)).isoformat()
         result = _format_relative_time(ts)
         self.assertIn("month", result)
@@ -94,6 +99,7 @@ class TestThreadFunctions(unittest.TestCase):
 
         async def _setup():
             import aiosqlite
+
             async with aiosqlite.connect(cls._db_path) as conn:
                 # Create tables matching LangGraph checkpoint schema
                 await conn.execute("""
@@ -124,22 +130,26 @@ class TestThreadFunctions(unittest.TestCase):
 
                 # Insert test checkpoints
                 for i, tid in enumerate(["abc12345", "abc12399", "def00001"]):
-                    meta = json.dumps({
-                        "agent_name": AGENT_NAME,
-                        "updated_at": f"2025-01-{15 + i}T10:00:00+00:00",
-                        "workspace_dir": f"/tmp/ws_{tid}",
-                        "model": "claude-sonnet-4-5",
-                    })
+                    meta = json.dumps(
+                        {
+                            "agent_name": AGENT_NAME,
+                            "updated_at": f"2025-01-{15 + i}T10:00:00+00:00",
+                            "workspace_dir": f"/tmp/ws_{tid}",
+                            "model": "claude-sonnet-4-5",
+                        }
+                    )
                     await conn.execute(
                         "INSERT INTO checkpoints (thread_id, checkpoint_ns, checkpoint_id, metadata) VALUES (?, '', ?, ?)",
                         (tid, f"cp_{i}", meta),
                     )
 
                 # Insert a non-EvoScientist checkpoint (should be filtered)
-                other_meta = json.dumps({
-                    "agent_name": "OtherAgent",
-                    "updated_at": "2025-01-20T10:00:00+00:00",
-                })
+                other_meta = json.dumps(
+                    {
+                        "agent_name": "OtherAgent",
+                        "updated_at": "2025-01-20T10:00:00+00:00",
+                    }
+                )
                 await conn.execute(
                     "INSERT INTO checkpoints (thread_id, checkpoint_ns, checkpoint_id, metadata) VALUES (?, '', ?, ?)",
                     ("zzz99999", "cp_other", other_meta),
@@ -151,7 +161,14 @@ class TestThreadFunctions(unittest.TestCase):
         # Patch get_db_path to point to our temp DB
         cls._patcher = patch(
             "EvoScientist.sessions.get_db_path",
-            return_value=type("P", (), {"__str__": lambda s: cls._db_path, "__fspath__": lambda s: cls._db_path})(),
+            return_value=type(
+                "P",
+                (),
+                {
+                    "__str__": lambda s: cls._db_path,
+                    "__fspath__": lambda s: cls._db_path,
+                },
+            )(),
         )
         cls._patcher.start()
 
@@ -210,13 +227,20 @@ class TestThreadFunctions(unittest.TestCase):
         # Insert a thread to delete
         async def _insert():
             import aiosqlite
+
             async with aiosqlite.connect(self._db_path) as conn:
-                meta = json.dumps({"agent_name": AGENT_NAME, "updated_at": "2025-01-01T00:00:00+00:00"})
+                meta = json.dumps(
+                    {
+                        "agent_name": AGENT_NAME,
+                        "updated_at": "2025-01-01T00:00:00+00:00",
+                    }
+                )
                 await conn.execute(
                     "INSERT INTO checkpoints (thread_id, checkpoint_ns, checkpoint_id, metadata) VALUES (?, '', ?, ?)",
                     ("todelete", "cp_del", meta),
                 )
                 await conn.commit()
+
         _run(_insert())
 
         self.assertTrue(_run(thread_exists("todelete")))
@@ -251,9 +275,15 @@ class TestThreadFunctions(unittest.TestCase):
 
         async def _insert():
             import aiosqlite
+
             async with aiosqlite.connect(self._db_path) as conn:
                 # EvoScientist checkpoint + write
-                evo_meta = json.dumps({"agent_name": AGENT_NAME, "updated_at": "2025-02-01T00:00:00+00:00"})
+                evo_meta = json.dumps(
+                    {
+                        "agent_name": AGENT_NAME,
+                        "updated_at": "2025-02-01T00:00:00+00:00",
+                    }
+                )
                 await conn.execute(
                     "INSERT INTO checkpoints (thread_id, checkpoint_ns, checkpoint_id, metadata) VALUES (?, '', ?, ?)",
                     (shared_tid, "cp_evo_shared", evo_meta),
@@ -265,7 +295,12 @@ class TestThreadFunctions(unittest.TestCase):
                 )
 
                 # OtherAgent checkpoint + write on the SAME thread_id
-                other_meta = json.dumps({"agent_name": "OtherAgent", "updated_at": "2025-02-01T00:00:00+00:00"})
+                other_meta = json.dumps(
+                    {
+                        "agent_name": "OtherAgent",
+                        "updated_at": "2025-02-01T00:00:00+00:00",
+                    }
+                )
                 await conn.execute(
                     "INSERT INTO checkpoints (thread_id, checkpoint_ns, checkpoint_id, metadata) VALUES (?, '', ?, ?)",
                     (shared_tid, "cp_other_shared", other_meta),
@@ -285,9 +320,11 @@ class TestThreadFunctions(unittest.TestCase):
         # Verify OtherAgent's writes survive
         async def _check():
             import aiosqlite
+
             async with aiosqlite.connect(self._db_path) as conn:
                 async with conn.execute(
-                    "SELECT checkpoint_id FROM writes WHERE thread_id = ?", (shared_tid,)
+                    "SELECT checkpoint_id FROM writes WHERE thread_id = ?",
+                    (shared_tid,),
                 ) as cur:
                     rows = await cur.fetchall()
                 return [r[0] for r in rows]

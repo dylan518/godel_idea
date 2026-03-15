@@ -50,6 +50,7 @@ class VerifyServer:
 
         if encoding_aes_key and token and app_id:
             from .crypto import WeChatCrypto
+
             self._crypto = WeChatCrypto(
                 token=token,
                 encoding_aes_key=encoding_aes_key,
@@ -110,9 +111,8 @@ class VerifyServer:
         """
         from aiohttp import web
 
-        signature = (
-            request.query.get("msg_signature")
-            or request.query.get("signature", "")
+        signature = request.query.get("msg_signature") or request.query.get(
+            "signature", ""
         )
         timestamp = request.query.get("timestamp", "")
         nonce = request.query.get("nonce", "")
@@ -130,7 +130,10 @@ class VerifyServer:
         # Attempt 1: Encrypted mode with full signature verification
         if self._crypto and request.query.get("msg_signature"):
             sig_ok = self._crypto.verify_signature(
-                signature, timestamp, nonce, echostr,
+                signature,
+                timestamp,
+                nonce,
+                echostr,
             )
             if sig_ok:
                 try:
@@ -172,4 +175,5 @@ class VerifyServer:
     async def _handle_post(self, request) -> web.Response:
         """Handle POST — just acknowledge during verification phase."""
         from aiohttp import web
+
         return web.Response(text="success")

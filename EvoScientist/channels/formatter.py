@@ -98,9 +98,11 @@ def convert_markdown(
 
     return text
 
+
 # ═════════════════════════════════════════════════════════════════════
 # Shared helpers
 # ═════════════════════════════════════════════════════════════════════
+
 
 def _escape_html(text: str) -> str:
     return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
@@ -113,6 +115,7 @@ def _noop_escape(text: str) -> str:
 # ═════════════════════════════════════════════════════════════════════
 # HTML profile (Telegram, Email, Teams)
 # ═════════════════════════════════════════════════════════════════════
+
 
 def _html_code_block(lang: str, code: str) -> str:
     escaped = _escape_html(code)
@@ -147,6 +150,7 @@ _HTML_INLINE_RULES: list[InlineRule] = [
 # Slack mrkdwn profile
 # ═════════════════════════════════════════════════════════════════════
 
+
 def _slack_code_block(lang: str, code: str) -> str:
     return f"```\n{code}```"
 
@@ -168,6 +172,7 @@ _SLACK_INLINE_RULES: list[InlineRule] = [
 # Discord profile (mostly passthrough, headings → bold)
 # ═════════════════════════════════════════════════════════════════════
 
+
 def _discord_code_block(lang: str, code: str) -> str:
     return f"```{lang}\n{code}```"
 
@@ -184,6 +189,7 @@ _DISCORD_INLINE_RULES: list[InlineRule] = [
 # ═════════════════════════════════════════════════════════════════════
 # Plain text profile (strip all formatting)
 # ═════════════════════════════════════════════════════════════════════
+
 
 def _plain_code_block(lang: str, code: str) -> str:
     return code
@@ -207,6 +213,7 @@ _PLAIN_INLINE_RULES: list[InlineRule] = [
 # Markdown passthrough profile (Feishu, DingTalk, WeCom)
 # ═════════════════════════════════════════════════════════════════════
 
+
 def _md_code_block(lang: str, code: str) -> str:
     return f"```{lang}\n{code}```"
 
@@ -221,6 +228,7 @@ _MD_INLINE_RULES: list[InlineRule] = []  # passthrough — already Markdown
 # ═════════════════════════════════════════════════════════════════════
 # Unified Formatter
 # ═════════════════════════════════════════════════════════════════════
+
 
 class UnifiedFormatter:
     """Converts internal Markdown to a target platform format.

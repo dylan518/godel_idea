@@ -18,19 +18,17 @@ FAILURE_PREFIX = "[FAILED]"
 # === Tool status indicators ===
 class ToolStatus(str, Enum):
     """Tool execution status indicators."""
-    RUNNING = "\u25cf"   # Running - yellow
-    SUCCESS = "\u25cf"   # Success - green
-    ERROR = "\u25cf"     # Failed - red
-    PENDING = "\u25cb"   # Pending - gray
+
+    RUNNING = "\u25cf"  # Running - yellow
+    SUCCESS = "\u25cf"  # Success - green
+    ERROR = "\u25cf"  # Failed - red
+    PENDING = "\u25cb"  # Pending - gray
 
 
 def get_status_symbol(status: ToolStatus) -> str:
     """Get status symbol with ASCII fallback for terminals without Unicode."""
     try:
-        supports_unicode = (
-            sys.stdout.encoding
-            and 'utf' in sys.stdout.encoding.lower()
-        )
+        supports_unicode = sys.stdout.encoding and "utf" in sys.stdout.encoding.lower()
     except Exception:
         supports_unicode = False
 
@@ -49,6 +47,7 @@ def get_status_symbol(status: ToolStatus) -> str:
 # === Display limit constants ===
 class DisplayLimits:
     """Display length limits."""
+
     THINKING_STREAM = 1000
     THINKING_FINAL = 2000
     ARGS_INLINE = 100
@@ -78,11 +77,11 @@ def is_success(content: str) -> bool:
     # not buried deep inside file content or command output.
     head = "\n".join(content.splitlines()[:3])
     error_patterns = [
-        'Traceback (most recent call last)',
-        'Exception:',
-        'Error:',
-        'Error invoking tool',
-        'Failed ',
+        "Traceback (most recent call last)",
+        "Exception:",
+        "Error:",
+        "Error invoking tool",
+        "Failed ",
     ]
     return not any(pattern in head for pattern in error_patterns)
 
@@ -95,6 +94,7 @@ def truncate(content: str, max_length: int, suffix: str = "\n... (truncated)") -
 
 
 # === Compact formatting for deepagents tools ===
+
 
 def _shorten_path(path: str, max_len: int = 40) -> str:
     """Shorten a file path for display."""

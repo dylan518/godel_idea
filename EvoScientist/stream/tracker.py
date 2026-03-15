@@ -12,6 +12,7 @@ from typing import Dict, Optional
 @dataclass
 class ToolCallInfo:
     """Tool call information."""
+
     id: str
     name: str
     args: Dict = field(default_factory=dict)

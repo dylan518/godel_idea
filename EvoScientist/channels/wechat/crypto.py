@@ -21,6 +21,7 @@ import xml.etree.ElementTree as ET
 # (but we'll use a pure-Python fallback if not available)
 try:
     from Crypto.Cipher import AES
+
     _HAS_PYCRYPTO = True
 except ImportError:
     _HAS_PYCRYPTO = False
@@ -50,9 +51,8 @@ def _aes_decrypt(key: bytes, iv: bytes, ciphertext: bytes) -> bytes:
         # We'll try pyaes as a fallback
         try:
             import pyaes
-            decrypter = pyaes.Decrypter(
-                pyaes.AESModeOfOperationCBC(key, iv=iv)
-            )
+
+            decrypter = pyaes.Decrypter(pyaes.AESModeOfOperationCBC(key, iv=iv))
             decrypted = decrypter.feed(ciphertext)
             decrypted += decrypter.feed()
             return decrypted
@@ -71,9 +71,8 @@ def _aes_encrypt(key: bytes, iv: bytes, plaintext: bytes) -> bytes:
     else:
         try:
             import pyaes
-            encrypter = pyaes.Encrypter(
-                pyaes.AESModeOfOperationCBC(key, iv=iv)
-            )
+
+            encrypter = pyaes.Encrypter(pyaes.AESModeOfOperationCBC(key, iv=iv))
             encrypted = encrypter.feed(plaintext)
             encrypted += encrypter.feed()
             return encrypted
@@ -106,7 +105,10 @@ class WeChatCrypto:
         self.iv = self.aes_key[:16]
 
     def verify_signature(
-        self, signature: str, timestamp: str, nonce: str,
+        self,
+        signature: str,
+        timestamp: str,
+        nonce: str,
         encrypt: str = "",
     ) -> bool:
         """Verify the callback signature.
@@ -129,8 +131,8 @@ class WeChatCrypto:
         # plaintext layout:
         # 16 bytes random + 4 bytes msg_len (big-endian) + msg + app_id
         msg_len = struct.unpack("!I", plaintext[16:20])[0]
-        msg = plaintext[20:20 + msg_len].decode("utf-8")
-        from_app_id = plaintext[20 + msg_len:].decode("utf-8")
+        msg = plaintext[20 : 20 + msg_len].decode("utf-8")
+        from_app_id = plaintext[20 + msg_len :].decode("utf-8")
         return msg, from_app_id
 
     def encrypt(self, reply_msg: str) -> str:
@@ -143,6 +145,7 @@ class WeChatCrypto:
 
         # Random 16 bytes + msg_len (4 bytes big-endian) + msg + app_id
         import os
+
         random_bytes = os.urandom(16)
         msg_len = struct.pack("!I", len(msg_bytes))
         plaintext = random_bytes + msg_len + msg_bytes + app_id_bytes
@@ -152,7 +155,10 @@ class WeChatCrypto:
         return base64.b64encode(ciphertext).decode("utf-8")
 
     def generate_signature(
-        self, encrypt: str, timestamp: str, nonce: str,
+        self,
+        encrypt: str,
+        timestamp: str,
+        nonce: str,
     ) -> str:
         """Generate the msg_signature for an encrypted reply."""
         parts = sorted([self.token, timestamp, nonce, encrypt])

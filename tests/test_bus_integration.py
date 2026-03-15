@@ -73,6 +73,7 @@ class TestBusInboundConsumer:
             _message_queue,
             _set_channel_response,
         )
+
         _drain_queue(_message_queue)
 
         async def _test():
@@ -81,16 +82,16 @@ class TestBusInboundConsumer:
             ch = FakeChannel()
             manager.register(ch)
 
-            consumer = asyncio.create_task(
-                _bus_inbound_consumer(bus, manager)
-            )
+            consumer = asyncio.create_task(_bus_inbound_consumer(bus, manager))
 
-            await bus.publish_inbound(InboundMessage(
-                channel="fake",
-                sender_id="user1",
-                chat_id="chat1",
-                content="hello agent",
-            ))
+            await bus.publish_inbound(
+                InboundMessage(
+                    channel="fake",
+                    sender_id="user1",
+                    chat_id="chat1",
+                    content="hello agent",
+                )
+            )
 
             # Wait for consumer to enqueue the message
             for _ in range(20):
@@ -107,7 +108,8 @@ class TestBusInboundConsumer:
             _set_channel_response(msg.msg_id, "Reply to: hello agent")
 
             outbound = await asyncio.wait_for(
-                bus.consume_outbound(), timeout=2.0,
+                bus.consume_outbound(),
+                timeout=2.0,
             )
             assert outbound.channel == "fake"
             assert outbound.chat_id == "chat1"
@@ -128,6 +130,7 @@ class TestBusInboundConsumer:
             _message_queue,
             _set_channel_response,
         )
+
         _drain_queue(_message_queue)
 
         async def _test():
@@ -136,16 +139,16 @@ class TestBusInboundConsumer:
             ch = FakeChannel()
             manager.register(ch)
 
-            consumer = asyncio.create_task(
-                _bus_inbound_consumer(bus, manager)
-            )
+            consumer = asyncio.create_task(_bus_inbound_consumer(bus, manager))
 
-            await bus.publish_inbound(InboundMessage(
-                channel="fake",
-                sender_id="user1",
-                chat_id="chat1",
-                content="test",
-            ))
+            await bus.publish_inbound(
+                InboundMessage(
+                    channel="fake",
+                    sender_id="user1",
+                    chat_id="chat1",
+                    content="test",
+                )
+            )
 
             for _ in range(20):
                 if not _message_queue.empty():
@@ -157,7 +160,8 @@ class TestBusInboundConsumer:
             _set_channel_response(msg.msg_id, "")
 
             outbound = await asyncio.wait_for(
-                bus.consume_outbound(), timeout=2.0,
+                bus.consume_outbound(),
+                timeout=2.0,
             )
             assert outbound.content == "No response"
 
@@ -176,6 +180,7 @@ class TestBusInboundConsumer:
             _message_queue,
             _set_channel_response,
         )
+
         _drain_queue(_message_queue)
 
         async def _test():
@@ -184,16 +189,16 @@ class TestBusInboundConsumer:
             ch = FakeChannel()
             manager.register(ch)
 
-            consumer = asyncio.create_task(
-                _bus_inbound_consumer(bus, manager)
-            )
+            consumer = asyncio.create_task(_bus_inbound_consumer(bus, manager))
 
-            await bus.publish_inbound(InboundMessage(
-                channel="fake",
-                sender_id="u1",
-                chat_id="c1",
-                content="test",
-            ))
+            await bus.publish_inbound(
+                InboundMessage(
+                    channel="fake",
+                    sender_id="u1",
+                    chat_id="c1",
+                    content="test",
+                )
+            )
 
             for _ in range(20):
                 if not _message_queue.empty():
@@ -223,6 +228,7 @@ class TestBusInboundConsumer:
             _message_queue,
             _set_channel_response,
         )
+
         _drain_queue(_message_queue)
 
         async def _test():
@@ -231,18 +237,18 @@ class TestBusInboundConsumer:
             ch = FakeChannel()
             manager.register(ch)
 
-            consumer = asyncio.create_task(
-                _bus_inbound_consumer(bus, manager)
-            )
+            consumer = asyncio.create_task(_bus_inbound_consumer(bus, manager))
 
-            await bus.publish_inbound(InboundMessage(
-                channel="fake",
-                sender_id="user1",
-                chat_id="chat1",
-                content="with metadata",
-                metadata={"key": "value"},
-                message_id="msg-123",
-            ))
+            await bus.publish_inbound(
+                InboundMessage(
+                    channel="fake",
+                    sender_id="user1",
+                    chat_id="chat1",
+                    content="with metadata",
+                    metadata={"key": "value"},
+                    message_id="msg-123",
+                )
+            )
 
             for _ in range(20):
                 if not _message_queue.empty():
@@ -259,7 +265,8 @@ class TestBusInboundConsumer:
             _set_channel_response(msg.msg_id, "done")
 
             outbound = await asyncio.wait_for(
-                bus.consume_outbound(), timeout=2.0,
+                bus.consume_outbound(),
+                timeout=2.0,
             )
             assert outbound.reply_to == "msg-123"
 

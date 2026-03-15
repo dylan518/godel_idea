@@ -20,6 +20,7 @@ from .utils import SUCCESS_PREFIX, FAILURE_PREFIX, is_success as _is_success, tr
 
 class ContentType(Enum):
     """Content type categories."""
+
     SUCCESS = "success"
     ERROR = "error"
     JSON = "json"
@@ -30,6 +31,7 @@ class ContentType(Enum):
 @dataclass
 class FormattedResult:
     """Formatted result container."""
+
     content_type: ContentType
     elements: List[Any]  # Rich renderable elements
     success: bool = True
@@ -85,7 +87,9 @@ class ToolResultFormatter:
         formatter = formatter_map.get(content_type, self._format_text)
         elements = formatter(name, content, max_length)
 
-        return FormattedResult(content_type=content_type, elements=elements, success=success)
+        return FormattedResult(
+            content_type=content_type, elements=elements, success=success
+        )
 
     def _extract_body(self, content: str) -> str:
         """Extract body after status prefix."""
@@ -96,8 +100,9 @@ class ToolResultFormatter:
         content = content.strip()
         if not content:
             return False
-        if (content.startswith('{') and content.endswith('}')) or \
-           (content.startswith('[') and content.endswith(']')):
+        if (content.startswith("{") and content.endswith("}")) or (
+            content.startswith("[") and content.endswith("]")
+        ):
             try:
                 json.loads(content)
                 return True
@@ -108,33 +113,37 @@ class ToolResultFormatter:
     def _is_error(self, content: str) -> bool:
         head = "\n".join(content.splitlines()[:3])
         error_patterns = [
-            'Traceback (most recent call last)',
-            'Exception:',
-            'Error:',
-            'Error invoking tool',
-            'Failed ',
+            "Traceback (most recent call last)",
+            "Exception:",
+            "Error:",
+            "Error invoking tool",
+            "Failed ",
         ]
         return any(pattern in head for pattern in error_patterns)
 
     def _is_markdown(self, content: str) -> bool:
-        md_patterns = ['```', '**', '##', '- **']
-        return content.startswith('#') or any(p in content for p in md_patterns)
+        md_patterns = ["```", "**", "##", "- **"]
+        return content.startswith("#") or any(p in content for p in md_patterns)
 
     def _format_success(self, name: str, content: str, max_length: int) -> List[Any]:
         display = truncate(content, max_length)
-        return [Panel(
-            Text(display, style="green"),
-            title=f"{escape(name)} OK",
-            border_style="green",
-        )]
+        return [
+            Panel(
+                Text(display, style="green"),
+                title=f"{escape(name)} OK",
+                border_style="green",
+            )
+        ]
 
     def _format_error(self, name: str, content: str, max_length: int) -> List[Any]:
         display = truncate(content, max_length)
-        return [Panel(
-            Text(display, style="red"),
-            title=f"{escape(name)} FAILED",
-            border_style="red",
-        )]
+        return [
+            Panel(
+                Text(display, style="red"),
+                title=f"{escape(name)} FAILED",
+                border_style="red",
+            )
+        ]
 
     def _format_json(self, name: str, content: str, max_length: int) -> List[Any]:
         json_content = content
@@ -154,11 +163,13 @@ class ToolResultFormatter:
 
     def _format_markdown(self, name: str, content: str, max_length: int) -> List[Any]:
         display = truncate(content, max_length)
-        return [Panel(
-            Markdown(display),
-            title=escape(name),
-            border_style="cyan dim",
-        )]
+        return [
+            Panel(
+                Markdown(display),
+                title=escape(name),
+                border_style="cyan dim",
+            )
+        ]
 
     def _format_text(self, name: str, content: str, max_length: int) -> List[Any]:
         display = truncate(content, max_length)

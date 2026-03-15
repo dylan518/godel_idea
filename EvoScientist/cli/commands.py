@@ -17,7 +17,12 @@ from ..stream.display import console
 from ..paths import ensure_dirs, set_workspace_root
 from ._app import app, config_app, mcp_app, channel_app
 from ._constants import build_metadata
-from .agent import _deduplicate_run_name, _create_session_workspace, _load_agent, _shorten_path
+from .agent import (
+    _deduplicate_run_name,
+    _create_session_workspace,
+    _load_agent,
+    _shorten_path,
+)
 from .channel import (
     ChannelMessage,
     _channels_stop,
@@ -42,12 +47,11 @@ from .interactive import cmd_interactive, cmd_run
 # Onboard command
 # =============================================================================
 
+
 @app.command()
 def onboard(
     skip_validation: bool = typer.Option(
-        False,
-        "--skip-validation",
-        help="Skip API key validation during setup"
+        False, "--skip-validation", help="Skip API key validation during setup"
     ),
 ):
     """Interactive setup wizard for EvoScientist
@@ -56,12 +60,14 @@ def onboard(
     workspace settings, and agent parameters.
     """
     from ..config import run_onboard
+
     run_onboard(skip_validation=skip_validation)
 
 
 # =============================================================================
 # Channel setup command
 # =============================================================================
+
 
 @channel_app.command("setup")
 def channel_setup():
@@ -71,6 +77,7 @@ def channel_setup():
     (Telegram, Discord, or iMessage).
     """
     import asyncio
+
     try:
         asyncio.get_event_loop()
     except RuntimeError:
@@ -111,10 +118,14 @@ class CompactResult:
     """
 
     __slots__ = (
-        "status", "message",
-        "messages_compacted", "messages_kept",
-        "tokens_before", "tokens_after",
-        "tokens_summarized", "tokens_summary",
+        "status",
+        "message",
+        "messages_compacted",
+        "messages_kept",
+        "tokens_before",
+        "tokens_after",
+        "tokens_summarized",
+        "tokens_summary",
         "pct_decrease",
     )
 
@@ -164,7 +175,12 @@ def render_compact_result(result: CompactResult):  # -> rich.text.Text
             output.append(" tokens, within retention budget", style="dim")
         elif result.message:
             # Extract reason from message (e.g. "no messages")
-            output.append(f" — {result.message.split('—')[-1].strip()}" if "—" in result.message else "", style="dim")
+            output.append(
+                f" — {result.message.split('—')[-1].strip()}"
+                if "—" in result.message
+                else "",
+                style="dim",
+            )
         return output
 
     if result.status == "error":
@@ -222,7 +238,9 @@ async def compact_conversation(agent: Any, thread_id: str | None) -> CompactResu
 
     messages = state_snapshot.values.get("messages", [])
     if not messages:
-        return CompactResult("noop", "Nothing to compact — no messages in conversation.")
+        return CompactResult(
+            "noop", "Nothing to compact — no messages in conversation."
+        )
 
     from ..EvoScientist import _ensure_chat_model, _get_default_backend
     from deepagents.middleware.summarization import (
@@ -234,7 +252,9 @@ async def compact_conversation(agent: Any, thread_id: str | None) -> CompactResu
     try:
         model = _ensure_chat_model()
     except Exception as exc:
-        return CompactResult("error", f"Compaction requires a working model configuration: {exc}")
+        return CompactResult(
+            "error", f"Compaction requires a working model configuration: {exc}"
+        )
 
     backend = _get_default_backend()
 
@@ -364,8 +384,7 @@ def _serve_process_message(
     from .channel import _bus_loop
 
     console.print(
-        f"[dim][{msg.channel_type}] {msg.sender}: "
-        f"{escape(msg.content[:80])}[/dim]"
+        f"[dim][{msg.channel_type}] {msg.sender}: {escape(msg.content[:80])}[/dim]"
     )
 
     # -- channel callback helpers (same pattern as interactive.py) --
@@ -450,12 +469,25 @@ def _serve_process_message(
 # Serve command (headless mode)
 # =============================================================================
 
+
 @app.command()
 def serve(
-    no_thinking: bool = typer.Option(False, "--no-thinking", help="Disable thinking relay to channels"),
-    workdir: Optional[str] = typer.Option(None, "--workdir", help="Override workspace directory"),
-    auto_approve: bool = typer.Option(False, "--auto-approve", help="Auto-approve all tool executions without prompting"),
-    ask_user: bool = typer.Option(False, "--ask-user", help="Enable agent to ask clarifying questions about your research preferences"),
+    no_thinking: bool = typer.Option(
+        False, "--no-thinking", help="Disable thinking relay to channels"
+    ),
+    workdir: Optional[str] = typer.Option(
+        None, "--workdir", help="Override workspace directory"
+    ),
+    auto_approve: bool = typer.Option(
+        False,
+        "--auto-approve",
+        help="Auto-approve all tool executions without prompting",
+    ),
+    ask_user: bool = typer.Option(
+        False,
+        "--ask-user",
+        help="Enable agent to ask clarifying questions about your research preferences",
+    ),
 ):
     """Run EvoScientist in headless mode -- channels only, no interactive prompt.
 
@@ -463,9 +495,11 @@ def serve(
     Press Ctrl+C to shut down.
     """
     import nest_asyncio  # type: ignore[import-untyped]
+
     nest_asyncio.apply()
 
     from dotenv import load_dotenv, find_dotenv  # type: ignore[import-untyped]
+
     load_dotenv(find_dotenv(), override=True)
 
     from ..config import get_effective_config, apply_config_to_env
@@ -483,9 +517,11 @@ def serve(
     if config.provider == "anthropic" and config.anthropic_auth_mode == "oauth":
         try:
             from ..ccproxy_manager import maybe_start_ccproxy, stop_ccproxy
+
             _ccproxy_proc_serve = maybe_start_ccproxy(config)
             if _ccproxy_proc_serve:
                 import atexit
+
                 atexit.register(stop_ccproxy, _ccproxy_proc_serve)
         except RuntimeError as exc:
             console.print(f"[red]{exc}[/red]")
@@ -510,6 +546,7 @@ def serve(
     console.print("[dim]Loading agent...[/dim]")
     agent = _load_agent(workspace_dir=ws, config=config)
     from ..sessions import generate_thread_id
+
     tid = generate_thread_id()
 
     _start_channels_bus_mode(
@@ -548,6 +585,7 @@ def serve(
 # =============================================================================
 # Config commands
 # =============================================================================
+
 
 @config_app.callback(invoke_without_command=True)
 def config_callback(ctx: typer.Context):
@@ -656,6 +694,7 @@ def config_path():
 # MCP commands
 # =============================================================================
 
+
 @mcp_app.callback(invoke_without_command=True)
 def mcp_callback(ctx: typer.Context):
     """MCP server management commands"""
@@ -682,7 +721,9 @@ def mcp_config(
     """
     status = _show_mcp_config(name or "", show_blank_line=False)
     if status == "empty":
-        console.print("[dim]Add one with:[/dim] EvoSci mcp add <name> <transport> <command-or-url> [args...]")
+        console.print(
+            "[dim]Add one with:[/dim] EvoSci mcp add <name> <transport> <command-or-url> [args...]"
+        )
         return
     if status == "missing":
         raise typer.Exit(1)
@@ -692,13 +733,30 @@ def mcp_config(
 def mcp_add(
     name: str = typer.Argument(..., help="Server name"),
     target: str = typer.Argument(..., help="Command (stdio) or URL (http/sse)"),
-    args: Optional[list[str]] = typer.Argument(None, help="Extra args for stdio command"),
-    transport: Optional[str] = typer.Option(None, "--transport", "-T", help="Transport type (default: auto-detect)"),
-    tools: Optional[str] = typer.Option(None, "--tools", "-t", help="Comma-separated tool allowlist (supports wildcards: *_exa, read_*)"),
-    expose_to: Optional[str] = typer.Option(None, "--expose-to", "-e", help="Comma-separated target agents"),
-    header: Optional[list[str]] = typer.Option(None, "--header", "-H", help="HTTP header as Key:Value (repeatable)"),
-    env: Optional[list[str]] = typer.Option(None, "--env", help="Env var as KEY=VALUE for stdio (repeatable)"),
-    env_ref: Optional[list[str]] = typer.Option(None, "--env-ref", help="Env var name as ${NAME} runtime ref (repeatable)"),
+    args: Optional[list[str]] = typer.Argument(
+        None, help="Extra args for stdio command"
+    ),
+    transport: Optional[str] = typer.Option(
+        None, "--transport", "-T", help="Transport type (default: auto-detect)"
+    ),
+    tools: Optional[str] = typer.Option(
+        None,
+        "--tools",
+        "-t",
+        help="Comma-separated tool allowlist (supports wildcards: *_exa, read_*)",
+    ),
+    expose_to: Optional[str] = typer.Option(
+        None, "--expose-to", "-e", help="Comma-separated target agents"
+    ),
+    header: Optional[list[str]] = typer.Option(
+        None, "--header", "-H", help="HTTP header as Key:Value (repeatable)"
+    ),
+    env: Optional[list[str]] = typer.Option(
+        None, "--env", help="Env var as KEY=VALUE for stdio (repeatable)"
+    ),
+    env_ref: Optional[list[str]] = typer.Option(
+        None, "--env-ref", help="Env var name as ${NAME} runtime ref (repeatable)"
+    ),
 ):
     """Add an MCP server to user config
 
@@ -716,11 +774,11 @@ def mcp_add(
 
     # Merge env and env_ref into a single dict
     env_dict: dict[str, str] = {}
-    for e in (env or []):
+    for e in env or []:
         if "=" in e:
             k, v = e.split("=", 1)
             env_dict[k.strip()] = v.strip()
-    for ref in (env_ref or []):
+    for ref in env_ref or []:
         env_dict[ref] = "${" + ref + "}"
 
     kwargs = build_mcp_add_kwargs(
@@ -729,8 +787,16 @@ def mcp_add(
         extra_args=list(args) if args else None,
         transport=transport,
         tools=[t.strip() for t in tools.split(",") if t.strip()] if tools else None,
-        expose_to=[a.strip() for a in expose_to.split(",") if a.strip()] if expose_to else None,
-        headers={k.strip(): v.strip() for h in (header or []) for k, v in [h.split(":", 1)] if ":" in h} or None,
+        expose_to=[a.strip() for a in expose_to.split(",") if a.strip()]
+        if expose_to
+        else None,
+        headers={
+            k.strip(): v.strip()
+            for h in (header or [])
+            for k, v in [h.split(":", 1)]
+            if ":" in h
+        }
+        or None,
         env=env_dict or None,
     )
 
@@ -741,13 +807,33 @@ def mcp_add(
 @mcp_app.command("edit")
 def mcp_edit(
     name: str = typer.Argument(..., help="Server name to edit"),
-    transport: Optional[str] = typer.Option(None, "--transport", help="New transport type"),
-    command: Optional[str] = typer.Option(None, "--command", help="New command (stdio)"),
-    url: Optional[str] = typer.Option(None, "--url", help="New URL (http/sse/websocket)"),
-    tools: Optional[str] = typer.Option(None, "--tools", "-t", help="Comma-separated tool allowlist, supports wildcards ('none' to clear)"),
-    expose_to: Optional[str] = typer.Option(None, "--expose-to", "-e", help="Comma-separated target agents ('none' to clear)"),
-    header: Optional[list[str]] = typer.Option(None, "--header", "-H", help="HTTP header as Key:Value (repeatable)"),
-    env: Optional[list[str]] = typer.Option(None, "--env", help="Env var as KEY=VALUE for stdio (repeatable)"),
+    transport: Optional[str] = typer.Option(
+        None, "--transport", help="New transport type"
+    ),
+    command: Optional[str] = typer.Option(
+        None, "--command", help="New command (stdio)"
+    ),
+    url: Optional[str] = typer.Option(
+        None, "--url", help="New URL (http/sse/websocket)"
+    ),
+    tools: Optional[str] = typer.Option(
+        None,
+        "--tools",
+        "-t",
+        help="Comma-separated tool allowlist, supports wildcards ('none' to clear)",
+    ),
+    expose_to: Optional[str] = typer.Option(
+        None,
+        "--expose-to",
+        "-e",
+        help="Comma-separated target agents ('none' to clear)",
+    ),
+    header: Optional[list[str]] = typer.Option(
+        None, "--header", "-H", help="HTTP header as Key:Value (repeatable)"
+    ),
+    env: Optional[list[str]] = typer.Option(
+        None, "--env", help="Env var as KEY=VALUE for stdio (repeatable)"
+    ),
 ):
     """Edit an existing MCP server in user config
 
@@ -787,6 +873,7 @@ def mcp_remove(
 # Main callback (default behavior)
 # =============================================================================
 
+
 @app.callback(invoke_without_command=True)
 def _main_callback(
     ctx: typer.Context,
@@ -802,13 +889,31 @@ def _main_callback(
         "--name",
         help="Name for this run (used as directory name instead of timestamp; requires --mode run)",
     ),
-    prompt: Optional[str] = typer.Option(None, "-p", "--prompt", help="Query to execute (single-shot mode)"),
-    thread_id: Optional[str] = typer.Option(None, "--thread-id", help="Thread ID for conversation persistence"),
-    workdir: Optional[str] = typer.Option(None, "--workdir", help="Override workspace directory for this session"),
-    use_cwd: bool = typer.Option(False, "--use-cwd", help="Use current working directory as workspace"),
-    no_thinking: bool = typer.Option(False, "--no-thinking", help="Disable thinking display"),
-    auto_approve: bool = typer.Option(False, "--auto-approve", help="Auto-approve all tool executions without prompting"),
-    ask_user: bool = typer.Option(False, "--ask-user", help="Enable agent to ask clarifying questions about your research preferences"),
+    prompt: Optional[str] = typer.Option(
+        None, "-p", "--prompt", help="Query to execute (single-shot mode)"
+    ),
+    thread_id: Optional[str] = typer.Option(
+        None, "--thread-id", help="Thread ID for conversation persistence"
+    ),
+    workdir: Optional[str] = typer.Option(
+        None, "--workdir", help="Override workspace directory for this session"
+    ),
+    use_cwd: bool = typer.Option(
+        False, "--use-cwd", help="Use current working directory as workspace"
+    ),
+    no_thinking: bool = typer.Option(
+        False, "--no-thinking", help="Disable thinking display"
+    ),
+    auto_approve: bool = typer.Option(
+        False,
+        "--auto-approve",
+        help="Auto-approve all tool executions without prompting",
+    ),
+    ask_user: bool = typer.Option(
+        False,
+        "--ask-user",
+        help="Enable agent to ask clarifying questions about your research preferences",
+    ),
     auth_mode: Optional[str] = typer.Option(
         None,
         "--auth-mode",
@@ -826,6 +931,7 @@ def _main_callback(
         return
 
     from dotenv import load_dotenv, find_dotenv  # type: ignore[import-untyped]
+
     # find_dotenv() traverses up the directory tree to locate .env
     load_dotenv(find_dotenv(), override=True)
 
@@ -859,9 +965,11 @@ def _main_callback(
     if config.provider == "anthropic" and config.anthropic_auth_mode == "oauth":
         try:
             from ..ccproxy_manager import maybe_start_ccproxy, stop_ccproxy
+
             _ccproxy_proc = maybe_start_ccproxy(config)
             if _ccproxy_proc:
                 import atexit
+
                 atexit.register(stop_ccproxy, _ccproxy_proc)
         except RuntimeError as exc:
             console.print(f"[red]{exc}[/red]")
@@ -875,7 +983,9 @@ def _main_callback(
         raise typer.BadParameter("Use either --workdir or --use-cwd, not both.")
 
     if mode and (workdir or use_cwd):
-        raise typer.BadParameter("--mode cannot be combined with --workdir or --use-cwd")
+        raise typer.BadParameter(
+            "--mode cannot be combined with --workdir or --use-cwd"
+        )
 
     if mode and mode not in ("run", "daemon"):
         raise typer.BadParameter("--mode must be 'run' or 'daemon'")
@@ -883,16 +993,23 @@ def _main_callback(
         raise typer.BadParameter("--ui must be 'tui' or 'cli'")
 
     # --name only makes sense in run mode
-    if name and not (mode == "run" or (not mode and not workdir and not use_cwd and config.default_mode == "run")):
+    if name and not (
+        mode == "run"
+        or (not mode and not workdir and not use_cwd and config.default_mode == "run")
+    ):
         raise typer.BadParameter("--name can only be used with --mode run")
 
     # Sanitize run name: allow alphanumeric, hyphens, underscores
     if name:
         if not re.fullmatch(r"[A-Za-z0-9_-]+", name):
-            raise typer.BadParameter("--name may only contain letters, digits, hyphens, and underscores")
+            raise typer.BadParameter(
+                "--name may only contain letters, digits, hyphens, and underscores"
+            )
 
     # Resolve effective mode from config (CLI mode already applied via overrides)
-    effective_mode: str | None = None  # None means explicit --workdir/--use-cwd was used
+    effective_mode: str | None = (
+        None  # None means explicit --workdir/--use-cwd was used
+    )
 
     # Resolve workspace directory for this session
     # Priority: --workdir > --mode (explicit) > default_workdir > default_mode > cwd
@@ -914,7 +1031,11 @@ def _main_callback(
         set_workspace_root(workspace_root)
         if effective_mode == "run":
             runs_dir = Path(workspace_root, "runs")
-            session_id = _deduplicate_run_name(name, runs_dir) if name else datetime.now().strftime("%Y%m%d_%H%M%S")
+            session_id = (
+                _deduplicate_run_name(name, runs_dir)
+                if name
+                else datetime.now().strftime("%Y%m%d_%H%M%S")
+            )
             workspace_dir = os.path.join(runs_dir, session_id)
             os.makedirs(workspace_dir, exist_ok=True)
             workspace_fixed = False
@@ -928,7 +1049,11 @@ def _main_callback(
         effective_mode = config.default_mode
         if effective_mode == "run":
             runs_dir = Path(workspace_root, "runs")
-            session_id = _deduplicate_run_name(name, runs_dir) if name else datetime.now().strftime("%Y%m%d_%H%M%S")
+            session_id = (
+                _deduplicate_run_name(name, runs_dir)
+                if name
+                else datetime.now().strftime("%Y%m%d_%H%M%S")
+            )
             workspace_dir = os.path.join(runs_dir, session_id)
             os.makedirs(workspace_dir, exist_ok=True)
             workspace_fixed = False
@@ -957,7 +1082,11 @@ def _main_callback(
         async def _single_shot():
             async with get_checkpointer() as checkpointer:
                 console.print("[dim]Loading agent...[/dim]")
-                agent = _load_agent(workspace_dir=workspace_dir, checkpointer=checkpointer, config=config)
+                agent = _load_agent(
+                    workspace_dir=workspace_dir,
+                    checkpointer=checkpointer,
+                    config=config,
+                )
                 tid = thread_id or generate_thread_id()
                 cmd_run(
                     agent,
@@ -970,6 +1099,7 @@ def _main_callback(
                 )
 
         import nest_asyncio  # type: ignore[import-untyped]
+
         nest_asyncio.apply()
         asyncio.get_event_loop().run_until_complete(_single_shot())
     else:
@@ -1000,12 +1130,16 @@ def _configure_logging():
             if record.levelno == logging.WARNING:
                 # Use Rich console to print dim warning
                 msg = record.getMessage()
-                console.print(f"[dim yellow]\u26a0\ufe0f  Warning:[/dim yellow] [dim]{escape(msg)}[/dim]")
+                console.print(
+                    f"[dim yellow]\u26a0\ufe0f  Warning:[/dim yellow] [dim]{escape(msg)}[/dim]"
+                )
             else:
                 super().emit(record)
 
     # Configure root logger to use our handler for WARNING and above
-    handler = DimWarningHandler(console=console, show_time=False, show_path=False, show_level=False)
+    handler = DimWarningHandler(
+        console=console, show_time=False, show_path=False, show_level=False
+    )
     handler.setLevel(logging.WARNING)
 
     # Apply to root logger (catches all loggers including deepagents)

@@ -283,6 +283,7 @@ def _get_default_middleware():
     ]
     if cfg.enable_ask_user and not cfg.auto_approve:
         from .middleware.ask_user import AskUserMiddleware
+
         mw.insert(0, AskUserMiddleware())
     return mw
 
@@ -348,6 +349,7 @@ def create_cli_agent(workspace_dir: str | None = None, checkpointer=None, config
 
     if checkpointer is None:
         from langgraph.checkpoint.memory import InMemorySaver  # type: ignore[import-untyped]
+
         checkpointer = InMemorySaver()
 
     # When no explicit workspace_dir is provided, apply config.default_workdir
@@ -396,6 +398,7 @@ def create_cli_agent(workspace_dir: str | None = None, checkpointer=None, config
     ]
     if cfg.enable_ask_user and not cfg.auto_approve:
         from .middleware.ask_user import AskUserMiddleware
+
         mw.insert(0, AskUserMiddleware())
 
     # Re-load MCP tools from current config (picks up /mcp add changes)

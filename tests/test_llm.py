@@ -37,13 +37,26 @@ class TestModelsRegistry:
 
     def test_entries_are_valid_tuples(self):
         """Test that _MODEL_ENTRIES contains valid (name, model_id, provider) tuples."""
-        valid_providers = {"anthropic", "openai", "google-genai", "nvidia", "siliconflow", "openrouter", "zhipu", "zhipu-code"}
+        valid_providers = {
+            "anthropic",
+            "openai",
+            "google-genai",
+            "nvidia",
+            "siliconflow",
+            "openrouter",
+            "zhipu",
+            "zhipu-code",
+            "custom-openai",
+            "custom-anthropic",
+        }
         for entry in _MODEL_ENTRIES:
             assert len(entry) == 3, f"Entry {entry} doesn't have 3 elements"
             name, model_id, provider = entry
             assert isinstance(name, str)
             assert isinstance(model_id, str)
-            assert provider in valid_providers, f"Unknown provider '{provider}' for '{name}'"
+            assert provider in valid_providers, (
+                f"Unknown provider '{provider}' for '{name}'"
+            )
 
     def test_get_models_for_provider(self):
         """Test that get_models_for_provider returns correct models."""
@@ -150,7 +163,7 @@ class TestGetChatModel:
         get_chat_model("claude-opus-4-5")
 
         call_kwargs = mock_init.call_args[1]
-        assert call_kwargs["model"] == "claude-opus-4-5-20251101"
+        assert call_kwargs["model"] == "claude-opus-4-5"
         assert call_kwargs["model_provider"] == "anthropic"
 
     @patch("EvoScientist.llm.models.init_chat_model")
@@ -382,10 +395,10 @@ class TestThirdPartyRouting:
     def test_custom_routes_through_openai(self, mock_init, monkeypatch):
         """Custom provider should route through OpenAI with env-configured base_url."""
         mock_init.return_value = "mock_model"
-        monkeypatch.setenv("CUSTOM_BASE_URL", "https://my-llm.example.com/v1")
-        monkeypatch.setenv("CUSTOM_API_KEY", "custom-key-789")
+        monkeypatch.setenv("CUSTOM_OPENAI_BASE_URL", "https://my-llm.example.com/v1")
+        monkeypatch.setenv("CUSTOM_OPENAI_API_KEY", "custom-key-789")
 
-        get_chat_model("my-custom-model", provider="custom")
+        get_chat_model("my-custom-model", provider="custom-openai")
 
         call_kwargs = mock_init.call_args[1]
         assert call_kwargs["model_provider"] == "openai"
@@ -530,4 +543,3 @@ class TestAutoConfig:
 
         call_kwargs = mock_init.call_args[1]
         assert call_kwargs["include_thoughts"] is True
-

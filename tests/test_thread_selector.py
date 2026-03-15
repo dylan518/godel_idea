@@ -45,6 +45,7 @@ _THREADS = [
 # build_row_text unit tests (pure function, no Textual app needed)
 # ---------------------------------------------------------------------------
 
+
 class TestBuildRowText:
     def test_selected_has_cursor(self):
         text = build_row_text(_THREADS[0], selected=True)
@@ -107,6 +108,7 @@ class TestBuildRowText:
 # ---------------------------------------------------------------------------
 # ThreadPickerWidget unit tests
 # ---------------------------------------------------------------------------
+
 
 class TestThreadPickerWidget:
     def test_init_stores_threads(self):

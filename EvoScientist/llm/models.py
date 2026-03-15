@@ -13,6 +13,7 @@ from typing import Any
 
 from langchain.chat_models import init_chat_model
 
+
 # ---------------------------------------------------------------------------
 # Patch: langchain-anthropic (>=1.3.4) calls .model_dump() on
 # context_management / container objects returned by the Anthropic SDK.
@@ -37,13 +38,15 @@ def _patch_anthropic_proxy_compat() -> None:
                     val = getattr(obj, attr, None)
                     if isinstance(val, dict):
                         d = val.copy()
-                        setattr(obj, attr,
-                                _types.SimpleNamespace(model_dump=lambda **kw: d))
+                        setattr(
+                            obj, attr, _types.SimpleNamespace(model_dump=lambda **kw: d)
+                        )
             return _orig(self, event, *args, **kwargs)
 
         _CA._make_message_chunk_from_anthropic_event = _safe
     except Exception:
         pass
+
 
 _patch_anthropic_proxy_compat()
 
@@ -59,18 +62,31 @@ _THIRD_PARTY_PROVIDERS: dict[str, tuple[str | None, str]] = {
     "openrouter": (_OPENROUTER_BASE_URL, "OPENROUTER_API_KEY"),
     "zhipu": (_ZHIPU_BASE_URL, "ZHIPU_API_KEY"),
     "zhipu-code": (_ZHIPU_CODE_BASE_URL, "ZHIPU_API_KEY"),
-    "custom": (None, "CUSTOM_API_KEY"),  # base_url from CUSTOM_BASE_URL env
+    "custom-openai": (
+        None,
+        "CUSTOM_OPENAI_API_KEY",
+    ),  # base_url from CUSTOM_OPENAI_BASE_URL env
 }
 
 # Model registry: list of (short_name, model_id, provider)
 # Allows same short_name across different providers.
 _MODEL_ENTRIES: list[tuple[str, str, str]] = [
+    # Custom Anthropic (third-party Claude-compatible endpoints, 3 defaults)
+    # Listed BEFORE native anthropic so MODELS dict defaults to native provider
+    ("claude-sonnet-4-6", "claude-sonnet-4-6", "custom-anthropic"),
+    ("claude-sonnet-4-5", "claude-sonnet-4-5", "custom-anthropic"),
+    ("claude-haiku-4-5", "claude-haiku-4-5", "custom-anthropic"),
+    # Custom OpenAI (third-party OpenAI-compatible endpoints, 3 defaults)
+    # Listed BEFORE native openai so MODELS dict defaults to native provider
+    ("gpt-5.4", "gpt-5.4", "custom-openai"),
+    ("gpt-5.3-codex", "gpt-5.3-codex", "custom-openai"),
+    ("gpt-5-mini", "gpt-5-mini", "custom-openai"),
     # Anthropic (ordered by capability)
     ("claude-opus-4-6", "claude-opus-4-6", "anthropic"),
     ("claude-sonnet-4-6", "claude-sonnet-4-6", "anthropic"),
-    ("claude-opus-4-5", "claude-opus-4-5-20251101", "anthropic"),
-    ("claude-sonnet-4-5", "claude-sonnet-4-5-20250929", "anthropic"),
-    ("claude-haiku-4-5", "claude-haiku-4-5-20251001", "anthropic"),
+    ("claude-opus-4-5", "claude-opus-4-5", "anthropic"),
+    ("claude-sonnet-4-5", "claude-sonnet-4-5", "anthropic"),
+    ("claude-haiku-4-5", "claude-haiku-4-5", "anthropic"),
     # OpenAI
     ("gpt-5.4", "gpt-5.4-2026-03-05", "openai"),
     ("gpt-5.3-codex", "gpt-5.3-codex", "openai"),
@@ -82,7 +98,11 @@ _MODEL_ENTRIES: list[tuple[str, str, str]] = [
     ("gpt-5-nano", "gpt-5-nano-2025-08-07", "openai"),
     # Google GenAI
     ("gemini-3.1-pro", "gemini-3.1-pro-preview", "google-genai"),
-    ("gemini-3.1-pro-customtools", "gemini-3.1-pro-preview-customtools", "google-genai"),
+    (
+        "gemini-3.1-pro-customtools",
+        "gemini-3.1-pro-preview-customtools",
+        "google-genai",
+    ),
     ("gemini-3.1-flash-lite", "gemini-3.1-flash-lite-preview", "google-genai"),
     ("gemini-3-flash", "gemini-3-flash-preview", "google-genai"),
     ("gemini-2.5-flash", "gemini-2.5-flash", "google-genai"),
@@ -106,6 +126,7 @@ _MODEL_ENTRIES: list[tuple[str, str, str]] = [
     ("kimi-k2.5", "Pro/moonshotai/Kimi-K2.5", "siliconflow"),
     ("glm-4.7", "Pro/zai-org/GLM-4.7", "siliconflow"),
     # OpenRouter
+    ("gpt-5.4", "openai/gpt-5.4", "openrouter"),
     ("minimax-m2.5", "minimax/minimax-m2.5", "openrouter"),
     ("grok-4.1-fast", "x-ai/grok-4.1-fast", "openrouter"),
     ("qwen3.5-122b", "qwen/qwen3.5-122b-a10b", "openrouter"),
@@ -137,11 +158,7 @@ def get_models_for_provider(provider: str) -> list[tuple[str, str]]:
     Returns:
         List of (short_name, model_id) tuples for the provider.
     """
-    return [
-        (name, model_id)
-        for name, model_id, p in _MODEL_ENTRIES
-        if p == provider
-    ]
+    return [(name, model_id) for name, model_id, p in _MODEL_ENTRIES if p == provider]
 
 
 def _apply_auto_config(
@@ -159,7 +176,7 @@ def _apply_auto_config(
     if provider == "anthropic" and "thinking" not in kwargs:
         base_url = os.environ.get("ANTHROPIC_BASE_URL", "")
         _is_proxy = "127.0.0.1" in base_url or "localhost" in base_url
-        if _is_proxy:
+        if is_third_party or _is_proxy:
             # ccproxy manages thinking internally; don't set it here
             # to avoid 422 errors with thinking content blocks in history
             pass
@@ -249,8 +266,15 @@ def get_chat_model(
     # Third-party providers → route through OpenAI provider with base_url
     elif provider in _THIRD_PARTY_PROVIDERS:
         base_url_default, api_key_env = _THIRD_PARTY_PROVIDERS[provider]
-        if provider == "custom":
-            base_url = os.environ.get("CUSTOM_BASE_URL", "")
+        if provider == "custom-openai":
+            base_url = os.environ.get("CUSTOM_OPENAI_BASE_URL", "")
+            if not base_url:
+                raise ValueError(
+                    "CUSTOM_OPENAI_BASE_URL environment variable is required when using "
+                    "the 'custom-openai' provider. Please set it to your "
+                    "OpenAI-compatible API endpoint URL (e.g. https://api.openai.com/v1)."
+                )
+            base_url = base_url.rstrip("/")
         else:
             base_url = base_url_default
         if base_url:
@@ -263,6 +287,20 @@ def get_chat_model(
         if provider == "siliconflow":
             kwargs.setdefault("extra_body", {})["enable_thinking"] = False
         provider = "openai"
+    elif provider == "custom-anthropic":
+        base_url = os.environ.get("CUSTOM_ANTHROPIC_BASE_URL", "")
+        if not base_url:
+            raise ValueError(
+                "CUSTOM_ANTHROPIC_BASE_URL environment variable is required when using "
+                "the 'custom-anthropic' provider. Please set it to your "
+                "Anthropic-compatible API endpoint URL (e.g. https://api.anthropic.com)."
+            )
+        kwargs["base_url"] = base_url.rstrip("/")
+        api_key = os.environ.get("CUSTOM_ANTHROPIC_API_KEY", "")
+        if api_key:
+            kwargs["api_key"] = api_key
+        _is_third_party = True  # skip thinking in _apply_auto_config
+        provider = "anthropic"
     elif provider == "ollama":
         base_url = os.environ.get("OLLAMA_BASE_URL", "")
         if base_url:

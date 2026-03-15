@@ -103,11 +103,13 @@ def _make_ai_chunk(content: str = "hello", **kwargs):
 
 def _collect_events(agent, message="hi", thread_id="t1"):
     """Collect all events from stream_agent_events synchronously."""
+
     async def _run():
         events = []
         async for ev in stream_agent_events(agent, message, thread_id):
             events.append(ev)
         return events
+
     loop = asyncio.new_event_loop()
     try:
         return loop.run_until_complete(_run())
@@ -128,9 +130,13 @@ class TestMultiModeChunkUnpacking:
         """Multi-mode yields 3-tuples (namespace, mode, data); messages are processed."""
         chunk = _make_ai_chunk("hello world")
         mock_agent = AsyncMock()
-        mock_agent.astream = MagicMock(return_value=_async_iter([
-            ((), "messages", (chunk, {})),
-        ]))
+        mock_agent.astream = MagicMock(
+            return_value=_async_iter(
+                [
+                    ((), "messages", (chunk, {})),
+                ]
+            )
+        )
         events = _collect_events(mock_agent)
         text_events = [e for e in events if e.get("type") == "text"]
         assert len(text_events) == 1
@@ -140,9 +146,13 @@ class TestMultiModeChunkUnpacking:
         """Single-mode yields 2-tuples; should still work."""
         chunk = _make_ai_chunk("fallback")
         mock_agent = AsyncMock()
-        mock_agent.astream = MagicMock(return_value=_async_iter([
-            ((), (chunk, {})),
-        ]))
+        mock_agent.astream = MagicMock(
+            return_value=_async_iter(
+                [
+                    ((), (chunk, {})),
+                ]
+            )
+        )
         events = _collect_events(mock_agent)
         text_events = [e for e in events if e.get("type") == "text"]
         assert len(text_events) == 1
@@ -152,10 +162,14 @@ class TestMultiModeChunkUnpacking:
         """Updates mode chunks are skipped without error."""
         chunk = _make_ai_chunk("should appear")
         mock_agent = AsyncMock()
-        mock_agent.astream = MagicMock(return_value=_async_iter([
-            ((), "updates", {"some": "state"}),
-            ((), "messages", (chunk, {})),
-        ]))
+        mock_agent.astream = MagicMock(
+            return_value=_async_iter(
+                [
+                    ((), "updates", {"some": "state"}),
+                    ((), "messages", (chunk, {})),
+                ]
+            )
+        )
         events = _collect_events(mock_agent)
         text_events = [e for e in events if e.get("type") == "text"]
         assert len(text_events) == 1
@@ -166,10 +180,14 @@ class TestMultiModeChunkUnpacking:
         chunk_real = _make_ai_chunk("real content")
         chunk_synth = _make_ai_chunk("synthetic summary")
         mock_agent = AsyncMock()
-        mock_agent.astream = MagicMock(return_value=_async_iter([
-            ((), "messages", (chunk_synth, {"lc_source": "summarization"})),
-            ((), "messages", (chunk_real, {})),
-        ]))
+        mock_agent.astream = MagicMock(
+            return_value=_async_iter(
+                [
+                    ((), "messages", (chunk_synth, {"lc_source": "summarization"})),
+                    ((), "messages", (chunk_real, {})),
+                ]
+            )
+        )
         events = _collect_events(mock_agent)
         text_events = [e for e in events if e.get("type") == "text"]
         assert len(text_events) == 1
@@ -181,11 +199,22 @@ class TestUsageStatsExtraction:
 
     def test_usage_metadata_emitted(self):
         """AIMessageChunk with usage_metadata emits usage_stats event."""
-        chunk = _make_ai_chunk("hi", usage_metadata={"input_tokens": 100, "output_tokens": 50, "total_tokens": 150})
+        chunk = _make_ai_chunk(
+            "hi",
+            usage_metadata={
+                "input_tokens": 100,
+                "output_tokens": 50,
+                "total_tokens": 150,
+            },
+        )
         mock_agent = AsyncMock()
-        mock_agent.astream = MagicMock(return_value=_async_iter([
-            ((), "messages", (chunk, {})),
-        ]))
+        mock_agent.astream = MagicMock(
+            return_value=_async_iter(
+                [
+                    ((), "messages", (chunk, {})),
+                ]
+            )
+        )
         events = _collect_events(mock_agent)
         usage_events = [e for e in events if e.get("type") == "usage_stats"]
         assert len(usage_events) == 1
@@ -196,20 +225,31 @@ class TestUsageStatsExtraction:
         """AIMessageChunk without usage_metadata does not emit usage_stats."""
         chunk = _make_ai_chunk("hi")
         mock_agent = AsyncMock()
-        mock_agent.astream = MagicMock(return_value=_async_iter([
-            ((), "messages", (chunk, {})),
-        ]))
+        mock_agent.astream = MagicMock(
+            return_value=_async_iter(
+                [
+                    ((), "messages", (chunk, {})),
+                ]
+            )
+        )
         events = _collect_events(mock_agent)
         usage_events = [e for e in events if e.get("type") == "usage_stats"]
         assert len(usage_events) == 0
 
     def test_zero_tokens_not_emitted(self):
         """Zero input and output tokens should not emit usage_stats."""
-        chunk = _make_ai_chunk("hi", usage_metadata={"input_tokens": 0, "output_tokens": 0, "total_tokens": 0})
+        chunk = _make_ai_chunk(
+            "hi",
+            usage_metadata={"input_tokens": 0, "output_tokens": 0, "total_tokens": 0},
+        )
         mock_agent = AsyncMock()
-        mock_agent.astream = MagicMock(return_value=_async_iter([
-            ((), "messages", (chunk, {})),
-        ]))
+        mock_agent.astream = MagicMock(
+            return_value=_async_iter(
+                [
+                    ((), "messages", (chunk, {})),
+                ]
+            )
+        )
         events = _collect_events(mock_agent)
         usage_events = [e for e in events if e.get("type") == "usage_stats"]
         assert len(usage_events) == 0

@@ -146,7 +146,9 @@ class ToolCallWidget(Vertical):
 
     def _should_collapse(self) -> bool:
         lines = self._result_content.strip().split("\n")
-        return len(lines) > _COLLAPSE_LINES or len(self._result_content) > _COLLAPSE_CHARS
+        return (
+            len(lines) > _COLLAPSE_LINES or len(self._result_content) > _COLLAPSE_CHARS
+        )
 
     def set_success(self, content: str) -> None:
         """Mark tool call as successfully completed."""
@@ -189,7 +191,11 @@ class ToolCallWidget(Vertical):
         if not self._result_content.strip():
             return
         # Diff rendering for edit_file (never truncates — collapses instead)
-        if self._tool_name == "edit_file" and self._status == "success" and self._tool_args:
+        if (
+            self._tool_name == "edit_file"
+            and self._status == "success"
+            and self._tool_args
+        ):
             old_str = self._tool_args.get("old_string", "")
             new_str = self._tool_args.get("new_string", "")
             path = self._tool_args.get("path", self._tool_args.get("file_path", ""))

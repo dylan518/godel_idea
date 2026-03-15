@@ -19,6 +19,7 @@ import sys
 # Charset detection (simplified from upstream config.py)
 # ---------------------------------------------------------------------------
 
+
 def _detect_unicode_support() -> bool:
     """Check if the terminal supports Unicode glyphs."""
     encoding = getattr(sys.stdout, "encoding", "") or ""
@@ -30,14 +31,15 @@ def _detect_unicode_support() -> bool:
 
 # Module-level glyph constants
 _UNICODE = _detect_unicode_support()
-GUTTER_BAR = "\u258c" if _UNICODE else "|"       # ▌ or |
-BOX_VERTICAL = "\u2502" if _UNICODE else "|"      # │ or |
+GUTTER_BAR = "\u258c" if _UNICODE else "|"  # ▌ or |
+BOX_VERTICAL = "\u2502" if _UNICODE else "|"  # │ or |
 BOX_DOUBLE_HORIZ = "\u2550" if _UNICODE else "="  # ═ or =
 
 
 # ---------------------------------------------------------------------------
 # Markup escaping
 # ---------------------------------------------------------------------------
+
 
 def _escape_markup(text: str) -> str:
     """Escape Rich markup characters in text.
@@ -50,6 +52,7 @@ def _escape_markup(text: str) -> str:
 # ---------------------------------------------------------------------------
 # Diff formatting (produces Rich markup string)
 # ---------------------------------------------------------------------------
+
 
 def _build_stats_text(additions: int, deletions: int) -> str:
     """Build a ``+N -M`` stats string with Rich markup."""
@@ -102,7 +105,9 @@ def format_diff_rich(
     # Title header (═══ title ═══)
     h = BOX_DOUBLE_HORIZ
     if title:
-        formatted.append(f"[bold cyan]{h}{h}{h} {_escape_markup(title)} {h}{h}{h}[/bold cyan]")
+        formatted.append(
+            f"[bold cyan]{h}{h}{h} {_escape_markup(title)} {h}{h}{h}[/bold cyan]"
+        )
         formatted.append("")
 
     # Stats header
@@ -115,9 +120,7 @@ def format_diff_rich(
 
     for line in lines:
         if max_lines is not None and line_count >= max_lines:
-            formatted.append(
-                f"\n[dim]... ({len(lines) - line_count} more lines)[/dim]"
-            )
+            formatted.append(f"\n[dim]... ({len(lines) - line_count} more lines)[/dim]")
             break
 
         # Skip file headers
@@ -147,9 +150,7 @@ def format_diff_rich(
             new_num += 1
             line_count += 1
         elif line.startswith(" "):
-            formatted.append(
-                f"[dim]{BOX_VERTICAL}{old_num:>{width}}[/dim]  {escaped}"
-            )
+            formatted.append(f"[dim]{BOX_VERTICAL}{old_num:>{width}}[/dim]  {escaped}")
             old_num += 1
             new_num += 1
             line_count += 1
@@ -167,6 +168,7 @@ def format_diff_rich(
 # ---------------------------------------------------------------------------
 # High-level helper: build diff from edit_file tool args
 # ---------------------------------------------------------------------------
+
 
 def build_edit_diff(
     file_path: str,
@@ -191,14 +193,16 @@ def build_edit_diff(
     if not old_string and not new_string:
         return None
 
-    diff_lines = list(difflib.unified_diff(
-        old_string.splitlines(),
-        new_string.splitlines(),
-        fromfile=file_path,
-        tofile=file_path,
-        lineterm="",
-        n=3,
-    ))
+    diff_lines = list(
+        difflib.unified_diff(
+            old_string.splitlines(),
+            new_string.splitlines(),
+            fromfile=file_path,
+            tofile=file_path,
+            lineterm="",
+            n=3,
+        )
+    )
 
     if not diff_lines:
         return None

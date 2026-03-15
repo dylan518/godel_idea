@@ -31,9 +31,11 @@ _channel_logger = logging.getLogger(__name__)
 # Queue bridge: bus thread  ⇄  main CLI thread
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class ChannelMessage:
     """A message from a channel, enqueued for the main CLI thread."""
+
     msg_id: str
     content: str
     sender: str
@@ -41,7 +43,7 @@ class ChannelMessage:
     metadata: dict | None = None
     # Filled by the bus consumer so the main thread can send callbacks
     channel_ref: Any = None  # Channel instance (for thinking / todo / file)
-    bus_ref: Any = None      # MessageBus (for publishing outbound)
+    bus_ref: Any = None  # MessageBus (for publishing outbound)
     chat_id: str = ""
     message_id: str | None = None
 
@@ -91,7 +93,9 @@ _hitl_lock = threading.Lock()
 _hitl_auto_approve: set[str] = set()  # "channel:chat_id" keys with auto-approve
 
 _HITL_APPROVAL_TIMEOUT = 120.0  # seconds to wait for HITL approval reply
-_ASK_USER_TIMEOUT = 300.0  # seconds to wait for ask_user reply (longer for thinking time)
+_ASK_USER_TIMEOUT = (
+    300.0  # seconds to wait for ask_user reply (longer for thinking time)
+)
 
 
 def _register_hitl_wait(channel_type: str, chat_id: str) -> threading.Event:
@@ -152,12 +156,14 @@ def channel_ask_user_prompt(
     def _send(content: str) -> bool:
         try:
             asyncio.run_coroutine_threadsafe(
-                msg.bus_ref.publish_outbound(OutboundMessage(
-                    channel=msg.channel_type,
-                    chat_id=msg.chat_id,
-                    content=content,
-                    metadata=msg.metadata,
-                )),
+                msg.bus_ref.publish_outbound(
+                    OutboundMessage(
+                        channel=msg.channel_type,
+                        chat_id=msg.chat_id,
+                        content=content,
+                        metadata=msg.metadata,
+                    )
+                ),
                 bus_loop,
             ).result(timeout=15)
             return True
@@ -192,7 +198,9 @@ def channel_ask_user_prompt(
                 lines.append(f"   {letter}. {label}")
             other_letter = chr(ord("A") + len(choices))
             lines.append(f"   {other_letter}. Other")
-            lines.append(f"\nReply with a letter ({'/'.join(chr(ord('A') + k) for k in range(len(choices) + 1))}), or 'cancel'.")
+            lines.append(
+                f"\nReply with a letter ({'/'.join(chr(ord('A') + k) for k in range(len(choices) + 1))}), or 'cancel'."
+            )
         else:
             skip_hint = " Leave empty to skip." if not required else ""
             lines.append(f"\nReply with your answer, or 'cancel'.{skip_hint}")
@@ -275,12 +283,14 @@ def channel_hitl_prompt(
         """Send a message to the channel user.  Returns True on success."""
         try:
             asyncio.run_coroutine_threadsafe(
-                msg.bus_ref.publish_outbound(OutboundMessage(
-                    channel=msg.channel_type,
-                    chat_id=msg.chat_id,
-                    content=content,
-                    metadata=msg.metadata,
-                )),
+                msg.bus_ref.publish_outbound(
+                    OutboundMessage(
+                        channel=msg.channel_type,
+                        chat_id=msg.chat_id,
+                        content=content,
+                        metadata=msg.metadata,
+                    )
+                ),
                 bus_loop,
             ).result(timeout=15)
             return True
@@ -311,7 +321,8 @@ def channel_hitl_prompt(
         return [{"type": "approve"} for _ in action_requests]
 
     feedback = (
-        "Action rejected." if decision == "reject"
+        "Action rejected."
+        if decision == "reject"
         else "Unrecognized reply. Action rejected."
     )
     _send(feedback)
@@ -325,7 +336,7 @@ def channel_hitl_prompt(
 _manager: Optional[Any] = None  # ChannelManager
 _bus_loop: Optional[asyncio.AbstractEventLoop] = None
 _bus_thread: Optional[threading.Thread] = None
-_cli_agent: Any = None          # shared agent reference (same as CLI)
+_cli_agent: Any = None  # shared agent reference (same as CLI)
 _cli_thread_id: Optional[str] = None  # shared thread_id (same conversation)
 
 
@@ -353,7 +364,8 @@ def _channels_stop(channel_type: str | None = None) -> None:
         if _bus_loop and _manager:
             try:
                 future = asyncio.run_coroutine_threadsafe(
-                    _manager.stop_all(), _bus_loop,
+                    _manager.stop_all(),
+                    _bus_loop,
                 )
                 future.result(timeout=10)
             except Exception as e:
@@ -373,7 +385,8 @@ def _channels_stop(channel_type: str | None = None) -> None:
     if _manager and _bus_loop:
         try:
             future = asyncio.run_coroutine_threadsafe(
-                _manager.remove_channel(channel_type), _bus_loop,
+                _manager.remove_channel(channel_type),
+                _bus_loop,
             )
             future.result(timeout=5)
         except Exception as e:
@@ -419,9 +432,7 @@ def _start_channels_bus_mode(
         _bus_loop = loop
 
         async def _run():
-            consumer = asyncio.create_task(
-                _bus_inbound_consumer(mgr.bus, mgr)
-            )
+            consumer = asyncio.create_task(_bus_inbound_consumer(mgr.bus, mgr))
             try:
                 await mgr.start_all()
             finally:
@@ -509,8 +520,7 @@ async def _handle_bus_message(bus, manager, msg) -> None:
     from ..channels.bus.events import OutboundMessage
 
     _channel_logger.info(
-        f"[bus] Received from {msg.channel}:{msg.sender_id}: "
-        f"{msg.content[:60]}..."
+        f"[bus] Received from {msg.channel}:{msg.sender_id}: {msg.content[:60]}..."
     )
     manager.record_message(msg.channel, "received")
 
@@ -543,13 +553,15 @@ async def _handle_bus_message(bus, manager, msg) -> None:
 
     # Publish the response back through the bus → channel
     try:
-        await bus.publish_outbound(OutboundMessage(
-            channel=msg.channel,
-            chat_id=msg.chat_id,
-            content=response,
-            reply_to=msg.message_id or None,
-            metadata=msg.metadata,
-        ))
+        await bus.publish_outbound(
+            OutboundMessage(
+                channel=msg.channel,
+                chat_id=msg.chat_id,
+                content=response,
+                reply_to=msg.message_id or None,
+                metadata=msg.metadata,
+            )
+        )
         manager.record_message(msg.channel, "sent")
     except Exception as e:
         _channel_logger.error(f"[bus] Outbound error: {e}")
@@ -581,7 +593,9 @@ def _print_channel_panel(channels: list[tuple[str, bool, str]]) -> None:
 
     body = Text("\n").join(lines)
     border = "green" if all_ok else "yellow"
-    console.print(Panel(body, title="[bold]Channels[/bold]", border_style=border, expand=False))
+    console.print(
+        Panel(body, title="[bold]Channels[/bold]", border_style=border, expand=False)
+    )
     console.print()
 
 
@@ -602,6 +616,7 @@ def _cmd_channel(
     global _cli_agent, _cli_thread_id
 
     from ..config import load_config
+
     app_config = load_config()
 
     channel_type = args.strip().lower() if args and args.strip() else ""
@@ -634,7 +649,9 @@ def _cmd_channel(
         channel_type = app_config.channel_enabled
     if not channel_type:
         console.print("[yellow]No channel configured.[/yellow]")
-        console.print("[dim]Run[/dim] evosci onboard [dim]or specify:[/dim] /channel telegram\n")
+        console.print(
+            "[dim]Run[/dim] evosci onboard [dim]or specify:[/dim] /channel telegram\n"
+        )
         return
 
     requested = [t.strip() for t in channel_type.split(",") if t.strip()]

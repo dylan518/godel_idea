@@ -19,27 +19,37 @@ from deepagents.backends.protocol import (
 # System path prefixes that should never appear in virtual paths.
 # If the agent hallucinates an absolute system path, we block it.
 _SYSTEM_PATH_PREFIXES = (
-    "/Users/", "/home/", "/tmp/", "/var/", "/etc/",
-    "/opt/", "/usr/", "/bin/", "/sbin/", "/dev/",
-    "/proc/", "/sys/", "/root/",
+    "/Users/",
+    "/home/",
+    "/tmp/",
+    "/var/",
+    "/etc/",
+    "/opt/",
+    "/usr/",
+    "/bin/",
+    "/sbin/",
+    "/dev/",
+    "/proc/",
+    "/sys/",
+    "/root/",
 )
 
 # Dangerous patterns that could escape the workspace
 BLOCKED_PATTERNS = [
-    r'~/',                # home directory
-    r'\bcd\s+/',          # cd to absolute path
-    r'\brm\s+-rf\s+/',    # rm -rf with absolute path
+    r"~/",  # home directory
+    r"\bcd\s+/",  # cd to absolute path
+    r"\brm\s+-rf\s+/",  # rm -rf with absolute path
 ]
 
 # Dangerous commands that should never be executed
 BLOCKED_COMMANDS = [
-    'sudo',
-    'chmod',
-    'chown',
-    'mkfs',
-    'dd',
-    'shutdown',
-    'reboot',
+    "sudo",
+    "chmod",
+    "chown",
+    "mkfs",
+    "dd",
+    "shutdown",
+    "reboot",
 ]
 
 
@@ -50,7 +60,7 @@ def _split_shell_commands(command: str) -> list[str]:
     """
     base_commands: list[str] = []
     # Split by sequential operators first
-    for segment in re.split(r'\s*(?:&&|\|\||;)\s*', command):
+    for segment in re.split(r"\s*(?:&&|\|\||;)\s*", command):
         # Then split by pipe
         for pipe_seg in segment.split("|"):
             pipe_seg = pipe_seg.strip()
@@ -140,7 +150,7 @@ def convert_virtual_paths_in_command(
         path = match.group(0)
 
         # Skip content that looks like a URL
-        if '://' in command[max(0, match.start() - 10):match.end() + 10]:
+        if "://" in command[max(0, match.start() - 10) : match.end() + 10]:
             return path
 
         # Fix hallucinated system absolute paths that reference the workspace.
@@ -152,17 +162,17 @@ def convert_virtual_paths_in_command(
                     marker = f"/{workspace_name}/"
                     idx = path.find(marker)
                     if idx != -1:
-                        relative = path[idx + len(marker):]
+                        relative = path[idx + len(marker) :]
                         return "./" + relative if relative else "."
                     elif path.endswith(f"/{workspace_name}"):
                         return "."
                     break  # Matched system prefix but no workspace → fall through
 
         # Convert virtual path
-        if path == '/':
-            return '.'
+        if path == "/":
+            return "."
         else:
-            return '.' + path
+            return "." + path
 
     # Match pattern: paths starting with / (but not URLs)
     pattern = r'(?<=\s)/[^\s;|&<>\'"`]*|^/[^\s;|&<>\'"`]*'
@@ -209,8 +219,12 @@ class MergedReadOnlyBackend(BackendProtocol):
     """
 
     def __init__(self, primary_dir: str, secondary_dir: str):
-        self._primary = ReadOnlyFilesystemBackend(root_dir=primary_dir, virtual_mode=True)
-        self._secondary = ReadOnlyFilesystemBackend(root_dir=secondary_dir, virtual_mode=True)
+        self._primary = ReadOnlyFilesystemBackend(
+            root_dir=primary_dir, virtual_mode=True
+        )
+        self._secondary = ReadOnlyFilesystemBackend(
+            root_dir=secondary_dir, virtual_mode=True
+        )
 
     # -- read: try primary first, fall back to secondary --
 
@@ -233,7 +247,9 @@ class MergedReadOnlyBackend(BackendProtocol):
 
     # -- grep_raw: search both, deduplicate --
 
-    def grep_raw(self, pattern: str, path: str | None = None, glob: str | None = None) -> list:
+    def grep_raw(
+        self, pattern: str, path: str | None = None, glob: str | None = None
+    ) -> list:
         results = self._secondary.grep_raw(pattern, path, glob)
         try:
             results += self._primary.grep_raw(pattern, path, glob)
@@ -244,9 +260,13 @@ class MergedReadOnlyBackend(BackendProtocol):
     # -- glob_info: merge both --
 
     def glob_info(self, pattern: str, path: str = "/") -> list:
-        secondary = {item["path"]: item for item in self._secondary.glob_info(pattern, path)}
+        secondary = {
+            item["path"]: item for item in self._secondary.glob_info(pattern, path)
+        }
         try:
-            primary = {item["path"]: item for item in self._primary.glob_info(pattern, path)}
+            primary = {
+                item["path"]: item for item in self._primary.glob_info(pattern, path)
+            }
             secondary.update(primary)
         except Exception:
             pass
@@ -349,7 +369,7 @@ class CustomSandboxBackend(LocalShellBackend):
         # Auto-strip /<ws_name>/ prefix to prevent nesting
         ws_prefix = f"/{ws_name}/"
         if key.startswith(ws_prefix):
-            key = key[len(ws_prefix) - 1:]  # "/<ws>/main.py" → "/main.py"
+            key = key[len(ws_prefix) - 1 :]  # "/<ws>/main.py" → "/main.py"
         elif key == f"/{ws_name}":
             key = "/"
 
@@ -359,7 +379,7 @@ class CustomSandboxBackend(LocalShellBackend):
                 # Try to extract path after "<ws_name>/"
                 idx = key.find(ws_prefix)
                 if idx != -1:
-                    key = "/" + key[idx + len(ws_prefix):]
+                    key = "/" + key[idx + len(ws_prefix) :]
                 elif key.endswith(f"/{ws_name}"):
                     key = "/"
                 else:

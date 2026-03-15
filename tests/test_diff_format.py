@@ -17,6 +17,7 @@ from EvoScientist.stream.diff_format import (
 # _escape_markup
 # ---------------------------------------------------------------------------
 
+
 class TestEscapeMarkup:
     def test_escapes_brackets(self):
         assert _escape_markup("[bold]text[/bold]") == r"\[bold\]text\[/bold\]"
@@ -34,6 +35,7 @@ class TestEscapeMarkup:
 # ---------------------------------------------------------------------------
 # _detect_unicode_support
 # ---------------------------------------------------------------------------
+
 
 class TestDetectUnicodeSupport:
     def test_utf8_encoding(self):
@@ -59,6 +61,7 @@ class TestDetectUnicodeSupport:
 # ---------------------------------------------------------------------------
 # format_diff_rich
 # ---------------------------------------------------------------------------
+
 
 class TestFormatDiffRich:
     def test_empty_diff_returns_dim_message(self):
@@ -143,6 +146,7 @@ class TestFormatDiffRich:
 # build_edit_diff
 # ---------------------------------------------------------------------------
 
+
 class TestBuildEditDiff:
     def test_returns_none_when_equal(self):
         assert build_edit_diff("/foo.py", "same", "same") is None
@@ -194,6 +198,7 @@ class TestBuildEditDiff:
 # ---------------------------------------------------------------------------
 # Integration with format_tool_result_compact
 # ---------------------------------------------------------------------------
+
 
 class TestFormatToolResultCompactEditFile:
     def test_edit_file_with_tool_args_shows_diff(self):

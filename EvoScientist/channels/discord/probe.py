@@ -5,7 +5,9 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-async def validate_discord_token(token: str, proxy: str | None = None) -> tuple[bool, str]:
+async def validate_discord_token(
+    token: str, proxy: str | None = None
+) -> tuple[bool, str]:
     """Validate a Discord bot token via the REST API.
 
     Returns:

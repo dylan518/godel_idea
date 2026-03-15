@@ -88,6 +88,7 @@ class TestFeishuChannel:
 
     def test_capabilities(self):
         from EvoScientist.channels.capabilities import FEISHU
+
         config = FeishuConfig()
         channel = FeishuChannel(config)
         assert channel.capabilities is FEISHU
@@ -105,7 +106,10 @@ class TestFeishuChannel:
             "zh_cn": {
                 "title": "Test Title",
                 "content": [
-                    [{"tag": "text", "text": "Hello "}, {"tag": "a", "text": "world", "href": "http://example.com"}],
+                    [
+                        {"tag": "text", "text": "Hello "},
+                        {"tag": "a", "text": "world", "href": "http://example.com"},
+                    ],
                     [{"tag": "text", "text": "Second line"}],
                 ],
             }
@@ -407,8 +411,7 @@ class TestFeishuMarkdownConversion:
     def test_bold_text(self):
         elements = _parse_inline_text("**bold text**")
         assert any(
-            e.get("style") == ["bold"] and e["text"] == "bold text"
-            for e in elements
+            e.get("style") == ["bold"] and e["text"] == "bold text" for e in elements
         )
 
     def test_inline_code(self):
@@ -420,10 +423,7 @@ class TestFeishuMarkdownConversion:
 
     def test_link(self):
         elements = _parse_inline_text("[click](http://example.com)")
-        assert any(
-            e.get("tag") == "a" and e["text"] == "click"
-            for e in elements
-        )
+        assert any(e.get("tag") == "a" and e["text"] == "click" for e in elements)
 
     def test_strikethrough(self):
         elements = _parse_inline_text("~~deleted~~")
@@ -442,8 +442,7 @@ class TestFeishuMarkdownConversion:
     def test_heading(self):
         elements = _parse_inline_elements("## My Heading")
         assert any(
-            e.get("style") == ["bold"] and e["text"] == "My Heading"
-            for e in elements
+            e.get("style") == ["bold"] and e["text"] == "My Heading" for e in elements
         )
 
     def test_blockquote(self):
@@ -479,6 +478,7 @@ class TestFeishuMarkdownConversion:
 class TestFeishuChannelRegistration:
     def test_feishu_registered(self):
         from EvoScientist.channels.channel_manager import available_channels
+
         channels = available_channels()
         assert "feishu" in channels
 
@@ -486,12 +486,14 @@ class TestFeishuChannelRegistration:
 class TestFeishuProbe:
     def test_missing_app_id(self):
         from EvoScientist.channels.feishu.probe import validate_feishu_credentials
+
         ok, msg = _run(validate_feishu_credentials("", "secret"))
         assert ok is False
         assert "app_id" in msg
 
     def test_missing_app_secret(self):
         from EvoScientist.channels.feishu.probe import validate_feishu_credentials
+
         ok, msg = _run(validate_feishu_credentials("id", ""))
         assert ok is False
         assert "app_secret" in msg

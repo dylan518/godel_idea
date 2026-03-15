@@ -82,7 +82,7 @@ class SummarizationWidget(Static):
             title = f"Context Summarized ({self._char_count_label()})"
             first_line = self._content.strip().split("\n")[0].strip()
             if len(first_line) > _MAX_COLLAPSED_CHARS:
-                first_line = first_line[:_MAX_COLLAPSED_CHARS - 3] + "\u2026"
+                first_line = first_line[: _MAX_COLLAPSED_CHARS - 3] + "\u2026"
             preview = Text(first_line, style="dim italic")
             preview.append("  [click to expand]", style="dim italic")
             body = preview
@@ -92,17 +92,15 @@ class SummarizationWidget(Static):
             if len(display) > _MAX_EXPANDED_CHARS:
                 half = _MAX_EXPANDED_CHARS // 2
                 display = (
-                    display[:half]
-                    + "\n\n... (truncated) ...\n\n"
-                    + display[-half:]
+                    display[:half] + "\n\n... (truncated) ...\n\n" + display[-half:]
                 )
-            body = Text(display, style="dim italic") if display else Text(
-                "(empty)", style="dim"
+            body = (
+                Text(display, style="dim italic")
+                if display
+                else Text("(empty)", style="dim")
             )
 
-        self.update(
-            Panel(body, title=title, border_style="#f59e0b", padding=(0, 1))
-        )
+        self.update(Panel(body, title=title, border_style="#f59e0b", padding=(0, 1)))
 
     def append_text(self, text: str) -> None:
         """Append a chunk of summarization text (streaming)."""

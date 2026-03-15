@@ -26,6 +26,7 @@ logger = logging.getLogger(__name__)
 # Token refresh mixin (shared by Webhook & WebSocket channels)
 # ═════════════════════════════════════════════════════════════════════
 
+
 class TokenMixin:
     """Mixin for channels that need OAuth-style token management.
 
@@ -48,7 +49,9 @@ class TokenMixin:
         token, expire = await self._fetch_token()
         self._access_token = token
         self._token_expires = time.monotonic() + expire - 300
-        logger.debug(f"{getattr(self, 'name', '?')} token refreshed, expires in {expire}s")
+        logger.debug(
+            f"{getattr(self, 'name', '?')} token refreshed, expires in {expire}s"
+        )
 
     async def _ensure_token(self) -> str:
         if not self._access_token or time.monotonic() >= self._token_expires:
@@ -59,6 +62,7 @@ class TokenMixin:
 # ═════════════════════════════════════════════════════════════════════
 # Webhook + REST mixin
 # ═════════════════════════════════════════════════════════════════════
+
 
 class WebhookMixin:
     """Mixin for channels that use an HTTP webhook server for inbound
@@ -129,7 +133,9 @@ class WebhookMixin:
             await self._http_client.aclose()
             self._http_client = None
 
-    async def _api_post(self, url: str, body: dict, headers: dict | None = None) -> dict:
+    async def _api_post(
+        self, url: str, body: dict, headers: dict | None = None
+    ) -> dict:
         """POST JSON to API, return parsed response. Raises on HTTP error."""
         resp = await self._http_client.post(url, json=body, headers=headers)
         data = resp.json()
@@ -143,6 +149,7 @@ class WebhookMixin:
 # ═════════════════════════════════════════════════════════════════════
 # WebSocket mixin
 # ═════════════════════════════════════════════════════════════════════
+
 
 class WebSocketMixin:
     """Mixin for channels that receive messages via WebSocket.
@@ -193,14 +200,22 @@ class WebSocketMixin:
                 # Resolve proxy: channel config > environment variable
                 proxy = getattr(getattr(self, "config", None), "proxy", None)
                 if not proxy:
-                    proxy = (os.environ.get("https_proxy")
-                             or os.environ.get("HTTPS_PROXY")
-                             or os.environ.get("http_proxy")
-                             or os.environ.get("HTTP_PROXY")
-                             or None)
-                logger.debug(f"{getattr(self, 'name', '?')} WS connecting to {ws_url[:60]}... proxy={proxy}")
+                    proxy = (
+                        os.environ.get("https_proxy")
+                        or os.environ.get("HTTPS_PROXY")
+                        or os.environ.get("http_proxy")
+                        or os.environ.get("HTTP_PROXY")
+                        or None
+                    )
+                logger.debug(
+                    f"{getattr(self, 'name', '?')} WS connecting to {ws_url[:60]}... proxy={proxy}"
+                )
                 async with aiohttp.ClientSession() as session:
-                    async with session.ws_connect(ws_url, proxy=proxy, timeout=aiohttp.ClientWSTimeout(ws_close=30)) as ws:
+                    async with session.ws_connect(
+                        ws_url,
+                        proxy=proxy,
+                        timeout=aiohttp.ClientWSTimeout(ws_close=30),
+                    ) as ws:
                         logger.info(f"{getattr(self, 'name', '?')} WebSocket connected")
                         self._ws_session = ws
                         await self._on_ws_connected(ws)
@@ -233,7 +248,9 @@ class WebSocketMixin:
             self._ws_session = None
 
             if getattr(self, "_running", False):
-                logger.info(f"{getattr(self, 'name', '?')} reconnecting in {self._ws_reconnect_delay}s...")
+                logger.info(
+                    f"{getattr(self, 'name', '?')} reconnecting in {self._ws_reconnect_delay}s..."
+                )
                 await asyncio.sleep(self._ws_reconnect_delay)
 
     async def _ws_heartbeat_loop(self, ws) -> None:
@@ -273,6 +290,7 @@ class WebSocketMixin:
 # ═════════════════════════════════════════════════════════════════════
 # Polling mixin
 # ═════════════════════════════════════════════════════════════════════
+
 
 class PollingMixin:
     """Mixin for channels that poll for new messages.

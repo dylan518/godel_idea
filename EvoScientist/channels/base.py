@@ -27,6 +27,7 @@ _logger = logging.getLogger(__name__)
 
 # ── Text chunking ────────────────────────────────────────────────────
 
+
 def chunk_text(text: str, limit: int) -> list[str]:
     """Split text into chunks that respect logical boundaries.
 
@@ -173,7 +174,9 @@ async def download_attachment(
         local_path = media_path(f"{prefix}{safe_name}")
 
         async with httpx.AsyncClient(proxy=proxy) as client:
-            async with client.stream("GET", url, headers=headers or {}, timeout=30) as resp:
+            async with client.stream(
+                "GET", url, headers=headers or {}, timeout=30
+            ) as resp:
                 if resp.status_code != 200:
                     return None, f"[attachment: {filename} - download failed]"
 
@@ -202,6 +205,7 @@ async def download_attachment(
     except Exception as e:
         _logger.warning(f"Failed to download attachment: {e}")
         return None, f"[attachment: {filename} - download failed]"
+
 
 # Deprecated aliases — use InboundMessage / OutboundMessage instead.
 IncomingMessage = InboundMessage
@@ -260,13 +264,17 @@ class Channel(ChannelPlugin, ABC):
 
         # Auto-configure formatter from capabilities
         self._formatter = UnifiedFormatter.for_channel(self.capabilities.format_type)
-        self._queue: asyncio.Queue[InboundMessage] = asyncio.Queue(maxsize=queue_maxsize)
+        self._queue: asyncio.Queue[InboundMessage] = asyncio.Queue(
+            maxsize=queue_maxsize
+        )
         self._running = False
 
         # Typing indicator — delegated to TypingManager
         from .middleware import TypingManager
+
         self._typing_manager = TypingManager(
-            self._send_typing_action, interval=self._typing_interval,
+            self._send_typing_action,
+            interval=self._typing_interval,
         )
         # Keep legacy dict reference for any subclass that touches it directly
         self._typing_tasks = self._typing_manager._tasks
@@ -300,6 +308,7 @@ class Channel(ChannelPlugin, ABC):
 
         # Retry configuration (auto-resolved from channel name)
         from .retry import RetryConfig, DEFAULT_RETRY, RETRY_PRESETS
+
         self._retry_config: RetryConfig = RETRY_PRESETS.get(self.name, DEFAULT_RETRY)
 
         # Per-chat send locks to prevent message reordering.
@@ -321,9 +330,13 @@ class Channel(ChannelPlugin, ABC):
         5. MentionGatingMiddleware — filter by mention policy
         """
         from .middleware import (
-            DedupMiddleware, AllowListMiddleware,
-            PairingMiddleware, GroupHistoryMiddleware, MentionGatingMiddleware,
+            DedupMiddleware,
+            AllowListMiddleware,
+            PairingMiddleware,
+            GroupHistoryMiddleware,
+            MentionGatingMiddleware,
         )
+
         middlewares = []
         middlewares.append(DedupMiddleware())
         # AllowList
@@ -333,29 +346,37 @@ class Channel(ChannelPlugin, ABC):
             allowed_senders = set(allowed_senders)
         if allowed_channels and not isinstance(allowed_channels, set):
             allowed_channels = set(allowed_channels)
-        middlewares.append(AllowListMiddleware(
-            allowed_senders=allowed_senders,
-            allowed_channels=allowed_channels,
-            dm_policy=self.dm_policy,
-        ))
+        middlewares.append(
+            AllowListMiddleware(
+                allowed_senders=allowed_senders,
+                allowed_channels=allowed_channels,
+                dm_policy=self.dm_policy,
+            )
+        )
         # Pairing
         if self.dm_policy == "pairing":
+
             async def _send_pair(chat_id, text):
                 await self._send_chunk(chat_id, text, text, None, {})
-            middlewares.append(PairingMiddleware(
-                channel_name=self.name,
-                send_response_fn=_send_pair,
-                dm_policy=self.dm_policy,
-            ))
+
+            middlewares.append(
+                PairingMiddleware(
+                    channel_name=self.name,
+                    send_response_fn=_send_pair,
+                    dm_policy=self.dm_policy,
+                )
+            )
         # GroupHistory
         if self.capabilities.groups:
             middlewares.append(GroupHistoryMiddleware())
         # MentionGating
         if self.capabilities.mentions:
-            middlewares.append(MentionGatingMiddleware(
-                require_mention=self.require_mention,
-                strip_fn=self._strip_mention,
-            ))
+            middlewares.append(
+                MentionGatingMiddleware(
+                    require_mention=self.require_mention,
+                    strip_fn=self._strip_mention,
+                )
+            )
         return middlewares
 
     @abstractmethod
@@ -433,7 +454,8 @@ class Channel(ChannelPlugin, ABC):
             # to prevent unbounded growth.
             if len(self._send_locks) > self._send_locks_max:
                 to_evict = [
-                    k for k, lock in self._send_locks.items()
+                    k
+                    for k, lock in self._send_locks.items()
                     if not lock.locked() and k != chat_id
                 ]
                 for k in to_evict:
@@ -475,9 +497,7 @@ class Channel(ChannelPlugin, ABC):
                             )
                         )
                     except Exception as chunk_err:
-                        _logger.error(
-                            f"{self.name} chunk {i} send error: {chunk_err}"
-                        )
+                        _logger.error(f"{self.name} chunk {i} send error: {chunk_err}")
                         had_error = True
             return not had_error
         except Exception as e:
@@ -494,7 +514,9 @@ class Channel(ChannelPlugin, ABC):
         return reply_to if chunk_index == 0 else None
 
     def _prepare_chunks(
-        self, content: str, limit: int,
+        self,
+        content: str,
+        limit: int,
     ) -> list[tuple[str, str]]:
         """Build ``(formatted, raw)`` pairs, re-splitting when formatting
         expands a chunk beyond *limit*.
@@ -549,8 +571,12 @@ class Channel(ChannelPlugin, ABC):
 
     @abstractmethod
     async def _send_chunk(
-        self, chat_id: str, formatted_text: str, raw_text: str,
-        reply_to: str | None, metadata: dict,
+        self,
+        chat_id: str,
+        formatted_text: str,
+        raw_text: str,
+        reply_to: str | None,
+        metadata: dict,
     ) -> None:
         """Send a single text chunk. Platform-specific implementation."""
         ...
@@ -558,7 +584,10 @@ class Channel(ChannelPlugin, ABC):
     _format_fallback_patterns: tuple[str, ...] = ("parse", "invalid")
 
     async def _send_with_format_fallback(
-        self, send_fn: CallableABC[[str], Awaitable], formatted: str, raw: str,
+        self,
+        send_fn: CallableABC[[str], Awaitable],
+        formatted: str,
+        raw: str,
     ) -> None:
         """Try *send_fn(formatted)*; on format-related errors retry with *raw*.
 
@@ -645,7 +674,8 @@ class Channel(ChannelPlugin, ABC):
         Delegates to :func:`download_attachment`.
         """
         return await download_attachment(
-            url, filename,
+            url,
+            filename,
             channel_name=self.name,
             headers=headers,
             file_size=file_size,
@@ -797,11 +827,15 @@ class Channel(ChannelPlugin, ABC):
 
     # ── ACK reaction ─────────────────────────────────────────────────
 
-    async def _send_ack_reaction(self, chat_id: str, message_id: str, emoji: str = "👀") -> None:
+    async def _send_ack_reaction(
+        self, chat_id: str, message_id: str, emoji: str = "👀"
+    ) -> None:
         """Send an acknowledgment reaction to a message. Override in subclasses that support reactions."""
         pass  # Default no-op; channels override if they support reactions
 
-    async def _remove_ack_reaction(self, chat_id: str, message_id: str, emoji: str = "👀") -> None:
+    async def _remove_ack_reaction(
+        self, chat_id: str, message_id: str, emoji: str = "👀"
+    ) -> None:
         """Remove the ack reaction after replying. Override in subclasses."""
         pass
 
@@ -837,7 +871,8 @@ class Channel(ChannelPlugin, ABC):
 
         if loop is not None and loop.is_running():
             future = asyncio.run_coroutine_threadsafe(
-                self._build_inbound_async(raw), loop,
+                self._build_inbound_async(raw),
+                loop,
             )
             return future.result()
         else:
@@ -863,10 +898,16 @@ class Channel(ChannelPlugin, ABC):
         meta = dict(raw.metadata)
         meta.setdefault("chat_id", raw.chat_id)
         return InboundMessage(
-            channel=self.name, sender_id=raw.sender_id, chat_id=raw.chat_id,
-            content=content or "[media only]", timestamp=raw.timestamp,
-            message_id=raw.message_id, media=raw.media_files, metadata=meta,
-            is_group=raw.is_group, was_mentioned=raw.was_mentioned,
+            channel=self.name,
+            sender_id=raw.sender_id,
+            chat_id=raw.chat_id,
+            content=content or "[media only]",
+            timestamp=raw.timestamp,
+            message_id=raw.message_id,
+            media=raw.media_files,
+            metadata=meta,
+            is_group=raw.is_group,
+            was_mentioned=raw.was_mentioned,
         )
 
     async def _enqueue_raw(self, raw: RawIncoming) -> None:
@@ -921,22 +962,16 @@ class Channel(ChannelPlugin, ABC):
             self.initial_debounce + (msg_count - 1) * self.debounce_step,
             self.max_debounce,
         )
-        _logger.debug(
-            f"Debounce for {sender}: {wait:.1f}s (message #{msg_count})"
-        )
+        _logger.debug(f"Debounce for {sender}: {wait:.1f}s (message #{msg_count})")
 
         async def debounce_callback(_s=sender, _w=wait):
             await asyncio.sleep(_w)
             try:
                 await self._process_buffered_messages(_s)
             except Exception as e:
-                _logger.error(
-                    f"{self.name} debounce flush error for {_s}: {e}"
-                )
+                _logger.error(f"{self.name} debounce flush error for {_s}: {e}")
 
-        self._debounce_tasks[sender] = asyncio.create_task(
-            debounce_callback()
-        )
+        self._debounce_tasks[sender] = asyncio.create_task(debounce_callback())
 
     async def _process_buffered_messages(self, sender: str) -> None:
         """Flush buffered messages for *sender* and publish to bus."""
@@ -954,9 +989,7 @@ class Channel(ChannelPlugin, ABC):
             return
 
         merged_content = "\n".join(messages)
-        _logger.info(
-            f"Processing {len(messages)} merged message(s) from {sender}"
-        )
+        _logger.info(f"Processing {len(messages)} merged message(s) from {sender}")
 
         if self._bus:
             chat_id = (metadata or {}).get("chat_id", sender)
@@ -974,27 +1007,40 @@ class Channel(ChannelPlugin, ABC):
             await self._bus.publish_inbound(inbound)
 
     async def _send_status_message(
-        self, sender: str, content: str, metadata: dict | None = None,
+        self,
+        sender: str,
+        content: str,
+        metadata: dict | None = None,
     ) -> None:
         """Send a status/intermediate message to the channel."""
         chat_id = (metadata or {}).get("chat_id", sender)
-        await self.send(OutboundMessage(
-            channel=self.name,
-            chat_id=str(chat_id),
-            content=content,
-            metadata=metadata or {},
-        ))
+        await self.send(
+            OutboundMessage(
+                channel=self.name,
+                chat_id=str(chat_id),
+                content=content,
+                metadata=metadata or {},
+            )
+        )
 
     async def send_thinking_message(
-        self, sender: str, thinking: str, metadata: dict | None = None,
+        self,
+        sender: str,
+        thinking: str,
+        metadata: dict | None = None,
     ) -> None:
         """Send a thinking intermediate message to the channel."""
         if not self.send_thinking:
             return
-        await self._send_status_message(sender, f"\U0001f9e0\n{thinking}\n\u23f3", metadata)
+        await self._send_status_message(
+            sender, f"\U0001f9e0\n{thinking}\n\u23f3", metadata
+        )
 
     async def send_todo_message(
-        self, sender: str, content: str, metadata: dict | None = None,
+        self,
+        sender: str,
+        content: str,
+        metadata: dict | None = None,
     ) -> None:
         """Send a todo list intermediate message to the channel."""
         await self._send_status_message(sender, content, metadata)
@@ -1029,9 +1075,7 @@ class Channel(ChannelPlugin, ABC):
                 self._running = should_reconnect
 
             if self._running:
-                _logger.info(
-                    f"Reconnecting {self.name} in {backoff:.1f}s..."
-                )
+                _logger.info(f"Reconnecting {self.name} in {backoff:.1f}s...")
                 await asyncio.sleep(backoff)
                 backoff = min(backoff * 2, max_backoff)
 

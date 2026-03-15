@@ -26,13 +26,15 @@ logger = logging.getLogger(__name__)
 
 
 async def standalone_outbound_dispatcher(
-    bus: MessageBus, channel: Channel,
+    bus: MessageBus,
+    channel: Channel,
 ) -> None:
     """Consume outbound messages from the bus and send via channel."""
     while True:
         try:
             msg: OutboundMessage = await asyncio.wait_for(
-                bus.consume_outbound(), timeout=1.0,
+                bus.consume_outbound(),
+                timeout=1.0,
             )
         except asyncio.TimeoutError:
             continue
@@ -47,8 +49,10 @@ async def standalone_outbound_dispatcher(
 
 
 async def _async_main(
-    channel: Channel, bus: MessageBus,
-    use_agent: bool, send_thinking: bool,
+    channel: Channel,
+    bus: MessageBus,
+    use_agent: bool,
+    send_thinking: bool,
 ) -> None:
     """Async entry point — gather channel, dispatcher and optional consumer."""
     from .channel_manager import ChannelManager
@@ -72,6 +76,7 @@ async def _async_main(
     if use_agent:
         logger.info("Loading EvoScientist agent...")
         from ..EvoScientist import create_cli_agent
+
         agent = create_cli_agent()
         logger.info("Agent loaded")
 
@@ -114,15 +119,19 @@ async def _async_main(
     loop = asyncio.get_event_loop()
     for sig in (signal.SIGINT, signal.SIGTERM):
         loop.add_signal_handler(
-            sig, lambda s=sig: asyncio.create_task(_graceful_shutdown()),
+            sig,
+            lambda s=sig: asyncio.create_task(_graceful_shutdown()),
         )
 
     await asyncio.gather(*tasks)
 
 
 def run_standalone(
-    channel: Channel, bus: MessageBus, *,
-    use_agent: bool = False, send_thinking: bool = False,
+    channel: Channel,
+    bus: MessageBus,
+    *,
+    use_agent: bool = False,
+    send_thinking: bool = False,
 ) -> None:
     """Synchronous entry point that spins up the standalone runner.
 

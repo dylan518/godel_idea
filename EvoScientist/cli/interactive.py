@@ -55,6 +55,7 @@ _channel_logger = logging.getLogger(__name__)
 # Banner
 # =============================================================================
 
+
 def print_banner(
     thread_id: str,
     workspace_dir: str | None = None,
@@ -85,9 +86,14 @@ def print_banner(
         info.append(value, style="magenta")
     # Directory line
     import os
+
     effective_dir = workspace_dir or os.getcwd()
     home = os.path.expanduser("~")
-    dir_display = effective_dir.replace(home, "~", 1) if effective_dir.startswith(home) else effective_dir
+    dir_display = (
+        effective_dir.replace(home, "~", 1)
+        if effective_dir.startswith(home)
+        else effective_dir
+    )
     info.append("\n  ", style="dim")
     info.append("Directory: ", style="dim")
     info.append(dir_display, style="magenta")
@@ -116,26 +122,30 @@ _SLASH_COMMANDS = [
     ("/exit", "Quit EvoScientist"),
 ]
 
-_COMPLETION_STYLE = PtStyle.from_dict({
-    "completion-menu": "bg:default noreverse nounderline noitalic",
-    "completion-menu.completion": "bg:default #888888 noreverse",
-    "completion-menu.completion.current": "bg:default default bold noreverse",
-    "completion-menu.meta.completion": "bg:default #888888 noreverse",
-    "completion-menu.meta.completion.current": "bg:default default bold noreverse",
-    "scrollbar.background": "bg:default",
-    "scrollbar.button": "bg:default",
-})
+_COMPLETION_STYLE = PtStyle.from_dict(
+    {
+        "completion-menu": "bg:default noreverse nounderline noitalic",
+        "completion-menu.completion": "bg:default #888888 noreverse",
+        "completion-menu.completion.current": "bg:default default bold noreverse",
+        "completion-menu.meta.completion": "bg:default #888888 noreverse",
+        "completion-menu.meta.completion.current": "bg:default default bold noreverse",
+        "scrollbar.background": "bg:default",
+        "scrollbar.button": "bg:default",
+    }
+)
 
 # Style for questionary pickers — matches _COMPLETION_STYLE visual language:
 # gray (#888888) for non-selected, bold for selected, no background changes.
-_PICKER_STYLE = PtStyle.from_dict({
-    "questionmark": "#888888",
-    "question": "",
-    "pointer": "bold",
-    "highlighted": "bold",
-    "text": "#888888",
-    "answer": "bold",
-})
+_PICKER_STYLE = PtStyle.from_dict(
+    {
+        "questionmark": "#888888",
+        "question": "",
+        "pointer": "bold",
+        "highlighted": "bold",
+        "text": "#888888",
+        "answer": "bold",
+    }
+)
 
 
 class SlashCommandCompleter(Completer):
@@ -191,11 +201,13 @@ def cmd_interactive(
         ui_backend: UI backend ('cli' or 'tui')
     """
     import nest_asyncio
+
     nest_asyncio.apply()
 
     resolved_ui_backend = resolve_ui_backend(ui_backend, warn_fallback=True)
     if resolved_ui_backend == "tui":
         from functools import partial
+
         load_agent = partial(_load_agent, config=config)
         run_textual_interactive(
             show_thinking=show_thinking,
@@ -213,6 +225,7 @@ def cmd_interactive(
         return
 
     from .. import paths
+
     memory_dir = str(paths.MEMORY_DIR)
 
     from ..config.settings import get_config_dir
@@ -252,7 +265,9 @@ def cmd_interactive(
         if len(similar) == 1:
             return similar[0]
         if len(similar) > 1:
-            console.print(f"[yellow]Ambiguous thread ID '{escape(tid)}'. Matches:[/yellow]")
+            console.print(
+                f"[yellow]Ambiguous thread ID '{escape(tid)}'. Matches:[/yellow]"
+            )
             for s in similar:
                 console.print(f"  [cyan]{s}[/cyan]")
             return None
@@ -262,7 +277,9 @@ def cmd_interactive(
     async def _cmd_threads():
         """Handle /threads command — show recent sessions."""
         threads = await list_threads(
-            limit=0, include_message_count=True, include_preview=True,
+            limit=0,
+            include_message_count=True,
+            include_preview=True,
         )
         if not threads:
             console.print("[yellow]No saved sessions.[/yellow]")
@@ -285,7 +302,9 @@ def cmd_interactive(
             )
         console.print()
         console.print(table)
-        console.print("[dim]  /resume[/dim] to continue a session  [dim]/delete <id>[/dim] to remove  [dim]/new[/dim] to start fresh")
+        console.print(
+            "[dim]  /resume[/dim] to continue a session  [dim]/delete <id>[/dim] to remove  [dim]/new[/dim] to start fresh"
+        )
         console.print()
 
     async def _render_history(thread_id: str):
@@ -308,24 +327,32 @@ def cmd_interactive(
             content = getattr(msg, "content", "") or ""
             # content can be a list of blocks (multimodal) — extract text
             if isinstance(content, list):
-                parts = [b.get("text", "") for b in content if isinstance(b, dict) and b.get("type") == "text"]
+                parts = [
+                    b.get("text", "")
+                    for b in content
+                    if isinstance(b, dict) and b.get("type") == "text"
+                ]
                 content = " ".join(parts) if parts else ""
 
             if msg_type == "human":
-                console.print(Text.assemble(
-                    ("\u276f ", "bold blue"),
-                    (_truncate(content), ""),
-                ))
+                console.print(
+                    Text.assemble(
+                        ("\u276f ", "bold blue"),
+                        (_truncate(content), ""),
+                    )
+                )
             elif msg_type == "ai":
                 tool_calls = getattr(msg, "tool_calls", None) or []
                 if content:
                     console.print(Text(_truncate(content), style="dim"))
                 if tool_calls:
                     names = [tc.get("name", "?") for tc in tool_calls]
-                    console.print(Text(
-                        f"  \u25b6 {', '.join(names)}",
-                        style="dim italic",
-                    ))
+                    console.print(
+                        Text(
+                            f"  \u25b6 {', '.join(names)}",
+                            style="dim italic",
+                        )
+                    )
             # Skip tool messages — they are verbose and not useful in replay
 
         console.print("[dim]── End of history ──[/dim]")
@@ -336,7 +363,9 @@ def cmd_interactive(
         if not arg:
             # Show interactive session picker with conversation previews
             threads = await list_threads(
-                limit=0, include_message_count=True, include_preview=True,
+                limit=0,
+                include_message_count=True,
+                include_preview=True,
             )
             if not threads:
                 console.print("[yellow]No sessions to resume.[/yellow]")
@@ -397,14 +426,20 @@ def cmd_interactive(
         if ws:
             state["workspace_dir"] = ws
         console.print("[dim]Loading session...[/dim]")
-        state["agent"] = _load_agent(workspace_dir=state["workspace_dir"], checkpointer=checkpointer, config=config)
+        state["agent"] = _load_agent(
+            workspace_dir=state["workspace_dir"],
+            checkpointer=checkpointer,
+            config=config,
+        )
         # Sync shared refs if channel is running
         if _channels_is_running():
             _ch_mod._cli_agent = state["agent"]
             _ch_mod._cli_thread_id = state["thread_id"]
         console.print(f"[green]Resumed session:[/green] [yellow]{resolved}[/yellow]")
         if state["workspace_dir"]:
-            console.print(f"[dim]Workspace:[/dim] [cyan]{_shorten_path(state['workspace_dir'])}[/cyan]")
+            console.print(
+                f"[dim]Workspace:[/dim] [cyan]{_shorten_path(state['workspace_dir'])}[/cyan]"
+            )
         console.print()
         await _render_history(resolved)
 
@@ -440,7 +475,11 @@ def cmd_interactive(
                         state["workspace_dir"] = ws
 
             console.print("[dim]Loading agent...[/dim]")
-            state["agent"] = _load_agent(workspace_dir=state["workspace_dir"], checkpointer=checkpointer, config=config)
+            state["agent"] = _load_agent(
+                workspace_dir=state["workspace_dir"],
+                checkpointer=checkpointer,
+                config=config,
+            )
 
             # Print banner
             if state["resumed"]:
@@ -453,7 +492,9 @@ def cmd_interactive(
                     provider,
                     state["ui_backend"],
                 )
-                console.print(f"[green]Resumed session [yellow]{state['thread_id']}[/yellow][/green]\n")
+                console.print(
+                    f"[green]Resumed session [yellow]{state['thread_id']}[/yellow][/green]\n"
+                )
             else:
                 print_banner(
                     state["thread_id"],
@@ -504,7 +545,9 @@ def cmd_interactive(
                     if not loop:
                         return
                     try:
-                        asyncio.run_coroutine_threadsafe(coro, loop).result(timeout=timeout)
+                        asyncio.run_coroutine_threadsafe(coro, loop).result(
+                            timeout=timeout
+                        )
                     except Exception as e:
                         _channel_logger.debug(f"{label} send failed: {e}")
 
@@ -512,23 +555,37 @@ def cmd_interactive(
                     ch = msg.channel_ref
                     if ch and ch.send_thinking:
                         _send_to_channel(
-                            ch.send_thinking_message(sender=msg.chat_id, thinking=thinking, metadata=msg.metadata),
+                            ch.send_thinking_message(
+                                sender=msg.chat_id,
+                                thinking=thinking,
+                                metadata=msg.metadata,
+                            ),
                             "Thinking",
                         )
 
                 def _send_todo_to_channel(items: list[dict]) -> None:
                     from ..channels.consumer import _format_todo_list
+
                     if msg.channel_ref:
                         _send_to_channel(
-                            msg.channel_ref.send_todo_message(sender=msg.chat_id, content=_format_todo_list(items), metadata=msg.metadata),
+                            msg.channel_ref.send_todo_message(
+                                sender=msg.chat_id,
+                                content=_format_todo_list(items),
+                                metadata=msg.metadata,
+                            ),
                             "Todo",
                         )
 
                 def _send_media_to_channel(file_path: str) -> None:
                     if msg.channel_ref:
                         _send_to_channel(
-                            msg.channel_ref.send_media(recipient=msg.chat_id, file_path=file_path, metadata=msg.metadata),
-                            "Media", timeout=30,
+                            msg.channel_ref.send_media(
+                                recipient=msg.chat_id,
+                                file_path=file_path,
+                                metadata=msg.metadata,
+                            ),
+                            "Media",
+                            timeout=30,
                         )
 
                 def _channel_hitl_prompt(action_requests: list) -> list[dict] | None:
@@ -586,8 +643,13 @@ def cmd_interactive(
 
             # Auto-start channel if enabled in config
             from ..config import load_config
+
             _channel_cfg = load_config()
-            if _channel_cfg and _channel_cfg.channel_enabled and not _channels_is_running():
+            if (
+                _channel_cfg
+                and _channel_cfg.channel_enabled
+                and not _channels_is_running()
+            ):
                 _auto_start_channel(
                     state["agent"],
                     state["thread_id"],
@@ -596,7 +658,9 @@ def cmd_interactive(
                 )
 
             # Slogan — after channels, right before user input
-            console.print(Text(f"  {random.choice(WELCOME_SLOGANS)}", style="dim italic"))
+            console.print(
+                Text(f"  {random.choice(WELCOME_SLOGANS)}", style="dim italic")
+            )
             console.print()
 
             try:
@@ -604,7 +668,7 @@ def cmd_interactive(
                 while state["running"]:
                     try:
                         user_input = await session.prompt_async(
-                            HTML('<ansiblue><b>\u276f</b></ansiblue> ')
+                            HTML("<ansiblue><b>\u276f</b></ansiblue> ")
                         )
                         user_input = user_input.strip()
 
@@ -627,39 +691,57 @@ def cmd_interactive(
                             continue
 
                         if user_input.lower().startswith("/resume"):
-                            arg = user_input[len("/resume"):].strip()
+                            arg = user_input[len("/resume") :].strip()
                             await _cmd_resume(arg, checkpointer)
                             continue
 
                         if user_input.lower().startswith("/delete"):
-                            arg = user_input[len("/delete"):].strip()
+                            arg = user_input[len("/delete") :].strip()
                             await _cmd_delete(arg)
                             continue
 
                         if user_input.lower() == "/new":
                             # New session: new thread; workspace only changes if not fixed
                             if not workspace_fixed:
-                                state["workspace_dir"] = _create_session_workspace(run_name)
+                                state["workspace_dir"] = _create_session_workspace(
+                                    run_name
+                                )
                             console.print("[dim]Loading new session...[/dim]")
-                            state["agent"] = _load_agent(workspace_dir=state["workspace_dir"], checkpointer=checkpointer, config=config)
+                            state["agent"] = _load_agent(
+                                workspace_dir=state["workspace_dir"],
+                                checkpointer=checkpointer,
+                                config=config,
+                            )
                             state["thread_id"] = generate_thread_id()
                             state["resumed"] = False
                             # Sync channel refs so the queue checker uses the new agent
                             if _channels_is_running():
                                 _ch_mod._cli_agent = state["agent"]
                                 _ch_mod._cli_thread_id = state["thread_id"]
-                            console.print(f"[green]New session:[/green] [yellow]{state['thread_id']}[/yellow]")
+                            console.print(
+                                f"[green]New session:[/green] [yellow]{state['thread_id']}[/yellow]"
+                            )
                             if state["workspace_dir"]:
-                                console.print(f"[dim]Workspace:[/dim] [cyan]{_shorten_path(state['workspace_dir'])}[/cyan]\n")
+                                console.print(
+                                    f"[dim]Workspace:[/dim] [cyan]{_shorten_path(state['workspace_dir'])}[/cyan]\n"
+                                )
                             continue
 
                         if user_input.lower() == "/current":
-                            console.print(f"[dim]Thread:[/dim] [yellow]{state['thread_id']}[/yellow]")
+                            console.print(
+                                f"[dim]Thread:[/dim] [yellow]{state['thread_id']}[/yellow]"
+                            )
                             if state["workspace_dir"]:
-                                console.print(f"[dim]Workspace:[/dim] [cyan]{_shorten_path(state['workspace_dir'])}[/cyan]")
+                                console.print(
+                                    f"[dim]Workspace:[/dim] [cyan]{_shorten_path(state['workspace_dir'])}[/cyan]"
+                                )
                             if memory_dir:
-                                console.print(f"[dim]Memory dir:[/dim] [cyan]{_shorten_path(memory_dir)}[/cyan]")
-                            console.print(f"[dim]UI:[/dim] [cyan]{state['ui_backend']}[/cyan]")
+                                console.print(
+                                    f"[dim]Memory dir:[/dim] [cyan]{_shorten_path(memory_dir)}[/cyan]"
+                                )
+                            console.print(
+                                f"[dim]UI:[/dim] [cyan]{state['ui_backend']}[/cyan]"
+                            )
                             console.print()
                             continue
 
@@ -668,23 +750,23 @@ def cmd_interactive(
                             continue
 
                         if user_input.lower().startswith("/install-skill"):
-                            source = user_input[len("/install-skill"):].strip()
+                            source = user_input[len("/install-skill") :].strip()
                             _cmd_install_skill(source)
                             continue
 
                         if user_input.lower().startswith("/uninstall-skill"):
-                            name = user_input[len("/uninstall-skill"):].strip()
+                            name = user_input[len("/uninstall-skill") :].strip()
                             _cmd_uninstall_skill(name)
                             continue
 
                         if user_input.lower().startswith("/mcp"):
-                            _cmd_mcp(user_input[len("/mcp"):])
+                            _cmd_mcp(user_input[len("/mcp") :])
                             continue
 
                         if user_input.lower().startswith("/channel"):
-                            args = user_input[len("/channel"):].strip()
+                            args = user_input[len("/channel") :].strip()
                             if args.lower().startswith("stop"):
-                                stop_arg = args[len("stop"):].strip()
+                                stop_arg = args[len("stop") :].strip()
                                 _cmd_channel_stop(stop_arg or None)
                             else:
                                 _cmd_channel(
@@ -696,8 +778,14 @@ def cmd_interactive(
                             continue
 
                         if user_input.lower() == "/compact":
-                            from .commands import compact_conversation, render_compact_result
-                            with console.status("[cyan]Compacting conversation...[/cyan]"):
+                            from .commands import (
+                                compact_conversation,
+                                render_compact_result,
+                            )
+
+                            with console.status(
+                                "[cyan]Compacting conversation...[/cyan]"
+                            ):
                                 result = await compact_conversation(
                                     agent=state["agent"],
                                     thread_id=state["thread_id"],
@@ -731,9 +819,14 @@ def cmd_interactive(
                         break
                     except Exception as e:
                         error_msg = str(e)
-                        if "authentication" in error_msg.lower() or "api_key" in error_msg.lower():
+                        if (
+                            "authentication" in error_msg.lower()
+                            or "api_key" in error_msg.lower()
+                        ):
                             console.print("[red]Error: API key not configured.[/red]")
-                            console.print("[dim]Run [bold]EvoSci onboard[/bold] to set up your API key.[/dim]")
+                            console.print(
+                                "[dim]Run [bold]EvoSci onboard[/bold] to set up your API key.[/dim]"
+                            )
                             state["running"] = False
                             break
                         else:
@@ -799,7 +892,9 @@ def cmd_run(
         error_msg = str(e)
         if "authentication" in error_msg.lower() or "api_key" in error_msg.lower():
             console.print("[red]Error: API key not configured.[/red]")
-            console.print("[dim]Run [bold]EvoSci onboard[/bold] to set up your API key.[/dim]")
+            console.print(
+                "[dim]Run [bold]EvoSci onboard[/bold] to set up your API key.[/dim]"
+            )
             raise typer.Exit(1)
         else:
             console.print(f"[red]Error: {e}[/red]")

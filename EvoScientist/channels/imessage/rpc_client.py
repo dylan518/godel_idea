@@ -16,6 +16,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class RpcError:
     """RPC error response."""
+
     code: int | None = None
     message: str | None = None
     data: Any = None
@@ -24,6 +25,7 @@ class RpcError:
 @dataclass
 class RpcNotification:
     """RPC notification (no id, server-initiated)."""
+
     method: str
     params: Any = None
 

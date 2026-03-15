@@ -9,7 +9,10 @@ logger = logging.getLogger(__name__)
 
 
 async def validate_email_imap(
-    host: str, port: int, username: str, password: str,
+    host: str,
+    port: int,
+    username: str,
+    password: str,
     use_ssl: bool = True,
 ) -> tuple[bool, str]:
     """Validate IMAP credentials.
@@ -21,6 +24,7 @@ async def validate_email_imap(
         return False, "host, username, and password are required"
 
     import asyncio
+
     loop = asyncio.get_event_loop()
 
     def _check():
@@ -42,7 +46,10 @@ async def validate_email_imap(
 
 
 async def validate_email_smtp(
-    host: str, port: int, username: str, password: str,
+    host: str,
+    port: int,
+    username: str,
+    password: str,
     use_tls: bool = True,
 ) -> tuple[bool, str]:
     """Validate SMTP credentials.
@@ -54,6 +61,7 @@ async def validate_email_smtp(
         return False, "host, username, and password are required"
 
     import asyncio
+
     loop = asyncio.get_event_loop()
 
     def _check():

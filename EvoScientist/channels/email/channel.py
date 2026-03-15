@@ -56,7 +56,9 @@ class EmailConfig(BaseChannelConfig):
     smtp_port: int = 587
     smtp_username: str = ""
     smtp_password: str = ""
-    smtp_starttls: bool = True  # True=STARTTLS (port 587), False=implicit SSL (port 465)
+    smtp_starttls: bool = (
+        True  # True=STARTTLS (port 587), False=implicit SSL (port 465)
+    )
     from_address: str = ""
     poll_interval: int = 30
     mark_seen: bool = True
@@ -84,7 +86,9 @@ class EmailChannel(Channel, PollingMixin):
         loop = asyncio.get_running_loop()
         await loop.run_in_executor(None, self._connect_imap)
         self._running = True
-        logger.info(f"Email channel started (IMAP: {cfg.imap_host}, poll {cfg.poll_interval}s)")
+        logger.info(
+            f"Email channel started (IMAP: {cfg.imap_host}, poll {cfg.poll_interval}s)"
+        )
         await self._start_polling()
 
     async def _cleanup(self) -> None:
@@ -102,7 +106,11 @@ class EmailChannel(Channel, PollingMixin):
         cfg = self.config
         try:
             if cfg.imap_use_ssl:
-                self._imap = imaplib.IMAP4_SSL(cfg.imap_host, cfg.imap_port, ssl_context=ssl.create_default_context())
+                self._imap = imaplib.IMAP4_SSL(
+                    cfg.imap_host,
+                    cfg.imap_port,
+                    ssl_context=ssl.create_default_context(),
+                )
             else:
                 self._imap = imaplib.IMAP4(cfg.imap_host, cfg.imap_port)
             self._imap.login(cfg.imap_username, cfg.imap_password)
@@ -140,7 +148,7 @@ class EmailChannel(Channel, PollingMixin):
                 from_name, from_addr = parseaddr(msg.get("From", ""))
                 body = self._extract_body(msg)
                 if len(body) > self.config.max_body_chars:
-                    body = body[:self.config.max_body_chars] + "\n[...truncated]"
+                    body = body[: self.config.max_body_chars] + "\n[...truncated]"
                 # Extract attachments and inline images
                 attachments = []
                 if msg.is_multipart():
@@ -168,22 +176,44 @@ class EmailChannel(Channel, PollingMixin):
                             payload_data = part.get_payload(decode=True)
                             if payload_data:
                                 from ..base import MAX_ATTACHMENT_BYTES, MEDIA_DIR
+
                                 if len(payload_data) > MAX_ATTACHMENT_BYTES:
-                                    attachments.append({"annotation": f"[attachment: {filename} - too large ({len(payload_data)} bytes)]"})
+                                    attachments.append(
+                                        {
+                                            "annotation": f"[attachment: {filename} - too large ({len(payload_data)} bytes)]"
+                                        }
+                                    )
                                 else:
                                     MEDIA_DIR.mkdir(parents=True, exist_ok=True)
-                                    local_path = MEDIA_DIR / f"email_{mid.decode()}_{filename}"
+                                    local_path = (
+                                        MEDIA_DIR / f"email_{mid.decode()}_{filename}"
+                                    )
                                     local_path.write_bytes(payload_data)
-                                    label = "inline-image" if is_inline_image else "attachment"
-                                    attachments.append({"path": str(local_path), "annotation": f"[{label}: {local_path}]"})
+                                    label = (
+                                        "inline-image"
+                                        if is_inline_image
+                                        else "attachment"
+                                    )
+                                    attachments.append(
+                                        {
+                                            "path": str(local_path),
+                                            "annotation": f"[{label}: {local_path}]",
+                                        }
+                                    )
                 if self.config.mark_seen:
                     self._imap.store(mid, "+FLAGS", "\\Seen")
-                results.append({
-                    "from_addr": from_addr, "from_name": _decode_hdr(from_name),
-                    "subject": _decode_hdr(msg.get("Subject", "")), "body": body,
-                    "message_id": msg.get("Message-ID", ""), "date": msg.get("Date", ""),
-                    "references": msg.get("References", ""), "attachments": attachments,
-                })
+                results.append(
+                    {
+                        "from_addr": from_addr,
+                        "from_name": _decode_hdr(from_name),
+                        "subject": _decode_hdr(msg.get("Subject", "")),
+                        "body": body,
+                        "message_id": msg.get("Message-ID", ""),
+                        "date": msg.get("Date", ""),
+                        "references": msg.get("References", ""),
+                        "attachments": attachments,
+                    }
+                )
         except Exception as e:
             logger.error(f"IMAP fetch: {e}")
         return results
@@ -224,14 +254,24 @@ class EmailChannel(Channel, PollingMixin):
                 media_paths.append(att["path"])
             if att.get("annotation"):
                 annotations.append(att["annotation"])
-        await self._enqueue_raw(RawIncoming(
-            sender_id=m["from_addr"], chat_id=m["from_addr"], text=text, timestamp=ts,
-            message_id=m["message_id"],
-            media_files=media_paths,
-            content_annotations=annotations,
-            metadata={"chat_id": m["from_addr"], "subject": subject,
-                       "original_message_id": m["message_id"], "references": m["references"], "backend": "email"},
-        ))
+        await self._enqueue_raw(
+            RawIncoming(
+                sender_id=m["from_addr"],
+                chat_id=m["from_addr"],
+                text=text,
+                timestamp=ts,
+                message_id=m["message_id"],
+                media_files=media_paths,
+                content_annotations=annotations,
+                metadata={
+                    "chat_id": m["from_addr"],
+                    "subject": subject,
+                    "original_message_id": m["message_id"],
+                    "references": m["references"],
+                    "backend": "email",
+                },
+            )
+        )
 
     # ── Send ──────────────────────────────────────────────────────
 
@@ -254,8 +294,10 @@ class EmailChannel(Channel, PollingMixin):
                 srv.starttls()
             else:
                 srv = smtplib.SMTP_SSL(
-                    cfg.smtp_host, cfg.smtp_port,
-                    context=ssl.create_default_context(), timeout=30,
+                    cfg.smtp_host,
+                    cfg.smtp_port,
+                    context=ssl.create_default_context(),
+                    timeout=30,
                 )
             srv.login(cfg.smtp_username, cfg.smtp_password)
             yield srv
@@ -273,16 +315,27 @@ class EmailChannel(Channel, PollingMixin):
         loop = asyncio.get_running_loop()
         try:
             await loop.run_in_executor(
-                None, self._smtp_send_html, chat_id, formatted_text, raw_text, metadata or {},
+                None,
+                self._smtp_send_html,
+                chat_id,
+                formatted_text,
+                raw_text,
+                metadata or {},
             )
         except Exception as e:
             err_str = str(e).lower()
             # Only fall back to plain text for format-related errors, not server rejections
-            if any(code in err_str for code in ("550", "553", "554", "auth", "rejected")):
+            if any(
+                code in err_str for code in ("550", "553", "554", "auth", "rejected")
+            ):
                 raise
             logger.warning(f"HTML email failed ({e}), falling back to plain text")
             await loop.run_in_executor(
-                None, self._smtp_send, chat_id, raw_text, metadata or {},
+                None,
+                self._smtp_send,
+                chat_id,
+                raw_text,
+                metadata or {},
             )
 
     def _smtp_send(self, to: str, content: str, meta: dict) -> None:
@@ -291,7 +344,11 @@ class EmailChannel(Channel, PollingMixin):
         logger.debug(f"SMTP plain send: from={from_addr} to={to}")
         msg = EmailMessage()
         orig_subj = meta.get("subject", "")
-        msg["Subject"] = f"{cfg.subject_prefix}{orig_subj}" if orig_subj and not orig_subj.lower().startswith("re:") else (orig_subj or "EvoScientist Reply")
+        msg["Subject"] = (
+            f"{cfg.subject_prefix}{orig_subj}"
+            if orig_subj and not orig_subj.lower().startswith("re:")
+            else (orig_subj or "EvoScientist Reply")
+        )
         msg["From"] = from_addr
         msg["To"] = to
         orig_id = meta.get("original_message_id", "")
@@ -306,14 +363,20 @@ class EmailChannel(Channel, PollingMixin):
             logger.error(f"SMTP send failed: from={from_addr} to={to}")
             raise RuntimeError("SMTP send failed") from e
 
-    def _smtp_send_html(self, to: str, html_content: str, plain_content: str, meta: dict) -> None:
+    def _smtp_send_html(
+        self, to: str, html_content: str, plain_content: str, meta: dict
+    ) -> None:
         """Send an email with both HTML and plain-text parts."""
         cfg = self.config
         from_addr = cfg.from_address or cfg.smtp_username
         logger.debug(f"SMTP HTML send: from={from_addr} to={to}")
         msg = MIMEMultipart("alternative")
         orig_subj = meta.get("subject", "")
-        msg["Subject"] = f"{cfg.subject_prefix}{orig_subj}" if orig_subj and not orig_subj.lower().startswith("re:") else (orig_subj or "EvoScientist Reply")
+        msg["Subject"] = (
+            f"{cfg.subject_prefix}{orig_subj}"
+            if orig_subj and not orig_subj.lower().startswith("re:")
+            else (orig_subj or "EvoScientist Reply")
+        )
         msg["From"] = from_addr
         msg["To"] = to
         orig_id = meta.get("original_message_id", "")
@@ -341,18 +404,29 @@ class EmailChannel(Channel, PollingMixin):
         """Send a file as an email attachment via SMTP."""
         loop = asyncio.get_running_loop()
         await loop.run_in_executor(
-            None, self._smtp_send_attachment, recipient, file_path, caption, metadata or {},
+            None,
+            self._smtp_send_attachment,
+            recipient,
+            file_path,
+            caption,
+            metadata or {},
         )
         return True
 
-    def _smtp_send_attachment(self, to: str, file_path: str, caption: str, meta: dict) -> None:
+    def _smtp_send_attachment(
+        self, to: str, file_path: str, caption: str, meta: dict
+    ) -> None:
         """Send an email with a file attachment."""
         cfg = self.config
         from_addr = cfg.from_address or cfg.smtp_username
         logger.debug(f"SMTP attachment send: from={from_addr} to={to} file={file_path}")
         msg = MIMEMultipart()
         orig_subj = meta.get("subject", "")
-        msg["Subject"] = f"{cfg.subject_prefix}{orig_subj}" if orig_subj and not orig_subj.lower().startswith("re:") else (orig_subj or "EvoScientist Reply")
+        msg["Subject"] = (
+            f"{cfg.subject_prefix}{orig_subj}"
+            if orig_subj and not orig_subj.lower().startswith("re:")
+            else (orig_subj or "EvoScientist Reply")
+        )
         msg["From"] = from_addr
         msg["To"] = to
         orig_id = meta.get("original_message_id", "")

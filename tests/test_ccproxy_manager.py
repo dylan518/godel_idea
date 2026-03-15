@@ -78,6 +78,7 @@ class TestIsCcproxyRunning:
     @patch("httpx.get")
     def test_not_running(self, mock_get):
         import httpx
+
         mock_get.side_effect = httpx.ConnectError("Connection refused")
         assert is_ccproxy_running(8000) is False
 
@@ -215,7 +216,10 @@ class TestMaybeStartCcproxy:
         with pytest.raises(RuntimeError, match="not found"):
             maybe_start_ccproxy(config)
 
-    @patch("EvoScientist.ccproxy_manager.check_ccproxy_auth", return_value=(False, "expired"))
+    @patch(
+        "EvoScientist.ccproxy_manager.check_ccproxy_auth",
+        return_value=(False, "expired"),
+    )
     @patch("EvoScientist.ccproxy_manager.is_ccproxy_available", return_value=True)
     def test_oauth_mode_raises_no_auth(self, mock_avail, mock_auth):
         config = MagicMock()
