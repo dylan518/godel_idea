@@ -3,7 +3,7 @@
 This module provides a unified interface for creating chat model instances
 with support for multiple providers (Anthropic, OpenAI, Google GenAI, MiniMax
 (Anthropic-compatible), NVIDIA, SiliconFlow, OpenRouter, ZhipuAI, Volcengine,
-DashScope, Ollama, and custom OpenAI/Anthropic-compatible endpoints) and
+DashScope, DeepSeek, Ollama, and custom OpenAI/Anthropic-compatible endpoints) and
 convenient short names for common models.
 """
 
@@ -67,6 +67,89 @@ def strip_thinking_tags(content: str) -> str:
     return _THINKING_TAG_RE.sub("", content)
 
 
+_SKIP_CONTENT_TYPES = frozenset({"thinking", "reasoning", "reasoning_content"})
+
+
+def _flatten_message_content(content: Any) -> str | Any:
+    """Convert list-of-blocks content to a plain string.
+
+    OpenAI-compatible APIs (DeepSeek, SiliconFlow, etc.) reject assistant
+    messages whose ``content`` is a list rather than a string.
+
+    Args:
+        content: Message content — either a string, a list of content blocks
+            (dicts with ``type`` and ``text`` keys), or another type.
+
+    Returns:
+        A plain string with text blocks joined by double newlines.
+        Thinking/reasoning blocks are skipped.  Non-list input is
+        returned unchanged.
+    """
+    if isinstance(content, str):
+        return content
+    if not isinstance(content, list):
+        return content
+    parts: list[str] = []
+    for block in content:
+        if isinstance(block, dict):
+            if block.get("type") in _SKIP_CONTENT_TYPES:
+                continue
+            text = block.get("text")
+            if text:
+                parts.append(text)
+        elif isinstance(block, str):
+            parts.append(block)
+    return "\n\n".join(parts) if parts else ""
+
+
+def _patch_openai_compat_content(model: Any) -> None:
+    """Flatten list content to strings before OpenAI-compatible API calls.
+
+    Wraps ``_generate`` / ``_agenerate`` to prevent "invalid type: sequence,
+    expected a string" errors from strict APIs like DeepSeek.  Follows the
+    same monkey-patching pattern as ``_patch_anthropic_proxy_compat``.
+
+    Args:
+        model: A LangChain chat model instance to patch in-place.
+    """
+    import copy
+    import functools
+
+    from langchain_core.messages import BaseMessage
+
+    def _sanitize_messages(messages: list[BaseMessage]) -> list[BaseMessage]:
+        out: list[BaseMessage] = []
+        for msg in messages:
+            if isinstance(msg.content, list):
+                msg = copy.copy(msg)
+                msg.content = _flatten_message_content(msg.content)
+            out.append(msg)
+        return out
+
+    orig_generate = getattr(model, "_generate", None)
+    if orig_generate is None:
+        return
+
+    @functools.wraps(orig_generate)
+    def _patched_generate(
+        messages: list[BaseMessage], *args: Any, **kwargs: Any
+    ) -> Any:
+        return orig_generate(_sanitize_messages(messages), *args, **kwargs)
+
+    model._generate = _patched_generate
+
+    orig_agenerate = getattr(model, "_agenerate", None)
+    if orig_agenerate is not None:
+
+        @functools.wraps(orig_agenerate)
+        async def _patched_agenerate(
+            messages: list[BaseMessage], *args: Any, **kwargs: Any
+        ) -> Any:
+            return await orig_agenerate(_sanitize_messages(messages), *args, **kwargs)
+
+        model._agenerate = _patched_agenerate
+
+
 _MINIMAX_ANTHROPIC_BASE_URL = "https://api.minimaxi.com/anthropic"
 _SILICONFLOW_BASE_URL = "https://api.siliconflow.cn/v1"
 _OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
@@ -75,9 +158,12 @@ _ZHIPU_CODE_BASE_URL = "https://open.bigmodel.cn/api/coding/paas/v4"
 _VOLCENGINE_BASE_URL = "https://ark.cn-beijing.volces.com/api/v3"
 _DASHSCOPE_BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 
+_DEEPSEEK_BASE_URL = "https://api.deepseek.com"
+
 # Providers routed through the OpenAI provider with a custom base_url.
 # Maps provider name → (base_url or None, env var for API key).
 _OPENAI_ROUTED_PROVIDERS: dict[str, tuple[str | None, str]] = {
+    "deepseek": (_DEEPSEEK_BASE_URL, "DEEPSEEK_API_KEY"),
     "siliconflow": (_SILICONFLOW_BASE_URL, "SILICONFLOW_API_KEY"),
     "openrouter": (_OPENROUTER_BASE_URL, "OPENROUTER_API_KEY"),
     "zhipu": (_ZHIPU_BASE_URL, "ZHIPU_API_KEY"),
@@ -193,6 +279,9 @@ _MODEL_ENTRIES: list[tuple[str, str, str]] = [
     ("qwen3-235b", "qwen3-235b-a22b", "dashscope"),
     ("qwen-max", "qwen-max", "dashscope"),
     ("qwq-plus", "qwq-plus", "dashscope"),
+    # DeepSeek
+    ("deepseek-r1", "deepseek-reasoner", "deepseek"),
+    ("deepseek-v3", "deepseek-chat", "deepseek"),
 ]
 
 # Public dict for simple lookups (last entry wins for duplicate names).
@@ -407,6 +496,12 @@ def get_chat_model(
     _apply_auto_config(provider, model_id, _is_third_party, kwargs, _original_provider)
 
     chat_model = init_chat_model(model=model_id, model_provider=provider, **kwargs)
+
+    # Flatten list content to strings for OpenAI-compatible providers
+    # (DeepSeek, SiliconFlow, OpenRouter, custom-openai, etc.) and
+    # native OpenAI through a proxy, to avoid "sequence expected string" errors.
+    if _is_third_party or _is_openai_proxy:
+        _patch_openai_compat_content(chat_model)
 
     return chat_model
 
