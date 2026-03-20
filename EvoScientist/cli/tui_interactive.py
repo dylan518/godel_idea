@@ -268,7 +268,7 @@ def run_textual_interactive(
         }
         """
         BINDINGS: ClassVar[list[Binding]] = [
-            Binding("ctrl+c", "request_quit", "Quit", show=False),
+            Binding("ctrl+c", "request_quit", "Quit", show=False, priority=True),
             Binding("ctrl+v", "paste_clipboard", "Paste", show=False),
             Binding("tab", "tab_complete", show=False, priority=True),
             Binding("up", "edit_queued", show=False, priority=True),
@@ -312,6 +312,7 @@ def run_textual_interactive(
             self._mcp_browser_future: asyncio.Future | None = None
             self._history_suggester = HistorySuggester(get_config_dir() / "history")
             self._background_tasks: set[asyncio.Task] = set()
+            self._quit_pending: bool = False
 
         # ── CommandUI implementation ─────────────────────────
 
@@ -1251,8 +1252,8 @@ def run_textual_interactive(
                     response = (state.response_text or "").strip()
 
                 except asyncio.CancelledError:
-                    # Ctrl+C cancellation
-                    pass
+                    # Ctrl+C cancellation — re-raise so _run_turn can handle it
+                    raise
                 except Exception as exc:
                     error_msg = str(exc)
                     if (
@@ -1345,7 +1346,7 @@ def run_textual_interactive(
                 await self._stream_with_widgets(user_text)
             except asyncio.CancelledError:
                 cancelled = True
-                self._append_system("Interrupted.", style="yellow")
+                self._append_system("\nInterrupted by user", style="dim italic #ffe082")
             finally:
                 self._busy = False
                 self._run_task = None
@@ -1518,6 +1519,7 @@ def run_textual_interactive(
             text = event.value.strip()
             prompt = self.query_one("#prompt", Input)
             prompt.value = ""
+            self._quit_pending = False
 
             if not text:
                 return
@@ -1832,8 +1834,32 @@ def run_textual_interactive(
 
         # ── Quit handling ──────────────────────────────────────
 
+        def _arm_quit_pending(self, shortcut: str) -> None:
+            """Set the pending-quit flag and show a matching hint."""
+            self._quit_pending = True
+            quit_timeout = 3  # seconds
+            self.notify(f"Press {shortcut} again to quit", timeout=quit_timeout)
+            self.set_timer(
+                quit_timeout,
+                lambda: setattr(self, "_quit_pending", False),
+            )
+
+        def _do_exit(self) -> None:
+            """Clean up channels and exit."""
+            if self._channel_timer is not None:
+                self._channel_timer.stop()
+                self._channel_timer = None
+            self._started_channel_types.clear()
+            if _channels_is_running():
+                try:
+                    _channels_stop()
+                except Exception:
+                    pass
+            self.exit()
+
         def action_request_quit(self) -> None:
             if self._busy:
+                self._quit_pending = False
                 # Clear all queued messages on interrupt
                 if self._queued_messages:
                     self._queued_messages.clear()
@@ -1845,19 +1871,15 @@ def run_textual_interactive(
                     self._busy = False
                     self.query_one("#prompt", Input).focus()
                     self._render_status()
-                    self._append_system("Interrupted.", style="yellow")
+                    self._append_system(
+                        "\nInterrupted by user", style="dim italic #ffe082"
+                    )
                 return
-            # Clean up channels
-            if self._channel_timer is not None:
-                self._channel_timer.stop()
-                self._channel_timer = None
-            self._started_channel_types.clear()
-            if _channels_is_running():
-                try:
-                    _channels_stop()
-                except Exception:
-                    pass
-            self.exit()
+            # Double Ctrl+C to quit
+            if self._quit_pending:
+                self._do_exit()
+            else:
+                self._arm_quit_pending("Ctrl+C")
 
         # ── Banner & status ────────────────────────────────────
 
