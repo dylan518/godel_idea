@@ -1,0 +1,17 @@
+{ "topics": [
+  { "id": "T1",  "topic": "Scaling laws for Large Language Models",                   "domain": "ML" },
+  { "id": "T2",  "topic": "Protein structure prediction beyond AlphaFold",             "domain": "Biology" },
+  { "id": "T3",  "topic": "Quantum error correction in NISQ devices",                 "domain": "Physics" },
+  { "id": "T4",  "topic": "Causal discovery from observational data",                 "domain": "Statistics" },
+  { "id": "T5",  "topic": "Energy-efficient neuromorphic computing",                  "domain": "Hardware" },
+  { "id": "T6",  "topic": "Generative AI for drug discovery and molecular design",    "domain": "Chemistry" },
+  { "id": "T7",  "topic": "Federated learning with heterogeneous and non-IID data",   "domain": "ML" },
+  { "id": "T8",  "topic": "Deep learning emulators for climate model acceleration",   "domain": "Climate" },
+  { "id": "T9",  "topic": "Uncertainty quantification in deep neural networks",       "domain": "ML Theory" },
+  { "id": "T10", "topic": "Foundation models for genomics and single-cell biology",   "domain": "Genomics" },
+  { "id": "T11", "topic": "Emergent communication in multi-agent systems",            "domain": "Robotics" },
+  { "id": "T12", "topic": "Mechanistic interpretability of transformer models",       "domain": "ML Safety" },
+  { "id": "T13", "topic": "Zero-shot generalization in reinforcement learning",       "domain": "ML" },
+  { "id": "T14", "topic": "Topological methods for high-dimensional data analysis",   "domain": "Mathematics" },
+  { "id": "T15", "topic": "Quantum advantage in machine learning tasks",              "domain": "Quantum" }
+]}

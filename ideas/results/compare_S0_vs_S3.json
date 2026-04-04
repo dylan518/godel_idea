@@ -1,0 +1,111 @@
+{
+  "current": "S0",
+  "candidate": "S3",
+  "wins_a": 1,
+  "wins_b": 2,
+  "ties": 2,
+  "total_judged": 5,
+  "win_rate_b": 0.6,
+  "verdicts": [
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "system_a": "S0",
+      "system_b": "S3",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "winner": "tie",
+      "reasoning": "Idea A offers a novel architectural perspective by exploring sparse modularity's impact on scaling laws, which is less commonly studied and could influence future model design. Idea B provides a clear, mechanistic investigation into emergent abilities linked to representational geometry, addressing a pressing open problem with well-defined methodology. Both ideas are scientifically valuable and feasible, with complementary strengths, resulting in a close overall score."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "system_a": "S0",
+      "system_b": "S3",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A presents a highly novel integration of time-resolved cryo-EM with deep learning to explicitly model continuous conformational transitions, which is a significant advance beyond static predictions. While Idea B is also valuable and addresses a critical problem with a practical integrative approach, its novelty is slightly less pronounced and the methodology somewhat less direct. Overall, Idea A scores higher on novelty and experimental clarity, tipping the balance in its favor."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "system_a": "S0",
+      "system_b": "S3",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "winner": "tie",
+      "reasoning": "Idea A proposes a highly novel integration of adaptive dynamical decoupling with real-time syndrome feedback, addressing dynamic noise in a fresh way, though with somewhat less experimental clarity and feasibility. Idea B focuses on a critical, well-defined milestone of demonstrating logical error suppression with a distance-3 surface code and real-time decoding, offering clearer methodology and higher feasibility but less novelty. Their total scores are close, reflecting complementary strengths."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "system_a": "S0",
+      "system_b": "S3",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "winner": "A",
+      "reasoning": "Idea A proposes a highly novel approach by explicitly modeling latent contexts in causal discovery, addressing a significant and underexplored challenge in real-world heterogeneous data. While Idea B is methodologically clear and feasible, integrating sparse interventions with observational data is a more incremental advance compared to the conceptual novelty and broad applicability of Idea A."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "system_a": "S0",
+      "system_b": "S3",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "B",
+      "reasoning": "Idea A presents a clear, experimentally tractable approach with strong scientific relevance and feasibility, addressing a practical problem with adaptive encoding in noisy environments. Idea B is highly novel and conceptually exciting but faces greater challenges in experimental clarity and feasibility due to complex nanoscale fabrication and multi-physics integration, resulting in a lower overall score."
+    }
+  ]
+}
