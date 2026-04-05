@@ -6,15 +6,29 @@ import sys
 from pathlib import Path
 
 
+def _find_env_file() -> Path | None:
+    """Walk up from this file's directory to find .env (works in monorepo or standalone)."""
+    here = Path(__file__).resolve().parent
+    for candidate in [here, here.parent, here.parent.parent]:
+        p = candidate / ".env"
+        if p.exists():
+            return p
+    return None
+
+
 def load_dotenv():
-    """Load .env from the repo root (two levels up from this file) into os.environ.
+    """Load .env from the nearest ancestor directory into os.environ.
+
+    Searches: same dir as this file, then one level up, then two levels up.
+    This makes load_dotenv() work whether ideas/ is a standalone repo root or
+    nested inside a larger monorepo.
 
     Only sets keys that are missing or empty in the current environment, so
     shell-exported values always take precedence.  Uses bare key=value parsing
     (no quoting, no comments within values) — sufficient for API key files.
     """
-    env_path = Path(__file__).parent.parent / ".env"
-    if not env_path.exists():
+    env_path = _find_env_file()
+    if env_path is None:
         return
     with open(env_path) as f:
         for line in f:
