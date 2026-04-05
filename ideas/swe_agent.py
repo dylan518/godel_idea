@@ -195,13 +195,19 @@ Respond with ONLY the complete Python file — no markdown fences, no preamble.
 
 PROPOSE_EDIT_PROMPT = """\
 You are a software engineer improving a research idea generator.
-Make ONE targeted edit to fix the identified failure pattern.
+Implement the improvement direction selected by the tournament below.
 
 ## Full generator codebase ({version})
 {code_bundle}
 
 ## Failure analysis
 {failure_analysis}
+
+## Tournament-selected improvement direction
+The following direction was selected by an Elo tournament from {n_candidates} candidates
+as the highest-impact, most implementable improvement:
+
+{tournament_winner}
 
 ## Edit history this session (DO NOT repeat these)
 {edit_history}
@@ -210,13 +216,8 @@ Make ONE targeted edit to fix the identified failure pattern.
 {memory}
 
 ## Your task
-Propose ONE specific, targeted improvement. The edit should:
-- Directly address the failure pattern identified above
-- NOT repeat any approach in the memory or edit history above
-- Prefer editing a prompt or parameter over restructuring the algorithm
-- Be a surgical change — build on what works
-
-Think step by step about what change would most directly fix the identified failure.
+Implement the tournament-selected direction above as a concrete code change.
+Stay faithful to the direction — do not substitute a different approach.
 Then write the output file following the format below.
 
 """ + _OUTPUT_FORMAT
@@ -313,6 +314,189 @@ def _generate_mini_eval_topics(n: int = 5, model: str = "gpt-4.1-mini") -> list[
             for i, t in enumerate(_BENCHMARK_TOPICS[-n:], 1)]
 
 
+# ── Improvement-idea tournament ───────────────────────────────────────────────
+# Uses the system's own Elo tournament to pick the best self-improvement direction
+# before the SWE agent implements it. True Gödel recursion.
+
+_IMPROVEMENT_CANDIDATES_PROMPT = """\
+You are generating improvement strategies for a research idea generator that is
+losing pairwise comparisons. Generate {n} diverse, specific strategies — each
+attacking the failure from a DIFFERENT angle.
+
+## Failure being addressed
+{failure_analysis}
+
+## Already tried (DO NOT repeat any of these)
+{tried}
+
+## Generator codebase (what you are improving)
+{code_bundle}
+
+## Dimensions to draw from (pick the most relevant {n})
+- Prompt content: rewrite an LLM prompt to elicit more specific/novel ideas
+- Tree structure: change L1/L2/L3 branching depth or diversity constraints
+- Tournament mechanics: adjust Elo K-factor, rounds, judge scoring rubric
+- Retrieval grounding: change how SOTA papers are incorporated into prompts
+- Review/refine step: change deduplication or sharpening of candidates
+- Expansion: change how the tournament winner is written into final IDEA_FORMAT
+
+For each strategy output EXACTLY this format:
+STRATEGY: <one-line name>
+DESCRIPTION: <2-3 sentences: what changes, why it fixes the failure, how it differs from others>
+---
+"""
+
+_IMPROVEMENT_JUDGE_PROMPT = """\
+Compare two improvement strategies for a research idea generator.
+
+## Failure being addressed
+{failure_analysis}
+
+## Strategy A
+{strategy_a}
+
+## Strategy B
+{strategy_b}
+
+Score each on four dimensions (1-10):
+1. Impact       — how much would this fix the identified failure?
+2. Implementability — how concretely can this be coded right now?
+3. Novelty      — how different is this from what has already been tried?
+4. Specificity  — how clear is the exact change to make?
+
+Respond ONLY with JSON, no other text:
+{{"scores_a": {{"impact": 0, "implementability": 0, "novelty": 0, "specificity": 0}},
+  "scores_b": {{"impact": 0, "implementability": 0, "novelty": 0, "specificity": 0}},
+  "winner": "A"}}
+"""
+
+
+def _run_improvement_tournament(
+    failure_analysis: str,
+    code_bundle: str,
+    edit_history_str: str,
+    memory_str: str,
+    model: str = "gpt-4.1-mini",
+    n_candidates: int = 8,
+    n_rounds: int = 3,
+) -> tuple[str, int]:
+    """Run an Elo tournament over improvement strategies and return (winner_text, n_candidates).
+
+    Uses gpt-4.1-mini for both generation and judging — cheap and fast.
+    Returns the winning strategy description to pass to the SWE implementer.
+    """
+    import json as _json
+    import random as _random
+    import re as _re
+    sys.path.insert(0, str(Path(__file__).parent / "systems"))
+    from base import make_client, call_llm
+
+    tried = "\n".join([edit_history_str, memory_str]).strip() or "(none)"
+    client = make_client(model)
+
+    # ── Step 1: generate candidates ───────────────────────────────────────────
+    gen_prompt = _IMPROVEMENT_CANDIDATES_PROMPT.format(
+        n=n_candidates,
+        failure_analysis=failure_analysis,
+        tried=tried,
+        code_bundle=code_bundle,
+    )
+    try:
+        raw = call_llm(gen_prompt, model, client, temperature=0.9,
+                       max_tokens=2048, timeout=60)
+    except Exception as e:
+        logger.warning("Improvement candidate generation failed: %s", e)
+        return failure_analysis, 0  # fall back to plain failure analysis
+
+    # Parse "STRATEGY: ...\nDESCRIPTION: ...\n---" blocks
+    candidates = []
+    for block in raw.split("---"):
+        block = block.strip()
+        if not block:
+            continue
+        s_match = _re.search(r"STRATEGY:\s*(.+)", block)
+        d_match = _re.search(r"DESCRIPTION:\s*(.+)", block, _re.DOTALL)
+        if s_match and d_match:
+            name = s_match.group(1).strip()
+            desc = d_match.group(1).strip()
+            candidates.append({"name": name, "description": desc})
+
+    if len(candidates) < 2:
+        logger.warning("Improvement tournament: only %d candidates parsed, skipping", len(candidates))
+        return failure_analysis, 0
+
+    logger.info("Improvement tournament: %d candidates, %d rounds", len(candidates), n_rounds)
+
+    # ── Step 2: Elo tournament ─────────────────────────────────────────────────
+    ELO_K = 32
+    n = len(candidates)
+    ratings = {i: 1500.0 for i in range(n)}
+    matchups: set = set()
+
+    def _judge(a_idx: int, b_idx: int) -> str:
+        ca = candidates[a_idx]
+        cb = candidates[b_idx]
+        text_a = f"STRATEGY: {ca['name']}\n{ca['description']}"
+        text_b = f"STRATEGY: {cb['name']}\n{cb['description']}"
+        # Randomise position to prevent positional bias
+        flipped = _random.random() < 0.5
+        pa, pb = (text_b, text_a) if flipped else (text_a, text_b)
+        try:
+            raw = call_llm(
+                _IMPROVEMENT_JUDGE_PROMPT.format(
+                    failure_analysis=failure_analysis,
+                    strategy_a=pa, strategy_b=pb,
+                ),
+                model, client, temperature=0.1, max_tokens=200, timeout=30,
+            )
+            raw = _re.sub(r"^```(?:json)?\s*\n?", "", raw.strip())
+            raw = _re.sub(r"\n?```\s*$", "", raw)
+            verdict = _json.loads(raw)
+            winner = verdict.get("winner", "tie")
+        except Exception:
+            winner = "tie"
+        if flipped:
+            if winner == "A": winner = "B"
+            elif winner == "B": winner = "A"
+        return winner
+
+    for rnd in range(n_rounds):
+        ranked = sorted(ratings, key=lambda i: ratings[i], reverse=True)
+        pairs, paired = [], set()
+        for a in ranked:
+            if a in paired:
+                continue
+            for b in ranked:
+                if b == a or b in paired:
+                    continue
+                key = (min(a, b), max(a, b))
+                if key not in matchups:
+                    pairs.append((a, b))
+                    paired.update([a, b])
+                    matchups.add(key)
+                    break
+
+        if not pairs:
+            break
+
+        for a, b in pairs:
+            winner = _judge(a, b)
+            ea = 1.0 / (1.0 + 10 ** ((ratings[b] - ratings[a]) / 400))
+            sa = 1.0 if winner == "A" else (0.0 if winner == "B" else 0.5)
+            ratings[a] += ELO_K * (sa - ea)
+            ratings[b] += ELO_K * ((1 - sa) - (1 - ea))
+
+    best = max(ratings, key=lambda i: ratings[i])
+    winner_text = (
+        f"STRATEGY: {candidates[best]['name']}\n"
+        f"{candidates[best]['description']}\n"
+        f"(Selected by Elo tournament from {n} candidates, final Elo: {ratings[best]:.0f})"
+    )
+    logger.info("Improvement tournament winner: %s (Elo=%.0f)",
+                candidates[best]["name"], ratings[best])
+    return winner_text, n
+
+
 def _extract_losing_verdicts(report_path: Path, n: int = 8) -> str:
     """Extract top losing verdicts (with judge reasoning) from a comparison report."""
     if report_path is None or not report_path.exists():
@@ -347,6 +531,47 @@ def _call_swe_llm(prompt: str) -> str:
     raw = re.sub(r"^```\s*\n", "", raw)
     raw = re.sub(r"\n```\s*$", "", raw)
     return raw.strip() + "\n"
+
+
+def _smoke_test(candidate_path: Path, ideas_dir: Path) -> str | None:
+    """Import the candidate module in a subprocess and verify it's well-formed.
+
+    Returns None on success, or an error string on failure.
+    Checks: syntax, imports, GENERATOR attribute, generate_idea method.
+    Does NOT run a full idea generation (too expensive).
+    """
+    import subprocess
+    script = f"""
+import sys
+sys.path.insert(0, {str(ideas_dir)!r})
+sys.path.insert(0, {str(ideas_dir / 'systems')!r})
+import importlib.util, traceback
+try:
+    spec = importlib.util.spec_from_file_location("_smoke", {str(candidate_path)!r})
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    assert hasattr(mod, "GENERATOR"), "Missing GENERATOR singleton"
+    g = mod.GENERATOR
+    assert hasattr(g, "generate_idea"), "Missing generate_idea method"
+    assert hasattr(g, "VERSION"), "Missing VERSION attribute"
+    print("OK:", g.VERSION)
+except Exception:
+    traceback.print_exc()
+    sys.exit(1)
+"""
+    try:
+        result = subprocess.run(
+            [sys.executable, "-c", script],
+            capture_output=True, text=True, timeout=30,
+            env={**__import__("os").environ},
+        )
+        if result.returncode != 0:
+            return (result.stdout + result.stderr).strip()
+        return None
+    except subprocess.TimeoutExpired:
+        return "Smoke test timed out (30s)"
+    except Exception as e:
+        return f"Smoke test runner error: {e}"
 
 
 def _run_mini_eval(
@@ -571,10 +796,21 @@ def run_swe_loop(
                 next_version=tmp_version,
             )
         else:
+            # Run improvement tournament to select the best direction before implementing
+            logger.info("Running improvement tournament to select edit direction...")
+            tournament_winner, n_candidates = _run_improvement_tournament(
+                failure_analysis=failure_analysis,
+                code_bundle=code_bundle,
+                edit_history_str=edit_history_str,
+                memory_str=memory_str,
+                model=generator_model,
+            )
             propose_prompt = PROPOSE_EDIT_PROMPT.format(
                 version=current_version_name,
                 code_bundle=code_bundle,
                 failure_analysis=failure_analysis,
+                tournament_winner=tournament_winner,
+                n_candidates=n_candidates if n_candidates > 0 else "N/A",
                 edit_history=edit_history_str,
                 memory=memory_str,
                 next_version=tmp_version,
@@ -582,8 +818,19 @@ def run_swe_loop(
 
         try:
             new_code = _call_swe_llm(propose_prompt)
+            # Auto-repair missing GENERATOR singleton — try several class name patterns
             if "GENERATOR" not in new_code:
-                raise ValueError("Generated code missing GENERATOR singleton")
+                cls_match = (
+                    re.search(r"class\s+(S\w+Generator)\s*\(", new_code)
+                    or re.search(r"class\s+(\w+Generator)\s*\(\s*IdeaGenerator", new_code)
+                    or re.search(r"class\s+(\w+)\s*\(\s*IdeaGenerator\s*\)", new_code)
+                    or re.search(r"class\s+(\w+Generator)\s*\(", new_code)
+                )
+                if cls_match:
+                    new_code = new_code.rstrip() + f"\n\nGENERATOR = {cls_match.group(1)}()\n"
+                    logger.warning("Auto-repaired missing GENERATOR singleton → %s()", cls_match.group(1))
+                else:
+                    raise ValueError("Generated code missing GENERATOR singleton and no generator class found")
         except Exception as e:
             logger.error("Edit proposal failed: %s", e)
             failures += 1
@@ -593,6 +840,15 @@ def run_swe_loop(
         tmp_path = systems_dir / f"{tmp_version}.py"
         tmp_path.write_text(new_code)
         logger.info("Wrote candidate %s (%d chars)", tmp_version, len(new_code))
+
+        # ── Smoke test: validate the file imports cleanly before spending mini-eval ──
+        smoke_err = _smoke_test(tmp_path, ideas_dir)
+        if smoke_err:
+            logger.error("Smoke test FAILED for %s — skipping mini-eval:\n%s", tmp_version, smoke_err[-600:])
+            tmp_path.unlink(missing_ok=True)
+            failures += 1
+            continue
+        logger.info("Smoke test passed for %s", tmp_version)
 
         # ── Step 3: mini-eval ────────────────────────────────────────────────
         try:
@@ -657,15 +913,22 @@ def run_swe_loop(
         f'VERSION = "{next_version}"',
         current_code,
     )
-    # Update class name
-    old_class = re.search(r'class\s+(S\w+Generator)', champion_code)
-    new_class = f"class {next_version}Generator"
-    if old_class:
-        final_code = final_code.replace(old_class.group(0), new_class)
-    # Update GENERATOR singleton
+    # Update class name — search the ACCUMULATED final_code (not champion_code),
+    # since intermediate rounds may have renamed the class (e.g. S3_r2Generator)
+    old_class = (
+        re.search(r'class\s+(\w+Generator)\s*\(\s*IdeaGenerator', final_code)
+        or re.search(r'class\s+(\w+Generator)\s*\(', final_code)
+    )
+    new_cls_name = f"{next_version}Generator"
+    if old_class and old_class.group(1) != new_cls_name:
+        old_cls_name = old_class.group(1)
+        final_code = final_code.replace(f"class {old_cls_name}", f"class {new_cls_name}")
+        # Also fix any direct references in GENERATOR singleton
+        final_code = final_code.replace(f"GENERATOR = {old_cls_name}()", f"GENERATOR = {new_cls_name}()")
+    # Ensure GENERATOR singleton is correct regardless
     final_code = re.sub(
         r'GENERATOR\s*=\s*\w+\(\)',
-        f'GENERATOR = {next_version}Generator()',
+        f'GENERATOR = {new_cls_name}()',
         final_code,
     )
 
