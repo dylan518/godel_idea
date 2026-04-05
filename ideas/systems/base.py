@@ -57,6 +57,10 @@ def _classify_api_error(e: Exception, model: str) -> str:
     return f"{cls}"
 
 
+RETRY_DELAYS = [5, 15, 30]   # seconds between retries for transient errors
+RETRYABLE = ("CONNECTION_ERROR", "OVERLOADED")   # error label prefixes that warrant retry
+
+
 def call_llm(prompt: str, model: str, client, temperature: float,
              max_tokens: int = 1024, timeout: int = STEP_TIMEOUT) -> str:
     """Single LLM call supporting OpenAI, Anthropic, and Gemini with per-step timeout."""
@@ -96,20 +100,31 @@ def call_llm(prompt: str, model: str, client, temperature: float,
             )
             return response.content[0].text.strip()
 
-    executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)
-    future = executor.submit(_call)
-    try:
-        return future.result(timeout=timeout)
-    except concurrent.futures.TimeoutError:
-        future.cancel()
-        executor.shutdown(wait=False)
-        raise TimeoutError(f"LLM call exceeded {timeout}s timeout (model={model})")
-    except Exception as e:
-        executor.shutdown(wait=False)
-        label = _classify_api_error(e, model)
-        raise RuntimeError(f"[{label}] {e}") from e
-    finally:
-        executor.shutdown(wait=False)
+    import time as _time
+    last_err = None
+    attempts = [None] + list(RETRY_DELAYS)   # first attempt + retries
+    for delay in attempts:
+        if delay is not None:
+            _time.sleep(delay)
+        executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)
+        future = executor.submit(_call)
+        try:
+            return future.result(timeout=timeout)
+        except concurrent.futures.TimeoutError:
+            future.cancel()
+            executor.shutdown(wait=False)
+            raise TimeoutError(f"LLM call exceeded {timeout}s timeout (model={model})")
+        except Exception as e:
+            executor.shutdown(wait=False)
+            label = _classify_api_error(e, model)
+            err = RuntimeError(f"[{label}] {e}")
+            last_err = err
+            if any(label.startswith(r) for r in RETRYABLE) and delay != RETRY_DELAYS[-1]:
+                continue   # retry on transient errors
+            raise err from e
+        finally:
+            executor.shutdown(wait=False)
+    raise last_err  # unreachable but satisfies type checker
 
 
 class IdeaGenerator(ABC):

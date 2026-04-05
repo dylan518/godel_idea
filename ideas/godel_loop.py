@@ -401,6 +401,166 @@ def cmd_evolve(args):
     logger.info("Evolve loop complete. Current champion: %s", _read_current_version())
 
 
+def cmd_swe_evolve(args):
+    """SWE agent loop: multi-turn targeted edits to evolve from current champion."""
+    from swe_agent import run_swe_loop
+    from runner import run_system, load_topics, cache_is_valid
+    from judge import compare_systems, blind_compare_systems, JUDGE_MODEL
+    from systems.base import make_client as _make_client
+
+    target = args.target
+    model = args.model
+    n_ideas = args.n_ideas
+    workers = args.workers
+    systems_dir = str(IDEAS_DIR / "systems")
+    topics = load_topics(str(IDEAS_DIR / "benchmark_topics.json"))
+    n_topics = len(topics)
+
+    current = _read_current_version()
+
+    # Find the next unused S{n} number, always above all existing systems
+    existing = _available_systems()
+    used_nums = []
+    for s in existing:
+        mm = re.match(r"S(\d+)$", s)
+        if mm:
+            used_nums.append(int(mm.group(1)))
+    start = (max(used_nums) + 1) if used_nums else 1
+
+    logger.info("SWE-evolve loop: %s → S%d  (workers=%d, n_ideas=%d, swe_rounds=%d)",
+                current, target, workers, n_ideas, args.swe_rounds)
+
+    for i in range(start, target + 1):
+        next_version = f"S{i}"
+        logger.info("=" * 60)
+        logger.info("SWE ITERATION %d/%d: %s → %s",
+                    i - start + 1, target - start + 1, current, next_version)
+
+        sys_path = IDEAS_DIR / "systems" / f"{next_version}.py"
+        report_path = IDEAS_DIR / "results" / f"compare_{current}_vs_{next_version}.json"
+
+        # Find most recent compare report for failure analysis
+        existing_reports = sorted(IDEAS_DIR.glob(f"results/compare_{current}_vs_*.json"))
+        last_report = existing_reports[-1] if existing_reports else None
+
+        # --- SWE agent: multi-turn edit loop ---
+        if sys_path.exists():
+            logger.info("%s already exists — skipping SWE loop", next_version)
+        else:
+            try:
+                run_swe_loop(
+                    ideas_dir=IDEAS_DIR,
+                    next_version=next_version,
+                    champion_version=current,
+                    compare_report_path=last_report,
+                    max_rounds=args.swe_rounds,
+                    max_failures=args.swe_failures,
+                    generator_model=model,
+                )
+            except Exception as e:
+                logger.error("SWE loop failed for %s: %s — skipping", next_version, e)
+                continue
+
+        # --- Full eval: benchmark + judge ---
+        if report_path.exists():
+            logger.info("Comparison report exists for %s — loading", next_version)
+            with open(report_path) as f:
+                existing = json.load(f)
+            win_rate = existing.get("win_rate_b", 0)
+        else:
+            current_output_dir = str(IDEAS_DIR / "results" / current)
+            if cache_is_valid(current_output_dir, model, n_ideas, n_topics):
+                logger.info("Using cached results for %s", current)
+                results_current = _load_results(current)
+            else:
+                results_current = run_system(
+                    version=current, topics=topics,
+                    output_dir=current_output_dir,
+                    model=model, n_ideas=n_ideas,
+                    systems_dir=systems_dir, workers=workers,
+                )
+
+            results_candidate = run_system(
+                version=next_version, topics=topics,
+                output_dir=str(IDEAS_DIR / "results" / next_version),
+                model=model, n_ideas=n_ideas,
+                systems_dir=systems_dir, workers=workers,
+            )
+
+            judge_client = _make_client(JUDGE_MODEL)
+            comparison = compare_systems(results_current, results_candidate,
+                                         judge_client, workers=workers)
+            win_rate = comparison["win_rate_b"]
+
+            logger.info("=" * 60)
+            logger.info("%s wins: %d/%d  |  %s wins: %d/%d  |  ties: %d/%d",
+                        current, comparison["wins_a"], comparison["total_judged"],
+                        next_version, comparison["wins_b"], comparison["total_judged"],
+                        comparison["ties"], comparison["total_judged"])
+            logger.info("%s win rate: %.1f%%  (threshold: %.0f%%)",
+                        next_version, win_rate * 100, ACCEPTANCE_THRESHOLD * 100)
+
+            blind = None
+            blind_n = getattr(args, "blind_n", 5)
+            if blind_n > 0:
+                try:
+                    blind = blind_compare_systems(results_current, results_candidate,
+                                                  n_sample=blind_n)
+                    divergence = abs(win_rate - blind["win_rate_b"])
+                    logger.info("Blind win rate: %.1f%%  (divergence: %.0f%%)",
+                                blind["win_rate_b"] * 100, divergence * 100)
+                    if divergence > 0.30:
+                        logger.warning("GOODHART ALERT: primary=%.0f%% vs blind=%.0f%%",
+                                       win_rate * 100, blind["win_rate_b"] * 100)
+                except Exception as e:
+                    logger.error("Blind judge failed: %s", e)
+
+            with open(report_path, "w") as f:
+                json.dump({"current": current, "candidate": next_version,
+                           **comparison, "blind": blind}, f, indent=2)
+
+        if win_rate > ACCEPTANCE_THRESHOLD:
+            logger.info("VERDICT: %s ACCEPTED (%.1f%%)", next_version, win_rate * 100)
+            _write_current_version(next_version)
+            log_path = IDEAS_DIR / "results" / "evolution_log.jsonl"
+            blind_win_rate = None
+            if report_path.exists():
+                with open(report_path) as rf:
+                    rdata = json.load(rf)
+                blind_win_rate = (rdata.get("blind") or {}).get("win_rate_b")
+            entry = {
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+                "from_version": current,
+                "to_version": next_version,
+                "win_rate": win_rate,
+                "blind_win_rate": blind_win_rate,
+            }
+            with open(log_path, "a") as f:
+                f.write(json.dumps(entry) + "\n")
+            current = next_version
+        else:
+            logger.info("VERDICT: %s REJECTED (%.1f%%)", next_version, win_rate * 100)
+
+    logger.info("=" * 60)
+    logger.info("SWE-evolve complete. Champion: %s", _read_current_version())
+
+
+def cmd_reset_sota(args):
+    """Reset evolution to start fresh from S_sota as the new baseline."""
+    sota_path = IDEAS_DIR / "systems" / "S_sota.py"
+    if not sota_path.exists():
+        logger.error("S_sota.py not found — cannot reset")
+        sys.exit(1)
+
+    if not args.force:
+        logger.error("This will reset CURRENT_VERSION to S_sota. Use --force to confirm.")
+        sys.exit(1)
+
+    _write_current_version("S_sota")
+    logger.info("CURRENT_VERSION reset to S_sota")
+    logger.info("Next: benchmark S_sota, then use swe-evolve to improve it")
+
+
 def cmd_accept(args):
     candidate = args.version
     force = args.force
@@ -520,9 +680,26 @@ def main():
     evo.add_argument("--blind-n", type=int, default=5, dest="blind_n",
                      help="Topics for blind judge per iteration (default: 5, 0 to skip)")
 
+    swe = sub.add_parser("swe-evolve",
+                          help="SWE agent: multi-turn targeted edits per iteration up to --target")
+    swe.add_argument("--target", type=int, required=True,
+                     help="Evolve up to S{target}")
+    swe.add_argument("--model", default=DEFAULT_MODEL)
+    swe.add_argument("--n-ideas", type=int, default=DEFAULT_N_IDEAS, dest="n_ideas")
+    swe.add_argument("--workers", type=int, default=3)
+    swe.add_argument("--swe-rounds", type=int, default=6, dest="swe_rounds",
+                     help="Max edit rounds per iteration (default: 6)")
+    swe.add_argument("--swe-failures", type=int, default=3, dest="swe_failures",
+                     help="Max consecutive failed mini-evals before stopping (default: 3)")
+    swe.add_argument("--blind-n", type=int, default=5, dest="blind_n")
+
+    rst = sub.add_parser("reset-sota", help="Reset CURRENT_VERSION to S_sota baseline")
+    rst.add_argument("--force", action="store_true", help="Required to confirm reset")
+
     args = parser.parse_args()
     {"status": cmd_status, "benchmark": cmd_benchmark, "compare": cmd_compare,
      "accept": cmd_accept, "generate": cmd_generate, "evolve": cmd_evolve,
+     "swe-evolve": cmd_swe_evolve, "reset-sota": cmd_reset_sota,
      }[args.command](args)
 
 
