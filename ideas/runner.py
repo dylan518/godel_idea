@@ -135,15 +135,18 @@ def run_system(
         return topic_results
 
     # Flush on SIGTERM/SIGINT so partial results survive a kill
-    def _on_signal(sig, frame):
-        with flush_lock:
-            if results:
-                _flush_partial(results, out)
-                logger.warning("Interrupted (signal %d) — saved %d partial results to %s",
-                               sig, len(results), out / "ideas.json")
-        sys.exit(1)
-    signal.signal(signal.SIGTERM, _on_signal)
-    signal.signal(signal.SIGINT, _on_signal)
+    # Signal handlers can only be set in the main thread; skip when called from workers
+    import threading
+    if threading.current_thread() is threading.main_thread():
+        def _on_signal(sig, frame):
+            with flush_lock:
+                if results:
+                    _flush_partial(results, out)
+                    logger.warning("Interrupted (signal %d) — saved %d partial results to %s",
+                                   sig, len(results), out / "ideas.json")
+            sys.exit(1)
+        signal.signal(signal.SIGTERM, _on_signal)
+        signal.signal(signal.SIGINT, _on_signal)
 
     effective_workers = min(workers, len(topics))
     logger.info("Running %s on %d topic(s) × %d idea(s) = %d calls  "

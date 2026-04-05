@@ -176,12 +176,14 @@ def _run_mini_eval(
     n_topics: int = MINI_N_TOPICS,
     n_ideas: int = MINI_N_IDEAS,
     model: str = "gpt-4.1-mini",
+    workers: int = 3,
 ) -> float:
     """Run a fast comparison of candidate vs champion on a topic subset.
 
     Returns win_rate_b (candidate win rate, 0..1).
     Returns 0.0 on failure to avoid false positives.
     """
+    import concurrent.futures
     import importlib.util
     import random
 
@@ -206,44 +208,66 @@ def _run_mini_eval(
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp = Path(tmpdir)
 
-        # Run champion on sampled topics
+        # Copy candidate file to a temp systems dir for loading
+        tmp_systems = tmp / "systems"
+        shutil.copytree(str(ideas_dir / "systems"), str(tmp_systems))
+        shutil.copy(str(candidate_path), str(tmp_systems / f"{candidate_version}.py"))
+
+        # Run champion and candidate in parallel, each with topic-level workers
         champion_out = str(tmp / "champion")
-        try:
-            results_champion = run_system(
+        candidate_out = str(tmp / "candidate")
+
+        results_champion = None
+        results_candidate = None
+        err_champion = None
+        err_candidate = None
+
+        def _run_champion():
+            return run_system(
                 version=champion_version,
                 topics=sampled,
                 output_dir=champion_out,
                 model=model,
                 n_ideas=n_ideas,
                 systems_dir=str(ideas_dir / "systems"),
+                workers=workers,
             )
-        except Exception as e:
-            logger.error("Mini-eval champion run failed: %s", e)
-            return 0.0
 
-        # Copy candidate file to a temp systems dir for loading
-        tmp_systems = tmp / "systems"
-        shutil.copytree(str(ideas_dir / "systems"), str(tmp_systems))
-        shutil.copy(str(candidate_path), str(tmp_systems / f"{candidate_version}.py"))
-
-        candidate_out = str(tmp / "candidate")
-        try:
-            results_candidate = run_system(
+        def _run_candidate():
+            return run_system(
                 version=candidate_version,
                 topics=sampled,
                 output_dir=candidate_out,
                 model=model,
                 n_ideas=n_ideas,
                 systems_dir=str(tmp_systems),
+                workers=workers,
             )
-        except Exception as e:
-            logger.error("Mini-eval candidate run failed: %s", e)
+
+        with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+            fut_champ = pool.submit(_run_champion)
+            fut_cand = pool.submit(_run_candidate)
+            try:
+                results_champion = fut_champ.result()
+            except Exception as e:
+                err_champion = e
+            try:
+                results_candidate = fut_cand.result()
+            except Exception as e:
+                err_candidate = e
+
+        if err_champion:
+            logger.error("Mini-eval champion run failed: %s", err_champion)
+            return 0.0
+        if err_candidate:
+            logger.error("Mini-eval candidate run failed: %s", err_candidate)
             return 0.0
 
-        # Judge
+        # Judge (parallel across topics)
         try:
             judge_client = make_client(JUDGE_MODEL)
-            result = compare_systems(results_champion, results_candidate, judge_client)
+            result = compare_systems(results_champion, results_candidate, judge_client,
+                                     workers=workers)
             win_rate = result["win_rate_b"]
             logger.info("Mini-eval: %s vs %s → win_rate=%.1f%% (%d pairs)",
                         champion_version, candidate_version, win_rate * 100,
