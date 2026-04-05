@@ -323,14 +323,19 @@ def cmd_evolve(args):
                     systems_dir=systems_dir, workers=workers,
                 )
 
-            # --- Benchmark candidate ---
-            logger.info("Benchmarking %s...", next_version)
-            results_candidate = run_system(
-                version=next_version, topics=topics,
-                output_dir=str(IDEAS_DIR / "results" / next_version),
-                model=model, n_ideas=n_ideas,
-                systems_dir=systems_dir, workers=workers,
-            )
+            # --- Benchmark candidate (use cache if valid) ---
+            candidate_output_dir = str(IDEAS_DIR / "results" / next_version)
+            if cache_is_valid(candidate_output_dir, model, n_ideas, n_topics):
+                logger.info("Using cached results for %s", next_version)
+                results_candidate = _load_results(next_version)
+            else:
+                logger.info("Benchmarking %s...", next_version)
+                results_candidate = run_system(
+                    version=next_version, topics=topics,
+                    output_dir=candidate_output_dir,
+                    model=model, n_ideas=n_ideas,
+                    systems_dir=systems_dir, workers=workers,
+                )
 
             # --- Primary judge ---
             logger.info("Judging %s vs %s...", current, next_version)
@@ -480,12 +485,17 @@ def cmd_swe_evolve(args):
                     systems_dir=systems_dir, workers=workers,
                 )
 
-            results_candidate = run_system(
-                version=next_version, topics=topics,
-                output_dir=str(IDEAS_DIR / "results" / next_version),
-                model=model, n_ideas=n_ideas,
-                systems_dir=systems_dir, workers=workers,
-            )
+            candidate_output_dir = str(IDEAS_DIR / "results" / next_version)
+            if cache_is_valid(candidate_output_dir, model, n_ideas, n_topics):
+                logger.info("Using cached results for %s", next_version)
+                results_candidate = _load_results(next_version)
+            else:
+                results_candidate = run_system(
+                    version=next_version, topics=topics,
+                    output_dir=candidate_output_dir,
+                    model=model, n_ideas=n_ideas,
+                    systems_dir=systems_dir, workers=workers,
+                )
 
             judge_client = _make_client(JUDGE_MODEL)
             comparison = compare_systems(results_current, results_candidate,
@@ -519,7 +529,8 @@ def cmd_swe_evolve(args):
                 json.dump({"current": current, "candidate": next_version,
                            **comparison, "blind": blind}, f, indent=2)
 
-        if win_rate > ACCEPTANCE_THRESHOLD:
+        accepted = win_rate > ACCEPTANCE_THRESHOLD
+        if accepted:
             logger.info("VERDICT: %s ACCEPTED (%.1f%%)", next_version, win_rate * 100)
             _write_current_version(next_version)
             log_path = IDEAS_DIR / "results" / "evolution_log.jsonl"
@@ -540,6 +551,17 @@ def cmd_swe_evolve(args):
             current = next_version
         else:
             logger.info("VERDICT: %s REJECTED (%.1f%%)", next_version, win_rate * 100)
+
+        # Persist full eval result back into swe_memory so future iterations know the outcome
+        try:
+            from swe_agent import update_swe_memory
+            update_swe_memory(IDEAS_DIR, {
+                "version": next_version,
+                "full_eval_win_rate": win_rate,
+                "accepted": accepted,
+            })
+        except Exception as _mem_err:
+            logger.debug("swe_memory update skipped: %s", _mem_err)
 
     logger.info("=" * 60)
     logger.info("SWE-evolve complete. Champion: %s", _read_current_version())
