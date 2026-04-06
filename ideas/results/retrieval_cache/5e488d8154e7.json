@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Reproducible Scaling Laws for Contrastive Language-Image Learning",
+    "year": 2023,
+    "citations": 445,
+    "abstract": "Scaling up neural networks has led to remarkable performance across a wide range of tasks. Moreover, performance often follows reliable scaling laws as a function of training set size, model size, and compute, which offers valuable guidance as large-scale experiments are becoming increasingly expensive. However, previous work on scaling laws has primarily used private data & models or focused on uni-modal language or vision learning. To address these limitations, we investigate scaling laws for contrastive language-image pre-training (CLIP) with the public LAION dataset and the open-source Ope",
+    "tldr": "",
+    "url": "https://doi.org/10.1109/cvpr52729.2023.00276"
+  },
+  {
+    "title": "The promise of artificial intelligence in chemical engineering: Is it here, finally?",
+    "year": 2018,
+    "citations": 616,
+    "abstract": "The current excitement about artificial intelligence (AI), particularly machine learning (ML), is palpable and contagious. The expectation that AI is poised to \"revolutionize,\" perhaps even take over, humanity has elicited prophetic visions and concerns from some luminaries.1-4 There is also a great deal of interest in the commercial potential of AI, which is attracting significant sums of venture capital and state-sponsored investment globally, particularly in China.5 McKinsey, for instance, predicts the potential commercial impact of AI in several domains, envisioning markets worth trillions",
+    "tldr": "",
+    "url": "https://doi.org/10.1002/aic.16489"
+  },
+  {
+    "title": "Reproducible scaling laws for contrastive language-image learning",
+    "year": 2022,
+    "citations": 29,
+    "abstract": "Scaling up neural networks has led to remarkable performance across a wide range of tasks. Moreover, performance often follows reliable scaling laws as a function of training set size, model size, and compute, which offers valuable guidance as large-scale experiments are becoming increasingly expensive. However, previous work on scaling laws has primarily used private data \\&amp; models or focused on uni-modal language or vision learning. To address these limitations, we investigate scaling laws for contrastive language-image pre-training (CLIP) with the public LAION dataset and the open-sourc",
+    "tldr": "",
+    "url": "https://doi.org/10.48550/arxiv.2212.07143"
+  }
+]

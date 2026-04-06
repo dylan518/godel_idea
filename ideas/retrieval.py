@@ -1,17 +1,18 @@
-"""SOTA paper retrieval via Semantic Scholar API.
+"""SOTA paper retrieval via OpenAlex API.
 
 Fetches recent highly-cited papers for a research topic and formats them
 as context for idea generators. Results are cached to disk for 7 days.
 
-No API key required for basic usage (100 req/5min rate limit).
+Uses OPENALEX_API_KEY env var if set (higher rate limits).
+Free tier (email polite pool): ~10 req/sec — much better than Semantic Scholar.
 """
 
 import hashlib
 import json
+import os
 import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Optional
 
 import sys
 sys.path.insert(0, str(Path(__file__).parent))
@@ -21,11 +22,11 @@ logger = _log.setup("retrieval")
 
 CACHE_DIR = Path(__file__).parent / "results" / "retrieval_cache"
 CACHE_TTL_DAYS = 7
-API_BASE = "https://api.semanticscholar.org/graph/v1"
-FIELDS = "title,abstract,year,tldr,externalIds,citationCount"
+API_BASE = "https://api.openalex.org"
 N_PAPERS = 5
-REQUEST_DELAY = 3.0  # seconds before each request (rate limit: ~20 req/min free tier)
-_request_lock = None  # threading.Lock, lazily initialised
+# OpenAlex polite pool: ~10 req/sec — use a small delay to be safe
+REQUEST_DELAY = 0.15   # seconds between requests
+_request_lock = None   # threading.Lock, lazily initialised
 
 
 def _get_lock():
@@ -48,10 +49,26 @@ def _is_fresh(path: Path) -> bool:
     return datetime.now(timezone.utc) - mtime < timedelta(days=CACHE_TTL_DAYS)
 
 
-def fetch_papers(topic: str, n: int = N_PAPERS) -> list[dict]:
-    """Fetch top-N papers for topic from Semantic Scholar. Uses disk cache.
+def _reconstruct_abstract(inverted_index: dict) -> str:
+    """Reconstruct abstract text from OpenAlex inverted-index format.
 
-    Returns list of {title, abstract, year, tldr, url, citations}.
+    OpenAlex stores abstracts as {word: [position, ...], ...}.
+    """
+    if not inverted_index:
+        return ""
+    position_word: dict[int, str] = {}
+    for word, positions in inverted_index.items():
+        for pos in positions:
+            position_word[pos] = word
+    if not position_word:
+        return ""
+    return " ".join(position_word[i] for i in sorted(position_word))
+
+
+def fetch_papers(topic: str, n: int = N_PAPERS) -> list[dict]:
+    """Fetch top-N papers for topic from OpenAlex. Uses disk cache.
+
+    Returns list of {title, abstract, year, citations, url}.
     Falls back to empty list on any error so callers degrade gracefully.
     """
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
@@ -66,36 +83,46 @@ def fetch_papers(topic: str, n: int = N_PAPERS) -> list[dict]:
         import urllib.request
         import urllib.parse
 
+        api_key = os.environ.get("OPENALEX_API_KEY", "")
+
+        params: dict = {
+            "search": topic,
+            # default sort for search queries is relevance — don't override it
+            "per_page": n * 3,   # fetch extra, filter down to those with abstracts
+            "select": "title,abstract_inverted_index,publication_year,cited_by_count,doi,id",
+            # year filter dramatically improves relevance (drops off-topic classics)
+            "filter": "from_publication_date:2019-01-01",
+        }
+        if api_key:
+            params["api_key"] = api_key
+        else:
+            # Polite pool: add a contact email so OpenAlex can reach us if needed
+            params["mailto"] = "research@example.com"
+
+        url = f"{API_BASE}/works?" + urllib.parse.urlencode(params)
+        headers = {"User-Agent": "godel-loop/1.0", "Accept": "application/json"}
+
         # Serialize API calls across threads to respect rate limit
         with _get_lock():
             time.sleep(REQUEST_DELAY)
-
-        params = urllib.parse.urlencode({
-            "query": topic,
-            "fields": FIELDS,
-            "limit": n * 2,        # fetch extra, filter down
-            "sort": "relevance",
-        })
-        url = f"{API_BASE}/paper/search?{params}"
-        req = urllib.request.Request(url, headers={"User-Agent": "godel-loop/1.0"})
-
-        time.sleep(REQUEST_DELAY)
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            data = json.loads(resp.read())
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=20) as resp:
+                data = json.loads(resp.read())
 
         papers = []
-        for p in data.get("data", [])[:n * 2]:
-            if not p.get("abstract") and not (p.get("tldr") or {}).get("text"):
-                continue  # skip if no content
-            tldr = (p.get("tldr") or {}).get("text") or ""
-            abstract = p.get("abstract") or ""
+        for w in data.get("results", []):
+            abstract = _reconstruct_abstract(w.get("abstract_inverted_index") or {})
+            if not abstract:
+                continue
+            doi = w.get("doi") or ""
+            oa_id = w.get("id") or ""
             papers.append({
-                "title": p.get("title", ""),
-                "year": p.get("year"),
-                "citations": p.get("citationCount", 0),
-                "tldr": tldr,
-                "abstract": abstract[:600],   # cap to keep context manageable
-                "url": f"https://www.semanticscholar.org/paper/{p.get('paperId', '')}",
+                "title": w.get("title") or "",
+                "year": w.get("publication_year"),
+                "citations": w.get("cited_by_count", 0),
+                "abstract": abstract[:600],
+                "tldr": "",   # OpenAlex doesn't have TLDRs; keep key for format_context compat
+                "url": doi if doi else oa_id,
             })
             if len(papers) >= n:
                 break
@@ -118,7 +145,7 @@ def format_context(papers: list[dict]) -> str:
     lines = ["## Recent related work (for context — your idea must go beyond these)\n"]
     for i, p in enumerate(papers, 1):
         year = f" ({p['year']})" if p.get("year") else ""
-        summary = p["tldr"] if p.get("tldr") else p["abstract"]
+        summary = p.get("tldr") or p.get("abstract") or ""
         lines.append(f"{i}. **{p['title']}**{year}")
         if summary:
             lines.append(f"   {summary.strip()}")

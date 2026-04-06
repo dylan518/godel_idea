@@ -1,0 +1,26 @@
+[
+  {
+    "title": "A Practical Review of Mechanistic Interpretability for Transformer-Based Language Models",
+    "year": 2024,
+    "citations": 10,
+    "abstract": "Mechanistic interpretability (MI) is an emerging sub-field of interpretability that seeks to understand a neural network model by reverse-engineering its internal computations. Recently, MI has garnered significant attention for interpreting transformer-based language models (LMs), resulting in many novel insights yet introducing new challenges. However, there has not been work that comprehensively reviews these insights and challenges, particularly as a guide for newcomers to this field. To fill this gap, we provide a comprehensive survey from a task-centric perspective, organizing the taxono",
+    "tldr": "",
+    "url": "https://doi.org/10.48550/arxiv.2407.02646"
+  },
+  {
+    "title": "Mechanistic Interpretability for Transformers in Financial Engineering",
+    "year": 2025,
+    "citations": 1,
+    "abstract": "Mechanistic interpretability[9] is the study of taking a trained neural network, and analysing the weights to reverse engineer the algorithms learned by the mode. We propose multiple forms of mechanistic interpretability MI [9] to support financial engineering utilising large language models. As these models scale, their open-endedness and high capacity creates an increasing scope for unexpected and sometimes harmful behaviors. [9] [1] Antrhopic discuss even years after a large model is trained, both creators and users routinely discover model capabilities including problematic behaviors they ",
+    "tldr": "",
+    "url": "https://doi.org/10.36227/techrxiv.173713226.66476652/v1"
+  },
+  {
+    "title": "Towards Mechanistic Interpretability of Graph Transformers via Attention Graphs",
+    "year": 2025,
+    "citations": 3,
+    "abstract": "We introduce Attention Graphs, a new tool for mechanistic interpretability of Graph Neural Networks (GNNs) and Graph Transformers based on the mathematical equivalence between message passing in GNNs and the self-attention mechanism in Transformers. Attention Graphs aggregate attention matrices across Transformer layers and heads to describe how information flows among input nodes. Through experiments on homophilous and heterophilous node classification tasks, we analyze Attention Graphs from a network science perspective and find that: (1) When Graph Transformers are allowed to learn the opti",
+    "tldr": "",
+    "url": "https://doi.org/10.48550/arxiv.2502.12352"
+  }
+]
