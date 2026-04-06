@@ -1,7 +1,7 @@
 """Judge: LLM pairwise evaluation of research ideas.
 
-Primary judge: claude-haiku-4-5  (used for accept/reject decisions)
-Blind judge:   gemini-2.0-flash  (independent canary — never optimized against)
+Primary judge: deepseek-chat / DeepSeek V3  (used for accept/reject decisions)
+Blind judge:   gemini-flash-lite-latest     (independent canary — never optimized against)
 
 Usage:
     python ideas/judge.py --results-a results/S0/ideas.json --results-b results/S1/ideas.json
@@ -20,7 +20,7 @@ import log as _log
 
 logger = _log.setup("judge")
 
-JUDGE_MODEL = "claude-haiku-4-5-20251001"
+JUDGE_MODEL = "deepseek-chat"
 JUDGE_TEMPERATURE = 0.2
 
 BLIND_JUDGE_MODEL = "gemini-flash-lite-latest"
@@ -143,12 +143,11 @@ def _check_early_stop(
     wins_b: int, wins_a: int, ties: int,
     n_total: int, threshold: float, min_pairs: int = 8,
 ) -> tuple[bool, str]:
-    """Return (should_stop, reason) when P(final_win_rate >= threshold) < 10%.
+    """Return (should_stop, reason).
 
-    Uses the Wilson score upper confidence bound at the 90th percentile (z=1.28).
-    This gives the highest plausible true win rate consistent with current data.
-    If even this upper bound is below the acceptance threshold, there is less than
-    a 10% chance the candidate can recover — stop early.
+    Stops early in either direction using Wilson score bounds (z=1.2816, ~90th pct):
+      - Early reject: P(win_rate >= threshold) < 10%  — candidate can't recover
+      - Early accept: P(win_rate <  threshold) < 10%  — candidate can't fall below
 
     min_pairs: don't fire before this many pairs have been judged (avoid noise).
     """
@@ -159,26 +158,42 @@ def _check_early_stop(
     remaining = n_total - k
     effective = wins_b + 0.5 * ties  # ties count as half-wins
 
-    # Hard check: even winning every remaining pair can't reach threshold
+    # Hard reject: even winning every remaining pair can't reach threshold
     if (effective + remaining) / n_total < threshold:
         max_rate = (effective + remaining) / n_total
         return True, (
-            f"early stop — max achievable {max_rate:.1%} < threshold {threshold:.0%} "
+            f"early stop (reject) — max achievable {max_rate:.1%} < threshold {threshold:.0%} "
             f"({k}/{n_total} pairs judged, {wins_b}W/{wins_a}L/{ties}T)"
         )
 
-    # Wilson score upper bound at 90th percentile (one-tailed, z=1.2816)
+    # Hard accept: even losing every remaining pair stays above threshold
+    if effective / n_total > threshold:
+        min_rate = effective / n_total
+        return True, (
+            f"early stop (accept) — min achievable {min_rate:.1%} > threshold {threshold:.0%} "
+            f"({k}/{n_total} pairs judged, {wins_b}W/{wins_a}L/{ties}T)"
+        )
+
+    # Wilson score bounds at 90th percentile (one-tailed, z=1.2816)
     p = effective / k
     z = 1.2816
     denom = 1.0 + z * z / k
     center = (p + z * z / (2.0 * k)) / denom
     spread = z * ((p * (1.0 - p) + z * z / (4.0 * k)) / k) ** 0.5 / denom
     p_upper = min(center + spread, 1.0)
+    p_lower = max(center - spread, 0.0)
 
     if p_upper < threshold:
         return True, (
-            f"early stop — P(win_rate≥{threshold:.0%}) < 10% "
+            f"early stop (reject) — P(win_rate≥{threshold:.0%}) < 10% "
             f"(90th-pct upper bound {p_upper:.1%} after {k}/{n_total} pairs, "
+            f"{wins_b}W/{wins_a}L/{ties}T)"
+        )
+
+    if p_lower > threshold:
+        return True, (
+            f"early stop (accept) — P(win_rate<{threshold:.0%}) < 10% "
+            f"(90th-pct lower bound {p_lower:.1%} after {k}/{n_total} pairs, "
             f"{wins_b}W/{wins_a}L/{ties}T)"
         )
 
