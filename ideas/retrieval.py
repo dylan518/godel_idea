@@ -87,11 +87,14 @@ def fetch_papers(topic: str, n: int = N_PAPERS) -> list[dict]:
 
         params: dict = {
             "search": topic,
-            # default sort for search queries is relevance — don't override it
-            "per_page": n * 3,   # fetch extra, filter down to those with abstracts
+            # OpenAlex uses ML + citation networks for relevance ranking (not boolean).
+            # Default sort for search queries is relevance — don't override it.
+            "per_page": n * 2,
             "select": "title,abstract_inverted_index,publication_year,cited_by_count,doi,id",
-            # year filter dramatically improves relevance (drops off-topic classics)
-            "filter": "from_publication_date:2019-01-01",
+            # has_abstract:true — only return papers where OpenAlex has indexed the abstract
+            # (~57% of all works; filtering here avoids wasting the per_page budget).
+            # from_publication_date:2019 — prefer recent SOTA over off-topic classics.
+            "filter": "from_publication_date:2019-01-01,has_abstract:true",
         }
         if api_key:
             params["api_key"] = api_key
