@@ -34,6 +34,7 @@ import log as _log
 logger = _log.setup("swe_agent")
 
 SWE_MEMORY_FILE = "results/swe_memory.json"
+SWE_CONTEXT_FILE = "results/swe_context.json"
 
 # ── Persistent cross-iteration memory ─────────────────────────────────────────
 
@@ -109,6 +110,222 @@ EDITABLE_FILES = [
 ]
 
 
+# ── Rich cross-iteration context ──────────────────────────────────────────────
+# swe_context.json stores three things that the SWE agent needs across iterations:
+#   1. pipeline_overview  — concise description of how the current champion works
+#   2. judge_profile      — patterns accumulated from ALL judge verdicts ever seen
+#   3. iteration_log      — what changed each time and the key lesson learned
+
+def load_swe_context(ideas_dir: Path) -> dict:
+    path = ideas_dir / SWE_CONTEXT_FILE
+    if not path.exists():
+        return {"pipeline_overview": "", "judge_profile": {}, "iteration_log": []}
+    try:
+        with open(path) as f:
+            return json.load(f)
+    except Exception:
+        return {"pipeline_overview": "", "judge_profile": {}, "iteration_log": []}
+
+
+def save_swe_context(ideas_dir: Path, ctx: dict) -> None:
+    path = ideas_dir / SWE_CONTEXT_FILE
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w") as f:
+        json.dump(ctx, f, indent=2)
+
+
+def extract_judge_patterns(report_path: Path, n_quotes: int = 6) -> dict:
+    """Parse a comparison report and extract what the judge consistently rewards/penalizes.
+
+    Returns:
+      rewards   — phrases/patterns in winning verdicts (champion beat candidate)
+      penalizes — phrases/patterns in losing verdicts (candidate beat champion)
+      quotes    — verbatim judge reasoning snippets (both sides)
+    """
+    if report_path is None or not report_path.exists():
+        return {}
+    try:
+        with open(report_path) as f:
+            report = json.load(f)
+    except Exception:
+        return {}
+
+    verdicts = report.get("verdicts", [])
+    if not verdicts:
+        return {}
+
+    # A wins = champion beat candidate; B wins = candidate beat champion
+    a_wins = [v for v in verdicts if v.get("winner") == "A"]
+    b_wins = [v for v in verdicts if v.get("winner") == "B"]
+
+    # Collect reasoning text from each side
+    a_reasoning = [v.get("reasoning", "")[:300] for v in a_wins if v.get("reasoning")]
+    b_reasoning = [v.get("reasoning", "")[:300] for v in b_wins if v.get("reasoning")]
+
+    # Top quotes: champion wins first (what the current system does well),
+    # then candidate wins (what the new direction achieved)
+    quotes = []
+    for r in a_reasoning[:n_quotes // 2]:
+        quotes.append(f"[champion won] {r}")
+    for r in b_reasoning[:n_quotes // 2]:
+        quotes.append(f"[candidate won] {r}")
+
+    return {
+        "champion_win_count": len(a_wins),
+        "candidate_win_count": len(b_wins),
+        "champion_win_reasoning": a_reasoning[:3],
+        "candidate_win_reasoning": b_reasoning[:3],
+        "quotes": quotes,
+    }
+
+
+def update_swe_context(
+    ideas_dir: Path,
+    version: str,
+    champion: str,
+    full_eval_win_rate: float,
+    accepted: bool,
+    code_change_summary: str,
+    compare_report_path: Optional[Path],
+) -> None:
+    """Update swe_context.json after a full eval completes.
+
+    Accumulates judge patterns across all iterations into a growing profile.
+    """
+    ctx = load_swe_context(ideas_dir)
+
+    # Extract patterns from this comparison
+    patterns = extract_judge_patterns(compare_report_path)
+
+    # Accumulate judge profile across all iterations
+    profile = ctx.get("judge_profile", {})
+    all_champ_reasoning = profile.get("all_champion_win_reasoning", [])
+    all_cand_reasoning = profile.get("all_candidate_win_reasoning", [])
+    if patterns.get("champion_win_reasoning"):
+        all_champ_reasoning.extend(patterns["champion_win_reasoning"])
+    if patterns.get("candidate_win_reasoning"):
+        all_cand_reasoning.extend(patterns["candidate_win_reasoning"])
+    # Keep the most recent 20 of each to avoid unbounded growth
+    profile["all_champion_win_reasoning"] = all_champ_reasoning[-20:]
+    profile["all_candidate_win_reasoning"] = all_cand_reasoning[-20:]
+    profile["last_comparison"] = patterns
+    ctx["judge_profile"] = profile
+
+    # Append iteration log entry
+    log_entry = {
+        "version": version,
+        "champion_at_time": champion,
+        "full_eval_win_rate": full_eval_win_rate,
+        "accepted": accepted,
+        "code_change_summary": code_change_summary,
+        "judge_patterns": {
+            "champion_wins": patterns.get("champion_win_count", 0),
+            "candidate_wins": patterns.get("candidate_win_count", 0),
+            "sample_champion_wins": patterns.get("champion_win_reasoning", [])[:2],
+            "sample_candidate_wins": patterns.get("candidate_win_reasoning", [])[:2],
+        },
+    }
+    ctx.setdefault("iteration_log", []).append(log_entry)
+
+    save_swe_context(ideas_dir, ctx)
+    logger.info("SWE context updated for %s (full_eval=%.1f%%, accepted=%s)",
+                version, full_eval_win_rate * 100, accepted)
+
+
+def build_pipeline_overview(ideas_dir: Path, champion_version: str) -> str:
+    """Generate a concise human-readable overview of the current champion pipeline.
+
+    Reads the champion file and idea_tournament modules to produce a short
+    description the SWE agent can use without parsing all the raw code.
+    """
+    lines = [f"Current champion: {champion_version}"]
+    lines.append("Pipeline: IdeaTreeSearch (L1→L2→L3, ~12 candidates) → Elo tournament → Expansion")
+    lines.append("")
+
+    # Check what the champion has customized vs vanilla S_sota
+    champion_path = ideas_dir / "systems" / f"{champion_version}.py"
+    if champion_path.exists():
+        code = champion_path.read_text()
+        if "EXPAND_WINNER_PROMPT_V2" in code or "EXPAND_WINNER_PROMPT" in code:
+            # Find the custom prompt name
+            m = re.search(r"(EXPAND_WINNER_PROMPT\w*)\s*=\s*\"\"\"", code)
+            if m:
+                lines.append(f"  • Expansion prompt: custom {m.group(1)} (overrides idea_tournament default)")
+        for func, module in [("build_idea_tree", "tree_search"), ("run_tournament", "tournament")]:
+            if f"def {func}" in code:
+                lines.append(f"  • {func}: inlined custom version in champion file")
+            else:
+                lines.append(f"  • {func}: using idea_tournament/{module}.py")
+        if "def generate_idea" in code:
+            # Count approximate LLM calls (each call_llm = 1 call)
+            n_calls = code.count("call_llm(")
+            lines.append(f"  • generate_idea: ~{n_calls} direct call_llm() calls + tree/tournament calls")
+
+    lines.append("")
+    lines.append("Editable modules (primary targets for improvement):")
+    for rel in EDITABLE_FILES:
+        p = ideas_dir / rel
+        if p.exists():
+            n_lines = len(p.read_text().splitlines())
+            lines.append(f"  • {rel} ({n_lines} lines)")
+
+    return "\n".join(lines)
+
+
+def format_swe_context(ctx: dict, ideas_dir: Path, champion_version: str) -> str:
+    """Format the full context for injection into SWE agent prompts.
+
+    Returns a structured string with three sections:
+      1. Pipeline overview
+      2. Judge profile (accumulated preferences)
+      3. Experiment log (what worked/failed and why)
+    """
+    sections = []
+
+    # ── Section 1: Pipeline overview ──────────────────────────────────────────
+    overview = ctx.get("pipeline_overview") or build_pipeline_overview(ideas_dir, champion_version)
+    sections.append("### 1. Current Pipeline\n" + overview)
+
+    # ── Section 2: Judge profile (what the judge consistently rewards) ─────────
+    profile = ctx.get("judge_profile", {})
+    champ_reasons = profile.get("all_champion_win_reasoning", [])
+    cand_reasons = profile.get("all_candidate_win_reasoning", [])
+
+    judge_lines = ["### 2. Accumulated Judge Preferences"]
+    if champ_reasons:
+        judge_lines.append("\nWhen the CHAMPION wins, judges say things like:")
+        for r in champ_reasons[-4:]:
+            judge_lines.append(f"  > {r[:200]}")
+    if cand_reasons:
+        judge_lines.append("\nWhen the CANDIDATE wins (good — what to aim for):")
+        for r in cand_reasons[-4:]:
+            judge_lines.append(f"  > {r[:200]}")
+    if not champ_reasons and not cand_reasons:
+        judge_lines.append("(no judge data accumulated yet)")
+    sections.append("\n".join(judge_lines))
+
+    # ── Section 3: Experiment log ──────────────────────────────────────────────
+    log = ctx.get("iteration_log", [])
+    log_lines = ["### 3. Experiment Log"]
+    if not log:
+        log_lines.append("(no completed iterations yet)")
+    for entry in log[-8:]:  # show last 8
+        v = entry.get("version", "?")
+        wr = entry.get("full_eval_win_rate", 0)
+        acc = "✓ ACCEPTED" if entry.get("accepted") else "✗ REJECTED"
+        summary = entry.get("code_change_summary", "")[:150]
+        log_lines.append(f"\n{v} vs {entry.get('champion_at_time','?')}: {wr:.0%} — {acc}")
+        if summary:
+            log_lines.append(f"  Changed: {summary}")
+        jp = entry.get("judge_patterns", {})
+        sw = jp.get("sample_candidate_wins", [])
+        if sw:
+            log_lines.append(f"  Judge when this won: {sw[0][:150]}")
+    sections.append("\n".join(log_lines))
+
+    return "\n\n".join(sections)
+
+
 def _bundle_editable_context(ideas_dir: Path, champion_version: str) -> str:
     """Read champion wrapper + all idea_tournament modules into one formatted bundle.
 
@@ -137,42 +354,36 @@ def _bundle_editable_context(ideas_dir: Path, champion_version: str) -> str:
 # ── Prompts ───────────────────────────────────────────────────────────────────
 
 ANALYZE_PROMPT = """\
-You are improving a research idea generator. You will analyze why the PREVIOUS CANDIDATE
-version lost pairwise comparisons against the CURRENT CHAMPION, and identify the most
-important quality improvements to make when creating the next candidate.
+You are improving a research idea generator. Analyze why the previous candidate lost
+and identify the single most impactful improvement to make next.
 
-IMPORTANT FRAMING:
-- The code shown below is the CHAMPION's code — it is currently WINNING comparisons.
-- The champion code is the STARTING POINT for creating an improved new version.
-- The "losing verdicts" show where the PREVIOUS CANDIDATE (B) failed vs the champion (A).
-- Your job: propose changes to the champion's code that would make ideas better than the champion.
+FRAMING:
+- The code below is the CHAMPION — it is currently winning. It is the starting point.
+- "Losing verdicts" show where the PREVIOUS candidate (B) failed vs the champion (A).
+- Your job: propose a change to the champion that makes ideas better than the champion.
 
-## Champion codebase ({version}) — starting point to improve
-The champion consists of a thin wrapper + three editable modules shown below.
-The REAL logic lives in idea_tournament/ — that is what you should target for improvements.
+## Champion codebase ({version})
+The REAL logic lives in idea_tournament/ — target that for improvements.
 
 {code_bundle}
 
-## Why the previous candidate LOST (where candidate=B, champion=A)
+## Why the previous candidate lost
 Previous candidate win rate: {win_rate:.1%} ({total} pairs judged)
-Patterns where the candidate lost to the champion:
 
 {losing_verdicts}
+
+## Context: pipeline, judge preferences, experiment history
+{swe_context}
 
 ## Edit history this session
 {edit_history}
 
-## Cross-iteration memory (ALL prior iterations — do not repeat what failed)
-{memory}
-
 ## Your task
-Identify the SINGLE most important quality improvement to make in the generation pipeline.
-What specific aspect of the pipeline could produce better ideas than the current champion?
-Reference the actual code (prompts, algorithm, parameters) where relevant.
-Do NOT suggest approaches already tried in the memory above.
-Do NOT suggest adding error handling — focus on IDEA QUALITY improvements.
+Identify the SINGLE most important improvement. Reference the actual code.
+Do NOT repeat anything from the experiment log above.
+Do NOT add error handling — focus only on IDEA QUALITY.
 
-Output: 2-3 sentences describing the most impactful improvement direction.
+Output: 2-3 sentences describing the root cause and the improvement direction.
 """
 
 _OUTPUT_FORMAT = """\
@@ -212,20 +423,20 @@ Implement the improvement direction selected by the tournament below.
 {failure_analysis}
 
 ## Tournament-selected improvement direction
-The following direction was selected by an Elo tournament from {n_candidates} candidates
-as the highest-impact, most implementable improvement:
+Selected by IdeaTreeSearch + Elo from {n_candidates} candidates:
 
 {tournament_winner}
+
+## Context: pipeline, judge preferences, experiment history
+{swe_context}
 
 ## Edit history this session (DO NOT repeat these)
 {edit_history}
 
-## Cross-iteration memory (ALL prior attempts — do not repeat what failed)
-{memory}
-
 ## Your task
 Implement the tournament-selected direction above as a concrete code change.
 Stay faithful to the direction — do not substitute a different approach.
+Use the judge preferences above to ensure the change targets what the judge rewards.
 Then write the output file following the format below.
 
 """ + _OUTPUT_FORMAT
@@ -847,10 +1058,11 @@ def run_swe_loop(
     last_win_rate: Optional[float] = None
     stall_count = 0
 
-    # Load cross-iteration memory
+    # Load cross-iteration memory and rich context
     memory = load_swe_memory(ideas_dir)
-    memory_str = format_memory_str(memory)
     logger.info("Loaded SWE memory: %d prior iterations", len(memory))
+    swe_ctx = load_swe_context(ideas_dir)
+    swe_context_str = format_swe_context(swe_ctx, ideas_dir, champion_version)
 
     winning_verdicts_str = _extract_losing_verdicts(compare_report_path)
 
@@ -884,7 +1096,7 @@ def run_swe_loop(
             win_rate=initial_win_rate,
             losing_verdicts=winning_verdicts_str,
             edit_history=edit_history_str,
-            memory=memory_str,
+            swe_context=swe_context_str,
         )
         try:
             failure_analysis = _call_swe_llm(analysis_prompt)
@@ -917,7 +1129,7 @@ def run_swe_loop(
                 failure_analysis=failure_analysis,
                 code_bundle=code_bundle,
                 edit_history_str=edit_history_str,
-                memory_str=memory_str,
+                memory_str=swe_context_str,
                 ideas_dir=ideas_dir,
                 model=generator_model,
             )
@@ -928,7 +1140,7 @@ def run_swe_loop(
                 tournament_winner=tournament_winner,
                 n_candidates=n_candidates if n_candidates > 0 else "N/A",
                 edit_history=edit_history_str,
-                memory=memory_str,
+                swe_context=swe_context_str,
                 next_version=tmp_version,
             )
 

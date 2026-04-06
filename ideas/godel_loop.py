@@ -552,16 +552,42 @@ def cmd_swe_evolve(args):
         else:
             logger.info("VERDICT: %s REJECTED (%.1f%%)", next_version, win_rate * 100)
 
-        # Persist full eval result back into swe_memory so future iterations know the outcome
+        # Persist full eval result into swe_memory and rich swe_context
         try:
-            from swe_agent import update_swe_memory
+            from swe_agent import update_swe_memory, update_swe_context
+
             update_swe_memory(IDEAS_DIR, {
                 "version": next_version,
                 "full_eval_win_rate": win_rate,
                 "accepted": accepted,
             })
+
+            # Extract a code change summary from the SWE edit log if available
+            code_change_summary = ""
+            swe_log_path = IDEAS_DIR / "results" / f"swe_log_{next_version}.json"
+            if swe_log_path.exists():
+                try:
+                    with open(swe_log_path) as _f:
+                        _swe_log = json.load(_f)
+                    accepted_edits = [e for e in _swe_log.get("edits", []) if e.get("accepted")]
+                    if accepted_edits:
+                        code_change_summary = "; ".join(
+                            e.get("description", "")[:120] for e in accepted_edits
+                        )
+                except Exception:
+                    pass
+
+            update_swe_context(
+                ideas_dir=IDEAS_DIR,
+                version=next_version,
+                champion=current if not accepted else _read_current_version(),
+                full_eval_win_rate=win_rate,
+                accepted=accepted,
+                code_change_summary=code_change_summary,
+                compare_report_path=report_path,
+            )
         except Exception as _mem_err:
-            logger.debug("swe_memory update skipped: %s", _mem_err)
+            logger.debug("swe_memory/context update skipped: %s", _mem_err)
 
     logger.info("=" * 60)
     logger.info("SWE-evolve complete. Champion: %s", _read_current_version())
