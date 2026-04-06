@@ -172,7 +172,8 @@ def cmd_compare(args):
     from systems.base import make_client as _make_client
     judge_client = _make_client(JUDGE_MODEL)
     comparison = compare_systems(results_current, results_candidate, judge_client,
-                                 workers=workers)
+                                 workers=workers,
+                                 early_stop_threshold=ACCEPTANCE_THRESHOLD)
 
     wins_a = comparison["wins_a"]
     wins_b = comparison["wins_b"]

@@ -354,13 +354,13 @@ def _bundle_editable_context(ideas_dir: Path, champion_version: str) -> str:
 # ── Prompts ───────────────────────────────────────────────────────────────────
 
 ANALYZE_PROMPT = """\
-You are improving a research idea generator. Analyze why the previous candidate lost
-and identify the single most impactful improvement to make next.
+You are improving a research idea generator. Analyze what is fundamentally limiting
+idea quality and identify the single most impactful architectural change to make next.
 
 FRAMING:
 - The code below is the CHAMPION — it is currently winning. It is the starting point.
 - "Losing verdicts" show where the PREVIOUS candidate (B) failed vs the champion (A).
-- Your job: propose a change to the champion that makes ideas better than the champion.
+- Your job: identify what STRUCTURAL change would produce genuinely better ideas.
 
 ## Champion codebase ({version})
 The REAL logic lives in idea_tournament/ — target that for improvements.
@@ -379,11 +379,23 @@ Previous candidate win rate: {win_rate:.1%} ({total} pairs judged)
 {edit_history}
 
 ## Your task
-Identify the SINGLE most important improvement. Reference the actual code.
-Do NOT repeat anything from the experiment log above.
-Do NOT add error handling — focus only on IDEA QUALITY.
+Think ARCHITECTURALLY. The current pipeline is: SOTA retrieval → tree search → Elo tournament → expansion.
+Ask: is this the right structure at all? What fundamentally different approach could produce better ideas?
 
-Output: 2-3 sentences describing the root cause and the improvement direction.
+Consider radical alternatives (pick the most promising given the failure pattern):
+- Multi-agent debate: multiple LLM agents generate independently, then critique each other's ideas
+- Cross-domain isomorphism: find analogous solved problems in other fields, transfer the solution structure
+- Adversarial generation: one agent proposes, another aggressively attacks assumptions, iterate
+- Constraint inversion: start from what is impossible today, work backwards to what would make it possible
+- Hypothesis-first: generate a falsifiable hypothesis first, then design the idea around proving it
+- Persona diversity: use radically different expert personas (skeptic, practitioner, theorist, outsider)
+- Diverge-then-converge: maximize idea diversity at generation, use multiple judges to filter
+- Staged refinement: generate rough seeds, then deep-dive the best one with many more LLM calls
+
+Do NOT repeat anything from the experiment log above.
+Do NOT suggest minor prompt tweaks — aim for structural changes to how ideas are generated.
+
+Output: 2-3 sentences identifying the core limitation and the structural change direction.
 """
 
 _OUTPUT_FORMAT = """\
@@ -413,8 +425,9 @@ Respond with ONLY the complete Python file — no markdown fences, no preamble.
 """
 
 PROPOSE_EDIT_PROMPT = """\
-You are a software engineer improving a research idea generator.
-Implement the improvement direction selected by the tournament below.
+You are a software engineer implementing a new research idea generation strategy.
+The tournament below selected a fundamentally different approach to generating ideas —
+implement it fully and faithfully.
 
 ## Full generator codebase ({version})
 {code_bundle}
@@ -422,7 +435,7 @@ Implement the improvement direction selected by the tournament below.
 ## Failure analysis
 {failure_analysis}
 
-## Tournament-selected improvement direction
+## Tournament-selected generation strategy
 Selected by IdeaTreeSearch + Elo from {n_candidates} candidates:
 
 {tournament_winner}
@@ -434,30 +447,56 @@ Selected by IdeaTreeSearch + Elo from {n_candidates} candidates:
 {edit_history}
 
 ## Your task
-Implement the tournament-selected direction above as a concrete code change.
-Stay faithful to the direction — do not substitute a different approach.
-Use the judge preferences above to ensure the change targets what the judge rewards.
+Implement the tournament-selected strategy as a NEW generate_idea() method.
+This is a structural change — you may completely replace the current tree search,
+tournament, or expansion logic with the new approach.
+
+Implementation guidelines:
+- If the strategy involves multiple agents: implement multiple distinct call_llm() calls
+  with different system roles (proposer, critic, devil's advocate, synthesizer, etc.)
+- If the strategy involves isomorphism/analogy: add a step that maps the topic to an
+  analogous domain and transfers its solution structure
+- If the strategy involves adversarial generation: implement explicit attack/defense rounds
+- If the strategy involves persona diversity: define each persona as a distinct prompt
+  and have each generate independently before synthesis
+- Budget ~10-15 LLM calls per idea (same as champion) — use them differently, not fewer
+
+The result must still produce output in IDEA_FORMAT. But the path to get there can be
+completely different from the champion's tree-search → tournament → expand pipeline.
+
 Then write the output file following the format below.
 
 """ + _OUTPUT_FORMAT
 
 REFLECT_PROMPT = """\
-The last edit to the research idea generator did NOT improve performance
-(mini-eval win rate: {win_rate:.1%}, needed >{threshold:.1%}).
+The last edit did NOT improve performance (mini-eval: {win_rate:.1%}, needed >{threshold:.1%}).
 
 ## Edit that was tried
 {edit_description}
 
 ## Why it likely didn't help
-Think about: did it address the root cause? Was it too minor? Did it overcomplicate?
+Was it too incremental? Did it stay too close to the existing architecture?
+The pattern of failed edits suggests the current pipeline structure may be the bottleneck —
+not just its prompts or parameters.
 
 ## Full generator codebase (current state)
 {code_bundle}
 
-## Failure analysis (unchanged)
+## Failure analysis
 {failure_analysis}
 
-Suggest a DIFFERENT approach to fixing the same failure pattern.
+## Your task
+Try something STRUCTURALLY DIFFERENT. If the last attempt tweaked prompts, try a different
+generation paradigm entirely. Consider:
+- Replacing tree search with multi-agent debate (agents argue for different ideas)
+- Adding an adversarial step (explicitly attack the best idea's weaknesses, then fix them)
+- Using cross-domain analogical reasoning (map to isomorphic problem in another field)
+- Replacing the Elo tournament with a Socratic dialogue that sharpens the best idea
+- Generating 3 radically different ideas from 3 expert personas, then synthesizing
+
+The goal is ideas that are genuinely more novel and better-grounded, not ideas that score
+better because of prompt formatting. Implement a real architectural change.
+
 Then write the output file following the format below.
 
 """ + _OUTPUT_FORMAT
@@ -558,13 +597,23 @@ Already tried (do NOT repeat):
 Generator codebase:
 {code_bundle}
 
-Generate exactly 3 high-level improvement APPROACHES that each attack this failure
-from a fundamentally different angle. Think in terms of WHAT to change:
-prompts, algorithm structure, scoring/tournament mechanics, retrieval, parameters.
+Generate exactly 3 ARCHITECTURALLY DISTINCT improvement approaches. These must be
+fundamentally different generation paradigms — not prompt tweaks. Each should change
+HOW ideas are generated, not just the wording of existing prompts.
+
+Draw from these categories (pick 3 different ones):
+- MULTI-AGENT: multiple LLM agents with different roles (proposer, critic, synthesizer)
+- ISOMORPHISM: cross-domain analogy search — find solved problems in other fields
+- ADVERSARIAL: red-teaming, assumption-breaking, inversion of constraints
+- STAGED SEARCH: deeper exploration of fewer candidates (vs broad shallow search)
+- PERSONA DIVERSITY: radically different expert viewpoints generating competing ideas
+- HYPOTHESIS-FIRST: start from a falsifiable claim and design backwards
+- EVOLUTIONARY: mutation and recombination of existing ideas rather than tree generation
+- SOCRATIC: chain-of-questions to expose hidden assumptions before generating
 
 For each approach output EXACTLY:
 APPROACH: <one-line name>
-RATIONALE: <one sentence: why this angle addresses the failure>
+RATIONALE: <one sentence: what fundamentally changes in the generation process>
 ---
 """
 
@@ -577,27 +626,30 @@ Failure being addressed: {failure_analysis}
 Generator codebase:
 {code_bundle}
 
-Generate exactly 2 SPECIFIC SUBSYSTEM TARGETS within this approach —
-the exact component or prompt or parameter that should change.
+Generate exactly 2 SPECIFIC IMPLEMENTATION STRATEGIES within this approach.
+Each must be a concrete, codeable design — describe the new generation flow,
+not just what prompt to tweak.
 
 For each output EXACTLY:
 TARGET: <one-line name>
-DESCRIPTION: <one sentence: the specific component and how to change it>
+DESCRIPTION: <one sentence: what the new generation flow does step-by-step>
 ---
 """
 
 _IMPR_L3_PROMPT = """\
-Subsystem target: {target_name} — {target_description}
+Implementation strategy: {target_name} — {target_description}
 Parent approach: {approach_name}
 Failure being addressed: {failure_analysis}
 
-Generate exactly 2 CONCRETE IMPLEMENTATION VARIANTS for this target —
-different ways to implement the change, varying in e.g. scope, wording, mechanism.
+Generate exactly 2 CONCRETE VARIANTS of this strategy —
+different ways to implement it that vary in a meaningful design dimension
+(e.g., number of agents, how opinions are aggregated, what the adversary targets).
 
 For each variant output EXACTLY:
 VARIANT: <one-line name>
-IMPLEMENTATION: <2-3 sentences: the exact code change — which prompt/function/value
-  changes, what the new version says/does, and why it fixes the failure>
+IMPLEMENTATION: <3-4 sentences: describe the exact new generate_idea() flow —
+  how many LLM calls, what each call does, how results are combined,
+  and what specific quality property this targets vs the current champion>
 ---
 """
 
@@ -998,7 +1050,8 @@ def _run_mini_eval(
         try:
             judge_client = make_client(JUDGE_MODEL)
             result = compare_systems(results_champion, results_candidate, judge_client,
-                                     workers=workers)
+                                     workers=workers,
+                                     early_stop_threshold=MINI_IMPROVEMENT_THRESHOLD)
             win_rate = result["win_rate_b"]
             logger.info("Mini-eval: %s vs %s → win_rate=%.1f%% (%d pairs)",
                         champion_version, candidate_version, win_rate * 100,

@@ -139,11 +139,60 @@ def _judge_topic(topic_id: str, topic: str, entries_a: list, entries_b: list,
     return results
 
 
+def _check_early_stop(
+    wins_b: int, wins_a: int, ties: int,
+    n_total: int, threshold: float, min_pairs: int = 8,
+) -> tuple[bool, str]:
+    """Return (should_stop, reason) when P(final_win_rate >= threshold) < 10%.
+
+    Uses the Wilson score upper confidence bound at the 90th percentile (z=1.28).
+    This gives the highest plausible true win rate consistent with current data.
+    If even this upper bound is below the acceptance threshold, there is less than
+    a 10% chance the candidate can recover — stop early.
+
+    min_pairs: don't fire before this many pairs have been judged (avoid noise).
+    """
+    k = wins_a + wins_b + ties
+    if k < min_pairs or n_total <= 0:
+        return False, ""
+
+    remaining = n_total - k
+    effective = wins_b + 0.5 * ties  # ties count as half-wins
+
+    # Hard check: even winning every remaining pair can't reach threshold
+    if (effective + remaining) / n_total < threshold:
+        max_rate = (effective + remaining) / n_total
+        return True, (
+            f"early stop — max achievable {max_rate:.1%} < threshold {threshold:.0%} "
+            f"({k}/{n_total} pairs judged, {wins_b}W/{wins_a}L/{ties}T)"
+        )
+
+    # Wilson score upper bound at 90th percentile (one-tailed, z=1.2816)
+    p = effective / k
+    z = 1.2816
+    denom = 1.0 + z * z / k
+    center = (p + z * z / (2.0 * k)) / denom
+    spread = z * ((p * (1.0 - p) + z * z / (4.0 * k)) / k) ** 0.5 / denom
+    p_upper = min(center + spread, 1.0)
+
+    if p_upper < threshold:
+        return True, (
+            f"early stop — P(win_rate≥{threshold:.0%}) < 10% "
+            f"(90th-pct upper bound {p_upper:.1%} after {k}/{n_total} pairs, "
+            f"{wins_b}W/{wins_a}L/{ties}T)"
+        )
+
+    return False, ""
+
+
 def compare_systems(results_a: list[dict], results_b: list[dict], client,
-                    model: str = JUDGE_MODEL, workers: int = 1) -> dict:
+                    model: str = JUDGE_MODEL, workers: int = 1,
+                    early_stop_threshold: float | None = None) -> dict:
     """Pairwise comparison across all shared topics.
 
     workers > 1 judges multiple topics concurrently for faster throughput.
+    early_stop_threshold: if set, stop judging early when P(win_rate >= threshold) < 10%.
+      Pass the acceptance threshold (e.g. 0.55) to skip wasted judging on clear losers.
     """
     groups_a = _group_by_topic(results_a)
     groups_b = _group_by_topic(results_b)
@@ -157,8 +206,14 @@ def compare_systems(results_a: list[dict], results_b: list[dict], client,
         else:
             valid_topics.append(topic_id)
 
+    # Total pairs to judge (for early stopping denominator)
+    n_total_pairs = sum(
+        min(len(groups_a[t]), len(groups_b[t])) for t in valid_topics
+    )
+
     wins_a = wins_b = ties = 0
     verdicts = []
+    stopped_early = False
 
     def _collect(topic_verdicts):
         nonlocal wins_a, wins_b, ties
@@ -171,12 +226,23 @@ def compare_systems(results_a: list[dict], results_b: list[dict], client,
                 ties += 1
             verdicts.append(v)
 
+    def _should_stop():
+        if early_stop_threshold is None:
+            return False, ""
+        return _check_early_stop(wins_b, wins_a, ties, n_total_pairs,
+                                 early_stop_threshold)
+
     effective_workers = min(workers, len(valid_topics))
     if effective_workers <= 1:
         for topic_id in valid_topics:
             topic = groups_a[topic_id][0]["topic"]
             _collect(_judge_topic(topic_id, topic, groups_a[topic_id],
                                   groups_b[topic_id], client, model))
+            stop, reason = _should_stop()
+            if stop:
+                logger.info("Early stop: %s", reason)
+                stopped_early = True
+                break
     else:
         with ThreadPoolExecutor(max_workers=effective_workers) as executor:
             futures = {
@@ -187,15 +253,28 @@ def compare_systems(results_a: list[dict], results_b: list[dict], client,
                 for topic_id in valid_topics
             }
             for future in as_completed(futures):
-                _collect(future.result())
+                try:
+                    _collect(future.result())
+                except Exception as e:
+                    logger.error("Judge future failed: %s", e)
+                stop, reason = _should_stop()
+                if stop:
+                    logger.info("Early stop: %s", reason)
+                    stopped_early = True
+                    # Cancel any queued (not yet started) futures
+                    for f in futures:
+                        f.cancel()
+                    break
 
     total = wins_a + wins_b + ties
     win_rate_b = (wins_b + 0.5 * ties) / total if total > 0 else 0.0
-    logger.info("Done [%s] — A:%d  B:%d  ties:%d  B win rate: %.1f%%",
-                model.split("-")[0], wins_a, wins_b, ties, win_rate_b * 100)
+    suffix = f" [early stop after {total}/{n_total_pairs}]" if stopped_early else ""
+    logger.info("Done [%s] — A:%d  B:%d  ties:%d  B win rate: %.1f%%%s",
+                model.split("-")[0], wins_a, wins_b, ties, win_rate_b * 100, suffix)
 
     return {"wins_a": wins_a, "wins_b": wins_b, "ties": ties,
-            "total_judged": total, "win_rate_b": win_rate_b, "verdicts": verdicts}
+            "total_judged": total, "win_rate_b": win_rate_b,
+            "verdicts": verdicts, "stopped_early": stopped_early}
 
 
 def blind_compare_systems(results_a: list[dict], results_b: list[dict],
