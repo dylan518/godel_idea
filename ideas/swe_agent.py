@@ -1422,7 +1422,7 @@ def run_swe_loop(
             logger.error("Mini-eval crashed: %s", e)
             win_rate = 0.0
         finally:
-            # Clean up temp file regardless
+            # Clean up temp file regardless (accepted code is preserved below)
             if tmp_path.exists():
                 tmp_path.unlink()
 
@@ -1439,6 +1439,13 @@ def run_swe_loop(
         if improved:
             logger.info("Round %d ACCEPTED (mini-eval %.1f%% > %.0f%%)",
                         rnd, win_rate * 100, MINI_IMPROVEMENT_THRESHOLD * 100)
+            # Save intermediate accepted round as a permanent snapshot
+            round_path = systems_dir / f"{tmp_version}.py"
+            try:
+                round_path.write_text(new_code)
+                logger.info("Saved intermediate snapshot: %s", round_path.name)
+            except Exception as _rpe:
+                logger.warning("Could not save round snapshot %s: %s", round_path, _rpe)
             current_code = new_code
             current_version_name = tmp_version
             # Update code_bundle so subsequent rounds see the accumulated changes

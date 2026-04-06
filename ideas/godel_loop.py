@@ -126,7 +126,7 @@ def cmd_benchmark(args):
 
 def cmd_compare(args):
     from runner import run_system, load_topics
-    from judge import compare_systems, blind_compare_systems, JUDGE_MODEL
+    from judge import compare_systems, blind_compare_systems, compute_judge_confusion_matrix, JUDGE_MODEL
 
     candidate = args.candidate
     current = _read_current_version()
@@ -198,6 +198,7 @@ def cmd_compare(args):
 
     # Blind judge — independent Gemini sample, never used for accept/reject
     blind = None
+    confusion_matrix = None
     blind_n = getattr(args, "blind_n", 2)
     if blind_n > 0:
         logger.info("Running blind judge on %d sampled topic(s)...", blind_n)
@@ -205,9 +206,26 @@ def cmd_compare(args):
             blind = blind_compare_systems(results_current, results_candidate, n_sample=blind_n)
             logger.info("Blind win rate: %.1f%%  (primary: %.1f%%)",
                         blind["win_rate_b"] * 100, win_rate * 100)
+            # Confusion matrix: per-pair agreement between primary and blind judge
+            cm = compute_judge_confusion_matrix(comparison["verdicts"], blind["verdicts"])
+            confusion_matrix = cm
+            if cm["n_compared"] > 0:
+                logger.info("Judge confusion: agreement=%.0f%%  flip=%.0f%%  (%d pairs)",
+                            (cm["agreement_rate"] or 0) * 100,
+                            (cm["flip_rate"] or 0) * 100,
+                            cm["n_compared"])
+                logger.info("  both→B:%d  primary_only→B:%d  blind_only→B:%d  both→A:%d",
+                            cm["both_say_B"], cm["primary_only_B"],
+                            cm["blind_only_B"], cm["both_say_A"])
+                if cm["flip_rate"] and cm["flip_rate"] > 0.30:
+                    logger.warning(
+                        "GOODHART ALERT (confusion): flip_rate=%.0f%% > 30%% — "
+                        "candidate may be gaming primary judge",
+                        cm["flip_rate"] * 100,
+                    )
             divergence = abs(win_rate - blind["win_rate_b"])
             if divergence > 0.30:
-                logger.warning("GOODHART ALERT: primary=%.0f%% vs blind=%.0f%% (divergence %.0f%%)",
+                logger.warning("GOODHART ALERT (divergence): primary=%.0f%% vs blind=%.0f%% (%.0f%%)",
                                win_rate * 100, blind["win_rate_b"] * 100, divergence * 100)
         except Exception as e:
             logger.error("Blind judge failed: %s", e)
@@ -219,6 +237,7 @@ def cmd_compare(args):
             "candidate": candidate,
             **comparison,
             "blind": blind,
+            "confusion_matrix": confusion_matrix,
         }, f, indent=2)
     logger.info("Detailed report saved to: %s", report_path)
 
@@ -259,7 +278,7 @@ def cmd_generate(args):
 def cmd_evolve(args):
     """Auto-evolve from current version to S{target}, generating and testing each iteration."""
     from runner import run_system, load_topics, cache_is_valid
-    from judge import compare_systems, blind_compare_systems, JUDGE_MODEL
+    from judge import compare_systems, blind_compare_systems, compute_judge_confusion_matrix, JUDGE_MODEL
     from meta import generate_next_system
     from systems.base import make_client as _make_client
 
@@ -357,17 +376,35 @@ def cmd_evolve(args):
 
             # --- Blind judge ---
             blind = None
+            confusion_matrix = None
             blind_n = getattr(args, "blind_n", 5)
             if blind_n > 0:
                 try:
+                    # Run on ALL topics (n_sample=None) for a full confusion matrix
                     blind = blind_compare_systems(results_current, results_candidate,
-                                                  n_sample=blind_n)
+                                                  n_sample=None)
                     logger.info("Blind win rate: %.1f%%  (primary: %.1f%%)",
                                 blind["win_rate_b"] * 100, win_rate * 100)
+                    cm = compute_judge_confusion_matrix(comparison["verdicts"], blind["verdicts"])
+                    confusion_matrix = cm
+                    if cm["n_compared"] > 0:
+                        logger.info("Judge confusion: agreement=%.0f%%  flip=%.0f%%  (%d pairs)",
+                                    (cm["agreement_rate"] or 0) * 100,
+                                    (cm["flip_rate"] or 0) * 100,
+                                    cm["n_compared"])
+                        logger.info("  both→B:%d  primary_only→B:%d  blind_only→B:%d  both→A:%d",
+                                    cm["both_say_B"], cm["primary_only_B"],
+                                    cm["blind_only_B"], cm["both_say_A"])
+                        if cm["flip_rate"] and cm["flip_rate"] > 0.30:
+                            logger.warning(
+                                "GOODHART ALERT (confusion): flip_rate=%.0f%% > 30%% — "
+                                "candidate may be gaming primary judge",
+                                cm["flip_rate"] * 100,
+                            )
                     divergence = abs(win_rate - blind["win_rate_b"])
                     if divergence > 0.30:
                         logger.warning(
-                            "GOODHART ALERT: primary=%.0f%% vs blind=%.0f%%",
+                            "GOODHART ALERT (divergence): primary=%.0f%% vs blind=%.0f%%",
                             win_rate * 100, blind["win_rate_b"] * 100)
                 except Exception as e:
                     logger.error("Blind judge failed: %s", e)
@@ -375,7 +412,8 @@ def cmd_evolve(args):
             # Save report
             with open(report_path, "w") as f:
                 json.dump({"current": current, "candidate": next_version,
-                           **comparison, "blind": blind}, f, indent=2)
+                           **comparison, "blind": blind,
+                           "confusion_matrix": confusion_matrix}, f, indent=2)
             logger.info("Report saved to %s", report_path)
 
         # --- Accept if threshold met ---
@@ -385,16 +423,23 @@ def cmd_evolve(args):
             _write_current_version(next_version)
             log_path = IDEAS_DIR / "results" / "evolution_log.jsonl"
             blind_win_rate = None
+            agreement_rate = None
+            flip_rate = None
             if report_path.exists():
                 with open(report_path) as rf:
                     rdata = json.load(rf)
                 blind_win_rate = (rdata.get("blind") or {}).get("win_rate_b")
+                cm_data = rdata.get("confusion_matrix") or {}
+                agreement_rate = cm_data.get("agreement_rate")
+                flip_rate = cm_data.get("flip_rate")
             entry = {
                 "timestamp": datetime.now(timezone.utc).isoformat(),
                 "from_version": current,
                 "to_version": next_version,
                 "win_rate": win_rate,
                 "blind_win_rate": blind_win_rate,
+                "judge_agreement_rate": agreement_rate,
+                "judge_flip_rate": flip_rate,
             }
             with open(log_path, "a") as f:
                 f.write(json.dumps(entry) + "\n")
@@ -411,7 +456,7 @@ def cmd_swe_evolve(args):
     """SWE agent loop: multi-turn targeted edits to evolve from current champion."""
     from swe_agent import run_swe_loop
     from runner import run_system, load_topics, cache_is_valid
-    from judge import compare_systems, blind_compare_systems, JUDGE_MODEL
+    from judge import compare_systems, blind_compare_systems, compute_judge_confusion_matrix, JUDGE_MODEL
     from systems.base import make_client as _make_client
 
     target = args.target
@@ -512,23 +557,43 @@ def cmd_swe_evolve(args):
                         next_version, win_rate * 100, ACCEPTANCE_THRESHOLD * 100)
 
             blind = None
+            confusion_matrix = None
             blind_n = getattr(args, "blind_n", 5)
             if blind_n > 0:
                 try:
+                    # Run on ALL topics (n_sample=None) for a full confusion matrix
                     blind = blind_compare_systems(results_current, results_candidate,
-                                                  n_sample=blind_n)
+                                                  n_sample=None)
                     divergence = abs(win_rate - blind["win_rate_b"])
                     logger.info("Blind win rate: %.1f%%  (divergence: %.0f%%)",
                                 blind["win_rate_b"] * 100, divergence * 100)
+                    # Confusion matrix: per-pair agreement between primary and blind judge
+                    cm = compute_judge_confusion_matrix(comparison["verdicts"], blind["verdicts"])
+                    confusion_matrix = cm
+                    if cm["n_compared"] > 0:
+                        logger.info("Judge confusion: agreement=%.0f%%  flip=%.0f%%  (%d pairs)",
+                                    (cm["agreement_rate"] or 0) * 100,
+                                    (cm["flip_rate"] or 0) * 100,
+                                    cm["n_compared"])
+                        logger.info("  both→B:%d  primary_only→B:%d  blind_only→B:%d  both→A:%d",
+                                    cm["both_say_B"], cm["primary_only_B"],
+                                    cm["blind_only_B"], cm["both_say_A"])
+                        if cm["flip_rate"] and cm["flip_rate"] > 0.30:
+                            logger.warning(
+                                "GOODHART ALERT (confusion): flip_rate=%.0f%% > 30%% — "
+                                "candidate may be gaming primary judge",
+                                cm["flip_rate"] * 100,
+                            )
                     if divergence > 0.30:
-                        logger.warning("GOODHART ALERT: primary=%.0f%% vs blind=%.0f%%",
+                        logger.warning("GOODHART ALERT (divergence): primary=%.0f%% vs blind=%.0f%%",
                                        win_rate * 100, blind["win_rate_b"] * 100)
                 except Exception as e:
                     logger.error("Blind judge failed: %s", e)
 
             with open(report_path, "w") as f:
                 json.dump({"current": current, "candidate": next_version,
-                           **comparison, "blind": blind}, f, indent=2)
+                           **comparison, "blind": blind,
+                           "confusion_matrix": confusion_matrix}, f, indent=2)
 
         accepted = win_rate > ACCEPTANCE_THRESHOLD
         if accepted:
@@ -536,16 +601,23 @@ def cmd_swe_evolve(args):
             _write_current_version(next_version)
             log_path = IDEAS_DIR / "results" / "evolution_log.jsonl"
             blind_win_rate = None
+            agreement_rate = None
+            flip_rate = None
             if report_path.exists():
                 with open(report_path) as rf:
                     rdata = json.load(rf)
                 blind_win_rate = (rdata.get("blind") or {}).get("win_rate_b")
+                cm_data = rdata.get("confusion_matrix") or {}
+                agreement_rate = cm_data.get("agreement_rate")
+                flip_rate = cm_data.get("flip_rate")
             entry = {
                 "timestamp": datetime.now(timezone.utc).isoformat(),
                 "from_version": current,
                 "to_version": next_version,
                 "win_rate": win_rate,
                 "blind_win_rate": blind_win_rate,
+                "judge_agreement_rate": agreement_rate,
+                "judge_flip_rate": flip_rate,
             }
             with open(log_path, "a") as f:
                 f.write(json.dumps(entry) + "\n")

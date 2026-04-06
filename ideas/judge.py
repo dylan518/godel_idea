@@ -278,11 +278,15 @@ def compare_systems(results_a: list[dict], results_b: list[dict], client,
 
 
 def blind_compare_systems(results_a: list[dict], results_b: list[dict],
-                          n_sample: int = 2) -> dict:
-    """Run blind Gemini judge on a random sample of topics.
+                          n_sample: int | None = None) -> dict:
+    """Run blind Gemini judge on topics, using idea[0] per topic.
+
+    n_sample=None (default) runs on ALL shared topics for a full confusion matrix.
+    Pass an int to subsample (legacy behaviour).
 
     Deliberately isolated — creates its own client, never touches primary judge.
     Results are for tracking only, never used for accept/reject.
+    Each verdict stores idea_index=0 so it can be matched against primary verdicts.
     """
     sys.path.insert(0, str(Path(__file__).parent / "systems"))
     from base import make_client
@@ -293,9 +297,12 @@ def blind_compare_systems(results_a: list[dict], results_b: list[dict],
     groups_b = _group_by_topic(results_b)
     shared = sorted(set(groups_a) & set(groups_b))
 
-    sample = random.sample(shared, min(n_sample, len(shared)))
-    logger.info("Blind judge [%s] sampling %d/%d topics: %s",
-                BLIND_JUDGE_MODEL, len(sample), len(shared), sample)
+    if n_sample is None:
+        sample = shared          # all topics
+    else:
+        sample = random.sample(shared, min(n_sample, len(shared)))
+    logger.info("Blind judge [%s] running %d/%d topics",
+                BLIND_JUDGE_MODEL, len(sample), len(shared))
 
     wins_a = wins_b = ties = 0
     verdicts = []
@@ -322,6 +329,7 @@ def blind_compare_systems(results_a: list[dict], results_b: list[dict],
         verdicts.append({
             "topic_id": topic_id,
             "topic": topic,
+            "idea_index": 0,          # always idea[0] — enables confusion matrix matching
             "system_a": groups_a[topic_id][0]["system_version"],
             "system_b": groups_b[topic_id][0]["system_version"],
             "judge_model": BLIND_JUDGE_MODEL,
@@ -336,6 +344,69 @@ def blind_compare_systems(results_a: list[dict], results_b: list[dict],
     return {"wins_a": wins_a, "wins_b": wins_b, "ties": ties,
             "total_judged": total, "win_rate_b": win_rate_b,
             "sampled_topics": sample, "verdicts": verdicts}
+
+
+def compute_judge_confusion_matrix(
+    primary_verdicts: list[dict],
+    blind_verdicts: list[dict],
+) -> dict:
+    """Compute agreement between primary and blind judge on the same pairs.
+
+    Matches by (topic_id, idea_index). Blind always uses idea_index=0.
+
+    Returns:
+      n_compared        — number of matched pairs
+      agreement_rate    — fraction where both judges agree (same winner)
+      flip_rate         — fraction where one says A and the other says B
+                          (the key Goodhart signal — high flip means gaming)
+      both_say_B        — both judges think candidate is better
+      primary_only_B    — primary thinks B wins, blind thinks A wins
+      blind_only_B      — blind thinks B wins, primary thinks A wins
+      both_say_A        — both judges think champion is better
+      matrix            — raw {primary_blind: count} dict
+    """
+    from collections import Counter
+
+    primary_by_key = {
+        (v["topic_id"], v.get("idea_index", 0)): v["winner"]
+        for v in primary_verdicts
+    }
+    blind_by_key = {
+        (v["topic_id"], v.get("idea_index", 0)): v["winner"]
+        for v in blind_verdicts
+    }
+
+    overlap = set(primary_by_key) & set(blind_by_key)
+    if not overlap:
+        return {
+            "n_compared": 0,
+            "agreement_rate": None,
+            "flip_rate": None,
+            "both_say_B": 0, "primary_only_B": 0,
+            "blind_only_B": 0, "both_say_A": 0,
+            "matrix": {},
+        }
+
+    matrix: Counter = Counter()
+    for key in overlap:
+        p = primary_by_key[key]
+        b = blind_by_key[key]
+        matrix[f"{p}_{b}"] += 1
+
+    n = len(overlap)
+    agree = sum(c for k, c in matrix.items() if k.split("_")[0] == k.split("_")[1])
+    flip  = matrix.get("A_B", 0) + matrix.get("B_A", 0)
+
+    return {
+        "n_compared": n,
+        "agreement_rate": round(agree / n, 3),
+        "flip_rate": round(flip / n, 3),
+        "both_say_B":     matrix.get("B_B", 0),
+        "primary_only_B": matrix.get("B_A", 0),   # primary→B, blind→A  (suspicious)
+        "blind_only_B":   matrix.get("A_B", 0),   # primary→A, blind→B
+        "both_say_A":     matrix.get("A_A", 0),
+        "matrix": dict(matrix),
+    }
 
 
 def load_results(path: str) -> list[dict]:
