@@ -2,7 +2,7 @@
 
 from abc import ABC, abstractmethod
 
-DEFAULT_MODEL = "gpt-4.1-mini"
+DEFAULT_MODEL = "deepseek-chat"
 STEP_TIMEOUT = 90  # seconds per LLM call before raising TimeoutError
 
 # All systems must produce ideas in this format.
@@ -27,6 +27,11 @@ def make_client(model: str):
     if model.startswith(("gpt-", "o1-", "o3-", "o4-")):
         from openai import OpenAI
         return OpenAI()
+    elif model.startswith("deepseek-"):
+        import os
+        from openai import OpenAI
+        return OpenAI(api_key=os.environ["DEEPSEEK_API_KEY"],
+                      base_url="https://api.deepseek.com")
     elif model.startswith("gemini-"):
         return None
     else:
@@ -72,7 +77,7 @@ def call_llm(prompt: str, model: str, client, temperature: float,
     _logger = _logging.getLogger("base")
 
     def _call():
-        if model.startswith(("gpt-", "o1-", "o3-", "o4-")):
+        if model.startswith(("gpt-", "o1-", "o3-", "o4-", "deepseek-")):
             response = client.chat.completions.create(
                 model=model,
                 max_tokens=max_tokens,

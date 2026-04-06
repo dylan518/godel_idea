@@ -300,11 +300,11 @@ def format_swe_context(ctx: dict, ideas_dir: Path, champion_version: str) -> str
     if champ_reasons:
         judge_lines.append("\nWhen the CHAMPION wins, judges say things like:")
         for r in champ_reasons[-4:]:
-            judge_lines.append(f"  > {r[:200]}")
+            judge_lines.append(f"  > {r}")
     if cand_reasons:
         judge_lines.append("\nWhen the CANDIDATE wins (good — what to aim for):")
         for r in cand_reasons[-4:]:
-            judge_lines.append(f"  > {r[:200]}")
+            judge_lines.append(f"  > {r}")
     if not champ_reasons and not cand_reasons:
         judge_lines.append("(no judge data accumulated yet)")
     sections.append("\n".join(judge_lines))
@@ -358,49 +358,50 @@ def _bundle_editable_context(ideas_dir: Path, champion_version: str) -> str:
 
 # ── Prompts ───────────────────────────────────────────────────────────────────
 
-ANALYZE_PROMPT = """\
-You are improving a research idea generator. Analyze what is fundamentally limiting
-idea quality and identify the single most impactful architectural change to make next.
+DIAGNOSE_PROMPT = """\
+You are diagnosing exactly why a research idea generator is losing pairwise evaluations.
 
-FRAMING:
-- The code below is the CHAMPION — it is currently winning. It is the starting point.
-- "Losing verdicts" show where the PREVIOUS candidate (B) failed vs the champion (A).
-- Your job: identify what STRUCTURAL change would produce genuinely better ideas.
+## Generation pipeline — the code that produced the losing ideas
+{champion_code}
 
-## Champion codebase ({version})
-The REAL logic lives in idea_tournament/ — target that for improvements.
+## Concrete failing examples — where our ideas lost
 
-{code_bundle}
+{grounded_failures}
 
-## Why the previous candidate lost
-Previous candidate win rate: {win_rate:.1%} ({total} pairs judged)
+## What has already been tried and failed this session
+{failed_attempts}
 
-{losing_verdicts}
-
-## Context: pipeline, judge preferences, experiment history
+## Context: judge preferences and experiment history
 {swe_context}
 
-## Edit history this session
-{edit_history}
-
 ## Your task
-Think ARCHITECTURALLY. The current pipeline is: SOTA retrieval → tree search → Elo tournament → expansion.
-Ask: is this the right structure at all? What fundamentally different approach could produce better ideas?
+Study the losing ideas above carefully. Identify the specific step in the pipeline
+where quality broke down — was the hypothesis too generic? Did selection pick the safe
+option? Did the critique fail to add experimental specificity? Did the revision water
+things down?
 
-Consider radical alternatives (pick the most promising given the failure pattern):
-- Multi-agent debate: multiple LLM agents generate independently, then critique each other's ideas
-- Cross-domain isomorphism: find analogous solved problems in other fields, transfer the solution structure
-- Adversarial generation: one agent proposes, another aggressively attacks assumptions, iterate
-- Constraint inversion: start from what is impossible today, work backwards to what would make it possible
-- Hypothesis-first: generate a falsifiable hypothesis first, then design the idea around proving it
-- Persona diversity: use radically different expert personas (skeptic, practitioner, theorist, outsider)
-- Diverge-then-converge: maximize idea diversity at generation, use multiple judges to filter
-- Staged refinement: generate rough seeds, then deep-dive the best one with many more LLM calls
+Diagnose the root cause, then propose ONE targeted concrete fix.
 
-Do NOT repeat anything from the experiment log above.
-Do NOT suggest minor prompt tweaks — aim for structural changes to how ideas are generated.
+Output EXACTLY in this format (no other text):
+DIAGNOSIS: <which specific step failed and precisely why — reference the actual examples>
+FIX: <the single concrete change — which call, what the prompt should do differently>
+EXPECTED_IMPACT: <why this addresses the failure pattern seen above>
+"""
 
-Output: 2-3 sentences identifying the core limitation and the structural change direction.
+ATTACK_PROMPT = """\
+A proposed fix for an underperforming research idea generator:
+
+DIAGNOSIS: {diagnosis}
+FIX: {proposed_fix}
+
+Attack this fix on 3 dimensions:
+1. ROOT CAUSE: Does this actually address the root cause, or just a symptom?
+2. ASSUMPTION: What unstated assumption does this fix make that might not hold?
+3. RESIDUAL FAILURE: What would still fail after making this change?
+
+Then write a REVISED fix that is stronger, more targeted, and addresses all three attacks.
+
+REVISED_FIX: <concrete, strengthened version — specific enough to implement directly as code>
 """
 
 _OUTPUT_FORMAT = """\
@@ -430,20 +431,13 @@ Respond with ONLY the complete Python file — no markdown fences, no preamble.
 """
 
 PROPOSE_EDIT_PROMPT = """\
-You are a software engineer implementing a new research idea generation strategy.
-The tournament below selected a fundamentally different approach to generating ideas —
-implement it fully and faithfully.
+You are a software engineer implementing a targeted improvement to a research idea generator.
 
 ## Full generator codebase ({version})
 {code_bundle}
 
-## Failure analysis
-{failure_analysis}
-
-## Tournament-selected generation strategy
-Selected by IdeaTreeSearch + Elo from {n_candidates} candidates:
-
-{tournament_winner}
+## Diagnosis and proposed fix
+{refined_fix}
 
 ## Context: pipeline, judge preferences, experiment history
 {swe_context}
@@ -452,31 +446,15 @@ Selected by IdeaTreeSearch + Elo from {n_candidates} candidates:
 {edit_history}
 
 ## Your task
-Implement the tournament-selected strategy as a NEW generate_idea() method.
-This is a structural change — you may completely replace the current tree search,
-tournament, or expansion logic with the new approach.
+Implement the proposed fix as a NEW generate_idea() method.
+Make the minimal targeted change that addresses the diagnosis — do not restructure
+unrelated parts of the pipeline.
 
-Implementation guidelines:
-- If the strategy involves multiple agents: implement multiple distinct call_llm() calls
-  with different system roles (proposer, critic, devil's advocate, synthesizer, etc.)
-- If the strategy involves isomorphism/analogy: add a step that maps the topic to an
-  analogous domain and transfers its solution structure
-- If the strategy involves adversarial generation: implement explicit attack/defense rounds
-- If the strategy involves persona diversity: define each persona as a distinct prompt
-  and have each generate independently before synthesis
-- Budget ~10-15 LLM calls per idea (same as champion) — use them differently, not fewer
-
-CRITICAL robustness requirements (failure to follow these causes runtime crashes):
-- Every call_llm() call MUST be wrapped in try/except — never let an API call crash the function
+CRITICAL robustness requirements:
+- Every call_llm() call MUST be wrapped in try/except with a sensible fallback
 - Never call len(), enumerate(), or index into a variable that might be None or empty
-  → always check: `if not results: results = [fallback_value]`
-- Every intermediate result (list of candidates, parsed JSON, etc.) must have a fallback:
-  if parsing fails or returns empty, use a sensible default and continue
 - The generate_idea() method must ALWAYS return a non-empty string, even on full failure
-  → end with: `return final_idea or call_llm(fallback_prompt, model, client, temperature)`
-
-The result must still produce output in IDEA_FORMAT. But the path to get there can be
-completely different from the champion's tree-search → tournament → expand pipeline.
+- Budget ~10-15 LLM calls per idea
 
 Then write the output file following the format below.
 
@@ -488,31 +466,17 @@ The last edit did NOT improve performance (mini-eval: {win_rate:.1%}, needed >{t
 ## Edit that was tried
 {edit_description}
 
-## Why it likely didn't help
-Was it too incremental? Did it stay too close to the existing architecture?
-The pattern of failed edits suggests the current pipeline structure may be the bottleneck —
-not just its prompts or parameters.
+## Revised diagnosis and fix
+{refined_fix}
 
 ## Full generator codebase (current state)
 {code_bundle}
 
-## Failure analysis
-{failure_analysis}
-
 ## Your task
-Try something STRUCTURALLY DIFFERENT. If the last attempt tweaked prompts, try a different
-generation paradigm entirely. Consider:
-- Replacing tree search with multi-agent debate (agents argue for different ideas)
-- Adding an adversarial step (explicitly attack the best idea's weaknesses, then fix them)
-- Using cross-domain analogical reasoning (map to isomorphic problem in another field)
-- Replacing the Elo tournament with a Socratic dialogue that sharpens the best idea
-- Generating 3 radically different ideas from 3 expert personas, then synthesizing
+Implement the revised fix. The previous attempt failed — the refined fix above
+addresses why. Make a targeted change that differs from what was tried.
 
-The goal is ideas that are genuinely more novel and better-grounded, not ideas that score
-better because of prompt formatting. Implement a real architectural change.
-
-CRITICAL: Wrap every call_llm() in try/except. Never call len() on a value that could be
-None. Every list/dict result needs a fallback. generate_idea() must always return a string.
+CRITICAL: Wrap every call_llm() in try/except. generate_idea() must always return a string.
 
 Then write the output file following the format below.
 
@@ -588,328 +552,68 @@ def _generate_mini_eval_topics(n: int = 5, model: str = "gpt-4.1-mini") -> list[
     return [{"id": f"E{i}", "topic": t, "domain": "ML"}
             for i, t in enumerate(_BENCHMARK_TOPICS[-n:], 1)]
 
+def _extract_grounded_failures(report_path: Path, ideas_dir: Path, n: int = 4) -> str:
+    """Extract concrete failing examples with actual idea text for grounded diagnosis.
 
-# ── Improvement-idea tournament ───────────────────────────────────────────────
-# Uses the SAME IdeaTreeSearch + Elo pipeline that generates research ideas to
-# explore the self-improvement search space. True Gödel recursion:
-# the pipeline uses itself to decide how to improve itself.
-#
-# Tree structure maps naturally to improvement space:
-#   L1 (3 nodes) — broad approach category (prompt / algorithm / parameters)
-#   L2 (6 nodes) — specific subsystem within that category
-#   L3 (12 leaves) — concrete implementable change
-# The Elo tournament then selects the highest-impact, most implementable leaf.
-
-# Prompts adapted from idea_tournament/prompts.py for the meta-improvement problem.
-# The "topic" is the failure mode; L1/L2/L3 explore the improvement space.
-
-_IMPR_L1_PROMPT = """\
-A research idea generator is losing pairwise evaluations because:
-
-{failure_analysis}
-
-Already tried (do NOT repeat):
-{tried}
-
-Generator codebase:
-{code_bundle}
-
-Generate exactly 3 ARCHITECTURALLY DISTINCT improvement approaches. These must be
-fundamentally different generation paradigms — not prompt tweaks. Each should change
-HOW ideas are generated, not just the wording of existing prompts.
-
-Draw from these categories (pick 3 different ones):
-- MULTI-AGENT: multiple LLM agents with different roles (proposer, critic, synthesizer)
-- ISOMORPHISM: cross-domain analogy search — find solved problems in other fields
-- ADVERSARIAL: red-teaming, assumption-breaking, inversion of constraints
-- STAGED SEARCH: deeper exploration of fewer candidates (vs broad shallow search)
-- PERSONA DIVERSITY: radically different expert viewpoints generating competing ideas
-- HYPOTHESIS-FIRST: start from a falsifiable claim and design backwards
-- EVOLUTIONARY: mutation and recombination of existing ideas rather than tree generation
-- SOCRATIC: chain-of-questions to expose hidden assumptions before generating
-
-For each approach output EXACTLY:
-APPROACH: <one-line name>
-RATIONALE: <one sentence: what fundamentally changes in the generation process>
----
-"""
-
-_IMPR_L2_PROMPT = """\
-Improvement approach: {approach_name}
-Rationale: {approach_rationale}
-
-Failure being addressed: {failure_analysis}
-
-Generator codebase:
-{code_bundle}
-
-Generate exactly 2 SPECIFIC IMPLEMENTATION STRATEGIES within this approach.
-Each must be a concrete, codeable design — describe the new generation flow,
-not just what prompt to tweak.
-
-For each output EXACTLY:
-TARGET: <one-line name>
-DESCRIPTION: <one sentence: what the new generation flow does step-by-step>
----
-"""
-
-_IMPR_L3_PROMPT = """\
-Implementation strategy: {target_name} — {target_description}
-Parent approach: {approach_name}
-Failure being addressed: {failure_analysis}
-
-Generate exactly 2 CONCRETE VARIANTS of this strategy —
-different ways to implement it that vary in a meaningful design dimension
-(e.g., number of agents, how opinions are aggregated, what the adversary targets).
-
-For each variant output EXACTLY:
-VARIANT: <one-line name>
-IMPLEMENTATION: <3-4 sentences: describe the exact new generate_idea() flow —
-  how many LLM calls, what each call does, how results are combined,
-  and what specific quality property this targets vs the current champion>
----
-"""
-
-_IMPR_JUDGE_PROMPT = """\
-Compare two concrete improvement strategies for a research idea generator.
-
-Failure being addressed:
-{failure_analysis}
-
-Strategy A:
-{strategy_a}
-
-Strategy B:
-{strategy_b}
-
-Score each on four dimensions (1-10):
-1. Impact          — how much would this concretely fix the identified failure?
-2. Implementability — how precisely specified is the code change?
-3. Novelty         — how different is this from what has already been tried?
-4. Specificity     — how clear and unambiguous is the change?
-
-Respond ONLY with JSON, no other text:
-{{"scores_a": {{"impact": 0, "implementability": 0, "novelty": 0, "specificity": 0}},
-  "scores_b": {{"impact": 0, "implementability": 0, "novelty": 0, "specificity": 0}},
-  "winner": "A"}}
-"""
-
-
-def _run_improvement_tournament(
-    failure_analysis: str,
-    code_bundle: str,
-    edit_history_str: str,
-    memory_str: str,
-    ideas_dir: Path,
-    model: str = "gpt-4.1-mini",
-) -> tuple[str, int]:
-    """Use IdeaTreeSearch to explore the improvement space, Elo to select best direction.
-
-    This is the Gödel loop: the same tree-search + tournament pipeline that generates
-    research ideas is used to generate and select self-improvement strategies.
-
-    Tree structure:
-      L1: 3 broad approaches  (prompt / algorithm / parameters)
-      L2: 2 subsystem targets each = 6 nodes
-      L3: 2 concrete variants each = 12 leaf strategies
-
-    Returns (winner_text, n_leaves).
-    Falls back to the failure_analysis itself if generation fails.
-    """
-    import json as _json
-    import random as _random
-    import re as _re
-    sys.path.insert(0, str(ideas_dir))
-    sys.path.insert(0, str(ideas_dir / "systems"))
-    from base import make_client, call_llm
-
-    tried = "\n".join(filter(None, [edit_history_str, memory_str])).strip() or "(none)"
-    client = make_client(model)
-
-    def _llm(prompt, temp=0.85, max_tok=1024):
-        return call_llm(prompt, model, client, temperature=temp,
-                        max_tokens=max_tok, timeout=60)
-
-    def _parse_blocks(raw, key1, key2):
-        items = []
-        for block in raw.split("---"):
-            block = block.strip()
-            if not block:
-                continue
-            m1 = _re.search(rf"{key1}:\s*(.+)", block)
-            m2 = _re.search(rf"{key2}:\s*(.+)", block, _re.DOTALL)
-            if m1 and m2:
-                items.append({
-                    "name": m1.group(1).strip(),
-                    "description": m2.group(1).strip()[:400],
-                })
-        return items
-
-    # ── L1: generate 3 broad approaches ──────────────────────────────────────
-    try:
-        raw_l1 = _llm(_IMPR_L1_PROMPT.format(
-            failure_analysis=failure_analysis[:1000],
-            tried=tried[:800],
-            code_bundle=code_bundle[:4000],
-        ))
-        approaches = _parse_blocks(raw_l1, "APPROACH", "RATIONALE")
-    except Exception as e:
-        logger.warning("Improvement tree L1 failed: %s", e)
-        return failure_analysis, 0
-
-    if not approaches:
-        logger.warning("Improvement tree: no L1 approaches parsed")
-        return failure_analysis, 0
-    logger.debug("Improvement tree L1: %d approaches", len(approaches))
-
-    # ── L2: generate 2 subsystem targets per approach = up to 6 nodes ────────
-    targets = []
-    for ap in approaches[:3]:
-        try:
-            raw_l2 = _llm(_IMPR_L2_PROMPT.format(
-                approach_name=ap["name"],
-                approach_rationale=ap["description"],
-                failure_analysis=failure_analysis[:800],
-                code_bundle=code_bundle[:3000],
-            ))
-            t_list = _parse_blocks(raw_l2, "TARGET", "DESCRIPTION")
-            for t in t_list[:2]:
-                t["approach"] = ap["name"]
-                targets.append(t)
-        except Exception as e:
-            logger.debug("Improvement tree L2 failed for %s: %s", ap["name"], e)
-
-    if not targets:
-        logger.warning("Improvement tree: no L2 targets parsed")
-        return failure_analysis, 0
-    logger.debug("Improvement tree L2: %d targets", len(targets))
-
-    # ── L3: generate 2 concrete variants per target = up to 12 leaves ────────
-    leaves = []
-    for tg in targets:
-        try:
-            raw_l3 = _llm(_IMPR_L3_PROMPT.format(
-                target_name=tg["name"],
-                target_description=tg["description"],
-                approach_name=tg["approach"],
-                failure_analysis=failure_analysis[:400],
-            ))
-            v_list = _parse_blocks(raw_l3, "VARIANT", "IMPLEMENTATION")
-            for v in v_list[:2]:
-                v["approach"] = tg["approach"]
-                v["target"] = tg["name"]
-                leaves.append(v)
-        except Exception as e:
-            logger.debug("Improvement tree L3 failed for %s: %s", tg["name"], e)
-
-    if len(leaves) < 2:
-        logger.warning("Improvement tree: only %d leaves — falling back", len(leaves))
-        return failure_analysis, 0
-
-    logger.info("Improvement tournament: %d leaf strategies from tree search", len(leaves))
-
-    # ── Elo tournament over leaf strategies ──────────────────────────────────
-    ELO_K = 32
-    n = len(leaves)
-    ratings = {i: 1500.0 for i in range(n)}
-    matchups: set = set()
-    n_rounds = 4 if n >= 10 else 3
-
-    def _judge(a_idx, b_idx):
-        la, lb = leaves[a_idx], leaves[b_idx]
-        text_a = f"{la['approach']} → {la['target']} → {la['name']}\n{la['description']}"
-        text_b = f"{lb['approach']} → {lb['target']} → {lb['name']}\n{lb['description']}"
-        flipped = _random.random() < 0.5
-        pa, pb = (text_b, text_a) if flipped else (text_a, text_b)
-        try:
-            raw = _llm(_IMPR_JUDGE_PROMPT.format(
-                failure_analysis=failure_analysis[:400],
-                strategy_a=pa, strategy_b=pb,
-            ), temp=0.1, max_tok=200)
-            raw = _re.sub(r"^```(?:json)?\s*\n?", "", raw.strip())
-            raw = _re.sub(r"\n?```\s*$", "", raw)
-            verdict = _json.loads(raw)
-            w = verdict.get("winner", "tie")
-        except Exception:
-            w = "tie"
-        if flipped:
-            if w == "A": w = "B"
-            elif w == "B": w = "A"
-        return w
-
-    for rnd in range(n_rounds):
-        ranked = sorted(ratings, key=lambda i: ratings[i], reverse=True)
-        pairs, paired = [], set()
-        for a in ranked:
-            if a in paired:
-                continue
-            for b in ranked:
-                if b == a or b in paired:
-                    continue
-                key = (min(a, b), max(a, b))
-                if key not in matchups:
-                    pairs.append((a, b))
-                    paired.update([a, b])
-                    matchups.add(key)
-                    break
-        if not pairs:
-            break
-        for a, b in pairs:
-            w = _judge(a, b)
-            ea = 1.0 / (1.0 + 10 ** ((ratings[b] - ratings[a]) / 400))
-            sa = 1.0 if w == "A" else (0.0 if w == "B" else 0.5)
-            ratings[a] += ELO_K * (sa - ea)
-            ratings[b] += ELO_K * ((1 - sa) - (1 - ea))
-
-    best = max(ratings, key=lambda i: ratings[i])
-    bl = leaves[best]
-    winner_text = (
-        f"Approach: {bl['approach']}\n"
-        f"Target: {bl['target']}\n"
-        f"Strategy: {bl['name']}\n\n"
-        f"{bl['description']}\n\n"
-        f"(Selected via IdeaTreeSearch from {n} leaf strategies, Elo={ratings[best]:.0f})"
-    )
-    logger.info("Improvement tree winner: %s → %s → %s (Elo=%.0f)",
-                bl["approach"], bl["target"], bl["name"], ratings[best])
-    return winner_text, n
-
-
-def _extract_losing_verdicts(report_path: Path, n: int = 8) -> str:
-    """Extract top losing verdicts (with judge reasoning) from a comparison report.
-
-    Detects if losses were due to API errors (quota exhaustion) vs genuine quality
-    failures, and returns an appropriate note for the SWE agent.
+    Shows champion idea vs candidate idea side-by-side with scores and full judge
+    reasoning — so the SWE agent diagnoses from real outputs, not abstractions.
     """
     if report_path is None or not report_path.exists():
-        return "(no comparison report available — first iteration from new baseline)"
+        return "(no comparison report — first iteration from new baseline)"
     try:
         with open(report_path) as f:
             report = json.load(f)
         verdicts = report.get("verdicts", [])
-        losses = [v for v in verdicts if v.get("winner") == "A"]  # A=champion beat B=candidate
+        losses = [v for v in verdicts if v.get("winner") == "A"]
 
-        # Detect API-error-dominated failures: B score=0 on ALL losses → likely quota error
+        # Detect infrastructure failures: B score=0 on most losses → quota error
         zero_score_losses = [v for v in losses if sum(v.get("scores_b", {}).values()) == 0]
         if len(losses) > 0 and len(zero_score_losses) / len(losses) > 0.5:
             return (
-                "⚠️  INFRASTRUCTURE FAILURE DETECTED: The previous candidate scored 0/40 on "
-                f"{len(zero_score_losses)}/{len(losses)} comparisons. This pattern indicates "
-                "API quota exhaustion or network failure during idea generation — the ideas "
-                "themselves were ERROR strings, not low-quality ideas. "
-                "DO NOT try to add error handling. Focus instead on improving IDEA QUALITY: "
-                "better prompts, stronger novelty signals, more concrete experimental specs."
+                "⚠️  INFRASTRUCTURE FAILURE: candidate scored 0/40 on "
+                f"{len(zero_score_losses)}/{len(losses)} comparisons — API quota error, "
+                "not a quality failure. Focus on improving idea quality, not error handling."
             )
 
         losses.sort(key=lambda v: sum(v.get("scores_a", {}).values()) -
                     sum(v.get("scores_b", {}).values()), reverse=True)
+
+        # Load actual idea texts from results JSONs
+        system_a = losses[0]["system_a"] if losses else None
+        system_b = losses[0]["system_b"] if losses else None
+        ideas_a: dict = {}
+        ideas_b: dict = {}
+        for sys_name, store in [(system_a, ideas_a), (system_b, ideas_b)]:
+            if not sys_name:
+                continue
+            p = ideas_dir / "results" / sys_name / "ideas.json"
+            if p.exists():
+                try:
+                    for item in json.load(open(p)):
+                        store[(item["topic_id"], item.get("idea_index", 0))] = item.get("text", "")
+                except Exception:
+                    pass
+
         lines = []
         for v in losses[:n]:
-            topic = v.get("topic", "")[:45]
-            reasoning = v.get("reasoning", "")[:200]
+            topic = v.get("topic", "")
+            tid = v.get("topic_id", "")
+            idx = v.get("idea_index", 0)
             sa = sum(v.get("scores_a", {}).values())
             sb = sum(v.get("scores_b", {}).values())
-            lines.append(f"- [{topic}] Champion={sa}/40 vs Candidate={sb}/40: {reasoning}")
+            reasoning = v.get("reasoning", "")
+
+            champ_text = ideas_a.get((tid, idx), "(text unavailable)")
+            cand_text  = ideas_b.get((tid, idx), "(text unavailable)")
+
+            lines.append(f"### Topic: {topic}")
+            lines.append(f"**Champion ({system_a}) — {sa}/40 — WON:**")
+            lines.append(champ_text[:600])
+            lines.append(f"\n**Candidate ({system_b}) — {sb}/40 — LOST:**")
+            lines.append(cand_text[:600])
+            lines.append(f"\n**Judge:** {reasoning}")
+            lines.append("")
+
         return "\n".join(lines) if lines else "(no losses found)"
     except Exception as e:
         return f"(error reading report: {e})"
@@ -941,6 +645,50 @@ def _call_swe_llm(prompt: str) -> str:
     raw = re.sub(r"^```\s*\n", "", raw)
     raw = re.sub(r"\n```\s*$", "", raw)
     return raw.strip() + "\n"
+
+
+def _call_swe_llm_prose(prompt: str, max_tokens: int = 1024) -> str:
+    """Call the SWE meta-model for prose output (diagnosis, attack). No code extraction."""
+    sys.path.insert(0, str(Path(__file__).parent / "systems"))
+    from base import make_client, call_llm
+    client = make_client(SWE_MODEL)
+    raw = call_llm(prompt, SWE_MODEL, client, temperature=0.7,
+                   max_tokens=max_tokens, timeout=SWE_TIMEOUT)
+    return raw.strip()
+
+
+def _parse_diagnose_output(raw: str) -> tuple[str, str, str]:
+    """Parse DIAGNOSIS / FIX / EXPECTED_IMPACT fields from DIAGNOSE_PROMPT output."""
+    diagnosis = fix = impact = ""
+    for line in raw.splitlines():
+        if line.startswith("DIAGNOSIS:"):
+            diagnosis = line[len("DIAGNOSIS:"):].strip()
+        elif line.startswith("FIX:"):
+            fix = line[len("FIX:"):].strip()
+        elif line.startswith("EXPECTED_IMPACT:"):
+            impact = line[len("EXPECTED_IMPACT:"):].strip()
+    # Multi-line fallback: if fields span multiple lines, grab everything after the label
+    if not diagnosis:
+        m = re.search(r"DIAGNOSIS:\s*(.+?)(?=FIX:|EXPECTED_IMPACT:|$)", raw, re.DOTALL)
+        if m:
+            diagnosis = m.group(1).strip()
+    if not fix:
+        m = re.search(r"FIX:\s*(.+?)(?=EXPECTED_IMPACT:|$)", raw, re.DOTALL)
+        if m:
+            fix = m.group(1).strip()
+    if not impact:
+        m = re.search(r"EXPECTED_IMPACT:\s*(.+?)$", raw, re.DOTALL)
+        if m:
+            impact = m.group(1).strip()
+    return diagnosis or raw[:300], fix or raw[:300], impact
+
+
+def _parse_revised_fix(raw: str) -> str:
+    """Extract REVISED_FIX from ATTACK_PROMPT output."""
+    m = re.search(r"REVISED_FIX:\s*(.+?)$", raw, re.DOTALL)
+    if m:
+        return m.group(1).strip()
+    return raw.strip()  # fallback: use full response
 
 
 def _call_claude_code_edit(
@@ -979,7 +727,7 @@ def _call_claude_code_edit(
 
     task_prompt = f"""You are improving a Python research idea generator. Make ONE focused, surgical improvement.
 
-## Improvement strategy (selected by IdeaTreeSearch tournament)
+## Diagnosis and proposed fix
 {task_description}
 
 ## Why the current generator is losing to the baseline
@@ -1261,7 +1009,7 @@ def run_swe_loop(
     swe_ctx = load_swe_context(ideas_dir)
     swe_context_str = format_swe_context(swe_ctx, ideas_dir, champion_version)
 
-    winning_verdicts_str = _extract_losing_verdicts(compare_report_path)
+    grounded_failures_str = _extract_grounded_failures(compare_report_path, ideas_dir)
 
     # Initial win_rate for context
     initial_win_rate = 0.5
@@ -1285,65 +1033,50 @@ def run_swe_loop(
             for i, e in enumerate(edit_history)
         ) or "(none yet)"
 
-        # ── Step 1: analyze failures ─────────────────────────────────────────
-        analysis_prompt = ANALYZE_PROMPT.format(
-            version=current_version_name,
-            code_bundle=code_bundle,
-            total=int(initial_win_rate * 100),  # approximate
-            win_rate=initial_win_rate,
-            losing_verdicts=winning_verdicts_str,
-            edit_history=edit_history_str,
+        # ── Step 1: diagnose failures from concrete examples ─────────────────
+        champion_code_text = champion_path.read_text()
+        failed_attempts_str = "\n".join(
+            f"Round {e['round']}: {e['description'][:120]} → {e['win_rate']:.1%}"
+            for e in edit_history if not e.get("accepted")
+        ) or "(none yet)"
+
+        diagnose_prompt = DIAGNOSE_PROMPT.format(
+            champion_code=champion_code_text,
+            grounded_failures=grounded_failures_str,
+            failed_attempts=failed_attempts_str,
             swe_context=swe_context_str,
         )
         try:
-            failure_analysis = _call_swe_llm(analysis_prompt)
-            # failure_analysis is prose, not code — just the analysis text
-            # Strip any code fences that might appear
-            failure_analysis = re.sub(r"```.*?```", "", failure_analysis, flags=re.DOTALL).strip()
-            logger.info("Failure analysis: %s", failure_analysis[:150])
+            diagnose_raw = _call_swe_llm_prose(diagnose_prompt, max_tokens=800)
+            diagnosis, proposed_fix, expected_impact = _parse_diagnose_output(diagnose_raw)
+            logger.info("Diagnosis:\n%s\n\nProposed fix:\n%s", diagnosis, proposed_fix)
         except Exception as e:
-            logger.error("Failure analysis failed: %s", e)
-            failure_analysis = "Unknown failure pattern — try improving experimental clarity."
+            logger.error("Diagnosis failed: %s", e)
+            diagnosis = "Unknown failure — try improving experimental specificity."
+            proposed_fix = "Add concrete dataset and baseline names to the final revision prompt."
 
-        # ── Step 2: select direction + apply edit ────────────────────────────
+        # ── Step 2: adversarially refine the proposed fix ────────────────────
         tmp_version = f"{next_version}_r{rnd}"
         tmp_path = systems_dir / f"{tmp_version}.py"
 
-        # Build the task description for this round
-        if failures > 0 and edit_history:
-            # Reflect: previous edit failed — build a richer task that includes
-            # what was tried and why it didn't work, so the next attempt differs
-            last = edit_history[-1] if edit_history else {}
-            task_description = (
-                f"PREVIOUS ATTEMPT FAILED (mini-eval: {last.get('win_rate', 0.0):.1%}, "
-                f"needed >{MINI_IMPROVEMENT_THRESHOLD:.0%}).\n\n"
-                f"What was tried:\n{last.get('description', 'unknown')}\n\n"
-                f"Try something STRUCTURALLY DIFFERENT. Consider:\n"
-                f"- Replacing tree search with multi-agent debate\n"
-                f"- Adding an adversarial step that attacks weaknesses then fixes them\n"
-                f"- Cross-domain analogical reasoning (map topic to isomorphic problem)\n"
-                f"- Replacing expansion with a Socratic critique-then-rewrite loop\n"
-                f"- Staged refinement: generate rough seeds, deep-dive the best one\n\n"
-                f"The goal: ideas that are more novel AND better-grounded, not just "
-                f"differently formatted. Implement a real architectural change."
+        try:
+            attack_prompt = ATTACK_PROMPT.format(
+                diagnosis=diagnosis,
+                proposed_fix=proposed_fix,
             )
-        else:
-            # Fresh round: run improvement tournament to select the best direction
-            logger.info("Running improvement tournament to select edit direction...")
-            tournament_winner, n_candidates = _run_improvement_tournament(
-                failure_analysis=failure_analysis,
-                code_bundle=code_bundle,
-                edit_history_str=edit_history_str,
-                memory_str=swe_context_str,
-                ideas_dir=ideas_dir,
-                model=generator_model,
-            )
-            task_description = (
-                f"Tournament-selected strategy ({n_candidates} candidates evaluated):\n"
-                f"{tournament_winner}\n\n"
-                f"Edit history this session:\n{edit_history_str}\n\n"
-                f"Context:\n{swe_context_str}"
-            )
+            attack_raw = _call_swe_llm_prose(attack_prompt, max_tokens=600)
+            refined_fix = _parse_revised_fix(attack_raw)
+            logger.info("Refined fix:\n%s", refined_fix)
+        except Exception as e:
+            logger.error("Attack/refine failed: %s", e)
+            refined_fix = proposed_fix  # fall back to unrefined fix
+
+        task_description = (
+            f"DIAGNOSIS: {diagnosis}\n\n"
+            f"REFINED FIX: {refined_fix}\n\n"
+            f"EXPECTED IMPACT: {expected_impact}\n\n"
+            f"Edit history this session:\n{edit_history_str}"
+        )
 
         try:
             if USE_CLAUDE_CODE:
@@ -1364,16 +1097,14 @@ def run_swe_loop(
                         threshold=MINI_IMPROVEMENT_THRESHOLD,
                         edit_description=last.get("description", "unknown"),
                         code_bundle=code_bundle,
-                        failure_analysis=failure_analysis,
+                        refined_fix=refined_fix,
                         next_version=tmp_version,
                     )
                 else:
                     propose_prompt = PROPOSE_EDIT_PROMPT.format(
                         version=current_version_name,
                         code_bundle=code_bundle,
-                        failure_analysis=failure_analysis,
-                        tournament_winner=tournament_winner,
-                        n_candidates=n_candidates if n_candidates > 0 else "N/A",
+                        refined_fix=refined_fix,
                         edit_history=edit_history_str,
                         swe_context=swe_context_str,
                         next_version=tmp_version,
@@ -1422,18 +1153,16 @@ def run_swe_loop(
             logger.error("Mini-eval crashed: %s", e)
             win_rate = 0.0
         finally:
-            # Clean up temp file regardless (accepted code is preserved below)
-            if tmp_path.exists():
-                tmp_path.unlink()
+            pass  # keep temp file — rejected rounds are preserved for inspection
 
         improved = win_rate > MINI_IMPROVEMENT_THRESHOLD
         edit_history.append({
             "round": rnd,
-            "description": task_description[:600],
-            "failure_analysis": failure_analysis[:400],
+            "description": task_description[:1200],
+            "failure_analysis": failure_analysis[:2000],
             "win_rate": win_rate,
             "accepted": improved,
-            "code_snippet": new_code[:1000],
+            "code_snippet": new_code[:2000],
         })
 
         if improved:
