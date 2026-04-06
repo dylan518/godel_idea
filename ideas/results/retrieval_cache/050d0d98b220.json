@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Development of a Sensor Driven Autonomous Vehicle for Real-Time Obstacle Avoidance on a Microcontroller Based Platform",
+    "year": 2025,
+    "citations": 0,
+    "tldr": "",
+    "abstract": "The performance of an autonomous vehicle system is significantly influenced by sensor reliability and microcontroller limitations. Challenges such as limited detection range, environmental sensitivity, constrained processing power, and slower response can lead to delays and inaccuracies in obstacle detection and navigation. Although integrating various sensors in the system can overcome the detection range constraint, its real-time decision-making will be affected due to the increased data load. In addition, dynamic environments hinder the system\u2019s path planning, as it requires robust real-tim",
+    "url": "https://www.semanticscholar.org/paper/a2375a4ec7427e0428980014c876618dc3e808e4"
+  },
+  {
+    "title": "Anomaly Detection and Secure Position Estimation Against GPS Spoofing Attack: A Security-Critical Study of Localization in Autonomous Driving",
+    "year": 2025,
+    "citations": 13,
+    "tldr": "",
+    "abstract": "For advanced autonomous driving (AD) systems, localization is highly critical for safety. Recent results show that GPS is vulnerable to spoofing attacks, and it is not clear whether the current localization is secure enough against advanced GPS spoofing attacks. In this paper, a systematic study regarding the security of the localization under GPS spoofing is explored for safe and reliable AD. First, a novel and robust GPS adversarial attack design method is proposed to defeat the principle of the multi-sensor fusion algorithm and lead to wrong position. It can cheat the widely used Chi-square",
+    "url": "https://www.semanticscholar.org/paper/9f6bdf6e387adccb221df8bf08840a6e7e71a566"
+  },
+  {
+    "title": "Real-Time Object Detection and Tracking Using Deep Learning in Autonomous Driving Systems",
+    "year": 2025,
+    "citations": 0,
+    "tldr": "",
+    "abstract": "This paper explores the role of deep learning as regard to identification and tracking of objects for use in autonomous vehicle systems. In order to achieve the best outcomes, we apply using models that are up-to-date such as YOLOv5 that is developed to work in the real-time confrontation and using Faster R-CNN as more accurate one. The tracking component uses Deep SORT Recog and the combination of both appearance and motion is used to identify objects in different frames. There is data fusion from several sensors, but here again, cameras, LiDAR, and radar can be used to improve the robustness",
+    "url": "https://www.semanticscholar.org/paper/0696d4b3f65632c01b44496408ae37f5424e4030"
+  },
+  {
+    "title": "Anomaly Detection for PV Modules Using Multi-Modal Data Fusion in Aerial Inspections",
+    "year": 2025,
+    "citations": 7,
+    "tldr": "",
+    "abstract": "Solar energy is a compelling and growing avenue for transitioning towards reliance on sustainable and environmentally friendly energy sources. However, the performance of individual photovoltaic (PV) panels is vulnerable to defects inflicted by weather exposure. The industry currently addresses these challenges by conducting manual inspections at each PV installation, a process that is highly time-consuming, financially burdensome, difficult to scale, prone to human error, and sometimes unfeasible due to topographical constraints. This study aims to develop a solution that detects these defect",
+    "url": "https://www.semanticscholar.org/paper/c418655e7fb7facd7754f80dbbe50b08c91c0a26"
+  },
+  {
+    "title": "RAISE: Real-Time Analysis and Intelligent System for End-to-End Tracking",
+    "year": 2025,
+    "citations": 0,
+    "tldr": "",
+    "abstract": "Real-time tracking systems have emerged as essential components across a multitude of sectors, encompassing logistics, healthcare, surveillance, and autonomous vehicles. This research endeavours to introduce an innovative framework for a sophisticated, end-to-end tracking system that utilizes real-time analytics and advanced machine learning algorithms to facilitate seamless and precise tracking of dynamic entities. The system incorporates cutting-edge technologies, including computer vision, Internet of Things (IoT) devices, and deep neural networks, to guarantee robust performance across var",
+    "url": "https://www.semanticscholar.org/paper/d4224971f4e68f162df7997e99f73d20a6a9f081"
+  }
+]

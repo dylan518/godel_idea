@@ -1,0 +1,1781 @@
+{
+  "current": "S3",
+  "candidate": "S5",
+  "wins_a": 75,
+  "wins_b": 0,
+  "ties": 0,
+  "total_judged": 75,
+  "win_rate_b": 0.0,
+  "verdicts": [
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 0,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-motivated research direction addressing real gaps in current scaling law models by incorporating hardware heterogeneity, dynamic network conditions, and adaptive compression\u2014moving beyond homogeneous assumptions in prior work. Idea B cannot be evaluated due to a technical error (API rate limit), making it impossible to assess its merit. Idea A scores 30/40 with clear novelty, strong scientific relevance to practical cloud training, well-defined experiments with concrete metrics, and reasonable feasibility given access to cloud logs and moderate-scale clusters."
+    },
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 1,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error (API rate limit), resulting in zero scores across all criteria. Idea B presents a well-articulated, novel framework addressing genuine gaps between theoretical scaling laws and practical cloud-scale pretraining by incorporating data distribution drift and hardware heterogeneity\u2014problems that are both scientifically relevant and practically important. While the experimental scope is ambitious and feasibility depends on substantial computational resources, the methodology is clear and the approach represents a meaningful advance over static scaling law assumptions."
+    },
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 2,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error (API rate limit), resulting in zero scores across all criteria. Idea B presents a well-articulated research proposal that combines energy profiling with confidence dynamics for adaptive LLM inference\u2014a novel intersection addressing real deployment constraints on edge devices. The experimental design is concrete with specific benchmarks, hardware targets, and quantifiable metrics, making it scientifically actionable and feasible with current resources."
+    },
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 3,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error (API rate limit), resulting in zero scores across all criteria. Idea B presents a well-articulated research proposal addressing the genuine open problem of scaling laws for low-resource languages through data curation and adaptive weighting, with clear experimental methodology, realistic benchmarks, and achievable resource requirements. Idea B scores 30/40 total, while Idea A scores 0/40."
+    },
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 4,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error (API rate limit), resulting in zero scores across all criteria. Idea B presents a novel physics-inspired approach to LLM scaling that addresses the genuine gap between static scaling laws and dynamic real-time deployment requirements, with clearly specified experiments, concrete metrics, and reasonable resource constraints, making it a substantive contribution to the field."
+    },
+    {
+      "topic_id": "T10",
+      "topic": "Foundation models for genomics and single-cell biology",
+      "idea_index": 0,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal addressing a genuine bottleneck in deploying foundation models for single-cell multi-omics on resource-constrained devices, with clear technical innovations (hierarchical parameter sharing, adaptive embedding compression, curriculum contrastive loss), specific experimental benchmarks, and realistic feasibility. Idea B contains only an API error message with no research content, making it impossible to evaluate."
+    },
+    {
+      "topic_id": "T10",
+      "topic": "Foundation models for genomics and single-cell biology",
+      "idea_index": 1,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal addressing a genuine gap in foundation models for genomics by integrating causal inference with population stratification control. Idea B contains only an API error message with no substantive research content, making it impossible to evaluate. Idea A scores 30/40 total points across all criteria, demonstrating solid novelty, clear scientific value, well-defined experiments, and reasonable feasibility."
+    },
+    {
+      "topic_id": "T10",
+      "topic": "Foundation models for genomics and single-cell biology",
+      "idea_index": 2,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal combining biologically-informed masking with multimodal single-cell foundation models for rare disease genomics\u2014a genuinely novel contribution addressing real gaps in current methods. Idea B contains only an API error message with no actual research content, making it impossible to evaluate. Idea A scores 30/40 total points across all criteria, while Idea B scores 0/40."
+    },
+    {
+      "topic_id": "T10",
+      "topic": "Foundation models for genomics and single-cell biology",
+      "idea_index": 3,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error preventing its content from being retrieved. Idea B presents a well-articulated research proposal with clear novelty in combining multimodal contrastive learning with hardware-aware neural architecture search for edge deployment of single-cell foundation models, addresses a genuine clinical need for point-of-care diagnostics, specifies concrete benchmarks and metrics, and is feasible with current technologies and datasets."
+    },
+    {
+      "topic_id": "T10",
+      "topic": "Foundation models for genomics and single-cell biology",
+      "idea_index": 4,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal with clear novelty in combining multimodal genomics and single-cell data at scale with robust cross-modal contrastive learning and curriculum training strategies. Idea B cannot be evaluated as it contains only an API error message with no actual research content. Idea A scores 30/40 total points across all criteria, demonstrating solid scientific merit, while Idea B scores 0/40 due to the absence of any evaluable research idea."
+    },
+    {
+      "topic_id": "T11",
+      "topic": "Emergent communication in multi-agent systems",
+      "idea_index": 0,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error preventing its content from being retrieved. Idea B presents a well-articulated research proposal with clear novelty (hierarchical discrete-continuous compression with adaptive bandwidth control), addresses genuine open problems in bandwidth-limited multi-agent communication, specifies concrete experimental methodology with appropriate benchmarks and metrics, and is feasible with stated computational resources. The clear articulation and technical depth of Idea B make it substantially superior."
+    },
+    {
+      "topic_id": "T11",
+      "topic": "Emergent communication in multi-agent systems",
+      "idea_index": 1,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal combining neuro-inspired spike coding with reinforcement learning for energy-efficient multi-agent communication, addressing a genuine gap in ultra-low-power IoT systems. Idea B contains only an API error message with no actual research content, making it impossible to evaluate. Idea A scores 28/40 total points while Idea B scores 0/40."
+    },
+    {
+      "topic_id": "T11",
+      "topic": "Emergent communication in multi-agent systems",
+      "idea_index": 2,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error (API rate limit), resulting in zero scores across all criteria. Idea B presents a well-articulated robustness-driven framework with clear novelty in explicitly optimizing for noisy/uncertain communication channels, strong scientific relevance to practical multi-agent deployment, detailed experimental methodology with specific benchmarks and metrics, and reasonable feasibility given current computational resources. Idea B scores 30/40 total, while Idea A scores 0/40."
+    },
+    {
+      "topic_id": "T11",
+      "topic": "Emergent communication in multi-agent systems",
+      "idea_index": 3,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error (API rate limit), resulting in no substantive content to assess. Idea B presents a well-articulated research proposal with clear novelty in combining hierarchical semantics, continual learning, and semantic consistency constraints for multi-agent communication. The approach addresses genuine open problems, specifies concrete benchmarks and metrics, and demonstrates feasibility with realistic computational resources and established baselines."
+    },
+    {
+      "topic_id": "T11",
+      "topic": "Emergent communication in multi-agent systems",
+      "idea_index": 4,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error preventing its content from being retrieved. Idea B presents a well-articulated neuro-symbolic framework combining dynamic social convention learning with symbolic reasoning for multi-agent vehicle coordination, addressing a genuine gap in current emergent communication methods. The proposal demonstrates strong novelty in integrating continuous social embeddings with interpretable reasoning, clear experimental methodology with specific datasets and quantifiable metrics, and reasonable feasibility with standard computational resources."
+    },
+    {
+      "topic_id": "T14",
+      "topic": "Topological methods for high-dimensional data analysis",
+      "idea_index": 0,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error preventing its content from being retrieved. Idea B presents a well-articulated research proposal combining incremental persistent homology with noise robustness and real-time constraints\u2014addressing genuine gaps in topological data analysis for streaming sensor networks. The proposal demonstrates strong novelty (noise-aware weighting + adaptive compression), clear scientific value (practical sensor monitoring applications), detailed experimental methodology with specific baselines and metrics, and realistic feasibility given current computational resources and existing algorithmic foundations."
+    },
+    {
+      "topic_id": "T14",
+      "topic": "Topological methods for high-dimensional data analysis",
+      "idea_index": 1,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a genuinely novel application of sheaf-theoretic and persistent cohomology methods to multi-modal biomedical data integration with clear experimental design and rigorous mathematical grounding. Idea B cannot be evaluated as it contains only an API error message with no research content. Idea A scores 29/40 total points and is the only evaluable submission."
+    },
+    {
+      "topic_id": "T14",
+      "topic": "Topological methods for high-dimensional data analysis",
+      "idea_index": 2,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal combining topological data analysis with deep learning for autonomous vehicle perception, addressing a genuine gap between offline TDA methods and real-time requirements. Idea B cannot be evaluated as it contains only an API error message with no research content. Idea A scores 30/40 total points across all criteria, demonstrating solid novelty, clear experimental design on established benchmarks, and reasonable feasibility within stated computational budgets."
+    },
+    {
+      "topic_id": "T14",
+      "topic": "Topological methods for high-dimensional data analysis",
+      "idea_index": 3,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal combining incremental persistence diagrams with adaptive neural embeddings for edge deployment, addressing genuine gaps in real-time TDA for heterogeneous IoT systems. Idea B contains only an API error message with no actual research content, making it impossible to evaluate. Idea A scores 30/40 total while Idea B scores 0/40."
+    },
+    {
+      "topic_id": "T14",
+      "topic": "Topological methods for high-dimensional data analysis",
+      "idea_index": 4,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error preventing its content from being retrieved. Idea B presents a well-articulated meta-learning framework combining persistent homology with GNNs for zero-shot generalization across heterogeneous datasets\u2014a genuinely novel contribution addressing real scalability challenges in topological data analysis. The experimental design is concrete with specific benchmarks and metrics, though the feasibility is moderately constrained by the computational requirements and the ambitious zero-shot generalization target."
+    },
+    {
+      "topic_id": "T12",
+      "topic": "Mechanistic interpretability of transformer models",
+      "idea_index": 0,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error preventing its content from being retrieved. Idea B presents a well-articulated multi-modal mechanistic interpretability framework that combines multiple complementary analysis techniques (bottleneck activations, gradient attribution, SVD, temporal dynamics) with causal mediation analysis\u2014a genuinely novel integration addressing real gaps in current interpretability methods. The experimental design is concrete with clear metrics and baselines, though the feasibility is moderately constrained by high computational requirements (10,000 GPU-hours) and the inherent difficulty of validating causal mechanistic claims across multi-modal settings."
+    },
+    {
+      "topic_id": "T12",
+      "topic": "Mechanistic interpretability of transformer models",
+      "idea_index": 1,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error (API rate limit), resulting in zero scores across all criteria. Idea B presents a well-articulated framework for mechanistic interpretability of multimodal transformers with clear novelty in dynamic manifold alignment, addresses genuine gaps in current interpretability methods, provides specific experimental protocols with quantifiable metrics, and is feasible within stated computational constraints. B's total score of 28/40 stands unopposed."
+    },
+    {
+      "topic_id": "T12",
+      "topic": "Mechanistic interpretability of transformer models",
+      "idea_index": 2,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error preventing its content from being retrieved. Idea B presents a well-articulated research proposal addressing a genuine open problem in mechanistic interpretability\u2014the tension between symbolic extraction fidelity and practical usability through size constraints. The two-stage ACM-SE pipeline is novel in its integrated approach, the experimental design is concrete with clear metrics and baselines, and the work is feasible with standard computational resources, though some novelty is tempered by incremental improvements over existing symbolic extraction methods."
+    },
+    {
+      "topic_id": "T12",
+      "topic": "Mechanistic interpretability of transformer models",
+      "idea_index": 3,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a concrete research proposal addressing real scalability bottlenecks in mechanistic interpretability through cloud-optimized causal mediation analysis, with clear experimental benchmarks and multimodal scope. Idea B contains only an API error message with no research content, making it impossible to evaluate as a scientific proposal."
+    },
+    {
+      "topic_id": "T12",
+      "topic": "Mechanistic interpretability of transformer models",
+      "idea_index": 4,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error preventing its content from being retrieved. Idea B presents a well-articulated research proposal addressing a genuine bottleneck in mechanistic interpretability\u2014the latency of causal interventions\u2014with a concrete approach combining sparse attention perturbations and incremental computation. The experimental design is clear with specific metrics, baselines, and datasets, making it scientifically rigorous and actionable for the interpretability community."
+    },
+    {
+      "topic_id": "T13",
+      "topic": "Zero-shot generalization in reinforcement learning",
+      "idea_index": 0,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal with clear novelty in hierarchical disentanglement for zero-shot generalization, addresses a genuine open problem in autonomous driving, specifies concrete benchmarks and metrics, and is feasible within stated computational constraints. Idea B contains only an API error message with no research content, making it impossible to evaluate on any criterion."
+    },
+    {
+      "topic_id": "T13",
+      "topic": "Zero-shot generalization in reinforcement learning",
+      "idea_index": 1,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a substantive research proposal combining causal discovery with meta-learning for zero-shot RL generalization in financial trading, with clear experimental design and specific benchmarks. Idea B contains only an API error message with no actual research content, making it impossible to evaluate. Idea A scores 25/40 total while Idea B scores 0/40."
+    },
+    {
+      "topic_id": "T13",
+      "topic": "Zero-shot generalization in reinforcement learning",
+      "idea_index": 2,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error (API rate limit), resulting in no content to assess. Idea B presents a well-articulated hierarchical meta-learning framework with clear novelty over single-level symbolic abstraction methods, addresses genuine scalability challenges in zero-shot RL for manufacturing, specifies concrete benchmarks and metrics, though the feasibility is moderately constrained by the complexity of integrating program synthesis, contrastive learning, and hierarchical meta-RL."
+    },
+    {
+      "topic_id": "T13",
+      "topic": "Zero-shot generalization in reinforcement learning",
+      "idea_index": 3,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error preventing its content from being retrieved. Idea B presents a well-articulated research proposal combining hierarchical spatio-temporal factorization with adaptive context embedding for embedded robotics, addressing a genuine gap between state-of-the-art meta-learning and practical deployment constraints. The proposal includes specific benchmarks, quantitative targets, and hardware specifications, making it scientifically sound and feasible with current resources."
+    },
+    {
+      "topic_id": "T13",
+      "topic": "Zero-shot generalization in reinforcement learning",
+      "idea_index": 4,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error preventing its content from being retrieved. Idea B presents a well-articulated, novel framework (CIMRL) that combines causal discovery with meta-RL for zero-shot generalization, addresses genuine open problems in RL robustness, specifies clear experimental protocols with concrete baselines and metrics, and is feasible though computationally demanding. B's total score of 30/40 is substantially higher than A's 0/40."
+    },
+    {
+      "topic_id": "T15",
+      "topic": "Quantum advantage in machine learning tasks",
+      "idea_index": 0,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal addressing a genuine gap in quantum machine learning\u2014practical quantum advantage under real hardware constraints for edge devices. It combines novelty (adaptive latency-aware embeddings), clear experimental methodology with specific benchmarks and datasets, and reasonable feasibility with simulator-based validation. Idea B cannot be evaluated as it contains only an API error message with no research content."
+    },
+    {
+      "topic_id": "T15",
+      "topic": "Quantum advantage in machine learning tasks",
+      "idea_index": 1,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal addressing a genuine gap in quantum machine learning\u2014the practical deployment of QML on resource-constrained edge devices with concrete hardware constraints, noise resilience, and latency budgets. Idea B cannot be evaluated as it contains only an API error message with no research content."
+    },
+    {
+      "topic_id": "T15",
+      "topic": "Quantum advantage in machine learning tasks",
+      "idea_index": 2,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal combining adaptive quantum kernel learning with edge inference constraints, featuring clear novelty in real-time circuit optimization, concrete experimental benchmarks, and specific latency/accuracy targets. Idea B contains only an API error message with no research content, making it impossible to evaluate on any scientific criteria."
+    },
+    {
+      "topic_id": "T15",
+      "topic": "Quantum advantage in machine learning tasks",
+      "idea_index": 3,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a concrete research proposal with clear novelty in adaptive scheduling of quantum gradient evaluations, addresses a real problem in hybrid quantum-classical training, and provides specific experimental methodology with measurable targets. Idea B cannot be evaluated as it contains only an API error message with no research content."
+    },
+    {
+      "topic_id": "T15",
+      "topic": "Quantum advantage in machine learning tasks",
+      "idea_index": 4,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated hybrid approach combining layer-wise training with noise-aware adaptive pruning for variational quantum circuits, addressing genuine scalability challenges in quantum machine learning with clear experimental methodology and realistic benchmarks. Idea B cannot be evaluated as it contains only an API error message with no research content, making it impossible to assess on any criterion."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 0,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal addressing a genuine gap in protein structure prediction\u2014real-time fusion of heterogeneous experimental data streams with strict latency constraints for clinical applications. The approach is novel, combining streaming transformers with GNNs for incremental updates, and the experimental design is concrete with clear metrics and baselines. Idea B cannot be evaluated as it contains only an API error message with no research content."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 1,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error preventing its content from being retrieved. Idea B presents a well-articulated, novel approach to a genuine open problem in structural biology\u2014modeling IDP conformational ensembles with uncertainty quantification\u2014with clear methodology, appropriate benchmarks, and realistic feasibility. The integration of physics-informed priors with probabilistic deep learning represents a meaningful advance beyond current deterministic methods like AlphaFold2."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 2,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error preventing its content from being retrieved. Idea B presents a well-articulated, novel approach to an important problem in structural biology\u2014generating biochemically constrained conformational ensembles for drug discovery\u2014with clear methodology, realistic benchmarks, and achievable experimental design that meaningfully advances beyond current AlphaFold limitations."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 3,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal addressing a genuine gap in protein structure prediction\u2014capturing rare conformational states beyond AlphaFold's dominant fold predictions. The approach combining physics-informed VAEs with conformational ensembles is novel, the experimental design is concrete with specific metrics (RMSD \u22642.5\u00c5, entropy increase \u226515%), and the computational budget is realistic. Idea B cannot be evaluated as it contains only an API error message with no research content."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 4,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal addressing the practical deployment challenge of protein structure prediction on edge devices through adaptive compression and refinement techniques. Idea B contains only an API error message with no actual research content, making it impossible to evaluate. Idea A scores 28/40 total points and is the clear winner by default."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 0,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-developed research proposal combining adaptive machine learning with low-overhead quantum error correction for NISQ devices, addressing a genuine gap between static QEC methods and the dynamic noise environments of near-term hardware. Idea B cannot be evaluated as it contains only an API error message with no actual research content, making any comparison impossible."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 1,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal combining adaptive noise profiling, dynamic QEC code selection, and real-time feedback for NISQ quantum sensors\u2014a genuinely novel integration addressing real latency/overhead constraints with clear experimental methodology and testable metrics. Idea B contains only an API error message with no research content, making it impossible to evaluate and rendering it completely non-viable."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 2,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated hierarchical multi-timescale adaptive QEC framework with clear novelty over single-timescale approaches, addresses a genuine open problem in NISQ error correction, and provides detailed experimental methodology with specific metrics and baselines. Idea B cannot be evaluated as it contains only an API error message with no research content."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 3,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error preventing its content from being retrieved. Idea B presents a well-articulated, concrete proposal for an integrated error-aware quantum compiler with clear novelty in its multi-objective optimization approach, strong scientific relevance to NISQ limitations, detailed experimental methodology with specific benchmarks and metrics, and realistic feasibility using existing tools and hardware access."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 4,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A contains only an API error message and provides no evaluable research content, resulting in zero scores across all criteria. Idea B presents a well-articulated proposal for adaptive hierarchical quantum error correction with clear novelty over static approaches, addresses genuine NISQ scalability challenges, specifies concrete experimental metrics and benchmarks, and is feasible using current simulation infrastructure. B is the clear winner by default and on substantive merit."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 0,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal combining adaptive sparse coding with neuromorphic hardware optimization under realistic edge constraints, with clear novelty in RL-based dynamic sparsity control and hardware co-design. Idea B cannot be evaluated due to a technical error preventing its content from being retrieved, resulting in zero scores across all criteria."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 1,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated neuromorphic computing framework with genuine co-design innovation, addressing real wearable health monitoring constraints through integration of novel hardware (vertical dual-gate neurotransistors) with adaptive SNNs. Idea B cannot be evaluated as it contains only an API error message with no research content, making comparison impossible and resulting in a clear win for Idea A by default."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 2,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated, novel approach addressing a genuine open problem in neuromorphic computing\u2014maintaining computational state during intermittent power in battery-powered edge devices. The proposal combines event-driven architectures with power interruption detection and non-volatile state retention in an integrated system, with clear experimental methodology, specific quantitative targets, and reasonable feasibility. Idea B cannot be evaluated as it contains only an API error message with no research content."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 3,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error preventing its content from being retrieved. Idea B presents a well-articulated research proposal addressing a genuine gap in neuromorphic computing\u2014latency-tail guarantees for analog in-memory computing\u2014with clear methodology, specific quantitative targets, and comprehensive experimental validation plans across multiple datasets and hardware platforms. The cross-layer approach combining device-level compensation with circuit-level timing control is novel and directly tackles a critical barrier to real-time deployment of AIMC accelerators."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 4,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error preventing its content from being retrieved. Idea B presents a well-articulated, novel approach to adaptive neuromorphic learning with clear experimental methodology, realistic feasibility on existing hardware platforms (Loihi 2, TrueNorth), and addresses a genuine open problem in energy-efficient edge computing that current fixed-parameter methods do not adequately solve."
+    },
+    {
+      "topic_id": "T6",
+      "topic": "Generative AI for drug discovery and molecular design",
+      "idea_index": 0,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A contains only an API error message with no substantive research content, making it impossible to evaluate. Idea B presents a well-articulated, technically sound proposal that meaningfully combines multi-task learning with model compression for edge deployment\u2014addressing a genuine gap between current approaches that optimize either validity/latency or bioactivity prediction separately. The experimental design is concrete with clear metrics, appropriate baselines, and realistic resource requirements."
+    },
+    {
+      "topic_id": "T6",
+      "topic": "Generative AI for drug discovery and molecular design",
+      "idea_index": 1,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error preventing its content from being retrieved. Idea B presents a well-articulated, technically sophisticated approach that combines physics-informed learning with scalable generative modeling to address a genuine bottleneck in drug discovery, with clear experimental protocols and realistic benchmarks against established baselines."
+    },
+    {
+      "topic_id": "T6",
+      "topic": "Generative AI for drug discovery and molecular design",
+      "idea_index": 2,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal combining hierarchical reinforcement learning with edge computing for multi-objective molecular optimization, addressing a genuine gap in decentralized drug discovery with clear experimental methodology and concrete resource constraints. Idea B contains only an API error message with no research content, making it impossible to evaluate as a scientific proposal."
+    },
+    {
+      "topic_id": "T6",
+      "topic": "Generative AI for drug discovery and molecular design",
+      "idea_index": 3,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal combining hierarchical reinforcement learning with adaptive molecular representations for multi-objective drug discovery optimization, addressing genuine industrial constraints with clear experimental methodology and reasonable feasibility. Idea B contains only an API error message with no research content, making it impossible to evaluate and rendering it completely non-competitive."
+    },
+    {
+      "topic_id": "T6",
+      "topic": "Generative AI for drug discovery and molecular design",
+      "idea_index": 4,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal addressing a genuine gap in generative AI for drug discovery by embedding physics-informed permeability constraints directly into the generation loop rather than applying them post-hoc. The approach is novel, scientifically sound with clear experimental design, and feasible within stated computational resources. Idea B cannot be evaluated as it contains only an API error message with no research content."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 0,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal combining streaming causal discovery with generative modeling for Industrial IoT applications, addressing genuine gaps in handling nonstationarity, feedback loops, and real-time inference. Idea B contains only an API error message with no actual research content, making it impossible to evaluate. Idea A scores 29/40 total points while Idea B scores 0/40."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 1,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal combining latent causal discovery with edge computing constraints, addressing a genuine open problem in healthcare diagnostics with clear experimental methodology and concrete baselines. Idea B contains only an API error message with no research content, making it impossible to evaluate on any scientific criteria."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 2,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal combining online change-point detection with continual nonlinear causal discovery for financial time series, addressing a genuine gap in handling non-stationary regimes. Idea B contains only an API error message with no research content, making it impossible to evaluate. Idea A scores 30/40 total points with clear novelty, practical relevance, specific experimental design, and reasonable feasibility, while Idea B scores 0/40."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 3,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error preventing access to its content. Idea B presents a well-articulated framework combining three distinct challenges (adversarial robustness, regime detection, and nonlinear causal discovery) with clear novelty over existing methods, concrete experimental design on relevant financial datasets, and specific quantitative targets. While Idea B's feasibility is moderate due to computational complexity and the novelty of integrating these components, it substantially outscores the unavailable Idea A."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 4,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error preventing its content from being retrieved. Idea B presents a well-articulated, novel framework combining multiple advanced techniques (KAN-based nonlinear modeling, adaptive pruning, multi-environment invariance) for a practically important problem (causal discovery on edge devices with streaming data). The proposal demonstrates strong scientific merit with clear experimental design, concrete benchmarks, and realistic resource constraints, though the feasibility is moderately constrained by the complexity of integrating multiple novel components within strict memory bounds."
+    },
+    {
+      "topic_id": "T7",
+      "topic": "Federated learning with heterogeneous and non-IID data",
+      "idea_index": 0,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal combining meta-learning with split federated learning for IoT environments, addressing genuine challenges in heterogeneous non-IID settings with clear experimental methodology and realistic evaluation plans. Idea B cannot be evaluated as it contains only an API error message with no research content, making any comparison impossible."
+    },
+    {
+      "topic_id": "T7",
+      "topic": "Federated learning with heterogeneous and non-IID data",
+      "idea_index": 1,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal addressing dynamic federated learning with concrete technical contributions (hierarchical clustering, mobility prediction, latency-aware scheduling, meta-learning personalization) and clear experimental methodology. Idea B is unavailable due to a technical error, making it impossible to evaluate. Idea A scores 28/40 total, demonstrating solid novelty, scientific relevance, and feasibility despite some concerns about incremental nature and simulation-based evaluation limitations."
+    },
+    {
+      "topic_id": "T7",
+      "topic": "Federated learning with heterogeneous and non-IID data",
+      "idea_index": 2,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error preventing its content from being retrieved. Idea B presents a well-articulated, multi-faceted approach combining adaptive clustering, failure-aware routing, and personalized aggregation to address the genuine open problem of federated learning under simultaneous non-IID data heterogeneity and device failures. The experimental design is concrete with specific benchmarks, baselines, and quantifiable metrics, and the approach appears feasible within standard research timelines and computational resources."
+    },
+    {
+      "topic_id": "T7",
+      "topic": "Federated learning with heterogeneous and non-IID data",
+      "idea_index": 3,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal combining meta-learning with adaptive communication scheduling and uncertainty sampling for wearable health federated learning, addressing genuine open problems with clear experimental methodology and realistic targets. Idea B cannot be evaluated as it contains only an API error message with no research content."
+    },
+    {
+      "topic_id": "T7",
+      "topic": "Federated learning with heterogeneous and non-IID data",
+      "idea_index": 4,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error preventing access to its content. Idea B presents a well-articulated research proposal with clear novelty in jointly optimizing latency and data heterogeneity (absent from prior work), addresses genuine open problems in federated learning, specifies concrete experimental methodology with measurable targets, and is feasible with current resources using simulation-based evaluation."
+    },
+    {
+      "topic_id": "T8",
+      "topic": "Deep learning emulators for climate model acceleration",
+      "idea_index": 0,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated, novel approach to a genuine open problem in climate model emulation\u2014handling variable-resolution and dynamically refined meshes. It combines graph transformers with learned topology embeddings and physics-informed constraints with clear experimental protocols, specific baselines, and quantifiable metrics. Idea B cannot be evaluated due to a technical error retrieving the content, resulting in zero scores across all criteria."
+    },
+    {
+      "topic_id": "T8",
+      "topic": "Deep learning emulators for climate model acceleration",
+      "idea_index": 1,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal combining sparse attention mechanisms with climate modeling, addressing genuine limitations in current deep learning emulators for long-term climate projections. Idea B contains only an API error message with no actual research content, making it impossible to evaluate. Idea A scores 30/40 total points across all criteria, while Idea B scores 0/40."
+    },
+    {
+      "topic_id": "T8",
+      "topic": "Deep learning emulators for climate model acceleration",
+      "idea_index": 2,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal combining hardware-aware neural architecture search with climate emulation, addressing a genuine gap between high-accuracy models and edge deployment constraints. Idea B contains only an API error message with no actual research content, making it impossible to evaluate. Idea A scores 30/40 total points across all criteria, demonstrating solid novelty, clear experimental design, and practical feasibility for operational climate forecasting applications."
+    },
+    {
+      "topic_id": "T8",
+      "topic": "Deep learning emulators for climate model acceleration",
+      "idea_index": 3,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal combining hierarchical multi-scale PINNs with cross-scale attention and Bayesian uncertainty quantification for climate emulation. While Idea B cannot be evaluated due to a technical error preventing its content from being retrieved, Idea A demonstrates clear novelty in integrating attention mechanisms with physics-informed learning, addresses genuine scalability and uncertainty quantification gaps in climate modeling, provides specific experimental protocols with quantifiable metrics, and proposes feasible work leveraging existing HPC infrastructure and datasets."
+    },
+    {
+      "topic_id": "T8",
+      "topic": "Deep learning emulators for climate model acceleration",
+      "idea_index": 4,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal addressing a genuine problem in climate model acceleration through distributed PINNs with clear experimental benchmarks and quantitative targets. Idea B contains only an API error message with no actual research content, making it impossible to evaluate. Idea A scores 29/40 total points while Idea B scores 0/40."
+    },
+    {
+      "topic_id": "T9",
+      "topic": "Uncertainty quantification in deep neural networks",
+      "idea_index": 0,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A cannot be evaluated due to a technical error preventing its content from being retrieved. Idea B presents a well-articulated, novel approach combining diversity-aware ensemble training with resource-adaptive compression for mobile deployment, addressing a genuine gap in uncertainty quantification literature. The proposal demonstrates strong scientific merit with clear experimental methodology, concrete baselines, and realistic performance targets on actual mobile hardware."
+    },
+    {
+      "topic_id": "T9",
+      "topic": "Uncertainty quantification in deep neural networks",
+      "idea_index": 1,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal combining Bayesian PINNs with active subspace reduction and probabilistic skip connections for real-time uncertainty quantification in fluid-structure dynamics. The approach is novel in its tight coupling of these three components, addresses a genuine latency bottleneck in aerospace applications, specifies clear experimental validation on established benchmarks, and is feasible with current GPU resources. Idea B cannot be evaluated as it contains only an API error message with no research content."
+    },
+    {
+      "topic_id": "T9",
+      "topic": "Uncertainty quantification in deep neural networks",
+      "idea_index": 2,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal combining causal inference, Bayesian deep learning, active subspace methods, and uncertainty calibration with clear experimental design on clinically relevant datasets. Idea B contains only an API error message with no research content, making it impossible to evaluate. Idea A scores 29/40 total points and is the only evaluable submission."
+    },
+    {
+      "topic_id": "T9",
+      "topic": "Uncertainty quantification in deep neural networks",
+      "idea_index": 3,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal combining meta-learning, calibration-aware uncertainty quantification, and neural architecture search for edge deployment in health monitoring\u2014addressing a genuine gap at the intersection of trustworthy AI and resource-constrained systems. Idea B cannot be evaluated as it contains only an API error message with no research content. Idea A scores 30/40 total, while Idea B scores 0/40."
+    },
+    {
+      "topic_id": "T9",
+      "topic": "Uncertainty quantification in deep neural networks",
+      "idea_index": 4,
+      "system_a": "S3",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 0,
+        "scientific_usefulness": 0,
+        "experimental_clarity": 0,
+        "feasibility": 0
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-articulated research proposal with clear novelty in explicitly disentangling aleatoric and epistemic uncertainties within normalizing flows through dual latent subspaces, addressing a genuine gap in current uncertainty quantification methods. The experimental design is concrete with specific benchmarks, metrics, and baselines, and the approach appears feasible with standard computational resources. Idea B cannot be evaluated as it contains only an API error message with no research content."
+    }
+  ],
+  "blind": {
+    "wins_a": 5,
+    "wins_b": 0,
+    "ties": 0,
+    "total_judged": 5,
+    "win_rate_b": 0.0,
+    "sampled_topics": [
+      "T7",
+      "T14",
+      "T6",
+      "T15",
+      "T1"
+    ],
+    "verdicts": [
+      {
+        "topic_id": "T7",
+        "topic": "Federated learning with heterogeneous and non-IID data",
+        "system_a": "S3",
+        "system_b": "S5",
+        "judge_model": "gemini-flash-lite-latest",
+        "scores_a": {
+          "novelty": 8,
+          "scientific_usefulness": 9,
+          "experimental_clarity": 9,
+          "feasibility": 8
+        },
+        "scores_b": {
+          "novelty": 0,
+          "scientific_usefulness": 0,
+          "experimental_clarity": 0,
+          "feasibility": 0
+        },
+        "winner": "A",
+        "reasoning": "Idea B presents a well-structured, highly relevant research proposal that effectively bridges the gap between meta-learning and split federated learning for resource-constrained environments. Idea A is invalid due to a system error, making Idea B the clear and only viable candidate."
+      },
+      {
+        "topic_id": "T14",
+        "topic": "Topological methods for high-dimensional data analysis",
+        "system_a": "S3",
+        "system_b": "S5",
+        "judge_model": "gemini-flash-lite-latest",
+        "scores_a": {
+          "novelty": 7,
+          "scientific_usefulness": 9,
+          "experimental_clarity": 9,
+          "feasibility": 8
+        },
+        "scores_b": {
+          "novelty": 0,
+          "scientific_usefulness": 0,
+          "experimental_clarity": 0,
+          "feasibility": 0
+        },
+        "winner": "A",
+        "reasoning": "Idea A presents a well-defined, high-impact research program that addresses a critical bottleneck in topological data analysis for real-world streaming applications. Idea B contains no content to evaluate due to an API error, resulting in a default win for Idea A."
+      },
+      {
+        "topic_id": "T6",
+        "topic": "Generative AI for drug discovery and molecular design",
+        "system_a": "S3",
+        "system_b": "S5",
+        "judge_model": "gemini-flash-lite-latest",
+        "scores_a": {
+          "novelty": 8,
+          "scientific_usefulness": 9,
+          "experimental_clarity": 9,
+          "feasibility": 8
+        },
+        "scores_b": {
+          "novelty": 0,
+          "scientific_usefulness": 0,
+          "experimental_clarity": 0,
+          "feasibility": 0
+        },
+        "winner": "A",
+        "reasoning": "Idea A is non-existent due to a system error, while Idea B presents a highly structured, technically sound, and well-motivated research proposal. The integration of edge-computing constraints with multi-objective molecular design addresses a significant practical gap in the field of AI-driven drug discovery."
+      },
+      {
+        "topic_id": "T15",
+        "topic": "Quantum advantage in machine learning tasks",
+        "system_a": "S3",
+        "system_b": "S5",
+        "judge_model": "gemini-flash-lite-latest",
+        "scores_a": {
+          "novelty": 8,
+          "scientific_usefulness": 9,
+          "experimental_clarity": 9,
+          "feasibility": 7
+        },
+        "scores_b": {
+          "novelty": 0,
+          "scientific_usefulness": 0,
+          "experimental_clarity": 0,
+          "feasibility": 0
+        },
+        "winner": "A",
+        "reasoning": "Idea A is non-existent due to an API error, while Idea B presents a highly structured, scientifically rigorous, and practically relevant proposal. Idea B addresses the critical bottleneck of quantum edge computing with a clear, testable methodology and realistic performance targets."
+      },
+      {
+        "topic_id": "T1",
+        "topic": "Scaling laws for Large Language Models",
+        "system_a": "S3",
+        "system_b": "S5",
+        "judge_model": "gemini-flash-lite-latest",
+        "scores_a": {
+          "novelty": 8,
+          "scientific_usefulness": 9,
+          "experimental_clarity": 9,
+          "feasibility": 7
+        },
+        "scores_b": {
+          "novelty": 0,
+          "scientific_usefulness": 0,
+          "experimental_clarity": 0,
+          "feasibility": 0
+        },
+        "winner": "A",
+        "reasoning": "Idea A presents a highly relevant, well-structured research proposal that addresses a critical gap in LLM infrastructure scaling. Idea B is non-existent due to an API error, resulting in a default win for Idea A."
+      }
+    ]
+  }
+}

@@ -95,6 +95,11 @@ def format_memory_str(memory: list[dict]) -> str:
 SWE_MODEL = "claude-sonnet-4-6"
 SWE_TIMEOUT = 180
 
+# When True, use `claude --print` (Claude Code CLI) for the actual code editing
+# instead of a raw API call. Claude Code reads files with its own tools and makes
+# surgical edits, avoiding the "write full file from scratch" failure mode.
+USE_CLAUDE_CODE = True
+
 # ── Stopping criteria ─────────────────────────────────────────────────────────
 DEFAULT_MAX_ROUNDS = 6       # max accepted edits per session
 DEFAULT_MAX_FAILURES = 3     # stop if this many consecutive mini-evals fail
@@ -461,6 +466,15 @@ Implementation guidelines:
   and have each generate independently before synthesis
 - Budget ~10-15 LLM calls per idea (same as champion) — use them differently, not fewer
 
+CRITICAL robustness requirements (failure to follow these causes runtime crashes):
+- Every call_llm() call MUST be wrapped in try/except — never let an API call crash the function
+- Never call len(), enumerate(), or index into a variable that might be None or empty
+  → always check: `if not results: results = [fallback_value]`
+- Every intermediate result (list of candidates, parsed JSON, etc.) must have a fallback:
+  if parsing fails or returns empty, use a sensible default and continue
+- The generate_idea() method must ALWAYS return a non-empty string, even on full failure
+  → end with: `return final_idea or call_llm(fallback_prompt, model, client, temperature)`
+
 The result must still produce output in IDEA_FORMAT. But the path to get there can be
 completely different from the champion's tree-search → tournament → expand pipeline.
 
@@ -496,6 +510,9 @@ generation paradigm entirely. Consider:
 
 The goal is ideas that are genuinely more novel and better-grounded, not ideas that score
 better because of prompt formatting. Implement a real architectural change.
+
+CRITICAL: Wrap every call_llm() in try/except. Never call len() on a value that could be
+None. Every list/dict result needs a fallback. generate_idea() must always return a string.
 
 Then write the output file following the format below.
 
@@ -731,9 +748,9 @@ def _run_improvement_tournament(
     # ── L1: generate 3 broad approaches ──────────────────────────────────────
     try:
         raw_l1 = _llm(_IMPR_L1_PROMPT.format(
-            failure_analysis=failure_analysis[:600],
-            tried=tried[:400],
-            code_bundle=code_bundle[:1200],
+            failure_analysis=failure_analysis[:1000],
+            tried=tried[:800],
+            code_bundle=code_bundle[:4000],
         ))
         approaches = _parse_blocks(raw_l1, "APPROACH", "RATIONALE")
     except Exception as e:
@@ -752,8 +769,8 @@ def _run_improvement_tournament(
             raw_l2 = _llm(_IMPR_L2_PROMPT.format(
                 approach_name=ap["name"],
                 approach_rationale=ap["description"],
-                failure_analysis=failure_analysis[:400],
-                code_bundle=code_bundle[:800],
+                failure_analysis=failure_analysis[:800],
+                code_bundle=code_bundle[:3000],
             ))
             t_list = _parse_blocks(raw_l2, "TARGET", "DESCRIPTION")
             for t in t_list[:2]:
@@ -899,16 +916,143 @@ def _extract_losing_verdicts(report_path: Path, n: int = 8) -> str:
 
 
 def _call_swe_llm(prompt: str) -> str:
-    """Call the SWE meta-model. Strips accidental markdown fences."""
+    """Call the SWE meta-model. Extracts Python code block from response."""
     sys.path.insert(0, str(Path(__file__).parent / "systems"))
     from base import make_client, call_llm
     client = make_client(SWE_MODEL)
     raw = call_llm(prompt, SWE_MODEL, client, temperature=0.7,
                    max_tokens=4096, timeout=SWE_TIMEOUT)
-    raw = re.sub(r"^```python\s*\n", "", raw.strip())
+    raw = raw.strip()
+
+    # If response contains a fenced Python block, extract it (handles explanatory preamble)
+    fence_match = re.search(r"```python\s*\n(.*?)```", raw, re.DOTALL)
+    if fence_match:
+        return fence_match.group(1).strip() + "\n"
+
+    # Fallback: try any fenced block
+    fence_match = re.search(r"```\s*\n(.*?)```", raw, re.DOTALL)
+    if fence_match:
+        block = fence_match.group(1).strip()
+        if "class " in block and "def generate_idea" in block:
+            return block + "\n"
+
+    # Last resort: strip leading/trailing fences and return
+    raw = re.sub(r"^```python\s*\n", "", raw)
     raw = re.sub(r"^```\s*\n", "", raw)
     raw = re.sub(r"\n```\s*$", "", raw)
     return raw.strip() + "\n"
+
+
+def _call_claude_code_edit(
+    champion_path: Path,
+    output_path: Path,
+    task_description: str,
+    failure_analysis: str,
+    ideas_dir: Path,
+    next_version: str,
+) -> str:
+    """Invoke Claude Code CLI to implement a targeted improvement.
+
+    Copies champion to output_path, then runs `claude --print` with a structured
+    task. Claude Code reads the files with its own tools and makes surgical edits
+    rather than generating a whole new file from scratch.
+
+    Returns the content of the edited file.
+    Raises RuntimeError if the 'claude' CLI is unavailable or the edit fails.
+    """
+    import subprocess
+
+    # Start from champion as a base so Claude Code can diff/edit rather than rewrite
+    shutil.copy(champion_path, output_path)
+
+    repo_root = ideas_dir.parent
+    try:
+        rel_output = output_path.relative_to(repo_root)
+        rel_prompts = Path("ideas/idea_tournament/prompts.py")
+        rel_tree    = Path("ideas/idea_tournament/tree_search.py")
+        rel_tourn   = Path("ideas/idea_tournament/tournament.py")
+    except ValueError:
+        rel_output = output_path
+        rel_prompts = ideas_dir / "idea_tournament/prompts.py"
+        rel_tree    = ideas_dir / "idea_tournament/tree_search.py"
+        rel_tourn   = ideas_dir / "idea_tournament/tournament.py"
+
+    task_prompt = f"""You are improving a Python research idea generator. Make ONE focused, surgical improvement.
+
+## Improvement strategy (selected by IdeaTreeSearch tournament)
+{task_description}
+
+## Why the current generator is losing to the baseline
+{failure_analysis}
+
+## What to do
+1. Read `{rel_output}` — this is already a copy of the champion, your starting point
+2. Read the relevant `ideas/idea_tournament/` modules for full context on what the pipeline does
+3. Implement the improvement strategy above — make TARGETED edits to `{rel_output}`
+
+## Hard constraints (failure to meet these causes the system to crash or be disqualified)
+- Class name MUST be `{next_version}Generator(IdeaGenerator)`
+- `VERSION = "{next_version}"` (update from whatever the champion has)
+- File MUST end with `GENERATOR = {next_version}Generator()`
+- Any code you MODIFY from `idea_tournament/` must be inlined in the file (not imported)
+- Every `call_llm()` call must be wrapped in try/except with a sensible fallback
+- `generate_idea(self, topic, client, model, temperature)` must always return a non-empty string
+- Keep total LLM calls per idea: ~10-15 (same budget as champion, just use them differently)
+
+## What the judge rewards (optimise for this, not pipeline complexity)
+- Concrete, specific, well-grounded ideas
+- Named datasets, baselines, and quantitative metrics
+- Clear problem statements with named failure modes
+- Novelty relative to cited SOTA
+
+Make the minimal change needed to implement the strategy. Do NOT restructure the file unnecessarily."""
+
+    # Strip CLAUDECODE from the subprocess env so nested Claude Code sessions work.
+    # Claude Code blocks nested launches unless this var is absent.
+    import os as _os
+    clean_env = {k: v for k, v in _os.environ.items() if k != "CLAUDECODE"}
+
+    try:
+        result = subprocess.run(
+            ["claude", "--print", "--allowedTools", "Read,Edit,Write"],
+            input=task_prompt,
+            cwd=str(repo_root),
+            capture_output=True,
+            text=True,
+            timeout=600,
+            env=clean_env,
+        )
+        logger.info(
+            "Claude Code edit done (rc=%d): %s",
+            result.returncode,
+            (result.stdout or result.stderr or "")[:200],
+        )
+        if result.returncode != 0:
+            raise RuntimeError(
+                f"claude --print returned rc={result.returncode}: "
+                f"{result.stderr[:400]}"
+            )
+    except subprocess.TimeoutExpired:
+        raise RuntimeError("Claude Code edit timed out after 600s")
+    except FileNotFoundError:
+        raise RuntimeError(
+            "'claude' CLI not found — install Claude Code or set USE_CLAUDE_CODE=False"
+        )
+
+    if not output_path.exists():
+        raise ValueError(f"Claude Code did not write {output_path}")
+
+    content = output_path.read_text()
+    if not content.strip():
+        raise ValueError("Claude Code produced an empty file")
+
+    # Verify it's actually different from the champion (not a no-op)
+    champion_content = champion_path.read_text()
+    if content == champion_content:
+        raise ValueError("Claude Code made no changes to the file")
+
+    logger.info("Claude Code wrote %s (%d chars)", output_path.name, len(content))
+    return content
 
 
 def _smoke_test(candidate_path: Path, ideas_dir: Path) -> str | None:
@@ -1161,22 +1305,30 @@ def run_swe_loop(
             logger.error("Failure analysis failed: %s", e)
             failure_analysis = "Unknown failure pattern — try improving experimental clarity."
 
-        # ── Step 2: propose + apply edit ─────────────────────────────────────
+        # ── Step 2: select direction + apply edit ────────────────────────────
         tmp_version = f"{next_version}_r{rnd}"
+        tmp_path = systems_dir / f"{tmp_version}.py"
 
+        # Build the task description for this round
         if failures > 0 and edit_history:
-            # Reflect on why last edit failed
+            # Reflect: previous edit failed — build a richer task that includes
+            # what was tried and why it didn't work, so the next attempt differs
             last = edit_history[-1] if edit_history else {}
-            propose_prompt = REFLECT_PROMPT.format(
-                win_rate=last.get("win_rate", 0.0),
-                threshold=MINI_IMPROVEMENT_THRESHOLD,
-                edit_description=last.get("description", "unknown"),
-                code_bundle=code_bundle,
-                failure_analysis=failure_analysis,
-                next_version=tmp_version,
+            task_description = (
+                f"PREVIOUS ATTEMPT FAILED (mini-eval: {last.get('win_rate', 0.0):.1%}, "
+                f"needed >{MINI_IMPROVEMENT_THRESHOLD:.0%}).\n\n"
+                f"What was tried:\n{last.get('description', 'unknown')}\n\n"
+                f"Try something STRUCTURALLY DIFFERENT. Consider:\n"
+                f"- Replacing tree search with multi-agent debate\n"
+                f"- Adding an adversarial step that attacks weaknesses then fixes them\n"
+                f"- Cross-domain analogical reasoning (map topic to isomorphic problem)\n"
+                f"- Replacing expansion with a Socratic critique-then-rewrite loop\n"
+                f"- Staged refinement: generate rough seeds, deep-dive the best one\n\n"
+                f"The goal: ideas that are more novel AND better-grounded, not just "
+                f"differently formatted. Implement a real architectural change."
             )
         else:
-            # Run improvement tournament to select the best direction before implementing
+            # Fresh round: run improvement tournament to select the best direction
             logger.info("Running improvement tournament to select edit direction...")
             tournament_winner, n_candidates = _run_improvement_tournament(
                 failure_analysis=failure_analysis,
@@ -1186,41 +1338,66 @@ def run_swe_loop(
                 ideas_dir=ideas_dir,
                 model=generator_model,
             )
-            propose_prompt = PROPOSE_EDIT_PROMPT.format(
-                version=current_version_name,
-                code_bundle=code_bundle,
-                failure_analysis=failure_analysis,
-                tournament_winner=tournament_winner,
-                n_candidates=n_candidates if n_candidates > 0 else "N/A",
-                edit_history=edit_history_str,
-                swe_context=swe_context_str,
-                next_version=tmp_version,
+            task_description = (
+                f"Tournament-selected strategy ({n_candidates} candidates evaluated):\n"
+                f"{tournament_winner}\n\n"
+                f"Edit history this session:\n{edit_history_str}\n\n"
+                f"Context:\n{swe_context_str}"
             )
 
         try:
-            new_code = _call_swe_llm(propose_prompt)
-            # Auto-repair missing GENERATOR singleton — try several class name patterns
-            if "GENERATOR" not in new_code:
-                cls_match = (
-                    re.search(r"class\s+(S\w+Generator)\s*\(", new_code)
-                    or re.search(r"class\s+(\w+Generator)\s*\(\s*IdeaGenerator", new_code)
-                    or re.search(r"class\s+(\w+)\s*\(\s*IdeaGenerator\s*\)", new_code)
-                    or re.search(r"class\s+(\w+Generator)\s*\(", new_code)
+            if USE_CLAUDE_CODE:
+                new_code = _call_claude_code_edit(
+                    champion_path=champion_path,
+                    output_path=tmp_path,
+                    task_description=task_description,
+                    failure_analysis=failure_analysis,
+                    ideas_dir=ideas_dir,
+                    next_version=tmp_version,
                 )
-                if cls_match:
-                    new_code = new_code.rstrip() + f"\n\nGENERATOR = {cls_match.group(1)}()\n"
-                    logger.warning("Auto-repaired missing GENERATOR singleton → %s()", cls_match.group(1))
+            else:
+                # Fallback: direct LLM call (original behaviour)
+                if failures > 0 and edit_history:
+                    last = edit_history[-1] if edit_history else {}
+                    propose_prompt = REFLECT_PROMPT.format(
+                        win_rate=last.get("win_rate", 0.0),
+                        threshold=MINI_IMPROVEMENT_THRESHOLD,
+                        edit_description=last.get("description", "unknown"),
+                        code_bundle=code_bundle,
+                        failure_analysis=failure_analysis,
+                        next_version=tmp_version,
+                    )
                 else:
-                    raise ValueError("Generated code missing GENERATOR singleton and no generator class found")
+                    propose_prompt = PROPOSE_EDIT_PROMPT.format(
+                        version=current_version_name,
+                        code_bundle=code_bundle,
+                        failure_analysis=failure_analysis,
+                        tournament_winner=tournament_winner,
+                        n_candidates=n_candidates if n_candidates > 0 else "N/A",
+                        edit_history=edit_history_str,
+                        swe_context=swe_context_str,
+                        next_version=tmp_version,
+                    )
+                new_code = _call_swe_llm(propose_prompt)
+                # Auto-repair missing GENERATOR singleton
+                if "GENERATOR" not in new_code:
+                    cls_match = (
+                        re.search(r"class\s+(S\w+Generator)\s*\(", new_code)
+                        or re.search(r"class\s+(\w+Generator)\s*\(\s*IdeaGenerator", new_code)
+                        or re.search(r"class\s+(\w+)\s*\(\s*IdeaGenerator\s*\)", new_code)
+                        or re.search(r"class\s+(\w+Generator)\s*\(", new_code)
+                    )
+                    if cls_match:
+                        new_code = new_code.rstrip() + f"\n\nGENERATOR = {cls_match.group(1)}()\n"
+                        logger.warning("Auto-repaired missing GENERATOR → %s()", cls_match.group(1))
+                    else:
+                        raise ValueError("Generated code missing GENERATOR singleton")
+                tmp_path.write_text(new_code)
+                logger.info("Wrote candidate %s (%d chars)", tmp_version, len(new_code))
         except Exception as e:
             logger.error("Edit proposal failed: %s", e)
             failures += 1
             continue
-
-        # Write to temp file
-        tmp_path = systems_dir / f"{tmp_version}.py"
-        tmp_path.write_text(new_code)
-        logger.info("Wrote candidate %s (%d chars)", tmp_version, len(new_code))
 
         # ── Smoke test: validate the file imports cleanly before spending mini-eval ──
         smoke_err = _smoke_test(tmp_path, ideas_dir)
@@ -1252,10 +1429,11 @@ def run_swe_loop(
         improved = win_rate > MINI_IMPROVEMENT_THRESHOLD
         edit_history.append({
             "round": rnd,
-            "description": failure_analysis[:200],
+            "description": task_description[:600],
+            "failure_analysis": failure_analysis[:400],
             "win_rate": win_rate,
             "accepted": improved,
-            "code_snippet": new_code[:300],
+            "code_snippet": new_code[:1000],
         })
 
         if improved:

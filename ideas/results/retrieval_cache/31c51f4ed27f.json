@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Convolutional networks for fast, energy-efficient neuromorphic computing",
+    "year": 2016,
+    "citations": 753,
+    "tldr": "This approach allows the algorithmic power of deep learning to be merged with the efficiency of neuromorphic processors, bringing the promise of embedded, intelligent, brain-inspired computing one step closer.",
+    "abstract": "Significance Brain-inspired computing seeks to develop new technologies that solve real-world problems while remaining grounded in the physical requirements of energy, speed, and size. Meeting these challenges requires high-performing algorithms that are capable of running on efficient hardware. Here, we adapt deep convolutional neural networks, which are today\u2019s state-of-the-art approach for machine perception in many domains, to perform classification tasks on neuromorphic hardware, which is today\u2019s most efficient platform for running neural networks. Using our approach, we demonstrate near ",
+    "url": "https://www.semanticscholar.org/paper/29316449c7cc52ad326c5d1bd5b0dc5af27c1496"
+  },
+  {
+    "title": "High\u2010Precision Multibit Opto\u2010Electronic Synapses Based on ReS2/h\u2010BN/Graphene Heterostructure for Energy\u2010Efficient and High\u2010Accuracy Neuromorphic Computing",
+    "year": 2025,
+    "citations": 63,
+    "tldr": "",
+    "abstract": "Neuromorphic computing integrates sensing, memory, and computation to surpass the von Neumann bottleneck. Opto\u2010electronic synapses, capable of handling both optical and electrical signals, closely emulate biological synapses and enable advanced neuromorphic functionalities. Among them, optoelectronic floating\u2010gate transistors (OEFGTs) based on 2D van der Waals (vdW) heterostructures offer high bandwidth, minimal crosstalk, and multilevel data storage. However, improving optical synaptic weights remains crucial for enhancing learning efficiency and reducing power consumption. In this study, an ",
+    "url": "https://www.semanticscholar.org/paper/6a7b5e04ae7b5a6af54f4873bea5407059ad828c"
+  },
+  {
+    "title": "Hardware\u2010Implemented DropConnect Function for Energy\u2010Efficient Neuromorphic Computing",
+    "year": 2025,
+    "citations": 5,
+    "tldr": "An energy\u2010efficient ferroelectric synaptic transistor integrated with a threshold switch is presented, providing the proof\u2010of\u2010concept demonstration of hardware\u2010implemented stochastic DropConnect function and showcases a viable solution for the hardware implementation of scalable, resource\u2010efficient DNNs.",
+    "abstract": "Achieving brain\u2010level efficiency has long been the ultimate goal of computing. Considerable progress has been made in developing low\u2010power neuromorphic building blocks to enable efficient neural network training. However, ultra\u2010scalable nanodevices used for DropConnect regularization are demanded for full\u2010hardware implementation of deep neural networks (DNNs). In this work, an energy\u2010efficient ferroelectric synaptic transistor integrated with a threshold switch (TS) is presented, providing the proof\u2010of\u2010concept demonstration of hardware\u2010implemented stochastic DropConnect function. The threshold",
+    "url": "https://www.semanticscholar.org/paper/ea4980ac44b1d665d0a312ed5fb59811e30cca87"
+  },
+  {
+    "title": "A Reliable All\u20102D Materials Artificial Synapse for High Energy\u2010Efficient Neuromorphic Computing",
+    "year": 2021,
+    "citations": 126,
+    "tldr": "The 2TFGM synaptic device exhibits excellent linear and symmetric weight update characteristics with high reliability and tunability and can eliminate the additional latency and power consumption caused by the peripheral circuit design and achieve an ultralow energy consumption for the synapses in the neural network implementation.",
+    "abstract": "High\u2010performance artificial synaptic devices are indispensable for developing neuromorphic computing systems with high energy efficiency. However, the reliability and variability issues of existing devices such as nonlinear and asymmetric weight update are the major hurdles in their practical applications for energy\u2010efficient neuromorphic computing. Here, a two\u2010terminal floating\u2010gate memory (2TFGM) based artificial synapse built from all\u20102D van der Waals materials is reported. The 2TFGM synaptic device exhibits excellent linear and symmetric weight update characteristics with high reliability ",
+    "url": "https://www.semanticscholar.org/paper/acfaa38b0c58f079162eb70d3bed56c9ccac087a"
+  },
+  {
+    "title": "A low-power vertical dual-gate neurotransistor with short-term memory for high energy-efficient neuromorphic computing",
+    "year": 2023,
+    "citations": 50,
+    "tldr": "The development of a compact and low-power neurotransistor based on a vertical dual-gate electrolyte-gated transistor (EGT) with short-term memory characteristics, a 30\u2009nm channel length, a record-low read power of ~3.16 fW and a biology-comparable read energy of ~30 fJ is reported.",
+    "abstract": "Neuromorphic computing aims to emulate the computing processes of the brain by replicating the functions of biological neural networks using electronic counterparts. One promising approach is dendritic computing, which takes inspiration from the multi-dendritic branch structure of neurons to enhance the processing capability of artificial neural networks. While there has been a recent surge of interest in implementing dendritic computing using emerging devices, achieving artificial dendrites with throughputs and energy efficiency comparable to those of the human brain has proven challenging. I",
+    "url": "https://www.semanticscholar.org/paper/4070976aeb5bcd8c66156876d0e7a0acfd41d188"
+  }
+]

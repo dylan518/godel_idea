@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Months-long High-performance Fixed LSTM Decoder for Cursor Control in Human Intracortical Brain-computer Interfaces",
+    "year": 2023,
+    "citations": 14,
+    "tldr": "",
+    "abstract": "Intracortical brain-computer interfaces (iBCIs) enable high performance cursor control for people with tetraplegia by inferring motor intentions from neural recordings. However, current methods rely on frequent decoder recalibrations to reduce performance fluctuations attributable to instability in neural recordings. Towards clinical translation, iBCIs must sustain high performance over long periods of time with minimal interruptions to the user. Recent non-human primate (NHP) studies indicate that recurrent neural network (RNN) decoders are more robust to neural variability. Here, we demonstr",
+    "url": "https://www.semanticscholar.org/paper/8022c37d163aca95e503c6c66043343953c5ab6c"
+  },
+  {
+    "title": "Feasibility of Automatic Error Detect-and-Undo System in Human Intracortical Brain\u2013Computer Interfaces",
+    "year": 2018,
+    "citations": 26,
+    "tldr": "",
+    "abstract": "Objective: Brain\u2013computer interfaces (BCIs) aim to help people with impaired movement ability by directly translating their movement intentions into command signals for assistive technologies. Despite large performance improvements over the last two decades, BCI systems still make errors that need to be corrected manually by the user. This decreases system performance and is also frustrating for the user. The deleterious effects of errors could be mitigated if the system automatically detected when the user perceives that an error was made and automatically intervened with a corrective action;",
+    "url": "https://www.semanticscholar.org/paper/4e3561c239a32457b35ec608e3bf05ac3be0ee7f"
+  },
+  {
+    "title": "Sensing and decoding the neural drive to paralyzed muscles during attempted movements of a person with tetraplegia using a sleeve array",
+    "year": 2021,
+    "citations": 55,
+    "tldr": "This study provides the first demonstration of a wearable interface for recording and decoding firing rates of motor neurons below the level of injury in a person with tetraplegia after motor complete SCI.",
+    "abstract": "Motor neurons in the brain and spinal cord convey information about motor intent that can be extracted and interpreted to control assistive devices, such as computers, wheelchairs, and robotic manipulators. However, most methods for measuring the firing activity of single neurons rely on implanted microelectrodes. Although intracortical brain-computer interfaces (BCIs) have been shown to be safe and effective, the requirement for surgery poses a barrier to widespread use. Here, we demonstrate that a wearable sensor array can detect residual motor unit activity in paralyzed muscles after severe",
+    "url": "https://www.semanticscholar.org/paper/9ed87fc852f4a118b2c4d19cca18141d435e83f9"
+  },
+  {
+    "title": "Somatosensory cortex microstimulation modulates primary motor and premotor cortex neurons with extensive spatial convergence and divergence",
+    "year": 2023,
+    "citations": 2,
+    "tldr": "It is shown that the effects of multi-channel ICMS in a small patch of S1 diverge to affect neurons distributed widely in both M1 and PMv, and conversely, individual neurons in each of these areas can be affected by ICMS converging from much of the S1 upper extremity representation.",
+    "abstract": "Intracortical microstimulation (ICMS) is known to affect distant neurons transynaptically, yet the extent to which ICMS pulses delivered in one cortical area modulate neurons in other cortical areas remains largely unknown. Here we assessed how the individual pulses of multi-channel ICMS trains delivered in the upper extremity representation of the macaque primary somatosensory area (S1) modulate neuron firing in the primary motor cortex (M1) and in the ventral premotor cortex (PMv). S1-ICMS pulses modulated the majority of units recorded both in the M1 upper extremity representation and in PM",
+    "url": "https://www.semanticscholar.org/paper/c8b0db350b7be1f52fb580a6ae376cab94f0385e"
+  },
+  {
+    "title": "Intracortical microstimulation of human somatosensory cortex as a source of cutaneous feedback",
+    "year": 2018,
+    "citations": 1,
+    "tldr": "This work characterized qualities of sensations evoked via ICMS, and demonstrated that ICMS is a suitable means of relaying somatosensory feedback to BCI users, and used as a real-time feedback source during BCI control of a robotic limb during tasks ranging from simple force-matching tasks to functional reach, grasp and carry tasks.",
+    "abstract": "",
+    "url": "https://www.semanticscholar.org/paper/2c886c42e669efc17efea09dda7fdc1271f8786e"
+  }
+]

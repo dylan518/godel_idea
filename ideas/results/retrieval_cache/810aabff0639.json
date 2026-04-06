@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Protein structure prediction beyond AlphaFold",
+    "year": 2019,
+    "citations": 67,
+    "tldr": "DeepFragLib, a new protein-specific fragment library built using deep neural networks, may have advanced the field to the next stage of protein structure prediction.",
+    "abstract": "",
+    "url": "https://www.semanticscholar.org/paper/33761d38980f3dccc0885d3dcfc62cae1b9b6e35"
+  },
+  {
+    "title": "From CASP13 to the Nobel Prize: DeepMind's AlphaFold Journey in Revolutionizing Protein Structure Prediction and Beyond.",
+    "year": 2025,
+    "citations": 2,
+    "tldr": "This review will begin by revisiting DeepMind's early efforts in CASP13, detailing the architecture and the remarkable progress that led to their breakthrough of AlphaFold2 in CASP14 (2020), and delve into two main areas: (1) AlphaFold's contributions to the scientific community across various fields over the past four years, and (2) the latest improvements, enhancements, and achievements by DeepMind.",
+    "abstract": "Four years ago, at the 14th Critical Assessment of Structure Prediction (CASP14), John Moult made a historic announcement that the long-standing challenge of Protein Structure Prediction- a problem that had confounded scientists for over five decades-had been \"solved\" for single protein chains. Supporting this groundbreaking statement was a plot depicting the median Global Distance Test (GDT) across 87 out of 92 domains, where AlphaFold2, developed by DeepMind, achieved an unprecedented score of 92.4. The bar chart not only underscored AlphaFold2' s remarkable performance-standing out prominen",
+    "url": "https://www.semanticscholar.org/paper/f704dd8ddb4dc79c5dacf2d755266502ab8299a3"
+  },
+  {
+    "title": "Beyond AlphaFold: Charting the Future of AI in Protein Structure Prediction",
+    "year": 2026,
+    "citations": 0,
+    "tldr": "",
+    "abstract": "<jats:sec>\n                    <jats:title/>\n                    <jats:p/>\n                  </jats:sec>",
+    "url": "https://www.semanticscholar.org/paper/3ef983a9879a4053cfc4102b99b2d60069beed71"
+  },
+  {
+    "title": "Beyond Current Boundaries: Integrating Deep Learning and AlphaFold for Enhanced Protein Structure Prediction from Low-Resolution Cryo-EM Maps",
+    "year": 2024,
+    "citations": 4,
+    "tldr": "This study introduces DeepTracer-LowResEnhance, an innovative computational framework that uniquely integrates structural predictions from AlphaFold with a deep-learning-based map refinement strategy specifically tailored to enhance low-resolution maps.",
+    "abstract": "Constructing atomic models from cryo-electron microscopy (cryo-EM) maps is a crucial yet intricate task in structural biology. While advancements in deep learning, such as convolutional neural networks (CNNs) and graph neural networks (GNNs), have spurred the development of sophisticated map-to-model tools like DeepTracer and ModelAngelo, their efficacy notably diminishes with low-resolution maps beyond 4 \u00c5. To address this critical gap, this study introduces DeepTracer-LowResEnhance, an innovative computational framework that uniquely integrates structural predictions from AlphaFold with a de",
+    "url": "https://www.semanticscholar.org/paper/c31940bc89efb1960c32cd266e8608c845218862"
+  },
+  {
+    "title": "Applications of AlphaFold beyond Protein Structure Prediction",
+    "year": 2021,
+    "citations": 17,
+    "tldr": "It is found the representations extracted from AlphaFold models can be used to predict the experimentally measured stability changes accurately and for the first time, the designability for a few real proteins is estimated.",
+    "abstract": "Solving the half-century old protein structure prediction problem by DeepMind\u2019s AlphaFold is certainly one of the greatest breakthroughs in biology in the twenty first century. This breakthrough paved the way for tackling some previously highly challenging or even infeasible problems in structural biology. In this study, we propose strategies to use AlphaFold to address several fundamental problems: (1) protein engineering by predicting the experimentally measured stability changes using the representations extracted from AlphaFold models; (2) estimating the designability of a given protein st",
+    "url": "https://www.semanticscholar.org/paper/95302a9e14f13c1fe6ba4f7bae9555baf9753797"
+  }
+]

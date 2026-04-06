@@ -1,0 +1,42 @@
+[
+  {
+    "title": "HeteroSFL: Split Federated Learning With Heterogeneous Clients and Non-IID Data",
+    "year": 2025,
+    "citations": 1,
+    "tldr": "",
+    "abstract": "Split Federated Learning (SFL) is an emerging privacy-preserving decentralized learning scheme which splits a machine learning model between client and server such that most of the computations are offloaded to the server. While SFL has low computation cost on the client side, it has high communication cost. Existing SFL schemes focus on reducing the communication cost for homogeneous clients. However, a more realistic scenario is when clients are heterogeneous and process data with different distributions. In this article, we focus on client-level heterogeneity caused by different communicati",
+    "url": "https://www.semanticscholar.org/paper/ed493fb12668373d082226c88f88fb61d853321f"
+  },
+  {
+    "title": "Joint Client Scheduling and Wireless Resource Allocation for Heterogeneous Federated Edge Learning With Non-IID Data",
+    "year": 2024,
+    "citations": 16,
+    "tldr": "",
+    "abstract": "Federated learning (FL) embraces the concepts of targeted data gathering and training, and it can reduce many of the systemic privacy costs and hazards associated with traditional machine learning frameworks. However, with the low latency requirements of the sixth generation (6G) wireless communication networks and the Internet of Things (IoT) networks, the convergence delay of FL dramatically influences the overall system performance. In order to solve this urgent and challenging problem, in this paper, a joint client scheduling and wireless resource allocation algorithm is proposed, named SC",
+    "url": "https://www.semanticscholar.org/paper/e75cf6d3b8221ab28d2456a59b761786fb8bff4c"
+  },
+  {
+    "title": "Local-Global Knowledge Distillation in Heterogeneous Federated Learning with Non-IID Data",
+    "year": 2021,
+    "citations": 61,
+    "tldr": "FedGKD is proposed, which fuses the knowledge from historical global models for local training to alleviate the client-drift issue, and achieves superior empirical accuracy in fewer communication runs than five state-of-the-art methods.",
+    "abstract": "Federated learning enables multiple clients to collaboratively learn a global model by periodically aggregating the clients' models without transferring the local data. However, due to the heterogeneity of the system and data, many approaches suffer from the\"client-drift\"issue that could significantly slow down the convergence of the global model training. As clients perform local updates on heterogeneous data through heterogeneous systems, their local models drift apart. To tackle this issue, one intuitive idea is to guide the local model training by the global teachers, i.e., past global mod",
+    "url": "https://www.semanticscholar.org/paper/84cad8a44a088c54d0c9bdb8f7b9ea4c38d54cc3"
+  },
+  {
+    "title": "Adaptive Dual-Mode Distillation with Incentive Schemes for Scalable, Heterogeneous Federated Learning on Non-IID Data",
+    "year": 2025,
+    "citations": 0,
+    "tldr": "Experimental results demonstrate that the proposed approaches significantly enhance accuracy and decrease communication costs while effectively addressing statistical heterogeneity and model heterogeneity in comparison to existing state-of-the-art approaches and baselines.",
+    "abstract": "Federated Learning (FL) has emerged as a promising decentralized learning (DL) approach that enables the use of distributed data without compromising user privacy. However, FL poses several key challenges. First, it is frequently assumed that every client can train the same machine learning models, however, not all clients are able to meet this assumption because of differences in their business needs and computational resources. Second, statistical heterogeneity (a.k.a. non-IID data) poses a major challenge in FL, which can lead to lower global model performance. Third, while addressing these",
+    "url": "https://www.semanticscholar.org/paper/be8b9b26615b2c173ba4b6e8ff02e14b082707ab"
+  },
+  {
+    "title": "Enhancing Decentralized Federated Learning for Non-IID Data on Heterogeneous Devices",
+    "year": 2023,
+    "citations": 26,
+    "tldr": "",
+    "abstract": "Data generated at the network edge can be processed locally by leveraging the emerging technology of Federated Learning (FL). However, non-IID local data will lead to degradation of model accuracy and the heterogeneity of edge nodes inevitably slows down model training efficiency. Moreover, to avoid the potential communication bottleneck in the parameter-server-based FL, we concentrate on the Decentralized Federated Learning (DFL) that performs distributed model training in Peer-to-Peer (P2P) manner. To address these challenges, we propose an asynchronous DFL system by incorporating neighbor s",
+    "url": "https://www.semanticscholar.org/paper/bb4720ca4cc773e3ad09415e8c49a46418418125"
+  }
+]

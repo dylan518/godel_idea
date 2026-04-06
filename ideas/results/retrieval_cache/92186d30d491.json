@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Optogenetic Approach for In Vivo Manipulation of Neural Circuits Using Lentiviral Vectors.",
+    "year": 2026,
+    "citations": 0,
+    "tldr": "A protocol for manipulating the activity of neural circuits involved in the control of thirst and salt appetite in freely moving animals as an example of the optogenetic approach using HiRet vectors is described.",
+    "abstract": "",
+    "url": "https://www.semanticscholar.org/paper/d17578471a630bef261ccecb20c295a004a4ab19"
+  },
+  {
+    "title": "In Vivo Neural Tract Tracing Procedures: Unravelling Neural Hodology Using Fluorescent and Non-fluorescent Neural Tract Tracers, Optogenetic Approach, and Diffusion Tensor Neurotractography Protocols.",
+    "year": 2024,
+    "citations": 0,
+    "tldr": "The procedure of classical anatomic neural tract tracing and modern optogenetic technique performed in anima vili in addition to different diffusion tensor neurotractography performed in anima nobili are described.",
+    "abstract": "",
+    "url": "https://www.semanticscholar.org/paper/fc55ecdddeced55fe422d66f426bb58222f2e64f"
+  },
+  {
+    "title": "A bistable inhibitory optoGPCR for multiplexed optogenetic control of neural circuits",
+    "year": 2024,
+    "citations": 23,
+    "tldr": "It is demonstrated that PdCO can be used to conduct reversible loss-of-function experiments in long-range projections of behaving animals, thereby enabling detailed synapse-specific functional circuit mapping and a switchable optogenetic tool for inhibiting synaptic transmission in neuronal terminals in vivo.",
+    "abstract": "Information is transmitted between brain regions through the release of neurotransmitters from long-range projecting axons. Understanding how the activity of such long-range connections contributes to behavior requires efficient methods for reversibly manipulating their function. Chemogenetic and optogenetic tools, acting through endogenous G-protein-coupled receptor pathways, can be used to modulate synaptic transmission, but existing tools are limited in sensitivity, spatiotemporal precision or spectral multiplexing capabilities. Here we systematically evaluated multiple bistable opsins for ",
+    "url": "https://www.semanticscholar.org/paper/7d6e4fc51d9f17f5ca8d12619b9ee04fad926a95"
+  },
+  {
+    "title": "Whole-brain in situ mapping of neuronal activation in Drosophila during social behaviors and optogenetic stimulation",
+    "year": 2024,
+    "citations": 5,
+    "tldr": "Brain-wide mapping of active cells expressing the Immediate Early Gene hr38 using a high-sensitivity/low background fluorescence in situ hybridization (FISH) amplification method called HCR-3.0 and associated methods may help to fill an important lacuna in the armamentarium of tools for neural circuit analysis in Drosophila.",
+    "abstract": "Monitoring neuronal activity at single-cell resolution in freely moving Drosophila engaged in social behaviors is challenging because of their small size and lack of transparency. Extant methods, such as Flyception, are highly invasive. Whole-brain calcium imaging in head-fixed, walking flies is feasible but the animals cannot perform the consummatory phases of social behaviors like aggression or mating under these conditions. This has left open the fundamental question of whether neurons identified as functionally important for such behaviors using loss- or gain-of-function screens are actual",
+    "url": "https://www.semanticscholar.org/paper/5b2816b7a7871e64d210ef61259f730e8062f000"
+  },
+  {
+    "title": "Optimized genetic tools for neuroanatomical and functional mapping of the Aedes aegypti olfactory system",
+    "year": 2025,
+    "citations": 4,
+    "tldr": "Systematic application of these optimized methods to different chemoreceptors stands to enable mapping A. aegypti olfactory circuits at peripheral and central levels of olfactory coding at high resolution.",
+    "abstract": "Abstract The mosquito Aedes aegypti is an emerging model insect for invertebrate neurobiology. We detail the application of a dual transgenesis marker system that reports the nature of transgene integration with circular donor template for CRISPR\u2013Cas9-mediated homology-directed repair at target mosquito chemoreceptor genes. Employing this approach, we demonstrate the establishment of cell-type-specific T2A-QF2 driver lines for the A. aegypti olfactory co-receptor genes Ir8a and orco via canonical homology-directed repair and the CO2 receptor complex gene Gr1 via noncanonical homology-directed ",
+    "url": "https://www.semanticscholar.org/paper/c7796adc2e485726c2cdc767ac66755a54390a45"
+  }
+]

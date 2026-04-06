@@ -1,0 +1,171 @@
+{
+  "pipeline_overview": "",
+  "judge_profile": {
+    "all_champion_win_reasoning": [
+      "Idea A scores 31/40 while Idea B scores 27/40. Idea A presents a more focused, well-motivated problem (fault-resilient vehicle platooning) with clear experimental methodology and high feasibility using established simulators. Idea B has slightly higher novelty in combining neuro-spike coding with RL",
+      "Idea A scores 31/40 while Idea B scores 28/40. Idea A presents a more focused and technically grounded approach to a well-defined problem (latency in dynamic V2V networks) with clear experimental methodology and high feasibility. Idea B is conceptually novel in combining neuro-symbolic reasoning wit",
+      "Idea A presents a well-grounded, practically motivated approach to an established problem (training efficiency) with clear experimental methodology and high feasibility using standard benchmarks and metrics. Idea B proposes a more novel conceptual framework but suffers from unclear experimental desi",
+      "Idea A presents a more compelling and well-motivated approach with stronger scientific utility for the underserved rare disease genomics domain, where data scarcity is a genuine bottleneck. The biologically-informed masking strategy is a concrete, principled innovation that directly addresses the pr",
+      "Idea A scores 30/40 versus Idea B's 26/40. While Idea B presents a more conceptually novel neuro-symbolic approach, Idea A offers superior practical utility with clearer experimental metrics, more concrete feasibility (edge deployment is achievable with established techniques), and addresses an imme",
+      "Idea A achieves a total score of 30 versus Idea B's 28. While Idea B presents slightly higher novelty with its hierarchical graph approach to spatial transcriptomics, Idea A demonstrates superior scientific usefulness (addressing population-scale genomics challenges with broader applicability), clea",
+      "Idea B addresses more practically relevant and scalable challenges (data drift and hardware heterogeneity in real cloud environments) compared to Idea A's more theoretical linguistic subdomain decomposition. While Idea A proposes an interesting entropy-based approach, it lacks clear mechanistic just",
+      "Idea A presents a more comprehensive and actionable framework that directly addresses data curation and weighting for low-resource languages with clearer experimental targets and more concrete methodology. Idea B focuses on synthetic data augmentation quality metrics but is somewhat narrower in scop",
+      "Idea A scores 29 total points versus Idea B's 28, with A's key advantage being higher novelty (hierarchical adaptive compression is more technically innovative than VAE+curriculum learning) and stronger scientific usefulness (addressing multi-modal integration on edge devices is more impactful than ",
+      "Idea B addresses a more fundamental and underexplored problem (causal inference with population stratification in genomics) compared to Idea A's incremental refinement of batch correction methods. While Idea A has superior experimental clarity and feasibility with well-defined metrics and realistic ",
+      "Idea A scores 29/40 while Idea B scores 25/40. Idea A presents a more coherent and feasible research direction with clear technical contributions (adaptive spike encoding + RL-driven compression) and well-grounded experimental validation on established benchmarks. Idea B, while novel in its integrat",
+      "Idea A scores 28/40 vs Idea B's 26/40. While Idea B presents a more novel application domain (adaptive topologies for search-and-rescue), Idea A demonstrates superior experimental clarity, more realistic feasibility with well-established benchmarks, and stronger scientific grounding in a well-define",
+      "Idea B addresses a more fundamental and underexplored problem (causal inference with confounding in diverse populations) compared to Idea A's engineering-focused optimization of existing integration methods. While Idea A has clearer experimental metrics and higher feasibility, Idea B's integration o",
+      "Idea A scores higher overall (31 vs 26) due to superior experimental clarity with well-defined metrics and datasets, stronger feasibility with realistic computational budgets and proven baseline comparisons, and more direct scientific utility for the pressing rare disease genomics problem. While Ide",
+      "Idea A addresses a more pressing and underexplored problem (scaling laws for genuinely low-resource languages with severe data scarcity) with clearer novelty over prior work, while Idea B applies scaling law insights to a more incremental problem (data augmentation in biomedical NLP, a relatively we"
+    ],
+    "all_candidate_win_reasoning": [
+      "Idea B scores higher overall (30 vs 28) with superior novelty in its dynamic adaptive compression mechanism and clearer experimental specifications with concrete hardware targets and quantified metrics. While Idea A addresses the important problem of cross-domain generalization, its approach combine",
+      "Idea B achieves a higher total score (31 vs 28) due to superior experimental clarity and feasibility, with concrete benchmarks, specific datasets, and detailed computational requirements. While Idea A is slightly more novel in its focus on extreme data scarcity and weak supervision, Idea B addresses",
+      "Idea B scores higher overall (32 vs 28) with superior experimental clarity, feasibility, and comparable novelty/usefulness. While Idea A tackles an important causal inference problem, it lacks concrete experimental details and faces significant technical challenges in validating causal claims from o",
+      "Idea B addresses a more fundamental and broadly impactful problem (missing modalities across population and single-cell scales) compared to Idea A's narrower focus on edge device deployment. While Idea A has slightly clearer experimental specifications and better feasibility, Idea B's integration of",
+      "Idea B achieves a higher total score (31 vs 28) with superior feasibility and experimental clarity. While Idea A addresses a broader, more impactful problem (population-scale causal inference across ancestries), it faces significant technical challenges in integrating multi-modal data and validating",
+      "Idea B scores higher overall (29 vs 27) by addressing a more concrete and practically motivated problem (latency-constrained real-time coordination) with a clearer technical novelty (dynamic symbolic-neural switching). While Idea A tackles robustness comprehensively, it presents as incremental optim",
+      "Idea A addresses a more fundamental and underexplored problem in LLM adaptation (domain-specific scaling with vocabulary rarity and label scarcity), with clearer practical impact for specialized domains and more straightforward experimental validation. Idea B tackles infrastructure-level optimizatio",
+      "Idea A addresses a well-motivated open problem in scaling laws with clear scientific value for biomedical NLP, concrete experimental design with specific F1 and perplexity targets, and reasonable feasibility on available hardware. Idea B, while attempting to fuse energy and confidence metrics, confl",
+      "Both ideas present novel angles on LLM scaling, but Idea B scores higher on scientific usefulness (addresses a concrete training bottleneck), experimental clarity (clearer metrics and established benchmarks), and feasibility (leverages existing TPU infrastructure and well-understood techniques). Ide",
+      "Idea A achieves a total score of 30 versus Idea B's 28. While Idea B presents slightly higher novelty in its biologically-informed masking approach, Idea A demonstrates superior scientific usefulness with a more focused and tractable problem (regulatory network inference with clear ground truth benc",
+      "Idea A achieves a total score of 31 versus Idea B's 27. While Idea B presents slightly higher novelty in addressing dynamic data drift and hardware heterogeneity, Idea A offers superior scientific usefulness with a more concrete, actionable framework focused on cost-efficiency\u2014a pressing practical c",
+      "Idea A presents a more comprehensive and systematic approach to a well-defined problem (joint energy-latency-quality optimization) with clearer experimental methodology, stronger scientific grounding in inverse problem formulations, and more rigorous evaluation criteria. Idea B's phase transition de",
+      "Idea A presents a more focused and technically mature approach with clear, measurable objectives (70% compression, 2% accuracy gain, 50% latency reduction) and well-defined baselines on established benchmarks. Idea B attempts broader ambitions (multimodal integration with dynamic compression) but su",
+      "Idea A addresses a well-motivated, specific scientific gap (temporal irregularity in longitudinal single-cell data) with a technically sound approach combining temporal point processes and graph attention, supported by clear benchmarks and realistic experimental design. Idea B, while addressing a pr",
+      "Idea B scores higher overall (32 vs 30) by addressing a more acute clinical bottleneck (low-data, high-stakes diagnostics) with a more novel combination of meta-learning and biological regularization. While Idea A is scientifically ambitious with clear experimental design, Idea B's focus on few-shot"
+    ],
+    "last_comparison": {
+      "champion_win_count": 33,
+      "candidate_win_count": 41,
+      "champion_win_reasoning": [
+        "Idea B addresses a more fundamental and underexplored problem (causal inference with confounding in diverse populations) compared to Idea A's engineering-focused optimization of existing integration methods. While Idea A has clearer experimental metrics and higher feasibility, Idea B's integration o",
+        "Idea A scores higher overall (31 vs 26) due to superior experimental clarity with well-defined metrics and datasets, stronger feasibility with realistic computational budgets and proven baseline comparisons, and more direct scientific utility for the pressing rare disease genomics problem. While Ide",
+        "Idea A addresses a more pressing and underexplored problem (scaling laws for genuinely low-resource languages with severe data scarcity) with clearer novelty over prior work, while Idea B applies scaling law insights to a more incremental problem (data augmentation in biomedical NLP, a relatively we"
+      ],
+      "candidate_win_reasoning": [
+        "Idea A presents a more focused and technically mature approach with clear, measurable objectives (70% compression, 2% accuracy gain, 50% latency reduction) and well-defined baselines on established benchmarks. Idea B attempts broader ambitions (multimodal integration with dynamic compression) but su",
+        "Idea A addresses a well-motivated, specific scientific gap (temporal irregularity in longitudinal single-cell data) with a technically sound approach combining temporal point processes and graph attention, supported by clear benchmarks and realistic experimental design. Idea B, while addressing a pr",
+        "Idea B scores higher overall (32 vs 30) by addressing a more acute clinical bottleneck (low-data, high-stakes diagnostics) with a more novel combination of meta-learning and biological regularization. While Idea A is scientifically ambitious with clear experimental design, Idea B's focus on few-shot"
+      ],
+      "quotes": [
+        "[champion won] Idea B addresses a more fundamental and underexplored problem (causal inference with confounding in diverse populations) compared to Idea A's engineering-focused optimization of existing integration methods. While Idea A has clearer experimental metrics and higher feasibility, Idea B's integration o",
+        "[champion won] Idea A scores higher overall (31 vs 26) due to superior experimental clarity with well-defined metrics and datasets, stronger feasibility with realistic computational budgets and proven baseline comparisons, and more direct scientific utility for the pressing rare disease genomics problem. While Ide",
+        "[champion won] Idea A addresses a more pressing and underexplored problem (scaling laws for genuinely low-resource languages with severe data scarcity) with clearer novelty over prior work, while Idea B applies scaling law insights to a more incremental problem (data augmentation in biomedical NLP, a relatively we",
+        "[candidate won] Idea A presents a more focused and technically mature approach with clear, measurable objectives (70% compression, 2% accuracy gain, 50% latency reduction) and well-defined baselines on established benchmarks. Idea B attempts broader ambitions (multimodal integration with dynamic compression) but su",
+        "[candidate won] Idea A addresses a well-motivated, specific scientific gap (temporal irregularity in longitudinal single-cell data) with a technically sound approach combining temporal point processes and graph attention, supported by clear benchmarks and realistic experimental design. Idea B, while addressing a pr",
+        "[candidate won] Idea B scores higher overall (32 vs 30) by addressing a more acute clinical bottleneck (low-data, high-stakes diagnostics) with a more novel combination of meta-learning and biological regularization. While Idea A is scientifically ambitious with clear experimental design, Idea B's focus on few-shot"
+      ]
+    }
+  },
+  "iteration_log": [
+    {
+      "version": "S2",
+      "champion_at_time": "S_sota",
+      "full_eval_win_rate": 0.473,
+      "accepted": false,
+      "code_change_summary": "(no accepted edits \u2014 all rounds failed with GENERATOR singleton error)",
+      "judge_patterns": {
+        "champion_wins": 0,
+        "candidate_wins": 0,
+        "sample_champion_wins": [],
+        "sample_candidate_wins": []
+      }
+    },
+    {
+      "version": "S3",
+      "champion_at_time": "S_sota",
+      "full_eval_win_rate": 0.74,
+      "accepted": true,
+      "code_change_summary": "## Root Cause Analysis\n\nThe losing ideas consistently fail on **feasibility and experimental concreteness** \u2014 judges rep; ## Root Cause Analysis\n\nThe losing ideas (B) are consistently described as having **weaker problem motivation and scient",
+      "judge_patterns": {
+        "champion_wins": 19,
+        "candidate_wins": 55,
+        "sample_champion_wins": [
+          "Idea A scores 31/40 while Idea B scores 27/40. Idea A presents a more focused, well-motivated problem (fault-resilient vehicle platooning) with clear experimental methodology and high feasibility using established simulators. Idea B has slightly higher novelty in combining neuro-spike coding with RL",
+          "Idea A scores 31/40 while Idea B scores 28/40. Idea A presents a more focused and technically grounded approach to a well-defined problem (latency in dynamic V2V networks) with clear experimental methodology and high feasibility. Idea B is conceptually novel in combining neuro-symbolic reasoning wit"
+        ],
+        "sample_candidate_wins": [
+          "Idea B scores higher overall (30 vs 28) with superior novelty in its dynamic adaptive compression mechanism and clearer experimental specifications with concrete hardware targets and quantified metrics. While Idea A addresses the important problem of cross-domain generalization, its approach combine",
+          "Idea B achieves a higher total score (31 vs 28) due to superior experimental clarity and feasibility, with concrete benchmarks, specific datasets, and detailed computational requirements. While Idea A is slightly more novel in its focus on extreme data scarcity and weak supervision, Idea B addresses"
+        ]
+      }
+    },
+    {
+      "version": "S7",
+      "champion_at_time": "S3",
+      "full_eval_win_rate": 0.44,
+      "accepted": false,
+      "code_change_summary": "",
+      "judge_patterns": {
+        "champion_wins": 41,
+        "candidate_wins": 32,
+        "sample_champion_wins": [
+          "Idea A presents a more compelling and well-motivated approach with stronger scientific utility for the underserved rare disease genomics domain, where data scarcity is a genuine bottleneck. The biologically-informed masking strategy is a concrete, principled innovation that directly addresses the pr",
+          "Idea A scores 30/40 versus Idea B's 26/40. While Idea B presents a more conceptually novel neuro-symbolic approach, Idea A offers superior practical utility with clearer experimental metrics, more concrete feasibility (edge deployment is achievable with established techniques), and addresses an imme"
+        ],
+        "sample_candidate_wins": [
+          "Idea B addresses a more fundamental and broadly impactful problem (missing modalities across population and single-cell scales) compared to Idea A's narrower focus on edge device deployment. While Idea A has slightly clearer experimental specifications and better feasibility, Idea B's integration of",
+          "Idea B achieves a higher total score (31 vs 28) with superior feasibility and experimental clarity. While Idea A addresses a broader, more impactful problem (population-scale causal inference across ancestries), it faces significant technical challenges in integrating multi-modal data and validating"
+        ]
+      }
+    },
+    {
+      "version": "S8",
+      "champion_at_time": "S3",
+      "full_eval_win_rate": 0.5,
+      "accepted": false,
+      "code_change_summary": "",
+      "judge_patterns": {
+        "champion_wins": 36,
+        "candidate_wins": 36,
+        "sample_champion_wins": [
+          "Idea B addresses more practically relevant and scalable challenges (data drift and hardware heterogeneity in real cloud environments) compared to Idea A's more theoretical linguistic subdomain decomposition. While Idea A proposes an interesting entropy-based approach, it lacks clear mechanistic just",
+          "Idea A presents a more comprehensive and actionable framework that directly addresses data curation and weighting for low-resource languages with clearer experimental targets and more concrete methodology. Idea B focuses on synthetic data augmentation quality metrics but is somewhat narrower in scop"
+        ],
+        "sample_candidate_wins": [
+          "Idea A addresses a more fundamental and underexplored problem in LLM adaptation (domain-specific scaling with vocabulary rarity and label scarcity), with clearer practical impact for specialized domains and more straightforward experimental validation. Idea B tackles infrastructure-level optimizatio",
+          "Idea A addresses a well-motivated open problem in scaling laws with clear scientific value for biomedical NLP, concrete experimental design with specific F1 and perplexity targets, and reasonable feasibility on available hardware. Idea B, while attempting to fuse energy and confidence metrics, confl"
+        ]
+      }
+    },
+    {
+      "version": "S9",
+      "champion_at_time": "S3",
+      "full_eval_win_rate": 0.5092592592592593,
+      "accepted": false,
+      "code_change_summary": "",
+      "judge_patterns": {
+        "champion_wins": 25,
+        "candidate_wins": 26,
+        "sample_champion_wins": [
+          "Idea B addresses a more fundamental and underexplored problem (causal inference with population stratification in genomics) compared to Idea A's incremental refinement of batch correction methods. While Idea A has superior experimental clarity and feasibility with well-defined metrics and realistic ",
+          "Idea A scores 29/40 while Idea B scores 25/40. Idea A presents a more coherent and feasible research direction with clear technical contributions (adaptive spike encoding + RL-driven compression) and well-grounded experimental validation on established benchmarks. Idea B, while novel in its integrat"
+        ],
+        "sample_candidate_wins": [
+          "Idea A achieves a total score of 30 versus Idea B's 28. While Idea B presents slightly higher novelty in its biologically-informed masking approach, Idea A demonstrates superior scientific usefulness with a more focused and tractable problem (regulatory network inference with clear ground truth benc",
+          "Idea A achieves a total score of 31 versus Idea B's 27. While Idea B presents slightly higher novelty in addressing dynamic data drift and hardware heterogeneity, Idea A offers superior scientific usefulness with a more concrete, actionable framework focused on cost-efficiency\u2014a pressing practical c"
+        ]
+      }
+    },
+    {
+      "version": "S10",
+      "champion_at_time": "S10",
+      "full_eval_win_rate": 0.5533333333333333,
+      "accepted": true,
+      "code_change_summary": "",
+      "judge_patterns": {
+        "champion_wins": 33,
+        "candidate_wins": 41,
+        "sample_champion_wins": [
+          "Idea B addresses a more fundamental and underexplored problem (causal inference with confounding in diverse populations) compared to Idea A's engineering-focused optimization of existing integration methods. While Idea A has clearer experimental metrics and higher feasibility, Idea B's integration o",
+          "Idea A scores higher overall (31 vs 26) due to superior experimental clarity with well-defined metrics and datasets, stronger feasibility with realistic computational budgets and proven baseline comparisons, and more direct scientific utility for the pressing rare disease genomics problem. While Ide"
+        ],
+        "sample_candidate_wins": [
+          "Idea A presents a more focused and technically mature approach with clear, measurable objectives (70% compression, 2% accuracy gain, 50% latency reduction) and well-defined baselines on established benchmarks. Idea B attempts broader ambitions (multimodal integration with dynamic compression) but su",
+          "Idea A addresses a well-motivated, specific scientific gap (temporal irregularity in longitudinal single-cell data) with a technically sound approach combining temporal point processes and graph attention, supported by clear benchmarks and realistic experimental design. Idea B, while addressing a pr"
+        ]
+      }
+    }
+  ]
+}

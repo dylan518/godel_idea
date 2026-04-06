@@ -1,0 +1,752 @@
+[
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:57:32.028246+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:57:39.793492+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:57:47.669485+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:57:55.364637+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:58:03.006273+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:57:32.200783+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:57:39.575082+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:57:47.346874+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:57:55.467328+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:58:03.143711+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:57:32.160565+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:57:40.152896+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:57:48.081542+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:57:55.568133+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:58:03.233134+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:58:10.636617+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:58:18.586330+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:58:26.087610+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:58:33.762244+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:58:41.603308+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:58:10.927469+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:58:18.786022+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:58:26.616379+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:58:34.475631+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:58:42.248779+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:58:11.226773+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:58:18.928979+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:58:26.841480+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:58:34.718627+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:58:42.623653+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:58:51.165402+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:58:58.695639+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:59:07.012515+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:59:14.361706+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:59:22.094059+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:58:51.272039+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:58:58.877522+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:59:06.689254+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:59:14.435777+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:59:22.218318+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:58:51.434213+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:59:00.702363+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:59:08.538755+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:59:16.082180+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:59:23.578075+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:59:29.692643+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 1,
+    "text": "IDEA:  \nA hierarchical, modular communication framework that enables scalable, interpretable emergent protocols through composable sub-language primitives, explicitly designed to generalize across varying agent population sizes and task complexities.\n\nBACKGROUND:  \nExisting emergent communication methods typically produce monolithic, opaque protocols that do not scale well to large multi-agent populations or complex, dynamic tasks, limiting practical applications in domains like swarm robotics and distributed sensor networks. The key open problem is how to construct communication schemes that remain efficient, interpretable, and generalizable as the number of agents and task intricacy grow, overcoming the scalability and interpretability bottlenecks that prior works have not resolved.\n\nAPPROACH:  \nWe propose a hierarchical communication architecture where agents learn to compose communication primitives into modular sub-languages organized by function or task context, enabling reuse and combinatorial generalization. The method integrates explicit structural constraints and inductive biases to encourage disentangled, interpretable communication components, combined with a multi-level reinforcement learning objective that optimizes both local sub-language efficacy and global task performance. This architecture employs an adaptive protocol compression mechanism to maintain bandwidth efficiency, dynamically adjusting communication granularity based on agent population size and task demands.\n\nEXPERIMENT:  \nWe will evaluate on the Multi-Agent Particle Environment (MPE), the StarCraft Multi-Agent Challenge (SMAC), and the Google Research Football Environment to rigorously test scalability and task complexity generalization. Baselines include the Biases for Emergent Communication (2019), Neuro-spike Communication framework (2025), and Learning to Cooperate (2020). Metrics are task success rate (targeting >5% absolute improvement over baselines), communication bandwidth reduction (aiming for \u226530% lower bits transmitted per timestep), and interpretability measured via modularity scores and human-annotated protocol coherence. Experiments involve training on small agent populations and testing zero-shot generalization to populations 2-3\u00d7 larger, with 5 random seeds per setting and ablations on hierarchy depth and compression thresholds.\n\nNOVELTY:  \nUnlike prior approaches that generate single-layer, entangled communication protocols (Biases for Emergent Communication, Neuro-spike Communication), this work introduces explicitly composable, hierarchical communication languages that enable scalable reuse and clear semantic disentanglement, thus achieving zero-shot generalization to larger agent groups and more complex tasks unseen during training. This structured modularity for emergent communication is novel and has not been demonstrated to systematically improve both interpretability and scalability simultaneously.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:59:41.385989+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 2,
+    "text": "IDEA:  \nDevelop a neuro-symbolic communication framework that dynamically adapts interpretable symbolic vocabularies for human-robot collaborative manufacturing, optimizing semantic transparency for humans while maintaining robustness and low-latency learning for neural agents under noisy, real-time sensory inputs.\n\nBACKGROUND:  \nCurrent emergent communication methods in multi-agent systems, including those aimed at human-robot collaboration, fail to produce symbolic vocabularies that are simultaneously semantically rich and human-interpretable, yet efficiently learnable by neural agents in noisy and latency-constrained manufacturing environments. This gap limits deployment in real-world settings where safety, efficiency, and operator trust critically depend on transparent and robust communication protocols that can operate effectively despite sensor noise and delays.\n\nAPPROACH:  \nWe propose a hybrid neuro-symbolic communication protocol generator that combines neural message encoding with a symbolic vocabulary learning layer guided by human-centric semantic constraints and noise-resilience objectives. The system integrates a differentiable symbolic vocabulary module trained with multi-objective loss functions balancing interpretability (measured via semantic coherence with human labels), communication robustness (measured under simulated sensor noise and latency), and learning efficiency (via sample complexity). The communication protocol adapts dynamically via meta-learning to environmental noise profiles and operator feedback, enabling real-time adjustments to vocabulary granularity and symbolic expressiveness.\n\nEXPERIMENT:  \nEvaluation will be conducted on the Meta-World robotic manipulation benchmark and the RoboCup@Work dataset for human-robot industrial collaboration, alongside the OpenAI Multi-Agent Particle Environment adapted for joint human-robot communication tasks. Baselines include the prior neuro-symbolic emergent communication system from \u201cHuman-Robot Collaborative Manufacturing,\u201d the \u201cBiases for Emergent Communication in Multi-agent Reinforcement Learning\u201d (2019) model, and the \u201cFirefly-inspired vocabulary generator\u201d (2022). Metrics include semantic interpretability scores (>15% absolute improvement in human annotation agreement), communication robustness quantified by successful task completions under sensor noise (target >20% increase vs baseline), and latency reduction (aiming for >30% decrease in message decoding time). Experiments will run on 8 NVIDIA A100 GPUs across 5 random seeds, with ablations on the symbolic vocabulary loss components and meta-learning adaptation frequency.\n\nNOVELTY:  \nUnlike prior work, this method explicitly integrates human-interpretable symbolic constraints within a neuro-symbolic framework that adapts dynamically to sensor noise and latency in real time, enabling transparent yet robust communication protocols. This surpasses the static or purely neural emergent communication systems which either lack semantic transparency for humans or fail under realistic sensor noise conditions seen in manufacturing environments.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:00:29.765543+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 3,
+    "text": "IDEA: Develop adaptive communication protocols that dynamically optimize robustness and energy efficiency in heterogeneous, intermittently connected edge multi-agent systems by integrating context-aware noise estimation, resource-aware message compression, and decentralized coordination mechanisms.\n\nBACKGROUND: Distributed edge computing networks suffer from unreliable, bandwidth-limited, and energy-constrained communication channels, especially under intermittent connectivity and device heterogeneity. Existing emergent communication research either assumes stable channels or does not explicitly optimize for real-time adaptation to variable noise, partial observability, and resource constraints, limiting coordination effectiveness and scalability in practical edge environments.\n\nAPPROACH: We propose a multi-agent reinforcement learning framework where agents learn adaptive communication protocols composed of three key modules: (1) a context-aware noise estimator that infers current channel conditions from partial observations, (2) a resource-aware message encoder that compresses messages based on energy budget and bandwidth constraints, and (3) a decentralized coordination policy that dynamically selects communication partners and timing to maximize information flow under intermittent connectivity. The system jointly optimizes communication robustness and energy efficiency through a multi-objective reward function balancing task performance, message fidelity, and resource consumption.\n\nEXPERIMENT: We evaluate on the AWS DeepRacer multi-agent benchmark for edge robotics coordination, the OpenAI Multi-Agent Particle Environment (MPE) with added stochastic communication noise, and the NVIDIA AI City Challenge dataset simulating traffic edge devices under network variability. Metrics include >3% absolute improvement in task success rate over baselines, >25% reduction in total communication energy consumption, and >20% decrease in communication-induced latency. Experiments run on an 8-GPU cluster with 5 random seeds per configuration, including ablations isolating noise estimation, compression, and scheduling modules.\n\nNOVELTY: Unlike prior work that assumes stable or simplified communication channels (e.g., fixed noise models or single-bit neuro-spike signals), our approach explicitly models and adapts to highly variable, intermittent edge network conditions in real time, optimizing both communication robustness and energy efficiency jointly\u2014a capability not addressed by existing emergent communication or adaptive protocol methods.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:01:31.232717+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 4,
+    "text": "IDEA:  \nDevelop a real-time, adaptive emergent communication framework for multi-agent autonomous vehicles that jointly optimizes information-theoretic message compression with goal-oriented protocol evolution to minimize latency and bandwidth while preserving safety-critical coordination under unreliable network conditions.\n\nBACKGROUND:  \nCurrent emergent communication methods in multi-agent systems often do not explicitly address the stringent real-time constraints and unreliable network conditions faced by autonomous vehicles operating at the edge. Existing information-theoretic compression algorithms optimize bandwidth usage but fail to adapt dynamically to varying task goals and network states, risking loss of safety-critical information in cooperative vehicle navigation and decision-making. The open problem is to create a multi-agent communication protocol that simultaneously evolves interpretable, goal-directed messages while compressing sensory and decision data in real time, ensuring robust, low-latency coordination under network uncertainty.\n\nAPPROACH:  \nOur method integrates an information-theoretic compression module based on adaptive variational bottlenecks with a reinforcement learning-driven emergent communication protocol that evolves discrete, goal-oriented message vocabularies in an end-to-end fashion. Compression rates and communication vocabularies co-adapt dynamically based on instantaneous network bandwidth, latency estimations, and task urgency signals within a multi-agent Markov game framework simulating autonomous vehicle coordination. We incorporate mutual information maximization between compressed messages and critical task variables to guarantee preservation of safety-relevant content while minimizing payload size. The communication protocol evolves using a neuro-inspired discrete-symbol generation mechanism with positive signaling and listening biases to enhance learning efficiency and message interpretability.\n\nEXPERIMENT:  \nEvaluate on the CARLA autonomous driving simulator dataset combined with the Vehicle-to-Everything (V2X) dataset and the KITTI Vision Benchmark Suite for multi-agent navigation and coordination tasks. Baselines include Real-Time Information-Theoretic Message Compression for Edge Computing (the tournament winner), CommNet, TarMAC, and IC3Net multi-agent communication architectures. Metrics: reduce end-to-end communication latency by \u226530%, decrease average bandwidth usage by \u226525%, and achieve \u22655% absolute improvement in task success rate (e.g., collision avoidance, route completion) compared to baselines. Training performed on NVIDIA A100 GPUs with 5 random seeds; ablation studies on compression module, vocabulary evolution, and network-adaptive policy components.\n\nNOVELTY:  \nUnlike prior work, which separately addresses either message compression or emergent communication protocols, our approach jointly optimizes adaptive information-theoretic compression with emergent, goal-oriented discrete communication under real-time constraints in unreliable edge networks. This enables dynamic trade-offs between communication efficiency and safety-critical information fidelity that previous methods\u2014fixed compression or static protocols\u2014cannot achieve simultaneously, advancing multi-agent emergent communication towards practical autonomous vehicle deployment.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:02:25.245901+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:59:29.614224+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 1,
+    "text": "IDEA:  \nA scalable multimodal transformer-based foundation model architecture that jointly integrates genomic sequences, epigenomic profiles, and multimodal single-cell transcriptomic and spatial data across species to enable robust cross-modal representation learning and superior transfer to diverse downstream tasks in integrative genomics and single-cell biology.\n\nBACKGROUND:  \nCurrent single-cell foundation models and genomics FMs predominantly handle isolated data modalities\u2014such as transcriptomics or epigenomics\u2014and often lack scalable architectures that unify highly heterogeneous data types including spatial transcriptomics and cross-species datasets. This limits their ability to capture complex biological interactions across modalities and species, reducing their effectiveness in comprehensive analyses such as cell type annotation, disease state prediction, and evolutionary comparisons. The open problem is to design a single foundation model that can seamlessly integrate these multiple, heterogeneous data sources at scale while maintaining interpretability and cross-species generalizability.\n\nAPPROACH:  \nWe propose a novel hierarchical multimodal transformer architecture with modality-specific encoders for genomic sequences (e.g., DNA/RNA), epigenomic marks (e.g., ATAC-seq), and spatial transcriptomics, fused through a shared cross-modal attention mechanism. The model employs species-aware embedding layers and contrastive pretraining across modalities and species to learn unified biological representations. Training will leverage large-scale, diverse datasets to enable zero-shot and few-shot generalization across tissues, cell types, and organisms. Interpretability modules based on attention visualization and integrated gradients will link learned representations to biological features.\n\nEXPERIMENT:  \nWe will train and evaluate on three benchmark datasets: (1) Human Cell Atlas (HCA) multi-omic single-cell data, (2) ENCODE epigenomics datasets including ATAC-seq and histone marks, and (3) Tabula Muris Senis spatial transcriptomics data. Baselines include CellBERT, Nephrobase Cell+, and scVI. Metrics will include >3% absolute improvement in cell type annotation F1-score, >5% increase in disease state prediction ROC-AUC, and cross-species transfer accuracy gains of at least 4%. Experiments will run on 8 NVIDIA A100 GPUs with a training budget of ~30 days, conducting 5 random seed runs and ablation studies on cross-modal attention and species embeddings.\n\nNOVELTY:  \nUnlike prior single-cell or genomic foundation models that do not scale across multiple heterogeneous modalities and species simultaneously, this work introduces a unified architecture with explicit cross-modal and cross-species integration capabilities, yielding interpretable, scalable biological representations that demonstrably outperform state-of-the-art models on integrative, multimodal, and evolutionary tasks.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:59:41.831095+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 2,
+    "text": "IDEA:  \nDevelop a self-supervised masked token modeling framework with adaptive regularization and rare cell-type-aware augmentation tailored for rare disease single-cell RNA-seq datasets to robustly learn biologically meaningful representations from limited, low-diversity samples.\n\nBACKGROUND:  \nCurrent single-cell foundation models require large, diverse datasets and struggle to learn meaningful representations when rare cell types are underrepresented, as in rare disease cohorts. This limitation causes overfitting and poor generalization, hindering novel discovery of rare cell states and disease mechanisms in sparse single-cell data. There is a critical need for self-supervised learning methods specifically designed to handle data scarcity and imbalance in rare disease single-cell genomics.\n\nAPPROACH:  \nWe propose a self-supervised masked token modeling approach enhanced with adaptive regularization techniques such as dropout scheduling and contrastive loss that emphasize rare cell types. Additionally, we incorporate rare-cell-aware data augmentation via synthetic oversampling informed by lineage and gene regulatory networks. The model architecture integrates a transformer backbone pretrained on large single-cell atlases, fine-tuned using these tailored strategies to prevent overfitting and amplify subtle biological signals from rare cell subsets. Finally, we introduce a cell-type rarity weighting scheme in the loss function to bias representation learning toward underrepresented populations.\n\nEXPERIMENT:  \nWe will evaluate on three benchmark rare disease single-cell datasets: (1) the Human Cell Atlas Rare Disease single-cell subset, (2) the COVID-19 Single Cell Consortium data focusing on rare immune phenotypes, and (3) the Alzheimer\u2019s Disease Single Nucleus RNA-seq (snRNA-seq) dataset. Baselines include scBERT, CellDART, and Nephrobase Cell+. Metrics will be adjusted Rand Index (ARI) for clustering rare cell types, F1-score for rare cell-type classification, and silhouette score for representation quality, targeting >3% absolute ARI improvement and >5% F1 increase over baselines. Experiments will run on 8 NVIDIA A100 GPUs, with five independent seeds, including ablations on augmentation strategies and rarity-weighting mechanisms.\n\nNOVELTY:  \nUnlike prior single-cell foundation models that assume large, balanced datasets, our method explicitly addresses low-diversity, scarce rare cell-type regimes by combining adaptive regularization, rare-cell-aware augmentation, and targeted loss weighting. This enables robust self-supervised representation learning where existing models fail, unlocking discovery potential in rare disease single-cell biology.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:00:30.884935+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 3,
+    "text": "IDEA: Develop a differentiable neuro-symbolic foundation model for single-cell genomics that integrates curated biological pathway knowledge from heterogeneous symbolic databases to improve interpretability and predictive accuracy in cell-type classification and gene regulatory inference.\n\nBACKGROUND: Current foundation models in single-cell biology inadequately leverage curated biological pathway knowledge because symbolic pathway databases (e.g., KEGG, Reactome, BioCyc) are incomplete and inconsistent, hindering their direct incorporation into neural architectures. This results in models that are less interpretable and sometimes less robust, as they rely purely on data-driven learning without grounding predictions in established biology. The open problem is how to create a flexible, end-to-end differentiable framework that incorporates symbolic pathway constraints while allowing the model to learn novel biological patterns from single-cell data.\n\nAPPROACH: We propose a neuro-symbolic hybrid architecture that encodes curated biological pathways as differentiable constraints within a graph neural network backbone pretrained on multimodal single-cell datasets. Symbolic pathway knowledge from KEGG, Reactome, and BioCyc will be represented as soft logic constraints embedded into the loss function and attention mechanisms, enabling the model to enforce known pathway interactions while learning data-driven adjustments. The model will jointly optimize predictive tasks such as cell-type annotation and gene regulatory network inference, maintaining end-to-end differentiability and permitting discovery of new pathway components and interactions. A pathway consistency regularizer will penalize deviations from known biology but allow flexibility for novel insights.\n\nEXPERIMENT: We will evaluate on three benchmark datasets: the Human Cell Atlas (HCA) single-cell RNA-seq dataset, the Tabula Muris Senis multimodal dataset, and the Kidney Precision Medicine Project (KPMP) single-cell dataset. Baselines include scBERT, Nephrobase Cell+, and the Pathway-GNN model. Metrics will include cell-type classification accuracy (target >5% absolute improvement over scBERT), gene regulatory network inference precision and recall (target >10% absolute F1 improvement), and pathway adherence scores quantifying consistency with curated pathway knowledge. Experiments will be run on NVIDIA A100 GPUs with 3 seeds for statistical robustness. Ablations will test the impact of each pathway database and the constraint regularization strength.\n\nNOVELTY: Unlike prior single-cell foundation models and neuro-symbolic approaches that either ignore biological pathway inconsistencies or fail to maintain differentiability, our method flexibly integrates multiple curated pathway knowledge bases as soft, differentiable constraints within a unified neural architecture. This enables both improved interpretability grounded in biology and the capacity to learn novel biology, addressing the critical gap in combining symbolic biological knowledge with large-scale single-cell data modeling.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:01:28.855786+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 4,
+    "text": "IDEA:  \nDevelop a novel end-to-end transformer compression framework integrating structured pruning, mixed-bit quantization, and multi-stage knowledge distillation tailored for single-cell genomics foundation models, achieving >5x memory compression with <2% diagnostic F1-score degradation on clinical single-cell tasks under constrained GPU memory (<4GB).\n\nBACKGROUND:  \nSingle-cell foundation models (scFMs) enable powerful genomic and cellular biology insights but require large memory and compute resources, limiting on-site clinical deployment in resource-constrained hospital environments. Existing compression methods inadequately balance memory reduction and accuracy, often ignoring domain-specific characteristics of single-cell data and clinical diagnostic constraints. There is a critical need for a targeted compression pipeline that maintains predictive robustness and generalizability while enabling practical deployment on low-memory clinical devices.\n\nAPPROACH:  \nWe propose a transformer compression pipeline that (1) applies structured pruning at the attention-head and feed-forward sublayer granularity, guided by single-cell feature importance scores, (2) employs mixed-bit quantization optimized via quantization-aware training to preserve sensitive genomic feature representations, and (3) performs staged knowledge distillation from the full model to progressively compressed student models using multi-patient single-cell clinical datasets. The pipeline dynamically adapts compression ratios per layer and incorporates domain-specific loss regularization to maintain diagnostic F1-score fidelity.\n\nEXPERIMENT:  \nValidate on multi-patient single-cell benchmark datasets including Human Cell Atlas (HCA), single-cell RNA-seq data from the Cancer Genome Atlas (TCGA), and the Nephrobase Cell+ kidney single-cell dataset. Baselines include original uncompressed scBERT, LoRA-compressed transformers, and prior compression methods such as TinyBERT and DistilBERT adapted to genomics. Evaluate compression ratio (>5x target), diagnostic F1-score (target <2% absolute drop), and peak GPU memory utilization (<4GB) under identical training regimes (4 NVIDIA A100 GPUs, 3 random seeds per experiment), including ablation studies isolating pruning, quantization, and distillation effects.\n\nNOVELTY:  \nUnlike prior work that treats transformer compression as a generic NLP or vision problem, this method explicitly integrates single-cell biological feature importance and clinical diagnostic constraints into compression decisions, enabling a higher compression-accuracy tradeoff. It surpasses existing scFM compression approaches by combining structured pruning, mixed-bit quantization, and multi-stage distillation tailored to genomics, achieving practical deployment feasibility on severely memory-limited clinical devices without sacrificing predictive performance.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:03:10.525564+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:59:31.811023+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 1,
+    "text": "IDEA: Develop a dynamic, memory-adaptive sparse subnetwork extraction method that identifies minimal, critical transformer subnetworks for mechanistic interpretability by combining structured pruning with layer-wise gradient saliency under strict GPU memory constraints.\n\nBACKGROUND: Current mechanistic interpretability methods require loading full transformer layer activations and gradients simultaneously, which exceeds typical GPU memory budgets and limits analysis to smaller models or tiny batch sizes. This prevents scalable, fine-grained mechanistic analysis of large transformer models such as GPT-2 medium or BERT-large on commonly accessible hardware. There is an urgent need for a method enabling efficient, accurate mechanistic analysis within strict memory limits.\n\nAPPROACH: We propose Memory-Efficient Sparse Subnetwork Extraction (MESS) that dynamically selects minimal sufficient subnetworks within each transformer layer by integrating structured pruning with gradient-based importance scores computed incrementally. The method avoids holding entire dense activations and gradients at once by processing layers sequentially and pruning intermediate subnetworks informed by reconstruction error feedback. This enables at least 50% reduction in memory use without sacrificing more than 10% interpretability fidelity, measured via reconstruction error of key representational transformations. MESS is evaluated on GPT-2 medium and BERT-large.\n\nEXPERIMENT: Evaluate on language modeling and understanding benchmarks including WikiText-103, GLUE (SuperGLUE subsets for interpretability relevance), and Penn Treebank. Baselines are full dense layer mechanistic analysis, structured pruning from \u201cBeyond Components,\u201d and gradient saliency methods from \u201cTransformer Dynamics.\u201d Quantitative metrics: (1) memory consumption reduction target \u226550%, (2) reconstruction error increase \u226410%, and (3) interpretability accuracy measured by correlation of extracted subnetworks with causal ablation results (target >0.8 Pearson correlation). Experiments run on NVIDIA A100 GPUs with \u226440GB memory, with 3 random seeds per model; ablations analyze effect of pruning sparsity and granularity of gradient saliency.\n\nNOVELTY: Unlike prior work that requires full dense layer activations and gradients simultaneously or applies static pruning, MESS dynamically adapts pruning guided by gradient saliency in a memory-aware incremental manner, enabling mechanistic interpretability of large transformers on limited hardware without significant loss of interpretability accuracy. This bridges a critical gap between scalable interpretability and real-world resource constraints, which no existing method has achieved.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:00:08.374048+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 2,
+    "text": "IDEA: Develop a noise-robust symbolic program synthesis framework that leverages singular vector decomposition and dynamical system modeling of residual streams to enable mechanistic interpretability of low-resource transformer language models trained on sparse, noisy activation data.\n\nBACKGROUND: Existing symbolic program synthesis approaches for mechanistic interpretability fail on low-resource language models due to sparse, noisy neuron activations, preventing reliable causal explanations and mechanistic understanding in democratized NLP settings. Prior works either require dense, high-quality activation data or focus on large-scale models, leaving a critical gap in interpreting smaller models trained on limited data.\n\nAPPROACH: We propose to combine noise-robust symbolic synthesis algorithms with a two-fold technical innovation: (1) preprocessing neuron activation data via singular vector decomposition as inspired by recent fine-grained interpretability, to extract stable, orthogonal directions that denoise and compress signals; and (2) modeling residual stream activations as a discrete dynamical system to capture temporal continuity and layerwise evolution of features, providing structured abstractions for program synthesis to operate on. This yields simplified, noise-tolerant symbolic programs that accurately explain mechanistic computations in low-resource transformers.\n\nEXPERIMENT: Evaluate on low-resource transformer models fine-tuned or trained from scratch on benchmark datasets including GLUE, WikiText-103, and Penn Treebank; compare against baselines BERT-base, GPT-2 small, and RoBERTa-base. Quantitatively measure interpretability quality via explanation fidelity (>90% fidelity as measured by ablation impact on output), stability of extracted symbolic programs (variance reduction >30% across seeds), and synthesis success rate (>25% absolute improvement over vanilla symbolic synthesis). Experiments will run on 8 A100 GPUs with 5 random seeds per setting and include ablation studies on singular vector preprocessing and dynamical modeling components.\n\nNOVELTY: This method uniquely integrates singular vector-based denoising and dynamical residual stream modeling into symbolic program synthesis, enabling reliable mechanistic interpretability on sparse, noisy activations from low-resource models\u2014capabilities that prior works in symbolic synthesis or singular vector interpretability separately cannot achieve.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:00:57.769296+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 3,
+    "text": "IDEA:  \nDevelop an end-to-end, scalable framework that integrates hierarchical causal interventions with multi-modal interactive visualizations and automated hypothesis refinement to enable real-time mechanistic debugging of large transformer models across diverse NLP and vision-language tasks.\n\nBACKGROUND:  \nCurrent offline causal intervention frameworks for transformer interpretability produce enormous volumes of intervention logs that are cumbersome to analyze and synthesize into actionable insights, limiting scalability and slowing down failure mode identification. Existing methods lack seamless integration of hierarchical organization, user-driven exploration, and automated hypothesis generation, particularly across multiple modalities and tasks, which hinders efficient mechanistic understanding and debugging of large-scale transformers.\n\nAPPROACH:  \nWe propose a modular system that automatically orchestrates large-scale, hierarchical causal interventions on transformer internals\u2014spanning attention heads, MLP neurons, and singular vector directions\u2014while dynamically organizing intervention data using an adaptive ontology tailored to the model and task. Coupled with a multi-modal interactive visualization dashboard, users can seamlessly navigate causal effects at different granularity levels and across layers or modalities (text, images). An embedded reinforcement learning agent analyzes user interactions and intervention outcomes to propose targeted hypotheses and intervention sequences, accelerating mechanistic discovery and debugging. This framework supports diverse transformer architectures, including BERT, ViLT, and multimodal vision-language-action models.\n\nEXPERIMENT:  \nValidate on multiple datasets: SQuAD 2.0 (QA), GLUE (NLP classification), and VQA v2 (vision-language). Baselines include the original BERT-base, ViLT-base, and the prior \u201cSystematic causal intervention framework with automated organization and visualization\u201d method. Evaluate quantitatively via (1) >3% absolute improvement in expert auditor efficiency measured by time-to-identify known causal failure modes, (2) reduction in intervention log synthesis time by at least 40%, and (3) usability scoring (SUS) improvements \u226515 points versus baseline visualization tools. Conduct ablation studies on the RL-driven hypothesis generator and multi-modal extension. Experiments run on 8 NVIDIA A100 GPUs with 5 random seeds per setup.\n\nNOVELTY:  \nUnlike prior work, this approach uniquely combines scalable hierarchical causal intervention orchestration with interactive multi-modal visualization and an automated hypothesis refinement loop, enabling real-time, user-in-the-loop mechanistic debugging across varied transformer architectures and tasks. Previous frameworks do not support adaptive causal data ontology or reinforcement learning\u2013based hypothesis generation, nor do they extend effectively beyond single-modality, offline analyses.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:02:20.179261+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 4,
+    "text": "IDEA: Develop **Memory-Constrained Causal Mediation with Structured Activation Quantization (MCCM-SAQ)**, a method that enables fine-grained mechanistic interpretability of transformer models under strict memory limits by applying structured, layer-wise lossy compression of intermediate activations to preserve causal mediation signals for real-time interventions on edge devices.\n\nBACKGROUND: Current causal mediation methods for mechanistic interpretability of transformers require full storage and manipulation of intermediate activations, which is prohibitively memory-intensive for deployment on resource-constrained edge hardware. This restricts real-time, causal interpretability and debugging in practical settings such as mobile or embedded systems. Existing activation compression approaches do not incorporate structured quantization tailored to preserve causal signals across transformer layers, limiting their interpretability fidelity when memory budgets are tight.\n\nAPPROACH: MCCM-SAQ applies a novel structured quantization scheme that compresses intermediate activations with layer-specific granularity, leveraging learned low-rank factorization and vector quantization tailored for each residual stream and attention head block. This strategy preserves the causal mediation signals critical for mechanistic interpretability while reducing memory usage by at least 30%. The compressed activations are then used to perform causal mediation analysis via counterfactual interventions on transformer components, allowing identification of key mechanistic circuits with under 5% accuracy loss compared to full-precision baselines.\n\nEXPERIMENT: Evaluate MCCM-SAQ on the **GPT-2 Small** and **T5-Base** models finetuned on the **GLUE** benchmark and machine translation tasks from **WMT14 English-German** and **IWSLT\u201917 German-English** datasets. Metrics include causal mediation fidelity measured by BLEU score drop under intervention, memory footprint reduction compared to full-precision causal mediation, and interpretability accuracy quantified by the ability to identify known mechanistic circuits with >30% memory savings and <5% accuracy loss. Ablation studies will isolate the impact of structured vs. unstructured quantization schemes. Experiments will be run on NVIDIA A100 GPUs with three random seeds for statistical significance.\n\nNOVELTY: Unlike prior work that assumes full intermediate activation access or applies unstructured quantization, MCCM-SAQ introduces a structured, layer-wise quantization scheme co-designed for causal mediation, enabling faithful mechanistic interpretability under stringent memory constraints. This method makes real-time, edge-compatible causal interpretation feasible\u2014something no existing approach achieves with formal fidelity guarantees on transformer models.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:03:40.743976+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 0,
+    "text": "IDEA:  \nIntegrate symbolic task abstractions with formal protocol specifications via a verifiable symbolic abstraction learning framework to guarantee provably safe and correct zero-shot policy deployment in industrial automation environments.\n\nBACKGROUND:  \nZero-shot generalization in reinforcement learning (RL) for industrial automation is critically hindered by the lack of formal verification guarantees ensuring policy correctness and safety under rigid, pre-defined protocols. Existing zero-shot policies fail to provide provable adherence to deterministic safety constraints, risking catastrophic failures in regulated industrial domains where symbolic task abstractions must strictly conform to fixed protocols. The open problem is how to automatically learn symbolic abstractions aligned with formal specifications that enable guaranteed safe, zero-shot policy execution.\n\nAPPROACH:  \nWe propose a novel framework that integrates formal verification methods (e.g., model checking with temporal logic specifications) into the symbolic abstraction learning pipeline for RL. Our method learns symbolic task models constrained by formal protocol specifications expressed in Linear Temporal Logic (LTL) or Computation Tree Logic (CTL), ensuring learned abstractions are sound and complete with respect to safety and liveness constraints. The RL policy is synthesized over these verified symbolic abstractions, enabling zero-shot deployment with provable guarantees of safety and protocol compliance. We incorporate counterexample-guided abstraction refinement to iteratively improve symbolic models until all formal verification criteria are met.\n\nEXPERIMENT:  \nEvaluation will be conducted on the OpenAI Safety Gym suite (Safety Gym), the Factory Automation Environment (FAE) benchmark, and the RoboSuite industrial robotics benchmark. Baselines for comparison include GenZ-LTL (2025), PERM (2025), PPPO (2025), and MIGSS (2025). Metrics include zero-shot task success rate (target >90%), formal safety violation rate (target <1%), and policy execution efficiency measured by task completion time (target <10% overhead vs. non-verified policies). Experiments will be run on NVIDIA A100 GPUs with a training budget of 500k environment steps, averaged over 10 random seeds. Ablations will isolate the impact of formal verification and abstraction refinement on zero-shot safety and generalization.\n\nNOVELTY:  \nUnlike prior zero-shot generalization methods that focus on empirical robustness or modularity without formal guarantees, our approach tightly integrates formal verification into the learning of symbolic abstractions, providing provable correctness and safety guarantees in zero-shot deployment. This method uniquely addresses the critical gap of aligning symbolic task representations with fixed industrial protocols, enabling safe RL policy transfer in highly regulated, deterministic automation domains where prior work cannot guarantee zero-shot policy adherence to strict safety requirements.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:03:18.973000+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 1,
+    "text": "IDEA:  \nJoint end-to-end learning of adaptive causal disentanglement and robust policy modules under sensor noise to achieve provably stable zero-shot generalization in real-world noisy robotic environments.\n\nBACKGROUND:  \nCurrent zero-shot generalization methods in reinforcement learning (RL) fail to maintain robust performance when deployed in real-world robotics tasks due to high-frequency, nonstationary sensor noise corrupting latent causal factor extraction. Existing causal disentanglement approaches assume clean data, and context-aware or modular policies do not explicitly account for noise-induced latent variability, resulting in unstable representations and degraded policy transfer. The open problem is how to reliably identify and leverage stable causal factors from noisy sensor data to enable zero-shot generalization in RL policies under realistic hardware constraints.\n\nAPPROACH:  \nWe propose a novel framework, Noise-Adaptive Causal Abstraction and Policy Learning (NACAPL), that jointly learns adaptive sensor noise filtering and causal latent factor disentanglement end-to-end with policy optimization in an integrated architecture. By embedding a learnable, real-time adaptive filtering module within the causal representation learner, NACAPL separates latent causal factors from noise-induced confounds dynamically during training. The disentangled causal factors then condition modular policy components trained with a robust equilibrium regularization to ensure consistent decision-making. This joint optimization is performed under real-time constraints using differentiable adaptive filters, enabling noise-robust causal abstraction and stable zero-shot policy generalization.\n\nEXPERIMENT:  \nEvaluate NACAPL on ROBEL (Robotics Benchmark with real-world sensor noise augmentation), Meta-World (multi-task robotic manipulation), and OpenAI Gym\u2019s MuJoCo environments with artificially injected realistic sensor noise profiles. Compare against baselines: Robust Causal Disentanglement with Adaptive Filtering (2024 winner), Inferring Behavior-Specific Context (2024), and Pessimistic Proximal Policy Optimization (PPPO, 2025). Metrics: achieve a >5% absolute improvement in causal disentanglement scores (e.g., DCI metric), >10% increase in task success rates under noisy conditions, and reduce degradation in zero-shot transfer performance by at least 15% relative to baselines. Perform at least 5 random seeds per setting and ablations isolating filtering, causal disentanglement, and policy components.\n\nNOVELTY:  \nUnlike prior work, NACAPL explicitly integrates adaptive noise filtering directly into causal factor learning jointly with policy optimization, addressing latent factor instability caused by realistic sensor noise\u2014a critical gap in prior context-aware or pessimistic policy methods. This unified approach enables significantly improved zero-shot generalization in real noisy robotics tasks, which prior techniques either ignore or treat as separate preprocessing steps, lacking end-to-end robustness guarantees.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:04:26.883406+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 2,
+    "text": "IDEA:  \nDevelop a resource-efficient meta-reinforcement learning framework, **EdgeMetaRL**, that enables zero-shot generalization to new users and physiological states by jointly learning lightweight policy priors and context embeddings optimized for strict edge-device constraints in personalized mobile health assistants.\n\nBACKGROUND:  \nCurrent zero-shot generalization methods in reinforcement learning fail to simultaneously address the dual challenges of high inter-user physiological variability and the computational/memory limitations of mobile edge devices in personalized health applications. Existing approaches either require computationally expensive adaptation or overfit to seen users, making them impractical for real-world deployment on mobile health assistants that must generalize instantly to new users and health states without retraining.\n\nAPPROACH:  \nEdgeMetaRL introduces a novel architecture combining (1) a compact, disentangled latent context encoder that infers user-specific health state embeddings from sparse physiological/behavioral signals, and (2) meta-learned policy priors parameterized as low-rank neural networks constrained for on-device execution. The framework uses a dual-objective training scheme optimizing task generalization under a resource budget constraint via differentiable model pruning and quantization-aware meta-training. This enables zero-shot adaptation by conditioning the prior policy on inferred context vectors without additional gradient steps, ensuring fast, robust personalization within edge limits.\n\nEXPERIMENT:  \nEvaluate on the **HeartSteps** dataset (mobile health interventions with physiological and activity data), **PAMAP2 Physical Activity Monitoring dataset** (multimodal sensor data for varied physical states), and **MIMIC-III** (ICU physiological time series for health state variability). Baselines include **PEARL** (meta-RL method for fast adaptation), **RL^2** (recurrent meta-RL baseline), and **Contextual Meta-RL** with heuristic pruning. Metrics:  \n- Zero-shot policy performance improvement: >5% absolute increase in average reward on unseen users vs PEARL  \n- Latency reduction: >40% lower inference latency than RL^2 on an ARM Cortex-M edge device simulator  \n- Model size reduction: <1MB memory footprint vs >5MB for baseline priors  \nTraining setup: 3 random seeds; ablation on pruning, quantization, and context encoder design; training on 4 NVIDIA A100 GPUs for 72 hours.\n\nNOVELTY:  \nUnlike prior zero-shot RL methods that assume unconstrained compute or do not explicitly disentangle user context under resource limits, EdgeMetaRL jointly optimizes model efficiency and robustness, enabling zero-shot generalization to new users' physiological states in strictly constrained mobile environments\u2014a capability absent from both meta-learned policy prior and context inference SOTA.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:05:14.715777+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 3,
+    "text": "IDEA:  \nDevelop a Latency-Optimized Symbolic Task Abstraction framework that dynamically estimates symbol relevance and incrementally refines symbolic plans to enable real-time zero-shot reinforcement learning policy execution in unseen tasks with significantly reduced planning latency and no loss in generalization accuracy.\n\nBACKGROUND:  \nCurrent symbolic task abstraction methods for zero-shot generalization in reinforcement learning suffer from prohibitive symbolic reasoning times, making them impractical for real-time domains such as interactive robotics and games where fast decision-making is critical. Existing approaches do not adequately balance the trade-off between abstraction quality and latency, leading to either slow planning or degraded zero-shot task success rates, especially in complex, unseen environments.\n\nAPPROACH:  \nWe propose to integrate dynamic symbol relevance estimation with an incremental plan refinement strategy that prunes and prioritizes symbolic reasoning paths online, allowing low-latency plan generation without compromising abstraction fidelity. The system constructs symbolic task abstractions optimized for runtime efficiency through algorithmic pruning, adaptive symbol filtering based on context, and iterative plan updates that converge toward optimality as computation proceeds. This approach enables immediate policy execution in unseen tasks while gracefully improving plan quality as time permits.\n\nEXPERIMENT:  \nEvaluate on AI2-THOR (interactive navigation and object interaction) and CraftWorld (procedurally generated crafting tasks) benchmarks, comparing against baselines including classical symbolic planners (e.g., FastDownward), pre-trained zero-shot RL policies such as EPG (Equilibrium Policy Generalization), and recent symbolic abstraction frameworks like the original Latency-Optimized Symbolic Task Abstraction without dynamic relevance estimation. Metrics include plan generation latency (targeting >40% reduction), zero-shot task success rate (match or exceed baseline accuracy within \u00b12%), and end-to-end policy execution efficiency measured across 20 random seeds per environment. Ablation studies will isolate the contributions of symbol relevance estimation and incremental refinement components.\n\nNOVELTY:  \nUnlike prior work which either achieves zero-shot generalization with high latency or low-latency planning with degraded abstraction quality, this method uniquely combines dynamic symbol relevance filtering and incremental planning refinement to achieve real-time symbolic plan generation that preserves zero-shot policy success. It surpasses symbolic planners like FastDownward and modular RL methods like EPG by enabling immediate deployment in unseen tasks without extensive upfront reasoning, a capability absent in recent context-aware or equilibrium-based zero-shot RL frameworks.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:06:02.510726+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 4,
+    "text": "IDEA:  \nDevelop a robust modular policy framework with integrated formal safety verification that enables zero-shot control of novel industrial processes under stringent real-time and safety-critical constraints, surpassing existing modular and context-based zero-shot RL methods.\n\nBACKGROUND:  \nCurrent zero-shot reinforcement learning (RL) approaches for industrial process automation fail to guarantee safety and reliability when recombining modular policies for novel tasks, especially under stringent real-time and safety-critical operational constraints. This inability to formally verify safety during zero-shot deployment limits the adoption of zero-shot RL in industrial settings where failures can result in costly or hazardous outcomes. Existing modular and context-based zero-shot methods do not provide formal guarantees or robustness under such constraints, leaving a critical gap.\n\nAPPROACH:  \nWe propose a robust modular policy framework that (1) decomposes industrial control policies into reusable, formally verified submodules with explicit safety constraints encoded as temporal logic specifications, (2) employs a runtime safety supervisor that uses formal methods (e.g., runtime symbolic model checking) to guarantee that policy recomposition respects these safety constraints in zero-shot scenarios, and (3) integrates an adaptive context inference mechanism that dynamically adjusts modular policy activation based on real-time environment and process sensor inputs. This combined approach ensures zero-shot generalization with provable safety and reliability in previously unseen industrial processes.\n\nEXPERIMENT:  \nEvaluate on the OpenAI Procgen Industrial Process Control suite, the DeepMind Control Suite with Safety Constraints (DMCS-Safe), and the Siemens Simulated Chemical Plant Control benchmark. Compare against baselines including Modular RL with Context Embeddings (Inferring Behavior-Specific Context, 2024), Pessimistic Proximal Policy Optimization (PPPO, 2025), and MIGSS for multi-agent modular policies. Metrics will include zero-shot task success rate, safety violation rate (target <1% violations), average cumulative reward (>5% improvement over baselines), and real-time inference latency (under 50ms). Experiments will run with 5 seeds on NVIDIA A100 GPUs, with ablations on safety supervisor presence and context inference accuracy.\n\nNOVELTY:  \nUnlike prior modular or context-based zero-shot RL methods that do not guarantee safety, our framework uniquely integrates formal safety verification at both design and runtime levels for zero-shot policy recomposition, ensuring provably safe control in safety-critical industrial environments. This approach goes beyond purely empirical zero-shot performance improvements by providing actionable safety guarantees required for real-world industrial deployment.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:06:56.981616+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 0,
+    "text": "IDEA:  \nDevelop and implement a multi-level distributed persistent cohomology framework augmented with noise-adaptive filtration strategies and biologically informed topological feature regularization to enable scalable, robust, and interpretable topological analysis of ultra-high-dimensional genomic data on HPC clusters.\n\nBACKGROUND:  \nCurrent topological data analysis methods for large-scale genomic data, including persistent homology and cohomology, suffer from limited scalability on HPC architectures and are sensitive to noise and biological variability inherent in genomic datasets, which hinders their applicability to population-scale or multi-omics studies. Existing approaches do not integrate adaptive noise filtering or biological priors to stabilize topological feature extraction, resulting in topological summaries that are difficult to interpret or that miss subtle but relevant biological structures.\n\nAPPROACH:  \nWe propose a novel multi-level distributed persistent cohomology algorithm that partitions genomic data into biologically meaningful subsets (e.g., chromosome segments or gene clusters) processed in parallel across HPC nodes. A noise-adaptive filtration scheme based on local signal-to-noise estimations dynamically adjusts scale parameters to enhance robustness against measurement noise and biological variability. Additionally, biologically informed topological feature regularization incorporates known gene regulatory or spatial interaction networks as constraints to guide persistent cohomology computations, ensuring extracted features reflect meaningful genomic structures. The framework will be implemented with optimized communication protocols to minimize inter-node data transfer overhead, enabling near-linear scalability on petascale HPC clusters.\n\nEXPERIMENT:  \nEvaluate on large-scale genomic datasets including the 1000 Genomes Project whole-genome sequencing data, The Cancer Genome Atlas (TCGA) multi-omics profiles, and the Human Cell Atlas single-cell RNA-seq data. Baselines for comparison include Ripser, Dionysus, and the previous state-of-the-art parallel persistent cohomology method by Bauer et al. Metrics will include computational runtime and scalability (target >5x speedup over baselines on >512 HPC cores), robustness to synthetic noise perturbations (quantified by stability of persistence diagrams with \u226410% variation under added noise), and biological interpretability measured via enrichment of topological features in known genomic regulatory modules (target >15% improvement in biological relevance scores). Experiments will be conducted on DOE supercomputing clusters, with 5 independent runs per dataset to assess variability and ablation studies on noise-adaptive and regularization components.\n\nNOVELTY:  \nUnlike prior work, this approach combines distributed multi-level cohomology computations with biologically guided regularization and noise-adaptive filtrations, addressing both scalability and robustness simultaneously. Prior topological methods either lack HPC scalability or ignore biological priors and noise heterogeneity, whereas this method operationalizes these factors to yield large-scale, noise-resilient, and biologically meaningful genomic topological analyses previously unattainable.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:03:55.958156+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 1,
+    "text": "IDEA:  \nDevelop a lightweight, adaptive real-time topological filtration framework for streaming high-dimensional sensor data that dynamically tunes filtration parameters to enable continuous topological summaries and anomaly detection on resource-constrained edge devices.\n\nBACKGROUND:  \nCurrent topological data analysis (TDA) methods for high-dimensional streaming sensor data rely heavily on computationally intensive batch processes or Mapper-style partial clustering techniques that are unsuitable for edge devices with limited processing power and memory. This incapacity prevents timely detection of anomalies in critical real-time sensor networks used in environmental monitoring and industrial IoT, where latency and resource constraints are paramount. The open problem is to design TDA algorithms that produce accurate topological summaries in real-time under strict edge hardware limitations.\n\nAPPROACH:  \nWe propose a novel adaptive topological filtration algorithm that incrementally updates persistence diagrams and Betti number estimations by adjusting filtration scales in response to data variability and resource availability. The method leverages streaming-friendly data structures and approximation techniques to reduce computational complexity and memory footprint, enabling continuous computation of topological features directly on edge devices. Our approach eschews the batch Mapper and Ball Mapper frameworks by focusing on online, dynamic filtrations that balance accuracy with latency and resource consumption via feedback-controlled scale adaptation.\n\nEXPERIMENT:  \nWe evaluate on real-time datasets including the Intel Lab Sensor Dataset (environmental sensor data), the NASA Prognostics Data Repository Turbofan Engine Degradation Simulation Dataset (industrial IoT), and the UCI Gas Sensor Array Drift Dataset (high-dimensional chemical sensors). Baselines include Mapper, Ball Mapper, and the streaming persistence algorithm DIPHA implemented on edge hardware simulators. Metrics include  \n- Topological feature accuracy (e.g., bottleneck distance to offline ground truth persistence diagrams) with target \u226410% error,  \n- Anomaly detection F1-score improvement of >5% over baselines,  \n- Latency reduction by \u226530%, and  \n- Memory footprint reduction by \u226540%.  \nExperiments will run on representative ARM Cortex-A53 edge platforms with 5 random seeds per setting and include ablations on filtration scale adaptation and data structure parameters.\n\nNOVELTY:  \nUnlike Mapper and Ball Mapper that require batch or partial clustering and nonlinear algebraic topology methods that are computationally heavy, this work introduces the first real-time adaptive filtration specifically optimized for edge-constrained streaming high-dimensional sensor data. Our dynamic scale adaptation and streaming persistence approach enable continuously updated topological summaries with provable latency and memory bounds, a capability absent from prior TDA methods in sensor network contexts.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:04:43.337850+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 2,
+    "text": "IDEA: Develop a real-time, incremental topological data analysis framework that combines streaming incremental spectral embedding with dynamic Mapper graph updates under strict latency constraints for high-dimensional sensor and biological data streams.\n\nBACKGROUND: Current topological data analysis (TDA) methods such as Mapper and Ball Mapper are effective for revealing data shape and structure but rely on batch processing and static embeddings, making them unsuitable for real-time analysis of streaming high-dimensional data on resource-constrained edge devices. Incremental spectral embedding methods with latency guarantees exist but do not integrate with Mapper or other TDA constructions to maintain evolving topological summaries continuously. This gap prevents timely detection of topological changes in dynamic data environments like sensor networks or single-cell RNA sequencing.\n\nAPPROACH: We propose Incremental Mapper Embedding (IME), which first applies the winning Incremental Spectral Embedding with Latency Constraints algorithm to update eigenvectors and eigenvalues in streaming data with update latencies under 50ms. IME then incrementally updates the underlying cover and clustering steps of Mapper graphs using sparse representations and locality-sensitive hashing to maintain topological summaries without full re-computation. Persistent homology is computed on these evolving Mapper graphs with provable error bounds on bottleneck distances relative to batch offline Mapper. A latency-aware scheduling module dynamically balances embedding and Mapper update frequency based on streaming data rate and hardware constraints.\n\nEXPERIMENT: Evaluation will be conducted on the Intel Lab Sensor Dataset, Intel Berkeley Research Lab dataset, and the 10x Genomics Single Cell RNA-seq dataset. Baselines include batch Mapper, Ball Mapper, the original Incremental Spectral Embedding method, and streaming nonlinear dimensionality reduction methods such as Streaming UMAP. Metrics will be update latency (target <50ms), embedding accuracy measured by persistence diagram bottleneck distance (expected improvement: \u226410% error over batch Mapper), and topological stability (quantified via graph edit distance over time). Experiments will run on edge-like hardware (ARM Cortex-A cores) with multiple random seeds and include ablations on clustering algorithms inside Mapper and latency thresholds.\n\nNOVELTY: Unlike prior work, IME delivers an end-to-end incremental framework that bridges incremental spectral embedding with real-time incremental Mapper graph construction, supporting continuous topological summaries under stringent latency constraints unavailable in existing batch-only or embedding-only approaches. This enables real-time topological monitoring on resource-limited edge devices for high-dimensional streaming data, a capability absent in both traditional Mapper, Ball Mapper, and recent incremental embedding methods.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:05:59.557437+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 3,
+    "text": "IDEA:  \nDevelop a semi-supervised neural filtration learning framework that explicitly integrates multi-scale topological persistence constraints and domain-driven topological priors to robustly extract clinically interpretable features from high-dimensional medical imaging data with extremely sparse labeling.\n\nBACKGROUND:  \nCurrent supervised filtration learning methods for medical imaging suffer from severe label scarcity, limiting their ability to extract meaningful topological features with clinical relevance and generalize to unseen patients. Existing semi-supervised approaches do not explicitly enforce multi-scale topological consistency or incorporate expert-driven topological priors, which are critical for highlighting clinically salient structures such as tumor boundaries or pathological tissue heterogeneity in high-dimensional image data. The open problem is how to leverage unlabeled data to learn filtration functions that capture meaningful, multi-scale topological features that align with clinical annotations despite extremely sparse labels.\n\nAPPROACH:  \nWe propose a semi-supervised neural network architecture that learns filtration functions from 3D medical images by combining three technical components: (1) a topological persistence regularizer enforcing consistency of multi-scale persistence diagrams across augmented unlabeled data; (2) a domain-informed topological prior module that encodes expert-defined persistence signatures of clinically relevant structures as soft constraints; and (3) a lightweight graph neural network layer that captures spatial and intensity context for robust filtration learning. The training objective jointly optimizes classification loss on sparse labels, persistence consistency loss on unlabeled data, and prior conformity loss to guide the network towards clinically interpretable filtrations.\n\nEXPERIMENT:  \nEvaluate on the LIDC-IDRI lung CT dataset, BraTS 2021 brain tumor MRI dataset, and the NIH DeepLesion CT dataset. Baselines include: (1) Fully supervised filtration learning (e.g., the winning Semi-Supervised Filtration Learning for Medical Imaging), (2) Mapper-based topological analysis, and (3) Ball Mapper combined with deep feature extraction. Metrics will be classification F1 score (target >2% absolute improvement over fully supervised baseline), persistence diagram similarity to expert annotations (measured via bottleneck distance, aiming for >15% reduction), and generalization accuracy on unseen patient scans. Additional ablations will isolate the effects of persistence regularization and topological priors. Training will use a compute budget of ~48 GPU hours on NVIDIA A100s, with experiments repeated over 5 random seeds for statistical robustness.\n\nNOVELTY:  \nUnlike prior semi-supervised filtration learning methods, this approach explicitly enforces multi-scale topological persistence consistency and incorporates domain-specific topological priors during training, enabling robust extraction of clinically meaningful features unattainable by purely supervised, unsupervised, or previously proposed semi-supervised methods such as the winning baseline. This combination uniquely permits clinically interpretable filtration learning under extreme label scarcity and demonstrates validated generalization to diverse medical imaging modalities.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:07:21.669940+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 4,
+    "text": "IDEA: Develop a streaming, memory- and compute-efficient adaptive topological sketching framework for real-time high-dimensional sensor data analysis that preserves multi-scale persistent homology features on resource-constrained edge devices.\n\nBACKGROUND: Current state-of-the-art topological data analysis (TDA) methods for high-dimensional streaming sensor data, including the winning method \"Memory-efficient Adaptive Filtration with Sketching for Sensor Networks,\" struggle to maintain the fidelity of multi-scale topological features under tight memory constraints typical of edge devices like Raspberry Pi. Existing approaches either require full filtration complexes or static sketches, limiting their applicability for continual, adaptive analysis of evolving data streams in resource-limited environments. There is a clear need for a method that supports incremental updates, low memory footprint, and robust multi-scale topological feature preservation in high-dimensional streaming contexts.\n\nAPPROACH: We propose Multi-Scale Adaptive Persistent Sketching (MAPS), a novel streaming filtration compression algorithm that incrementally constructs and updates topological sketches preserving persistent homology barcodes across scales. MAPS integrates hierarchical landmark selection with randomized low-rank sketching and coreset techniques to represent complex filtrations succinctly. Crucially, it supports adaptive refinement by dynamically adjusting the landmark hierarchy and filtration scale parameters based on streaming data distributions while bounding memory use under strict limits. The method is implemented on edge hardware with optimized data structures and parallelization for real-time updates.\n\nEXPERIMENT: Evaluation will be conducted on the Intel Lab Dataset and the UCI Gas Sensor Array Drift Dataset, alongside a third benchmark, the PAMAP2 Physical Activity Monitoring Dataset, to test diverse sensor modalities and dimensionalities. Baselines include the original Memory-efficient Adaptive Filtration with Sketching for Sensor Networks, Mapper, and Ball Mapper. Metrics include memory usage (targeting >50% reduction versus full filtrations), topological fidelity quantified by bottleneck and Wasserstein distances of persistence diagrams (aiming for <0.1 average distortion), and real-time processing latency (under 100 ms per update). Experiments run on Raspberry Pi 4 devices with 4GB RAM, using five random seeds and ablation studies on landmark hierarchy depth and sketch size.\n\nNOVELTY: Unlike prior works that either maintain static sketches or full filtrations, MAPS introduces adaptive, multi-scale streaming sketching that preserves persistent homology features incrementally with provable fidelity guarantees and memory bounds, enabling practical topological analysis on edge devices in real-time\u2014a capability absent from all cited prior methods including the current winning approach.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:08:30.116707+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 0,
+    "text": "IDEA: Develop a memory-constrained incremental quantum embedding framework that enables continuous IoT data streams to be encoded in fixed-size quantum registers with adaptive lossy compression, preserving critical features while using no more than 6 qubits.\n\nBACKGROUND: Current quantum embedding methods for continuous data streams either require increasing quantum memory proportional to input size or rely on fixed-batch embeddings that induce significant information loss, limiting their deployment on edge IoT devices with severe qubit constraints. The open problem is how to continuously embed high-dimensional, time-varying classical sensor data into a small, fixed quantum register without sacrificing the fidelity of important features needed for downstream quantum machine learning tasks.\n\nAPPROACH: We propose an incremental quantum embedding scheme that processes continuous IoT sensor inputs in a streaming fashion, using adaptive lossy compression based on quantum autoencoding principles to update a fixed-size qubit register (\u22646 qubits) at each time step. This method dynamically balances compression and feature retention by selectively encoding salient temporal features extracted via a quantum-classical hybrid feature extractor and employs error mitigation techniques to maintain reconstruction fidelity over long streams. The framework integrates a quantum memory update protocol that incrementally refines the quantum state representation without full re-encoding, enabling scalability on near-term quantum hardware.\n\nEXPERIMENT: We will validate the method on three real-world IoT time series datasets: Intel Lab Data (indoor temperature, humidity), Gas Sensor Array Drift Dataset (chemical sensor drift data), and the PhysioNet ICU EEG Dataset (continuous physiological signals). Baselines include fixed-batch quantum embedding methods (e.g., Quantum Random Access Memory embedding [QRAM], Fixed-Size Quantum Autoencoder by Romero et al.), classical incremental embeddings like streaming PCA, and hybrid quantum-classical embeddings (e.g., Quantum Kernel PCA). Evaluation metrics include reconstruction fidelity (>90% target fidelity), qubit memory usage (\u22646 qubits), and downstream ML task accuracy (e.g., classification F1 score improvement \u22653% over classical baselines). Experiments will be conducted on simulated noisy intermediate-scale quantum (NISQ) hardware with 5 random seeds and include ablation studies on memory size, compression level, and feature extraction strategies.\n\nNOVELTY: Unlike prior work that requires growing quantum registers or suffers from fixed-batch lossy embeddings, this approach provides a scalable incremental quantum embedding strategy that maintains high fidelity under strict qubit constraints in streaming scenarios, enabling practical deployment on edge IoT quantum devices. It is the first to integrate adaptive lossy quantum compression with incremental quantum memory updates tailored for continuous sensor data streams.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:04:55.800960+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 1,
+    "text": "IDEA:  \nDesign and implement a cloud-native quantum batch processing framework that integrates adaptive scheduling algorithms and fault-tolerant hybrid quantum-classical training workflows to achieve scalable quantum advantage in realistic multi-tenant machine learning workloads with variable latency constraints.\n\nBACKGROUND:  \nCurrent quantum machine learning (QML) approaches largely assume low-latency, dedicated quantum hardware access, ignoring practical challenges like queuing delays, multi-user resource contention, and fault tolerance in cloud-based batch quantum processors. This results in bottlenecks limiting throughput and scalability of QML training, particularly for industrial-scale datasets and models. Addressing these system-level constraints is critical for realizing practical quantum advantage in real-world cloud quantum computing environments.\n\nAPPROACH:  \nWe propose a scheduling framework that dynamically allocates quantum batch processing resources based on workload latency tolerance and priority, combined with hybrid quantum-classical training pipelines that incorporate quantum error mitigation and checkpointing to tolerate faults and preemptions. Task partitioning methods will split training into adaptable quantum sub-tasks with classical fallback paths. The system integrates with cloud APIs to monitor queuing and resource state, optimizing quantum circuit execution order and reconfiguration to minimize effective latency. Experiments will use parameterized quantum circuits designed for supervised learning tasks, deploying a batch scheduler that co-optimizes job throughput and training fidelity under realistic cloud constraints.\n\nEXPERIMENT:  \nEvaluate on benchmark datasets including ImageNet-1K (for image classification), GLUE (for natural language understanding), and MNIST (for proof-of-concept quantum-classical hybrid training). Baselines include VQC (Variational Quantum Classifier), QAOA-based classifiers, and hybrid training frameworks such as Qiskit Runtime and TensorFlow Quantum. Metrics will quantify training throughput (jobs/hour), classification accuracy (target >2% absolute improvement over classical baselines on MNIST and GLUE subsets), queuing latency reduction (>30% vs naive batch processing), and fault tolerance measured by degradation in accuracy under injected hardware fault models. Experiments will run on cloud-accessible quantum processors (e.g., IBM Quantum Falcon processors) with 5 seeds per configuration and ablation studies isolating scheduling, fault tolerance, and hybrid strategy contributions.\n\nNOVELTY:  \nUnlike prior work focused on theoretical quantum advantage or single-user low-latency quantum access, this research explicitly addresses multi-tenant cloud quantum computing environments with realistic batch queuing and fault models, integrating system-level scheduling and hybrid algorithmic design to scale quantum advantage in machine learning with quantified throughput, latency, and fault tolerance improvements. This holistic approach is absent in existing studies that assume either dedicated quantum hardware or ignore operational constraints in scaling QML workloads at cloud scale.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:05:35.104155+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 2,
+    "text": "IDEA: Develop a latency-constrained hybrid quantum-classical framework that dynamically adapts quantum kernel circuit depth at inference to optimize the trade-off between accuracy and real-time latency on edge devices, demonstrating provable quantum advantage in low-latency image classification.\n\nBACKGROUND: Current quantum kernel methods for edge inference, such as Latency-Optimized Quantum Kernel Embedding, rely on fixed shallow circuits and fast classical post-processing to meet strict latency budgets (\u226450ms). However, these methods do not adapt circuit complexity per input or context, limiting their ability to maximize accuracy without violating latency constraints. The open problem is how to exploit quantum resources dynamically during inference to push accuracy closer to noiseless baselines while guaranteeing real-time constraints on resource-limited edge hardware.\n\nAPPROACH: We propose a hybrid quantum-classical inference pipeline that incorporates an adaptive quantum kernel evaluation scheme. This scheme uses a lightweight classical pre-selection module to estimate the difficulty of each input and dynamically selects among multiple parameterized quantum circuits of varying depths and gate complexities to compute kernel embeddings within a strict latency budget. The framework balances circuit depth and classical post-processing time on-the-fly, ensuring that inference latency remains below 50ms while improving classification accuracy. Validation is performed on Fashion-MNIST, CIFAR-10, and Tiny ImageNet datasets using noisy quantum circuit simulations with realistic noise models, comparing against fixed-depth quantum kernels (e.g., Latency-Optimized Quantum Kernel Embedding), classical kernel methods (RBF-SVM, Random Fourier Features), and deep classical baselines (ResNet-18). Quantitative evaluation focuses on classification accuracy within 5% of noiseless quantum baselines, end-to-end inference latency, and resource utilization. Ablation studies will analyze the impact of adaptive depth selection and noise resilience over 10 random seeds with a compute budget constrained to simulate feasible edge device hardware.\n\nNOVELTY: Unlike prior work that commits to a single fixed shallow quantum circuit depth, our method introduces the first practical dynamic inference mechanism explicitly trading quantum circuit complexity per input under real-time latency constraints, enabling higher accuracy without latency violations. This adaptivity unlocks provable quantum advantage scenarios inaccessible to static methods and demonstrates practical deployment feasibility on noisy intermediate-scale quantum hardware at the edge.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:06:47.003236+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 3,
+    "text": "IDEA:  \nDevelop a hybrid streaming quantum kernel evaluation framework with adaptive incremental measurement recycling and dynamic compression to enable scalable, memory- and power-efficient quantum kernel-based machine learning on highly constrained edge devices, achieving high fidelity kernel estimates with sub-50MB memory usage and real-time inference capability.\n\nBACKGROUND:  \nCurrent quantum kernel methods for edge devices, such as the Memory-Efficient Quantum Kernel Evaluation for Edge Devices approach, reduce memory overhead by streaming kernel computations with measurement recycling but remain limited by fixed compression schemes and lack adaptive resource management. Edge devices have stringent memory, power, and latency constraints that existing batch quantum kernels or static streaming approaches cannot fully satisfy, limiting practical deployment for real-time IoT and sensor data classification tasks.\n\nAPPROACH:  \nWe propose an adaptive streaming quantum kernel evaluation protocol that dynamically reallocates qubit and classical memory resources based on real-time fidelity feedback and data complexity, integrating incremental measurement recycling with lossy quantum state compression and error mitigation. Key technical components include (1) an adaptive scheduler that adjusts measurement depth and ancilla reuse during streaming kernel computation to maintain kernel fidelity above 90%, (2) a dynamic compression mechanism driven by learned quantum state representations to minimize classical storage below 50MB, and (3) integration with edge-compatible hybrid quantum-classical classifiers to enable real-time inference under constrained compute and power budgets.\n\nEXPERIMENT:  \nEvaluate on IoT sensor classification datasets, including the UCI HAR Dataset (Human Activity Recognition), PAMAP2 Physical Activity Monitoring, and the WeatherBench climate dataset. Compare against classical SVM with RBF kernel, the original Memory-Efficient Quantum Kernel Evaluation protocol, and the Quantum Support Vector Machine (QSVM) baseline. Metrics include classification accuracy (>2% absolute improvement over classical baselines), kernel fidelity (target >90%), memory usage (<50MB), and inference latency (target <100ms per sample on ARM Cortex-A72 edge processors). Experiments include ablation over adaptive vs. static scheduling, compression schemes, and number of measurement recycling cycles, with 5 random seeds per setup.\n\nNOVELTY:  \nUnlike prior work, this method introduces adaptive resource management and dynamic quantum state compression in streaming quantum kernel evaluation, enabling real-time, memory- and power-optimized quantum kernel inference on edge devices. It surpasses fixed-memory streaming approaches by actively balancing fidelity, latency, and resource constraints, which prior quantum kernel methods and representability frameworks for quantum ML do not address.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:07:58.235136+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 4,
+    "text": "IDEA:  \nDevelop a noise-resilient quantum machine learning framework leveraging dynamically corrected gates combined with adaptive circuit recompilation and quantum-native kernel embeddings to achieve provable quantum advantage on real-world classification tasks under realistic NISQ noise conditions.\n\nBACKGROUND:  \nCurrent quantum machine learning models suffer from rapid noise-induced degradation on NISQ devices, limiting circuit depth and expressivity needed to surpass classical counterparts. While dynamically corrected gates improve noise resilience, existing methods do not integrate adaptive recompilation strategies to optimize circuit structure in situ, nor do they combine this with quantum-native kernel methods that exploit intrinsic quantum feature spaces for provable advantage on practical datasets. This lack of holistic noise-aware optimization and kernel embedding integration prevents realization of reliable quantum advantage on benchmark machine learning tasks.\n\nAPPROACH:  \nWe propose a hybrid approach combining dynamically corrected gates with an adaptive circuit recompilation protocol that iteratively minimizes noise impact by restructuring parametrized circuits based on real-time noise profiling from device calibrations. This is coupled with the design of quantum-native kernel embeddings tailored to the dynamically corrected circuits, enabling efficient extraction of high-dimensional quantum feature representations. The method will be validated by training quantum classifiers on benchmark datasets\u2014MNIST (handwritten digit classification), Fashion-MNIST (clothing image classification), and UCI HAR (Human Activity Recognition)\u2014using an IBM Quantum backend with noise-aware compilation. Performance will be compared against state-of-the-art baselines including uncorrected variational quantum classifiers (VQC), QCNNs with standard gates, and classical kernel SVMs.\n\nEXPERIMENT:  \nTrain and evaluate models on MNIST, Fashion-MNIST, and UCI HAR datasets using IBM Quantum devices (e.g., IBM Falcon r5.11H) with noisy benchmarking; measure classification accuracy, circuit fidelity, and noise robustness. Target >20% relative improvement in classification accuracy over uncorrected VQC baselines, >15% fidelity gains validated via randomized benchmarking, and >5% accuracy improvement over classical kernel SVM. Experimental protocol includes 5 randomized seeds per dataset, ablation studies on recompilation without dynamic gates and kernel embedding without recompilation, and compute budget limited to 200 quantum circuit executions per training run.\n\nNOVELTY:  \nUnlike prior work that applies dynamically corrected gates statically, this method dynamically adapts circuit structure to noise in situ, enabling deeper and more expressive models without full fault tolerance. Integrating quantum-native kernel embeddings specifically designed for noise-resilient circuits further leverages quantum representational power unexploited by previous dynamical gate correction or kernel methods alone, demonstrating practical quantum advantage on realistic ML benchmarks under true device noise.",
+    "system_version": "S6",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-06T00:09:11.852687+00:00"
+  }
+]

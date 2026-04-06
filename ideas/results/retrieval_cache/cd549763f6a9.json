@@ -1,0 +1,42 @@
+[
+  {
+    "title": "A Practical Review of Mechanistic Interpretability for Transformer-Based Language Models",
+    "year": 2024,
+    "citations": 104,
+    "tldr": "A task-centric taxonomy ofMechanistic interpretability is presented as a roadmap for beginners to navigate the field by helping them quickly identify impactful problems in which they are most interested and leverage MI for their benefit.",
+    "abstract": "Mechanistic interpretability (MI) is an emerging sub-field of interpretability that seeks to understand a neural network model by reverse-engineering its internal computations. Recently, MI has garnered significant attention for interpreting transformer-based language models (LMs), resulting in many novel insights yet introducing new challenges. However, there has not been work that comprehensively reviews these insights and challenges, particularly as a guide for newcomers to this field. To fill this gap, we provide a comprehensive survey from a task-centric perspective, organizing the taxono",
+    "url": "https://www.semanticscholar.org/paper/2ac231b9cff4f5f9054d86c9b540429d4dd687f4"
+  },
+  {
+    "title": "Beyond Components: Singular Vector-Based Interpretability of Transformer Circuits",
+    "year": 2025,
+    "citations": 3,
+    "tldr": "A more fine-grained perspective is introduced that decomposes these components into orthogonal singular directions, revealing superposed and independent computations within a single head or MLP and opens new avenues for fine-grained mechanistic interpretability and a deeper understanding of model internals.",
+    "abstract": "Transformer-based language models exhibit complex and distributed behavior, yet their internal computations remain poorly understood. Existing mechanistic interpretability methods typically treat attention heads and multilayer perceptron layers (MLPs) (the building blocks of a transformer architecture) as indivisible units, overlooking possibilities of functional substructure learned within them. In this work, we introduce a more fine-grained perspective that decomposes these components into orthogonal singular directions, revealing superposed and independent computations within a single head ",
+    "url": "https://www.semanticscholar.org/paper/180ede5873fc795e5530cd9d21552410419b0b7c"
+  },
+  {
+    "title": "Transformer Dynamics: A neuroscientific approach to interpretability of large language models",
+    "year": 2025,
+    "citations": 6,
+    "tldr": "This work focuses on the residual stream in transformer models, conceptualizing it as a dynamical system evolving across layers, and finds that activations of individual RS units exhibit strong continuity across layers, despite the RS being a non-privileged basis.",
+    "abstract": "As artificial intelligence models have exploded in scale and capability, understanding of their internal mechanisms remains a critical challenge. Inspired by the success of dynamical systems approaches in neuroscience, here we propose a novel framework for studying computations in deep learning systems. We focus on the residual stream (RS) in transformer models, conceptualizing it as a dynamical system evolving across layers. We find that activations of individual RS units exhibit strong continuity across layers, despite the RS being a non-privileged basis. Activations in the RS accelerate and",
+    "url": "https://www.semanticscholar.org/paper/232754205870686e1fd566ec79bc0143e003c960"
+  },
+  {
+    "title": "Mechanistic Interpretability for Transformer-based Time Series Classification",
+    "year": 2025,
+    "citations": 1,
+    "tldr": "This paper systematically probes the internal causal roles of individual attention heads and timesteps within transformer models, revealing causal structures within these models, and demonstrates the potential of sparse autoencoders for uncovering interpretable latent features.",
+    "abstract": "Transformer-based models have become state-of-the-art tools in various machine learning tasks, including time series classification, yet their complexity makes understanding their internal decision-making challenging. Existing explainability methods often focus on input-output attributions, leaving the internal mechanisms largely opaque. This paper addresses this gap by adapting various Mechanistic Interpretability techniques; activation patching, attention saliency, and sparse autoencoders, from NLP to transformer architectures designed explicitly for time series classification. We systematic",
+    "url": "https://www.semanticscholar.org/paper/aabdf7c925ff231cea462c2866f288ce2649ea2d"
+  },
+  {
+    "title": "Mechanistic interpretability for steering vision-language-action models",
+    "year": 2025,
+    "citations": 6,
+    "tldr": "This work demonstrates that interpretable components of embodied VLAs can be systematically harnessed for control - establishing a new paradigm for transparent and steerable foundation models in robotics.",
+    "abstract": "Vision-Language-Action (VLA) models are a promising path to realizing generalist embodied agents that can quickly adapt to new tasks, modalities, and environments. However, methods for interpreting and steering VLAs fall far short of classical robotics pipelines, which are grounded in explicit models of kinematics, dynamics, and control. This lack of mechanistic insight is a central challenge for deploying learned policies in real-world robotics, where robustness and explainability are critical. Motivated by advances in mechanistic interpretability for large language models, we introduce the f",
+    "url": "https://www.semanticscholar.org/paper/c63324aadee7bc9566a98fef80e2149d21a3360a"
+  }
+]

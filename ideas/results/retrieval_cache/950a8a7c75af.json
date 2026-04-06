@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Phase-Based EEG Analysis for Enhanced Imagined Speech Decoding in Brain-Computer Interfaces",
+    "year": 2025,
+    "citations": 1,
+    "tldr": "",
+    "abstract": "Brain-computer interfaces (BCIs) enable direct communication between the brain and external devices. It provides possibilities for neurorehabilitation and assistive technologies. This study focuses on imagined speech, a challenging yet rising domain in BCI research, to decode inner speech signals from EEG data. Imagined speech aims to translate inner speech or imagined words into actionable signals without requiring overt muscle activity. Imagined speech decoding faces significant challenges, including low signal-to-noise ratios, complex inter-subject variability, and the difficulty of isolati",
+    "url": "https://www.semanticscholar.org/paper/9af3dea16c677180955707970621fda88e614764"
+  },
+  {
+    "title": "Classification of Visual Imagery and Imagined Speech EEG based Brain Computer Interfaces using 1D Convolutional Neural Network",
+    "year": 2024,
+    "citations": 0,
+    "tldr": "Findings contribute to the current body of work on VI BCI, that it is a dynamic and plausible option compared to standard BCI paradigms, and VI BCI illiteracy could potentially be controlled by VVIQ, and the potential of the 1D-CNN model in classification of VI and IS EEG-BCIs are demonstrated.",
+    "abstract": "Non-invasive brain-computer interfaces (BCI) utilising electroencephalogram (EEG) signals are a current popular, affordable and accessible method for establishing communication paths between the mind and external devices. However, the challenges faced are inter-subject variability, BCI illiteracy and poor machine learning decoding performance. Two emerging intuitive mental paradigms, Visual Imagery (VI) and Imagined Speech (IS) show promise to optimise the development of non-invasive BCIs, which involves the extraction of corresponding neural patterns during the imagined tasks. This study took",
+    "url": "https://www.semanticscholar.org/paper/7758715b41fef84e03c6cb4bfe70934e99e3e67b"
+  },
+  {
+    "title": "Decoding of imagined speech electroencephalography neural signals using transfer learning method",
+    "year": 2023,
+    "citations": 9,
+    "tldr": "The experiment results indicate that the cross-task deep transfer learning design reliably classifies the imagined speech EEG signals by applying the source task learning to the target task learning, suggesting the feasibility of a consistent strategy for classifying multiclass imagined speech with transfer learning.",
+    "abstract": "The use of brain-computer interfaces to produce imagined speech from brain waves has the potential to assist individuals with difficulty producing speech or communicating silently. The decoding of covert speech has been observed to have limited efficacy due to the diverse nature of the associated measured brain waves and the limited number of covert speech databases. As a result, traditional machine learning algorithms for learning and inference are challenging, and one of the real alternatives could be to leverage transfer of learning. The main goals of this research were to create a new deep",
+    "url": "https://www.semanticscholar.org/paper/4ee3c354a091a0e7b037de73a495d32e9216902b"
+  },
+  {
+    "title": "Learning to operate an imagined speech Brain-Computer Interface involves the spatial and frequency tuning of neural activity",
+    "year": 2023,
+    "citations": 12,
+    "tldr": "The findings indicate that both machine and human learning must be considered to reach optimal controllability of imagined-speech BCI, and that non-invasive BCI-learning can help predict the individual benefit from an invasive speech BCI and guide both the electrode implantation and decoding strategies.",
+    "abstract": "Brain-Computer Interfaces (BCI) will revolutionize the way people with impaired speech production can communicate. While recent studies confirm the possibility of decoding imagined speech based on pre-recorded intracranial neurophysiological signals, current efforts focus on collecting vast amounts of data to train classifiers, rather than exploring how the individual\u2019s brain adapts to improve BCI control, an important aspect given the known problem of \u201cBCI illiteracy\u201d, the inability of some individuals to operate a BCI. This issue can be investigated by providing real-time feedback to allow u",
+    "url": "https://www.semanticscholar.org/paper/2af0f9f58a6887fe2c6cdd4b78412173864abfb0"
+  },
+  {
+    "title": "Adaptive LDA classifier enhances real-time control of an EEG Brain-computer interface for imagined-speech decoding",
+    "year": 2023,
+    "citations": 1,
+    "tldr": "An adaptive classifier that updates its parameters based on the incoming data in real time is developed, highlighting the effectiveness and re-liability of adaptive LDA classifiers for real-time imagined speech decoding, and its interest for non-invasive EEG-based BCI notably characterized by low decoding accuracies.",
+    "abstract": "",
+    "url": "https://www.semanticscholar.org/paper/3bbc1f0f52f036a9503c51e5f79e4fa1a3238a4b"
+  }
+]

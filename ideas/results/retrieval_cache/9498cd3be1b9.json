@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Transferability and explainability of deep learning emulators for regional climate model projections: Perspectives for future applications",
+    "year": 2023,
+    "citations": 20,
+    "tldr": "Both approaches are able to emulate certain climatological properties of RCMs for different periods and scenarios, but the consistency of the emulation functions differ between approaches, which limits their applicability to build RCM ensembles.",
+    "abstract": "\nRegional climate models (RCMs) are essential tools for simulating and studying regional climate variability and change. However, their high computational cost limits the production of comprehensive ensembles of regional climate projections covering multiple scenarios and driving Global Climate Models (GCMs) across regions. RCM emulators based on deep learning models have recently been introduced as a cost-effective and promising alternative that requires only short RCM simulations to train the models. Therefore, evaluating their transferability to different periods, scenarios, and GCMs become",
+    "url": "https://www.semanticscholar.org/paper/1b4e6f93a7cce869c8b9361d6968a41be3850d31"
+  },
+  {
+    "title": "Deep Learning Regional Climate Model Emulators: A Comparison of Two Downscaling Training Frameworks",
+    "year": 2023,
+    "citations": 40,
+    "tldr": "It is concluded that machine learning emulators can be applied to produce fast and fine\u2010scaled predictions of RCM simulations from GCM data and that a deep learning RCM\u2010emulator can learn the proper GCM to RCM downscaling function while working directly with GCMData.",
+    "abstract": "Regional climate models (RCMs) have a high computational cost due to their higher spatial resolution compared to global climate models (GCMs). Therefore, various downscaling approaches have been developed as a surrogate for the dynamical downscaling of GCMs. This study assesses the potential of using a cost\u2010efficient machine learning alternative to dynamical downscaling by using the example case study of emulating surface mass balance (SMB) over the Antarctic Peninsula. More specifically, we determine the impact of the training framework by comparing two training scenarios: (a) a perfect and (",
+    "url": "https://www.semanticscholar.org/paper/f43952aaa7c1c4678beb576685169284f24821d4"
+  },
+  {
+    "title": "The Impact of Internal Variability on Benchmarking Deep Learning Climate Emulators",
+    "year": 2024,
+    "citations": 17,
+    "tldr": "The issue of overfitting is addressed by increasing the number of climate simulations per emission pathway and updating the benchmark targets with the respective ensemble averages from the MPI\u2010ESM1.2\u2010LR model, showing that linear pattern scaling continues to be more accurate on temperature, but can be outperformed by a deep learning\u2010based technique for emulating precipitation.",
+    "abstract": "Full\u2010complexity Earth system models (ESMs) are computationally very expensive, limiting their use in exploring the climate outcomes of multiple emission pathways. More efficient emulators that approximate ESMs can directly map emissions onto climate outcomes, and benchmarks are being used to evaluate their accuracy on standardized tasks and data sets. We investigate a popular benchmark in data\u2010driven climate emulation, ClimateBench, on which deep learning\u2010based emulators are currently achieving the best performance. We compare these deep learning emulators with a linear regression\u2010based emulat",
+    "url": "https://www.semanticscholar.org/paper/0bcd751ec4642ded553e5a734e6c7e512311d8e6"
+  },
+  {
+    "title": "Uncertainty Quantification for Surface Ozone Emulators using Deep Learning",
+    "year": 2025,
+    "citations": 0,
+    "tldr": "An uncertainty-aware U-Net architecture is implemented to predict the Multi-mOdel Multi-cOnstituent Chemical data assimilation model's surface ozone residuals (MOMO-Chem) model's surface ozone residuals (bias) using Bayesian and quantile regression methods.",
+    "abstract": "Air pollution is a global hazard, and as of 2023, 94\\% of the world's population is exposed to unsafe pollution levels. Surface Ozone (O3), an important pollutant, and the drivers of its trends are difficult to model, and traditional physics-based models fall short in their practical use for scales relevant to human-health impacts. Deep Learning-based emulators have shown promise in capturing complex climate patterns, but overall lack the interpretability necessary to support critical decision making for policy changes and public health measures. We implement an uncertainty-aware U-Net archite",
+    "url": "https://www.semanticscholar.org/paper/9abff1a12a1c50d58a0d24d5a153589ce85cd8eb"
+  },
+  {
+    "title": "Does Deep Learning Architectures Model Human\u2010Like Intelligent Response in Asymmetric Car\u2010Following Behaviour? A Novel Framework for Learning Acceleration\u2013Deceleration Decisions",
+    "year": 2025,
+    "citations": 0,
+    "tldr": "ArrowNet81 is introduced, a 200\u2010layer novel convolutional neural network architecture designed to model the asymmetric nature of these decisions using multivariate time\u2010series data that leverages modular Ribs and Linkers to enhance depth while minimizing complexity.",
+    "abstract": "\n Accurate modelling of acceleration and deceleration decisions is vital for replicating car\u2010following behaviour, as these govern longitudinal control, traffic stability, and safety. This study introduces ArrowNet81, a 200\u2010layer novel convolutional neural network (CNN) architecture designed to model the asymmetric nature of these decisions using multivariate time\u2010series data. The architecture leverages modular Ribs and Linkers to enhance depth while minimizing complexity. A perceived\u2010risk variable derived from nominal time\u2010to\u2010collision (NomTTC) addresses the effect of vehicle heterogeneity in ",
+    "url": "https://www.semanticscholar.org/paper/3a55b08114d99ab9aecbae75492e1fb6a64dab84"
+  }
+]

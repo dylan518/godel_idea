@@ -1,0 +1,42 @@
+[
+  {
+    "title": "KiNCD: A KAN-integrated Method for Efficient Nonlinear Causal Discovery from Observational Data",
+    "year": 2025,
+    "citations": 0,
+    "tldr": "",
+    "abstract": "Accurately uncovering the causal structure among variables in observational data remains a challenging problem in Interpretable AI and scientific research-existing methods often struggle to achieve a good balance between accuracy, computational efficiency, and robustness, particularly when dealing with nonlinear dependencies and high-dimensional data. To address this, we propose KAN-integrated Nonlinear Causal Discovery (KiNCD), a new causal discovery framework that integrates the Kolmogorov-Arnold Network (KAN) with a state-of-the-art continuous optimization framework. This integration enable",
+    "url": "https://www.semanticscholar.org/paper/a5f7b0c117f64cd3fb78ef15b771ab14536f2f0d"
+  },
+  {
+    "title": "Causal discovery from observational and interventional data across multiple environments",
+    "year": 2023,
+    "citations": 31,
+    "tldr": "A fundamental approach to structure learning in non-Markovian systems when there exist latent confounders is developed leveraging observational and interventional data collected from multiple domains, and a new constraint-based causal discovery algorithm is introduced, S-FCI, that can learn from observational and interventional data from different domains.",
+    "abstract": "A fundamental problem in many sciences is the learning of causal structure underlying a system, typically through observation and experimentation. Commonly, one even collects data across multiple domains, such as gene sequencing from different labs, or neural recordings from different species. Although there exist methods for learning the equivalence class of causal diagrams from observational and experimental data, they are meant to operate in a single domain. In this paper, we develop a fundamental approach to structure learning in non-Markovian systems (i.e. when there exist latent confound",
+    "url": "https://www.semanticscholar.org/paper/013b1e73a335ad3874b52075546c3e9f108480d6"
+  },
+  {
+    "title": "Interpretable, multi-dimensional Evaluation Framework for Causal Discovery from observational i.i.d. Data",
+    "year": 2024,
+    "citations": 1,
+    "tldr": "This first research to assess the performance of structure learning algorithms from seven different families on increasing percentage of non-identifiable, nonlinear causal patterns, inspired by real-world processes shows that besides causal order-based methods, amortized causal discovery delivers results with comparatively high proximity to the optimal solution.",
+    "abstract": "Nonlinear causal discovery from observational data imposes strict identifiability assumptions on the formulation of structural equations utilized in the data generating process. The evaluation of structure learning methods under assumption violations requires a rigorous and interpretable approach, which quantifies both the structural similarity of the estimation with the ground truth and the capacity of the discovered graphs to be used for causal inference. Motivated by the lack of unified performance assessment framework, we introduce an interpretable, six-dimensional evaluation metric, i.e.,",
+    "url": "https://www.semanticscholar.org/paper/43d12894a792be502a99338644dd66b7d93ed10d"
+  },
+  {
+    "title": "Can LLMs Leverage Observational Data? Towards Data-Driven Causal Discovery with LLMs",
+    "year": 2025,
+    "citations": 4,
+    "tldr": "This work examines whether LLMs can effectively utilize observational data through two prompting strategies: pairwise prompting and breadth first search (BFS)-based prompting, and demonstrates their ability to move beyond textual metadata and effectively interpret and utilize observational data for more informed causal reasoning.",
+    "abstract": "Causal discovery traditionally relies on statistical methods applied to observational data, often requiring large datasets and assumptions about underlying causal structures. Recent advancements in Large Language Models (LLMs) have introduced new possibilities for causal discovery by providing domain expert knowledge. However, it remains unclear whether LLMs can effectively process observational data for causal discovery. In this work, we explore the potential of LLMs for data-driven causal discovery by integrating observational data for LLM-based reasoning. Specifically, we examine whether LL",
+    "url": "https://www.semanticscholar.org/paper/fbee505956d281167dd565a94728f05b08f9f906"
+  },
+  {
+    "title": "Orthogonal Structure Search for Efficient Causal Discovery from Observational Data",
+    "year": 2019,
+    "citations": 0,
+    "tldr": "This work proposes an approach which even works for observational data alone, while still offering theoretical guarantees including the case of partially nonlinear relationships, and applies this approach even to large graphs.",
+    "abstract": "The problem of inferring the direct causal parents of a response variable among a large set of explanatory variables is of high practical importance in many disciplines. Recent work exploits stability of regression coefficients or invariance properties of models across different experimental conditions for reconstructing the full causal graph. These approaches generally do not scale well with the number of the explanatory variables and are difficult to extend to nonlinear relationships. Contrary to existing work, we propose an approach which even works for observational data alone, while still",
+    "url": "https://www.semanticscholar.org/paper/1b4d0e47f8833e859ffaf150334c6a589a6cd7e9"
+  }
+]

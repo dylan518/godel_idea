@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Improving Healthcare Outcomes with Explainable Machine Learning for Early Epileptic Seizure Detection Using EEG Signals",
+    "year": 2025,
+    "citations": 0,
+    "tldr": "",
+    "abstract": "Epilepsy is a chronic neurological disorder affecting over 50 million people worldwide, characterized by recurrent and unpredictable seizures that severely impact patient safety and quality of life. Reliable early detection is essential for proactive interventions but remains challenging due to the limitations of existing deep learning approaches, which often lack interpretability and demand large datasets. This study presents an explainable machine learning framework for early epileptic seizure detection using electroencephalogram (EEG) signals. EEG recordings from the CHB-MIT Scalp EEG datab",
+    "url": "https://www.semanticscholar.org/paper/73875c8d887f7c6f734b27c6df1c58d11de5ce63"
+  },
+  {
+    "title": "Epileptic seizure detection using Light-weight Deep Convolutional Neural Network model from EEG signals",
+    "year": 2025,
+    "citations": 0,
+    "tldr": "",
+    "abstract": "Epilepsy is a neurological disease with recurrent and unpredictable seizures, sometimes even several times a day. About 65 million people worldwide have this disorder. In the case of focal seizures, surgery is often the best treatment; when it involves generalized epilepsy, medication is more appropriate. Unfortunately, more than one-third of such patients are resistant to anti-epileptic drugs, and quite frequently seizures may cause injuries and impair daily activities. Consequently, early detection of impending seizures is important for effective and timely preventive treatment. EEG recordin",
+    "url": "https://www.semanticscholar.org/paper/d1aebe6fc7803422cd12e31b81081c8b46bed863"
+  },
+  {
+    "title": "An AI-Driven Interpretable Multiview Feature Learning Approach for EEG Based Epileptic Seizure Detection.",
+    "year": 2025,
+    "citations": 2,
+    "tldr": "A novel interpretable multi-view feature learning approach (IMV-FL), in which the time-domain signals and Discrete Fourier Transform (DFT) are applied to convert the time-domain EEG signal into frequency-domain representations, which offers an effective tool for EEG-based seizure detection (ESD) in clinical and healthcare settings.",
+    "abstract": "Epilepsy is a chronic neurological disorder that significantly affects the quality of life (QoL), often causing irreversible brain damage and physical impairment. Electroencephalography (EEG) signal analysis is crucial for monitoring epilepsy, enabling early seizure detection and timely intervention. Effective seizure detection requires the identification of interpretable features from the EEG signal to improve clinical outcomes. This study proposes a novel interpretable multi-view feature learning approach (IMV-FL), in which the time-domain signals and Discrete Fourier Transform (DFT) are app",
+    "url": "https://www.semanticscholar.org/paper/81b8907701e07ff10f4daedf129aee1149835fad"
+  },
+  {
+    "title": "ECG-Based Semi-Supervised Anomaly Detection for Early Detection and Monitoring of Epileptic Seizures",
+    "year": 2023,
+    "citations": 22,
+    "tldr": "This work considers One-Class SVM, Minimum Covariance Determinant Estimator, and Local Outlier Factor models to quantify the novelty or abnormality of pre-ictal short-term Heart Rate Variability features of patients, trained on a reference interval considered to contain stable heart rate as the only form of supervision.",
+    "abstract": "Epilepsy is one of the most common brain diseases, characterized by frequent recurrent seizures or \u201cictal\u201d states. A patient experiences uncontrollable muscular contractions, inducing loss of mobility and balance, which may result in injury or even death during these ictal states. Extensive investigation is vital to establish a systematic approach for predicting and informing patients about oncoming seizures ahead of time. Most methodologies developed are focused on the detection of abnormalities using mostly electroencephalogram (EEG) recordings. In this regard, research has indicated that ce",
+    "url": "https://www.semanticscholar.org/paper/2cbc9761aa15bfa29a5cab1f5a8b2f21337aa32f"
+  },
+  {
+    "title": "EPILEPTIC SEIZURE DETECTION FROM EEG SIGNALS WITH RECURRENT NEURAL NETWORKS BASED CLASSIFICATION MODEL",
+    "year": 2024,
+    "citations": 1,
+    "tldr": "An automatic classification model for pre-processed EEG signals using Dual-Tree Complex Wavelet Transform (DT-CWT) based on deep learning-based Recurrent Neural Networks (RNN) architecture to assist experts is proposed to classify EEG signals and detect epileptic seizures effectively and quickly in the early stages.",
+    "abstract": "Epileptic seizures are a neurological disorder that occurs as a result of sudden and uncontrolled electrical activities of the non-contagious brain. This condition may cause the person to lose normal activities temporarily. Epileptic seizures are a severe disease that affects approximately 60 million people in the world, usually manifested by symptoms such as loss of consciousness, muscle twitching, sudden sensory changes, or behavioural changes [1]. Genetics, brain injury, hormonal fluctuations, infections, or metabolic problems are some of the possible causes of epileptic seizures. Although ",
+    "url": "https://www.semanticscholar.org/paper/0028783557edd87efa805a574fec7b378cc2c5ea"
+  }
+]

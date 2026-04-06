@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Simultaneous Solvent and Interface Engineering of Electron Transport Layer for Efficient and Stable Perovskite Solar Cells.",
+    "year": 2026,
+    "citations": 0,
+    "tldr": "",
+    "abstract": "Despite the high electron mobility and favorable interfacial properties, [6,6]-phenyl-C61-butyric acid methyl ester (PCBM) electron transport layers (ETLs) in perovskite solar cells often suffer from molecular aggregation, resulting in inhomogeneous films, insufficient defect passivation, and suboptimal energy-level alignment. Here, we introduce acetyl cyanide (AC) as a processing additive into the PCBM precursor solution. Through van der Waals interactions, AC disrupts \u03c0-\u03c0 stacking between PCBM molecules, thereby improving dispersion and enhancing film homogeneity. This strategy significantly",
+    "url": "https://www.semanticscholar.org/paper/672b4081b3d3d620dba480ae1d9822d0a9b5f1d8"
+  },
+  {
+    "title": "Progress and Challenges for Flexible Perovskite Solar Cell Stability",
+    "year": 2025,
+    "citations": 0,
+    "tldr": "",
+    "abstract": "\n Perovskite solar cells (PSCs) have become a research hotspot in the photovoltaic field due to their excellent photoelectric conversion efficiency (PCE), simple preparation process, and low\u2010cost characteristics. Among them, flexible perovskite solar cells (FPSCs) possess unique advantages such as lightweight and wearability. Compared with rigid devices (RPSCs), the efficiency improvement of FPSCs faces multiple challenges: the limitations of the light transmittance of flexible substrates, insufficient temperature and weather resistance, as well as interface defects and mechanical stress damag",
+    "url": "https://www.semanticscholar.org/paper/685c80df4e9d6e554920bd2cbc67f422250af235"
+  },
+  {
+    "title": "Multimodal operando microscopy reveals that interfacial chemistry and nanoscale performance disorder dictate perovskite solar cell stability",
+    "year": 2024,
+    "citations": 0,
+    "tldr": "",
+    "abstract": "Next-generation low-cost semiconductors such as halide perovskites exhibit optoelectronic properties dominated by nanoscale variations in their structure, composition and photophysics. While microscopy provides a proxy for ultimate device function, past works have focused on neat thin-films on insulating substrates, missing crucial information about charge extraction losses and recombination losses introduced by transport layers. Here we use a multimodal operando microscopy toolkit to measure nanoscale current-voltage curves, recombination losses and chemical composition in an array of state-o",
+    "url": "https://www.semanticscholar.org/paper/04b1bc811c979ae7a070cb418b923330ca17547f"
+  },
+  {
+    "title": "Enhancing CaV0.5Fe0.5O3-Based Lead-Free Perovskite Solar Cell Efficiency by over 23% via Transport Layer Engineering",
+    "year": 2025,
+    "citations": 3,
+    "tldr": "",
+    "abstract": "In response to the rising global energy dilemma and associated environmental concerns, research into creating less hazardous solar technology has exploded. Due to their cost-effective fabrication process and exceptional optoelectronic properties, perovskite-based solar cells have emerged as promising candidates. However, their commercialization faces obstacles, including lead contamination, interface recombination, and instability. This study examines CaV0.5Fe0.5O3 (CVFO) as an alternative to lead-based perovskites, highlighting its improved stability and high efficiency through a series of si",
+    "url": "https://www.semanticscholar.org/paper/f864dacc2457b4761deed2c3bf74711161220063"
+  },
+  {
+    "title": "High-Efficiency (21.4%) Carbon Perovskite Solar Cells via Cathode Interface Engineering by using CuPc Hole-Transporting Layers.",
+    "year": 2025,
+    "citations": 11,
+    "tldr": "",
+    "abstract": "Carbon perovskite solar cells (C-PSCs) represent a promising photovoltaic technology that addresses the long-term operating stability needed to compete with commercial Si solar cells. However, the poor interface contacts between the carbon electrode and the perovskite result in a gap between C-PSC's performances and state-of-the-art PSCs based on metallic back electrodes. In this work, Cu (II) phthalocyanine (CuPc) was rediscovered as an effective hole-transporting material (HTM) to be coupled with carbon electrodes. In particular, based on computional studies and VASP calculations, it is foun",
+    "url": "https://www.semanticscholar.org/paper/7ed67818b7d01e90162a39b413af6824daea2e2c"
+  }
+]

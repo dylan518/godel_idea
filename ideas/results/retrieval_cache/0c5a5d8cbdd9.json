@@ -1,0 +1,42 @@
+[
+  {
+    "title": "An Overview of Lithium-Ion Battery Safety: Existing Problems and Potential Solutions",
+    "year": 2025,
+    "citations": 0,
+    "tldr": "",
+    "abstract": "Lithium-ion batteries (LiBs) are extensively utilised in the energy sector owing to their superior performance. In this paper, thermal runaway (TR) is introduced as one of the safety dangers, analysed the mechanism and characteristics of it. This paper focuses on the optimization of Lib, which can reduce the TR caused by mechanical, electrical and TR. The study suggests improvements in three crucial areas: electrode materials, electrolytes, and separators, aiming to reduce the dangers of TR in LiBs. Through doping, coating, nanoparticle design, and metal atom replacement, electrode materials c",
+    "url": "https://www.semanticscholar.org/paper/b9d98cfce1b456d3f5f5801280adef39c29d4246"
+  },
+  {
+    "title": "Constructing Robust LiF\u2010Enriched Interfaces in High\u2010Voltage Solid\u2010State Lithium Batteries Utilizing Tailored Oriented Ceramic Fiber Electrolytes",
+    "year": 2024,
+    "citations": 45,
+    "tldr": "",
+    "abstract": "The pursuit of high\u2010performance energy storage devices has fueled significant advancements in the all\u2010solid\u2010state lithium batteries (ASSLBs). One of the strategies to enhance the performance of ASSLBs, especially concerning high\u2010voltage cathodes, is optimizing the structure of composite polymer electrolytes (CPEs). This study fabricates a high\u2010oriented framework of Li6.4La3Zr2Al0.2O12 (o\u2010LLZO) ceramic nanofibers, meticulously addressing challenges in both the Li metal anode and the high\u2010voltage LiNi0.8Co0.1Mn0.1O2 (NCM811) cathode. The as\u2010constructed electrolyte features a highly efficient Li+",
+    "url": "https://www.semanticscholar.org/paper/ce52c200b268a82a7bdb895e0fe122fe01c2c125"
+  },
+  {
+    "title": "Building Bulk and Interface Dual Fast Li+ Conducting Pathway in Composite Solid Polymer Electrolyte Membrane for All\u2010Solid\u2010State Lithium\u2010Metal Batteries",
+    "year": 2024,
+    "citations": 8,
+    "tldr": "",
+    "abstract": "Solid polymer electrolytes (SPEs) are considered a promising solution to the safety problems of lithium\u2010ion batteries (LIBs) using liquid electrolytes. However, the high crystallinity and low ionic conductivity hinder the practical application of SPEs. Herein, we design a composite solid polymer electrolyte with a dual fast Li+ conducting pathway in bulk and interface by incorporating highly Li+ conductive ceramic Li6.4Ga0.2La3Zr2O12 (LGLZO) in polyethylene oxide (PEO)/Li\u2010bis (trifluoromethanesulfonyl) imide (LiTFSI) system. Compared to Li6.5La3Zr1.5Ta0.5O12 (LLZTO), LGLZO provides better Li+ ",
+    "url": "https://www.semanticscholar.org/paper/da03cdb37f20879c1ccbe372f019b924f28335c5"
+  },
+  {
+    "title": "Multi-Scale Modeling and Simulation of All-Solid-State Sodium-Ion Batteries with Polymer-Ceramic Hybrid Electrolytes",
+    "year": 2024,
+    "citations": 0,
+    "tldr": "",
+    "abstract": "Lithium-ion batteries (LIBs) have been widely considered as the most promising power source for mobile devices. However, LIBs cannot meet the increasing global demand for electrochemical energy storage in the foreseeable future. Sodium ion-batteries (SIBs) are based on more ecofriendly and earth-abandoned materials. Commonly researched SIBs are based on liquid electrolytes. They pose leakage and thermal runaway risks. Solid polymer electrolytes solve these problems but need to operate at temperatures between 60-80\u00b0C to compensate insufficient ionic conductivity of polymer electrolytes at ambie",
+    "url": "https://www.semanticscholar.org/paper/e077fe02e33ac20033d17a23f23a3b6521f3ddda"
+  },
+  {
+    "title": "Quantification and Optimization of Interfacial Ion Transport in Polymer/Ceramic Composite Electrolytes for Solid-State Batteries.",
+    "year": 2025,
+    "citations": 1,
+    "tldr": "",
+    "abstract": "Solid polymer/ceramic composite electrolytes have emerged as promising candidates for solid-state batteries owing to their superior mechano-chemical compatibility, oxidation stability, and high ionic conductivity. While extensive studies confirm that the newly formed interphase critically enhances ionic conductivity, its quantitative contribution remains experimentally unverified for any composite electrolyte. This knowledge gap lacks a key guideline for designing commercially viable solid electrolytes thereby hinders the development of solid-state batteries. A key challenge arises from the co",
+    "url": "https://www.semanticscholar.org/paper/886907e5f567d7a2d69806b5c0b51a9eb1972812"
+  }
+]

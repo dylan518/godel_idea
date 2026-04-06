@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Single-cell foundation models: bringing artificial intelligence into cell biology",
+    "year": 2025,
+    "citations": 12,
+    "tldr": "An overview of single-cell foundation models (scFMs) is provided, highlighting their key concepts and applications across downstream tasks and critically assess the current limitations and propose future directions aimed at enhancing the robustness, interpretability and scalability of scFMs.",
+    "abstract": "A foundation model, a large-scale deep learning model pretrained on vast datasets, has revolutionized data interpretation through self-supervised learning with capacity for various downstream tasks. Concurrently, single-cell genomics is in urgent need of unified frameworks capable of integrating and comprehensively analyzing the rapidly expanding data repositories. Inspired by advances in foundation models, researchers have extended these techniques to single-cell analysis, giving rise to single-cell foundation models (scFMs). Typically, these models use transformer architectures to incorporat",
+    "url": "https://www.semanticscholar.org/paper/3c0dd3b5f3e129bf136c18609e9f37707e267aa6"
+  },
+  {
+    "title": "Foundation models in bioinformatics",
+    "year": 2025,
+    "citations": 31,
+    "tldr": "The aim is to assist scientists in selecting appropriate FMs in bioinformatics, according to four model types: language FMs, vision FMs, graph FMs and multimodal FMs, to establish the theoretical and practical foundation for continued innovation in molecular biology.",
+    "abstract": "ABSTRACT With the adoption of foundation models (FMs), artificial intelligence (AI) has become increasingly significant in bioinformatics and has successfully addressed many historical challenges, such as pre-training frameworks, model evaluation and interpretability. FMs demonstrate notable proficiency in managing large-scale, unlabeled datasets, because experimental procedures are costly and labor intensive. In various downstream tasks, FMs have consistently achieved noteworthy results, demonstrating high levels of accuracy in representing biological entities. A new era in computational biol",
+    "url": "https://www.semanticscholar.org/paper/3f21f2fadc60b7f627b5154a9944ec22d28c2678"
+  },
+  {
+    "title": "Toward global representation in single-cell genomics.",
+    "year": 2026,
+    "citations": 0,
+    "tldr": "It is argued that diversity should be treated as a core study design principle, embedded from the outset in reference resources and atlases, metadata standards, analytical frameworks, and data governance.",
+    "abstract": "Single-cell genomics has transformed our ability to resolve cellular heterogeneity and map human biology at high resolution. However, most existing datasets are derived from a narrow subset of global genetic, environmental, and sociocultural contexts. This imbalance is far from trivial: it obscures context-specific effects, biases reference atlases, predictive tools, and foundation models, and constrains the global relevance of discoveries. We argue that diversity should be treated as a core study design principle, embedded from the outset in reference resources and atlases, metadata standards",
+    "url": "https://www.semanticscholar.org/paper/6ccd3fe70ebf72ec0fb4574affc00f9a163a4935"
+  },
+  {
+    "title": "Deep learning for psychiatric genomics: from tools to applications.",
+    "year": 2026,
+    "citations": 0,
+    "tldr": "This review traces the evolution of DL in genomics, beginning with task-specific models and examines the transformative impact of foundation models, pretrained neural networks that learn the 'language' of biology, including genomic language models, single-cell foundation models, and large language models originally trained on natural language.",
+    "abstract": "The genetic architecture of psychiatric disorders is highly complex, with genome-wide association studies implicating thousands of risk loci. A central challenge is that most of these variants are located in noncoding regions, making it difficult to elucidate their regulatory consequences within the brain's intricate cellular landscape. The recent convergence of advanced artificial intelligence, particularly deep learning (DL), has catalyzed a paradigm shift by providing powerful tools to address this gap. This review traces the evolution of DL in genomics, beginning with task-specific models.",
+    "url": "https://www.semanticscholar.org/paper/330c93f5d3de8b96f148367738990f37c77e200f"
+  },
+  {
+    "title": "Nephrobase Cell+: Multimodal Single-Cell Foundation Model for Decoding Kidney Biology",
+    "year": 2025,
+    "citations": 4,
+    "tldr": "Nephrobase Cell+ delivers a unified, high-fidelity representation of kidney biology that is robust, cross-species transferable, and unmatched by current single-cell foundation models, offering a powerful resource for kidney genomics and disease research.",
+    "abstract": "",
+    "url": "https://www.semanticscholar.org/paper/4eb89fda9fbd7338ead9e3a1d76c4d8bfb8e5cda"
+  }
+]

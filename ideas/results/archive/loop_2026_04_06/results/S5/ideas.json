@@ -1,0 +1,752 @@
+[
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:49:33.061860+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:49:40.782856+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:49:48.381882+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:49:56.230363+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:03.977614+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:49:33.102650+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:49:40.873764+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:49:48.686054+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:49:56.615789+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:04.081382+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:49:33.039672+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:49:41.023709+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:49:48.897008+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:49:56.647804+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:04.393172+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:12.123502+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:19.904038+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:27.688627+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:35.585669+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:43.268981+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:12.104592+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:19.823579+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:27.444462+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:35.218169+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:43.292233+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:11.878260+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:20.593875+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:28.442226+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:36.186369+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:43.976235+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:51.046385+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:58.898017+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:51:06.238931+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:51:13.750330+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:51:21.368548+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:50.963749+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:58.570231+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:51:06.111798+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:51:14.213053+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:51:21.755932+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:51.783086+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:50:59.850519+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:51:07.477595+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:51:15.056426+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:51:22.854596+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:51:29.562271+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:51:37.106971+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:51:44.859290+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:51:52.781567+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:52:00.301278+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:51:29.362395+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:51:37.184312+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:51:44.794336+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:51:52.480447+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:52:00.474740+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:51:30.695911+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:51:38.375989+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:51:46.550170+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:51:54.517918+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:52:02.089123+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:52:08.176678+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:52:16.144875+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:52:23.996886+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:52:31.883512+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:52:39.661831+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:52:08.298935+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:52:16.386298+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:52:24.475346+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:52:32.410596+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:52:40.142834+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 0,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:52:09.798465+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 1,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:52:17.928871+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 2,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:52:25.520696+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 3,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:52:33.276081+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 4,
+    "text": "ERROR: [RATE_LIMIT (RateLimitError)] Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "system_version": "S5",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-05T23:52:40.876924+00:00"
+  }
+]

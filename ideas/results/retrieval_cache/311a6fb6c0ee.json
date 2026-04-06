@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Probabilistic Skip Connections for Deterministic Uncertainty Quantification in Deep Neural Networks",
+    "year": 2025,
+    "citations": 1,
+    "tldr": "This work proposes using measures of neural collapse to identify an existing intermediate layer that is both sensitive and smooth and fits a probabilistic model to the feature vector of this intermediate layer, which is called a probabilistic skip connection (PSC).",
+    "abstract": "Deterministic uncertainty quantification (UQ) in deep learning aims to estimate uncertainty with a single pass through a network by leveraging outputs from the network's feature extractor. Existing methods require that the feature extractor be both sensitive and smooth, ensuring meaningful input changes produce meaningful changes in feature vectors. Smoothness enables generalization, while sensitivity prevents feature collapse, where distinct inputs are mapped to identical feature vectors. To meet these requirements, current deterministic methods often retrain networks with spectral normalizat",
+    "url": "https://www.semanticscholar.org/paper/deaeb5048a60ff947b872297fcdb8d9404988818"
+  },
+  {
+    "title": "Uncertainty quantification in deep neural networks: Techniques and applications in autonomous decision-making systems",
+    "year": 2021,
+    "citations": 29,
+    "tldr": "This article provides a comprehensive overview of the key techniques for UQ in DNNs, including Bayesian Neural Networks, Monte Carlo Dropout, ensemble methods, and Gaussian Processes, highlighting their respective strengths and limitations.",
+    "abstract": "Uncertainty quantification (UQ) in deep neural networks (DNNs) is an essential area of research, particularly for enhancing the reliability and safety of autonomous decision-making systems deployed in high-stakes environments such as autonomous vehicles, healthcare, and robotics. This article provides a comprehensive overview of the key techniques for UQ in DNNs, including Bayesian Neural Networks, Monte Carlo Dropout, ensemble methods, and Gaussian Processes, highlighting their respective strengths and limitations. The applications of UQ in critical domains are examined, demonstrating how the",
+    "url": "https://www.semanticscholar.org/paper/5f6ad1289dab1f618e5abbecf57b9a08743088ff"
+  },
+  {
+    "title": "Learning Active Subspaces for Effective and Scalable Uncertainty Quantification in Deep Neural Networks",
+    "year": 2023,
+    "citations": 9,
+    "tldr": "This work proposes a novel scheme that addresses this limitation of the parameter space of the neural network parameters by constructing a low-dimensional subspace of the neural network parameters\u2013referred to as an active subspace\u2013by identifying the parameter directions that have the most significant influence on the output of the neural network.",
+    "abstract": "Bayesian inference for neural networks, or Bayesian deep learning, has the potential to provide well-calibrated predictions with quantified uncertainty and robustness. However, the main hurdle for Bayesian deep learning is its computational complexity due to the high dimensionality of the parameter space. In this work, we propose a novel scheme that addresses this limitation by constructing a low-dimensional subspace of the neural network parameters\u2013referred to as an active subspace\u2013by identifying the parameter directions that have the most significant influence on the output of the neural net",
+    "url": "https://www.semanticscholar.org/paper/bd243084093da9e8a257f10250abbc3aa0969c41"
+  },
+  {
+    "title": "Leveraging the Bhattacharyya coefficient for uncertainty quantification in deep neural networks",
+    "year": 2021,
+    "citations": 17,
+    "tldr": "This paper highlights the limitations of such a variance-based uncertainty metric, and proposes an novel approach based on the overlap between output distributions of different classes that leads to a better approximation of the inter-class output confusion.",
+    "abstract": "Modern deep learning models achieve state-of-the-art results for many tasks in computer vision, such as image classification and segmentation. However, its adoption into high-risk applications, e.g. automated medical diagnosis systems, happens at a slow pace. One of the main reasons for this is that regular neural networks do not capture uncertainty. To assess uncertainty in classification, several techniques have been proposed casting neural network approaches in a Bayesian setting. Amongst these techniques, Monte Carlo dropout is by far the most popular. This particular technique estimates t",
+    "url": "https://www.semanticscholar.org/paper/e3ac9b19950c148dde516c07cb2b095ce6fb4e40"
+  },
+  {
+    "title": "Uncertainty Quantification in Deep Neural Networks through Statistical Inference on Latent Space",
+    "year": 2023,
+    "citations": 2,
+    "tldr": "An algorithm is developed that exploits the latent-space representation of data points fed into the network, to assess the accuracy of their prediction and can detect such out-of-distribution data points as inaccurately predicted, thus aiding in the automatic detection of outliers.",
+    "abstract": "Uncertainty-quantification methods are applied to estimate the confidence of deep-neural-networks classifiers over their predictions. However, most widely used methods are known to be overconfident. We address this problem by developing an algorithm that exploits the latent-space representation of data points fed into the network, to assess the accuracy of their prediction. Using the latent-space representation generated by the fraction of training set that the network classifies correctly, we build a statistical model that is able to capture the likelihood of a given prediction. We show on a ",
+    "url": "https://www.semanticscholar.org/paper/e13e382eb31b80489bb415bd6e3511682536efd3"
+  }
+]

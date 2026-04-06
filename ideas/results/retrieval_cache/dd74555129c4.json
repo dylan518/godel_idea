@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Limitations of quantum error correction in noisy intermediatescale quantum (nisq) systems",
+    "year": 2026,
+    "citations": 0,
+    "tldr": "",
+    "abstract": "Study of the Issue Quantum error correction (QEC) is crucial yet incurs significant qubit overhead costs.\nThe current QEC codes lack sufficient efficiency for near-term devices. The current generation of NISQ\ndevices, which often rely on delicate nanostructured qubit architectures, is prone to noise, decoherence,\nand gate faults, which severely limit their computing capability and scalability. While traditional\nquantum error correction codes, such as the surface code, are theoretically resilient, they often require\nsignificant qubit overhead and complex management systems that exceed the hardw",
+    "url": "https://www.semanticscholar.org/paper/5d99cc073e09487af8302b0d8df62ac9a9b4f84f"
+  },
+  {
+    "title": "Error-Resilient Quantum Compiler Design for Efficient Qubit Mapping, Gate Optimization, and Noise Mitigation in NISQ-Era Devices,",
+    "year": 2026,
+    "citations": 0,
+    "tldr": "Examination of error-resilient quantum compiler design for efficient qubit mapping, gate optimization, and noise mitigation in NISQ-era devices suggests that intelligent compiler architectures are critical enablers of practical quantum advantage during the transitional NISQ phase, bridging theoretical algorithm design with real-world hardware constraints.",
+    "abstract": "The rapid evolution of Noisy Intermediate-Scale Quantum (NISQ) devices has intensified the need for robust compilation strategies capable of mitigating hardware-induced errors while maximizing computational efficiency. Quantum compilers play a pivotal role in translating high-level quantum algorithms into hardware-executable instructions, yet they face significant challenges related to qubit connectivity constraints, limited coherence times, and stochastic noise. This paper examines error-resilient quantum compiler design for efficient qubit mapping, gate optimization, and noise mitigation in ",
+    "url": "https://www.semanticscholar.org/paper/aa38395a7e486920e888b88ad26621388eed3e02"
+  },
+  {
+    "title": "Low-Overhead Quantum Error Correction Codes for Noisy Intermediate-Scale Quantum Devices",
+    "year": 2026,
+    "citations": 0,
+    "tldr": "This work presents a comprehensive low-overhead quantum error correction framework specifically designed for NISQ constraints that achieves logical error rates of 0.0065 using only 10 physical qubits compared to 25 qubits for equivalent surface codes.",
+    "abstract": "Noisy Intermediate-Scale Quantum (NISQ) devices represent current quantum computing technology with 50-1000 qubits operating without comprehensive fault-tolerant error correction. The fundamental challenge lies in balancing error correction necessity against prohibitive resource overhead. Conventional quantum error correction codes require 10:1 to 1000:1 qubit ratios and syndrome extraction circuits exceeding 50 gates, consuming entire NISQ capacities. This work presents a comprehensive low-overhead quantum error correction framework specifically designed for NISQ constraints. Our approach com",
+    "url": "https://www.semanticscholar.org/paper/ff4eb41324db6f7ee3d5dfa2c023129193e37576"
+  },
+  {
+    "title": "QKD in the NISQ era: enhancing secure key rates via quantum error correction",
+    "year": 2022,
+    "citations": 2,
+    "tldr": "This work benchmark the performance of QKD protocols on noisy quantum devices, with and without error correction, and obtains the secure key rates of BB84, B92 and BBM92 QKd protocols over a quantum channel that is subject to amplitude-damping noise.",
+    "abstract": ". Error mitigation is one of the key challenges in realising the full potential of quantum cryptographic protocols. Consequently, there is a lot of interest in adapting techniques from quantum error correction (QEC) to improve the robustness of quantum cryptographic protocols. In this work, we benchmark the performance of di\ufb00erent QKD protocols on noisy quantum devices, with and without error correction. We obtain the secure key rates of BB84, B92 and BBM92 QKD protocols over a quantum channel that is subject to amplitude-damping noise. We demonstrate, theoretically and via implementations on ",
+    "url": "https://www.semanticscholar.org/paper/4ccb0a93679eb0a2e857bd5b586606bfe4cb3291"
+  },
+  {
+    "title": "Quantum Error Correction For Dummies",
+    "year": 2023,
+    "citations": 24,
+    "tldr": "A comprehensive review of the historical context, current state, and future prospects of Quantum Error Correction is provided, tailored to cater to computer scientists with limited familiarity with quantum physics and its associated mathematical concepts.",
+    "abstract": "In the current Noisy Intermediate Scale Quantum (NISQ) era of quantum computing, qubit technologies are prone to imperfections, giving rise to various errors such as gate errors, decoherence/dephasing, measurement errors, leakage, and crosstalk. These errors present challenges in achieving error-free computation within NISQ devices. A proposed solution to this issue is Quantum Error Correction (QEC), which aims to rectify the corrupted qubit state through a three-step process: (i) detection: identifying the presence of an error, (ii) decoding: pinpointing the location(s) of the affected qubit(",
+    "url": "https://www.semanticscholar.org/paper/2cbe5c6667aab6a5a337455d8522e4fd6e76809b"
+  }
+]

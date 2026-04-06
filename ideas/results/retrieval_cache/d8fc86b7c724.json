@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Implementation of an Automata Mechanism for a Self-Organizing Swarm of Drones Platform",
+    "year": 2025,
+    "citations": 1,
+    "tldr": "A novel automation technique aimed at enhancing the efficiency, adaptability, and robustness of self-organizing drone swarms is presented, offering a comprehensive framework for deploying intelligent, self-organizing drone swarms and highlighting the transformative potential of automata-based approaches in future autonomous systems.",
+    "abstract": "Drone technology has enabled major advancements in autonomous systems, particularly in swarm robotics. This paper presents a novel automation technique aimed at enhancing the efficiency, adaptability, and robustness of self-organizing drone swarms. The system uses decentralized control algorithms and robust communication protocols to enable real-time adaptive learning and decision-making among drones. Each drone acts as an autonomous agent, adjusting its behavior based on environmental inputs and interactions with other drones. A hybrid communication model blending peer-to-peer and cluster-bas",
+    "url": "https://www.semanticscholar.org/paper/71dd4e309cb3752d3b73447aa8ffacf3efa75329"
+  },
+  {
+    "title": "Hybrid control strategies for multi-robot systems: enhancing coordination, communication, and adaptability",
+    "year": 2025,
+    "citations": 0,
+    "tldr": "A novel hybrid approach to multi-robot task coordination, integrating swarm intelligence principles with reinforcement learning techniques to enhance decision-making and adaptability in dynamic environments, underscores the potential of integrating swarm intelligence and reinforcement learning to achieve scalable and adaptive multi-robot coordination.",
+    "abstract": "Multi-robot systems have garnered substantial interest in industrial automation, search and rescue operations, and space exploration due to their capacity to execute complex tasks with enhanced efficiency and robustness. Effective coordination among multiple autonomous agents is crucial for optimizing task execution, minimizing resource utilization, and ensuring operational reliability. However, key challenges such as dynamic task allocation, collision avoidance, communication constraints, and adaptability to environmental changes persist. This study presents a novel hybrid approach to multi-r",
+    "url": "https://www.semanticscholar.org/paper/a00d33f8079d1146d170422c1116dd3b4fd22f15"
+  },
+  {
+    "title": "A node selection algorithm to graph-based multi-waypoint optimization navigation and mapping",
+    "year": 2022,
+    "citations": 31,
+    "tldr": "An adjacent node selection (ANS) algorithm is developed to implement such a protocol to build up regional path from waypoints to nearest nodes or edges on the graph and improved -spline curve-based smooth scheme is adopted that further refines the trajectory and enables the robot to be navigated smoothly.",
+    "abstract": "Autonomous robot multi-waypoint navigation and mapping have been demanded in many real-world applications found in search and rescue (SAR), environmental exploration, and disaster response. Many solutions to this issue have been discovered via graph-based methods in need of switching the robotos trajectory between the nodes and edges within the graph to create a trajectory for waypoint-to-waypoint navigation. However, studies of how waypoints are locally bridged to nodes or edges on the graphs have not been adequately undertaken. In this paper, an adjacent node selection (ANS) algorithm is dev",
+    "url": "https://www.semanticscholar.org/paper/ffc5d6f3df598debf78ab143a08e13d6d9163888"
+  },
+  {
+    "title": "Focused section on robust perception and learning for robots in dynamic environments",
+    "year": 2019,
+    "citations": 0,
+    "tldr": "This section is dedicated to soliciting the state-of-the-art and novel contributions addressing fundamental challenges and practical issues in all aspects of robust perception and learning, addressing both original algorithmic development and new applications.",
+    "abstract": "",
+    "url": "https://www.semanticscholar.org/paper/36e93dc1cb65cbd136ae89de2f239e44181ce47a"
+  },
+  {
+    "title": "Ant colony optimization-based bio-inspired hardware: survey and prospect",
+    "year": 2012,
+    "citations": 11,
+    "tldr": "A broad survey on the recent progresses of ant colony optimization-based BHW is taken, which includes ant colony optimize-based fuzzy controller, ant colony optimizing-based hardware for the Travelling Salesman Problem (TSP), digital circuits, digital infinite impulse-response (IIR) filters, hardware-oriented ant colonies optimization with look-up table and hardware/software partition.",
+    "abstract": "",
+    "url": "https://www.semanticscholar.org/paper/5348946db8db43028ff9478b6212c50a144fe086"
+  }
+]

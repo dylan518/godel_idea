@@ -1,0 +1,123 @@
+{
+  "iterations": [
+    {
+      "version": "S2",
+      "champion": "S_sota",
+      "mini_eval_best": 0.0,
+      "accepted_edits": [],
+      "failed_edits": [
+        {
+          "description": "## Root Cause Analysis\n\nThe most critical failure pattern is that the **tournament judge selects a winner based on shallow, undifferentiated candidates** because the `TREE_L3_PROMPT` asks for only a 3",
+          "win_rate": 0.0
+        }
+      ],
+      "full_eval_win_rate": 0.47333333333333333,
+      "accepted": false
+    },
+    {
+      "version": "S3",
+      "champion": "S_sota",
+      "mini_eval_best": 1.0,
+      "accepted_edits": [
+        {
+          "description": "## Root Cause Analysis\n\nThe losing ideas consistently fail on **feasibility and experimental concreteness** \u2014 judges repeatedly reward ideas with \"clear experimental baselines,\" \"standard benchmarks,\"",
+          "win_rate": 1.0
+        },
+        {
+          "description": "## Root Cause Analysis\n\nThe losing ideas (B) are consistently described as having **weaker problem motivation and scientific grounding** \u2014 judges favor ideas that address \"well-motivated, real scienti",
+          "win_rate": 0.8333333333333334
+        }
+      ],
+      "failed_edits": [],
+      "full_eval_win_rate": 0.74,
+      "accepted": true
+    },
+    {
+      "version": "S4",
+      "champion": "S3",
+      "mini_eval_best": 0.0,
+      "accepted_edits": [],
+      "failed_edits": [
+        {
+          "description": "## Root Cause Analysis\n\nThe losing ideas consistently score lower on **Relevance and Novelty** because the tournament judge rewards ideas that address **concrete, practically-grounded open problems** ",
+          "win_rate": 0.0
+        }
+      ],
+      "full_eval_win_rate": 0.21333333333333335,
+      "accepted": false
+    },
+    {
+      "version": "S5",
+      "champion": "S3",
+      "mini_eval_best": 0.0,
+      "accepted_edits": [],
+      "failed_edits": [],
+      "full_eval_win_rate": 0.0,
+      "accepted": false
+    },
+    {
+      "version": "S6",
+      "champion": "S3",
+      "mini_eval_best": 0.0,
+      "accepted_edits": [],
+      "failed_edits": []
+    },
+    {
+      "version": "S7",
+      "champion": "S3",
+      "mini_eval_best": 0.0,
+      "accepted_edits": [],
+      "failed_edits": [
+        {
+          "description": "## Core Limitation & Structural Change\n\nThe current pipeline's fundamental weakness is that it generates ideas **in a vacuum of self-similarity** \u2014 the tree search branches from a single seed using th",
+          "win_rate": 0.0
+        }
+      ],
+      "full_eval_win_rate": 0.44,
+      "accepted": false
+    },
+    {
+      "version": "S8",
+      "champion": "S3",
+      "mini_eval_best": 0.0,
+      "accepted_edits": [],
+      "failed_edits": [
+        {
+          "description": "## Core Limitation\n\nThe current pipeline's fundamental weakness is that it generates ideas **within a single coherent frame** \u2014 the L1\u2192L2\u2192L3 tree explores variations of approaches the LLM already cons",
+          "win_rate": 0.0
+        },
+        {
+          "description": "## Core Limitation\n\nThe current pipeline selects a single winner from 12 candidates and expands it once \u2014 but the **expansion step is where quality is actually determined**, and it gets only one LLM c",
+          "win_rate": 0.0
+        }
+      ],
+      "full_eval_win_rate": 0.5,
+      "accepted": false
+    },
+    {
+      "version": "S9",
+      "champion": "S3",
+      "mini_eval_best": 0.0,
+      "accepted_edits": [],
+      "failed_edits": [],
+      "full_eval_win_rate": 0.5092592592592593,
+      "accepted": false
+    },
+    {
+      "version": "S10",
+      "champion": "S3",
+      "mini_eval_best": 0.0,
+      "accepted_edits": [],
+      "failed_edits": [],
+      "full_eval_win_rate": 0.5533333333333333,
+      "accepted": true
+    },
+    {
+      "version": "S11",
+      "champion": "S10",
+      "mini_eval_best": 0.0,
+      "accepted_edits": [],
+      "failed_edits": []
+    }
+  ]
+}

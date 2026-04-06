@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Biases for Emergent Communication in Multi-agent Reinforcement Learning",
+    "year": 2019,
+    "citations": 87,
+    "tldr": "This work introduces inductive biases for positive signalling and positive listening, which ease the learning problem in emergent communication and applies these methods to a more extended environment, showing that agents with these inductive bias achieve better performance.",
+    "abstract": "We study the problem of emergent communication, in which language arises because speakers and listeners must communicate information in order to solve tasks. In temporally extended reinforcement learning domains, it has proved hard to learn such communication without centralized training of agents, due in part to a difficult joint exploration problem. We introduce inductive biases for positive signalling and positive listening, which ease this problem. In a simple one-step environment, we demonstrate how these biases ease the learning problem. We also apply our methods to a more extended envir",
+    "url": "https://www.semanticscholar.org/paper/7cb401fa8377ffdddc54865071abc1b7eceb1b2f"
+  },
+  {
+    "title": "Toward Goal-Oriented Communication in Multi-Agent Systems: An overview",
+    "year": 2025,
+    "citations": 0,
+    "tldr": "A comprehensive survey of goal-oriented communication in MAS is provided, bridging perspectives from information theory, communication theory, and machine learning, as well as applications in domains such as swarm robotics, federated learning, and edge computing.",
+    "abstract": "As multi-agent systems (MAS) become increasingly prevalent in autonomous systems, distributed control, and edge intelligence, efficient communication under resource constraints has emerged as a critical challenge. Traditional communication paradigms often emphasize message fidelity or bandwidth optimization, overlooking the task relevance of the exchanged information. In contrast, goal-oriented communication prioritizes the importance of information with respect to the agents'shared objectives. This review provides a comprehensive survey of goal-oriented communication in MAS, bridging perspect",
+    "url": "https://www.semanticscholar.org/paper/5dd52abf900081a2ea0f0e2a8a216590216bdf85"
+  },
+  {
+    "title": "A Note on Emergent Behavior in Multi-agent Systems Enabled by Neuro-spike Communication",
+    "year": 2025,
+    "citations": 0,
+    "tldr": "A novel synchronization framework for heterogeneous multi-agent systems enabled by neuro-spike communication, which induces emergence, which drastically improves communication efficiency in terms of bandwidth and energy by minimizing the information payload to a single bit.",
+    "abstract": "In this note, we present a novel synchronization framework for heterogeneous multi-agent systems enabled by neuro-spike communication, which induces emergence. Unlike conventional synchronization strategies that require continuous transmission of full-state data packets, our approach utilizes a bio-inspired neuromorphic amplifier to achieve practical synchronization via intermittent, 1-bit Dirac delta pulses. The proposed method drastically improves communication efficiency in terms of bandwidth and energy by minimizing the information payload to a single bit, with intermittent and asynchronou",
+    "url": "https://www.semanticscholar.org/paper/38cf5e1518e126c8770949514bc4a3d4a47a4808"
+  },
+  {
+    "title": "Learning to cooperate: Emergent communication in multi-agent navigation",
+    "year": 2020,
+    "citations": 28,
+    "tldr": "It is shown that agents performing a cooperative navigation task in various gridworld environments learn an interpretable communication protocol that enables them to efficiently, and in many cases, optimally, solve the task.",
+    "abstract": "Emergent communication in artificial agents has been studied to understand language evolution, as well as to develop artificial systems that learn to communicate with humans. We show that agents performing a cooperative navigation task in various gridworld environments learn an interpretable communication protocol that enables them to efficiently, and in many cases, optimally, solve the task. An analysis of the agents' policies reveals that emergent signals spatially cluster the state space, with signals referring to specific locations and spatial directions such as \"left\", \"up\", or \"upper lef",
+    "url": "https://www.semanticscholar.org/paper/c91f6317d31f20cdb15733ec5dad8e46c2cf183f"
+  },
+  {
+    "title": "Firefly-inspired vocabulary generator for communication in multi-agent systems",
+    "year": 2022,
+    "citations": 2,
+    "tldr": "This work investigates how distinguishable flash sequences can co-evolve by developing a method for simulating sequences that minimize their mutual similarity with each other while minimizing their energetic cost and predation risk and demonstrates a method of reconstructing the evolutionary pressures acting on sets of firefly species.",
+    "abstract": "Fireflies\u2019 dazzling light displays are courtship rituals: flying males announce their presence as suitable mates to the females on the ground. Their light signal is composed of a species-specific on/off light sequence repeated periodically. However, thousands of fireflies flashing in a swarm can create immense visual clutter that hinders the detection of potential mates. A partial solution to this visual clutter problem is to flash according to sequences that are more distinct and detectable than those of other individuals. Here, we investigate how distinguishable flash sequences can co-evolve",
+    "url": "https://www.semanticscholar.org/paper/538623f5c60fac9b48e6137bf29c8bbc2291effa"
+  }
+]
