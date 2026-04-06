@@ -518,25 +518,30 @@ def cmd_swe_evolve(args):
                 existing = json.load(f)
             win_rate = existing.get("win_rate_b", 0)
         else:
-            # Always generate fresh ideas (one LLM call per topic) to prevent
-            # overfitting to a cached idea set.
-            logger.info("Generating fresh ideas for full eval (batch mode)...")
+            # Champion: use cache if valid (stable reference, avoids re-running
+            # the expensive pipeline on every iteration).
             current_output_dir = str(IDEAS_DIR / "results" / current)
-            results_current = run_system(
-                version=current, topics=topics,
-                output_dir=current_output_dir,
-                model=model, n_ideas=n_ideas,
-                systems_dir=systems_dir, workers=workers,
-                fresh=True,
-            )
+            if cache_is_valid(current_output_dir, model, n_ideas, n_topics):
+                logger.info("Using cached results for %s", current)
+                results_current = _load_results(current)
+            else:
+                results_current = run_system(
+                    version=current, topics=topics,
+                    output_dir=current_output_dir,
+                    model=model, n_ideas=n_ideas,
+                    systems_dir=systems_dir, workers=workers,
+                )
 
+            # Candidate: always regenerate fresh — prevents the judge from
+            # evaluating stale ideas that were cached from a previous (possibly
+            # different) version of the system.
             candidate_output_dir = str(IDEAS_DIR / "results" / next_version)
+            logger.info("Generating fresh ideas for %s (full pipeline)...", next_version)
             results_candidate = run_system(
                 version=next_version, topics=topics,
                 output_dir=candidate_output_dir,
                 model=model, n_ideas=n_ideas,
                 systems_dir=systems_dir, workers=workers,
-                fresh=True,
             )
 
             judge_client = _make_client(JUDGE_MODEL)
