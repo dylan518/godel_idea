@@ -147,6 +147,42 @@ def call_llm(prompt: str, model: str, client, temperature: float,
     raise last_err  # unreachable but satisfies type checker
 
 
+BATCH_PROMPT_TEMPLATE = """\
+Research topic: {topic}
+
+Generate {n} distinct, concrete research ideas on this topic.
+Number each idea 1 through {n}.
+
+For each idea use this exact format:
+
+## Idea {{i}}
+IDEA: [One sentence summary of the core proposal]
+BACKGROUND: [The specific open problem this addresses, 2-3 sentences]
+APPROACH: [The proposed method or technique, 2-3 sentences]
+EXPERIMENT: [How to test it — datasets, metrics, or methodology, 1-2 sentences]
+NOVELTY: [What makes this meaningfully different from prior work, 1-2 sentences]
+---
+"""
+
+
+def _parse_batch_ideas(text: str, n: int) -> list[str]:
+    """Split a batched LLM response into n individual idea strings."""
+    import re
+    # Split on ## Idea N headers
+    parts = re.split(r'(?:^|\n)##\s*Idea\s+\d+\s*\n', text)
+    ideas = [p.strip() for p in parts if p.strip()]
+    if len(ideas) >= n:
+        return ideas[:n]
+    # Fallback: split on --- separator
+    ideas = [p.strip() for p in re.split(r'\n---+\n', text) if p.strip()]
+    if len(ideas) >= n:
+        return ideas[:n]
+    # Last resort: pad
+    while len(ideas) < n:
+        ideas.append(ideas[0] if ideas else "ERROR: batch generation failed")
+    return ideas[:n]
+
+
 class IdeaGenerator(ABC):
     """Abstract interface that all idea generator versions must implement."""
 
@@ -172,3 +208,24 @@ class IdeaGenerator(ABC):
         Override this method for multi-step variants (draft → critique → revise, etc.).
         """
         return call_llm(self.get_prompt(topic), model, client, temperature)
+
+    def generate_batch(
+        self,
+        topic: str,
+        client,
+        model: str = DEFAULT_MODEL,
+        n: int = 5,
+        temperature: float = 0.9,
+    ) -> list[str]:
+        """Generate n ideas in a SINGLE LLM call.
+
+        Used for fresh evaluation runs (judge comparison) to prevent overfitting
+        to cached outputs. One call per topic regardless of n.
+
+        Override this in systems that can produce richer batches (e.g. with
+        retrieval context), but keep it to a single LLM call.
+        """
+        prompt = BATCH_PROMPT_TEMPLATE.format(topic=topic, n=n)
+        response = call_llm(prompt, model, client, temperature,
+                            max_tokens=n * 500, timeout=STEP_TIMEOUT * 2)
+        return _parse_batch_ideas(response, n)

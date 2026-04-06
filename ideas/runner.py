@@ -81,6 +81,7 @@ def run_system(
     n_ideas: int,
     systems_dir: str,
     workers: int = 1,
+    fresh: bool = False,
 ) -> list[dict]:
     """Run a generator system on all topics and save ideas to output_dir/ideas.json.
 
@@ -88,6 +89,11 @@ def run_system(
     Saves incrementally after each topic so crashes don't lose completed work.
     workers > 1 runs topics concurrently (ideas within each topic stay sequential
     to avoid burst rate-limiting).
+
+    fresh=True: use generate_batch() — one LLM call per topic returns all n_ideas
+    at once.  Results are NOT cached (run_config.json omitted) so the next call
+    always regenerates.  Used by full-eval comparisons to prevent overfitting to
+    a fixed idea set.
     """
     sys.path.insert(0, str(Path(__file__).parent / "systems"))
     from base import make_client
@@ -104,6 +110,31 @@ def run_system(
     total = len(topics) * n_ideas
     results = []
     flush_lock = Lock()
+
+    def _run_topic_fresh(topic_entry: dict) -> list[dict]:
+        """Batch mode: one LLM call produces all n_ideas for this topic."""
+        topic_id = topic_entry["id"]
+        topic = topic_entry["topic"]
+        logger.info("[%s] %s (batch×%d)", topic_id, topic, n_ideas)
+        try:
+            batch = generator.generate_batch(topic, client, model=model, n=n_ideas)
+            logger.info("  [%s] batch ok — %d ideas", topic_id, len(batch))
+        except Exception as e:
+            logger.error("  [%s] batch FAILED [%s]: %s", topic_id, type(e).__name__, e)
+            batch = [f"ERROR: {e}"] * n_ideas
+        return [
+            {
+                "topic_id": topic_id,
+                "topic": topic,
+                "domain": topic_entry.get("domain", ""),
+                "idea_index": i,
+                "text": batch[i] if i < len(batch) else "ERROR: missing",
+                "system_version": generator.VERSION,
+                "model": model,
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+            }
+            for i in range(n_ideas)
+        ]
 
     def _run_topic(topic_entry: dict) -> list[dict]:
         topic_id = topic_entry["id"]
@@ -149,25 +180,35 @@ def run_system(
         signal.signal(signal.SIGINT, _on_signal)
 
     effective_workers = min(workers, len(topics))
+    topic_fn = _run_topic_fresh if fresh else _run_topic
+    mode_label = "fresh-batch" if fresh else "cached"
     logger.info("Running %s on %d topic(s) × %d idea(s) = %d calls  "
-                "[clean workspace, workers=%d]",
-                version, len(topics), n_ideas, total, effective_workers)
+                "[%s, workers=%d]",
+                version, len(topics), n_ideas,
+                len(topics) if fresh else total,   # fresh = 1 call/topic
+                mode_label, effective_workers)
 
     if effective_workers <= 1:
         for topic_entry in topics:
-            topic_results = _run_topic(topic_entry)
+            topic_results = topic_fn(topic_entry)
             results.extend(topic_results)
             _flush_partial(results, out)
             logger.debug("  flushed %d/%d ideas to disk", len(results), total)
     else:
         with ThreadPoolExecutor(max_workers=effective_workers) as executor:
-            future_map = {executor.submit(_run_topic, t): t for t in topics}
+            future_map = {executor.submit(topic_fn, t): t for t in topics}
             for future in as_completed(future_map):
                 topic_results = future.result()
                 with flush_lock:
                     results.extend(topic_results)
                     _flush_partial(results, out)
                     logger.debug("  flushed %d/%d ideas to disk", len(results), total)
+
+    # Fresh mode: skip run_config.json so cache_is_valid() returns False next time,
+    # forcing regeneration on the next call.
+    if fresh:
+        logger.info("Saved %d ideas to %s (fresh — not cached)", len(results), out / "ideas.json")
+        return results
 
     config_path = out / "run_config.json"
     with open(config_path, "w") as f:

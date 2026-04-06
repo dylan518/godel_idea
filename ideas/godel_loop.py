@@ -518,29 +518,26 @@ def cmd_swe_evolve(args):
                 existing = json.load(f)
             win_rate = existing.get("win_rate_b", 0)
         else:
+            # Always generate fresh ideas (one LLM call per topic) to prevent
+            # overfitting to a cached idea set.
+            logger.info("Generating fresh ideas for full eval (batch mode)...")
             current_output_dir = str(IDEAS_DIR / "results" / current)
-            if cache_is_valid(current_output_dir, model, n_ideas, n_topics):
-                logger.info("Using cached results for %s", current)
-                results_current = _load_results(current)
-            else:
-                results_current = run_system(
-                    version=current, topics=topics,
-                    output_dir=current_output_dir,
-                    model=model, n_ideas=n_ideas,
-                    systems_dir=systems_dir, workers=workers,
-                )
+            results_current = run_system(
+                version=current, topics=topics,
+                output_dir=current_output_dir,
+                model=model, n_ideas=n_ideas,
+                systems_dir=systems_dir, workers=workers,
+                fresh=True,
+            )
 
             candidate_output_dir = str(IDEAS_DIR / "results" / next_version)
-            if cache_is_valid(candidate_output_dir, model, n_ideas, n_topics):
-                logger.info("Using cached results for %s", next_version)
-                results_candidate = _load_results(next_version)
-            else:
-                results_candidate = run_system(
-                    version=next_version, topics=topics,
-                    output_dir=candidate_output_dir,
-                    model=model, n_ideas=n_ideas,
-                    systems_dir=systems_dir, workers=workers,
-                )
+            results_candidate = run_system(
+                version=next_version, topics=topics,
+                output_dir=candidate_output_dir,
+                model=model, n_ideas=n_ideas,
+                systems_dir=systems_dir, workers=workers,
+                fresh=True,
+            )
 
             judge_client = _make_client(JUDGE_MODEL)
             comparison = compare_systems(results_current, results_candidate,
