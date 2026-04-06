@@ -380,9 +380,8 @@ def cmd_evolve(args):
             blind_n = getattr(args, "blind_n", 5)
             if blind_n > 0:
                 try:
-                    # Run on ALL topics (n_sample=None) for a full confusion matrix
                     blind = blind_compare_systems(results_current, results_candidate,
-                                                  n_sample=None)
+                                                  n_sample=blind_n)
                     logger.info("Blind win rate: %.1f%%  (primary: %.1f%%)",
                                 blind["win_rate_b"] * 100, win_rate * 100)
                     cm = compute_judge_confusion_matrix(comparison["verdicts"], blind["verdicts"])
@@ -561,9 +560,8 @@ def cmd_swe_evolve(args):
             blind_n = getattr(args, "blind_n", 5)
             if blind_n > 0:
                 try:
-                    # Run on ALL topics (n_sample=None) for a full confusion matrix
                     blind = blind_compare_systems(results_current, results_candidate,
-                                                  n_sample=None)
+                                                  n_sample=blind_n)
                     divergence = abs(win_rate - blind["win_rate_b"])
                     logger.info("Blind win rate: %.1f%%  (divergence: %.0f%%)",
                                 blind["win_rate_b"] * 100, divergence * 100)
@@ -798,8 +796,8 @@ def main():
     evo.add_argument("--n-ideas", type=int, default=DEFAULT_N_IDEAS, dest="n_ideas")
     evo.add_argument("--workers", type=int, default=3,
                      help="Parallel topic workers (default: 3)")
-    evo.add_argument("--blind-n", type=int, default=5, dest="blind_n",
-                     help="Topics for blind judge per iteration (default: 5, 0 to skip)")
+    evo.add_argument("--blind-n", type=int, default=3, dest="blind_n",
+                     help="Topics for blind judge per iteration (default: 3, 0 to skip)")
 
     swe = sub.add_parser("swe-evolve",
                           help="SWE agent: multi-turn targeted edits per iteration up to --target")
@@ -812,7 +810,7 @@ def main():
                      help="Max edit rounds per iteration (default: 6)")
     swe.add_argument("--swe-failures", type=int, default=3, dest="swe_failures",
                      help="Max consecutive failed mini-evals before stopping (default: 3)")
-    swe.add_argument("--blind-n", type=int, default=5, dest="blind_n")
+    swe.add_argument("--blind-n", type=int, default=3, dest="blind_n")
 
     rst = sub.add_parser("reset-sota", help="Reset CURRENT_VERSION to S_sota baseline")
     rst.add_argument("--force", action="store_true", help="Required to confirm reset")
