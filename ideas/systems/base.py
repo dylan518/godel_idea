@@ -38,13 +38,14 @@ def _classify_api_error(e: Exception, model: str) -> str:
     """Return a human-readable label for common API errors to aid debugging."""
     cls = type(e).__name__
     msg = str(e).lower()
-    # OpenAI
-    if "RateLimitError" in cls:
+    # Check quota/billing before generic RateLimitError — OAI uses RateLimitError for both
+    if "InsufficientQuotaError" in cls or "insufficient_quota" in msg or "quota" in msg:
+        return f"QUOTA_EXCEEDED ({cls}) — out of credits"
+    # OpenAI / Anthropic rate limiting (transient — back off and retry)
+    if "RateLimitError" in cls or "rate_limit" in msg or "rate limit" in msg:
         return f"RATE_LIMIT ({cls})"
     if "AuthenticationError" in cls:
         return f"AUTH_ERROR ({cls}) — check API key"
-    if "InsufficientQuotaError" in cls or "quota" in msg or "insufficient_quota" in msg:
-        return f"QUOTA_EXCEEDED ({cls}) — out of credits"
     if "APIStatusError" in cls or "APIError" in cls:
         status = getattr(e, "status_code", "?")
         return f"API_ERROR/{status} ({cls})"
@@ -57,14 +58,18 @@ def _classify_api_error(e: Exception, model: str) -> str:
     return f"{cls}"
 
 
-RETRY_DELAYS = [5, 15, 30]   # seconds between retries for transient errors
-RETRYABLE = ("CONNECTION_ERROR", "OVERLOADED")   # error label prefixes that warrant retry
+RETRY_DELAYS = [5, 15, 30]              # seconds between retries: connection/overload
+RATE_LIMIT_DELAYS = [60, 120, 300]      # seconds between retries: rate limits (longer)
+RETRYABLE = ("CONNECTION_ERROR", "OVERLOADED", "RATE_LIMIT")  # QUOTA_EXCEEDED not retried
 
 
 def call_llm(prompt: str, model: str, client, temperature: float,
              max_tokens: int = 1024, timeout: int = STEP_TIMEOUT) -> str:
     """Single LLM call supporting OpenAI, Anthropic, and Gemini with per-step timeout."""
     import concurrent.futures
+    import time as _time
+    import logging as _logging
+    _logger = _logging.getLogger("base")
 
     def _call():
         if model.startswith(("gpt-", "o1-", "o3-", "o4-")):
@@ -100,12 +105,11 @@ def call_llm(prompt: str, model: str, client, temperature: float,
             )
             return response.content[0].text.strip()
 
-    import time as _time
     last_err = None
-    attempts = [None] + list(RETRY_DELAYS)   # first attempt + retries
-    for delay in attempts:
-        if delay is not None:
-            _time.sleep(delay)
+    # Build attempt schedule: first attempt (no pre-sleep) + retries with delays
+    # We track retry index separately so we can pick the right delay list per error type
+    max_retries = max(len(RETRY_DELAYS), len(RATE_LIMIT_DELAYS))
+    for attempt in range(max_retries + 1):
         executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)
         future = executor.submit(_call)
         try:
@@ -119,11 +123,27 @@ def call_llm(prompt: str, model: str, client, temperature: float,
             label = _classify_api_error(e, model)
             err = RuntimeError(f"[{label}] {e}")
             last_err = err
-            if any(label.startswith(r) for r in RETRYABLE) and delay != RETRY_DELAYS[-1]:
-                continue   # retry on transient errors
-            raise err from e
+
+            if not any(label.startswith(r) for r in RETRYABLE):
+                raise err from e  # non-retryable — fail immediately
+
+            # Pick delay schedule based on error type
+            if label.startswith("RATE_LIMIT"):
+                delays = RATE_LIMIT_DELAYS
+            else:
+                delays = RETRY_DELAYS
+
+            if attempt >= len(delays):
+                raise err from e  # exhausted retries
+
+            wait = delays[attempt]
+            _logger.warning("API error [%s] — pausing %ds before retry %d/%d (model=%s)",
+                            label, wait, attempt + 1, len(delays), model)
+            _time.sleep(wait)
         finally:
             executor.shutdown(wait=False)
+
+    raise last_err
     raise last_err  # unreachable but satisfies type checker
 
 

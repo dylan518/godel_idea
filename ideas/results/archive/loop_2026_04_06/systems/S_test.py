@@ -225,8 +225,8 @@ def _build_idea_tree_v2(topic: str, sota_context: str, client, model: str,
     return l3_leaves
 
 
-class S7Generator(IdeaGenerator):
-    VERSION = "S7"
+class S3Generator(IdeaGenerator):
+    VERSION = "S3"
     DESCRIPTION = (
         "EvoScientist IdeaTreeSearch + Elo Tournament with enforced concrete evaluation specs "
         "and mandatory problem significance in leaf generation. "
@@ -276,4 +276,4 @@ class S7Generator(IdeaGenerator):
         return call_llm(expand_prompt, model, client, temperature)
 
 
-GENERATOR = S7Generator()
+GENERATOR = S3Generator()

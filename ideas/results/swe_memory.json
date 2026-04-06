@@ -1,1 +1,24 @@
-{"iterations": []}
+{
+  "iterations": [
+    {
+      "version": "S12",
+      "champion": "S_sota",
+      "mini_eval_best": 0.8888888888888888,
+      "accepted_edits": [
+        {
+          "description": "Tournament-selected strategy (11 candidates evaluated):\nApproach: Multi-Agent Roleplay Generation\nTarget: Hypothesis-First Seeded Multi-Agent Generation\nStrategy: Parallel Hypothesis Exploration with Cross-Agent Voting\n\nThe process begins with a single Hypothesis Proposer agent generating 5 distinct hypotheses in one LLM call. Then, for each hypothesis, a dedicated Proposer agent independently generates 3 candidate ideas (total 15) in parallel calls. Next, Critic agents perform cross-hypothesis evaluations by scoring all ideas against all hypotheses, identifying ideas that show novelty beyond ",
+          "win_rate": 0.6666666666666666
+        },
+        {
+          "description": "Tournament-selected strategy (11 candidates evaluated):\nApproach: Constraint-Driven Bottom-Up Generation\nTarget: Feasibility-First Experimental Design Loop\nStrategy: Parallel Constraint-Specific Probing\n\nFor each extracted constraint, spawn a dedicated LLM call that generates 2-3 minimal experimental interventions explicitly designed to validate the feasibility and practicality of that constraint in isolation. A second LLM call evaluates these candidate experiments against concrete deployment baselines and metrics, scoring their real-world grounding and clarity. Finally, a synthesis call aggre",
+          "win_rate": 0.8888888888888888
+        },
+        {
+          "description": "Tournament-selected strategy (10 candidates evaluated):\nApproach: Hypothesis-First Adversarial Loop\nTarget: Adversarial Hypothesis Refinement with Dynamic Hypothesis Expansion\nStrategy: Multi-Agent Adversarial Consensus\n\nGenerate an initial hypothesis set with one LLM call. Then, spin up multiple adversarial critique agents (3-5) in parallel, each independently analyzing all hypotheses and proposing refined or alternative variants focused on distinct critique dimensions (e.g., theoretical gaps, practical limitations, dataset biases). Aggregate their outputs by clustering similar refinements an",
+          "win_rate": 0.6666666666666666
+        }
+      ],
+      "failed_edits": []
+    }
+  ]
+}
