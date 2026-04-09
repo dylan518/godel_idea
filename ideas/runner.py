@@ -23,6 +23,7 @@ from threading import Lock
 sys.path.insert(0, str(Path(__file__).parent))
 import log as _log
 
+_log.load_dotenv()
 logger = _log.setup("runner")
 
 
