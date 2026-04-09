@@ -1,10 +1,60 @@
-"""All LLM prompts for IdeaTreeSearch and Elo tournament.
+"""Programmatic prompts for IdeaTreeSearch + Elo (benchmark harness).
 
-These are the primary edit targets for the SWE agent. Changing a prompt here
-changes how every S_sota idea is generated — no other files need touching.
+**Canonical specs** live under repo-root ``skills/idea-tournament`` and
+``skills/research-ideation`` (same Markdown Claude Code / the agent reads).
+This file keeps JSON-shaped task instructions and **appends** those skill documents
+so SWE / Claude Code edits can target either the snippets here or the ``skills/*.md`` files.
 
-Reference: ideas/idea-tournament/SKILL.md and references/tree-search-protocol.md
+Edit targets:
+  • ``skills/idea-tournament/references/*.md`` — rubrics & protocols (primary)
+  • This file — JSON templates and truncation limits
 """
+
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+_root = Path(__file__).resolve().parent.parent
+if str(_root) not in sys.path:
+    sys.path.insert(0, str(_root))
+
+from canonical_skills import load_skill_document  # noqa: E402
+
+
+def _clip(text: str, max_chars: int) -> str:
+    text = (text or "").strip()
+    if len(text) <= max_chars:
+        return text
+    return text[: max_chars - 30] + "\n\n… [truncated for context limit]\n"
+
+
+# Loaded once at import — same content the interactive skill uses.
+_SK_TREE_FULL = load_skill_document("idea-tournament/references/tree-search-protocol.md")
+_SK_TREE_LONG = _clip(_SK_TREE_FULL, 9000)
+_SK_TREE_SHORT = _clip(_SK_TREE_FULL, 4000)
+_SK_ELO = _clip(
+    load_skill_document("idea-tournament/references/elo-ranking-guide.md"), 8000
+)
+_SK_RI_LIT = _clip(
+    load_skill_document("research-ideation/references/literature-tree.md"), 4000
+)
+_SK_PROPOSAL = _clip(
+    load_skill_document("idea-tournament/references/proposal-extension.md"), 6000
+)
+
+_MARK_TREE = (
+    "\n\n---\n### Canonical: `skills/idea-tournament/references/tree-search-protocol.md`\n"
+)
+_MARK_RI = (
+    "\n\n---\n### Canonical: `skills/research-ideation/references/literature-tree.md`\n"
+)
+_MARK_ELO = (
+    "\n\n---\n### Canonical: `skills/idea-tournament/references/elo-ranking-guide.md`\n"
+)
+_MARK_PROP = (
+    "\n\n---\n### Canonical: `skills/idea-tournament/references/proposal-extension.md`\n"
+)
 
 # ── Phase 1: Tree-Structured Idea Generation ─────────────────────────────────
 
@@ -77,8 +127,8 @@ pins down: inputs, outputs, constraints, and evaluation criteria.
 Good variation: latency-constrained vs memory-constrained (different optimization targets)
 Bad variation: minimize latency vs maximize throughput on same single-device setup (equivalent)
 
-Target: 12 leaf ideas total (2 per domain). These are the candidates that will
-compete in the Elo tournament. Make each one specific enough to act on immediately.
+Target: up to 21 leaf ideas total where possible (paper N_I); at least 12 if structure allows.
+These are the candidates that will compete in the Elo tournament. Make each one specific enough to act on immediately.
 
 Respond with ONLY this JSON:
 {{
@@ -89,7 +139,7 @@ Respond with ONLY this JSON:
       "title": "<one-line title>",
       "description": "<3 sentences: (1) what it does, (2) why it's novel vs existing work, (3) how to validate>"
     }},
-    ... (12 total, 2 per domain node)
+    ... (2 per domain node; respect N_I ≤ 21)
   ]
 }}"""
 
@@ -107,6 +157,7 @@ For each candidate:
 2. Ensure the novelty claim explicitly states what prior work cannot do that this can
 3. If two candidates are near-duplicates (same technique + domain + formulation), merge
    them — keep the sharper description, discard the weaker
+4. Prune to at most 21 leaves (paper N_I cap).
 
 Respond with ONLY this JSON (may have fewer entries after merging):
 {{
@@ -117,9 +168,8 @@ Respond with ONLY this JSON (may have fewer entries after merging):
 }}"""
 
 # ── Phase 2: Elo Tournament ───────────────────────────────────────────────────
-# 4 dimensions from SKILL.md: Novelty, Feasibility, Relevance, Clarity (equal weight)
 
-TOURNAMENT_JUDGE_PROMPT = """\
+TOURNAMENT_JUDGE_CORE = """\
 Compare two research ideas for the topic: {topic}
 
 IDEA A:
@@ -167,3 +217,69 @@ Requirements:
 - Be direct. No hedging, no vague claims.
 
 {idea_format}"""
+
+
+def build_tree_l1_prompt(topic: str, sota_context: str) -> str:
+    core = TREE_L1_PROMPT.format(
+        topic=topic, sota_context=sota_context or "(none)"
+    )
+    ri = _SK_RI_LIT or "(File missing: skills/research-ideation/references/literature-tree.md)"
+    tree = _SK_TREE_LONG or "(File missing: skills/idea-tournament/references/tree-search-protocol.md)"
+    return core + _MARK_RI + ri + _MARK_TREE + tree
+
+
+def build_tree_l2_prompt(topic: str, techniques_str: str) -> str:
+    core = TREE_L2_PROMPT.format(topic=topic, techniques_str=techniques_str)
+    tree = _SK_TREE_SHORT or ""
+    return core + _MARK_TREE + tree if tree else core
+
+
+def build_tree_l3_prompt(topic: str, domains_str: str) -> str:
+    core = TREE_L3_PROMPT.format(topic=topic, domains_str=domains_str)
+    tree = _SK_TREE_SHORT or ""
+    return core + _MARK_TREE + tree if tree else core
+
+
+def build_tree_review_prompt(
+    n: int, topic: str, sota_context: str, candidates_str: str
+) -> str:
+    core = TREE_REVIEW_PROMPT.format(
+        n=n,
+        topic=topic,
+        sota_context=sota_context or "(none)",
+        candidates_str=candidates_str,
+    )
+    tree = _SK_TREE_SHORT or ""
+    return core + _MARK_TREE + tree if tree else core
+
+
+def format_tournament_judge_prompt(topic: str, idea_a: str, idea_b: str) -> str:
+    core = TOURNAMENT_JUDGE_CORE.format(
+        topic=topic, idea_a=idea_a, idea_b=idea_b
+    )
+    elo = _SK_ELO or ""
+    return core + _MARK_ELO + elo if elo else core
+
+
+def format_expand_winner_prompt(
+    topic: str,
+    n_candidates: int,
+    winner_title: str,
+    winner_description: str,
+    sota_context: str,
+    idea_format: str,
+) -> str:
+    core = EXPAND_WINNER_PROMPT.format(
+        topic=topic,
+        n_candidates=n_candidates,
+        winner_title=winner_title,
+        winner_description=winner_description,
+        sota_context=sota_context or "(none)",
+        idea_format=idea_format,
+    )
+    prop = _SK_PROPOSAL or ""
+    return core + _MARK_PROP + prop if prop else core
+
+
+# Back-compat: old code used TOURNAMENT_JUDGE_PROMPT.format(...) without skill appendix.
+TOURNAMENT_JUDGE_PROMPT = TOURNAMENT_JUDGE_CORE

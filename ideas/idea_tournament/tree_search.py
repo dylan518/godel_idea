@@ -1,7 +1,8 @@
 """IdeaTreeSearch: 3-level tree-structured idea generation.
 
-Implements Phase 1 of the EvoScientist idea-tournament skill.
-Reference: ideas/idea-tournament/SKILL.md, references/tree-search-protocol.md
+Implements Phase 1 of the EvoScientist **idea-tournament** skill. Canonical protocols live in
+repo-root ``skills/idea-tournament/references/tree-search-protocol.md`` and
+``skills/research-ideation/references/literature-tree.md`` (injected via ``prompts.py``).
 
 Tree structure:
   L0: Seed (the research topic)
@@ -12,8 +13,7 @@ Tree structure:
 Each level is one batched LLM call. Total: 4 LLM calls for tree generation.
 A review/refine pass deduplicates and sharpens the leaves.
 
-Edit targets in prompts.py:
-  TREE_L1_PROMPT, TREE_L2_PROMPT, TREE_L3_PROMPT, TREE_REVIEW_PROMPT
+Edit targets: repo ``skills/idea-tournament/references/*.md`` and ``prompts.py`` JSON templates.
 """
 
 import json
@@ -56,7 +56,7 @@ def build_idea_tree(topic: str, sota_context: str, client, model: str,
     l1_nodes = []
     try:
         raw = call_llm(
-            P.TREE_L1_PROMPT.format(topic=topic, sota_context=sota_context),
+            P.build_tree_l1_prompt(topic, sota_context),
             model, client, temperature=temperature, max_tokens=1024,
         )
         l1_nodes = _parse_json(raw).get("techniques", [])
@@ -74,7 +74,7 @@ def build_idea_tree(topic: str, sota_context: str, client, model: str,
     l2_nodes = []
     try:
         raw = call_llm(
-            P.TREE_L2_PROMPT.format(topic=topic, techniques_str=techniques_str),
+            P.build_tree_l2_prompt(topic, techniques_str),
             model, client, temperature=temperature, max_tokens=1024,
         )
         l2_nodes = _parse_json(raw).get("domains", [])
@@ -91,7 +91,7 @@ def build_idea_tree(topic: str, sota_context: str, client, model: str,
     l3_leaves = []
     try:
         raw = call_llm(
-            P.TREE_L3_PROMPT.format(topic=topic, domains_str=domains_str),
+            P.build_tree_l3_prompt(topic, domains_str),
             model, client, temperature=temperature, max_tokens=2048,
         )
         l3_leaves = _parse_json(raw).get("leaves", [])
@@ -125,20 +125,21 @@ def build_idea_tree(topic: str, sota_context: str, client, model: str,
     )
     try:
         raw = call_llm(
-            P.TREE_REVIEW_PROMPT.format(
-                n=len(l3_leaves), topic=topic,
-                sota_context=sota_context,
-                candidates_str=candidates_str,
+            P.build_tree_review_prompt(
+                len(l3_leaves), topic, sota_context, candidates_str,
             ),
             model, client, temperature=0.3, max_tokens=2048,
         )
         refined = _parse_json(raw).get("refined", [])
         if refined:
-            l3_leaves = refined
+            l3_leaves = refined[:21]
             logger.debug("After review: %d candidates (was %d)", len(l3_leaves),
                          len(candidates_str.splitlines()))
     except Exception as e:
         logger.warning("Review step failed: %s — using unrefined leaves", e)
+
+    if len(l3_leaves) > 21:
+        l3_leaves = l3_leaves[:21]
 
     logger.info("IdeaTreeSearch complete: %d candidates for '%s'",
                 len(l3_leaves), topic[:40])

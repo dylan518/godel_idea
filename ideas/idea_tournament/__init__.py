@@ -1,7 +1,5 @@
-# idea-tournament: EvoScientist IdeaTreeSearch + Elo Tournament
-# Editable modules:
-#   prompts.py     — all LLM prompts (tree generation + tournament judge)
-#   tree_search.py — IdeaTreeSearch algorithm (Level 0→1→2→3)
-#   tournament.py  — Elo tournament (Swiss-system, 4 dimensions)
+# Programmatic IdeaTreeSearch + Elo for the Gödel benchmark harness.
 #
-# S_sota.py imports from here. The SWE agent can edit any module individually.
+# Canonical workflows and rubrics: repo-root ``skills/idea-tournament`` and
+# ``skills/research-ideation`` (Claude Code / agent skills). Python here loads those
+# Markdown files at runtime via ``prompts.py`` + ``canonical_skills.py``.

@@ -1,7 +1,7 @@
 """Elo tournament for leaf idea ranking.
 
 Implements Phase 2 of the EvoScientist idea-tournament skill.
-Reference: ideas/idea-tournament/SKILL.md, references/elo-ranking-guide.md
+Canonical rubric: repo ``skills/idea-tournament/references/elo-ranking-guide.md`` (appended in ``prompts.format_tournament_judge_prompt``).
 
 Algorithm:
   - Swiss-system pairing (avoid rematches, pair similar Elo)
@@ -12,7 +12,7 @@ Algorithm:
 Edit targets:
   - ELO_K, ELO_START: rating system parameters
   - N_ROUNDS_LARGE, N_ROUNDS_SMALL: number of tournament rounds
-  - TOURNAMENT_JUDGE_PROMPT in prompts.py: scoring criteria
+  - ``skills/idea-tournament/references/elo-ranking-guide.md`` and ``prompts.format_tournament_judge_prompt``
 """
 
 import json
@@ -59,7 +59,7 @@ def _compare_pair(topic: str, idea_a: dict, idea_b: dict,
 
     try:
         raw = call_llm(
-            P.TOURNAMENT_JUDGE_PROMPT.format(topic=topic, idea_a=pa, idea_b=pb),
+            P.format_tournament_judge_prompt(topic, pa, pb),
             model, client, temperature=0.1, max_tokens=300,
         )
         verdict = _parse_json(raw)
@@ -75,20 +75,14 @@ def _compare_pair(topic: str, idea_a: dict, idea_b: dict,
     return winner
 
 
-def run_tournament(topic: str, leaves: list[dict], client, model: str) -> dict:
-    """Swiss-system Elo tournament. Returns the winning leaf idea dict.
-
-    Uses N_ROUNDS_LARGE or N_ROUNDS_SMALL depending on candidate count.
-    Stops early if top-3 rankings stabilize (same as previous round).
-    """
-    import log as _log
-    logger = _log.setup("tournament")
-
-    if not leaves:
-        return {}
-    if len(leaves) == 1:
-        return leaves[0]
-
+def _run_swiss_elo(
+    topic: str,
+    leaves: list[dict],
+    client,
+    model: str,
+    logger,
+) -> dict[int, float]:
+    """Run Swiss Elo rounds; return index → rating."""
     n = len(leaves)
     rounds = N_ROUNDS_LARGE if n >= 10 else N_ROUNDS_SMALL
     ratings = {i: ELO_START for i in range(n)}
@@ -96,7 +90,6 @@ def run_tournament(topic: str, leaves: list[dict], client, model: str) -> dict:
     prev_top3 = None
 
     for rnd in range(rounds):
-        # Swiss pairing: sort by Elo, pair adjacent unmatched
         ranked = sorted(ratings, key=lambda i: ratings[i], reverse=True)
         pairs, paired = [], set()
         for a in ranked:
@@ -126,14 +119,54 @@ def run_tournament(topic: str, leaves: list[dict], client, model: str) -> dict:
                          rnd, leaves[a].get("id", a), leaves[b].get("id", b),
                          winner, ratings[a], ratings[b])
 
-        # Early stop if top-3 stable
         top3 = tuple(sorted(ratings, key=lambda i: ratings[i], reverse=True)[:3])
         if top3 == prev_top3:
             logger.debug("Top-3 stable after round %d — stopping early", rnd + 1)
             break
         prev_top3 = top3
 
+    return ratings
+
+
+def run_tournament(topic: str, leaves: list[dict], client, model: str) -> dict:
+    """Swiss-system Elo tournament. Returns the winning leaf idea dict.
+
+    Uses N_ROUNDS_LARGE or N_ROUNDS_SMALL depending on candidate count.
+    Stops early if top-3 rankings stabilize (same as previous round).
+    """
+    import log as _log
+    logger = _log.setup("tournament")
+
+    if not leaves:
+        return {}
+    if len(leaves) == 1:
+        return leaves[0]
+
+    n = len(leaves)
+    ratings = _run_swiss_elo(topic, leaves, client, model, logger)
     best = max(ratings, key=lambda i: ratings[i])
     logger.info("Tournament: %s wins (Elo=%.0f) from %d candidates for '%s'",
                 leaves[best].get("id", "?"), ratings[best], n, topic[:40])
     return leaves[best]
+
+
+def run_tournament_ranked(topic: str, leaves: list[dict], client, model: str) -> list[dict]:
+    """Same pairing/Elo as ``run_tournament``, but return all leaves sorted best-first.
+
+    Used when a benchmark needs multiple distinct ideas per topic (e.g. n_ideas=5)
+    without re-running IdeaTreeSearch for each slot.
+    """
+    import log as _log
+    logger = _log.setup("tournament")
+
+    if not leaves:
+        return []
+    if len(leaves) == 1:
+        return list(leaves)
+
+    ratings = _run_swiss_elo(topic, leaves, client, model, logger)
+    order = sorted(ratings.keys(), key=lambda i: ratings[i], reverse=True)
+    ranked = [leaves[i] for i in order]
+    logger.info("Tournament ranked %d leaves for '%s' (best id=%s)",
+                len(ranked), topic[:40], ranked[0].get("id", "?"))
+    return ranked

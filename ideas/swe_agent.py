@@ -112,6 +112,12 @@ EDITABLE_FILES = [
     "idea_tournament/prompts.py",
     "idea_tournament/tree_search.py",
     "idea_tournament/tournament.py",
+    "canonical_skills.py",
+    # Repo-root skills (same files Claude Code edits for the live agent)
+    "../skills/idea-tournament/references/tree-search-protocol.md",
+    "../skills/idea-tournament/references/elo-ranking-guide.md",
+    "../skills/idea-tournament/references/proposal-extension.md",
+    "../skills/research-ideation/references/literature-tree.md",
 ]
 
 
@@ -269,9 +275,9 @@ def build_pipeline_overview(ideas_dir: Path, champion_version: str) -> str:
     lines.append("")
     lines.append("Editable modules (primary targets for improvement):")
     for rel in EDITABLE_FILES:
-        p = ideas_dir / rel
+        p = (ideas_dir / rel).resolve()
         if p.exists():
-            n_lines = len(p.read_text().splitlines())
+            n_lines = len(p.read_text(encoding="utf-8", errors="replace").splitlines())
             lines.append(f"  • {rel} ({n_lines} lines)")
 
     return "\n".join(lines)
@@ -349,9 +355,12 @@ def _bundle_editable_context(ideas_dir: Path, champion_version: str) -> str:
 
     # All editable idea_tournament modules
     for rel_path in EDITABLE_FILES:
-        p = ideas_dir / rel_path
-        if p.exists():
-            parts.append(f"### FILE: {rel_path}\n```python\n{p.read_text()}```")
+        p = (ideas_dir / rel_path).resolve()
+        if not p.exists():
+            continue
+        text = p.read_text(encoding="utf-8", errors="replace")
+        fence = "markdown" if p.suffix.lower() == ".md" else "python"
+        parts.append(f"### FILE: {rel_path}\n```{fence}\n{text}\n```")
 
     return "\n\n".join(parts)
 
@@ -375,17 +384,23 @@ You are diagnosing exactly why a research idea generator is losing pairwise eval
 {swe_context}
 
 ## Your task
-Study the losing ideas above carefully. Identify the specific step in the pipeline
-where quality broke down — was the hypothesis too generic? Did selection pick the safe
-option? Did the critique fail to add experimental specificity? Did the revision water
-things down?
+Study the losing ideas above carefully. Diagnose WHY they lose — but then propose a
+FUNDAMENTALLY DIFFERENT ideation strategy, not a prompt tweak.
 
-Diagnose the root cause, then propose ONE targeted concrete fix.
+We are NOT looking for: "add a sentence to the critique prompt" or "change the temperature".
+We ARE looking for: a new algorithm, a new step, a new way of generating or selecting hypotheses.
+
+Examples of the level of change we want:
+- Replace hypothesis generation with contradiction-mining across fetched papers
+- Add cross-domain transfer: find the analogous problem in a different field, adapt its solution
+- Replace adversarial attack with a "what would make this boring/obvious" step, then invert it
+- Add a step that generates the NULL hypothesis first, then forces the idea to contradict it
+- Keep two competing hypotheses through construction and let the experiment discriminate between them
 
 Output EXACTLY in this format (no other text):
-DIAGNOSIS: <which specific step failed and precisely why — reference the actual examples>
-FIX: <the single concrete change — which call, what the prompt should do differently>
-EXPECTED_IMPACT: <why this addresses the failure pattern seen above>
+DIAGNOSIS: <what structural property of the losing ideas caused them to lose>
+FIX: <a new ideation algorithm or step — describe it concretely enough to implement>
+EXPECTED_IMPACT: <how this changes the KIND of ideas that come out, not just their polish>
 """
 
 ATTACK_PROMPT = """\
@@ -691,6 +706,127 @@ def _parse_revised_fix(raw: str) -> str:
     return raw.strip()  # fallback: use full response
 
 
+def _build_self_improvement_topic(
+    champion_version: str,
+    champion_path: Path,
+    grounded_failures_str: str,
+    failed_attempts_str: str,
+) -> str:
+    """Build a topic string for generate_idea() that frames self-improvement as research.
+
+    Uses the champion's module docstring (max 400 chars) instead of full source code
+    to keep the topic within API limits while still conveying the pipeline structure.
+    """
+    # Extract docstring from champion file (first triple-quoted string)
+    champion_text = champion_path.read_text()
+    doc_match = re.search(r'"""(.*?)"""', champion_text, re.DOTALL)
+    doc = doc_match.group(1).strip()[:400] if doc_match else f"{champion_version} idea generator pipeline"
+
+    topic = (
+        f"Self-improvement of a research idea generation pipeline ({champion_version}).\n\n"
+        f"CURRENT PIPELINE OVERVIEW:\n{doc}\n\n"
+        f"RECENT FAILURES (ideas where the current system lost to a weaker baseline):\n"
+        f"{grounded_failures_str[:1500]}\n\n"
+        f"PREVIOUSLY ATTEMPTED FIXES THAT DID NOT WORK:\n"
+        f"{failed_attempts_str[:600]}\n\n"
+        f"Your task: propose a FUNDAMENTALLY DIFFERENT ideation strategy for the APPROACH section.\n"
+        f"Prompt-level tweaks (e.g. 'add a sentence to the critique prompt') are NOT acceptable.\n"
+        f"Think about the ideation algorithm itself — how ideas are generated, selected, and refined.\n\n"
+        f"Examples of the level of change we want:\n"
+        f"- Replace hypothesis generation with contradiction-mining: find two conflicting recent papers and generate an idea that resolves the contradiction\n"
+        f"- Add cross-domain transfer: map the topic to an analogous problem in a different field, adapt the best solution from that field\n"
+        f"- Replace adversarial attack with a null-result adversary: generate the most boring/obvious outcome first, then force the idea to contradict it\n"
+        f"- Add a 'what would falsify every prior approach' step before hypothesis generation\n"
+        f"- Replace selection with a bet-hedging step: keep two competing hypotheses and build experiments that discriminate between them\n\n"
+        f"Describe a concrete new algorithm or step in the APPROACH section."
+    )
+    return topic
+
+
+def _parse_idea_output(raw: str) -> dict:
+    """Parse IDEA_FORMAT output into field dict.
+
+    Returns keys: idea, background, approach, experiment, novelty.
+    Falls back to DOTALL multiline search per field.
+    """
+    fields = ["IDEA", "BACKGROUND", "APPROACH", "EXPERIMENT", "NOVELTY"]
+    result: dict = {}
+
+    # Try splitting on field headers
+    pattern = r"(?:^|\n)(IDEA|BACKGROUND|APPROACH|EXPERIMENT|NOVELTY)\s*[:\-]\s*"
+    parts = re.split(pattern, raw, flags=re.IGNORECASE)
+    if len(parts) > 1:
+        # parts = [pre, field1, content1, field2, content2, ...]
+        for i in range(1, len(parts) - 1, 2):
+            key = parts[i].upper()
+            val = parts[i + 1].strip() if i + 1 < len(parts) else ""
+            result[key.lower()] = val
+
+    # Fill any missing fields via DOTALL search
+    for field in fields:
+        key = field.lower()
+        if key not in result or not result[key]:
+            m = re.search(
+                rf"{field}\s*[:\-]\s*(.+?)(?=(?:IDEA|BACKGROUND|APPROACH|EXPERIMENT|NOVELTY)\s*[:\-]|$)",
+                raw,
+                re.DOTALL | re.IGNORECASE,
+            )
+            if m:
+                result[key] = m.group(1).strip()
+
+    # Final fallback: store full raw under "idea" if nothing parsed
+    if not result:
+        result["idea"] = raw.strip()
+
+    return result
+
+
+def _call_generate_idea_proposal(
+    champion_version: str,
+    ideas_dir: Path,
+    topic: str,
+) -> tuple:
+    """Call champion's generate_idea() to produce a self-improvement proposal.
+
+    Loads the champion module dynamically (same pattern as _run_mini_eval),
+    then calls generate_idea(topic, ...) with temperature=0.7 for precision.
+
+    Returns (raw_idea_str, parsed_fields_dict).
+    Raises RuntimeError on any failure — caller should catch and fall back.
+    """
+    import importlib.util
+
+    champion_path = ideas_dir / "systems" / f"{champion_version}.py"
+    if not champion_path.exists():
+        raise RuntimeError(f"Champion file not found: {champion_path}")
+
+    # Insert paths so the champion module can import its dependencies
+    for p in [str(ideas_dir), str(ideas_dir / "systems")]:
+        if p not in sys.path:
+            sys.path.insert(0, p)
+
+    spec = importlib.util.spec_from_file_location("_champ_selfimprove", champion_path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+
+    generator = mod.GENERATOR
+    sys.path.insert(0, str(ideas_dir / "systems"))
+    from base import make_client, DEFAULT_MODEL  # noqa: F401
+    client = make_client(DEFAULT_MODEL)
+
+    raw = generator.generate_idea(topic, client, model=DEFAULT_MODEL, temperature=0.7)
+    if not isinstance(raw, str) or len(raw) < 50:
+        raise RuntimeError(f"generate_idea() returned unexpectedly short output: {raw!r}")
+
+    parsed = _parse_idea_output(raw)
+    if not parsed.get("background") and not parsed.get("approach"):
+        raise RuntimeError(
+            f"generate_idea() output missing BACKGROUND and APPROACH fields. Raw: {raw[:200]}"
+        )
+
+    return raw, parsed
+
+
 def _call_claude_code_edit(
     champion_path: Path,
     output_path: Path,
@@ -725,35 +861,40 @@ def _call_claude_code_edit(
         rel_tree    = ideas_dir / "idea_tournament/tree_search.py"
         rel_tourn   = ideas_dir / "idea_tournament/tournament.py"
 
-    task_prompt = f"""You are improving a Python research idea generator. Make ONE focused, surgical improvement.
+    task_prompt = f"""You are redesigning the ideation algorithm inside a Python research idea generator.
 
-## Diagnosis and proposed fix
+## What needs to change and why
 {task_description}
 
-## Why the current generator is losing to the baseline
+## Where the current generator is losing
 {failure_analysis}
 
 ## What to do
 1. Read `{rel_output}` — this is already a copy of the champion, your starting point
-2. Read the relevant `ideas/idea_tournament/` modules for full context on what the pipeline does
-3. Implement the improvement strategy above — make TARGETED edits to `{rel_output}`
+2. Read `ideas/idea_tournament/` (Python) and repo-root `skills/idea-tournament/` + `skills/research-ideation/` (Markdown — same specs Claude Code uses; `prompts.py` loads them)
+3. Implement the new ideation strategy above — rewrite or add to `generate_idea()` in `{rel_output}`
+
+## What we want
+The current pipeline generates ideas incrementally. We want a fundamentally different approach
+to how hypotheses are generated and selected. This means:
+- Adding new steps, new sub-pipelines, or replacing existing steps entirely
+- NOT just tweaking wording in an existing prompt
+- The change should affect what KIND of ideas come out, not just how polished they are
 
 ## Hard constraints (failure to meet these causes the system to crash or be disqualified)
 - Class name MUST be `{next_version}Generator(IdeaGenerator)`
 - `VERSION = "{next_version}"` (update from whatever the champion has)
 - File MUST end with `GENERATOR = {next_version}Generator()`
-- Any code you MODIFY from `idea_tournament/` must be inlined in the file (not imported)
+- Any code you MODIFY from `idea_tournament/` must be inlined in the champion file (not imported). You MAY edit `skills/**/*.md` in place when changing rubrics those prompts load.
 - Every `call_llm()` call must be wrapped in try/except with a sensible fallback
 - `generate_idea(self, topic, client, model, temperature)` must always return a non-empty string
-- Keep total LLM calls per idea: ~10-15 (same budget as champion, just use them differently)
+- Keep total LLM calls per idea: ~10-20 (can use more than champion if the strategy warrants it)
 
-## What the judge rewards (optimise for this, not pipeline complexity)
+## What the judge rewards (optimise for this)
 - Concrete, specific, well-grounded ideas
 - Named datasets, baselines, and quantitative metrics
 - Clear problem statements with named failure modes
-- Novelty relative to cited SOTA
-
-Make the minimal change needed to implement the strategy. Do NOT restructure the file unnecessarily."""
+- Genuine novelty — ideas the judge hasn't seen before"""
 
     # Strip CLAUDECODE from the subprocess env so nested Claude Code sessions work.
     # Claude Code blocks nested launches unless this var is absent.
@@ -1033,12 +1174,15 @@ def run_swe_loop(
             for i, e in enumerate(edit_history)
         ) or "(none yet)"
 
-        # ── Step 1: diagnose failures from concrete examples ─────────────────
+        # ── Step 1: diagnose failures and propose new ideation strategy ─────────
         champion_code_text = champion_path.read_text()
         failed_attempts_str = "\n".join(
             f"Round {e['round']}: {e['description'][:120]} → {e['win_rate']:.1%}"
             for e in edit_history if not e.get("accepted")
         ) or "(none yet)"
+
+        tmp_version = f"{next_version}_r{rnd}"
+        tmp_path = systems_dir / f"{tmp_version}.py"
 
         diagnose_prompt = DIAGNOSE_PROMPT.format(
             champion_code=champion_code_text,
@@ -1054,10 +1198,7 @@ def run_swe_loop(
             logger.error("Diagnosis failed: %s", e)
             diagnosis = "Unknown failure — try improving experimental specificity."
             proposed_fix = "Add concrete dataset and baseline names to the final revision prompt."
-
-        # ── Step 2: adversarially refine the proposed fix ────────────────────
-        tmp_version = f"{next_version}_r{rnd}"
-        tmp_path = systems_dir / f"{tmp_version}.py"
+            expected_impact = ""
 
         try:
             attack_prompt = ATTACK_PROMPT.format(
@@ -1069,7 +1210,7 @@ def run_swe_loop(
             logger.info("Refined fix:\n%s", refined_fix)
         except Exception as e:
             logger.error("Attack/refine failed: %s", e)
-            refined_fix = proposed_fix  # fall back to unrefined fix
+            refined_fix = proposed_fix
 
         task_description = (
             f"DIAGNOSIS: {diagnosis}\n\n"
@@ -1084,7 +1225,7 @@ def run_swe_loop(
                     champion_path=champion_path,
                     output_path=tmp_path,
                     task_description=task_description,
-                    failure_analysis=failure_analysis,
+                    failure_analysis=grounded_failures_str,
                     ideas_dir=ideas_dir,
                     next_version=tmp_version,
                 )
@@ -1159,7 +1300,7 @@ def run_swe_loop(
         edit_history.append({
             "round": rnd,
             "description": task_description[:1200],
-            "failure_analysis": failure_analysis[:2000],
+            "failure_analysis": grounded_failures_str[:2000],
             "win_rate": win_rate,
             "accepted": improved,
             "code_snippet": new_code[:2000],

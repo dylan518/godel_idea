@@ -1,0 +1,10 @@
+{
+  "_comment": "Single-topic smoke run for MVP (not the official 15-topic benchmark).",
+  "topics": [
+    {
+      "id": "M1",
+      "topic": "Robustness of vision transformers under distribution shift",
+      "domain": "ML"
+    }
+  ]
+}

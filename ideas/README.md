@@ -42,6 +42,8 @@ A self-improving research idea generator that uses pairwise LLM evaluation to ev
 
 **Current champion**: `S15` — Hypothesis-First Adversarial Loop (55.3% vs S12)
 
+**Full results table + how this relates to the main EvoScientist agent**: see [`RESULTS_SUMMARY.md`](RESULTS_SUMMARY.md).
+
 ---
 
 ## Evolution History
@@ -50,7 +52,7 @@ Loop started fresh from `S_sota` as the bootstrap champion (prior S0–S6 experi
 
 | Version | Strategy | Win Rate vs Prev Champion | Status |
 |---------|----------|--------------------------|--------|
-| S_sota | SOTA retrieval + IdeaTreeSearch + Elo tournament | — | bootstrap champion |
+| S_sota | SOTA retrieval + intra-topic Elo tournament + multi-perspective critique | — | bootstrap champion |
 | S12 | Hypothesis-First Adversarial Loop (v1) | **89.3%** vs S_sota | champion |
 | S13 | SWE refinement of S12 (round 1) | 54% vs S12 | rejected |
 | S14 | SWE refinement of S12 (round 2) | 54% vs S12 | rejected |
@@ -189,8 +191,11 @@ tail -f ideas/results/godel.log
 
 ## Repository Structure
 
+Canonical **idea-tournament** / **research-ideation** specs live in **repo-root** `../skills/` (not under `ideas/`). `ideas/idea_tournament/prompts.py` loads those `.md` files at runtime; SWE / Claude Code may edit either the Python or the skill Markdown.
+
 ```
 ideas/
+├── canonical_skills.py    # Resolves repo-root skills/ for the harness
 ├── godel_loop.py          # Main CLI entry point
 ├── runner.py              # Parallel benchmarking engine
 ├── judge.py               # Pairwise evaluation engine (DeepSeek primary, Gemini blind)
@@ -201,13 +206,12 @@ ideas/
 ├── log.py                 # Logging + dotenv loader
 ├── benchmark_topics.json  # 15 research topic categories
 ├── CURRENT_VERSION        # Points to current champion (e.g. "S15")
+├── RESULTS_SUMMARY.md     # Aggregated benchmark results vs main EvoScientist product
 ├── RESEARCH_AGENDA.md     # Living document: hypotheses, experiment log
 ├── systems/
 │   ├── base.py            # Abstract IdeaGenerator + call_llm (OpenAI/Anthropic/Gemini/DeepSeek)
-│   ├── S0.py              # Baseline direct prompting
-│   ├── S1.py              # Self-critique
-│   ├── S5.py              # Multi-perspective critique
-│   ├── S_sota.py          # SOTA retrieval + IdeaTreeSearch + Elo tournament
+│   ├── S_sota.py          # EvoScientist-inspired baseline: SOTA retrieval + tournament + critique
+│   ├── S_paper.py         # IdeaTreeSearch + Elo; prompts use ../skills/idea-tournament + research-ideation
 │   ├── S12.py             # Hypothesis-First Adversarial Loop (v1)
 │   └── S15.py             # Current champion (SWE-refined adversarial loop)
 └── results/
