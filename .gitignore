@@ -16,6 +16,7 @@ build/
 .env
 .env.*
 !.env.example
+!.env.hosted.example
 .venv/
 venv/
 bridge/node_modules/
@@ -45,3 +46,9 @@ conversation_history/
 *meals/
 botpy.log
 large_tool_results/
+
+# ideas / Gödel loop — logs & retrieval cache (regenerated locally)
+ideas/results/godel.log
+ideas/results/retrieval_cache/
+ideas/results/**/*.jsonl.bak*
+ideas/results/**/*.bak.json
