@@ -52,3 +52,7 @@ ideas/results/godel.log
 ideas/results/retrieval_cache/
 ideas/results/**/*.jsonl.bak*
 ideas/results/**/*.bak.json
+
+# Extracted legacy archives (tracked only as .tar.gz under archive/)
+ideas/results/archive/loop_2026_04_06/
+ideas/results/archive/workshop_dropped_S20/

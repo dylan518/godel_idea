@@ -55,7 +55,7 @@ Chronological accepts only (each line is a promotion):
 
 | Step | From | To | Primary win rate (B) | Blind win rate (notes) |
 |------|------|-----|----------------------|-------------------------|
-| Bootstrap | — | `S_sota` | — | Fresh loop seeded with `S_sota`; prior work archived under `results/archive/loop_2026_04_06/` |
+| Bootstrap | — | `S_sota` | — | Fresh loop seeded with `S_sota`; prior work archived as `results/archive/loop_2026_04_06.tar.gz` |
 | 1 | `S_sota` | `S12` | **89.3%** | 70% |
 | 2 | `S12` | `S15` | **55.3%** | 66.7%; judge agreement metrics logged (high flip/agreement noise on this run—see raw log) |
 
@@ -87,9 +87,9 @@ Interpretation: **no candidate has beaten S15** under the saved full compares; *
 
 ---
 
-## Archived loop (`results/archive/loop_2026_04_06/`)
+## Archived loop (`results/archive/loop_2026_04_06.tar.gz`)
 
-Earlier experiments (different branch of history) include:
+Extract with `tar xzf ideas/results/archive/loop_2026_04_06.tar.gz` (see `ideas/results/archive/README.md`). Earlier experiments (different branch of history) include:
 
 ### Archived `evolution_log.jsonl` (accepts)
 
@@ -111,7 +111,7 @@ Earlier experiments (different branch of history) include:
 | S3 | S9 | 50.9% | `compare_S3_vs_S9.json` |
 | S3 | S10 | 55.3% | `compare_S3_vs_S10.json` |
 
-Source systems for S0–S11 live under `results/archive/loop_2026_04_06/systems/` when you need the exact prompts for that era.
+Source systems for S0–S11 live under `loop_2026_04_06/systems/` inside that tarball when you need the exact prompts for that era.
 
 ---
 
@@ -131,6 +131,6 @@ Source systems for S0–S11 live under `results/archive/loop_2026_04_06/systems/
 | Accept history | `ideas/results/evolution_log.jsonl` |
 | Per-run details | `ideas/results/compare_*.json` |
 | Cached ideas per version | `ideas/results/<VERSION>/ideas.json` (when present) |
-| Prior loop | `ideas/results/archive/loop_2026_04_06/` |
+| Prior loop | `ideas/results/archive/loop_2026_04_06.tar.gz` |
 
 Last updated from repository state **2026-04-09** (aggregated from `evolution_log.jsonl` and `compare_*.json` on disk).
