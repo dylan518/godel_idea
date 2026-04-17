@@ -1,0 +1,37 @@
+{
+  "git_rev": "24508b3f0c1aeff6b4f14b36b063ec69df9a06f5",
+  "current_version_file": "S15",
+  "events": [
+    {
+      "timestamp": "2026-04-06T13:19:00+00:00",
+      "from_version": "bootstrap",
+      "to_version": "S_sota",
+      "win_rate": null,
+      "blind_win_rate": null,
+      "note": "fresh loop from S_sota"
+    },
+    {
+      "timestamp": "2026-04-06T19:48:15.772852+00:00",
+      "from_version": "S_sota",
+      "to_version": "S12",
+      "win_rate": 0.8933333333333333,
+      "blind_win_rate": 0.7
+    },
+    {
+      "timestamp": "2026-04-06T21:36:36.526941+00:00",
+      "from_version": "S12",
+      "to_version": "S15",
+      "win_rate": 0.5533333333333333,
+      "blind_win_rate": 0.6666666666666666,
+      "judge_agreement_rate": 0.333,
+      "judge_flip_rate": 0.333
+    },
+    {
+      "timestamp": "2026-04-12T20:52:52.183877+00:00",
+      "from_version": "S15",
+      "to_version": "S_paper",
+      "win_rate": null,
+      "blind_win_rate": null
+    }
+  ]
+}
