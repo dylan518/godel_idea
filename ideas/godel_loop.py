@@ -4,6 +4,8 @@ Subcommands:
     status                          Print current version, available systems, cached results
     benchmark [--version V]         Run specified (or current) version on all benchmark topics
     compare --candidate S1          Run candidate vs current, judge, print verdict
+                                    (--full-judge: all pairs, no early stop — for N=75 archives)
+    compare --current S12 --candidate S13   Override champion side (default: CURRENT_VERSION)
     accept S1 [--force]             Accept a candidate version (write CURRENT_VERSION + log)
 
 Usage:
@@ -30,13 +32,21 @@ _log.load_dotenv()
 logger = _log.setup("godel")
 
 ACCEPTANCE_THRESHOLD = 0.55
-DEFAULT_MODEL = "gpt-4.1-mini"
+# Match ``systems/base.DEFAULT_MODEL`` — DeepSeek API for generation (not OpenAI).
+DEFAULT_MODEL = "deepseek-chat"
 DEFAULT_N_IDEAS = 3
 
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
+def _blind_sample_from_arg(blind_n: int) -> int | None:
+    """--blind-n: positive = subsample size; -1 = all shared topics (n_sample=None)."""
+    if blind_n < 0:
+        return None
+    return blind_n
+
 
 def _read_current_version() -> str:
     return (IDEAS_DIR / "CURRENT_VERSION").read_text().strip()
@@ -129,7 +139,7 @@ def cmd_compare(args):
     from judge import compare_systems, blind_compare_systems, compute_judge_confusion_matrix, JUDGE_MODEL
 
     candidate = args.candidate
-    current = _read_current_version()
+    current = getattr(args, "current", None) or _read_current_version()
     model = args.model
     n_ideas = args.n_ideas
     workers = args.workers
@@ -140,6 +150,9 @@ def cmd_compare(args):
         sys.exit(1)
 
     available = _available_systems()
+    if current not in available:
+        logger.error("Current/champion %s not found. Available: %s", current, ", ".join(available))
+        sys.exit(1)
     if candidate not in available:
         logger.error("Candidate %s not found. Available: %s", candidate, ", ".join(available))
         sys.exit(1)
@@ -159,21 +172,29 @@ def cmd_compare(args):
             version=current, topics=topics,
             output_dir=str(IDEAS_DIR / "results" / current),
             model=model, n_ideas=n_ideas, systems_dir=systems_dir,
+            workers=workers,
         )
 
-    logger.info("Running candidate %s on benchmark topics...", candidate)
-    results_candidate = run_system(
-        version=candidate, topics=topics,
-        output_dir=str(IDEAS_DIR / "results" / candidate),
-        model=model, n_ideas=n_ideas, systems_dir=systems_dir, workers=workers,
-    )
+    candidate_output_dir = str(IDEAS_DIR / "results" / candidate)
+    if cache_is_valid(candidate_output_dir, model, n_ideas, n_topics):
+        logger.info("Using cached results for %s (model=%s, n_ideas=%d, n_topics=%d)",
+                    candidate, model, n_ideas, n_topics)
+        results_candidate = _load_results(candidate)
+    else:
+        logger.info("Running candidate %s on benchmark topics...", candidate)
+        results_candidate = run_system(
+            version=candidate, topics=topics,
+            output_dir=candidate_output_dir,
+            model=model, n_ideas=n_ideas, systems_dir=systems_dir, workers=workers,
+        )
 
     logger.info("Primary judge (%s): %s (A) vs %s (B)...", JUDGE_MODEL, current, candidate)
     from systems.base import make_client as _make_client
     judge_client = _make_client(JUDGE_MODEL)
+    estop = None if getattr(args, "full_judge", False) else ACCEPTANCE_THRESHOLD
     comparison = compare_systems(results_current, results_candidate, judge_client,
                                  workers=workers,
-                                 early_stop_threshold=ACCEPTANCE_THRESHOLD)
+                                 early_stop_threshold=estop)
 
     wins_a = comparison["wins_a"]
     wins_b = comparison["wins_b"]
@@ -199,11 +220,21 @@ def cmd_compare(args):
     # Blind judge — independent Gemini sample, never used for accept/reject
     blind = None
     confusion_matrix = None
-    blind_n = getattr(args, "blind_n", 2)
-    if blind_n > 0:
-        logger.info("Running blind judge on %d sampled topic(s)...", blind_n)
+    blind_n = args.blind_n
+    if blind_n != 0:
+        if blind_n < 0:
+            logger.info("Running blind judge on all shared topics (workers=%d)...", workers)
+        else:
+            logger.info(
+                "Running blind judge on %d sampled topic(s) (workers=%d)...",
+                blind_n, workers,
+            )
         try:
-            blind = blind_compare_systems(results_current, results_candidate, n_sample=blind_n)
+            blind = blind_compare_systems(
+                results_current, results_candidate,
+                n_sample=_blind_sample_from_arg(blind_n),
+                workers=workers,
+            )
             logger.info("Blind win rate: %.1f%%  (primary: %.1f%%)",
                         blind["win_rate_b"] * 100, win_rate * 100)
             # Confusion matrix: per-pair agreement between primary and blind judge
@@ -377,11 +408,14 @@ def cmd_evolve(args):
             # --- Blind judge ---
             blind = None
             confusion_matrix = None
-            blind_n = getattr(args, "blind_n", 5)
-            if blind_n > 0:
+            blind_n = args.blind_n
+            if blind_n != 0:
                 try:
-                    blind = blind_compare_systems(results_current, results_candidate,
-                                                  n_sample=blind_n)
+                    blind = blind_compare_systems(
+                        results_current, results_candidate,
+                        n_sample=_blind_sample_from_arg(blind_n),
+                        workers=workers,
+                    )
                     logger.info("Blind win rate: %.1f%%  (primary: %.1f%%)",
                                 blind["win_rate_b"] * 100, win_rate * 100)
                     cm = compute_judge_confusion_matrix(comparison["verdicts"], blind["verdicts"])
@@ -506,6 +540,7 @@ def cmd_swe_evolve(args):
                     max_rounds=args.swe_rounds,
                     max_failures=args.swe_failures,
                     generator_model=model,
+                    workers=workers,
                 )
             except Exception as e:
                 logger.error("SWE loop failed for %s: %s — skipping", next_version, e)
@@ -559,11 +594,14 @@ def cmd_swe_evolve(args):
 
             blind = None
             confusion_matrix = None
-            blind_n = getattr(args, "blind_n", 5)
-            if blind_n > 0:
+            blind_n = args.blind_n
+            if blind_n != 0:
                 try:
-                    blind = blind_compare_systems(results_current, results_candidate,
-                                                  n_sample=blind_n)
+                    blind = blind_compare_systems(
+                        results_current, results_candidate,
+                        n_sample=_blind_sample_from_arg(blind_n),
+                        workers=workers,
+                    )
                     divergence = abs(win_rate - blind["win_rate_b"])
                     logger.info("Blind win rate: %.1f%%  (divergence: %.0f%%)",
                                 blind["win_rate_b"] * 100, divergence * 100)
@@ -773,13 +811,21 @@ def main():
                        help="Parallel topic workers (default: 1)")
 
     comp = sub.add_parser("compare", help="Compare candidate vs current, judge, print verdict")
+    comp.add_argument(
+        "--current",
+        default=None,
+        dest="current",
+        help="Champion side A (default: read from CURRENT_VERSION file).",
+    )
     comp.add_argument("--candidate", required=True, help="Candidate version, e.g. S1")
     comp.add_argument("--model", default=DEFAULT_MODEL)
     comp.add_argument("--n-ideas", type=int, default=DEFAULT_N_IDEAS, dest="n_ideas")
     comp.add_argument("--blind-n", type=int, default=5, dest="blind_n",
-                      help="Topics to sample for blind Gemini judge (default: 5, 0 to skip)")
+                      help="Blind Gemini topics: N>0 subsample, -1=all shared, 0=skip (default: 5)")
     comp.add_argument("--workers", type=int, default=1,
                        help="Parallel topic workers for generation and judging (default: 1)")
+    comp.add_argument("--full-judge", action="store_true", dest="full_judge",
+                       help="Judge all topic×idea pairs (no early stop); for full N=75 benchmarks")
 
     acc = sub.add_parser("accept", help="Accept a candidate version as the new current")
     acc.add_argument("version", help="Version to accept, e.g. S1")
@@ -807,11 +853,11 @@ def main():
                      help="Evolve up to S{target}")
     swe.add_argument("--model", default=DEFAULT_MODEL)
     swe.add_argument("--n-ideas", type=int, default=DEFAULT_N_IDEAS, dest="n_ideas")
-    swe.add_argument("--workers", type=int, default=3)
-    swe.add_argument("--swe-rounds", type=int, default=6, dest="swe_rounds",
-                     help="Max edit rounds per iteration (default: 6)")
-    swe.add_argument("--swe-failures", type=int, default=3, dest="swe_failures",
-                     help="Max consecutive failed mini-evals before stopping (default: 3)")
+    swe.add_argument("--workers", type=int, default=50)
+    swe.add_argument("--swe-rounds", type=int, default=1, dest="swe_rounds",
+                     help="Max edit rounds per iteration (default: 1)")
+    swe.add_argument("--swe-failures", type=int, default=1, dest="swe_failures",
+                     help="Max consecutive failed holdout evals before stopping (default: 1)")
     swe.add_argument("--blind-n", type=int, default=3, dest="blind_n")
 
     rst = sub.add_parser("reset-sota", help="Reset CURRENT_VERSION to S_sota baseline")

@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0" />
+  <title>Blind idea comparison</title>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --panel: #1a2332;
+      --text: #e7ecf3;
+      --muted: #8b98a8;
+      --accent: #3d8bfd;
+      --border: #2a3544;
+      --win: #2d6a4f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: ui-sans-serif, system-ui, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.45;
+    }
+    header {
+      padding: 1rem 1.25rem; border-bottom: 1px solid var(--border);
+      display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;
+      background: #121820;
+    }
+    header h1 { margin: 0; font-size: 1.1rem; font-weight: 600; }
+    .row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+    label { font-size: 0.85rem; color: var(--muted); }
+    select, button, input[type="text"] {
+      background: var(--panel); color: var(--text); border: 1px solid var(--border);
+      border-radius: 6px; padding: 0.35rem 0.6rem; font-size: 0.9rem;
+    }
+    input[type="text"] { min-width: 12rem; flex: 1; max-width: min(100%, 32rem); }
+    button { cursor: pointer; }
+    button.primary { background: var(--accent); border-color: #2563c4; color: #fff; }
+    button:disabled { opacity: 0.45; cursor: not-allowed; }
+    main { padding: 1rem 1.25rem 2rem; max-width: 1400px; margin: 0 auto; }
+    .meta {
+      font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem;
+    }
+    .meta strong { color: var(--text); }
+    .grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+      padding: 1rem; min-height: 200px;
+    }
+    .card h2 { margin: 0 0 0.75rem; font-size: 1rem; color: #a8b8cc; }
+    .idea-text {
+      white-space: pre-wrap; font-size: 0.88rem; max-height: 55vh; overflow: auto;
+    }
+    .actions {
+      margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+    }
+    .reveal {
+      margin-top: 1rem; padding: 0.75rem 1rem; background: #152028; border-radius: 8px;
+      border: 1px solid var(--border); font-size: 0.9rem;
+    }
+    .reveal.ok { border-color: var(--win); }
+    .scores { margin-top: 1rem; display: none; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
+    .scores.rubric-on { display: grid; }
+    @media (max-width: 700px) { .scores.rubric-on { grid-template-columns: 1fr 1fr; } }
+    .scores label { display: block; margin-bottom: 0.25rem; }
+    .scores input[type="range"] { width: 100%; }
+    .hint { font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem; }
+    .status { font-size: 0.85rem; color: var(--muted); }
+    .status.working { color: #9ec8ff; font-weight: 500; }
+    .work-banner {
+      display: none; align-items: center; gap: 0.55rem;
+      padding: 0.65rem 1rem; margin-bottom: 0.75rem;
+      border-radius: 8px; border: 1px solid #2a4a7a; background: #152238;
+      color: #dbeafe; font-size: 0.92rem;
+    }
+    .work-banner.active { display: flex; }
+    header .work-banner {
+      flex-basis: 100%;
+      width: 100%;
+      max-width: min(100%, 900px);
+    }
+    header .global-status {
+      flex-basis: 100%;
+      margin: 0;
+      width: 100%;
+      max-width: min(100%, 900px);
+    }
+    .global-status { min-height: 1.25em; }
+    .spinner {
+      width: 16px; height: 16px; flex: 0 0 16px;
+      border: 2px solid rgba(255,255,255,0.2); border-top-color: var(--accent);
+      border-radius: 50%; animation: hj-spin 0.75s linear infinite;
+    }
+    @keyframes hj-spin { to { transform: rotate(360deg); } }
+    .banner {
+      font-size: 0.88rem; color: #c9d4e3; background: #1a2636; border: 1px solid var(--border);
+      border-radius: 8px; padding: 0.6rem 0.85rem; margin-bottom: 0.75rem;
+    }
+    .banner.warn { border-color: #6b4c00; background: #2a2410; color: #f0e6c8; }
+    #panelBlind { display: none; }
+    body.blind-on #panelSetup { display: none; }
+    body.blind-on #panelBlind { display: flex; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Blind idea comparison</h1>
+    <div id="workBanner" class="work-banner" role="status" aria-live="assertive" aria-atomic="true"></div>
+    <div id="panelSetup" class="row" style="flex-direction: column; align-items: stretch; gap: 0.75rem; width: 100%; max-width: 720px;">
+      <div class="banner warn">
+        Choose two result runs below, then <strong>Enter blind mode</strong>. Generator names stay hidden for the whole session — only Idea A / Idea B are shown; after each vote nothing here reveals which run was which (avoids biasing the next picks).
+      </div>
+      <div class="row">
+        <label>Generator 1</label>
+        <select id="verFirst" aria-label="First generator run"></select>
+        <label>Generator 2</label>
+        <select id="verSecond" aria-label="Second generator run"></select>
+      </div>
+      <div class="row" style="align-items: flex-start; width: 100%; max-width: 38rem;">
+        <label style="padding-top: 0.35rem;">Scorer</label>
+        <div style="display: flex; flex-direction: column; gap: 0.25rem; flex: 1;">
+          <input type="text" id="scorerId" placeholder="Your name (REQUIRED for inter-rater analysis)" autocomplete="name" maxlength="120" required />
+          <span class="hint" style="margin: 0;">Stored as <code>scorer</code> on every vote in <code>results/human_blind_scores.jsonl</code>. Remembered in this browser until you change it.</span>
+        </div>
+      </div>
+      <div class="row">
+        <label>Subject / domain</label>
+        <select id="domain">
+          <option value="">All domains</option>
+        </select>
+        <label>Topic</label>
+        <select id="topic">
+          <option value="">Any topic (matching pairs)</option>
+        </select>
+      </div>
+      <div class="row" style="align-items: flex-start; width: 100%; max-width: 48rem;">
+        <label style="padding-top: 0.35rem;">Custom topic</label>
+        <div style="display: flex; flex-direction: column; gap: 0.25rem; flex: 1;">
+          <input type="text" id="topicCustom" placeholder="Research question / topic text (used for fresh generation)" autocomplete="off" />
+          <span class="hint" style="margin: 0;">If filled, <strong>Next pair</strong> generates new ideas for this exact text on both runs (first time can take several minutes). Optional prefetch: <strong>Generate custom topic ideas</strong> below. Leave empty to use the Topic dropdown on cached results only.</span>
+        </div>
+      </div>
+      <div class="row" style="align-items: center; flex-wrap: wrap;">
+        <label title="LLM id for fresh generation (custom topic, or auto-gen when benchmark caches do not overlap). Default matches the Gödel loop generator.">Generation model</label>
+        <input type="text" id="genModel" list="genModelPresets" autocomplete="off" style="min-width: 11rem; max-width: 20rem;" />
+        <datalist id="genModelPresets">
+          <option value="gpt-4.1-mini"></option>
+          <option value="gpt-4.1"></option>
+          <option value="deepseek-chat"></option>
+          <option value="claude-sonnet-4-20250514"></option>
+        </datalist>
+      </div>
+      <div class="row">
+        <label title="Each run gets this many ideas for the topic. You compare one matched slot at a time; Next pair picks another slot."># ideas / slots</label>
+        <select id="customCount">
+          <option value="3">3</option>
+          <option value="5" selected>5</option>
+          <option value="7">7</option>
+        </select>
+        <button type="button" id="btnGenerateCustom" aria-busy="false">Generate custom topic ideas</button>
+        <button type="button" class="primary" id="btnEnterBlind">Enter blind mode</button>
+      </div>
+      <p class="hint" style="margin: 0; max-width: 40rem;">
+        LLM generation often takes 1–3 minutes (blue banner + <strong>Generating…</strong>). Serve the page from <code>python3 ideas/human_judge_ui.py</code> at <code>http://127.0.0.1:8765/</code> — not a saved <code>file://</code> copy. After updating the repo, hard-refresh (e.g. Cmd+Shift+R) so the browser does not keep an old page.
+      </p>
+    </div>
+    <div id="panelBlind" class="row" style="flex-wrap: wrap; align-items: center;">
+      <div class="banner" id="blindHint">
+        <strong>Blind session.</strong> Which run is which stays hidden (even after you vote). Order of the two dropdowns above is not preserved — the app shuffles them when you enter.
+        <br /><span style="color:#a8b8cc;font-size:0.86rem">The app builds a <strong>fixed deck</strong> of every overlapping slot once (same idea index on both runs). You review them in order; <strong>Next pair</strong> advances — no repeats until the deck is finished.</span>
+      </div>
+      <div class="row">
+        <label>Subject / domain</label>
+        <select id="domainBlind" aria-label="Domain filter">
+          <option value="">All domains</option>
+        </select>
+        <label>Topic</label>
+        <select id="topicBlind" aria-label="Topic filter">
+          <option value="">Any topic (matching pairs)</option>
+        </select>
+      </div>
+      <div class="row" style="align-items: flex-start; width: 100%; max-width: 48rem;">
+        <label style="padding-top: 0.35rem;">Custom topic</label>
+        <input type="text" id="topicCustomBlind" placeholder='Contains…' autocomplete="off" aria-label="Custom topic contains filter" />
+      </div>
+      <div class="row" style="align-items: center; flex-wrap: wrap; max-width: 28rem;">
+        <label>Scorer</label>
+        <input type="text" id="scorerIdBlind" placeholder="Your name (required)" autocomplete="name" maxlength="120" style="flex: 1; min-width: 10rem;" aria-label="Scorer name for vote logs" required />
+      </div>
+      <button type="button" class="primary" id="btnNext">Next pair</button>
+      <button type="button" id="btnExitBlind">Exit blind mode</button>
+    </div>
+    <p class="status global-status" id="status" aria-live="polite"></p>
+  </header>
+  <main>
+    <div class="meta" id="topicMeta">Pick two generator runs, then enter blind mode. You will not see which run produced Idea A vs B in this UI — votes are still logged for offline analysis.</div>
+    <p class="hint" id="slotExplainer" style="margin: -0.5rem 0 0.75rem;">
+      <strong># ideas / slots</strong> sets how many ideas each run has for the topic. In blind mode you walk the deck <strong>once</strong> (slot 1…N in a fixed order), vote, then <strong>Next pair</strong> — no random re-sampling until you exit blind mode and re-enter.
+    </p>
+    <div class="grid">
+      <div class="card">
+        <h2>Idea A</h2>
+        <div class="idea-text" id="textA">—</div>
+      </div>
+      <div class="card">
+        <h2>Idea B</h2>
+        <div class="idea-text" id="textB">—</div>
+      </div>
+    </div>
+    <div class="row" style="margin: 0.75rem 0 0.25rem; align-items: center; gap: 0.5rem;">
+      <label style="cursor: pointer; font-size: 0.92rem; color: var(--text);">
+        <input type="checkbox" id="useRubric" style="vertical-align: middle; margin-right: 0.35rem;" />
+        Use optional rubric sliders (saved with each vote if checked)
+      </label>
+    </div>
+    <div class="scores" id="scoresBlock">
+      <div>
+        <label>A — novelty <span id="vAnovelty">5</span></label>
+        <input type="range" id="sAnovelty" min="0" max="10" value="5" />
+      </div>
+      <div>
+        <label>A — usefulness <span id="vAuseful">5</span></label>
+        <input type="range" id="sAuseful" min="0" max="10" value="5" />
+      </div>
+      <div>
+        <label>A — clarity <span id="vAclarity">5</span></label>
+        <input type="range" id="sAclarity" min="0" max="10" value="5" />
+      </div>
+      <div>
+        <label>A — feasibility <span id="vAfeas">5</span></label>
+        <input type="range" id="sAfeas" min="0" max="10" value="5" />
+      </div>
+      <div>
+        <label>B — novelty <span id="vBnovelty">5</span></label>
+        <input type="range" id="sBnovelty" min="0" max="10" value="5" />
+      </div>
+      <div>
+        <label>B — usefulness <span id="vBuseful">5</span></label>
+        <input type="range" id="sBuseful" min="0" max="10" value="5" />
+      </div>
+      <div>
+        <label>B — clarity <span id="vBclarity">5</span></label>
+        <input type="range" id="sBclarity" min="0" max="10" value="5" />
+      </div>
+      <div>
+        <label>B — feasibility <span id="vBfeas">5</span></label>
+        <input type="range" id="sBfeas" min="0" max="10" value="5" />
+      </div>
+    </div>
+    <p class="hint" style="margin-top: 0.35rem;">You only need <strong>A / B / Tie</strong> below. Enable the checkbox above if you want novelty–feasibility scores on each vote.</p>
+    <div class="actions">
+      <button type="button" class="primary" id="btnA" disabled>A is better</button>
+      <button type="button" class="primary" id="btnB" disabled>B is better</button>
+      <button type="button" id="btnTie" disabled>Tie</button>
+    </div>
+    <div class="reveal" id="reveal" hidden></div>
+  </main>
+  <script>
+    const $ = (id) => document.getElementById(id);
+    /** API left/right for the current blind session (shuffled vs Generator 1 / 2). */
+    let blindLeft = "";
+    let blindRight = "";
+    let blindMode = false;
+    /** Filled from /api/config — used when #genModel is empty. */
+    let defaultGenModel = "gpt-4.1-mini";
+    /** Vote payload: API fields + left_version/right_version only in memory. */
+    let currentPayload = null;
+    /** Ordered slots from POST /api/deck — each visited once per blind session. */
+    let sessionDeck = null;
+    let sessionDeckIdx = 0;
+
+    function bindSliders() {
+      const pairs = [
+        ["sAnovelty", "vAnovelty"], ["sAuseful", "vAuseful"], ["sAclarity", "vAclarity"], ["sAfeas", "vAfeas"],
+        ["sBnovelty", "vBnovelty"], ["sBuseful", "vBuseful"], ["sBclarity", "vBclarity"], ["sBfeas", "vBfeas"],
+      ];
+      for (const [sid, vid] of pairs) {
+        $(sid).addEventListener("input", () => { $(vid).textContent = $(sid).value; });
+      }
+    }
+
+    function explainFetchFailure(err) {
+      const m = err && err.message ? err.message : String(err);
+      if (window.location.protocol === "file:") {
+        return "This page is a local file (file://). Run python3 ideas/human_judge_ui.py and open the http://127.0.0.1 URL it prints.";
+      }
+      if (m === "Failed to fetch" || m === "Load failed" || m === "NetworkError when attempting to fetch resource.") {
+        const p = window.location.port || (window.location.protocol === "https:" ? "443" : "80");
+        const host = window.location.hostname || "127.0.0.1";
+        return (
+          "Could not reach the API (" + m + "). Is the server running? Try http://127.0.0.1:" + p
+          + "/ (you are on " + host + "). Hard-refresh after code updates. See the terminal for errors."
+        );
+      }
+      return m;
+    }
+
+    function apiUrl(path) {
+      if (/^https?:\/\//i.test(path)) return path;
+      const origin = window.location.origin;
+      if (!origin || origin === "null") {
+        throw new Error("Not served over HTTP — use python3 ideas/human_judge_ui.py and open the printed URL.");
+      }
+      return path.startsWith("/") ? origin + path : origin + "/" + path;
+    }
+
+    async function api(path, opts) {
+      const url = apiUrl(path);
+      const merged = { cache: "no-store", ...(opts || {}) };
+      let r;
+      try {
+        r = await fetch(url, merged);
+      } catch (e) {
+        throw new Error(explainFetchFailure(e));
+      }
+      const ct = r.headers.get("content-type") || "";
+      const isJson = ct.includes("application/json");
+      const raw = await r.text();
+      if (!r.ok) {
+        let msg = raw || r.statusText;
+        if (isJson && raw) {
+          try {
+            const o = JSON.parse(raw);
+            if (o && typeof o.error === "string") msg = o.error;
+          } catch (_) { /* keep msg */ }
+        }
+        throw new Error(msg);
+      }
+      if (isJson) return JSON.parse(raw);
+      return raw;
+    }
+
+    function setBusy(b) {
+      ["btnNext", "btnA", "btnB", "btnTie", "btnEnterBlind", "btnExitBlind", "btnGenerateCustom"].forEach((id) => {
+        const el = $(id);
+        if (el) el.disabled = b;
+      });
+    }
+
+    function setWorkBanner(message) {
+      const wb = $("workBanner");
+      const st = $("status");
+      wb.classList.add("active");
+      wb.innerHTML = `<span class="spinner" aria-hidden="true"></span><span>${escapeHtml(message)}</span>`;
+      if (st) {
+        st.textContent = message;
+        st.classList.add("working");
+      }
+    }
+
+    function clearWorkBanner() {
+      const wb = $("workBanner");
+      const st = $("status");
+      wb.classList.remove("active");
+      wb.innerHTML = "";
+      if (st) st.classList.remove("working");
+    }
+
+    function setNextPairButtonLoading(loading) {
+      const b = $("btnNext");
+      if (!b) return;
+      if (loading) {
+        if (!b.dataset.labelOrig) b.dataset.labelOrig = b.textContent;
+        b.textContent = "Loading…";
+      } else if (b.dataset.labelOrig) {
+        b.textContent = b.dataset.labelOrig;
+        delete b.dataset.labelOrig;
+      }
+    }
+
+    function setGenerateButtonLoading(loading) {
+      const b = $("btnGenerateCustom");
+      if (!b) return;
+      b.setAttribute("aria-busy", loading ? "true" : "false");
+      if (loading) {
+        if (!b.dataset.labelOrig) b.dataset.labelOrig = b.textContent;
+        b.textContent = "Generating…";
+      } else if (b.dataset.labelOrig) {
+        b.textContent = b.dataset.labelOrig;
+        delete b.dataset.labelOrig;
+      }
+    }
+
+    function resetScores() {
+      const ids = ["sAnovelty", "sAuseful", "sAclarity", "sAfeas", "sBnovelty", "sBuseful", "sBclarity", "sBfeas"];
+      const labs = ["vAnovelty", "vAuseful", "vAclarity", "vAfeas", "vBnovelty", "vBuseful", "vBclarity", "vBfeas"];
+      ids.forEach((id, i) => { $(id).value = 5; $(labs[i]).textContent = "5"; });
+    }
+
+    function applyRubricVisibility() {
+      const el = $("useRubric");
+      const block = $("scoresBlock");
+      if (!el || !block) return;
+      const on = el.checked;
+      block.classList.toggle("rubric-on", on);
+      try {
+        localStorage.setItem("human_judge_use_rubric", on ? "1" : "0");
+      } catch (_) { /* private mode */ }
+    }
+
+    function syncFiltersToBlind() {
+      $("domainBlind").value = $("domain").value;
+      $("topicBlind").value = $("topic").value;
+      $("topicCustomBlind").value = $("topicCustom").value;
+      $("scorerIdBlind").value = $("scorerId").value;
+    }
+
+    function syncFiltersFromBlind() {
+      $("domain").value = $("domainBlind").value;
+      $("topic").value = $("topicBlind").value;
+      $("topicCustom").value = $("topicCustomBlind").value;
+      $("scorerId").value = $("scorerIdBlind").value;
+    }
+
+    function persistScorer() {
+      try {
+        localStorage.setItem("human_judge_scorer", $("scorerId").value);
+      } catch (_) { /* private mode */ }
+    }
+
+    function getScorer() {
+      return ($("scorerId").value || "").trim();
+    }
+
+    function getDomain() {
+      return blindMode ? $("domainBlind").value : $("domain").value;
+    }
+
+    function getTopic() {
+      return blindMode ? $("topicBlind").value : $("topic").value;
+    }
+
+    function getTopicCustom() {
+      return blindMode ? $("topicCustomBlind").value : $("topicCustom").value;
+    }
+
+    function getGenModel() {
+      const el = $("genModel");
+      const v = el ? el.value.trim() : "";
+      return v || defaultGenModel;
+    }
+
+    async function loadConfig() {
+      const cfg = await api("/api/config");
+      const vf = $("verFirst");
+      const vs = $("verSecond");
+      vf.innerHTML = "";
+      vs.innerHTML = "";
+      cfg.versions.forEach((v) => {
+        vf.appendChild(new Option(v, v));
+        vs.appendChild(new Option(v, v));
+      });
+      if (cfg.versions.length >= 2) {
+        vs.selectedIndex = 1;
+      }
+      const urlParams = new URLSearchParams(window.location.search);
+      const wantLeft = urlParams.get("left");
+      const wantRight = urlParams.get("right");
+      if (wantLeft && [...vf.options].some((o) => o.value === wantLeft)) {
+        vf.value = wantLeft;
+      }
+      if (wantRight && [...vs.options].some((o) => o.value === wantRight)) {
+        vs.value = wantRight;
+      }
+      const wantContains = urlParams.get("topic_contains");
+      if (wantContains != null) {
+        $("topicCustom").value = wantContains;
+        $("topicCustomBlind").value = wantContains;
+      }
+      if (typeof cfg.default_model === "string" && cfg.default_model) {
+        defaultGenModel = cfg.default_model;
+        if (!$("genModel").value.trim()) {
+          $("genModel").value = cfg.default_model;
+        }
+      }
+      try {
+        const savedScorer = localStorage.getItem("human_judge_scorer");
+        if (savedScorer != null) {
+          $("scorerId").value = savedScorer;
+          $("scorerIdBlind").value = savedScorer;
+        }
+      } catch (_) { /* private mode */ }
+      const fillDomTopic = (domEl, topicEl) => {
+        domEl.innerHTML = '<option value="">All domains</option>';
+        cfg.domains.forEach((d) => domEl.appendChild(new Option(d, d)));
+        topicEl.innerHTML = '<option value="">Any topic (matching pairs)</option>';
+        cfg.topics.forEach((t) => {
+          topicEl.appendChild(new Option(`${t.id}: ${t.topic}`, t.id));
+        });
+      };
+      fillDomTopic($("domain"), $("topic"));
+      fillDomTopic($("domainBlind"), $("topicBlind"));
+      try {
+        const rub = localStorage.getItem("human_judge_use_rubric");
+        if (rub === "1" && $("useRubric")) $("useRubric").checked = true;
+      } catch (_) { /* private mode */ }
+      applyRubricVisibility();
+    }
+
+    function buildFilterBody() {
+      const tq = getTopicCustom().trim();
+      const body = {
+        left: blindLeft,
+        right: blindRight,
+        domain: getDomain() || "",
+        model: getGenModel(),
+        custom_n: $("customCount").value,
+      };
+      if (tq) body.custom_topic = tq;
+      else if (getTopic()) body.topic_id = getTopic();
+      return body;
+    }
+
+    async function fetchDeck() {
+      const data = await api("/api/deck", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(buildFilterBody()),
+      });
+      sessionDeck = data.slots || [];
+      sessionDeckIdx = 0;
+    }
+
+    async function enterBlindMode() {
+      const a = $("verFirst").value;
+      const b = $("verSecond").value;
+      if (!a || !b) {
+        $("status").textContent = "Select two generator runs.";
+        return;
+      }
+      if (a === b) {
+        $("status").textContent = "Pick two different runs.";
+        return;
+      }
+      $("status").textContent = "";
+      if (Math.random() < 0.5) {
+        blindLeft = a;
+        blindRight = b;
+      } else {
+        blindLeft = b;
+        blindRight = a;
+      }
+      setWorkBanner("Loading session…");
+      setBusy(true);
+      try {
+        await fetchDeck();
+      } catch (e) {
+        clearWorkBanner();
+        $("status").textContent = e.message || String(e);
+        blindLeft = "";
+        blindRight = "";
+        return;
+      } finally {
+        setBusy(false);
+      }
+      if (!sessionDeck.length) {
+        clearWorkBanner();
+        $("status").textContent = "No overlapping pairs for this filter.";
+        blindLeft = "";
+        blindRight = "";
+        return;
+      }
+      $("status").textContent =
+        `Deck ready (${sessionDeck.length} slot(s)). Loading first pair — if ideas are not cached yet, this step can take 1–3 minutes.`;
+      blindMode = true;
+      document.body.classList.add("blind-on");
+      syncFiltersToBlind();
+      $("btnA").disabled = true;
+      $("btnB").disabled = true;
+      $("btnTie").disabled = true;
+      $("reveal").hidden = true;
+      $("topicMeta").textContent =
+        `Blind deck: ${sessionDeck.length} slot(s) — each shown once. Generator IDs stay hidden.`;
+      clearWorkBanner();
+      await nextPair();
+    }
+
+    function exitBlindMode() {
+      blindMode = false;
+      document.body.classList.remove("blind-on");
+      blindLeft = "";
+      blindRight = "";
+      sessionDeck = null;
+      sessionDeckIdx = 0;
+      currentPayload = null;
+      syncFiltersFromBlind();
+      $("textA").textContent = "—";
+      $("textB").textContent = "—";
+      $("topicMeta").textContent = "Pick two generator runs, then enter blind mode.";
+      $("reveal").hidden = true;
+      $("btnA").disabled = true;
+      $("btnB").disabled = true;
+      $("btnTie").disabled = true;
+      $("status").textContent = "";
+    }
+
+    async function nextPair() {
+      if (!blindMode) {
+        $("status").textContent = "Enter blind mode first.";
+        return;
+      }
+      if (!sessionDeck || sessionDeck.length === 0) {
+        $("status").textContent = "No deck — re-enter blind mode.";
+        return;
+      }
+      if (sessionDeckIdx >= sessionDeck.length) {
+        $("topicMeta").textContent =
+          "Deck complete — every slot was shown once. Exit blind mode to change topic/runs, or refresh for another scorer.";
+        $("textA").textContent = "—";
+        $("textB").textContent = "—";
+        $("status").textContent = `All ${sessionDeck.length} pair(s) in this deck are done.`;
+        currentPayload = null;
+        return;
+      }
+      $("reveal").hidden = true;
+      resetScores();
+      const tq = getTopicCustom().trim();
+      const slot = sessionDeck[sessionDeckIdx];
+      const nextBody = {
+        ...buildFilterBody(),
+        pick_topic_id: slot.topic_id,
+        pick_idea_index: slot.idea_index,
+      };
+      const loadMsg = tq
+        ? "Loading this deck slot (first slots may still trigger generation)…"
+        : "Loading this deck slot…";
+      setWorkBanner(loadMsg);
+      $("topicMeta").innerHTML =
+        `<span class="spinner" aria-hidden="true" style="vertical-align:middle;margin-right:0.35rem"></span>` +
+        `${escapeHtml(`Deck ${sessionDeckIdx + 1} of ${sessionDeck.length}…`)}`;
+      $("textA").textContent = "Loading…";
+      $("textB").textContent = "Loading…";
+      setBusy(true);
+      setNextPairButtonLoading(true);
+      try {
+        const data = await api("/api/next", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(nextBody),
+        });
+        currentPayload = {
+          ...data,
+          left_version: blindLeft,
+          right_version: blindRight,
+        };
+        $("textA").textContent = data.idea_a;
+        $("textB").textContent = data.idea_b;
+        const dm = data.domain ? ` · ${data.domain}` : "";
+        const deckN = sessionDeck.length;
+        const prog = sessionDeckIdx + 1;
+        $("topicMeta").innerHTML =
+          `Blind · deck <strong>${prog}</strong> / <strong>${deckN}</strong> · <strong>${escapeHtml(String(data.topic_id))}</strong> — ${escapeHtml(data.topic)}${escapeHtml(dm)} · idea_index ${data.idea_index}`;
+        $("btnA").disabled = false;
+        $("btnB").disabled = false;
+        $("btnTie").disabled = false;
+        clearWorkBanner();
+        $("status").textContent =
+          `Showing deck slot ${prog} of ${deckN}. Vote, then Next pair.`;
+      } catch (e) {
+        $("topicMeta").textContent = "Blind session — check filters or server message.";
+        $("textA").textContent = "—";
+        $("textB").textContent = "—";
+        clearWorkBanner();
+        $("status").textContent = e.message || String(e);
+        currentPayload = null;
+      } finally {
+        setBusy(false);
+        setNextPairButtonLoading(false);
+      }
+    }
+
+    function escapeHtml(s) {
+      const d = document.createElement("div");
+      d.textContent = s;
+      return d.innerHTML;
+    }
+
+    function collectScores(side) {
+      const p = side === "A"
+        ? { novelty: +$("sAnovelty").value, scientific_usefulness: +$("sAuseful").value,
+            experimental_clarity: +$("sAclarity").value, feasibility: +$("sAfeas").value }
+        : { novelty: +$("sBnovelty").value, scientific_usefulness: +$("sBuseful").value,
+            experimental_clarity: +$("sBclarity").value, feasibility: +$("sBfeas").value };
+      return p;
+    }
+
+    async function submit(winner) {
+      if (!currentPayload) return;
+      setWorkBanner("Saving your vote…");
+      setBusy(true);
+      try {
+        const body = {
+          ...currentPayload,
+          winner,
+          scorer: getScorer(),
+        };
+        if ($("useRubric").checked) {
+          body.scores_a = collectScores("A");
+          body.scores_b = collectScores("B");
+        }
+        await api("/api/vote", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        });
+        $("reveal").hidden = true;
+        $("reveal").innerHTML = "";
+        $("textA").textContent = "—";
+        $("textB").textContent = "—";
+        $("btnA").disabled = true;
+        $("btnB").disabled = true;
+        $("btnTie").disabled = true;
+        clearWorkBanner();
+        sessionDeckIdx += 1;
+        if (!sessionDeck || sessionDeckIdx >= sessionDeck.length) {
+          $("status").textContent =
+            "Vote saved. You finished every slot in this deck — exit blind or re-enter after changing topic/runs.";
+        } else {
+          $("status").textContent =
+            `Vote saved (logged on disk; mapping not shown). Next: deck slot ${sessionDeckIdx + 1} of ${sessionDeck.length} — click Next pair.`;
+        }
+        currentPayload = null;
+      } catch (e) {
+        clearWorkBanner();
+        $("status").textContent = e.message || String(e);
+      } finally {
+        setBusy(false);
+      }
+    }
+
+    async function generateCustomTopic() {
+      const topic = $("topicCustom").value.trim();
+      if (!topic) {
+        $("status").textContent = "Enter a custom topic first.";
+        return;
+      }
+      const left = $("verFirst").value;
+      const right = $("verSecond").value;
+      if (!left || !right || left === right) {
+        $("status").textContent = "Pick two different runs before generating.";
+        return;
+      }
+      setBusy(true);
+      setGenerateButtonLoading(true);
+      const gm = getGenModel();
+      setWorkBanner(
+        `Generating ideas for both runs (model: ${gm}) — LLM calls, often 1–3 minutes. Blue banner + status line below.`
+      );
+      $("topicMeta").innerHTML =
+        `<span class="spinner" aria-hidden="true" style="vertical-align:middle;margin-right:0.35rem"></span>` +
+        `${escapeHtml("Generating custom-topic ideas…")}`;
+      try {
+        await api("/api/generate_custom", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            left,
+            right,
+            topic,
+            domain: $("domain").value,
+            n_ideas: +$("customCount").value,
+            model: getGenModel(),
+          }),
+        });
+        clearWorkBanner();
+        $("status").textContent = "Custom ideas cached. Enter blind mode, then Next pair.";
+        $("topicMeta").textContent =
+          "Custom topic ideas are cached. Enter blind mode, then use Next pair (generation also runs automatically if you skip this step).";
+      } catch (e) {
+        clearWorkBanner();
+        $("status").textContent = e.message || String(e);
+        $("topicMeta").textContent = "Generation failed — see message in the header status line.";
+      } finally {
+        setBusy(false);
+        setGenerateButtonLoading(false);
+      }
+    }
+
+    function wireFilterSync() {
+      $("domain").addEventListener("change", () => { syncFiltersToBlind(); });
+      $("topic").addEventListener("change", () => { syncFiltersToBlind(); });
+      $("domainBlind").addEventListener("change", () => { syncFiltersFromBlind(); });
+      $("topicBlind").addEventListener("change", () => { syncFiltersFromBlind(); });
+      $("topicCustom").addEventListener("input", () => { $("topicCustomBlind").value = $("topicCustom").value; });
+      $("topicCustomBlind").addEventListener("input", () => { $("topicCustom").value = $("topicCustomBlind").value; });
+      $("scorerId").addEventListener("input", () => {
+        $("scorerIdBlind").value = $("scorerId").value;
+        persistScorer();
+      });
+      $("scorerIdBlind").addEventListener("input", () => {
+        $("scorerId").value = $("scorerIdBlind").value;
+        persistScorer();
+      });
+    }
+
+    bindSliders();
+    wireFilterSync();
+    if ($("useRubric")) {
+      $("useRubric").addEventListener("change", applyRubricVisibility);
+    }
+    loadConfig().catch((e) => { $("status").textContent = e.message || String(e); });
+    $("btnGenerateCustom").addEventListener("click", generateCustomTopic);
+    $("btnEnterBlind").addEventListener("click", () => {
+      enterBlindMode().catch((e) => { $("status").textContent = e.message || String(e); });
+    });
+    $("btnExitBlind").addEventListener("click", exitBlindMode);
+    $("btnNext").addEventListener("click", nextPair);
+    $("btnA").addEventListener("click", () => submit("A"));
+    $("btnB").addEventListener("click", () => submit("B"));
+    $("btnTie").addEventListener("click", () => submit("tie"));
+  </script>
+</body>
+</html>

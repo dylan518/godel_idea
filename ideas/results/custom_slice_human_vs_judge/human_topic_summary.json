@@ -1,0 +1,92 @@
+{
+  "pair": [
+    "S15",
+    "S_paper"
+  ],
+  "by_topic": {
+    "CUSTOM:drug delivery": {
+      "n": 5,
+      "wins_a": 2,
+      "wins_b": 2,
+      "ties": 1,
+      "human_win_rate_b": 0.5
+    },
+    "CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs": {
+      "n": 5,
+      "wins_a": 2,
+      "wins_b": 3,
+      "ties": 0,
+      "human_win_rate_b": 0.6
+    },
+    "CUSTOM:ipsc derived cardiomyocytes on a chip": {
+      "n": 5,
+      "wins_a": 5,
+      "wins_b": 0,
+      "ties": 0,
+      "human_win_rate_b": 0.0
+    },
+    "CUSTOM:antigen specific antibody discovery methods": {
+      "n": 5,
+      "wins_a": 2,
+      "wins_b": 3,
+      "ties": 0,
+      "human_win_rate_b": 0.6
+    },
+    "CUSTOM:mandibular bone regeneration using tissue engineering": {
+      "n": 5,
+      "wins_a": 3,
+      "wins_b": 1,
+      "ties": 1,
+      "human_win_rate_b": 0.3
+    },
+    "CUSTOM:llm representation learning": {
+      "n": 5,
+      "wins_a": 3,
+      "wins_b": 2,
+      "ties": 0,
+      "human_win_rate_b": 0.4
+    },
+    "CUSTOM:scalable time-gated rendering": {
+      "n": 5,
+      "wins_a": 3,
+      "wins_b": 1,
+      "ties": 1,
+      "human_win_rate_b": 0.3
+    },
+    "CUSTOM:iron overload in senescent cells": {
+      "n": 5,
+      "wins_a": 4,
+      "wins_b": 1,
+      "ties": 0,
+      "human_win_rate_b": 0.2
+    },
+    "CUSTOM:conditional perfection and its connection to causation": {
+      "n": 5,
+      "wins_a": 4,
+      "wins_b": 0,
+      "ties": 1,
+      "human_win_rate_b": 0.1
+    },
+    "CUSTOM:cellular prion propagation": {
+      "n": 5,
+      "wins_a": 4,
+      "wins_b": 1,
+      "ties": 0,
+      "human_win_rate_b": 0.2
+    },
+    "CUSTOM:epoxide hydrolase catalytic mechanism": {
+      "n": 5,
+      "wins_a": 5,
+      "wins_b": 0,
+      "ties": 0,
+      "human_win_rate_b": 0.0
+    },
+    "CUSTOM:mechanical stress at tricellular junctions": {
+      "n": 5,
+      "wins_a": 3,
+      "wins_b": 1,
+      "ties": 1,
+      "human_win_rate_b": 0.3
+    }
+  }
+}

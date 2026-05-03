@@ -1,0 +1,60 @@
+{
+  "out_dir": "results/publish_eval_20260413T163806Z",
+  "heuristic_spend_usd_total": 0.8382,
+  "heuristic_spend_note": "includes generation guess + per-judge blocks",
+  "judges": {
+    "gemini-3-flash-preview": {
+      "skipped": false,
+      "report_path": "results/publish_eval_20260413T163806Z/judge_gemini-3-flash-preview.json",
+      "wins_a": 19,
+      "wins_b": 1,
+      "ties": 10,
+      "total_judged": 30,
+      "win_rate_b": 0.2,
+      "heuristic_usd_block": 0.0093,
+      "wilson_95_win_rate_b": [
+        0.09504978102401235,
+        0.37306047381027446
+      ]
+    },
+    "claude-sonnet-4-6": {
+      "skipped": false,
+      "report_path": "results/publish_eval_20260413T163806Z/judge_claude-sonnet-4-6.json",
+      "wins_a": 16,
+      "wins_b": 2,
+      "ties": 12,
+      "total_judged": 30,
+      "win_rate_b": 0.26666666666666666,
+      "heuristic_usd_block": 0.3375,
+      "wilson_95_win_rate_b": [
+        0.14182495553910618,
+        0.4444830204431169
+      ]
+    },
+    "gpt-5.4": {
+      "skipped": false,
+      "report_path": "results/publish_eval_20260413T163806Z/judge_gpt-5.4.json",
+      "wins_a": 20,
+      "wins_b": 2,
+      "ties": 8,
+      "total_judged": 30,
+      "win_rate_b": 0.2,
+      "heuristic_usd_block": 0.4725,
+      "wilson_95_win_rate_b": [
+        0.09504978102401235,
+        0.37306047381027446
+      ]
+    }
+  },
+  "judge_pair_agreement": {
+    "gemini-3-flash-preview": {
+      "claude-sonnet-4-6": 0.8,
+      "gpt-5.4": 0.7
+    },
+    "claude-sonnet-4-6": {
+      "gpt-5.4": 0.6666666666666666
+    },
+    "gpt-5.4": {}
+  },
+  "default_primary_judge_env": "gpt-5.4"
+}

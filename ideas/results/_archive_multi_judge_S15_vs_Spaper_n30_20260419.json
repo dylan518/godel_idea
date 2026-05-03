@@ -1,0 +1,123 @@
+{
+  "n_shared_pairs": 30,
+  "per_judge": [
+    {
+      "model": "claude-sonnet-4-6",
+      "n_pairs": 30,
+      "counts": {
+        "A": 16,
+        "B": 2,
+        "tie": 12
+      },
+      "win_rate_b": 0.26666666666666666
+    },
+    {
+      "model": "gemini-3-flash-preview",
+      "n_pairs": 30,
+      "counts": {
+        "A": 19,
+        "B": 1,
+        "tie": 10
+      },
+      "win_rate_b": 0.2
+    },
+    {
+      "model": "gpt-5.4",
+      "n_pairs": 30,
+      "counts": {
+        "A": 20,
+        "B": 2,
+        "tie": 8
+      },
+      "win_rate_b": 0.2
+    },
+    {
+      "model": "deepseek-chat",
+      "n_pairs": 30,
+      "counts": {
+        "A": 17,
+        "B": 12,
+        "tie": 1
+      },
+      "win_rate_b": 0.4166666666666667
+    }
+  ],
+  "pairwise": [
+    {
+      "judge_a": "claude-sonnet-4-6",
+      "judge_b": "gemini-3-flash-preview",
+      "n_overlap": 30,
+      "agreement_rate": 0.8,
+      "decisive_overlap_n": 16,
+      "flip_rate_decisive": 0.0,
+      "cohen_kappa": 0.6202531645569621
+    },
+    {
+      "judge_a": "claude-sonnet-4-6",
+      "judge_b": "gpt-5.4",
+      "n_overlap": 30,
+      "agreement_rate": 0.6666666666666666,
+      "decisive_overlap_n": 15,
+      "flip_rate_decisive": 0.0,
+      "cohen_kappa": 0.37499999999999994
+    },
+    {
+      "judge_a": "claude-sonnet-4-6",
+      "judge_b": "deepseek-chat",
+      "n_overlap": 30,
+      "agreement_rate": 0.43333333333333335,
+      "decisive_overlap_n": 17,
+      "flip_rate_decisive": 0.23529411764705882,
+      "cohen_kappa": 0.13851351351351357
+    },
+    {
+      "judge_a": "gemini-3-flash-preview",
+      "judge_b": "gpt-5.4",
+      "n_overlap": 30,
+      "agreement_rate": 0.7,
+      "decisive_overlap_n": 17,
+      "flip_rate_decisive": 0.058823529411764705,
+      "cohen_kappa": 0.38356164383561636
+    },
+    {
+      "judge_a": "gemini-3-flash-preview",
+      "judge_b": "deepseek-chat",
+      "n_overlap": 30,
+      "agreement_rate": 0.43333333333333335,
+      "decisive_overlap_n": 19,
+      "flip_rate_decisive": 0.3157894736842105,
+      "cohen_kappa": 0.08108108108108115
+    },
+    {
+      "judge_a": "gpt-5.4",
+      "judge_b": "deepseek-chat",
+      "n_overlap": 30,
+      "agreement_rate": 0.43333333333333335,
+      "decisive_overlap_n": 21,
+      "flip_rate_decisive": 0.38095238095238093,
+      "cohen_kappa": 0.03409090909090912
+    }
+  ],
+  "pair_keys_sample": [
+    [
+      "T1",
+      0
+    ],
+    [
+      "T1",
+      1
+    ],
+    [
+      "T10",
+      0
+    ],
+    [
+      "T10",
+      1
+    ],
+    [
+      "T11",
+      0
+    ]
+  ]
+}

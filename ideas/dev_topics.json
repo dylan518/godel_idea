@@ -1,0 +1,13 @@
+{ "_comment": "Development topics for SWE agent mini-evals ONLY. Never used in full benchmark evals. Kept separate to prevent test-set contamination.",
+  "topics": [
+  { "id": "D1",  "topic": "Mixture-of-experts routing strategies for efficient LLMs",          "domain": "ML" },
+  { "id": "D2",  "topic": "De novo protein design with diffusion models",                       "domain": "Biology" },
+  { "id": "D3",  "topic": "Topological quantum computing with Majorana fermions",               "domain": "Physics" },
+  { "id": "D4",  "topic": "Conformal prediction under distribution shift",                      "domain": "Statistics" },
+  { "id": "D5",  "topic": "In-memory computing with resistive RAM crossbars",                   "domain": "Hardware" },
+  { "id": "D6",  "topic": "Reaction yield prediction with graph neural networks",               "domain": "Chemistry" },
+  { "id": "D7",  "topic": "Continual learning without catastrophic forgetting",                 "domain": "ML" },
+  { "id": "D8",  "topic": "Precipitation downscaling with deep generative models",              "domain": "Climate" },
+  { "id": "D9",  "topic": "Implicit regularization in overparameterized neural networks",       "domain": "ML Theory" },
+  { "id": "D10", "topic": "Sim-to-real transfer for dexterous robotic manipulation",            "domain": "Robotics" }
+]}

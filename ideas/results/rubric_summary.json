@@ -1,0 +1,358 @@
+{
+  "meta": {
+    "dims": [
+      "novelty",
+      "scientific_usefulness",
+      "experimental_clarity",
+      "feasibility"
+    ],
+    "compare_files": [
+      "results/compare_S12_vs_S14.json",
+      "results/compare_S12_vs_S15.json",
+      "results/compare_S15_vs_S13.json",
+      "results/compare_S15_vs_S16.json",
+      "results/compare_S15_vs_S17.json",
+      "results/compare_S15_vs_S18.json",
+      "results/compare_S15_vs_S19.json"
+    ],
+    "note": "compare rows: mean_scores_a/b are side A (champion/current) vs B (candidate) for that file."
+  },
+  "per_compare": [
+    {
+      "file": "results/compare_S12_vs_S14.json",
+      "current": "S12",
+      "candidate": "S14",
+      "judge_model": "deepseek-chat",
+      "n_pairs": 75,
+      "n_scored_a": 75,
+      "n_scored_b": 75,
+      "mean_scores_a": {
+        "novelty": 7.8533333333333335,
+        "scientific_usefulness": 8.506666666666666,
+        "experimental_clarity": 8.44,
+        "feasibility": 7.213333333333333
+      },
+      "mean_scores_b": {
+        "novelty": 8.213333333333333,
+        "scientific_usefulness": 8.64,
+        "experimental_clarity": 8.28,
+        "feasibility": 7.1066666666666665
+      },
+      "mean_total_a": 32.013333333333335,
+      "mean_total_b": 32.24
+    },
+    {
+      "file": "results/compare_S12_vs_S15.json",
+      "current": "S12",
+      "candidate": "S15",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "n_pairs": 75,
+      "n_scored_a": 75,
+      "n_scored_b": 75,
+      "mean_scores_a": {
+        "novelty": 6.706666666666667,
+        "scientific_usefulness": 7.293333333333333,
+        "experimental_clarity": 7.733333333333333,
+        "feasibility": 6.8
+      },
+      "mean_scores_b": {
+        "novelty": 6.666666666666667,
+        "scientific_usefulness": 7.346666666666667,
+        "experimental_clarity": 7.56,
+        "feasibility": 6.92
+      },
+      "mean_total_a": 28.533333333333335,
+      "mean_total_b": 28.493333333333332
+    },
+    {
+      "file": "results/compare_S15_vs_S13.json",
+      "current": "S15",
+      "candidate": "S13",
+      "judge_model": "deepseek-chat",
+      "n_pairs": 75,
+      "n_scored_a": 75,
+      "n_scored_b": 75,
+      "mean_scores_a": {
+        "novelty": 7.213333333333333,
+        "scientific_usefulness": 8.493333333333334,
+        "experimental_clarity": 8.893333333333333,
+        "feasibility": 8.2
+      },
+      "mean_scores_b": {
+        "novelty": 8.96,
+        "scientific_usefulness": 8.64,
+        "experimental_clarity": 7.293333333333333,
+        "feasibility": 6.04
+      },
+      "mean_total_a": 32.8,
+      "mean_total_b": 30.933333333333334
+    },
+    {
+      "file": "results/compare_S15_vs_S16.json",
+      "current": "S15",
+      "candidate": "S16",
+      "judge_model": "deepseek-chat",
+      "n_pairs": 75,
+      "n_scored_a": 75,
+      "n_scored_b": 75,
+      "mean_scores_a": {
+        "novelty": 7.626666666666667,
+        "scientific_usefulness": 8.533333333333333,
+        "experimental_clarity": 8.44,
+        "feasibility": 7.546666666666667
+      },
+      "mean_scores_b": {
+        "novelty": 8.4,
+        "scientific_usefulness": 8.6,
+        "experimental_clarity": 8.24,
+        "feasibility": 6.8533333333333335
+      },
+      "mean_total_a": 32.14666666666667,
+      "mean_total_b": 32.093333333333334
+    },
+    {
+      "file": "results/compare_S15_vs_S17.json",
+      "current": "S15",
+      "candidate": "S17",
+      "judge_model": "deepseek-chat",
+      "n_pairs": 75,
+      "n_scored_a": 75,
+      "n_scored_b": 75,
+      "mean_scores_a": {
+        "novelty": 8.56,
+        "scientific_usefulness": 8.906666666666666,
+        "experimental_clarity": 7.973333333333334,
+        "feasibility": 6.226666666666667
+      },
+      "mean_scores_b": {
+        "novelty": 5.066666666666666,
+        "scientific_usefulness": 7.16,
+        "experimental_clarity": 8.72,
+        "feasibility": 9.226666666666667
+      },
+      "mean_total_a": 31.666666666666668,
+      "mean_total_b": 30.173333333333332
+    },
+    {
+      "file": "results/compare_S15_vs_S18.json",
+      "current": "S15",
+      "candidate": "S18",
+      "judge_model": "deepseek-chat",
+      "n_pairs": 45,
+      "n_scored_a": 45,
+      "n_scored_b": 45,
+      "mean_scores_a": {
+        "novelty": 8.6,
+        "scientific_usefulness": 8.755555555555556,
+        "experimental_clarity": 8,
+        "feasibility": 6.4222222222222225
+      },
+      "mean_scores_b": {
+        "novelty": 6.622222222222222,
+        "scientific_usefulness": 8.155555555555555,
+        "experimental_clarity": 8.666666666666666,
+        "feasibility": 8.71111111111111
+      },
+      "mean_total_a": 31.77777777777778,
+      "mean_total_b": 32.15555555555556
+    },
+    {
+      "file": "results/compare_S15_vs_S19.json",
+      "current": "S15",
+      "candidate": "S19",
+      "judge_model": "deepseek-chat",
+      "n_pairs": 75,
+      "n_scored_a": 75,
+      "n_scored_b": 75,
+      "mean_scores_a": {
+        "novelty": 8.013333333333334,
+        "scientific_usefulness": 8.866666666666667,
+        "experimental_clarity": 8.88,
+        "feasibility": 7.32
+      },
+      "mean_scores_b": {
+        "novelty": 5.306666666666667,
+        "scientific_usefulness": 6.12,
+        "experimental_clarity": 3.6533333333333333,
+        "feasibility": 6.786666666666667
+      },
+      "mean_total_a": 33.08,
+      "mean_total_b": 21.866666666666667
+    }
+  ],
+  "per_blind_sample": [
+    {
+      "file": "results/blind_S_paper_vs_S12__deepseek-chat.json",
+      "role": "blind_backfill",
+      "current": "S_paper",
+      "candidate": "S12",
+      "judge_model": "deepseek-chat",
+      "n_pairs": 75,
+      "mean_scores_a": {
+        "novelty": 8.453333333333333,
+        "scientific_usefulness": 8.293333333333333,
+        "experimental_clarity": 7.053333333333334,
+        "feasibility": 6.133333333333334
+      },
+      "mean_scores_b": {
+        "novelty": 7.72,
+        "scientific_usefulness": 8.6,
+        "experimental_clarity": 9.013333333333334,
+        "feasibility": 7.64
+      },
+      "mean_total_a": 29.933333333333334,
+      "mean_total_b": 32.973333333333336
+    },
+    {
+      "file": "results/blind_S12_vs_S14__deepseek-chat.json",
+      "role": "blind_backfill",
+      "current": "S12",
+      "candidate": "S14",
+      "judge_model": "deepseek-chat",
+      "n_pairs": 75,
+      "mean_scores_a": {
+        "novelty": 7.88,
+        "scientific_usefulness": 8.44,
+        "experimental_clarity": 8.426666666666666,
+        "feasibility": 7.1066666666666665
+      },
+      "mean_scores_b": {
+        "novelty": 8.133333333333333,
+        "scientific_usefulness": 8.653333333333334,
+        "experimental_clarity": 8.226666666666667,
+        "feasibility": 6.946666666666666
+      },
+      "mean_total_a": 31.85333333333333,
+      "mean_total_b": 31.96
+    },
+    {
+      "file": "results/blind_S12_vs_S15__deepseek-chat.json",
+      "role": "blind_backfill",
+      "current": "S12",
+      "candidate": "S15",
+      "judge_model": "deepseek-chat",
+      "n_pairs": 75,
+      "mean_scores_a": {
+        "novelty": 8.106666666666667,
+        "scientific_usefulness": 8.546666666666667,
+        "experimental_clarity": 8.4,
+        "feasibility": 6.96
+      },
+      "mean_scores_b": {
+        "novelty": 7.8133333333333335,
+        "scientific_usefulness": 8.6,
+        "experimental_clarity": 8.36,
+        "feasibility": 7.36
+      },
+      "mean_total_a": 32.013333333333335,
+      "mean_total_b": 32.13333333333333
+    }
+  ],
+  "pooled_by_system_version": {
+    "S12": {
+      "n_cells": 150,
+      "mean_scores": {
+        "novelty": 7.28,
+        "scientific_usefulness": 7.9,
+        "experimental_clarity": 8.086666666666666,
+        "feasibility": 7.006666666666667
+      },
+      "mean_total": 30.273333333333333
+    },
+    "S13": {
+      "n_cells": 75,
+      "mean_scores": {
+        "novelty": 8.96,
+        "scientific_usefulness": 8.64,
+        "experimental_clarity": 7.293333333333333,
+        "feasibility": 6.04
+      },
+      "mean_total": 30.933333333333334
+    },
+    "S14": {
+      "n_cells": 75,
+      "mean_scores": {
+        "novelty": 8.213333333333333,
+        "scientific_usefulness": 8.64,
+        "experimental_clarity": 8.28,
+        "feasibility": 7.1066666666666665
+      },
+      "mean_total": 32.24
+    },
+    "S15": {
+      "n_cells": 420,
+      "mean_scores": {
+        "novelty": 7.7214285714285715,
+        "scientific_usefulness": 8.464285714285714,
+        "experimental_clarity": 8.311904761904762,
+        "feasibility": 7.154761904761905
+      },
+      "mean_total": 31.652380952380952
+    },
+    "S16": {
+      "n_cells": 75,
+      "mean_scores": {
+        "novelty": 8.4,
+        "scientific_usefulness": 8.6,
+        "experimental_clarity": 8.24,
+        "feasibility": 6.8533333333333335
+      },
+      "mean_total": 32.093333333333334
+    },
+    "S17": {
+      "n_cells": 75,
+      "mean_scores": {
+        "novelty": 5.066666666666666,
+        "scientific_usefulness": 7.16,
+        "experimental_clarity": 8.72,
+        "feasibility": 9.226666666666667
+      },
+      "mean_total": 30.173333333333332
+    },
+    "S18": {
+      "n_cells": 45,
+      "mean_scores": {
+        "novelty": 6.622222222222222,
+        "scientific_usefulness": 8.155555555555555,
+        "experimental_clarity": 8.666666666666666,
+        "feasibility": 8.71111111111111
+      },
+      "mean_total": 32.15555555555556
+    },
+    "S19": {
+      "n_cells": 75,
+      "mean_scores": {
+        "novelty": 5.306666666666667,
+        "scientific_usefulness": 6.12,
+        "experimental_clarity": 3.6533333333333333,
+        "feasibility": 6.786666666666667
+      },
+      "mean_total": 21.866666666666667
+    }
+  },
+  "human_pilot_s15_vs_s_paper": {
+    "path": "results/human_blind_scores.jsonl",
+    "n_ratings": 60,
+    "n_ties": 5,
+    "mean_scores_S15": {
+      "novelty": 4.983333333333333,
+      "scientific_usefulness": 5.05,
+      "experimental_clarity": 5.15,
+      "feasibility": 4.9
+    },
+    "mean_scores_S_paper": {
+      "novelty": 4.783333333333333,
+      "scientific_usefulness": 5.2,
+      "experimental_clarity": 5.35,
+      "feasibility": 4.883333333333334
+    },
+    "mean_total_S15": 20.083333333333332,
+    "mean_total_S_paper": 20.216666666666665,
+    "mean_paired_diff_S15_minus_S_paper": {
+      "novelty": 0.2,
+      "scientific_usefulness": -0.15,
+      "experimental_clarity": -0.2,
+      "feasibility": 0.016666666666666666
+    }
+  }
+}

@@ -1,0 +1,805 @@
+{
+  "judge_model": "gemini-3-flash-preview",
+  "current": "S15",
+  "candidate": "S_paper",
+  "gen_model": "gpt-4.1-mini",
+  "wins_a": 4,
+  "wins_b": 20,
+  "ties": 12,
+  "total_judged": 36,
+  "win_rate_b": 0.7222222222222222,
+  "verdicts": [
+    {
+      "topic_id": "CUSTOM:conditional perfection and its connection to causation",
+      "topic": "conditional perfection and its connection to causation",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "tie",
+      "reasoning": "Idea A is a highly feasible and methodologically sound investigation into the cognitive mechanics of causal attribution, while Idea B offers a high-impact, ambitious cross-linguistic perspective that addresses the English-centric bias in current pragmatic research. Both ideas are equally valuable, as the practical strengths and clarity of Idea A are balanced by the theoretical breadth and novelty of Idea B."
+    },
+    {
+      "topic_id": "CUSTOM:conditional perfection and its connection to causation",
+      "topic": "conditional perfection and its connection to causation",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea B is significantly stronger because it correctly identifies conditional perfection as a linguistic and pragmatic phenomenon, proposing a rigorous experimental design using the Switchboard corpus. Idea A faces a conceptual hurdle: applying a pragmatic human reasoning bias (perfection) as a formal constraint on numerical causal datasets may actually reduce accuracy in domains like medicine where biconditionality is often factually incorrect."
+    },
+    {
+      "topic_id": "CUSTOM:conditional perfection and its connection to causation",
+      "topic": "conditional perfection and its connection to causation",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 6,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A addresses a fundamental theoretical debate in cognitive science by attempting to isolate universal reasoning mechanisms from linguistic pragmatics through a novel non-verbal experimental design. While Idea B offers practical insights into scientific communication, it faces significant technical challenges in reliably detecting implicit pragmatic inferences like conditional perfection using current NLP techniques."
+    },
+    {
+      "topic_id": "CUSTOM:drug delivery",
+      "topic": "Drug Delivery",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 4,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 6,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea B is significantly more innovative as it addresses the often-overlooked issue of carrier-induced neuroinflammation during BBB crossing, whereas Idea A describes a standard stimuli-responsive approach that is already well-saturated in literature. Furthermore, Idea B provides a more sophisticated experimental design using iPSC-derived models and specific electrophysiological endpoints, offering higher scientific value for translational medicine."
+    },
+    {
+      "topic_id": "CUSTOM:drug delivery",
+      "topic": "Drug Delivery",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 5,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "winner": "B",
+      "reasoning": "Idea A provides a much more detailed and actionable experimental plan, specifying target enzymes and clear metrics for success in oral delivery. Idea B is conceptually sound but lacks technical specificity regarding the design of the synthetic vesicles and the methods for protein integration, making it feel more like a general concept than a research plan."
+    },
+    {
+      "topic_id": "CUSTOM:drug delivery",
+      "topic": "Drug Delivery",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "winner": "A",
+      "reasoning": "Idea A addresses a critical clinical need with a biologically sound sequential release strategy that is highly feasible using current biomaterial techniques. While Idea B is conceptually novel, the mechanical complexity of tunable microneedles introduces significant manufacturing challenges and lacks a strong justification for clinical superiority over fixed-length designs."
+    },
+    {
+      "topic_id": "CUSTOM:cellular prion propagation",
+      "topic": "Cellular prion propagation",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 4,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 7,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea A is a high-risk, high-reward proposal that addresses a major technical gap in the field\u2014the lack of real-time, physiological imaging of prion conversion. While Idea B is more feasible, it explores the role of exosomes which is already well-documented in prion literature, whereas Idea A offers a transformative approach to understanding the spatiotemporal dynamics of infection."
+    },
+    {
+      "topic_id": "CUSTOM:cellular prion propagation",
+      "topic": "Cellular prion propagation",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "tie",
+      "reasoning": "Idea A is a well-structured biological study with high feasibility and clear clinical relevance, while Idea B offers a highly novel technological solution to a significant data bottleneck in long-term imaging. Both ideas contribute significantly to the field from different angles\u2014mechanistic biology versus technical methodology\u2014resulting in an equivalent overall impact."
+    },
+    {
+      "topic_id": "CUSTOM:cellular prion propagation",
+      "topic": "Cellular prion propagation",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 4,
+        "scientific_usefulness": 5,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea B addresses a fundamental and long-standing gap in the field\u2014the spatiotemporal dynamics of prion conversion in living cells\u2014which is far more scientifically impactful than the incremental engineering optimizations proposed in Idea A. While Idea A is highly feasible, it targets assay latency which is rarely the primary bottleneck in prion research compared to the slow biological replication cycle of the protein itself."
+    },
+    {
+      "topic_id": "CUSTOM:antigen specific antibody discovery methods",
+      "topic": "Antigen specific antibody discovery methods",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 5,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "winner": "B",
+      "reasoning": "Idea A addresses a specific, high-value technical hurdle\u2014the preservation of conformational epitopes on membrane proteins\u2014with a clear comparative experimental design. Idea B describes a microfluidic workflow that is already widely established as an industry standard, making it less novel in a research context compared to the targeted structural approach of Idea A."
+    },
+    {
+      "topic_id": "CUSTOM:antigen specific antibody discovery methods",
+      "topic": "Antigen specific antibody discovery methods",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "tie",
+      "reasoning": "Idea A provides a highly specialized and clinically relevant solution for the difficult problem of isolating rare autoreactive B cells in complex patient samples, though it faces technical risks regarding live-cell recovery from intracellular staining. Idea B addresses a broader computational bottleneck with high feasibility, but its methodology is less distinct from existing trends in the crowded machine learning field for BCR repertoires."
+    },
+    {
+      "topic_id": "CUSTOM:antigen specific antibody discovery methods",
+      "topic": "Antigen specific antibody discovery methods",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 5,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "winner": "tie",
+      "reasoning": "Idea A presents a highly ambitious and timely computational approach for pandemic preparedness, though it faces significant feasibility hurdles in sequence-to-affinity prediction. Idea B is a robust, well-established experimental workflow with high feasibility but lower novelty, as it closely mirrors existing deep mutational scanning techniques. The two ideas balance each other out, with A leading in innovation and B leading in practical implementation."
+    },
+    {
+      "topic_id": "CUSTOM:ipsc derived cardiomyocytes on a chip",
+      "topic": "iPSC derived cardiomyocytes on a chip",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 5,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A is superior because it addresses a significant biological gap\u2014neuro-cardiac interaction\u2014while specifically targeting the industrial need for higher throughput and automated workflows. Idea B, while technically sound and highly feasible, largely describes existing state-of-the-art platforms and lacks the specific innovation in co-culture and turnaround time found in Idea A."
+    },
+    {
+      "topic_id": "CUSTOM:ipsc derived cardiomyocytes on a chip",
+      "topic": "iPSC derived cardiomyocytes on a chip",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 6,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A addresses a critical and often overlooked bottleneck in personalized medicine: the high cell-input requirements that limit the use of low-yield patient samples. Its focus on modularity and specific functional readouts like strain gauges provides a clearer, more actionable engineering path compared to Idea B, which proposes a complex vascularized model without detailing the difficult technical implementation of oxygen control and stable perfusion."
+    },
+    {
+      "topic_id": "CUSTOM:ipsc derived cardiomyocytes on a chip",
+      "topic": "iPSC derived cardiomyocytes on a chip",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "tie",
+      "reasoning": "Idea A is a highly feasible, robust improvement on standard screening that enables longitudinal studies by eliminating dye toxicity, though it is somewhat incremental. Idea B is more novel and addresses the complex neuro-cardiac axis, but its requirement for functional coupling within 24 hours is biologically ambitious and poses a significant feasibility risk."
+    },
+    {
+      "topic_id": "CUSTOM:iron overload in senescent cells",
+      "topic": "iron overload in senescent cells",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 4,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A represents a sophisticated and novel application of epigenetic engineering to solve a practical problem in regenerative medicine, whereas Idea B is a relatively standard mechanistic study that investigates a link (iron-ROS-SASP) already widely discussed in existing literature."
+    },
+    {
+      "topic_id": "CUSTOM:iron overload in senescent cells",
+      "topic": "iron overload in senescent cells",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea B is the winner because it addresses critical translational barriers that Idea A overlooks, specifically the difficulty of nanoparticle penetration in aged, potentially fibrotic tissues and the necessity for repeat dosing. By focusing on an ultrasmall, low-immunogenicity platform and moving into in vivo aged mouse models, Idea B offers a much higher potential for scientific impact and therapeutic relevance."
+    },
+    {
+      "topic_id": "CUSTOM:iron overload in senescent cells",
+      "topic": "iron overload in senescent cells",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 5
+      },
+      "winner": "A",
+      "reasoning": "Idea A is a well-structured basic science proposal that leverages established multi-omics techniques to address a clear knowledge gap with high feasibility. In contrast, Idea B is highly creative but suffers from significant technical hurdles, including the scarcity of circulating senescent cells and the lack of well-defined surface markers for rapid, selective chelation under physiological flow conditions."
+    },
+    {
+      "topic_id": "CUSTOM:epoxide hydrolase catalytic mechanism",
+      "topic": "Epoxide hydrolase catalytic mechanism",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "tie",
+      "reasoning": "Idea A offers a sophisticated, high-impact investigation into fundamental enzyme dynamics using state-of-the-art structural biology, while Idea B provides a highly practical and feasible framework for industrial biocatalysis. Both ideas are exceptionally well-structured and address significant, albeit different, gaps in the understanding and application of epoxide hydrolases."
+    },
+    {
+      "topic_id": "CUSTOM:epoxide hydrolase catalytic mechanism",
+      "topic": "Epoxide hydrolase catalytic mechanism",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 5,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "winner": "tie",
+      "reasoning": "Idea A presents a highly innovative computational approach to a complex problem in membrane-associated enzymology, whereas Idea B follows a traditional, well-validated experimental path. While Idea A scores higher on novelty and addressing technical bottlenecks, Idea B's superior feasibility and experimental clarity result in nearly identical total scores, warranting a tie."
+    },
+    {
+      "topic_id": "CUSTOM:epoxide hydrolase catalytic mechanism",
+      "topic": "Epoxide hydrolase catalytic mechanism",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 4,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A is significantly more innovative, leveraging genetic code expansion to move mechanistic enzymology into the live-cell environment, which addresses a major gap in the field. Idea B describes a standard computational approach that has been largely explored in existing literature for this enzyme class, offering less transformative potential."
+    },
+    {
+      "topic_id": "CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs",
+      "topic": "immunoengineering for therapeutic use of drugs. antibody drugs",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "tie",
+      "reasoning": "Idea A is a highly feasible and logical progression of current ADC and checkpoint inhibitor trends, offering a clear path to clinical application. Idea B is significantly more novel and addresses a major gap in autoimmune treatment, but it faces substantial technical challenges regarding the reversible release of large antibody molecules, resulting in a balanced overall score."
+    },
+    {
+      "topic_id": "CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs",
+      "topic": "immunoengineering for therapeutic use of drugs. antibody drugs",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "tie",
+      "reasoning": "Idea A addresses a critical bottleneck in CNS delivery using established but effective mechanisms, while Idea B offers a more sophisticated, multi-layered approach to precision medicine in autoimmunity. Both ideas are highly relevant and scientifically sound, with Idea B's higher complexity in design balanced by Idea A's higher immediate feasibility."
+    },
+    {
+      "topic_id": "CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs",
+      "topic": "immunoengineering for therapeutic use of drugs. antibody drugs",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea B is superior because it addresses the complex challenge of immunopathology in chronic infections through dynamic feedback loops, a more sophisticated approach than the binary switch proposed in Idea A. Furthermore, Idea B provides a much clearer experimental roadmap by specifying the LCMV clone 13 model and relevant pathological metrics."
+    },
+    {
+      "topic_id": "CUSTOM:mandibular bone regeneration using tissue engineering",
+      "topic": "Mandibular bone regeneration using tissue engineering",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 4,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 6,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A is significantly more innovative, addressing the complex challenge of chronic inflammation through a 'smart' responsive biomaterial, whereas Idea B proposes a standard combination of growth factors and cells that has been extensively studied. Idea A's focus on the immune-bone interface provides higher scientific utility for clinical scenarios where traditional regeneration fails."
+    },
+    {
+      "topic_id": "CUSTOM:mandibular bone regeneration using tissue engineering",
+      "topic": "Mandibular bone regeneration using tissue engineering",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "winner": "B",
+      "reasoning": "Idea B is superior because it addresses the fundamental engineering trade-off between mechanical integrity and nutrient diffusion in large defects using a sophisticated, multi-material gradient approach. While Idea A relies on gene therapy which faces significant regulatory and safety hurdles, Idea B provides a highly clear, rigorous experimental design including computational modeling and standardized testing that is more likely to result in a translatable clinical solution."
+    },
+    {
+      "topic_id": "CUSTOM:mandibular bone regeneration using tissue engineering",
+      "topic": "Mandibular bone regeneration using tissue engineering",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea B addresses the critical clinical bottleneck of vascularization in large segmental defects through a sophisticated multi-material 3D-printing approach with temporal control. While Idea A is highly feasible and addresses mechanical maturation, Idea B offers a more innovative and comprehensive solution with a robust in vivo experimental design that has higher potential for clinical translation."
+    },
+    {
+      "topic_id": "CUSTOM:llm representation learning",
+      "topic": "llm representation learning",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 5,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 7,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A addresses a critical and technically challenging bottleneck in robotics\u2014real-time neuro-symbolic reasoning\u2014with a clear, multi-modal experimental design. Idea B, while feasible, relies on well-trodden techniques like auxiliary POS tagging and multi-task learning that offer limited novelty in the current LLM landscape."
+    },
+    {
+      "topic_id": "CUSTOM:llm representation learning",
+      "topic": "llm representation learning",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea B is the winner because it proposes a more innovative neuro-symbolic approach to solve a high-stakes problem in legal AI, moving beyond standard semantic embeddings to incorporate explicit compliance constraints. While Idea A addresses the relevant issue of temporal drift, its methodology relies on well-established continual learning techniques, making it less novel than the hybrid representation framework suggested in Idea B."
+    },
+    {
+      "topic_id": "CUSTOM:llm representation learning",
+      "topic": "llm representation learning",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "winner": "B",
+      "reasoning": "Idea A provides a concrete, domain-specific application that addresses the structural limitations of current embeddings in legal reasoning using a well-defined neuro-symbolic approach. Idea B is more abstract and faces significant technical challenges in achieving dimension-level concept alignment in dense LLM spaces, and its experimental plan lacks the specificity of Idea A."
+    },
+    {
+      "topic_id": "CUSTOM:scalable time-gated rendering",
+      "topic": "Scalable time-gated rendering",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "A",
+      "reasoning": "Idea B correctly addresses the specific scientific domain of 'time-gated rendering' (transient light transport) by proposing a hierarchical spatiotemporal structure to manage computational complexity. Idea A misinterprets the topic as a general real-time scheduling problem for meeting frame deadlines, which, while useful for general graphics, lacks the domain-specific depth required for this particular research topic."
+    },
+    {
+      "topic_id": "CUSTOM:scalable time-gated rendering",
+      "topic": "Scalable time-gated rendering",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "B",
+      "reasoning": "Idea A is the winner due to its superior experimental clarity and more specific application to the high-impact domain of mobile AR. While Idea B addresses hardware efficiency, Idea A's integration of power-awareness with hierarchical sampling offers a more novel research contribution with a clearly defined evaluation path using specific datasets and hardware."
+    },
+    {
+      "topic_id": "CUSTOM:scalable time-gated rendering",
+      "topic": "Scalable time-gated rendering",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "winner": "tie",
+      "reasoning": "Idea A provides a practical solution for high-fidelity rendering scalability through adaptive sampling, while Idea B addresses the significant challenge of extreme memory constraints on IoT devices. Both ideas are well-structured with clear experimental paths, and their total scores are within the margin for a tie."
+    },
+    {
+      "topic_id": "CUSTOM:mechanical stress at tricellular junctions",
+      "topic": "mechanical stress at tricellular junctions",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 9
+      },
+      "winner": "tie",
+      "reasoning": "Idea A provides a high-impact experimental approach using novel protein-specific FRET sensors to capture ground-truth data, while Idea B offers a sophisticated computational framework to integrate these dynamics. The two ideas are highly complementary, with Idea A's experimental novelty balanced by Idea B's higher feasibility and predictive power."
+    },
+    {
+      "topic_id": "CUSTOM:mechanical stress at tricellular junctions",
+      "topic": "mechanical stress at tricellular junctions",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "tie",
+      "reasoning": "Idea A provides a robust and highly feasible experimental roadmap for understanding fundamental mechanotransduction at tricellular junctions. While Idea B is more conceptually novel by addressing stochasticity in cancer, its reliance on complex mechanical measurements from clinical biopsies reduces its immediate feasibility, leading to a tie in overall impact."
+    },
+    {
+      "topic_id": "CUSTOM:mechanical stress at tricellular junctions",
+      "topic": "mechanical stress at tricellular junctions",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea B is superior because it incorporates the critical bidirectional feedback between the extracellular matrix and tricellular junctions, providing a more comprehensive and disease-relevant framework than Idea A. While Idea A is more feasible in the short term, Idea B's focus on fibrotic remodeling offers significantly higher scientific impact and novelty by linking tissue-scale pathology to junctional mechanics."
+    }
+  ]
+}

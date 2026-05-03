@@ -1,0 +1,102 @@
+[
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 0,
+    "text": "IDEA: For a fixed compute budget, the optimal transformer width-to-depth ratio follows a predictable scaling law that converges to a task-dependent constant, but only after controlling for hardware bottlenecks and using a compute-optimal training schedule.\n\nBACKGROUND: While scaling laws predict loss from model size, data, and compute, the optimal architectural shape (width vs. depth) under a fixed FLOP budget remains poorly understood, especially for tasks requiring long-range reasoning. Prior work suggests shape has minimal effect, but this may conflate hardware inefficiencies with true architectural limits and ignores task-specific depth requirements.\n\nAPPROACH: We will derive a scaling law from a mechanistic hypothesis: depth utility saturates when the model can represent the task's critical path length, causing the optimal ratio to converge. We will perform a hardware-controlled, compute-optimal search, scaling both parameters and training tokens per the Chinchilla law for each configuration, using a kernel-level simulator validated on real hardware.\n\nEXPERIMENT: We will train models (100M to 10B params) on PG-19 (long-range narrative) and the depth-sensitive MATH dataset, measuring held-out perplexity and MATH accuracy. The hypothesis is falsified if the optimal ratio shows no predictable trend with size (R\u00b2<0.7) or if the asymptotic constants for the two tasks are statistically indistinguishable.\n\nNOVELTY: This isolates architectural efficiency by enforcing a compute-optimal token schedule and hardware simulation, and tests a mechanistic convergence hypothesis tied to task-specific reasoning depth, moving beyond purely empirical curve-fitting.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T13:16:27.347554+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 1,
+    "text": "IDEA: We hypothesize that dynamically ordering training data from domains with low to high token-level uncertainty, as measured by the training model itself, yields a more negative scaling exponent for loss reduction with dataset size compared to random shuffling.\n\nBACKGROUND: Scaling laws describe how model loss decreases with compute and data, but assume uniformly mixed data. The open problem is whether a data curriculum\u2014specifically one based on domain difficulty\u2014can improve the efficiency of this scaling, i.e., achieve lower loss for the same compute by learning faster from data.\n\nAPPROACH: We propose a dynamic domain-uncertainty curriculum. During training, we periodically rank domains (e.g., from The Pile) by their average loss against the current model and sample from easier domains more frequently early on, shifting to harder domains over time. This is compared against a random baseline and a hard-to-easy \"anti-curriculum.\"\n\nEXPERIMENT: We will train a series of models (e.g., 125M to 1.3B params) on The Pile, varying total tokens (N), and fit the power-law \\( L(N) = A \\cdot N^\\alpha \\) for each schedule. Success is a statistically significant \\(\\Delta \\alpha = \\alpha_{\\text{curriculum}} - \\alpha_{\\text{shuffled}} < 0\\).\n\nNOVELTY: This goes beyond static data mixing or single-domain curricula by testing a dynamic, domain-level difficulty ordering for its effect on the fundamental scaling exponent, using a controlled anti-curriculum to isolate ordering from sequential effects.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T13:19:22.038474+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 0,
+    "text": "IDEA: Decoding the biophysical latent space of AlphaFold2 to predict protein variant stability from internal network representations, demonstrating information orthogonal to the final predicted structure.\n\nBACKGROUND: While AlphaFold2 predicts static structures, it is unknown whether its internal representations encode biophysical constraints like thermodynamic stability in a form that is additive to the structural output. Current stability predictors either use the predicted structure directly or rely on sequence, leaving this latent information unexplored.\n\nAPPROACH: We will extract residue and pair embeddings from a frozen AlphaFold2 model for wild-type and mutant sequences. A simple nonlinear decoder, trained only on these embeddings and not on structural coordinates or confidence scores, will predict experimental \u0394\u0394G.\n\nEXPERIMENT: We will test on the curated S669 and ThermoMutDB stability datasets, using Pearson correlation (PCC) as the primary metric. The hypothesis is falsified if our method does not significantly outperform (p<0.05) a strong baseline MLP trained directly on AlphaFold2's structural outputs (distances, angles, pLDDT).\n\nNOVELTY: This directly tests the orthogonality of AlphaFold's latent biophysics by comparing against a learned structural model, not just Rosetta, and uses strict controls to isolate pure stability signals from functional epistasis.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T13:21:56.478888+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 1,
+    "text": "IDEA: We will test whether AlphaFold\u2019s structure module imposes a sequence-agnostic, architectural prior that systematically biases distance predictions in intrinsically disordered regions (IDRs) toward overly compact conformations, independent of its evolutionary sequence analysis.\n\nBACKGROUND: AlphaFold2 (AF2) is known to produce overly compact, high-confidence predictions for many IDRs, which do not match experimental ensembles. The open problem is to disentangle whether this bias stems from an inherent inductive bias in the structure module's architecture or from the model misinterpreting evolutionary signals in the multiple sequence alignments (MSAs) for disordered regions.\n\nAPPROACH: We will compare AF2's predicted distance distributions for real IDRs against a critical null model: distributions generated by AF2 for synthetic, scrambled-sequence \"disordered\" segments. By ablating the MSA input and using a shared architectural prior, this isolates the structure module's intrinsic bias. We will then correlate deviation from the null model with MSA depth and embedding similarity.\n\nEXPERIMENT: Using DisProt (human IDRs) and high-confidence PDB domains, we will compute Jensen-Shannon Divergence (JSD) between AF2's predictions for real sequences and its own predictions for sequence-scrambled counterparts. We will test the hypothesis via (1) significant JSD > 0 for IDRs, and (2) null correlation between JSD and MSA embedding similarity for IDRs, alongside a positive correlation for ordered domains.\n\nNOVELTY: This moves beyond documenting AF2's IDR compactness by using an AF2-derived null model to isolate the source of bias, and rigorously tests the decoupling of this bias from MSA features, which prior evaluations have not done.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T13:24:33.998491+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 0,
+    "text": "IDEA: To test whether resonant crosstalk during periodic dynamical decoupling (DD) sequences can increase the logical error rate of a distance-3 surface code on a superconducting processor, requiring DD spacing optimization and high pulse fidelity to achieve a net benefit.\n\nBACKGROUND: Dynamical decoupling is routinely applied to idle qubits in quantum error correction experiments to suppress decoherence. However, in dense NISQ devices with high crosstalk, the periodic pulses of DD can inadvertently amplify coherent crosstalk errors if the pulse spacing resonates with crosstalk frequencies, potentially degrading logical performance despite suppressing \\( T_1 \\) / \\( T_2 \\) noise.\n\nAPPROACH: We will run a distance-3 rotated surface code memory experiment on IBM's ibm_washington, inserting CPMG-X DD sequences into idle periods. We will systematically vary the DD inter-pulse delay (\u03c4) to include values resonant with characterized crosstalk peaks, while using simultaneous randomized benchmarking to hold DD pulse error constant, isolating the effect of timing.\n\nEXPERIMENT: We will compare the logical error per cycle for resonant vs. off-resonant \u03c4 against a no-DD baseline, using the device's public calibration data. Success requires a statistically significant increase in logical error only at resonant \u03c4 when DD pulse errors are above a device-specific threshold (~5\u00d710\u207b\u2074).\n\nNOVELTY: This directly tests a hidden trade-off in real-system QEC\u2014where DD can be harmful\u2014by probing resonant crosstalk amplification, moving beyond studies that only report DD's average benefit or simulate its limitations.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T13:27:26.409255+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 1,
+    "text": "IDEA: For superconducting NISQ devices, a surface code layout optimized to avoid high-crosstalk measurement pairs via strategic long-range links will lower the logical error rate per round, provided the compilation overhead is bounded.\n\nBACKGROUND: In NISQ-era superconducting processors, parallel measurement crosstalk is a characterized but often overlooked error mechanism during syndrome extraction. The standard approach embeds error-correcting codes into the hardware\u2019s fixed connectivity (e.g., heavy-hex) without considering whether simultaneous measurements of specific data qubit pairs introduce correlated errors that degrade logical performance.\n\nAPPROACH: We construct a weighted hardware graph from Google Sycamore calibration data, penalizing edges for low gate fidelity and high parallel measurement crosstalk. A constrained embedding algorithm maps a distance-3 surface code onto this graph, minimizing total weight while forbidding data qubit assignments to high-crosstalk measurement pairs, sometimes necessitating a few long-range couplers. The compilation strictly uses the device's native couplers, and any long-range link must not increase the syndrome extraction circuit depth by more than one cycle compared to a nearest-neighbor path.\n\nEXPERIMENT: We perform circuit-level Pauli noise simulations using the Sycamore 53-qubit calibration dataset, comparing the logical error rate per round of our layout against three baselines: nearest-neighbor heavy-hex, a crosstalk-agnostic distance-optimized layout, and a coherence-optimized layout. The hypothesis is falsified if the improvement is <5% or if the required circuit depth increase exceeds 20%.\n\nNOVELTY: This work moves beyond generic connectivity or coherence optimization by directly incorporating measured parallel measurement crosstalk into the code layout problem, creating a tailored compilation that proactively mitigates a specific, hardware-characterized error source.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T13:30:22.669786+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 0,
+    "text": "IDEA: A causal discovery method that infers directionality in unidirectionally coupled systems by comparing the topological sensitivity of each variable's time-delay embedding, estimated from a single observational time series via surrogate testing.\n\nBACKGROUND: Distinguishing driver from responder in observational time series with nonlinear dynamics remains an open problem, as standard methods like Granger causality or transfer entropy can fail with strong nonlinearity or limited data. This approach addresses the need for a robust, model-free indicator of causal asymmetry that leverages geometric, rather than purely statistical, changes in the underlying attractors.\n\nAPPROACH: For a paired time series, we construct time-delay embeddings and compute their persistent homology. We then estimate each variable's \"topological sensitivity\" by measuring how its persistence diagram summary statistics change under carefully constructed local surrogate data that systematically perturb inter-series relationships, simulating a gradient of coupling strength from a single dataset.\n\nEXPERIMENT: We test Direction Identification Accuracy on synthetic systems (coupled R\u00f6ssler-Lorenz, H\u00e9non maps) and the CauseEffectPairs time-series benchmark, comparing against Transfer Entropy, Conditional Granger Causality, and TCDF, with falsification defined by failure to exceed 50% accuracy at weak coupling in synthetic data.\n\nNOVELTY: This is the first method to use the relative stability of embedding topology, quantified via persistent homology under surrogate perturbations, as a direct causal signature, moving beyond information-theoretic or predictive modeling frameworks.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T13:33:30.622707+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 1,
+    "text": "IDEA: Causal direction between two directly coupled, stationary nonlinear time series can be identified by combining a theoretically-grounded local permutation test for hidden confounding with predictive uncertainty asymmetry from Bayesian forecasting models, specifically in the regime of weak coupling prior to synchronization.\n\nBACKGROUND: Discovering causal direction from purely observational time series data remains an open challenge, especially for nonlinear dynamics where traditional conditional independence or Granger tests can fail. Existing methods struggle to reliably distinguish direct causation from hidden confounding or to exploit asymmetries inherent in causal mechanisms without intervention.\n\nAPPROACH: The method is a two-stage filter: first, a formalized local permutation test, with block size derived from surrogate data, screens out pairs likely driven by a hidden common cause. Second, for surviving pairs, the asymmetry in average predictive entropy (from two Bayesian neural network forecasters) determines direction, positing that the true cause yields lower uncertainty when used as a predictor.\n\nEXPERIMENT: Test on 1) simulated coupled R\u00f6ssler-Lorenz system, 2) Lorenz-96 climate network, and 3) a public interventional time-series benchmark (e.g., CauseMe.net). Compare against PCMCI+, Nonlinear Granger, and TCDF using Directional Accuracy on unconfounded pairs and AUC, with falsification defined by accuracy <70% or performance collapse at the synchronization threshold.\n\nNOVELTY: It formally integrates a principled test for the absence of hidden confounders with a predictive asymmetry measure, specifically targeting and validating the theoretically-important weak-coupling, non-synchronized regime that many methods do not explicitly address.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T13:36:29.545715+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 0,
+    "text": "IDEA: Introducing sparse, stochastic perturbations to the neuronal firing threshold in a digitally implemented spiking neural network will reduce core dynamic energy by \u226520% on temporally dense pattern recognition tasks without degrading temporal coding fidelity, provided the hardware overhead of the stochastic mechanism remains below 5%.\n\nBACKGROUND: Energy-efficient neuromorphic computing requires reducing costly spike traffic without disrupting the precise temporal codes essential for processing real-world sensory data like audio and motion. Current stochastic approaches, often based on material-level device variability, lack the controlled sparsity and hardware-aware co-design needed to guarantee both energy savings and temporal integrity in digital systems.\n\nAPPROACH: We will co-design a sparse stochastic threshold mechanism within a synthesized digital neuromorphic core (e.g., SpiNNaker-like). A Bernoulli process will intermittently perturb a neuron's deterministic threshold using a shared, lightweight pseudo-random generator, aiming to sparsify activity. The design will be implemented in Verilog to precisely model the energy overhead of the added logic and routing.\n\nEXPERIMENT: We will test on the Spiking Heidelberg Digits (SHD) and DVS128 Gesture datasets, comparing to a deterministic LIF baseline. Success requires concurrent achievement of: (1) \u226520% reduction in simulated core energy (synaptic ops + neuron updates), (2) stochastic overhead <5% of core energy via post-synthesis power analysis, and (3) no statistically significant loss in classification accuracy or temporal fidelity (measured via spike-timing correlation).\n\nNOVELTY: This moves beyond material-centric stochasticity by introducing a hardware-software co-designed, *sparse* stochastic control mechanism for digital neuromorphic cores, explicitly targeting and measuring the preservation of temporal coding fidelity as a prerequisite for energy reduction.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T13:39:09.751572+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 1,
+    "text": "IDEA: Implementing biologically-inspired dendritic compartmentalization via multi-gated transistors in local, dense clusters of neurons will reduce the communication and computation energy for solving tasks requiring precise temporal coincidence detection by at least 30% compared to point-neuron models.\n\nBACKGROUND: Neuromorphic hardware struggles with the energy cost of unnecessary spike traffic, especially for temporal signal processing. This work addresses the open problem of reducing this cost at the circuit level by moving beyond point-neuron models, using local dendritic processing to filter uncorrelated inputs before they trigger somatic integration and spike generation.\n\nAPPROACH: We will design a spiking neural network (SNN) cluster where 5-10 integrate-and-fire soma circuits share a reconfigurable, analog dendritic tree built from multi-gated transistors (e.g., dual-gate FETs) in a SkyWater 130nm process. This tree will perform sub-threshold coincidence detection, only passing correlated spatiotemporal patterns to trigger somatic spikes, thereby suppressing redundant activity.\n\nEXPERIMENT: We will benchmark against a like-for-like point-neuron baseline on the Spiking Heidelberg Digits (SHD) dataset, measuring total energy per inference (pJ/inf) via post-layout simulation. The hypothesis is falsified if the dendritic cluster fails to achieve \u226530% energy reduction or falls below 95% of the baseline's accuracy.\n\nNOVELTY: This integrates multi-compartment neuronal models directly into custom CMOS circuit design for energy-efficient temporal filtering, distinct from prior work on memristive or quantum-material synapses, by focusing on the dendritic tree's role as a low-power, analog pre-processing unit within a digital spike-based system.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T13:41:46.608276+00:00"
+  }
+]

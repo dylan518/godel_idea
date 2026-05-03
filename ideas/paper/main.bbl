@@ -1,0 +1,32 @@
+\begin{thebibliography}{6}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Gottweis et~al.(2025)]{gottweis2025coscientist}
+Gottweis, A. et~al.
+\newblock Towards an {AI} co-scientist, 2025.
+
+\bibitem[Lu et~al.(2024)Lu, Zhang, Hu, Lange, and Clune]{lu2024aiscientist}
+Lu, C., Zhang, J., Hu, S., Lange, R.~T., and Clune, J.
+\newblock The {AI} scientist: Towards fully automated open-ended scientific discovery, 2024.
+
+\bibitem[Lyu et~al.(2026)]{lyu2026evoscientist}
+Lyu, Y. et~al.
+\newblock {EvoScientist}: Towards multi-agent evolving {AI} scientists for end-to-end scientific discovery, 2026.
+
+\bibitem[Si et~al.(2024)]{si2024novelideas}
+Si, C. et~al.
+\newblock Can large language models generate novel research ideas?, 2024.
+
+\bibitem[Su et~al.(2024)Su, Chen, Tang, Zheng, Li, Yin, Ouyang, and Dong]{su2024twoheads}
+Su, H., Chen, R., Tang, S., Zheng, X., Li, J., Yin, Z., Ouyang, W., and Dong, N.
+\newblock Two heads are better than one: A multi-agent system has the potential to improve scientific idea generation, 2024.
+
+\bibitem[Zhang et~al.(2025)Zhang, Hu, Lu, Lange, and Clune]{zhang2025darwin}
+Zhang, J., Hu, S., Lu, C., Lange, R.~T., and Clune, J.
+\newblock Darwin g{\"o}del machine: Open-ended evolution of self-improving agents, 2025.
+
+\end{thebibliography}

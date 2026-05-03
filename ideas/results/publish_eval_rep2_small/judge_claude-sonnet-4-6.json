@@ -1,0 +1,233 @@
+{
+  "judge_model": "claude-sonnet-4-6",
+  "current": "S15",
+  "candidate": "S_paper",
+  "wins_a": 3,
+  "wins_b": 0,
+  "ties": 7,
+  "total_judged": 10,
+  "win_rate_b": 0.35,
+  "stopped_early": false,
+  "verdicts": [
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "claude-sonnet-4-6",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 5
+      },
+      "winner": "tie",
+      "reasoning": "Idea A offers a methodologically sound and well-scoped integration of surrogate testing with PCMCI+ for nonlinear time series, with clear benchmarks and baselines, though it is somewhat incremental given existing PCMCI+ and transfer entropy literature. Idea B tackles a more novel and ambitious problem\u2014causal discovery under structured sensor corruption\u2014with a creative variational-adversarial approach, but suffers from lower feasibility due to the complexity of jointly learning causal graphs and corruption profiles, and the experimental setup is less precisely defined. Both ideas total 29 points, making this a tie."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "claude-sonnet-4-6",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "winner": "tie",
+      "reasoning": "Idea A offers a genuinely novel theoretical contribution by linking manifold topology (persistent homology) to causal intervention detection, with clear falsification criteria and strong experimental design, but faces feasibility challenges due to computational cost of persistent homology on high-dimensional time series and sensitivity to embedding parameter choices. Idea B addresses a practically important real-world problem with clearer engineering feasibility and broader applicability to IoT systems, but its novelty is more incremental\u2014combining existing components (foundation model embeddings + online PC algorithm) rather than introducing a fundamentally new principle. Both ideas score 30 total points, making this a tie."
+    },
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "claude-sonnet-4-6",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "tie",
+      "reasoning": "Idea A introduces a genuinely novel and ambitious framework incorporating temporal distribution shift into scaling laws, addressing a real and underexplored problem, but faces significant feasibility challenges in cleanly quantifying shift rates and isolating variables across dynamic streams. Idea B is more experimentally crisp with clear falsification criteria and higher feasibility, but the novelty is somewhat narrower\u2014batch composition effects on ICL have been partially explored in instruction-tuning literature. Both ideas score 29 total points, making this a tie."
+    },
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "claude-sonnet-4-6",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 5
+      },
+      "winner": "A",
+      "reasoning": "Idea A has stronger experimental clarity with well-defined success criteria (R\u00b2 thresholds), a concrete falsification condition, and a specific novel metric (early learning difficulty) that is operationally defined and testable. Idea B addresses an important problem but suffers from lower feasibility\u2014obtaining sufficient authentic data for truly low-resource languages like Quechua or Tigrinya is extremely challenging, and the three-variable scaling law formulation adds complexity that may be difficult to disentangle empirically. Idea A's approach is more tractable with current resources and produces more directly actionable predictions for the continual pre-training community."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "claude-sonnet-4-6",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 8
+      },
+      "winner": "tie",
+      "reasoning": "Both ideas score comparably across criteria. Idea A is more novel in its specific mechanism (virtual coupling via off-resonant drive with an anharmonicity-based threshold) and has very clear experimental predictions, but is narrower in scope and harder to validate without specialized hybrid hardware. Idea B addresses a broader, highly relevant problem in cryogenic CMOS integration with a more feasible simulation-based validation path, but the approach of adapting code geometry to noise profiles is a more incremental extension of known techniques. With total scores of 30 and 30 respectively, this is a tie."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "claude-sonnet-4-6",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "tie",
+      "reasoning": "Idea A addresses a genuinely underexplored problem\u2014context-dependent crosstalk in multi-user quantum cloud environments\u2014with high novelty and practical relevance, but faces significant feasibility challenges around real-time ML inference, access to chip occupancy data, and the overhead of generating bespoke PEC circuits per job. Idea B is more methodologically grounded with clearer experimental design and better feasibility through simulation, but the novelty is more incremental since digital-analog comparisons for QEC encoding have been explored conceptually. Both ideas score 29 total points, making this a tie."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "claude-sonnet-4-6",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "tie",
+      "reasoning": "Idea A is a well-scoped engineering effort with clear industrial utility and strong experimental design, but knowledge distillation for docking scoring is an incremental approach in a crowded field (e.g., existing fast ML docking tools like Gnina, DiffDock-SS). Idea B offers a more genuinely novel scientific question\u2014disentangling evolutionary signals from structural grammar in AlphaFold's behavior\u2014with meaningful implications for both model understanding and protein design, though its regression-based analysis may be underpowered to cleanly separate correlated variables. Both ideas score 29 total points, making this a tie."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "claude-sonnet-4-6",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 6,
+        "feasibility": 5
+      },
+      "winner": "tie",
+      "reasoning": "Idea A is a well-scoped, highly feasible mechanistic study with clear experimental design and testable predictions, directly addressing a practical bottleneck in computational drug discovery, though its scope is somewhat narrow. Idea B is more ambitious and novel, tackling the harder problem of de novo enzyme design with integrated QM constraints, but faces significant feasibility challenges\u2014particularly in training a reliable differentiable QM approximator for transition states and validating true catalytic function\u2014making its experimental clarity and achievability lower. Both ideas score 29 total points, resulting in a tie."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "claude-sonnet-4-6",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "winner": "A",
+      "reasoning": "Idea B scores higher overall due to its exceptional experimental clarity with well-defined falsification criteria, concrete benchmarks, and a realistic fabrication plan in 65nm CMOS. While Idea A presents a genuinely creative conceptual reframing of power intermittency as a computational resource, its feasibility is hampered by the complexity of co-designing harvested-power conditioning with analog oscillator dynamics, and the experimental platform introduces many confounding variables. Idea B's approach of intentional BEOL capacitor computation is incrementally novel but addresses a concrete, well-scoped engineering problem with clear success metrics and a credible path to silicon validation."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "claude-sonnet-4-6",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 6,
+        "feasibility": 4
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a well-defined, experimentally rigorous approach with clear success metrics, realistic device parameters, and benchmarks on established neuromorphic datasets. The hybrid volatile/non-volatile memory hierarchy addresses a genuine and tractable open problem in neuromorphic computing with near-term feasibility using existing VO\u2082 and HfO\u2082 device technology. Idea B is conceptually ambitious and novel at the system level, but suffers from significant feasibility challenges\u2014coordinating thousands of neuromorphic racks with nanosecond photonic switching and a neuromorphic scheduler simultaneously is extraordinarily complex\u2014and the experimental setup (8x8 crossbar plus FPGA emulation) is insufficient to validate data-center-scale claims, leaving a large gap between the proposed experiment and the stated goal."
+    }
+  ]
+}

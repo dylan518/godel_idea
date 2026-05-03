@@ -5,7 +5,7 @@ Markdown from ``skills/idea-tournament/references/*.md`` and
 ``skills/research-ideation/references/literature-tree.md`` (same sources as Claude Code).
 
 Per benchmark topic (``generate_idea`` × n_ideas uses thread-local cache):
-  1. OpenAlex SOTA context (same retrieval as S_sota / S15)
+  1. OpenAlex SOTA context (same retrieval as reboot baseline / S15)
   2. ``build_idea_tree`` — L1→L2→L3 JSON tree + review (4 LLM calls), once per topic
   3. ``run_tournament_ranked`` — Swiss Elo on leaf dicts (paper-style judge), once per topic
   4. Each idea slot: expand one ranked leaf to ``IDEA_FORMAT`` (1 LLM call each)

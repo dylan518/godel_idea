@@ -1,0 +1,74 @@
+{
+  "eval_dir": "publish_eval_n75_gemini3_deepseek_S15_Spaper",
+  "n_shared_pairs": 66,
+  "per_judge": [
+    {
+      "model": "deepseek-chat",
+      "n_pairs": 66,
+      "winner_counts": {
+        "B": 25,
+        "A": 37,
+        "tie": 4
+      },
+      "win_rate_b": 0.4090909090909091,
+      "declared_vs_score_rule_mismatch_n": 36,
+      "declared_vs_score_rule_mismatch_rate": 0.5454545454545454
+    },
+    {
+      "model": "gemini-3-flash-preview",
+      "n_pairs": 66,
+      "winner_counts": {
+        "A": 33,
+        "tie": 30,
+        "B": 3
+      },
+      "win_rate_b": 0.2727272727272727,
+      "declared_vs_score_rule_mismatch_n": 0,
+      "declared_vs_score_rule_mismatch_rate": 0.0
+    },
+    {
+      "model": "gemini-flash-lite-latest",
+      "n_pairs": 66,
+      "winner_counts": {
+        "A": 25,
+        "tie": 14,
+        "B": 27
+      },
+      "win_rate_b": 0.5151515151515151,
+      "declared_vs_score_rule_mismatch_n": 30,
+      "declared_vs_score_rule_mismatch_rate": 0.45454545454545453
+    }
+  ],
+  "pairwise": [
+    {
+      "judge_a": "deepseek-chat",
+      "judge_b": "gemini-3-flash-preview",
+      "n_overlap": 66,
+      "agreement_rate": 0.4090909090909091,
+      "cohen_kappa_3way": 0.12448979591836744,
+      "decisive_overlap_n": 34,
+      "flip_rate_decisive": 0.2647058823529412,
+      "cohen_kappa_binary_decisive": 0.19895287958115215
+    },
+    {
+      "judge_a": "deepseek-chat",
+      "judge_b": "gemini-flash-lite-latest",
+      "n_overlap": 66,
+      "agreement_rate": 0.5303030303030303,
+      "cohen_kappa_3way": 0.24222222222222223,
+      "decisive_overlap_n": 50,
+      "flip_rate_decisive": 0.34,
+      "cohen_kappa_binary_decisive": 0.32432432432432434
+    },
+    {
+      "judge_a": "gemini-3-flash-preview",
+      "judge_b": "gemini-flash-lite-latest",
+      "n_overlap": 66,
+      "agreement_rate": 0.4393939393939394,
+      "cohen_kappa_3way": 0.19405940594059404,
+      "decisive_overlap_n": 27,
+      "flip_rate_decisive": 0.1111111111111111,
+      "cohen_kappa_binary_decisive": 0.608695652173913
+    }
+  ]
+}

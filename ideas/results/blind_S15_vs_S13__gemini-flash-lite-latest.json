@@ -1,0 +1,1677 @@
+{
+  "role": "blind_backfill",
+  "judge_model": "gemini-flash-lite-latest",
+  "current": "S15",
+  "candidate": "S13",
+  "started_utc": "2026-04-19T18:41:08.416973+00:00",
+  "finished_utc": "2026-04-19T18:41:25.646360+00:00",
+  "wins_a": 29,
+  "wins_b": 39,
+  "ties": 7,
+  "total_judged": 75,
+  "win_rate_b": 0.5666666666666667,
+  "verdicts": [
+    {
+      "topic_id": "T14",
+      "topic": "Topological methods for high-dimensional data analysis",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "A",
+      "reasoning": "Idea A offers a more grounded, domain-specific approach by directly incorporating measurement uncertainty into the filtration process, which is highly actionable for biological data. While Idea B is theoretically elegant, its reliance on training a latent embedding on 'known-topology' datasets introduces potential biases and generalization risks that make Idea A a more robust and scientifically transparent solution."
+    },
+    {
+      "topic_id": "T14",
+      "topic": "Topological methods for high-dimensional data analysis",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 5,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea B addresses a deeper theoretical bottleneck in TDA (multi-parameter persistence) with a sophisticated sheaf-theoretic approach, offering higher scientific impact despite the increased complexity. While Idea A is more immediately feasible and experimentally straightforward, it represents an incremental application of existing TDA tools rather than a fundamental advancement in the field."
+    },
+    {
+      "topic_id": "T14",
+      "topic": "Topological methods for high-dimensional data analysis",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "winner": "B",
+      "reasoning": "Idea A proposes a sophisticated, theoretically grounded framework that directly tackles the fundamental bottleneck of TDA (the Interpretability-Complexity Paradox) rather than simply applying TDA as a feature-engineering step for classification. Its integration of discrete Morse theory with manifold learning is highly innovative and offers a more robust solution to the challenges of high-dimensional data than the standard neural-TDA fusion proposed in Idea B."
+    },
+    {
+      "topic_id": "T14",
+      "topic": "Topological methods for high-dimensional data analysis",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A provides a more cohesive integration of existing methodologies (spectral graph theory and temporal GNNs) that directly addresses the specific challenge of dynamic biological manifolds. While Idea B is conceptually interesting, its proposed 'multi-fidelity adaptive filtration' is significantly more complex to implement and validate, making Idea A the more robust and actionable research program."
+    },
+    {
+      "topic_id": "T14",
+      "topic": "Topological methods for high-dimensional data analysis",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A is highly pragmatic and addresses a clear bottleneck in bioinformatics with a well-defined, testable experimental design. While Idea B is more theoretically innovative and addresses a fundamental TDA challenge, its complexity and reliance on custom metrics (CSPC/NRI) make it significantly higher risk and less immediately applicable to the broader research community."
+    },
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A addresses a fundamental, high-impact question in LLM scaling with a highly feasible and well-defined experimental design. While Idea B is more technically ambitious and addresses a significant pain point, its reliance on meta-learning and periodic probing introduces high complexity and potential instability that may undermine its practical utility compared to the foundational insights offered by Idea A."
+    },
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 5,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea B addresses a fundamental, high-impact question in the field with a highly rigorous and feasible experimental design, whereas Idea A proposes a complex, potentially unstable architectural modification that lacks clear evidence of necessity. While Idea A is more novel, Idea B provides the foundational empirical data that the community currently requires to optimize multi-billion parameter training runs."
+    },
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 5,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea A proposes a novel architectural intervention to a fundamental scaling bottleneck, offering a proactive solution rather than just an empirical observation. While Idea B is highly feasible and provides valuable empirical data, Idea A represents a more significant leap in methodology that could fundamentally change how we approach domain-specific scaling."
+    },
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 5
+      },
+      "winner": "A",
+      "reasoning": "Idea A provides a highly rigorous, actionable empirical study that addresses a fundamental gap in our understanding of scaling laws with high feasibility. While Idea B is more ambitious and theoretically novel, its proposed architecture is complex and lacks the methodological clarity required to ensure the 'regime-aware' scaling can be reliably measured and validated."
+    },
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A addresses a highly practical, immediate pain point for practitioners with a clear, falsifiable experimental design that is easily achievable. While Idea B is more theoretically ambitious and novel, its methodology is significantly more complex and risks being conflated with standard adapter-based continual learning rather than providing a clean scaling law analysis."
+    },
+    {
+      "topic_id": "T10",
+      "topic": "Foundation models for genomics and single-cell biology",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A addresses the critical bottleneck of label scarcity and noise in biological data with a more sophisticated, theoretically grounded architectural approach. While Idea B is highly feasible and well-defined, Idea A's focus on hierarchical ontology integration and uncertainty modeling offers a more novel solution to the fundamental challenges of scaling foundation models in genomics."
+    },
+    {
+      "topic_id": "T10",
+      "topic": "Foundation models for genomics and single-cell biology",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea B addresses the fundamental 'causality gap' in current genomics AI, which is a higher-impact, more transformative challenge than the incremental multi-modal integration proposed in Idea A. While Idea A is more straightforward to implement, Idea B's focus on Invariant Risk Minimization and causal inference represents a significant leap forward for the field's long-term utility."
+    },
+    {
+      "topic_id": "T10",
+      "topic": "Foundation models for genomics and single-cell biology",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A addresses a critical, specific bottleneck in single-cell foundation models (catastrophic forgetting of rare states) with a sophisticated, novel methodological synthesis. While Idea B is highly feasible and scientifically sound, it represents a more incremental advancement in multimodal integration compared to the targeted algorithmic innovation proposed in Idea A."
+    },
+    {
+      "topic_id": "T10",
+      "topic": "Foundation models for genomics and single-cell biology",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A is highly pragmatic and addresses a critical bottleneck in regulatory genomics with a clear, falsifiable experimental design. While Idea B is more theoretically ambitious and novel in its approach to causal disentanglement, it faces significant challenges regarding the identifiability of causality from observational data and the practical implementation of strict orthogonality constraints in high-dimensional biological latent spaces."
+    },
+    {
+      "topic_id": "T10",
+      "topic": "Foundation models for genomics and single-cell biology",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A addresses the critical, systemic bottleneck of label sparsity and calibration in genomics with a sophisticated, multi-layered framework that is more conceptually innovative than the cross-species transfer learning proposed in Idea B. While Idea B is highly feasible and practical, Idea A offers a more transformative approach to the fundamental problem of trust and interpretability in biological foundation models."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 5,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea A proposes a transformative generative framework that addresses the fundamental limitation of static prediction, whereas Idea B is a more incremental refinement of existing MD-based ensemble generation. While Idea A faces significant technical hurdles in training stability and data integration, its potential impact on the field of protein dynamics is substantially higher."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A addresses the fundamental bottleneck of MSA-dependency in protein folding, which is a higher-impact challenge for the field of protein design. While both are technically sound, Idea A's integration of physics-based potentials with geometric priors offers a more robust theoretical framework for generalizing to novel, non-evolutionary protein space."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A is more feasible and grounded in existing AlphaFold architectures, making it a highly practical step forward for IDR research. While Idea B is more ambitious and theoretically sophisticated, the complexity of enforcing kinetic constraints and integrating MD trajectories with experimental data introduces significant risks to model convergence and training stability."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "tie",
+      "reasoning": "Idea A is a highly feasible, well-defined application of existing tools to a specific problem, while Idea B is more ambitious and conceptually novel but faces significant challenges in training stability and data integration. Both approaches provide valuable, complementary paths forward for modeling protein dynamics."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea B offers a more transformative, high-impact approach to the fundamental limitations of current AI-based structural biology by moving toward generative energy landscapes. While Idea A is more immediately feasible and grounded in established biophysics, Idea B represents the next frontier in deep learning for protein dynamics, justifying its slightly higher total score despite the significant technical challenges."
+    },
+    {
+      "topic_id": "T11",
+      "topic": "Emergent communication in multi-agent systems",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A proposes a more sophisticated architectural integration by combining latent intention modeling with event-triggered synchronization, which directly addresses the fundamental coordination collapse problem in Dec-POMDPs. Idea B is a solid engineering improvement on communication scheduling, but it is more incremental and relies on heuristic-like complexity estimation rather than the structural coordination anchors provided in Idea A."
+    },
+    {
+      "topic_id": "T11",
+      "topic": "Emergent communication in multi-agent systems",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A addresses a more critical and challenging real-world constraint (network instability) with a sophisticated hierarchical architecture that offers higher potential for impact in robotics and distributed systems. While Idea B is technically sound and highly feasible, Idea A's focus on dynamic role-switching under stochastic disruptions represents a more significant advancement in the robustness of emergent communication."
+    },
+    {
+      "topic_id": "T11",
+      "topic": "Emergent communication in multi-agent systems",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "tie",
+      "reasoning": "Idea A offers a highly rigorous, methodologically sound approach to a fundamental theoretical question, while Idea B proposes a more complex, high-impact architectural innovation for challenging environments. Both ideas are strong, with A excelling in experimental control and B excelling in addressing practical scalability and coordination bottlenecks."
+    },
+    {
+      "topic_id": "T11",
+      "topic": "Emergent communication in multi-agent systems",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A proposes a sophisticated, structural solution to the fundamental problem of semantic drift in emergent communication, offering a higher degree of theoretical innovation. While Idea B is more feasible and experimentally robust, it addresses a more incremental improvement in adaptive communication rather than the foundational grounding challenge tackled by Idea A."
+    },
+    {
+      "topic_id": "T11",
+      "topic": "Emergent communication in multi-agent systems",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "scores_a_total": 34,
+      "scores_b_total": 30,
+      "winner": "A",
+      "reasoning": "Idea A addresses a highly practical problem in multi-agent systems with a robust, well-defined methodology that is immediately testable and scalable. While Idea B proposes a more theoretically sophisticated approach to semantic alignment, it faces significant implementation hurdles regarding the stability of decentralized contrastive learning and the ambiguity of the proposed Semantic Alignment Score."
+    },
+    {
+      "topic_id": "T15",
+      "topic": "Quantum advantage in machine learning tasks",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A wins by a narrow margin due to its superior experimental rigor and focus on the fundamental problem of generalization, which is more actionable for the broader community. While Idea B offers a more sophisticated theoretical contribution regarding barren plateaus, its implementation complexity and reliance on specific symmetry groups make it less broadly applicable and more difficult to validate experimentally."
+    },
+    {
+      "topic_id": "T15",
+      "topic": "Quantum advantage in machine learning tasks",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea B addresses the more critical 'Data Encoding Bottleneck' and focuses on quantum-structured data, which is a more promising domain for quantum advantage than synthetic manifolds. While Idea A is highly rigorous and feasible, Idea B offers a more sophisticated architectural contribution that directly tackles the fundamental limitations of current hybrid quantum-classical systems."
+    },
+    {
+      "topic_id": "T15",
+      "topic": "Quantum advantage in machine learning tasks",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "B",
+      "reasoning": "Idea A offers a highly practical, engineering-focused solution to the critical bottleneck of barren plateaus, making it immediately actionable for near-term hardware. While Idea B addresses a more profound theoretical question regarding sample complexity, its reliance on synthetic datasets and the difficulty of isolating 'quantum rank' advantages in real-world settings make it significantly less feasible and more prone to experimental ambiguity."
+    },
+    {
+      "topic_id": "T15",
+      "topic": "Quantum advantage in machine learning tasks",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea B addresses the fundamental theoretical question of 'why' quantum advantage occurs, providing a rigorous, falsifiable framework that moves the field beyond empirical heuristics. While Idea A is highly practical and feasible for near-term hardware, Idea B offers a more significant contribution to the foundational understanding of quantum machine learning."
+    },
+    {
+      "topic_id": "T15",
+      "topic": "Quantum advantage in machine learning tasks",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A provides a highly rigorous, systematic framework for addressing the 'quantum advantage' hype, which is arguably the most critical open question in the field. While Idea B proposes a more creative architectural solution, Idea A's focus on benchmarking and falsifiability offers greater scientific utility and higher feasibility for near-term research."
+    },
+    {
+      "topic_id": "T13",
+      "topic": "Zero-shot generalization in reinforcement learning",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 6,
+        "feasibility": 5
+      },
+      "winner": "A",
+      "reasoning": "Idea A is highly feasible and addresses a practical, well-defined problem with a clear experimental path. While Idea B is more ambitious and theoretically profound in tackling 'extrapolation blindness,' its complexity\u2014combining causal inference, Bayesian ensembles, and counterfactual rollouts\u2014poses significant implementation risks and potential instability that may hinder its success in standard RL benchmarks."
+    },
+    {
+      "topic_id": "T13",
+      "topic": "Zero-shot generalization in reinforcement learning",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_a_total": 33,
+      "scores_b_total": 28,
+      "winner": "A",
+      "reasoning": "Idea A proposes a more cohesive and actionable framework for exploration that directly addresses the goal-distribution bottleneck in RL. Idea B is theoretically ambitious but risks over-complicating the training objective, making it significantly harder to implement and tune compared to the well-defined architecture of Idea A."
+    },
+    {
+      "topic_id": "T13",
+      "topic": "Zero-shot generalization in reinforcement learning",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_a_total": 30,
+      "scores_b_total": 31,
+      "winner": "tie",
+      "reasoning": "Idea A offers a more sophisticated algorithmic contribution to latent dynamics modeling, while Idea B provides a more rigorous and actionable empirical framework for embodied navigation. Both approaches address critical bottlenecks in zero-shot generalization, resulting in a balanced evaluation where the theoretical depth of A is offset by the methodological robustness of B."
+    },
+    {
+      "topic_id": "T13",
+      "topic": "Zero-shot generalization in reinforcement learning",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A is slightly more compelling due to its focus on end-to-end structural discovery rather than relying on simulator-level access to latent factors, which makes it more applicable to broader RL settings. Both proposals are strong, but A's integration of a differentiable causal graph learner offers a more rigorous and theoretically grounded path toward solving the representation entanglement problem."
+    },
+    {
+      "topic_id": "T13",
+      "topic": "Zero-shot generalization in reinforcement learning",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A addresses the more challenging and fundamental problem of physical distribution shifts using a sophisticated causal disentanglement framework, whereas Idea B focuses on reward-dynamics separation, which is a more constrained and well-trodden path in RL literature. Idea A's integration of adversarial mutual information bottlenecks provides a more robust theoretical and empirical path toward true zero-shot generalization."
+    },
+    {
+      "topic_id": "T12",
+      "topic": "Mechanistic interpretability of transformer models",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_a_total": 32,
+      "scores_b_total": 30,
+      "winner": "A",
+      "reasoning": "Idea A is highly feasible and addresses a fundamental question in linguistics and interpretability with a rigorous, well-defined experimental design. While Idea B proposes a more ambitious and novel architectural shift, it faces significant challenges regarding training stability and the potential degradation of model performance, making it less immediately actionable than the observational approach in A."
+    },
+    {
+      "topic_id": "T12",
+      "topic": "Mechanistic interpretability of transformer models",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 4,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea A proposes a novel architectural intervention to solve a fundamental theoretical bottleneck in interpretability, whereas Idea B is a largely incremental empirical study of existing models. While Idea A is more complex and challenging to implement, its potential to fundamentally improve the interpretability of future models makes it a more significant contribution to the field."
+    },
+    {
+      "topic_id": "T12",
+      "topic": "Mechanistic interpretability of transformer models",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 4,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A proposes a proactive, architectural approach to mechanistic interpretability that addresses the fundamental problem of circuit plasticity, offering a high-impact paradigm shift. While Idea B is methodologically sound and highly feasible, it remains an incremental improvement on existing post-hoc analysis techniques rather than a novel structural intervention."
+    },
+    {
+      "topic_id": "T12",
+      "topic": "Mechanistic interpretability of transformer models",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 4,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A proposes a structural architectural change to force interpretability by design, which is a high-impact, novel approach to the fundamental problem of superposition. Idea B is a useful methodological refinement, but it is essentially an incremental application of existing causal intervention techniques rather than a transformative research direction."
+    },
+    {
+      "topic_id": "T12",
+      "topic": "Mechanistic interpretability of transformer models",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_base": 7,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A proposes a highly feasible and rigorous empirical framework for understanding existing models, which is immediately actionable for the interpretability community. While Idea B is more ambitious and novel in its architectural proposal, it introduces significant confounding variables and complexity that may hinder the very interpretability it seeks to achieve."
+    },
+    {
+      "topic_id": "T8",
+      "topic": "Deep learning emulators for climate model acceleration",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 5,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea A proposes a sophisticated, high-risk, high-reward architectural innovation that directly tackles the fundamental multiscale physics bottleneck in climate modeling. While Idea B is highly feasible and addresses the important practical problem of model generalization, it relies on standard architectures and incremental domain adaptation techniques, making Idea A the more scientifically transformative contribution."
+    },
+    {
+      "topic_id": "T8",
+      "topic": "Deep learning emulators for climate model acceleration",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea B addresses the fundamental bottleneck of physical consistency in climate emulation with a more transformative, high-risk/high-reward approach using differentiable solvers and hard constraints. While Idea A is highly feasible and provides a robust framework for multi-model generalization, Idea B represents a more significant leap in the state-of-the-art for climate modeling."
+    },
+    {
+      "topic_id": "T8",
+      "topic": "Deep learning emulators for climate model acceleration",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea B addresses the fundamental 'black box' instability of climate emulators through a sophisticated architectural innovation (hard-constrained latent physics), which is a higher-impact research direction than the data-centric approach of Idea A. While Idea A is more immediately feasible and methodologically straightforward, Idea B offers a transformative, albeit technically challenging, solution to the critical problem of out-of-distribution generalization."
+    },
+    {
+      "topic_id": "T8",
+      "topic": "Deep learning emulators for climate model acceleration",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 5,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A addresses the fundamental bottleneck of long-term stability in climate emulators through a sophisticated, structurally-informed architecture, representing a significant leap over current state-of-the-art. While Idea B is highly practical and feasible, it relies on standard domain adaptation techniques that are more incremental in the context of deep learning for physical sciences."
+    },
+    {
+      "topic_id": "T8",
+      "topic": "Deep learning emulators for climate model acceleration",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 4,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea A proposes a sophisticated, high-impact architectural innovation that addresses the fundamental bottleneck of physical consistency in climate emulators. While Idea B is highly feasible and methodologically sound, it represents a more incremental application of existing domain-generalization techniques to climate data."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A addresses the critical, often-ignored problem of non-Markovian temporal correlations with a sophisticated, novel hybrid decoding architecture. While Idea B is highly feasible and practical, it focuses on well-trodden ground regarding noise-biased codes, whereas Idea A proposes a more significant algorithmic advancement for the field."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea A proposes a more ambitious, holistic hardware-software co-design that addresses the fundamental bottleneck of correlated noise, whereas Idea B is a more incremental software-layer optimization. While Idea A faces significant implementation challenges, its potential impact on the field of fault-tolerant quantum computing is substantially higher."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "winner": "tie",
+      "reasoning": "Idea A proposes a highly innovative, hardware-level architectural shift that addresses the root cause of leakage, but faces significant implementation hurdles regarding real-time control overhead. Idea B is a more conventional, software-centric approach that is highly feasible and scientifically robust, providing a clear path to immediate improvements in existing QEC pipelines."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 5,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 6,
+        "feasibility": 3
+      },
+      "winner": "A",
+      "reasoning": "Idea A is highly feasible and addresses a critical, immediate bottleneck in current IBM hardware, making it a pragmatic and impactful study. While Idea B is conceptually more innovative and addresses deeper architectural challenges, it requires significant hardware-level modifications (engineered dissipators) that are likely beyond the reach of standard NISQ-era experimental setups."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "B",
+      "reasoning": "Idea A addresses the critical, specific bottleneck of leakage in superconducting qubits with a highly practical, low-overhead hardware-software co-design. Idea B is ambitious but faces significant implementation hurdles regarding real-time FPGA feedback loops and the stability of RL agents in non-stationary NISQ environments."
+    },
+    {
+      "topic_id": "T7",
+      "topic": "Federated learning with heterogeneous and non-IID data",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea B addresses the fundamental structural limitations of global model averaging in non-IID settings, offering a more profound architectural shift than the data-augmentation approach in Idea A. While Idea A is highly feasible and well-defined, Idea B provides a more compelling solution to the core problem of irreconcilable local optima, yielding higher potential impact."
+    },
+    {
+      "topic_id": "T7",
+      "topic": "Federated learning with heterogeneous and non-IID data",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A proposes a highly innovative architectural approach using normalizing flows to address the fundamental 'system-statistical coupling' bottleneck, whereas Idea B is a more incremental application of existing meta-learning techniques. While Idea B is more straightforward to implement, Idea A offers a more profound theoretical contribution to the field of federated representation learning."
+    },
+    {
+      "topic_id": "T7",
+      "topic": "Federated learning with heterogeneous and non-IID data",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A proposes a more fundamental architectural solution to the latent space misalignment problem, offering higher theoretical novelty and potential for significant impact. While Idea B is highly feasible and experimentally robust, it builds upon well-trodden ground in clustered federated learning, whereas Idea A introduces a more sophisticated geometric approach to representation learning."
+    },
+    {
+      "topic_id": "T7",
+      "topic": "Federated learning with heterogeneous and non-IID data",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "tie",
+      "reasoning": "Idea A is highly feasible and grounded in established meta-learning techniques, making it a reliable, incremental improvement for practical FL. Idea B is more ambitious and conceptually novel in its structural approach to the personalization-globalization conflict, but it faces higher implementation complexity and potential stability issues during training."
+    },
+    {
+      "topic_id": "T7",
+      "topic": "Federated learning with heterogeneous and non-IID data",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea B addresses the more challenging and under-explored problem of non-stationary (evolving) data distributions, whereas Idea A focuses on the well-trodden path of personalized adapters. While Idea A is highly feasible and clear, Idea B offers a more significant theoretical contribution to the robustness of federated learning systems in real-world, time-varying environments."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 5,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A addresses a fundamental, high-impact bottleneck in causal discovery (sampling bias and temporal aggregation) with a sophisticated, novel methodological framework. While Idea B is more feasible and experimentally straightforward, it represents an incremental improvement to existing deep learning architectures rather than a foundational advancement in the field."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 5,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 5
+      },
+      "winner": "A",
+      "reasoning": "Idea A is highly practical and addresses a critical bottleneck in real-world causal discovery with a robust, well-defined experimental plan. While Idea B is more theoretically ambitious and novel, its reliance on latent noise perturbation to solve temporal aliasing is speculative and faces significant implementation hurdles regarding the identifiability of noise vs. signal."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea B addresses the fundamental 'holy grail' of causal discovery\u2014identifying latent confounders without interventions\u2014offering a high-risk, high-reward theoretical breakthrough. While Idea A is more immediately feasible and practically useful for applied researchers, Idea B represents a more significant advancement in the field's core methodology."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 5,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A addresses the fundamental theoretical bottleneck of latent confounder identifiability with a sophisticated, novel framework that bridges proxy variables and partial interventions. While Idea B is highly feasible and practical, it represents an incremental improvement to existing algorithms rather than the significant methodological leap proposed in Idea A."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A addresses a fundamental, high-impact bottleneck in causal discovery (sampling bias) with a sophisticated, theoretically grounded framework that integrates domain knowledge. While Idea B is solid and highly feasible, it represents a more incremental extension of existing invariance-based methods compared to the structural innovation proposed in Idea A."
+    },
+    {
+      "topic_id": "T9",
+      "topic": "Uncertainty quantification in deep neural networks",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A offers a more robust, generalizable approach to uncertainty quantification that is easier to validate through standard benchmarks. While Idea B addresses a more complex theoretical problem, its reliance on specific privileged metadata and multi-modal data limits its broader scientific applicability and introduces significant experimental confounding variables."
+    },
+    {
+      "topic_id": "T9",
+      "topic": "Uncertainty quantification in deep neural networks",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "A",
+      "reasoning": "Idea A addresses a critical, high-impact problem in clinical AI by bridging the gap between causal domain knowledge and Bayesian uncertainty, offering a more interpretable and robust framework than Idea B. While Idea B is technically sophisticated, it relies on complex meta-learning and latent space manipulation that may be prone to instability and less directly applicable to high-stakes decision-making."
+    },
+    {
+      "topic_id": "T9",
+      "topic": "Uncertainty quantification in deep neural networks",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A addresses the fundamental, long-standing challenge of uncertainty disentanglement with a sophisticated architectural approach that offers higher theoretical impact. While Idea B is highly practical and feasible, it relies on a heuristic feedback loop that is more incremental compared to the structural innovation proposed in Idea A."
+    },
+    {
+      "topic_id": "T9",
+      "topic": "Uncertainty quantification in deep neural networks",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A addresses the fundamental theoretical challenge of uncertainty disentanglement with a sophisticated, domain-grounded approach, whereas Idea B is a more incremental architectural heuristic. While Idea A is more complex to implement, its potential to solve the non-identifiability problem offers significantly higher scientific impact."
+    },
+    {
+      "topic_id": "T9",
+      "topic": "Uncertainty quantification in deep neural networks",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_a_total": 33,
+      "scores_b_total": 31,
+      "winner": "B",
+      "reasoning": "Idea A addresses the fundamental theoretical bottleneck of uncertainty non-identifiability with a sophisticated architectural innovation, offering higher potential for a paradigm shift. While Idea B is more straightforward to implement and validate, it represents an incremental improvement on existing Bayesian frameworks rather than a novel conceptual departure."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A offers a more balanced approach by focusing on system-level architecture and energy efficiency, which are critical for practical neuromorphic deployment. While Idea B addresses a fundamental material-level bottleneck, the complexity of integrating microheaters and real-time closed-loop control at scale presents significant feasibility challenges compared to the hybrid oscillator-memristor architecture."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_a_total": 30,
+      "scores_b_total": 31,
+      "winner": "tie",
+      "reasoning": "Idea A offers a highly feasible, incremental hardware improvement with clear benchmarking, while Idea B proposes a more ambitious, system-level architectural shift that addresses the fundamental bottleneck of memristor stochasticity. Both ideas are strong, with Idea B providing higher potential impact on the field's primary reliability challenges, resulting in a statistical tie."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea B addresses a more fundamental bottleneck in neuromorphic computing (the energy-latency trade-off) with a sophisticated architectural solution, whereas Idea A focuses on a material-level integration that is more incremental. While Idea A is more straightforward to implement, Idea B's conceptual framework for hierarchical volatility offers higher potential impact for the field."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A offers a more fundamental materials-science approach to the energy bottleneck, providing a clear, falsifiable physical mechanism. While Idea B is clever, the overhead of a 'microcontroller mesh' at the synaptic interface introduces significant architectural complexity and potential energy penalties that may undermine the goal of efficiency."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 5,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A proposes a sophisticated materials-science solution to a fundamental bottleneck in neuromorphic hardware, offering a high-impact architectural innovation. While Idea B is highly feasible and provides useful benchmarking, it is essentially a comparative performance study rather than a novel device-level breakthrough."
+    },
+    {
+      "topic_id": "T6",
+      "topic": "Generative AI for drug discovery and molecular design",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "A",
+      "reasoning": "Idea A addresses the critical biological bottleneck of protein flexibility with a well-grounded, physically motivated approach that integrates experimental data, making it highly actionable for real-world drug discovery. While Idea B proposes a sophisticated technical solution to latent space optimization, Idea A's focus on structural biology provides a more robust and interpretable framework for improving binding affinity predictions."
+    },
+    {
+      "topic_id": "T6",
+      "topic": "Generative AI for drug discovery and molecular design",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A provides a more concrete, high-impact pipeline by bridging the gap between 3D structural biology and generative modeling, supported by a rigorous experimental plan including physical validation. Idea B is theoretically sophisticated but relies on latent space disentanglement techniques that are notoriously difficult to stabilize and interpret in the context of complex, noisy drug discovery data."
+    },
+    {
+      "topic_id": "T6",
+      "topic": "Generative AI for drug discovery and molecular design",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A is highly actionable and grounded in a clear experimental pipeline with prospective validation, making it more likely to yield immediate, verifiable impact in drug discovery. While Idea B is more theoretically ambitious and novel in its architectural approach, its reliance on complex latent disentanglement and differentiable physics surrogates introduces significant implementation risks and potential for optimization instability."
+    },
+    {
+      "topic_id": "T6",
+      "topic": "Generative AI for drug discovery and molecular design",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A addresses a more fundamental bottleneck in translational drug discovery (cross-species efficacy and toxicity) with a highly sophisticated, biologically grounded methodology. While Idea B is technically sound and addresses the important issue of mode collapse, Idea A's integration of evolutionary constraints offers a more profound shift in how we design safer, more translatable therapeutics."
+    },
+    {
+      "topic_id": "T6",
+      "topic": "Generative AI for drug discovery and molecular design",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S13",
+      "judge_model": "gemini-flash-lite-latest",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "winner": "tie",
+      "reasoning": "Idea A offers a highly robust, technically sound approach to a core bottleneck in generative chemistry, while Idea B provides a high-impact, novel application of multi-modal learning to underrepresented biological data. Both ideas are strong, with A excelling in methodological rigor and feasibility, and B excelling in scientific novelty and potential societal impact."
+    }
+  ]
+}

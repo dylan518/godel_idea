@@ -1,0 +1,302 @@
+[
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 0,
+    "text": "IDEA: Under a fixed compute budget, deeper Transformer models exhibit superior sequential algorithmic reasoning while wider models excel at knowledge-intensive tasks, a reversal that is revealed only when controlling for final loss and data contamination.\n\nBACKGROUND: Scaling laws show loss depends primarily on compute, model size, and data, treating depth and width as nearly interchangeable. However, no work has isolated whether architectural shape induces a consistent, task-dependent bias in reasoning capabilities when these primary scaling factors are rigorously controlled, which is critical for designing specialized models.\n\nAPPROACH: We will train iso-compute, iso-parameter models across a depth-width frontier, using a fixed data mixture and loss-matched checkpoints. To isolate reasoning from memorization, we will use synthetic algorithmic tasks and a temporally held-out knowledge test, with rigorous dataset decontamination.\n\nEXPERIMENT: We evaluate on GSM8K and a synthetic Symbolic Manipulation suite (algorithmic), versus MMLU and a FreshQA temporal knowledge test, using a \u22653% accuracy gap in opposing directions as the success criterion.\n\nNOVELTY: This moves beyond treating depth/width as neutral by testing for a systematic *task-dependent reversal* in reasoning, using synthetic and temporally isolated evaluations to separate architectural bias from memorization effects.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T16:41:18.253831+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 1,
+    "text": "IDEA: We hypothesize that the optimal batch size for training LLMs follows a compute-dependent power-law until measurable memory subsystem pressure causes a predictable deviation, which can be modeled by replacing a hard memory-capacity limit with a continuous function of hardware performance metrics.\n\nBACKGROUND: Current scaling laws for batch size assume ideal hardware or a simple memory-capacity cutoff, but real training runs show performance degradation before hitting hard limits. The specific open problem is quantifying how continuous memory pressure\u2014from capacity, bandwidth, or caching\u2014causes deviations from the compute-optimal power-law, which existing models do not capture.\n\nAPPROACH: We will develop a memory-pressure-aware scaling law: B_opt = \u03b1 * C^\u03b2 * f(MP), where f(MP) is a learned decay function based on a composite Memory Pressure (MP) metric. MP will be directly measured during training via hardware counters (e.g., GPU memory utilization %, memory bandwidth saturation, and L2 cache miss rates).\n\nEXPERIMENT: We will test this by training a fixed 400M-parameter GPT-style model on C4 with varying batch sizes, performing full learning rate sweeps for each, and correlating the observed optimal batch size (lowest validation loss on The Pile) and training throughput with our measured MP metric, comparing against the pure power-law (Kaplan et al.) and hard-capacity (Chinchilla-optimal) baselines using mean absolute percentage error (MAPE).\n\nNOVELTY: This moves beyond modeling memory as a binary capacity constraint to instead use direct, continuous hardware performance metrics to explain and predict deviations, directly testing the link between subsystem saturation and scaling law breakdowns.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T16:44:05.278654+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 0,
+    "text": "IDEA: Fine-tuning the AlphaFold2 structure module with a conserved, phosphorylation-specific latent direction\u2014extracted from paired protein structures\u2014enables accurate prediction of PTM-induced conformational changes on unseen proteins across diverse folds.\n\nBACKGROUND: AlphaFold2 predicts static, unmodified structures but cannot model the conformational changes induced by post-translational modifications like phosphorylation. Current physics-based or mutation-mimic methods are often inaccurate, and no approach learns a generalizable, modification-specific signal from experimental structural data.\n\nAPPROACH: We will compute a \"phosphorylation direction\" from latent representation differences in the Phospho3D dataset, then fine-tune AF2's structure module using a lightweight adapter that injects this direction, allowing updates to both single and pair representations to model allosteric effects.\n\nEXPERIMENT: We will test on the held-out PDB-Phos set, using local Ca-RMSD around the modification site as the primary metric, with baselines including base AF2, Rosetta Relax with phospho-mimetics, and a fine-tuned control on masked PTM sites.\n\nNOVELTY: This moves beyond using AlphaFold as a static predictor or for binding specificity, instead learning a transferable structural perturbation vector from experimental PTM pairs, with explicit falsification tests for generalizability across folds.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T16:41:28.256604+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 1,
+    "text": "IDEA: We hypothesize that by systematically controlling the depth and diversity of the input multiple sequence alignment (MSA), the resulting differences in AlphaFold2's ensemble structural variance directly encode conformational diversity and can be combined with co-evolutionary coupling analysis to predict allosteric sites.\n\nBACKGROUND: AlphaFold2 provides a static structure and a per-residue confidence score (pLDDT), but it lacks a direct, interpretable signal for conformational diversity and allosteric communication. The relationship between the properties of the input MSA, the variance in stochastic AF2 ensembles, and functional protein dynamics remains unquantified.\n\nAPPROACH: We will generate AF2 ensembles under three explicit MSA conditions (full, depth-controlled, diversity-controlled) and compute the difference in per-residue structural variance between them. This \"MSA-conditioned variance\" will be integrated with co-evolutionary coupling clusters from the original MSA to predict allosteric residues.\n\nEXPERIMENT: We will test on the PDB conformational diversity dataset and the Allosteric Database (ASD) v4.0, using per-residue experimental RMSD and AUC-PR as metrics. Success requires the MSA-conditioned variance to correlate with conformational diversity (Spearman\u2019s \u03c1 > 0.4) and, when combined with co-evolution, to outperform baselines of raw ensemble variance and pLDDT by >0.15 AUC-PR.\n\nNOVELTY: This moves beyond using raw ensemble variance or pLDDT by explicitly isolating the component of AF2's uncertainty attributable to MSA properties, providing a direct, falsifiable link between evolutionary information, model stochasticity, and functional dynamics.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T16:44:20.071111+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 0,
+    "text": "IDEA: Testing whether high-bandwidth dynamical decoupling on spectator qubits in a superconducting quantum processor increases the logical error rate of an active surface code due to crosstalk-induced gate errors, rather than improving it by suppressing idle errors.\n\nBACKGROUND: In NISQ devices with always-on ZZ coupling, dynamical decoupling (DD) is applied to idle spectator qubits to improve coherence. However, the AC Stark shifts from high-bandwidth DD pulses may distort the frequency of nearby active data qubits, degrading the fidelity of pre-calibrated two-qubit gates. The net impact on a small error-corrected logical memory is unknown.\n\nAPPROACH: We will run a distance-3 surface code memory experiment on a 7-qubit heavy-hexagon patch on IBM's ibmq_brooklyn, comparing logical error rates under three conditions: spectators idled passively, spectators decoupled with an XY4 sequence without gate recalibration, and spectators decoupled with full gate recalibration. All conditions are interleaved within a single calibration to isolate the crosstalk effect.\n\nEXPERIMENT: Using the archived calibration data from ibmq_brooklyn, we will extract the logical error per cycle (LEC) from Pauli error tomography over 1\u201310 syndrome cycles, with 10\u2074 shots per condition. The hypothesis is falsified if the LEC for DD without recalibration is not significantly higher than the passive-idle baseline.\n\nNOVELTY: This directly measures the trade-off between DD's idle error suppression and its induced gate crosstalk in a running QEC circuit, moving beyond single- or two-qubit benchmarks to quantify the net effect on logical performance.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T16:41:24.216190+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 1,
+    "text": "IDEA: For NISQ devices where coherent phase errors dominate during idling, deliberately inserting phase-flip pulses at structured times that preserve dynamical decoupling symmetries can reduce total error more effectively than random insertions or decoupling alone.\n\nBACKGROUND: In NISQ devices, idle qubits accumulate coherent errors that dynamical decoupling (DD) suppresses, but DD sequences themselves are vulnerable to pulse imperfections. The open problem is whether one can exploit the structure of DD to convert accumulating coherent error into a known, timed event without breaking the decoupling condition, thereby gaining a net fidelity improvement over passive suppression.\n\nAPPROACH: We modify standard XY4 DD sequences by replacing specific \u03c0-pulses with perfect Z(\u03c0) gates, transforming the sequence into a known decoupling sequence (e.g., XY4 \u2192 X-Y-Z-Y). This structured insertion resets error phase accumulation while maintaining decoupling symmetry, as justified by filter-function analysis. We compare this against a baseline where identical Z(\u03c0) gates are inserted at random times within the same idle window, disrupting the DD structure.\n\nEXPERIMENT: Using a 5-qubit VQE circuit on IBM Kolkata, we measure output fidelity (via classical shadows) and energy error across three conditions: DD-only, DD with stochastic Z-insertion, and DD with structured Z-insertion, repeated over 10 calibration cycles. Success is defined by a statistically significant improvement (p<0.05) of the structured method over both baselines.\n\nNOVELTY: This actively engineers error timing within DD frames to exploit coherent error coherence, differing from prior DD work (which only suppresses errors) and erasure-conversion studies (which target leakage) by using structured pulse placement to convert coherent drift into a correctable event without adding new physical pulses.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T16:44:22.057325+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 0,
+    "text": "IDEA: To prove that the false discovery rate of constraint-based causal discovery in time series scales with the product of effective connectivity density and auto-correlation timescale, due to error propagation in conditional testing, which we will isolate using an oracle-test benchmark and a unified spectral model.\n\nBACKGROUND: In high-dimensional time series with fixed samples, constraint-based algorithms like PCMCI+ are known to suffer performance decay, but the precise, testable joint role of network density and autocorrelation\u2014beyond general hardness\u2014remains an open problem. Current evaluations often confound these factors with entropy or lack a controlled framework to isolate the algorithmic error propagation mechanism.\n\nAPPROACH: We will develop a tiered simulation framework, from controlled VAR models to semi-realistic networks, where density and autocorrelation are jointly parameterized by the spectral radius. We will run PCMCI+ against two benchmarks: an \"oracle\" version using true conditional distributions to isolate test errors, and a score-based method (e.g., DYNOTEARS) to show framework-specific vulnerability.\n\nEXPERIMENT: Using simulated VAR data (T=500) across a grid of spectral radii (0.1-0.95) and connectivity densities (0.01-0.3), we will measure FDR and decompose error by comparing PCMCI+ to its oracle variant; the hypothesis is falsified if the oracle-adjusted FDR shows no strong correlation (\u03c1 < 0.2) with the spectral-radius\u2013density product.\n\nNOVELTY: This moves beyond cataloging performance drops to formally isolating error propagation within constraint-based frameworks via an oracle benchmark, while unifying density and autocorrelation into a single testable spectral generative model, differentiating it from prior empirical correlation studies.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T16:46:59.403680+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 1,
+    "text": "IDEA: We hypothesize that in chaotic dynamical systems, reliable causal discovery from observed variables without state-space reconstruction requires conditioning sets whose size grows with both the attractor dimension and the Lyapunov time, making it fundamentally data-intensive in high-dimensional, strongly chaotic regimes.\n\nBACKGROUND: Causal discovery in complex systems like climate often relies on conditional independence tests applied to observed time series. However, in chaotic systems, it is unclear how the intrinsic predictability horizon (Lyapunov time) and the system's dimensionality jointly affect the sample and conditioning requirements for accurate discovery, creating an open problem for applying these methods to real-world, limited observational data.\n\nAPPROACH: We will systematically test this by using custom-coupled dynamical systems where Lyapunov time and attractor dimension can be varied independently. We will run established algorithms (PCMCI+ and VarLiNGAM) strictly on the observed variables, measuring how the required conditioning set size and sample length scale with these chaos metrics.\n\nEXPERIMENT: We will use a tunable coupled Lorenz-96 model and ERA5 climate reanalysis data, measuring performance via Structural Hamming Distance curves versus sample size, and explicitly testing if the needed conditioning set cardinality increases with shorter Lyapunov times.\n\nNOVELTY: This isolates and quantifies the specific burden chaos places on conditional independence testing\u2014beyond mixing rates and dimension\u2014by linking it to a growth in required conditioning set size, a mechanism distinct from prior work on sample complexity or deep learning-based discovery.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T16:49:53.105462+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 0,
+    "text": "IDEA: Training a molecular generator on drug-like molecules paired with curated, robust retrosynthetic rule sequences will produce novel compounds with higher real-world synthetic accessibility than structure-only models, regardless of the source of the training compounds.\n\nBACKGROUND: Current generative AI for molecular design primarily optimizes for structure and predicted activity, treating synthetic feasibility as a downstream filter. This creates a disconnect between generative design and practical laboratory synthesis. The open problem is how to intrinsically bias the generative process toward synthetically accessible chemical space from the outset.\n\nAPPROACH: We will train a Transformer-based Reaction-Aware Model (RAM) on molecules from ChEMBL30 and Enamine REAL, where each molecule is paired with a canonical synthetic pathway encoded as a sequence of identifiers from a manually curated set of high-confidence reaction rules (e.g., from the ASPIRE database). This model will be compared against a Structure-Only Model (SOM) and REINVENT 4, with all models using identical activity guidance for the DRD2 target.\n\nEXPERIMENT: We will generate 10,000 novel, drug-like molecules per model and evaluate them using computational SA scores (SAScore, RAscore, SCScore), forward-reaction prediction success rate, and a blinded feasibility assessment by medicinal chemists. The core hypothesis is falsified if the RAM shows no statistically significant improvement (p<0.01) in these metrics versus both baselines.\n\nNOVELTY: This moves beyond post-hoc SA filtering or using noisy automated retrosynthesis annotations by integrating a curated, expert-validated rule set directly into the model's training objective, and validates the approach with both computational metrics and practical chemist assessment.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T16:47:43.209214+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 1,
+    "text": "IDEA: A 3D diffusion model conditioned on a probabilistic ensemble of key functional protein states (from MD/NMR) will generate ligands with superior binding affinity for flexible targets, with improvement correlating with the binding site's conformational entropy.\n\nBACKGROUND: Current structure-based generative models for drug design typically condition on a single, static protein conformation, neglecting the dynamic ensemble of states that critically modulates ligand binding in many targets (e.g., GPCRs, kinases). This limits their ability to design ligands optimized for the true functional landscape of flexible binding sites.\n\nAPPROACH: We will develop a diffusion model that generates molecular point clouds conditioned via cross-attention on a weighted graph ensemble representing 2-3 dominant conformational clusters from MD simulations. Its performance will be compared to baselines: REINVENT 4 (static structure), a standard SBDD model (highest-population cluster), and a ligand-based ChemGPT.\n\nEXPERIMENT: Using the D3R GC4 (\u03b22AR) and KLIFS (CDK2, P38\u03b1) datasets with published MD trajectories, we will generate 1000 molecules per model, filter for synthesizability, and experimentally test top candidates via binding assays. Success is a significant correlation (p<0.05) between the model's docking score improvement over the SBDD baseline and the binding site's conformational entropy calculated from MD.\n\nNOVELTY: This moves beyond single-structure conditioning or naive multi-conformer docking by explicitly modeling a probabilistic state ensemble during generation, and directly tests the hypothesis that model utility scales with target flexibility.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T16:50:39.840953+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 0,
+    "text": "IDEA: Using phase-stable \u03b1-MoO\u2083 electrochemical synapses with an asymmetric write-verify pulse scheme to achieve sub-5% conductance drift over 10\u2075 cycles, outperforming filamentary memristors by mitigating stochastic switching and intercalation strain.\n\nBACKGROUND: Electrochemical random-access memory (ECRAM) devices are promising for neuromorphic computing but suffer from cycle-to-cycle drift and state retention issues caused by stochastic filament dynamics in memristors or by irreversible structural damage during ion intercalation. This work addresses the open problem of achieving reliable, low-drift analog conductance states at biologically relevant low operating frequencies (<100 Hz).\n\nAPPROACH: We will engineer ECRAM devices using layered \u03b1-MoO\u2083 as a phase-stable host and apply an asymmetric write-verify training scheme: long, low-voltage potentiostatic pulses for controlled Li\u207a intercalation and short, high-voltage pulses for rapid extraction, with real-time FPGA feedback to correct drift. This is designed to promote bulk ion transport while minimizing lattice strain.\n\nEXPERIMENT: We will measure normalized conductance drift (D) over 10\u2075 cycles for 50 devices, comparing \u03b1-MoO\u2083 ECRAM under asymmetric pulses against internal controls (same devices under symmetric pulses and amorphous TiO\u2082 ECRAM). Success is defined as \u03b1-MoO\u2083/asymmetric maintaining D < 0.05, outperforming controls by a statistically significant margin (p < 0.01) in a two-sample t-test.\n\nNOVELTY: This work uniquely combines the thermodynamic stability of a van der Waals layered host with a kinetically optimized asymmetric pulse protocol, explicitly targeting the decoupling of ionic conductivity degradation from synaptic weight drift, which prior work on ECRAM or filamentary memristors has not systematically isolated.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T16:47:37.707413+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 1,
+    "text": "IDEA: Introducing voltage-gated inter-synapse tunneling barriers to modulate filament growth in memristors reduces the total system energy per learning epoch by \u226530% without sacrificing accuracy, by making conductance updates more efficient near the switching threshold.\n\nBACKGROUND: Memristor-based neuromorphic systems suffer from high energy costs per synaptic update due to the ohmic nature of filament formation. An open problem is to control this ionic motion with higher energy efficiency at the point of switching, without introducing excessive nonlinearity or variability that nullifies the gain.\n\nAPPROACH: We will engineer a 1nm Al\u2082O\u2093 tunneling barrier at the HfO\u2082 memristor interface via ALD, creating a voltage-dependent tunneling probability that steepens conductance updates. System energy will be optimized by co-designing pulse shapes that exploit this nonlinearity, and its impact on variability and endurance will be modeled and measured.\n\nEXPERIMENT: We will fabricate paired 64\u00d764 crossbar arrays (with/without barrier) and measure total energy per epoch (nJ/epoch) training on MNIST-DVS in a Brian2-calibrated loop, using the baseline HfO\u2082 array and an ideal linear model as references. Falsification occurs if the barrier array shows <30% system energy reduction, a >5% accuracy drop, or a >50% increase in variability-induced retraining cost.\n\nNOVELTY: This moves beyond adding static tunnel barriers by explicitly engineering a *voltage-gated* tunneling interface for energy-efficient switching, and validates the gain using a total system energy metric that accounts for read, write, and variability overheads.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T16:50:56.407266+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 0,
+    "text": "IDEA: For federated learning with heterogeneous, non-IID data, selectively resetting and retraining only those clients identified as having harmful drift\u2014using local loss and gradient dissimilarity\u2014will improve global convergence more effectively than random resets or standard drift-correction methods.\n\nBACKGROUND: In cross-silo federated learning, non-IID data causes client drift, which hinders global model convergence. Current solutions like SCAFFOLD correct drift continuously for all clients, but this may unnecessarily disrupt beneficial local specialization. The open problem is to distinguish and selectively correct only the harmful subset of drifting clients.\n\nAPPROACH: The proposed Targeted Reset with Consensus Regularization (TRCR) flags clients for reset based on high local loss and low gradient similarity (computed via a proxy on a small public dataset). Reset clients are re-initialized to the global model and trained longer with a strong regularization term, while others train normally with a weaker regularizer.\n\nEXPERIMENT: Test on FEMNIST (writer partition) and CIFAR-10 (Dirichlet, \u03b1=0.3) against FedAvg, SCAFFOLD, FedProx, and an ablation with random resets. Primary metrics are final test accuracy and convergence speed. The hypothesis is falsified if TRCR is statistically worse than SCAFFOLD in accuracy or if the random-reset ablation matches its performance.\n\nNOVELTY: It introduces a targeted, periodic reset mechanism based on a drift harmfulness heuristic, differentiating it from continuous correction methods (SCAFFOLD) and uniform regularization (FedProx), and explicitly tests if selective intervention outperforms random or universal strategies.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T16:52:46.766934+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 1,
+    "text": "IDEA: In cross-silo federated learning with bounded system heterogeneity, combining a small, privacy-preserving synthetic dataset generated from client metadata with a synchronous client drift correction mechanism will improve global model accuracy on non-IID data more than either approach alone.\n\nBACKGROUND: Federated learning with non-IID data suffers from client drift, degrading global model convergence. While drift correction methods like SCAFFOLD and data-sharing techniques exist, their combination is under-explored, especially when the shared data is a DP-synthetic estimate of the global non-IID distribution, which may introduce new tensions between anchor representativeness and privacy noise.\n\nAPPROACH: The server aggregates DP-protected client metadata (label distributions and feature means) to generate a small global synthetic dataset via DP-CGAN. Clients then perform local training regularized by an L2 distance penalty between their local gradient and a synchronous \"anchor gradient\" computed on the fixed global model and the shared synthetic data at each round's start.\n\nEXPERIMENT: Test on FEMNIST and Dirichlet-partitioned (\u03b1=0.3) CIFAR-10 across 10 silos, measuring accuracy on a held-out heterogeneous test set. Key baselines are FedAvg, SCAFFOLD, and a synthetic-data-only ablation. The hypothesis is falsified if the method fails to outperform SCAFFOLD.\n\nNOVELTY: It uniquely integrates a validated, metadata-derived DP-synthetic dataset as a consensus anchor for gradient-level regularization, decoupled from system heterogeneity via synchronous updates, directly addressing the interplay between non-IID data, privacy, and client drift.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T16:55:30.855258+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 0,
+    "text": "IDEA: Testing whether neural network emulators of ocean eddies can predict the collapse of the Atlantic circulation requires training data that explicitly includes forced transition dynamics, not just stable climate states.\n\nBACKGROUND: Deep learning emulators promise to accelerate climate models but risk missing critical nonlinear thresholds like the collapse of the Atlantic Meridional Overturning Circulation (AMOC). It is an open problem whether these AI systems can extrapolate to such bifurcations when trained only on data from an unperturbed, stable climate.\n\nAPPROACH: We will train two convolutional LSTM emulators on high-resolution CESM1.3 data: one on a stable pre-industrial control run (Stable-State Emulator/SSE) and one that also includes initial forced transition data from a freshwater hosing experiment (Perturbed-State Emulator/PSE). A neural operator baseline will control for architectural bias. Each emulator will be seeded from an unseen, early-perturbation state and run autoregressively under persistent forcing.\n\nEXPERIMENT: Success is falsified if the SSE predicts AMOC collapse timing within 5 years of the high-resolution truth and achieves a spatial pattern correlation >0.7 for pre-collapse sea surface height anomalies, matching PSE performance. This test uses the \"North Atlantic hosing\" protocol dataset, with a persistence forecast and a low-resolution (1\u00b0) CESM dynamical core as baselines.\n\nNOVELTY: This directly tests the data requirement for reliable emulation of climate tipping points by using a rigorous seeding protocol for extrapolation, controlling for architecture, and benchmarking against the failure mode of stable-state-only training.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T16:53:31.463678+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 1,
+    "text": "IDEA: To test if systematic biases in deep learning emulators of cloud microphysics for extreme precipitation are caused by insufficient sampling of rare climatic regimes, by using targeted data augmentation to directly manipulate sampling density and measure the causal effect on emulator error.\n\nBACKGROUND: Deep learning emulators can accelerate climate models but produce unreliable extremes. The open problem is determining whether these errors stem from a fundamental architectural limitation or simply from a lack of training data for the specific atmospheric conditions that trigger extremes.\n\nAPPROACH: A U-Net will be trained to emulate the Lin et al. microphysics tendencies from coarse-grained (100km) inputs, using the high-resolution SP-CAM \"Years of the Maritime Continent\" simulation as truth. The key innovation is a causal test: after identifying poorly-sampled regimes (e.g., via KL divergence), the emulator will be retrained on a strategically augmented dataset that oversamples those regimes.\n\nEXPERIMENT: Performance will be tested by comparing the emulator's 99.9th percentile daily rainfall against the SP-CAM truth, using the spatially aggregated Continuous Ranked Probability Score (CRPS) for extremes. Falsification occurs if augmenting poorly-sampled regimes does not reduce extreme precipitation bias in those regimes.\n\nNOVELTY: This moves beyond correlating error with data scarcity by implementing a controlled sampling experiment to establish causality, and it validates directly against the high-resolution cloud-resolving model (SP-CAM) rather than the internal variability of a parameterized model.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T16:56:23.971425+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 0,
+    "text": "IDEA: For image classification, selectively aggregating predictive entropy from intermediate feature maps using semantically-conditioned attention improves out-of-distribution (OOD) detection over using final-layer entropy alone.\n\nBACKGROUND: Current uncertainty quantification for OOD detection often relies solely on the final layer's predictive distribution, discarding spatially-granular uncertainty signals in intermediate feature maps. This is suboptimal for in-distribution data with high spatial variability, where irrelevant background regions can distort intermediate uncertainty if not properly weighted.\n\nAPPROACH: We modify a ResNet-50 to compute pixel-wise predictive entropy maps at intermediate stages. A lightweight attention gate at each stage, conditioned on the final-layer global feature vector, weights these maps to highlight semantically relevant regions. The final OOD score combines this Selective Intermediate Entropy (SIE) with the final-layer entropy.\n\nEXPERIMENT: Using ImageNet-1K as ID and ImageNet-O, Textures, and iNaturalist as OOD datasets, we measure AUROC. The hypothesis is falsified if SIE's AUROC is statistically lower than both the final-layer MSP entropy baseline and a naive average of intermediate entropies across all OOD datasets.\n\nNOVELTY: This introduces semantically-conditioned attention to filter intermediate spatial uncertainty, moving beyond simple aggregation or final-layer measures, and trains attention via an auxiliary ID-only objective to avoid shortcut learning from OOD examples.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T16:54:02.508522+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 1,
+    "text": "IDEA: Adversarially robust training structurally decouples predictive epistemic uncertainty from local input-space curvature for in-distribution data, making ensemble disagreement unpredictable by traditional geometric sensitivity metrics.\n\nBACKGROUND: In standard neural networks, high local curvature often correlates with high epistemic uncertainty. However, robust training explicitly flattens the loss landscape against adversarial perturbations. This work tests whether this flattens uncertainty indicators as a side effect, or actively disrupts the correlation between curvature and true predictive disagreement.\n\nAPPROACH: We will train Deep Ensembles of WideResNet-28-10 under standard and adversarial (PGD-10) training. We will measure the relationship between ensemble-based mutual information (epistemic uncertainty) and a stable, multi-model geometric proxy: the average sensitivity of predictions to norm-bounded random perturbations across ensemble members, avoiding single-model Hessians.\n\nEXPERIMENT: On CIFAR-10 test data, we compute the Spearman correlation between the perturbation-based sensitivity metric and mutual information for both model families. The hypothesis is falsified if this correlation is statistically indistinguishable or higher for the robust ensemble, controlling for the overall range of mutual information.\n\nNOVELTY: We move beyond showing robust models have flatter landscapes to test if the *functional link* between geometry and uncertainty is broken, using a feasible ensemble-sensitive curvature proxy and controlling for confounding compression of uncertainty.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T16:56:42.185678+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 0,
+    "text": "IDEA: A genomic foundation model trained on aligned DNA from 240 placental mammals, using a masked block objective across syntenic regions, will predict human protein-protein interactions more accurately than human-only or protein-sequence models by learning evolutionary constraints on coregulated gene clusters.\n\nBACKGROUND: Current genomic foundation models are trained on single species or unaligned multi-species data, missing the evolutionary signal of conserved synteny and co-conserved non-coding elements. This limits their ability to infer functional linkages, like physical PPIs, that are constrained by shared regulatory programs over deep evolutionary time.\n\nAPPROACH: We will train the Synteny-Conserved Foundation Model (SCFM) using a novel alignment-aware objective, masking homologous blocks across the Zoonomia multi-genome alignment to force reconstruction from syntenic context. For PPI prediction, embeddings from gene promoters and bodies will be used with a logistic regression classifier.\n\nEXPERIMENT: We will test on high-confidence physical PPIs from HI-Union/PDB versus stringent same-compartment random negatives, comparing AUPRC against a fine-tuned Nucleotide Transformer (human-only) and D-SCRIPT. Success requires a statistically significant >5% AUPRC improvement over both baselines.\n\nNOVELTY: This moves beyond single-species or alignment-agnostic multi-species modeling by explicitly training on conserved synteny blocks, and tests the unique predictive power of evolutionary constraints in non-coding DNA for a specific molecular task (PPI prediction) against state-of-the-art protein-based methods.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T16:57:54.632397+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 1,
+    "text": "IDEA: To test whether a DNA sequence-only foundation model's failures in predicting non-coding variant effects in repetitive regions are due to missing chromatin context data rather than an inability to model evolutionarily young sequences, by controlling for data confounders and correlating residual errors with direct epigenetic and age metrics.\n\nBACKGROUND: Genomic foundation models trained solely on DNA sequence struggle to predict functional impacts in non-coding repetitive regions. It is unclear if this failure stems from inherent model limitations with evolutionarily young elements or from the absence of cell-state-specific chromatin information during training, a distinction obscured by data sparsity and mappability biases.\n\nAPPROACH: We will use DNABERT-2's variant effect predictions as a baseline and evaluate them against robust allele-specific chromatin accessibility (ASCA) scores from bulk functional genomics. We will perform multivariate regression to control for annotation density and mappability, then correlate the residual prediction errors with direct epigenetic signals (H3K27ac) and estimates of element age from comparative genomics, not just conservation.\n\nEXPERIMENT: We will measure the Spearman correlation (\u03c1) between DNABERT-2 predictions and bulk ASCA scores from projects like GEUVADIS for variants from the AVE atlas, binned by repetitiveness and mappability. The falsification test is a stronger correlation of residual errors with phastCons (\u03c1 > 0.3, p < 0.01) than with H3K27ac signal, which would disprove the hypothesis.\n\nNOVELTY: This moves beyond simply benchmarking model performance by explicitly disentangling the confounders of data quality and mappability from the theoretical factors of evolutionary age and chromatin context, using direct age estimates and model introspection not found in prior evaluations.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T17:00:42.606612+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 0,
+    "text": "IDEA: We hypothesize that the transferability of an emergent, compositional language to a new agent with different sensorimotor embodiment is predicted by the preservation of mutual information between the new agent's perceptual inputs and the inferred symbolic groundings of the original language's primitive concepts.\n\nBACKGROUND: Prior work shows that compositional languages can emerge in multi-agent systems, but their robustness to changes in agent embodiment is poorly understood. The open problem is to predict when and why such a language fails to transfer, moving beyond demonstrations of transfer success or failure to a formal, information-theoretic account of the grounding bottleneck.\n\nAPPROACH: We will train sender-receiver pairs on a modified CLEVR referential game, let a discrete, compositional language emerge, and then perform cross-embodiment transfer to a new sender with a systematically manipulated input space (e.g., CLEVR-Grid). Crucially, we will use probing classifiers to measure the **Alignment Index (AI)**\u2014the mutual information between the new sender's inputs and the original language's primitive symbols\u2014as an independent, post-hoc measure of grounding accessibility.\n\nEXPERIMENT: We test falsification by correlating transfer performance (zero-shot accuracy with a frozen receiver) against the AI across many embodiment variants. The hypothesis is falsified if performance degrades even when AI is high (e.g., with one-hot vectors) or remains high when AI is low (e.g., with deliberately scrambled features), using an End-to-End trained pair and a Protocol Reset baseline for comparison.\n\nNOVELTY: This work moves beyond qualitative claims about \"accessible\" features by proposing a quantifiable, information-theoretic predictor (AI) of transfer success, directly testing a specific mechanism for cross-embodiment failure that prior studies on emergent communication have not formalized.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T16:59:12.981736+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 1,
+    "text": "IDEA: In physical robot swarms, the degree of alignment between a pre-defined, task-specific ideal communication graph and the hardware-imposed communication topology determines whether emergent lexicons are biased by semantic structure or hardware constraints.\n\nBACKGROUND: Research on emergent communication often studies either the impact of network topology or task semantics in isolation, typically in simulation. The open problem is understanding their interaction in physical systems where hardware constraints are irreducible, and how this interaction is moderated by a quantifiable, a priori property of the task-hardware relationship.\n\nAPPROACH: We will train separate populations of 20 \"CubeBot\" robots from scratch using MADDPG on two distinct foraging tasks (spatial-pattern vs. abstract-logical, using a generated grammar dataset of 500 rules). For each task, we will define an Ideal Task Graph (ITG) representing optimal communication flows. We will then impose varied UWB mesh topologies (e.g., star, ring) with a quantified Alignment Score (graph edit distance) to the ITG, and measure lexicon bias using Normalized Mutual Information (NMI) against semantic and topological ground-truth clusters.\n\nEXPERIMENT: We will conduct a full-factorial experiment, training independent swarms for each combination of task (spatial, abstract) and hardware topology (high/low alignment to ITG). The key falsification test is that in the spatial task with low alignment, lexicon NMI should still favor topology (\u0394NMI < -0.2), and in the abstract task with high alignment, NMI should favor semantics (\u0394NMI > +0.2).\n\nNOVELTY: This physically grounds the study of emergent communication by dynamically reconfiguring hardware links, and introduces the pre-operationalized \"Alignment Score\" to quantitatively predict\u2014not just post-hoc explain\u2014the competition between semantic and topological influences on lexicon formation.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T17:01:59.541106+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 0,
+    "text": "IDEA: To test if selective state-space models (SSMs) learn more parsimonious internal algorithms than Transformers on sequential tasks due to their constrained state-transition mechanics, using mechanistic circuit discovery and a novel minimal description length metric.\n\nBACKGROUND: Mechanistic interpretability has focused almost exclusively on Transformer architectures. The recent rise of selective SSMs like Mamba, which match Transformer performance on some tasks, presents a natural experiment: do their built-in sequential biases lead to more human-interpretable internal computations, even when functionally equivalent?\n\nAPPROACH: We will perform automated circuit discovery via activation patching on matched Transformer, Mamba, and hybrid models. Crucially, we will define a unified circuit abstraction for both architectures and measure circuit parsimony using the minimal description length (MDL) of the circuit within a formal computational grammar, replacing subjective human scoring.\n\nEXPERIMENT: Using SCAN, ListOps, and a synthetic Regular Language task, we will compare the MDL, parameter fraction, and graph complexity of essential circuits. A key falsification test compares SSMs to heavily regularized Transformers with strong locality biases.\n\nNOVELTY: This is the first work to apply rigorous mechanistic interpretability methods to compare SSM and Transformer internal algorithms, introducing an objective MDL-based parsimony metric and controlled architectural ablations to isolate the effect of state-transition constraints.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T16:59:27.400262+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 1,
+    "text": "IDEA: Late-layer transformer heads implement a content-addressable memory where factual recall is robust to single-head ablation due to functional redundancy organized by factual topic, which can be exposed by ablating heads grouped by subject-relation clusters.\n\nBACKGROUND: While circuit discovery reveals sparse, minimal sets of heads crucial for individual facts, it remains an open problem whether these circuits are isolated or part of a distributed, topic-organized system with redundant retrieval pathways. This work tests if factual knowledge is stored with topic-specific redundancy, making recall robust to random damage but vulnerable to targeted, topic-coherent ablation.\n\nAPPROACH: We will identify Minimal Sufficient Sets (MSS) of heads for facts using activation patching on GPT-2 XL. We will then compare two ablation types on a held-out fact: a \"topic-coherent\" ablation (heads from the MSS of *other* facts sharing the same subject-relation cluster) and a size-matched \"topic-scrambled\" ablation (heads from facts with unrelated subjects).\n\nEXPERIMENT: Using the CounterFact dataset stratified by Wikipedia pageview frequency, we measure the relative performance drop between the two ablation conditions. The hypothesis is falsified if, for high-frequency facts, topic-coherent ablation does not cause a significantly greater performance drop than topic-scrambled ablation (Mann-Whitney U test, p<0.01).\n\nNOVELTY: This goes beyond finding minimal circuits by testing for *distributed functional redundancy* organized semantically, and introduces a controlled ablation comparison that isolates the effect of topic-grouping from simple circuit size.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T17:02:20.164218+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 0,
+    "text": "IDEA: We hypothesize that zero-shot generalization failure in RL is best predicted by a policy's local sensitivity to *task-irrelevant* generative factors, measured via controlled synthetic interventions, rather than by global distribution shift or value function geometry.\n\nBACKGROUND: Deep RL agents often fail to generalize to new environments, even when visual changes are semantically irrelevant to the task. Current predictors of failure, like distributional distance or value function smoothness, are observational and do not isolate the causal role of the policy's sensitivity to specific, meaningless factors.\n\nAPPROACH: We will measure Local Policy Sensitivity (LPS) by training a policy, then on test levels, directly intervening on the environment's rendering engine to vary known factors (e.g., background hue, wall texture). We will compute the average KL-divergence in the policy's output for irrelevant factors and relevant factors separately. We will then actively test causality by using adversarial training to reduce sensitivity to irrelevant factors and evaluating the resulting generalization gain.\n\nEXPERIMENT: We will train PPO agents on Procgen (CoinRun, StarPilot, BigFish) and Crafter benchmarks, then compute the Spearman correlation between our LPS metric (and baselines: MMD and value gradient norm) and zero-shot test performance across 1000 unseen levels. The falsification test is fine-tuning policies for invariance; if this does not improve generalization, the causal claim is disproven.\n\nNOVELTY: This moves beyond correlation by using controlled, causal interventions on known generative factors and directly testing the mechanism through invariance training, differentiating sensitivity to relevant vs. irrelevant factors where prior work uses unsupervised or purely geometric measures.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T17:03:40.317729+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 1,
+    "text": "IDEA: We hypothesize that for offline goal-conditioned RL, learning state representations that are invariant to the specific action taken, yet preserve the underlying environmental dynamics, will improve zero-shot generalization to tasks with novel object semantics.\n\nBACKGROUND: Offline RL agents struggle to generalize to semantically novel goals not seen in the training data. Prior methods either overfit to low-level visual features (contrastive learning) or preserve action-specific details that may not transfer (model-based learning), lacking a principled approach for learning dynamics-aware, goal-relevant abstractions from static data.\n\nAPPROACH: We propose DACR, which learns latent representations using a contrastive objective augmented with two losses: a **dynamics consistency loss** that trains an action-agnostic forward model to predict next-state latents, and an **action-invariance loss** (via a \u03b2-VAE bottleneck on action information) that compresses away action-specific details. This representation is then used for goal-conditioned Q-learning with IQL.\n\nEXPERIMENT: We will test on offline datasets from 100 training tasks in ProcGen Maze and Kitchen, evaluating zero-shot success rate on 20 held-out tasks with disjoint object shape-color combinations. The hypothesis is falsified if DACR is statistically significantly worse than both a CURL baseline and a TD-MPC baseline.\n\nNOVELTY: Unlike prior bisimulation or inverse dynamics methods, DACR uniquely combines action-invariant dynamics learning with offline goal-conditioned RL, specifically targeting compositional generalization to novel semantic goals, not just latent or visual perturbations.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T17:06:12.757325+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 0,
+    "text": "IDEA: To use the persistent homology of a kinetically-informed latent space from a dynamically trained generative model to produce a cleaner, more interpretable topological summary of protein folding landscapes than standard methods, with cycles that quantitatively correspond to known metastable intermediates.\n\nBACKGROUND: Current methods for reducing high-dimensional protein folding trajectories, like tICA or UMAP, often produce projections where the topological signature of multiple folding pathways is obscured or noisy. This makes it difficult to directly read the number and identity of metastable intermediates from the shape of the data.\n\nAPPROACH: We will train a Schr\u00f6dinger Bridge model on combined PDB and MD transition path data for multi-pathway folders (NTL9, WW domain), constructing a latent space where distance is regularized to approximate kinetic commute time. We will compute its persistent homology and rigorously map each significant 1-cycle back to structures in the original MD ensemble for validation.\n\nEXPERIMENT: We will compare the persistence diagrams (using Ripser) from our model against baselines (static VAE, tICA, and diffusion maps on MD data) and validate cycles by showing their corresponding MD structures form a metastable state in a Markov state model and match experimental intermediate characterization (e.g., phi-values).\n\nNOVELTY: This moves beyond using topology for mere detection to demonstrate that a physically-constrained generative model provides superior topological simplification of energy landscapes, yielding persistent features that are directly and quantitatively linked to independent kinetic and experimental data.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T17:04:58.009821+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 1,
+    "text": "IDEA: We propose a robust Mapper algorithm that uses a density-based subsample to detect a dominant 1-cycle and then employs a stable circular coordinate derived from persistent cohomology as the lens function, aiming to recover the topology of high-dimensional manifolds more accurately than standard projection-based methods.\n\nBACKGROUND: Topological data analysis tools like Mapper struggle to recover the intrinsic circular topology of high-dimensional data when standard lens functions (e.g., PCA) fail to align with the non-linear feature of interest. The open problem is to construct a lens function that is both driven by the data's topological signature and provably stable to noise.\n\nAPPROACH: Our method, **Density-PH-Mapper**, first subsamples high-density points to compute persistent cohomology and identify the most persistent 1-class. Instead of an unstable geodesic distance, we use this class to construct a stable circular coordinate (via the persistent cohomology-to-coordinate algorithm) on the full dataset, which then serves as the Mapper lens.\n\nEXPERIMENT: We will test on synthetic manifolds in \u211d\u2075\u2070 (noisy torus, thickened trefoil, punctured Swiss roll, and a spherical negative control) versus PCA and diffusion map baselines. Falsification occurs if our method does not achieve a >20% reduction in the median normalized bottleneck distance between the Mapper graph's persistence diagram and the ground-truth 1-skeleton's diagram.\n\nNOVELTY: This integrates density-based pre-filtering for topological denoising with a stable, topology-driven circular coordinate for the Mapper lens, moving beyond *ad hoc* projections or unstable geodesic distances to directly parameterize the detected feature.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T17:07:39.521963+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 0,
+    "text": "IDEA: To demonstrate a quantum advantage in supervised learning, we will show that a quantum neural network can achieve lower test error than any classical model with matched capacity when trained on data generated from quantum states with verifiable, high entanglement depth, provided the classical models are restricted to efficient representations of the data.\n\nBACKGROUND: A fundamental open problem is whether quantum machine learning models offer a provable advantage over classical ones on real learning tasks, particularly those involving quantum data. Many proposed advantages rely on data that is classically hard to generate or simulate, creating a \"catch-22\" for experimental verification, or are negated when classical models are given reasonable access to the same information.\n\nAPPROACH: We will construct a learning task using measurement data from a near-term quantum device, where the entanglement of the source states is certified via scalable entanglement witnesses. The quantum model will be a hardware-efficient variational circuit. Classical baselines will include a neural network trained on the raw measurement bitstrings and a tensor network model, with comparisons made via data-scaling laws rather than fixed parameter counts.\n\nEXPERIMENT: We will train all models to predict the expectation value of a non-local observable from Pauli measurement outcomes. The key test compares their scaling of test loss with dataset size for two certified data classes: one from shallow (classically simulable) circuits and one from deeper circuits with witnessed genuine multipartite entanglement.\n\nNOVELTY: This work directly addresses the data generation catch-22 by using a near-term, certifiable entanglement source, and it establishes a fair comparison by analyzing scaling laws with classical models that receive the most informative, efficient classical representation of the data (the raw samples).",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T17:05:08.592624+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 1,
+    "text": "IDEA: We propose to demonstrate a quantum learning advantage by proving that a classical learner restricted to statistical queries requires super-polynomial resources to predict the output of a specific, classically hard-to-simulate quantum circuit, while a quantum learner with identical classical data access achieves the same task with polynomial resources.\n\nBACKGROUND: A central open problem is whether quantum machine learning can offer a provable, asymptotic advantage in a realistic learning-from-data setting, where both learner types receive only classical measurement samples. Most existing advantage claims rely on unequal data access or oracle models, which do not reflect practical constraints.\n\nAPPROACH: We construct a learning task based on distinguishing the output distributions of two circuit families: a classically hard-to-simulate random circuit (with non-Clifford gates) and a classically easy Clifford circuit. Both learners receive only classical samples (input-output pairs). The quantum learner trains a parameterized quantum circuit, while the classical learner is an unrestricted neural network, with a statistical query (SQ) learner as a theoretical baseline.\n\nEXPERIMENT: We measure the sample complexity required for each learner to achieve a fixed prediction error, scaling the problem from 8 to 30 qubits. The hypothesis is falsified if the classical neural network achieves polynomial sample complexity on the hard circuit family, or if the quantum learner requires super-polynomial samples.\n\nNOVELTY: This work moves beyond oracle-based advantages by enforcing equal classical data access for both learners and tests against an unrestricted classical neural network baseline, providing a more stringent and practical test of quantum learning advantage.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T17:08:00.673194+00:00"
+  }
+]

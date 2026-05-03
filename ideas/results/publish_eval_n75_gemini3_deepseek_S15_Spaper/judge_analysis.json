@@ -1,0 +1,302 @@
+{
+  "eval_dir": "publish_eval_n75_gemini3_deepseek_S15_Spaper",
+  "n_shared_pairs": 64,
+  "per_judge": [
+    {
+      "model": "deepseek-chat",
+      "n_pairs": 64,
+      "winner_counts": {
+        "B": 20,
+        "A": 43,
+        "tie": 1
+      },
+      "win_rate_b": 0.3203125,
+      "declared_vs_score_rule_mismatch_n": 39,
+      "declared_vs_score_rule_mismatch_rate": 0.609375
+    },
+    {
+      "model": "deepseek-chat__rerun",
+      "n_pairs": 64,
+      "winner_counts": {
+        "B": 21,
+        "A": 37,
+        "tie": 6
+      },
+      "win_rate_b": 0.375,
+      "declared_vs_score_rule_mismatch_n": 33,
+      "declared_vs_score_rule_mismatch_rate": 0.515625
+    },
+    {
+      "model": "gemini-3-flash-preview",
+      "n_pairs": 64,
+      "winner_counts": {
+        "tie": 28,
+        "A": 32,
+        "B": 4
+      },
+      "win_rate_b": 0.28125,
+      "declared_vs_score_rule_mismatch_n": 0,
+      "declared_vs_score_rule_mismatch_rate": 0.0
+    },
+    {
+      "model": "gemini-flash-lite-latest",
+      "n_pairs": 64,
+      "winner_counts": {
+        "B": 31,
+        "A": 21,
+        "tie": 12
+      },
+      "win_rate_b": 0.578125,
+      "declared_vs_score_rule_mismatch_n": 30,
+      "declared_vs_score_rule_mismatch_rate": 0.46875
+    },
+    {
+      "model": "gemini-flash-lite-latest__rerun",
+      "n_pairs": 64,
+      "winner_counts": {
+        "A": 22,
+        "B": 34,
+        "tie": 8
+      },
+      "win_rate_b": 0.59375,
+      "declared_vs_score_rule_mismatch_n": 33,
+      "declared_vs_score_rule_mismatch_rate": 0.515625
+    },
+    {
+      "model": "gpt-5.4",
+      "n_pairs": 64,
+      "winner_counts": {
+        "tie": 20,
+        "B": 5,
+        "A": 39
+      },
+      "win_rate_b": 0.234375,
+      "declared_vs_score_rule_mismatch_n": 10,
+      "declared_vs_score_rule_mismatch_rate": 0.15625
+    },
+    {
+      "model": "gpt-5.4__rerun",
+      "n_pairs": 64,
+      "winner_counts": {
+        "tie": 25,
+        "A": 37,
+        "B": 2
+      },
+      "win_rate_b": 0.2265625,
+      "declared_vs_score_rule_mismatch_n": 5,
+      "declared_vs_score_rule_mismatch_rate": 0.078125
+    }
+  ],
+  "pairwise": [
+    {
+      "judge_a": "deepseek-chat",
+      "judge_b": "deepseek-chat__rerun",
+      "n_overlap": 64,
+      "agreement_rate": 0.6875,
+      "cohen_kappa_3way": 0.38431938431938434,
+      "decisive_overlap_n": 58,
+      "flip_rate_decisive": 0.25862068965517243,
+      "cohen_kappa_binary_decisive": 0.4223107569721116
+    },
+    {
+      "judge_a": "deepseek-chat",
+      "judge_b": "gemini-3-flash-preview",
+      "n_overlap": 64,
+      "agreement_rate": 0.40625,
+      "cohen_kappa_3way": 0.06891271056661562,
+      "decisive_overlap_n": 36,
+      "flip_rate_decisive": 0.3055555555555556,
+      "cohen_kappa_binary_decisive": 0.0
+    },
+    {
+      "judge_a": "deepseek-chat",
+      "judge_b": "gemini-flash-lite-latest",
+      "n_overlap": 64,
+      "agreement_rate": 0.453125,
+      "cohen_kappa_3way": 0.1253416634127294,
+      "decisive_overlap_n": 51,
+      "flip_rate_decisive": 0.43137254901960786,
+      "cohen_kappa_binary_decisive": 0.19512195121951212
+    },
+    {
+      "judge_a": "deepseek-chat",
+      "judge_b": "gemini-flash-lite-latest__rerun",
+      "n_overlap": 64,
+      "agreement_rate": 0.515625,
+      "cohen_kappa_3way": 0.1941510966693745,
+      "decisive_overlap_n": 55,
+      "flip_rate_decisive": 0.4,
+      "cohen_kappa_binary_decisive": 0.24657534246575336
+    },
+    {
+      "judge_a": "deepseek-chat",
+      "judge_b": "gpt-5.4",
+      "n_overlap": 64,
+      "agreement_rate": 0.53125,
+      "cohen_kappa_3way": 0.16485428447150935,
+      "decisive_overlap_n": 43,
+      "flip_rate_decisive": 0.20930232558139536,
+      "cohen_kappa_binary_decisive": 0.36661211129296245
+    },
+    {
+      "judge_a": "deepseek-chat",
+      "judge_b": "gpt-5.4__rerun",
+      "n_overlap": 64,
+      "agreement_rate": 0.453125,
+      "cohen_kappa_3way": 0.08196721311475409,
+      "decisive_overlap_n": 38,
+      "flip_rate_decisive": 0.23684210526315788,
+      "cohen_kappa_binary_decisive": 0.10471204188481663
+    },
+    {
+      "judge_a": "deepseek-chat__rerun",
+      "judge_b": "gemini-3-flash-preview",
+      "n_overlap": 64,
+      "agreement_rate": 0.515625,
+      "cohen_kappa_3way": 0.25413533834586466,
+      "decisive_overlap_n": 35,
+      "flip_rate_decisive": 0.2,
+      "cohen_kappa_binary_decisive": 0.36031331592689303
+    },
+    {
+      "judge_a": "deepseek-chat__rerun",
+      "judge_b": "gemini-flash-lite-latest",
+      "n_overlap": 64,
+      "agreement_rate": 0.484375,
+      "cohen_kappa_3way": 0.1864406779661017,
+      "decisive_overlap_n": 46,
+      "flip_rate_decisive": 0.32608695652173914,
+      "cohen_kappa_binary_decisive": 0.3692870201096891
+    },
+    {
+      "judge_a": "deepseek-chat__rerun",
+      "judge_b": "gemini-flash-lite-latest__rerun",
+      "n_overlap": 64,
+      "agreement_rate": 0.484375,
+      "cohen_kappa_3way": 0.1619047619047619,
+      "decisive_overlap_n": 50,
+      "flip_rate_decisive": 0.38,
+      "cohen_kappa_binary_decisive": 0.26356589147286824
+    },
+    {
+      "judge_a": "deepseek-chat__rerun",
+      "judge_b": "gpt-5.4",
+      "n_overlap": 64,
+      "agreement_rate": 0.609375,
+      "cohen_kappa_3way": 0.34102141680395387,
+      "decisive_overlap_n": 42,
+      "flip_rate_decisive": 0.16666666666666666,
+      "cohen_kappa_binary_decisive": 0.5050505050505051
+    },
+    {
+      "judge_a": "deepseek-chat__rerun",
+      "judge_b": "gpt-5.4__rerun",
+      "n_overlap": 64,
+      "agreement_rate": 0.515625,
+      "cohen_kappa_3way": 0.21735700197238658,
+      "decisive_overlap_n": 36,
+      "flip_rate_decisive": 0.16666666666666666,
+      "cohen_kappa_binary_decisive": 0.18181818181818163
+    },
+    {
+      "judge_a": "gemini-3-flash-preview",
+      "judge_b": "gemini-flash-lite-latest",
+      "n_overlap": 64,
+      "agreement_rate": 0.390625,
+      "cohen_kappa_3way": 0.15789473684210525,
+      "decisive_overlap_n": 28,
+      "flip_rate_decisive": 0.25,
+      "cohen_kappa_binary_decisive": 0.355263157894737
+    },
+    {
+      "judge_a": "gemini-3-flash-preview",
+      "judge_b": "gemini-flash-lite-latest__rerun",
+      "n_overlap": 64,
+      "agreement_rate": 0.296875,
+      "cohen_kappa_3way": 0.05013192612137203,
+      "decisive_overlap_n": 29,
+      "flip_rate_decisive": 0.3793103448275862,
+      "cohen_kappa_binary_decisive": 0.2200488997555014
+    },
+    {
+      "judge_a": "gemini-3-flash-preview",
+      "judge_b": "gpt-5.4",
+      "n_overlap": 64,
+      "agreement_rate": 0.5625,
+      "cohen_kappa_3way": 0.20987654320987653,
+      "decisive_overlap_n": 27,
+      "flip_rate_decisive": 0.07407407407407407,
+      "cohen_kappa_binary_decisive": 0.4705882352941178
+    },
+    {
+      "judge_a": "gemini-3-flash-preview",
+      "judge_b": "gpt-5.4__rerun",
+      "n_overlap": 64,
+      "agreement_rate": 0.578125,
+      "cohen_kappa_3way": 0.2159709618874773,
+      "decisive_overlap_n": 25,
+      "flip_rate_decisive": 0.08,
+      "cohen_kappa_binary_decisive": 0.0
+    },
+    {
+      "judge_a": "gemini-flash-lite-latest",
+      "judge_b": "gemini-flash-lite-latest__rerun",
+      "n_overlap": 64,
+      "agreement_rate": 0.796875,
+      "cohen_kappa_3way": 0.6650563607085346,
+      "decisive_overlap_n": 51,
+      "flip_rate_decisive": 0.13725490196078433,
+      "cohen_kappa_binary_decisive": 0.7146282973621104
+    },
+    {
+      "judge_a": "gemini-flash-lite-latest",
+      "judge_b": "gpt-5.4",
+      "n_overlap": 64,
+      "agreement_rate": 0.421875,
+      "cohen_kappa_3way": 0.17834836918806385,
+      "decisive_overlap_n": 37,
+      "flip_rate_decisive": 0.40540540540540543,
+      "cohen_kappa_binary_decisive": 0.1728763040238451
+    },
+    {
+      "judge_a": "gemini-flash-lite-latest",
+      "judge_b": "gpt-5.4__rerun",
+      "n_overlap": 64,
+      "agreement_rate": 0.375,
+      "cohen_kappa_3way": 0.13425769360838688,
+      "decisive_overlap_n": 33,
+      "flip_rate_decisive": 0.45454545454545453,
+      "cohen_kappa_binary_decisive": 0.011976047904191735
+    },
+    {
+      "judge_a": "gemini-flash-lite-latest__rerun",
+      "judge_b": "gpt-5.4",
+      "n_overlap": 64,
+      "agreement_rate": 0.40625,
+      "cohen_kappa_3way": 0.16368638239339753,
+      "decisive_overlap_n": 40,
+      "flip_rate_decisive": 0.45,
+      "cohen_kappa_binary_decisive": 0.19101123595505612
+    },
+    {
+      "judge_a": "gemini-flash-lite-latest__rerun",
+      "judge_b": "gpt-5.4__rerun",
+      "n_overlap": 64,
+      "agreement_rate": 0.328125,
+      "cohen_kappa_3way": 0.0869276708692767,
+      "decisive_overlap_n": 34,
+      "flip_rate_decisive": 0.47058823529411764,
+      "cohen_kappa_binary_decisive": 0.0072992700729928115
+    },
+    {
+      "judge_a": "gpt-5.4",
+      "judge_b": "gpt-5.4__rerun",
+      "n_overlap": 64,
+      "agreement_rate": 0.765625,
+      "cohen_kappa_3way": 0.5520298646756883,
+      "decisive_overlap_n": 34,
+      "flip_rate_decisive": 0.0,
+      "cohen_kappa_binary_decisive": 1.0
+    }
+  ]
+}

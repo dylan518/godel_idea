@@ -1,0 +1,1074 @@
+[backfill] S_paper vs S12  |  judge=gemini-flash-lite-latest  |  workers=6
+2026-04-16 23:04:20  INFO      judge  Judging T1 [gemini] (5 pair(s)): Scaling laws for Large Language Models
+2026-04-16 23:04:20  INFO      judge  Judging T10 [gemini] (5 pair(s)): Foundation models for genomics and single-cell biology
+2026-04-16 23:04:20  INFO      judge  Judging T11 [gemini] (5 pair(s)): Emergent communication in multi-agent systems
+2026-04-16 23:04:20  INFO      judge  Judging T12 [gemini] (5 pair(s)): Mechanistic interpretability of transformer models
+2026-04-16 23:04:20  INFO      judge  Judging T13 [gemini] (5 pair(s)): Zero-shot generalization in reinforcement learning
+2026-04-16 23:04:20  INFO      judge  Judging T14 [gemini] (5 pair(s)): Topological methods for high-dimensional data analysis
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:22  INFO      judge    T11[0] → tie | Idea A addresses a high-impact, real-world application with significant engineer
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:22  INFO      judge    T14[0] → B | Idea A is highly feasible and provides a robust, well-defined framework for biol
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:22  INFO      judge    T1[0] → tie | Idea A offers high practical utility for the deployment of LLMs on edge hardware
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:22  INFO      judge    T10[0] → A | Idea A addresses the critical, high-impact challenge of domain shift and populat
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:22  INFO      judge    T12[0] → B | Idea A proposes a highly rigorous, actionable, and falsifiable framework for tes
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:23  INFO      judge    T13[0] → B | Idea A addresses a fundamental bottleneck in RL generalization by introducing a 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:24  INFO      judge    T1[1] → tie | Idea A offers a rigorous, foundational scientific investigation that addresses a
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:24  INFO      judge    T14[1] → A | Idea A addresses a significant, high-impact bottleneck in topological data analy
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:24  INFO      judge    T11[1] → tie | Idea A is a highly practical, engineering-focused contribution that addresses cr
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:24  INFO      judge    T12[1] → B | Idea B addresses a fundamental theoretical question in mechanistic interpretabil
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:24  INFO      judge    T10[1] → B | Idea A is highly feasible and addresses a clear, well-defined technical challeng
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:24  INFO      judge    T13[1] → B | Idea B addresses a fundamental theoretical bottleneck in RL generalization (caus
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:25  INFO      judge    T11[2] → tie | Idea A addresses a high-impact, real-world engineering challenge in autonomous s
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:25  INFO      judge    T1[2] → A | Idea B is more feasible as it focuses on systems optimization rather than the pr
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:25  INFO      judge    T12[2] → B | Idea A proposes a highly specific, falsifiable hypothesis regarding the function
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:25  INFO      judge    T14[2] → B | Idea A offers a highly robust and methodologically sound approach to a fundament
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:25  INFO      judge    T13[2] → B | Idea A addresses a more fundamental and challenging problem in RL—structural cau
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:26  INFO      judge    T10[2] → A | Idea A addresses a significantly more challenging and high-impact problem in sys
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:26  INFO      judge    T1[3] → A | Idea A addresses a highly practical, under-explored intersection of hardware con
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:26  INFO      judge    T11[3] → B | Idea B provides a more rigorous, empirically grounded framework with clear falsi
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:27  INFO      judge    T14[3] → B | Idea A addresses a high-impact problem in computational biology with a well-inte
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:27  INFO      judge    T12[3] → tie | Idea A offers a highly novel, systems-oriented approach to interpretability that
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:27  INFO      judge    T10[3] → B | Idea A addresses a fundamental biological question with a well-defined, falsifia
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:28  INFO      judge    T13[3] → B | Idea A provides a highly structured, theoretically grounded approach with a clea
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:28  INFO      judge    T11[4] → tie | Idea A addresses a high-impact, real-world engineering challenge in autonomous s
+2026-04-16 23:04:28  INFO      judge  Judging T15 [gemini] (5 pair(s)): Quantum advantage in machine learning tasks
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:28  INFO      judge    T1[4] → A | Idea A addresses a high-impact, systemic bottleneck in LLM training efficiency b
+2026-04-16 23:04:28  INFO      judge  Judging T2 [gemini] (5 pair(s)): Protein structure prediction beyond AlphaFold
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:29  INFO      judge    T12[4] → B | Idea B addresses a fundamental theoretical bottleneck in mechanistic interpretab
+2026-04-16 23:04:29  INFO      judge  Judging T3 [gemini] (5 pair(s)): Quantum error correction in NISQ devices
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:29  INFO      judge    T14[4] → B | Idea A provides a highly concrete, well-validated framework for a specific, well
+2026-04-16 23:04:29  INFO      judge  Judging T4 [gemini] (5 pair(s)): Causal discovery from observational data
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:29  INFO      judge    T13[4] → B | Idea A addresses a fundamental theoretical bottleneck in RL generalization—causa
+2026-04-16 23:04:29  INFO      judge  Judging T5 [gemini] (5 pair(s)): Energy-efficient neuromorphic computing
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:29  INFO      judge    T10[4] → tie | Idea A offers a highly rigorous, feasible, and well-defined experimental framewo
+2026-04-16 23:04:29  INFO      judge  Judging T6 [gemini] (5 pair(s)): Generative AI for drug discovery and molecular design
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:29  INFO      judge    T2[0] → tie | Both ideas address critical limitations of current state-of-the-art models: Idea
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:29  INFO      judge    T15[0] → B | Idea A provides a highly rigorous, benchmark-focused approach that addresses the
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:30  INFO      judge    T3[0] → B | Idea B is the superior proposal due to its highly specific experimental design, 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:30  INFO      judge    T5[0] → A | Idea A addresses the critical bottleneck of inter-node communication in distribu
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:30  INFO      judge    T4[0] → B | Idea A is highly focused, methodologically rigorous, and addresses a fundamental
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:31  INFO      judge    T15[1] → B | Idea A provides a more rigorous and well-defined experimental framework with cle
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:31  INFO      judge    T2[1] → B | Idea A provides a highly concrete, well-validated workflow that leverages establ
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:31  INFO      judge    T6[0] → B | Idea B addresses a more critical bottleneck in drug discovery—target specificity
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:31  INFO      judge    T4[1] → B | Idea A is highly feasible and addresses a critical bottleneck in biomedical rese
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:32  INFO      judge    T5[1] → B | Idea A is highly feasible and provides a clear, well-defined experimental path w
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:32  INFO      judge    T3[1] → B | Idea B is more grounded in current hardware capabilities and provides a clear, m
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:32  INFO      judge    T2[2] → B | Idea A addresses a high-impact bottleneck in structural biology with a highly fe
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:32  INFO      judge    T15[2] → B | Idea A provides a more rigorous and grounded experimental framework, focusing on
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:33  INFO      judge    T6[1] → B | Idea B offers a highly original approach to drug discovery by integrating underu
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:33  INFO      judge    T4[2] → tie | Idea A offers a rigorous, methodologically sound approach to a fundamental probl
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:33  INFO      judge    T3[2] → B | Idea A provides a concrete, well-defined methodology using established hardware 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:33  INFO      judge    T5[2] → B | Idea B offers a more innovative, biologically grounded approach that addresses a
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:33  INFO      judge    T2[3] → tie | Idea A offers a high-impact, generative approach to protein design that addresse
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:34  INFO      judge    T15[3] → A | Idea A proposes a more innovative architectural shift by integrating noise-aware
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:34  INFO      judge    T6[2] → B | Idea B offers a highly original, socially impactful, and scientifically rigorous
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:34  INFO      judge    T4[3] → A | Idea A addresses a more significant and challenging open problem in causal disco
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:35  INFO      judge    T3[3] → B | Idea A addresses the fundamental bottleneck of real-time quantum control, which 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:35  INFO      judge    T2[4] → A | Idea B addresses the critical 'post-AlphaFold' frontier of conformational dynami
+2026-04-16 23:04:35  INFO      judge  Judging T7 [gemini] (5 pair(s)): Federated learning with heterogeneous and non-IID data
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:35  INFO      judge    T5[3] → tie | Both ideas are strong; Idea A addresses a critical bottleneck in real-time edge 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:35  INFO      judge    T15[4] → A | Idea A addresses a critical systems-level bottleneck in cloud quantum computing,
+2026-04-16 23:04:35  INFO      judge  Judging T8 [gemini] (5 pair(s)): Deep learning emulators for climate model acceleration
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:36  INFO      judge    T6[3] → B | Idea A proposes a highly original, socially impactful, and well-grounded methodo
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:36  INFO      judge    T3[4] → B | Idea A provides a concrete, experimentally grounded proposal using existing hard
+2026-04-16 23:04:36  INFO      judge  Judging T9 [gemini] (5 pair(s)): Uncertainty quantification in deep neural networks
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:36  INFO      judge    T5[4] → B | Idea A offers a more conceptually novel approach by bridging neuro-glial biology
+2026-04-16 23:04:36  INFO      judge    T4[4] → A | Idea A addresses a high-impact, challenging application domain (IoT edge computi
+2026-04-16 23:04:36  INFO      judge    T8[0] → B | Idea A addresses the critical scientific challenge of structural model uncertain
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:36  INFO      judge    T7[0] → B | Idea A is highly actionable and well-defined, providing a clear path to empirica
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:37  INFO      judge    T6[4] → B | Idea A proposes a high-impact, experimentally rigorous approach to a fundamental
+2026-04-16 23:04:37  INFO      judge    T9[0] → A | Idea A addresses a high-impact, practical engineering bottleneck in edge AI with
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:37  INFO      judge    T8[1] → B | Idea A addresses a fundamental challenge in climate science—generalization to un
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:38  INFO      judge    T7[1] → tie | Idea A offers a highly concrete, measurable optimization for Split Federated Lea
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:38  INFO      judge    T9[1] → B | Idea B addresses a higher-stakes, more critical open problem in medical AI with 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:39  INFO      judge    T8[2] → B | Idea B is more grounded in established climate science workflows and offers a hi
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:39  INFO      judge    T7[2] → A | Idea A addresses a more complex, multi-objective optimization problem by couplin
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:40  INFO      judge    T9[2] → A | Idea A offers a more fundamental integration of physical laws into the Bayesian 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:40  INFO      judge    T7[3] → B | Idea A provides a more concrete, technically rigorous approach with clearly defi
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:40  INFO      judge    T8[3] → B | Idea A addresses a fundamental scientific bottleneck in climate modeling—the acc
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:41  INFO      judge    T9[3] → A | Idea A proposes a highly innovative, domain-specific approach that bridges the g
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:42  INFO      judge    T7[4] → A | Idea B addresses the critical, multi-faceted constraints of real-world edge depl
+2026-04-16 23:04:42  INFO      judge    T8[4] → B | Idea A addresses the critical 'stability' bottleneck in climate emulation with a
+2026-04-16 23:04:43  INFO      judge    T9[4] → B | Idea A is exceptionally well-defined with a clear falsifiable hypothesis and a r
+2026-04-16 23:04:43  INFO      judge  Done [gemini] — A:17  B:45  ties:13  B win rate: 68.7%
+[backfill] done S_paper vs S12: N=75 win_rate_b=0.687 -> blind_S_paper_vs_S12__gemini-flash-lite-latest.json
+[backfill] S12 vs S15  |  judge=gemini-flash-lite-latest  |  workers=6
+2026-04-16 23:04:43  INFO      judge  Judging T1 [gemini] (5 pair(s)): Scaling laws for Large Language Models
+2026-04-16 23:04:43  INFO      judge  Judging T10 [gemini] (5 pair(s)): Foundation models for genomics and single-cell biology
+2026-04-16 23:04:43  INFO      judge  Judging T11 [gemini] (5 pair(s)): Emergent communication in multi-agent systems
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:43  INFO      judge  Judging T12 [gemini] (5 pair(s)): Mechanistic interpretability of transformer models
+2026-04-16 23:04:43  INFO      judge  Judging T13 [gemini] (5 pair(s)): Zero-shot generalization in reinforcement learning
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:43  INFO      judge  Judging T14 [gemini] (5 pair(s)): Topological methods for high-dimensional data analysis
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:44  INFO      judge    T11[0] → A | Idea A proposes a highly original mechanism (temporal gating for noise resilienc
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:44  INFO      judge    T13[0] → A | Idea A proposes a more fundamental shift in inductive bias by integrating causal
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:44  INFO      judge    T10[0] → B | Idea B addresses a significantly more challenging and impactful biological probl
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:44  INFO      judge    T12[0] → tie | Both ideas address critical gaps in mechanistic interpretability; Idea A offers 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:44  INFO      judge    T14[0] → A | Idea A addresses a more fundamental challenge in dynamical systems with a rigoro
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:45  INFO      judge    T1[0] → B | Idea A addresses a highly practical and under-researched problem in the current 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:45  INFO      judge    T11[1] → A | Idea A addresses a fundamental, high-impact question regarding the origins of li
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:45  INFO      judge    T10[1] → B | Idea A addresses a more fundamental biological bottleneck—the integration of mul
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:45  INFO      judge    T13[1] → tie | Idea A offers a highly feasible and well-defined approach to representation lear
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:45  INFO      judge    T14[1] → B | Idea A is highly practical and addresses a significant bottleneck in bioinformat
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:46  INFO      judge    T12[1] → A | Idea A addresses a fundamental, high-impact question regarding the linearity of 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:46  INFO      judge    T1[1] → A | Idea A addresses a fundamental, high-impact theoretical question regarding the n
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:47  INFO      judge    T10[2] → B | Idea B addresses a more fundamental biological challenge—deciphering the regulat
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:47  INFO      judge    T11[2] → A | Idea A offers a more compelling theoretical bridge between biological constraint
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:47  INFO      judge    T13[2] → A | Idea A provides a more rigorous theoretical framing by explicitly addressing the
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:47  INFO      judge    T14[2] → B | Idea A proposes a sophisticated integration of temporal dynamics with TDA, addre
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:47  INFO      judge    T1[2] → B | Idea A proposes a highly actionable, methodologically rigorous study that addres
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:48  INFO      judge    T12[2] → B | Idea A provides a highly robust, methodologically sound framework for addressing
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:48  INFO      judge    T10[3] → A | Idea A is slightly stronger due to the inclusion of spatial transcriptomics, whi
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:48  INFO      judge    T11[3] → A | Idea A provides a more rigorous and grounded approach by utilizing validated wir
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:48  INFO      judge    T13[3] → A | Idea B addresses a more fundamental theoretical challenge in RL (disentangling d
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:48  INFO      judge    T14[3] → A | Idea A proposes a more sophisticated integration of TDA by using it as a differe
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:49  INFO      judge    T1[3] → B | Idea A addresses a high-impact question but is practically infeasible for almost
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:49  INFO      judge    T12[3] → A | Idea A addresses the fundamental nature of transformer computation (modularity v
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:49  INFO      judge    T11[4] → B | Idea A is slightly stronger due to its integration of explicit environmental fee
+2026-04-16 23:04:49  INFO      judge  Judging T15 [gemini] (5 pair(s)): Quantum advantage in machine learning tasks
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:49  INFO      judge    T10[4] → A | Idea A is slightly stronger due to its focus on regulatory elements, which is a 
+2026-04-16 23:04:49  INFO      judge  Judging T2 [gemini] (5 pair(s)): Protein structure prediction beyond AlphaFold
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:50  INFO      judge    T13[4] → A | Idea A is more feasible and experimentally grounded, as integrating a counterfac
+2026-04-16 23:04:50  INFO      judge  Judging T3 [gemini] (5 pair(s)): Quantum error correction in NISQ devices
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:50  INFO      judge    T14[4] → A | Idea A provides a more grounded and experimentally robust approach to a well-def
+2026-04-16 23:04:50  INFO      judge  Judging T4 [gemini] (5 pair(s)): Causal discovery from observational data
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:50  INFO      judge    T1[4] → A | Idea A addresses a more fundamental and under-explored challenge in scaling laws
+2026-04-16 23:04:50  INFO      judge  Judging T5 [gemini] (5 pair(s)): Energy-efficient neuromorphic computing
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:50  INFO      judge    T12[4] → A | Idea A addresses the more nuanced and currently debated 'superposition' and 'dis
+2026-04-16 23:04:50  INFO      judge  Judging T6 [gemini] (5 pair(s)): Generative AI for drug discovery and molecular design
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:51  INFO      judge    T3[0] → B | Idea A is more grounded in hardware-level control (pulse-level scheduling), whic
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:51  INFO      judge    T15[0] → B | Idea A is superior because it targets a specific, high-impact clinical problem (
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:51  INFO      judge    T2[0] → A | Idea A proposes a more transformative architectural shift in deep learning for p
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:51  INFO      judge    T5[0] → B | Idea A proposes a concrete material-level innovation that directly addresses the
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:51  INFO      judge    T4[0] → B | Idea A addresses a high-impact, complex problem by bridging causal representatio
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:52  INFO      judge    T6[0] → tie | Both ideas address critical bottlenecks in drug discovery; Idea A offers a highl
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:52  INFO      judge    T15[1] → A | Idea A proposes a more sophisticated architectural innovation (adaptive entangle
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:52  INFO      judge    T2[1] → B | Idea A addresses the broader challenge of functional conformational states in gl
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:52  INFO      judge    T3[1] → B | Idea A proposes a more sophisticated and theoretically grounded approach by util
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:53  INFO      judge    T5[1] → A | Idea B addresses a more systemic architectural challenge (dendritic processing) 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:53  INFO      judge    T4[1] → B | Idea A is superior due to its more rigorous approach to constraint integration, 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:53  INFO      judge    T6[1] → B | Idea A provides a more robust, scalable framework for general drug discovery by 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:54  INFO      judge    T15[2] → B | Idea A proposes a rigorous, hypothesis-driven framework that addresses the funda
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:54  INFO      judge    T3[2] → B | Idea A proposes a concrete, hardware-integrated implementation using FPGA-based 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:54  INFO      judge    T2[2] → B | Idea B addresses a more transformative frontier in structural biology by integra
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:54  INFO      judge    T4[2] → A | Idea A is more robust due to its focus on formal theoretical guarantees and the 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:55  INFO      judge    T5[2] → B | Idea A provides a more rigorous, hardware-centric methodology that directly addr
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:55  INFO      judge    T15[3] → A | Idea A is superior because it focuses on a specific, high-impact mechanism (adap
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:55  INFO      judge    T3[3] → A | Idea A addresses the critical bottleneck of real-time classical control latency,
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:55  INFO      judge    T6[2] → A | Idea A is significantly more ambitious and impactful, as it moves beyond simple 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:56  INFO      judge    T2[3] → B | Idea A is superior due to its focus on 'experimentally defined collective variab
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:56  INFO      judge    T4[3] → tie | Idea A offers a highly practical, well-defined solution to the specific problem 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:57  INFO      judge    T6[3] → tie | Both ideas are high-quality, well-structured proposals that address critical gap
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:57  INFO      judge    T5[3] → A | Idea A proposes a more sophisticated control-theoretic approach to the inherent 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:57  INFO      judge    T15[4] → A | Idea A addresses a more sophisticated and pressing challenge in the field—noise 
+2026-04-16 23:04:57  INFO      judge  Judging T7 [gemini] (5 pair(s)): Federated learning with heterogeneous and non-IID data
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:57  INFO      judge    T2[4] → B | Idea A addresses the fundamental limitation of static structural models in predi
+2026-04-16 23:04:57  INFO      judge  Judging T8 [gemini] (5 pair(s)): Deep learning emulators for climate model acceleration
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:57  INFO      judge    T3[4] → A | Idea A is more feasible and experimentally grounded, focusing on a specific, wel
+2026-04-16 23:04:57  INFO      judge  Judging T9 [gemini] (5 pair(s)): Uncertainty quantification in deep neural networks
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:57  INFO      judge    T4[4] → B | Idea A proposes a sophisticated, theoretically grounded approach to the fundamen
+2026-04-16 23:04:58  INFO      judge    T7[0] → B | Idea A addresses the fundamental challenge of client-drift with a more theoretic
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:58  INFO      judge    T5[4] → tie | Idea A offers a highly innovative, high-risk/high-reward architectural approach 
+2026-04-16 23:04:58  INFO      judge    T6[4] → tie | Idea A offers a more rigorous and controlled experimental design for isolating t
+2026-04-16 23:04:58  INFO      judge    T8[0] → A | Idea A is slightly more robust due to its focus on harmonized multi-model ensemb
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:04:59  INFO      judge    T9[0] → A | Idea B addresses a more pressing and practical challenge (robustness to distribu
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:00  INFO      judge    T7[1] → B | Idea B addresses the more fundamental and challenging problem of client drift in
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:00  INFO      judge    T9[1] → A | Idea A proposes a sophisticated, domain-informed approach to a high-stakes probl
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:00  INFO      judge    T8[1] → B | Idea A provides a more robust experimental design by focusing on extreme event m
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:01  INFO      judge    T7[2] → B | Idea A is highly practical and addresses a fundamental bottleneck in FL with a l
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:02  INFO      judge    T9[2] → A | Idea B is more compelling because it addresses a high-stakes, domain-specific ap
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:02  INFO      judge    T8[2] → B | Idea A proposes a more sophisticated integration of physical constraints and arc
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:03  INFO      judge    T7[3] → A | Idea A provides a more concrete and technically rigorous approach to the communi
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:03  INFO      judge    T9[3] → B | Idea A offers a more novel and scientifically impactful contribution by bridging
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:03  INFO      judge    T8[3] → A | Idea A proposes a more sophisticated architectural innovation by combining spati
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:04  INFO      judge    T7[4] → B | Idea A offers a more elegant, lightweight solution that avoids the significant c
+2026-04-16 23:05:05  INFO      judge    T9[4] → A | Idea A addresses a specific, under-explored challenge in sequential UQ with a we
+2026-04-16 23:05:05  INFO      judge    T8[4] → A | Idea A addresses the critical 'stability' bottleneck in climate emulation with a
+2026-04-16 23:05:05  INFO      judge  Done [gemini] — A:36  B:32  ties:7  B win rate: 47.3%
+[backfill] done S12 vs S15: N=75 win_rate_b=0.473 -> blind_S12_vs_S15__gemini-flash-lite-latest.json
+[backfill] S15 vs S16  |  judge=gemini-flash-lite-latest  |  workers=6
+2026-04-16 23:05:05  INFO      judge  Judging T1 [gemini] (5 pair(s)): Scaling laws for Large Language Models
+2026-04-16 23:05:05  INFO      judge  Judging T10 [gemini] (5 pair(s)): Foundation models for genomics and single-cell biology
+2026-04-16 23:05:05  INFO      judge  Judging T11 [gemini] (5 pair(s)): Emergent communication in multi-agent systems
+2026-04-16 23:05:05  INFO      judge  Judging T12 [gemini] (5 pair(s)): Mechanistic interpretability of transformer models
+2026-04-16 23:05:05  INFO      judge  Judging T13 [gemini] (5 pair(s)): Zero-shot generalization in reinforcement learning
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:05  INFO      judge  Judging T14 [gemini] (5 pair(s)): Topological methods for high-dimensional data analysis
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:06  INFO      judge    T10[0] → tie | Both ideas are high-quality, well-structured proposals. Idea A offers a more nov
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:06  INFO      judge    T1[0] → A | Idea A is highly feasible and addresses a critical, practical problem in LLM dep
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:06  INFO      judge    T13[0] → B | Idea A addresses the fundamental challenge of negative transfer in multi-task RL
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:06  INFO      judge    T11[0] → A | Idea A provides a more rigorous theoretical framework by bridging emergent commu
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:06  INFO      judge    T14[0] → B | Idea A demonstrates higher conceptual novelty by framing the integration as a 'c
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:07  INFO      judge    T12[0] → A | Idea A proposes a more rigorous and actionable methodology by combining circuit 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:07  INFO      judge    T13[1] → B | Idea A provides a more rigorous, mechanism-focused approach to the problem of ze
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:08  INFO      judge    T10[1] → B | Idea A addresses a highly practical and under-served problem in comparative geno
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:08  INFO      judge    T1[1] → B | Idea B addresses a more fundamental, high-impact bottleneck in LLM training (hyp
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:08  INFO      judge    T14[1] → B | Idea A pushes the boundaries of TDA by moving beyond standard persistent homolog
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:08  INFO      judge    T12[1] → B | Idea A addresses a more fundamental question regarding the causal origins of mec
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:09  INFO      judge    T13[2] → A | Idea B is more ambitious and addresses the primary bottleneck of causal RL—the d
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:09  INFO      judge    T10[2] → B | Idea A provides a more robust causal framework for evaluating the impact of data
+2026-04-16 23:05:09  INFO      judge    T14[2] → B | Idea A is highly feasible and provides a clear, rigorous experimental framework 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:09  INFO      judge    T11[1] → B | Idea A offers a more sophisticated theoretical framework by investigating the ca
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:09  INFO      judge    T1[2] → A | Idea A addresses a highly practical and under-explored aspect of scaling laws wi
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:10  INFO      judge    T12[2] → B | Idea A addresses a fundamental, high-impact bottleneck in mechanistic interpreta
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:11  INFO      judge    T11[2] → B | Idea A is superior because it focuses on the causal mechanism of 'complementary 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:11  INFO      judge    T10[3] → B | Idea A addresses the fundamental challenge of causal inference in genomics with 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:11  INFO      judge    T13[3] → B | Idea A addresses the fundamental challenge of spurious correlations in RL throug
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:11  INFO      judge    T1[3] → B | Idea B addresses a more pressing and computationally expensive bottleneck in cur
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:11  INFO      judge    T14[3] → B | Idea A proposes a more sophisticated theoretical framework ('representational co
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:12  INFO      judge    T12[3] → B | Idea A proposes a more sophisticated, generalized framework for mechanistic inte
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:12  INFO      judge    T11[3] → B | Idea A offers a more rigorous, mechanism-driven approach by applying Bayesian fu
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:12  INFO      judge    T1[4] → B | Idea B addresses a more fundamental and theoretically rich question regarding th
+2026-04-16 23:05:12  INFO      judge  Judging T15 [gemini] (5 pair(s)): Quantum advantage in machine learning tasks
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:12  INFO      judge    T10[4] → B | Idea A introduces a more sophisticated architectural innovation by incorporating
+2026-04-16 23:05:12  INFO      judge  Judging T2 [gemini] (5 pair(s)): Protein structure prediction beyond AlphaFold
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:13  INFO      judge    T14[4] → B | Idea A provides a more robust theoretical framework by focusing on the 'Paramete
+2026-04-16 23:05:13  INFO      judge  Judging T3 [gemini] (5 pair(s)): Quantum error correction in NISQ devices
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:13  INFO      judge    T13[4] → tie | Idea A offers a more ambitious and novel theoretical contribution by integrating
+2026-04-16 23:05:13  INFO      judge  Judging T4 [gemini] (5 pair(s)): Causal discovery from observational data
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:13  INFO      judge    T12[4] → A | Idea A is slightly more feasible and methodologically grounded, as the modularit
+2026-04-16 23:05:13  INFO      judge  Judging T5 [gemini] (5 pair(s)): Energy-efficient neuromorphic computing
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:14  INFO      judge    T11[4] → A | Idea A bridges communication theory and MARL with a highly rigorous, grounded ap
+2026-04-16 23:05:14  INFO      judge  Judging T6 [gemini] (5 pair(s)): Generative AI for drug discovery and molecular design
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:14  INFO      judge    T3[0] → A | Idea A is more feasible and experimentally grounded, leveraging existing pulse-l
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:14  INFO      judge    T4[0] → tie | Both ideas are strong, with Idea A offering a more flexible, representation-lear
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:14  INFO      judge    T15[0] → B | Idea A proposes a fundamental, mechanism-driven approach to quantum regularizati
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:15  INFO      judge    T5[0] → B | Idea B addresses the fundamental challenge of temporal sparsity in SNNs through 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:15  INFO      judge    T2[0] → B | Idea A is slightly more robust due to its focus on well-defined globular protein
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:15  INFO      judge    T6[0] → B | Idea A introduces a highly original conceptual framework by leveraging ethnobota
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:16  INFO      judge    T3[1] → B | Idea A provides a more robust experimental design by including a randomized cont
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:16  INFO      judge    T4[1] → A | Idea A wins by a narrow margin due to its highly practical approach of integrati
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:16  INFO      judge    T15[1] → A | Idea A is highly feasible and addresses a practical, well-defined benchmark prob
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:16  INFO      judge    T6[1] → A | Idea A addresses the fundamental bottleneck of biological relevance in drug disc
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:17  INFO      judge    T2[1] → A | Idea A is more feasible and methodologically grounded, as it leverages existing,
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:17  INFO      judge    T4[2] → B | Idea A is highly practical and addresses a critical bottleneck in real-world cau
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:17  INFO      judge    T5[1] → B | Idea B is superior due to its rigorous experimental design, which includes neces
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:17  INFO      judge    T15[2] → B | Idea A provides a more direct, causal investigation into the role of entanglemen
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:18  INFO      judge    T3[2] → A | Idea A proposes a highly specific, actionable integration of real-time ML with F
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:18  INFO      judge    T6[2] → B | Idea A is the winner due to its superior scientific usefulness; it addresses the
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:18  INFO      judge    T4[3] → B | Idea A is highly practical and addresses the critical 'knowledge-gap' in causal 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:19  INFO      judge    T2[2] → A | Idea A proposes a highly impactful integration of experimental data into the Alp
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:19  INFO      judge    T3[3] → B | Idea B is more scientifically ambitious, targeting a 10x improvement in error ra
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:19  INFO      judge    T5[2] → tie | Idea A offers a more fundamental materials-science innovation with a clever abla
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:19  INFO      judge    T15[3] → tie | Idea A proposes a high-risk, high-reward theoretical framework that addresses th
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:19  INFO      judge    T6[3] → tie | Idea A addresses the critical 'biological context' gap in drug discovery with hi
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:20  INFO      judge    T4[4] → B | Idea A offers a highly practical and robust approach to integrating domain knowl
+2026-04-16 23:05:20  INFO      judge  Judging T7 [gemini] (5 pair(s)): Federated learning with heterogeneous and non-IID data
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:20  INFO      judge    T3[4] → A | Idea B addresses the critical, high-impact problem of heterogeneous error types 
+2026-04-16 23:05:20  INFO      judge  Judging T8 [gemini] (5 pair(s)): Deep learning emulators for climate model acceleration
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:20  INFO      judge    T2[3] → tie | Both ideas address critical limitations of AlphaFold2 with high scientific rigor
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:20  INFO      judge    T15[4] → B | Idea B addresses the fundamental theoretical bottleneck of QML by linking advant
+2026-04-16 23:05:20  INFO      judge  Judging T9 [gemini] (5 pair(s)): Uncertainty quantification in deep neural networks
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:21  INFO      judge    T5[3] → tie | Both ideas are high-quality, with Idea A providing a more robust hardware-level 
+2026-04-16 23:05:21  INFO      judge    T6[4] → B | Idea A addresses the critical, often-ignored bottleneck of protein conformationa
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:21  INFO      judge    T7[0] → B | Idea A proposes a more sophisticated, multi-faceted scheduling framework that ad
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:22  INFO      judge    T8[0] → A | Idea A addresses a more fundamental challenge in climate modeling—cross-model ge
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:22  INFO      judge    T9[0] → B | Idea B addresses the more critical and challenging problem of OOD detection with
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:22  INFO      judge    T2[4] → B | Idea A is more compelling because it targets a specific, well-defined biological
+2026-04-16 23:05:23  INFO      judge    T5[4] → B | Idea A proposes a more fundamental investigation into material physics using rig
+2026-04-16 23:05:23  INFO      judge    T8[1] → B | Idea A addresses the fundamental challenge of long-term stability in climate emu
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:23  INFO      judge    T7[1] → B | Idea A offers a more rigorous mechanistic approach by isolating the causal role 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:24  INFO      judge    T9[1] → B | Idea A proposes a sophisticated, novel mechanism that bridges representation lea
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:25  INFO      judge    T8[2] → A | Idea A offers a more nuanced approach by addressing the specific challenge of te
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:25  INFO      judge    T9[2] → A | Idea A offers a more robust and practically applicable framework for uncertainty
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:25  INFO      judge    T7[2] → B | Idea A proposes a more sophisticated, theoretically grounded mechanism for addre
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:26  INFO      judge    T7[3] → A | Idea A offers a more sophisticated approach to the fundamental problem of client
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:26  INFO      judge    T8[3] → tie | Both ideas address critical bottlenecks in climate emulation: Idea A tackles the
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:27  INFO      judge    T9[3] → A | Idea A offers a more compelling application-driven approach by bridging the gap 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:28  INFO      judge    T8[4] → B | Idea A is superior due to its rigorous focus on causal inference and mechanism a
+2026-04-16 23:05:28  INFO      judge    T7[4] → A | Idea A offers a highly practical, lightweight solution that is easier to impleme
+2026-04-16 23:05:28  INFO      judge    T9[4] → B | Idea B addresses a more specific and high-impact clinical need (spatial interpre
+2026-04-16 23:05:28  INFO      judge  Done [gemini] — A:21  B:45  ties:9  B win rate: 66.0%
+[backfill] done S15 vs S16: N=75 win_rate_b=0.660 -> blind_S15_vs_S16__gemini-flash-lite-latest.json
+[backfill] S15 vs S17  |  judge=gemini-flash-lite-latest  |  workers=6
+2026-04-16 23:05:28  INFO      judge  Judging T1 [gemini] (5 pair(s)): Scaling laws for Large Language Models
+2026-04-16 23:05:28  INFO      judge  Judging T10 [gemini] (5 pair(s)): Foundation models for genomics and single-cell biology
+2026-04-16 23:05:28  INFO      judge  Judging T11 [gemini] (5 pair(s)): Emergent communication in multi-agent systems
+2026-04-16 23:05:28  INFO      judge  Judging T12 [gemini] (5 pair(s)): Mechanistic interpretability of transformer models
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:28  INFO      judge  Judging T13 [gemini] (5 pair(s)): Zero-shot generalization in reinforcement learning
+2026-04-16 23:05:28  INFO      judge  Judging T14 [gemini] (5 pair(s)): Topological methods for high-dimensional data analysis
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:30  INFO      judge    T1[0] → A | Idea B addresses a fundamental theoretical gap in LLM scaling laws with a rigoro
+2026-04-16 23:05:30  INFO      judge    T10[0] → A | Idea A proposes a sophisticated, high-impact architectural advancement in GRN in
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:30  INFO      judge    T14[0] → A | Idea B proposes a novel methodological synthesis that addresses a significant li
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:30  INFO      judge    T11[0] → A | Idea B addresses a significant, under-explored intersection of information theor
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:30  INFO      judge    T13[0] → A | Idea A proposes a constructive algorithmic advancement that addresses a fundamen
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:30  INFO      judge    T12[0] → B | Idea A addresses a fundamental theoretical bottleneck in transformer generalizat
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:31  INFO      judge    T13[1] → A | Idea B proposes a novel architectural approach to a fundamental bottleneck in RL
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:32  INFO      judge    T12[1] → A | Idea A addresses a more fundamental question in multilingual representation lear
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:32  INFO      judge    T10[1] → B | Idea A addresses a critical, under-explored issue of algorithmic bias in genomic
+2026-04-16 23:05:32  INFO      judge    T14[1] → A | Idea A proposes a sophisticated, high-impact integration of topological data ana
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:32  INFO      judge    T1[1] → A | Idea B addresses a significantly more relevant and complex problem in the curren
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:32  INFO      judge    T11[1] → A | Idea B addresses a more significant and open research question regarding sensory
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:33  INFO      judge    T13[2] → A | Idea B addresses a more fundamental bottleneck in RL generalization (causal stru
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:33  INFO      judge    T12[2] → A | Idea A addresses a fundamental question regarding the universality of internal r
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:33  INFO      judge    T10[2] → A | Idea B addresses a significantly more complex and impactful challenge in regulat
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:33  INFO      judge    T14[2] → A | Idea A proposes a sophisticated, high-impact methodological advancement that add
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:33  INFO      judge    T1[2] → A | Idea B addresses a fundamental, high-impact gap in scaling law research with a r
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:33  INFO      judge    T11[2] → A | Idea B addresses a significant, under-explored research question regarding senso
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:34  INFO      judge    T12[3] → B | Idea B addresses a more critical and well-defined problem in current AI research
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:35  INFO      judge    T10[3] → A | Idea A proposes a sophisticated architectural advancement in multi-modal integra
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:35  INFO      judge    T13[3] → A | Idea B proposes a novel architectural investigation into multi-modal perception 
+2026-04-16 23:05:35  INFO      judge    T14[3] → A | Idea A proposes a more sophisticated theoretical integration of persistent homol
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:35  INFO      judge    T1[3] → A | Idea A addresses a fundamental, systemic question regarding the interaction betw
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:35  INFO      judge    T11[3] → tie | Idea A is a highly feasible, well-scoped study that provides a clear, incrementa
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:36  INFO      judge    T12[4] → A | Idea A provides a more robust, systematic framework for addressing a fundamental
+2026-04-16 23:05:36  INFO      judge  Judging T15 [gemini] (5 pair(s)): Quantum advantage in machine learning tasks
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:36  INFO      judge    T10[4] → A | Idea B addresses a high-impact, complex challenge in systems biology with a soph
+2026-04-16 23:05:36  INFO      judge  Judging T2 [gemini] (5 pair(s)): Protein structure prediction beyond AlphaFold
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:36  INFO      judge    T14[4] → A | Idea A proposes a sophisticated methodological advancement that addresses a sign
+2026-04-16 23:05:36  INFO      judge    T1[4] → A | Idea A proposes a specific, testable hypothesis regarding non-linear regime shif
+2026-04-16 23:05:36  INFO      judge  Judging T3 [gemini] (5 pair(s)): Quantum error correction in NISQ devices
+2026-04-16 23:05:36  INFO      judge  Judging T4 [gemini] (5 pair(s)): Causal discovery from observational data
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:36  INFO      judge    T13[4] → A | Idea A proposes a sophisticated, high-impact architectural advancement that addr
+2026-04-16 23:05:36  INFO      judge  Judging T5 [gemini] (5 pair(s)): Energy-efficient neuromorphic computing
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:37  INFO      judge    T11[4] → A | Idea A proposes a sophisticated, cross-disciplinary integration of communication
+2026-04-16 23:05:37  INFO      judge  Judging T6 [gemini] (5 pair(s)): Generative AI for drug discovery and molecular design
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:37  INFO      judge    T2[0] → tie | Idea A is highly practical and addresses a major bottleneck in protein engineeri
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:37  INFO      judge    T3[0] → A | Idea A proposes an active, hardware-aware optimization strategy that directly ad
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:37  INFO      judge    T15[0] → A | Idea B addresses a high-impact, specific niche (class imbalance in medical imagi
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:38  INFO      judge    T5[0] → A | Idea A proposes a novel hardware-level architectural innovation that directly ad
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:38  INFO      judge    T4[0] → A | Idea B addresses a significant frontier in causal discovery by integrating repre
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:38  INFO      judge    T6[0] → A | Idea A addresses a high-impact, complex problem in drug discovery (metabolic saf
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:39  INFO      judge    T3[1] → A | Idea A proposes a sophisticated, active control strategy that addresses a critic
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:39  INFO      judge    T15[1] → A | Idea B offers a more sophisticated research question by investigating inductive 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:39  INFO      judge    T4[1] → A | Idea A addresses a significant, high-impact challenge in causal discovery by for
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:39  INFO      judge    T2[1] → B | Idea A is highly pragmatic and addresses a specific, high-impact bottleneck in p
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:39  INFO      judge    T5[1] → tie | Idea A provides a highly rigorous, feasible simulation study that addresses a fu
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:40  INFO      judge    T6[1] → A | Idea A proposes a high-impact, ambitious architectural advancement that addresse
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:40  INFO      judge    T4[2] → A | Idea B proposes a novel methodological contribution to the field of causal repre
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:40  INFO      judge    T3[2] → A | Idea A proposes a high-impact, cutting-edge integration of machine learning into
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:40  INFO      judge    T5[2] → A | Idea B is significantly more impactful as it addresses the critical 'system-leve
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:40  INFO      judge    T15[2] → A | Idea B addresses a fundamental theoretical question regarding the source of quan
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:40  INFO      judge    T2[2] → A | Idea A proposes a significant architectural advancement in structural biology by
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:41  INFO      judge    T6[2] → A | Idea A proposes a novel, high-impact approach to expanding chemical space by int
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:41  INFO      judge    T15[3] → A | Idea A proposes a rigorous, state-of-the-art framework that addresses the critic
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:41  INFO      judge    T4[3] → A | Idea B proposes a novel methodological advancement that addresses the critical b
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:42  INFO      judge    T3[3] → B | Idea B provides a highly rigorous, comparative analysis that addresses a fundame
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:42  INFO      judge    T2[3] → A | Idea A addresses the fundamental biological limitation of AlphaFold (static vs. 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:42  INFO      judge    T5[3] → A | Idea B addresses a more significant, high-impact problem in the field by proposi
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:42  INFO      judge    T6[3] → A | Idea B addresses a high-impact, frontier challenge in drug discovery by incorpor
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:43  INFO      judge    T4[4] → A | Idea A proposes a sophisticated, novel methodological framework that addresses a
+2026-04-16 23:05:43  INFO      judge  Judging T7 [gemini] (5 pair(s)): Federated learning with heterogeneous and non-IID data
+2026-04-16 23:05:43  INFO      judge    T15[4] → A | Idea B addresses the more significant and relevant research question of generali
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:43  INFO      judge  Judging T8 [gemini] (5 pair(s)): Deep learning emulators for climate model acceleration
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:43  INFO      judge    T2[4] → B | Idea A is more focused and feasible, targeting a specific, well-defined benchmar
+2026-04-16 23:05:43  INFO      judge  Judging T9 [gemini] (5 pair(s)): Uncertainty quantification in deep neural networks
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:43  INFO      judge    T3[4] → A | Idea B addresses a high-impact, cutting-edge challenge in QEC by proposing a dyn
+2026-04-16 23:05:43  INFO      judge    T5[4] → A | Idea B addresses a fundamental hardware bottleneck in neuromorphic computing wit
+2026-04-16 23:05:43  INFO      judge    T6[4] → A | Idea A proposes a sophisticated, high-impact methodological advancement that add
+2026-04-16 23:05:44  INFO      judge    T8[0] → A | Idea B addresses the more critical and challenging problem of cross-model genera
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:44  INFO      judge    T7[0] → A | Idea A proposes a concrete, architectural solution to a well-defined problem, of
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:44  INFO      judge    T9[0] → A | Idea A is essentially a replication study of well-known phenomena in OOD detecti
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:45  INFO      judge    T8[1] → A | Idea B addresses a more significant bottleneck in the field—the lack of robustne
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:45  INFO      judge    T9[1] → A | Idea A proposes a novel architectural approach to uncertainty propagation that a
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:46  INFO      judge    T7[1] → A | Idea A proposes a sophisticated, novel algorithmic contribution that addresses a
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:46  INFO      judge    T8[2] → A | Idea B addresses a more complex and high-impact challenge in climate science (te
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:47  INFO      judge    T9[2] → A | Idea B proposes a novel architectural integration that addresses a significant l
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:47  INFO      judge    T7[2] → A | Idea A proposes a practical, high-impact architectural modification that address
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:48  INFO      judge    T8[3] → A | Idea B addresses the more significant challenge of model structural uncertainty 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:48  INFO      judge    T9[3] → A | Idea B addresses a significant, high-impact research gap by proposing a novel me
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:49  INFO      judge    T7[3] → B | Idea A is highly feasible and addresses a critical bottleneck in federated learn
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:49  INFO      judge    T9[4] → A | Idea A proposes a sophisticated, novel architectural improvement to Bayesian neu
+2026-04-16 23:05:50  INFO      judge    T8[4] → A | Idea B addresses a high-impact, frontier challenge in climate science—generaliza
+2026-04-16 23:05:50  INFO      judge    T7[4] → A | Idea A proposes a sophisticated, theoretically grounded mechanism for aggregatio
+2026-04-16 23:05:50  INFO      judge  Done [gemini] — A:65  B:7  ties:3  B win rate: 11.3%
+[backfill] done S15 vs S17: N=75 win_rate_b=0.113 -> blind_S15_vs_S17__gemini-flash-lite-latest.json
+[backfill] S15 vs S19  |  judge=gemini-flash-lite-latest  |  workers=6
+2026-04-16 23:05:50  INFO      judge  Judging T1 [gemini] (5 pair(s)): Scaling laws for Large Language Models
+2026-04-16 23:05:50  INFO      judge  Judging T10 [gemini] (5 pair(s)): Foundation models for genomics and single-cell biology
+2026-04-16 23:05:50  INFO      judge  Judging T11 [gemini] (5 pair(s)): Emergent communication in multi-agent systems
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:50  INFO      judge  Judging T12 [gemini] (5 pair(s)): Mechanistic interpretability of transformer models
+2026-04-16 23:05:50  INFO      judge  Judging T13 [gemini] (5 pair(s)): Zero-shot generalization in reinforcement learning
+2026-04-16 23:05:50  INFO      judge  Judging T14 [gemini] (5 pair(s)): Topological methods for high-dimensional data analysis
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:52  INFO      judge    T10[0] → A | Idea A is superior because it uses high-quality, functional CRISPR perturbation 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:52  INFO      judge    T12[0] → A | Idea A offers a more robust approach to validating mechanistic interpretability 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:52  INFO      judge    T1[0] → A | Idea A provides a highly actionable, methodologically rigorous approach to a com
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:52  INFO      judge    T13[0] → B | Idea A proposes a sophisticated, high-impact integration of causal discovery int
+2026-04-16 23:05:52  INFO      judge    T14[0] → B | Idea B addresses a critical, under-explored bottleneck in TDA (robustness to dis
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:52  INFO      judge    T11[0] → A | Idea A provides a more rigorous, theoretically grounded approach by utilizing in
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:53  INFO      judge    T12[1] → A | Idea B provides a well-defined, falsifiable hypothesis with a rigorous experimen
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:54  INFO      judge    T14[1] → A | Idea A provides a more focused and biologically grounded approach, specifically 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:54  INFO      judge    T10[1] → A | Idea A provides a comprehensive, well-defined research plan that addresses speci
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:54  INFO      judge    T13[1] → B | Idea A proposes a more sophisticated and technically grounded approach by integr
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:54  INFO      judge    T11[1] → B | Idea A provides a superior experimental design with clearly defined quantitative
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:54  INFO      judge    T1[1] → B | Idea A addresses a fundamental, high-impact question regarding the mechanics of 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:55  INFO      judge    T12[2] → A | Idea B provides a highly structured, rigorous, and actionable research program t
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:55  INFO      judge    T13[2] → A | Idea A presents a well-structured, technically rigorous research proposal that a
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:55  INFO      judge    T1[2] → A | Idea A provides a rigorous, well-defined experimental framework that addresses a
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:55  INFO      judge    T14[2] → A | Idea B provides a comprehensive, well-defined research program that bridges topo
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:56  INFO      judge    T10[2] → A | Idea A provides a concrete, well-structured research program with clear methodol
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:56  INFO      judge    T12[3] → A | Idea A proposes a concrete, high-impact research program with a well-defined met
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:56  INFO      judge    T11[2] → A | Idea A provides a well-structured, rigorous, and highly feasible research propos
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:56  INFO      judge    T1[3] → A | Idea B provides a highly structured, actionable, and rigorous experimental frame
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:57  INFO      judge    T14[3] → A | Idea B provides a concrete, well-defined methodology that bridges two distinct m
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:57  INFO      judge    T10[3] → A | Idea A provides a well-defined, technically rigorous framework for a high-impact
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:57  INFO      judge    T12[4] → A | Idea A provides a concrete, rigorous, and actionable research program that addre
+2026-04-16 23:05:57  INFO      judge  Judging T15 [gemini] (5 pair(s)): Quantum advantage in machine learning tasks
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:57  INFO      judge    T13[3] → A | Idea A is a broad, well-known observation that lacks a specific research hypothe
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:58  INFO      judge    T11[3] → A | Idea A provides a well-structured, technically rigorous proposal with a clear me
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:58  INFO      judge    T14[4] → A | Idea A provides a well-defined, biologically motivated framework with a clear ex
+2026-04-16 23:05:58  INFO      judge  Judging T2 [gemini] (5 pair(s)): Protein structure prediction beyond AlphaFold
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:58  INFO      judge    T1[4] → A | Idea A provides a highly specific, testable hypothesis with a rigorous experimen
+2026-04-16 23:05:58  INFO      judge  Judging T3 [gemini] (5 pair(s)): Quantum error correction in NISQ devices
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:58  INFO      judge    T10[4] → A | Idea B provides a comprehensive, well-structured research proposal with clear be
+2026-04-16 23:05:58  INFO      judge  Judging T4 [gemini] (5 pair(s)): Causal discovery from observational data
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:58  INFO      judge    T15[0] → B | Idea A addresses a fundamental, under-explored bottleneck in QML (robustness to 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:59  INFO      judge    T13[4] → A | Idea B provides a concrete, theoretically grounded framework that addresses a ma
+2026-04-16 23:05:59  INFO      judge  Judging T5 [gemini] (5 pair(s)): Energy-efficient neuromorphic computing
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:59  INFO      judge    T2[0] → A | Idea A is more compelling because it targets a specific, well-defined challenge 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:05:59  INFO      judge    T11[4] → A | Idea A provides a comprehensive, well-structured research proposal that bridges 
+2026-04-16 23:05:59  INFO      judge  Judging T6 [gemini] (5 pair(s)): Generative AI for drug discovery and molecular design
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:00  INFO      judge    T3[0] → B | Idea A provides a more robust, generalized framework for hardware-aware QEC that
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:00  INFO      judge    T15[1] → B | Idea A is slightly more robust due to its focus on equivariant architectures, wh
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:00  INFO      judge    T4[0] → A | Idea A proposes a more sophisticated and theoretically grounded approach by leve
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:01  INFO      judge    T5[0] → A | Idea A proposes a more sophisticated architectural integration that directly add
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:01  INFO      judge    T2[1] → A | Idea B provides a comprehensive, well-defined methodology that bridges the gap b
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:01  INFO      judge    T6[0] → A | Idea A proposes a sophisticated, well-defined architectural improvement to curre
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:01  INFO      judge    T15[2] → A | Idea B provides a highly rigorous, actionable, and well-defined experimental fra
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:01  INFO      judge    T3[1] → A | Idea A proposes a more ambitious and impactful approach by integrating real-time
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:01  INFO      judge    T4[1] → A | Idea B provides a highly structured, rigorous, and actionable research plan that
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:02  INFO      judge    T5[1] → A | Idea A proposes a more innovative material approach (HfZrO2) that is CMOS-compat
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:02  INFO      judge    T2[2] → A | Idea B provides a concrete, high-impact architectural modification to a state-of
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:02  INFO      judge    T3[2] → A | Idea A provides a concrete, technically rigorous, and actionable research progra
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:03  INFO      judge    T6[1] → A | Idea A provides a comprehensive, well-structured research proposal with a clear 
+2026-04-16 23:06:03  INFO      judge    T4[2] → A | Idea A presents a well-defined, technically sophisticated framework that address
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:03  INFO      judge    T15[3] → A | Idea A provides a rigorous, well-defined experimental framework that addresses t
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:04  INFO      judge    T3[3] → A | Idea A provides a well-defined, actionable experimental framework that addresses
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:04  INFO      judge    T5[2] → A | Idea A provides a rigorous, well-defined experimental framework that bridges the
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:04  INFO      judge    T6[2] → A | Idea A provides a highly structured, rigorous, and actionable research framework
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:04  INFO      judge    T2[3] → A | Idea A provides a concrete, well-structured research program that addresses the 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:04  INFO      judge    T15[4] → A | Idea B provides a comprehensive, well-structured research proposal with a clear 
+2026-04-16 23:06:04  INFO      judge  Judging T7 [gemini] (5 pair(s)): Federated learning with heterogeneous and non-IID data
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:04  INFO      judge    T4[3] → A | Idea A provides a well-structured, technically grounded proposal that addresses 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:05  INFO      judge    T3[4] → A | Idea A provides a highly detailed, actionable, and rigorous experimental framewo
+2026-04-16 23:06:05  INFO      judge  Judging T8 [gemini] (5 pair(s)): Deep learning emulators for climate model acceleration
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:05  INFO      judge    T5[3] → A | Idea B provides a concrete, well-defined research program that bridges device ph
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:05  INFO      judge    T7[0] → A | Idea B is more robustly defined, particularly regarding the experimental design 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:05  INFO      judge    T4[4] → A | Idea A provides a rigorous, well-defined research program that bridges represent
+2026-04-16 23:06:05  INFO      judge  Judging T9 [gemini] (5 pair(s)): Uncertainty quantification in deep neural networks
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:05  INFO      judge    T6[3] → A | Idea A provides a well-defined, hypothesis-driven framework with a clear experim
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:05  INFO      judge    T2[4] → A | Idea A provides a well-defined, rigorous, and actionable framework that addresse
+2026-04-16 23:06:06  INFO      judge    T5[4] → A | Idea A presents a well-defined, technically grounded research program with clear
+2026-04-16 23:06:06  INFO      judge    T8[0] → A | Idea B is slightly more compelling because it targets the high-impact problem of
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:07  INFO      judge    T6[4] → A | Idea A presents a well-defined, actionable, and technically sophisticated framew
+2026-04-16 23:06:07  INFO      judge    T9[0] → B | Idea A proposes a more fundamental architectural improvement to uncertainty quan
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:07  INFO      judge    T7[1] → B | Idea A provides a more concrete and technically grounded methodology, specifical
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:08  INFO      judge    T8[1] → A | Idea A is superior due to its sharper focus on extreme climate regimes and rigor
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:08  INFO      judge    T9[1] → B | Idea B is a highly pragmatic and well-defined empirical study that addresses a c
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:08  INFO      judge    T7[2] → A | Idea A is merely a problem statement lacking a concrete methodology or research 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:09  INFO      judge    T8[2] → A | Idea B provides a comprehensive, well-structured research proposal that addresse
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:09  INFO      judge    T7[3] → A | Idea A is a broad, well-known observation rather than a research proposal, lacki
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:09  INFO      judge    T9[2] → A | Idea B provides a concrete, well-defined methodology with clear experimental ben
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:10  INFO      judge    T8[3] → A | Idea B provides a comprehensive, well-structured research proposal that addresse
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:10  INFO      judge    T9[3] → A | Idea B provides a concrete, well-defined research program that addresses a signi
+2026-04-16 23:06:10  INFO      judge    T7[4] → A | Idea A provides a well-defined, actionable, and testable methodology that addres
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-16 23:06:11  INFO      judge    T8[4] → A | Idea B provides a comprehensive, well-structured research proposal that addresse
+2026-04-16 23:06:12  INFO      judge    T9[4] → A | Idea B provides a concrete, well-defined methodology that addresses a specific l
+2026-04-16 23:06:12  INFO      judge  Done [gemini] — A:64  B:11  ties:0  B win rate: 14.7%
+[backfill] done S15 vs S19: N=75 win_rate_b=0.147 -> blind_S15_vs_S19__gemini-flash-lite-latest.json
+[backfill] S_paper vs S12  |  judge=deepseek-chat  |  workers=6
+2026-04-17 12:36:03  INFO      judge  Judging T1 [deepseek] (5 pair(s)): Scaling laws for Large Language Models
+2026-04-17 12:36:03  INFO      judge  Judging T10 [deepseek] (5 pair(s)): Foundation models for genomics and single-cell biology
+2026-04-17 12:36:03  INFO      judge  Judging T11 [deepseek] (5 pair(s)): Emergent communication in multi-agent systems
+2026-04-17 12:36:03  INFO      judge  Judging T12 [deepseek] (5 pair(s)): Mechanistic interpretability of transformer models
+2026-04-17 12:36:03  INFO      judge  Judging T13 [deepseek] (5 pair(s)): Zero-shot generalization in reinforcement learning
+2026-04-17 12:36:03  INFO      judge  Judging T14 [deepseek] (5 pair(s)): Topological methods for high-dimensional data analysis
+[backfill] S15 vs S_paper  |  judge=deepseek-chat  |  workers=6
+2026-04-17 12:36:04  INFO      judge  Judging T1 [deepseek] (2 pair(s)): Scaling laws for Large Language Models
+2026-04-17 12:36:04  INFO      judge  Judging T10 [deepseek] (2 pair(s)): Foundation models for genomics and single-cell biology
+2026-04-17 12:36:04  INFO      judge  Judging T11 [deepseek] (2 pair(s)): Emergent communication in multi-agent systems
+2026-04-17 12:36:04  INFO      judge  Judging T12 [deepseek] (2 pair(s)): Mechanistic interpretability of transformer models
+2026-04-17 12:36:04  INFO      judge  Judging T13 [deepseek] (2 pair(s)): Zero-shot generalization in reinforcement learning
+2026-04-17 12:36:04  INFO      judge  Judging T14 [deepseek] (2 pair(s)): Topological methods for high-dimensional data analysis
+2026-04-17 12:36:12  INFO      judge    T12[0] → B | Idea B scores higher on feasibility and experimental clarity, offering a rigorou
+2026-04-17 12:36:12  INFO      judge    T11[0] → A | Idea A addresses a more significant and real-world open problem with a comprehen
+2026-04-17 12:36:12  INFO      judge    T1[0] → B | Idea A excels in experimental clarity and feasibility, offering a clean, control
+2026-04-17 12:36:12  INFO      judge    T14[0] → B | Idea A scores higher overall due to exceptional clarity and usefulness, offering
+2026-04-17 12:36:12  INFO      judge    T13[0] → B | Idea B scores higher overall due to superior experimental clarity and a more foc
+2026-04-17 12:36:12  INFO      judge    T14[0] → A | Idea A is highly novel and addresses a critical real-time challenge, but its fea
+2026-04-17 12:36:13  INFO      judge    T10[0] → A | Idea B addresses a more profound and impactful open problem (domain generalizati
+2026-04-17 12:36:13  INFO      judge    T10[0] → A | Idea B edges out Idea A due to superior experimental clarity and a more rigorous
+2026-04-17 12:36:13  INFO      judge    T11[0] → A | Idea A is highly novel and impactful but faces significant feasibility challenge
+2026-04-17 12:36:13  INFO      judge    T1[0] → B | Idea A addresses a critical and underexplored frontier in scaling laws—hardware-
+2026-04-17 12:36:13  INFO      judge    T13[0] → A | Idea A is highly novel and addresses a profound open problem, but its experiment
+2026-04-17 12:36:14  INFO      judge    T12[0] → tie | Idea A is exceptionally novel and useful by introducing a dynamic, temporal dime
+2026-04-17 12:36:19  INFO      judge    T12[1] → B | Idea B scores higher on experimental clarity and feasibility, making it a more c
+2026-04-17 12:36:20  INFO      judge    T1[1] → B | Idea A scores higher overall due to superior experimental clarity and scientific
+2026-04-17 12:36:20  INFO      judge    T11[1] → B | Idea A scores higher on novelty and scientific usefulness by tackling a foundati
+2026-04-17 12:36:20  INFO      judge    T14[1] → A | Idea B addresses a more fundamental and pressing computational bottleneck for re
+2026-04-17 12:36:21  INFO      judge    T13[1] → B | Idea B scores higher overall, primarily due to its stronger scientific usefulnes
+2026-04-17 12:36:21  INFO      judge    T11[1] → A | Idea A is highly novel and ambitious but its experimental clarity and feasibilit
+2026-04-17 12:36:21  INFO      judge  Judging T15 [deepseek] (2 pair(s)): Quantum advantage in machine learning tasks
+2026-04-17 12:36:21  INFO      judge    T14[1] → B | Idea A is more transformative by using topology as an active, trainable constrai
+2026-04-17 12:36:21  INFO      judge  Judging T2 [deepseek] (2 pair(s)): Protein structure prediction beyond AlphaFold
+2026-04-17 12:36:21  INFO      judge    T10[1] → B | Idea A is exceptionally clear, feasible, and directly addresses a major practica
+2026-04-17 12:36:21  INFO      judge    T10[1] → B | Idea A is exceptionally ambitious and useful, aiming for a causal model which is
+2026-04-17 12:36:21  INFO      judge  Judging T3 [deepseek] (2 pair(s)): Quantum error correction in NISQ devices
+2026-04-17 12:36:22  INFO      judge    T12[1] → A | Idea A is exceptionally clear, feasible, and directly addresses a core open ques
+2026-04-17 12:36:22  INFO      judge  Judging T4 [deepseek] (2 pair(s)): Causal discovery from observational data
+2026-04-17 12:36:22  INFO      judge    T13[1] → B | Idea A's causal framework for zero-shot policy optimization in precision medicin
+2026-04-17 12:36:22  INFO      judge  Judging T5 [deepseek] (2 pair(s)): Energy-efficient neuromorphic computing
+2026-04-17 12:36:23  INFO      judge    T1[1] → B | Idea B is more novel and addresses a more fundamental and impactful open problem
+2026-04-17 12:36:23  INFO      judge  Judging T6 [deepseek] (2 pair(s)): Generative AI for drug discovery and molecular design
+2026-04-17 12:36:27  INFO      judge    T12[2] → B | Idea B scores higher overall due to superior experimental clarity and feasibilit
+2026-04-17 12:36:28  INFO      judge    T11[2] → B | Idea B scores higher overall due to superior experimental clarity and feasibilit
+2026-04-17 12:36:28  INFO      judge    T1[2] → A | Idea B wins due to superior feasibility and comparable high usefulness and novel
+2026-04-17 12:36:29  INFO      judge    T13[2] → B | Idea A scores higher overall due to superior experimental clarity and scientific
+2026-04-17 12:36:29  INFO      judge    T14[2] → B | Idea B scores higher in feasibility and experimental clarity, with a well-define
+2026-04-17 12:36:29  INFO      judge    T2[0] → A | Idea A is highly novel and useful but presents significant technical and data-re
+2026-04-17 12:36:29  INFO      judge    T15[0] → B | Idea B scores higher in novelty and scientific usefulness by directly tackling t
+2026-04-17 12:36:30  INFO      judge    T4[0] → A | Idea A scores higher due to superior experimental clarity and feasibility, with 
+2026-04-17 12:36:30  INFO      judge    T10[2] → A | Idea A addresses the more fundamental and challenging problem of causal inferenc
+2026-04-17 12:36:30  INFO      judge    T3[0] → A | Idea A's total score is 32, while Idea B's is 32, resulting in a tie. Idea A exc
+2026-04-17 12:36:30  INFO      judge    T5[0] → A | Idea A is highly novel in its application-focused shift to sensing, but its expe
+2026-04-17 12:36:31  INFO      judge    T6[0] → A | Idea A scores higher overall due to its exceptional clarity, high feasibility, a
+2026-04-17 12:36:35  INFO      judge    T11[3] → B | Idea A excels in experimental clarity and scientific usefulness with a well-defi
+2026-04-17 12:36:35  INFO      judge    T12[3] → B | Idea B scores higher overall due to superior experimental clarity and feasibilit
+2026-04-17 12:36:36  INFO      judge    T13[3] → B | Idea B scores higher in feasibility and experimental clarity, with a very well-d
+2026-04-17 12:36:37  INFO      judge    T1[3] → A | Idea B wins due to superior feasibility and high novelty, addressing a critical 
+2026-04-17 12:36:37  INFO      judge    T15[1] → B | Idea A is exceptionally novel and highly feasible, offering a concrete, physics-
+2026-04-17 12:36:37  INFO      judge  Judging T7 [deepseek] (2 pair(s)): Federated learning with heterogeneous and non-IID data
+2026-04-17 12:36:37  INFO      judge    T14[3] → B | Idea A presents a highly compelling and well-defined integration of TDA with dee
+2026-04-17 12:36:37  INFO      judge    T2[1] → B | Idea A scores higher in novelty and scientific usefulness by directly targeting 
+2026-04-17 12:36:37  INFO      judge  Judging T8 [deepseek] (2 pair(s)): Deep learning emulators for climate model acceleration
+2026-04-17 12:36:37  INFO      judge    T10[3] → B | Idea B scores higher overall due to superior experimental clarity and feasibilit
+2026-04-17 12:36:38  INFO      judge    T5[1] → A | Idea A is highly novel in application but is less clear experimentally and has s
+2026-04-17 12:36:38  INFO      judge  Judging T9 [deepseek] (2 pair(s)): Uncertainty quantification in deep neural networks
+2026-04-17 12:36:38  INFO      judge    T3[1] → A | Idea B edges out Idea A due to superior experimental clarity and scientific usef
+2026-04-17 12:36:39  INFO      judge    T4[1] → B | Idea A's core innovation—inferring latent, dynamic environments from irregular t
+2026-04-17 12:36:40  INFO      judge    T6[1] → B | Idea A addresses a profound and underappreciated 'digital-to-physical' gap with 
+2026-04-17 12:36:43  INFO      judge    T11[4] → B | Idea B edges out Idea A due to superior experimental clarity and a more focused,
+2026-04-17 12:36:43  INFO      judge  Judging T15 [deepseek] (5 pair(s)): Quantum advantage in machine learning tasks
+2026-04-17 12:36:44  INFO      judge    T12[4] → B | Idea A scores higher overall due to exceptional clarity and scientific usefulnes
+2026-04-17 12:36:44  INFO      judge  Judging T2 [deepseek] (5 pair(s)): Protein structure prediction beyond AlphaFold
+2026-04-17 12:36:44  INFO      judge    T14[4] → B | Idea B scores higher in experimental clarity and feasibility, presenting a more 
+2026-04-17 12:36:44  INFO      judge  Judging T3 [deepseek] (5 pair(s)): Quantum error correction in NISQ devices
+2026-04-17 12:36:44  INFO      judge    T1[4] → B | Idea A scores higher overall due to superior experimental clarity and feasibilit
+2026-04-17 12:36:44  INFO      judge  Judging T4 [deepseek] (5 pair(s)): Causal discovery from observational data
+2026-04-17 12:36:44  INFO      judge    T13[4] → B | Idea A is highly novel and useful for real-world deployment but is less clear ex
+2026-04-17 12:36:44  INFO      judge  Judging T5 [deepseek] (5 pair(s)): Energy-efficient neuromorphic computing
+2026-04-17 12:36:45  INFO      judge    T7[0] → A | Idea A scores higher overall due to exceptional experimental clarity and high fe
+2026-04-17 12:36:46  INFO      judge    T8[0] → A | Idea A scores higher due to its exceptional clarity, high feasibility, and direc
+2026-04-17 12:36:46  INFO      judge    T10[4] → B | Idea A scores highly across all criteria, offering a clear, feasible, and direct
+2026-04-17 12:36:46  INFO      judge  Judging T6 [deepseek] (5 pair(s)): Generative AI for drug discovery and molecular design
+2026-04-17 12:36:47  INFO      judge    T9[0] → B | Idea A addresses a pressing real-world deployment challenge with a novel co-opti
+2026-04-17 12:36:52  INFO      judge    T15[0] → B | Idea A excels in experimental clarity and scientific usefulness by proposing a r
+2026-04-17 12:36:52  INFO      judge    T4[0] → B | Idea A is exceptionally clear, highly feasible, and offers a clever, focused met
+2026-04-17 12:36:52  INFO      judge    T5[0] → A | Idea A scores higher in novelty and scientific usefulness by tackling a critical
+2026-04-17 12:36:53  INFO      judge    T2[0] → B | Idea A scores higher overall due to its exceptional clarity and high feasibility
+2026-04-17 12:36:53  INFO      judge    T3[0] → B | Idea A presents a more focused, testable, and clearly defined experiment with a 
+2026-04-17 12:36:53  INFO      judge    T7[1] → A | Idea A scores higher overall due to its exceptional clarity, high feasibility, a
+2026-04-17 12:36:54  INFO      judge    T6[0] → B | Idea A excels in scientific usefulness and experimental clarity, directly tackli
+2026-04-17 12:36:54  INFO      judge    T8[1] → A | Idea A scores higher on feasibility and experimental clarity, with a very well-d
+2026-04-17 12:36:56  INFO      judge    T9[1] → B | Idea A addresses a critical, real-world problem at the intersection of privacy, 
+2026-04-17 12:36:56  INFO      judge  Done [deepseek] — A:17  B:12  ties:1  B win rate: 41.7%
+[backfill] done S15 vs S_paper: N=30 win_rate_b=0.417 -> blind_S15_vs_S_paper__deepseek-chat.json
+2026-04-17 12:37:00  INFO      judge    T15[1] → A | Idea B scores higher in novelty and scientific usefulness by targeting a concret
+2026-04-17 12:37:00  INFO      judge    T2[1] → B | Idea A is exceptionally clear, feasible, and directly addresses a major limitati
+2026-04-17 12:37:00  INFO      judge    T5[1] → B | Idea A is highly novel and impactful but has significant feasibility challenges 
+2026-04-17 12:37:01  INFO      judge    T4[1] → B | Idea A scores higher overall due to superior experimental clarity and feasibilit
+2026-04-17 12:37:01  INFO      judge    T3[1] → B | Idea B is more clearly defined, directly testable, and immediately actionable on
+2026-04-17 12:37:03  INFO      judge    T6[1] → B | Idea B scores higher in novelty and scientific usefulness due to its unique inte
+2026-04-17 12:37:08  INFO      judge    T2[2] → B | Idea A addresses a core, unsolved scientific bottleneck (membrane protein comple
+2026-04-17 12:37:08  INFO      judge    T3[2] → B | Idea A scores higher overall due to superior experimental clarity, a more concre
+2026-04-17 12:37:08  INFO      judge    T4[2] → B | Idea B is more focused, testable, and feasible, with a clear experimental design
+2026-04-17 12:37:09  INFO      judge    T5[2] → A | Idea A scores higher on feasibility and scientific usefulness, addressing a crit
+2026-04-17 12:37:09  INFO      judge    T15[2] → B | Idea A excels in scientific usefulness and experimental clarity by directly tack
+2026-04-17 12:37:12  INFO      judge    T6[2] → B | Idea B scores higher in novelty and scientific usefulness by addressing a critic
+2026-04-17 12:37:16  INFO      judge    T2[3] → B | Idea B is more feasible and has superior experimental clarity, directly addressi
+2026-04-17 12:37:16  INFO      judge    T4[3] → B | Idea A presents a highly focused, novel, and testable solution to a well-defined
+2026-04-17 12:37:16  INFO      judge    T15[3] → B | Idea A excels in experimental clarity and scientific usefulness with a meticulou
+2026-04-17 12:37:17  INFO      judge    T3[3] → A | Idea A scores higher on feasibility and experimental clarity, addressing a clear
+2026-04-17 12:37:17  INFO      judge    T5[3] → A | Idea A scores higher on scientific usefulness and feasibility, addressing a crit
+2026-04-17 12:37:21  INFO      judge    T6[3] → B | Idea A excels in experimental clarity and scientific usefulness with a well-defi
+2026-04-17 12:37:24  INFO      judge    T2[4] → A | Idea A is more transformative, directly addressing the critical post-AlphaFold c
+2026-04-17 12:37:24  INFO      judge  Judging T7 [deepseek] (5 pair(s)): Federated learning with heterogeneous and non-IID data
+2026-04-17 12:37:24  INFO      judge    T15[4] → B | Idea A's total score is 31, while Idea B's is 31, resulting in a tie. Idea A exc
+2026-04-17 12:37:24  INFO      judge  Judging T8 [deepseek] (5 pair(s)): Deep learning emulators for climate model acceleration
+2026-04-17 12:37:25  INFO      judge    T4[4] → B | Idea A scores higher on experimental clarity and feasibility, with a well-define
+2026-04-17 12:37:25  INFO      judge  Judging T9 [deepseek] (5 pair(s)): Uncertainty quantification in deep neural networks
+2026-04-17 12:37:25  INFO      judge    T5[4] → B | Idea A scores higher overall due to superior experimental clarity and slightly h
+2026-04-17 12:37:25  INFO      judge    T3[4] → B | Idea A is exceptionally clear, directly testable, and highly feasible on existin
+2026-04-17 12:37:30  INFO      judge    T6[4] → tie | Idea A excels in scientific usefulness and experimental clarity with a direct, t
+2026-04-17 12:37:31  INFO      judge    T7[0] → B | Idea B scores higher overall due to superior experimental clarity and feasibilit
+2026-04-17 12:37:32  INFO      judge    T8[0] → B | Idea B scores higher due to superior experimental clarity and feasibility, with 
+2026-04-17 12:37:33  INFO      judge    T9[0] → A | Idea A presents a more novel and holistic solution by co-designing a generative 
+2026-04-17 12:37:39  INFO      judge    T7[1] → B | Idea B scores higher in experimental clarity and feasibility, making it a more c
+2026-04-17 12:37:40  INFO      judge    T9[1] → B | Idea A scores higher overall due to superior experimental clarity and scientific
+2026-04-17 12:37:40  INFO      judge    T8[1] → B | Idea A scores higher on scientific usefulness and experimental clarity, addressi
+2026-04-17 12:37:47  INFO      judge    T7[2] → B | Idea B edges out due to superior experimental clarity and feasibility, with a hi
+2026-04-17 12:37:48  INFO      judge    T9[2] → B | Idea B scores slightly higher overall due to superior experimental clarity and a
+2026-04-17 12:37:48  INFO      judge    T8[2] → B | Idea B presents a more mature, scientifically impactful, and clearly testable ap
+2026-04-17 12:37:55  INFO      judge    T7[3] → B | Idea B scores higher overall due to superior experimental clarity and feasibilit
+2026-04-17 12:37:56  INFO      judge    T8[3] → B | Idea B edges out Idea A due to its higher scientific usefulness and clarity in a
+2026-04-17 12:37:56  INFO      judge    T9[3] → B | Idea A is exceptionally strong in experimental clarity and feasibility, with a w
+2026-04-17 12:38:03  INFO      judge    T7[4] → A | Idea A's holistic, dynamic optimization of memory, communication, and personaliz
+2026-04-17 12:38:03  INFO      judge    T8[4] → B | Idea B scores higher on scientific usefulness, experimental clarity, and feasibi
+2026-04-17 12:38:04  INFO      judge    T9[4] → B | Idea A excels with exceptional experimental clarity and high feasibility, offeri
+2026-04-17 12:38:04  INFO      judge  Done [deepseek] — A:14  B:60  ties:1  B win rate: 80.7%
+[backfill] done S_paper vs S12: N=75 win_rate_b=0.807 -> blind_S_paper_vs_S12__deepseek-chat.json
+[backfill] S15 vs S17  |  judge=deepseek-chat  |  workers=6
+2026-04-17 12:39:20  INFO      judge  Judging T1 [deepseek] (5 pair(s)): Scaling laws for Large Language Models
+2026-04-17 12:39:20  INFO      judge  Judging T10 [deepseek] (5 pair(s)): Foundation models for genomics and single-cell biology
+2026-04-17 12:39:20  INFO      judge  Judging T11 [deepseek] (5 pair(s)): Emergent communication in multi-agent systems
+2026-04-17 12:39:20  INFO      judge  Judging T12 [deepseek] (5 pair(s)): Mechanistic interpretability of transformer models
+2026-04-17 12:39:20  INFO      judge  Judging T13 [deepseek] (5 pair(s)): Zero-shot generalization in reinforcement learning
+2026-04-17 12:39:20  INFO      judge  Judging T14 [deepseek] (5 pair(s)): Topological methods for high-dimensional data analysis
+2026-04-17 12:39:27  INFO      judge    T1[0] → A | Idea A addresses a more fundamental and open research question in scaling laws, 
+2026-04-17 12:39:28  INFO      judge    T11[0] → A | Idea B proposes a more novel and scientifically useful investigation into how re
+2026-04-17 12:39:28  INFO      judge    T10[0] → A | Idea A addresses a more fundamental and impactful biological challenge (GRN infe
+2026-04-17 12:39:28  INFO      judge    T13[0] → A | Idea B proposes a novel methodological advancement with high potential impact on
+2026-04-17 12:39:28  INFO      judge    T12[0] → A | Idea A scores higher overall due to its stronger novelty in actively testing mod
+2026-04-17 12:39:29  INFO      judge    T14[0] → B | While Idea B is more novel, Idea A excels in experimental clarity and feasibilit
+2026-04-17 12:39:35  INFO      judge    T10[1] → B | Idea A excels in experimental clarity and feasibility, addressing a critical, ac
+2026-04-17 12:39:35  INFO      judge    T1[1] → A | Idea A presents a more novel, comprehensive, and useful investigation into scali
+2026-04-17 12:39:35  INFO      judge    T13[1] → A | Idea B proposes a more novel and potentially transformative approach to the core
+2026-04-17 12:39:36  INFO      judge    T11[1] → A | Idea A addresses a more fundamental and less explored question (sensory heteroge
+2026-04-17 12:39:36  INFO      judge    T12[1] → A | Idea B scores higher on novelty and scientific usefulness by tackling the undere
+2026-04-17 12:39:36  INFO      judge    T14[1] → A | Idea A proposes a novel, integrative framework with high potential impact and a 
+2026-04-17 12:39:43  INFO      judge    T10[2] → A | Idea A is more ambitious and novel, tackling a core multi-modal integration prob
+2026-04-17 12:39:43  INFO      judge    T1[2] → A | Idea B is more novel and scientifically useful, proposing a foundational, cross-
+2026-04-17 12:39:43  INFO      judge    T13[2] → A | Idea A is more ambitious and novel, directly tackling the integration of causal 
+2026-04-17 12:39:43  INFO      judge    T11[2] → A | Idea A proposes a novel and useful investigation into sensor heterogeneity's rol
+2026-04-17 12:39:44  INFO      judge    T12[2] → A | Idea A scores higher overall due to its broader scientific ambition, exceptional
+2026-04-17 12:39:44  INFO      judge    T14[2] → B | Idea A is a focused, highly feasible, and clearly defined benchmark study that a
+2026-04-17 12:39:50  INFO      judge    T10[3] → A | Idea A scores higher in novelty and scientific usefulness for its ambitious, int
+2026-04-17 12:39:50  INFO      judge    T13[3] → A | Idea A proposes a more novel and scientifically useful causal investigation into
+2026-04-17 12:39:51  INFO      judge    T1[3] → A | Idea A addresses a broader, more complex, and less understood interaction (KG in
+2026-04-17 12:39:52  INFO      judge    T14[3] → B | While Idea B is more novel in its theoretical integration, Idea A excels in expe
+2026-04-17 12:39:52  INFO      judge    T11[3] → B | While Idea B is more novel and ambitious, Idea A excels in experimental clarity 
+2026-04-17 12:39:52  INFO      judge    T12[3] → B | Idea B is more focused, feasible, and its causal methodology directly tests a sp
+2026-04-17 12:39:58  INFO      judge    T13[4] → A | Idea A proposes a novel and ambitious integration of online causal learning into
+2026-04-17 12:39:58  INFO      judge  Judging T15 [deepseek] (5 pair(s)): Quantum advantage in machine learning tasks
+2026-04-17 12:39:58  INFO      judge    T10[4] → B | Idea A is a highly focused, feasible, and clearly testable study addressing a kn
+2026-04-17 12:39:58  INFO      judge  Judging T2 [deepseek] (5 pair(s)): Protein structure prediction beyond AlphaFold
+2026-04-17 12:39:59  INFO      judge    T14[4] → A | Idea B is significantly more novel and proposes a new, integrative methodologica
+2026-04-17 12:39:59  INFO      judge  Judging T3 [deepseek] (5 pair(s)): Quantum error correction in NISQ devices
+2026-04-17 12:39:59  INFO      judge    T1[4] → A | Idea A addresses a more nuanced and less explored open problem—nonlinear scaling
+2026-04-17 12:39:59  INFO      judge  Judging T4 [deepseek] (5 pair(s)): Causal discovery from observational data
+2026-04-17 12:39:59  INFO      judge    T11[4] → A | Idea A addresses a more fundamental and impactful open problem in robust multi-a
+2026-04-17 12:39:59  INFO      judge  Judging T5 [deepseek] (5 pair(s)): Energy-efficient neuromorphic computing
+2026-04-17 12:40:01  INFO      judge    T12[4] → A | Idea A scores higher overall due to its exceptional scientific usefulness and ex
+2026-04-17 12:40:01  INFO      judge  Judging T6 [deepseek] (5 pair(s)): Generative AI for drug discovery and molecular design
+2026-04-17 12:40:06  INFO      judge    T15[0] → B | Idea A is more feasible and has superior experimental clarity, making it a more 
+2026-04-17 12:40:06  INFO      judge    T4[0] → A | Idea A proposes a novel, integrative framework with high potential impact on a c
+2026-04-17 12:40:07  INFO      judge    T3[0] → B | Idea A is a highly focused, clear, and feasible study that provides actionable, 
+2026-04-17 12:40:08  INFO      judge    T5[0] → B | Idea A is a highly feasible and clearly defined benchmarking study that provides
+2026-04-17 12:40:08  INFO      judge    T6[0] → A | Idea A addresses a more critical and complex open problem in drug discovery—meta
+2026-04-17 12:40:09  INFO      judge    T2[0] → B | Idea A is a highly feasible, clear, and useful incremental advance with immediat
+2026-04-17 12:40:14  INFO      judge    T15[1] → B | Idea A is a highly focused, clear, and feasible falsification study that provide
+2026-04-17 12:40:14  INFO      judge    T4[1] → A | Idea B addresses a more impactful and open problem by integrating domain knowled
+2026-04-17 12:40:15  INFO      judge    T3[1] → B | Idea A is a highly feasible and clearly defined foundational study, crucial for 
+2026-04-17 12:40:16  INFO      judge    T2[1] → B | Idea A is a highly focused, feasible, and clearly testable project with immediat
+2026-04-17 12:40:16  INFO      judge    T5[1] → B | Idea A excels in experimental clarity and feasibility, offering a crucial, actio
+2026-04-17 12:40:17  INFO      judge    T6[1] → A | Idea A is highly novel and addresses a critical, impactful problem in AI-driven 
+2026-04-17 12:40:22  INFO      judge    T15[2] → B | Idea A is a highly focused, feasible, and clearly testable benchmark that direct
+2026-04-17 12:40:22  INFO      judge    T4[2] → A | Idea A proposes a novel, integrated framework to address a core open problem (la
+2026-04-17 12:40:23  INFO      judge    T3[2] → B | Idea A is highly novel and useful but its feasibility is questionable due to the
+2026-04-17 12:40:24  INFO      judge    T5[2] → A | Idea B presents a more novel and holistic co-design approach, addressing the cri
+2026-04-17 12:40:24  INFO      judge    T2[2] → B | Idea A is a highly feasible, clear, and useful incremental advance with a high p
+2026-04-17 12:40:24  INFO      judge    T6[2] → A | Idea B is more novel and addresses a broader, impactful problem by integrating e
+2026-04-17 12:40:29  INFO      judge    T15[3] → A | Idea A is far more comprehensive, novel, and useful for the field, proposing a r
+2026-04-17 12:40:30  INFO      judge    T4[3] → B | Idea A is a highly focused, clear, and feasible benchmark study that provides im
+2026-04-17 12:40:31  INFO      judge    T3[3] → B | Idea A excels in experimental clarity and feasibility, offering a precise, compa
+2026-04-17 12:40:31  INFO      judge    T2[3] → A | Idea A addresses a more fundamental and impactful open problem (functional confo
+2026-04-17 12:40:32  INFO      judge    T6[3] → A | Idea B is significantly more novel and addresses a more impactful, open problem 
+2026-04-17 12:40:33  INFO      judge    T5[3] → B | Idea A is a highly focused, controlled, and feasible study that provides a cruci
+2026-04-17 12:40:37  INFO      judge    T15[4] → A | Idea A addresses a broader, more nuanced open problem (generalization in low-dat
+2026-04-17 12:40:37  INFO      judge  Judging T7 [deepseek] (5 pair(s)): Federated learning with heterogeneous and non-IID data
+2026-04-17 12:40:38  INFO      judge    T4[4] → A | Idea A proposes a novel, integrated methodological advance with high potential i
+2026-04-17 12:40:38  INFO      judge  Judging T8 [deepseek] (5 pair(s)): Deep learning emulators for climate model acceleration
+2026-04-17 12:40:39  INFO      judge    T3[4] → B | While Idea B is more novel and addresses a potentially transformative open probl
+2026-04-17 12:40:39  INFO      judge  Judging T9 [deepseek] (5 pair(s)): Uncertainty quantification in deep neural networks
+2026-04-17 12:40:39  INFO      judge    T2[4] → B | Idea A is more focused, with a clear, testable hypothesis and a highly feasible,
+2026-04-17 12:40:40  INFO      judge    T6[4] → A | Idea A proposes a novel and ambitious integration of generative AI with quantum 
+2026-04-17 12:40:41  INFO      judge    T5[4] → B | Idea A is exceptionally clear, highly feasible, and directly addresses a critica
+2026-04-17 12:40:45  INFO      judge    T7[0] → A | Idea A proposes a novel, constructive solution (personalized feature layers) to 
+2026-04-17 12:40:47  INFO      judge    T8[0] → A | Idea A scores higher on novelty and scientific usefulness by tackling the critic
+2026-04-17 12:40:47  INFO      judge    T9[0] → B | Idea B is more focused, feasible, and directly addresses a critical, well-known 
+2026-04-17 12:40:52  INFO      judge    T7[1] → A | Idea A proposes a novel, adaptive solution to a core FL problem with a clear, co
+2026-04-17 12:40:54  INFO      judge    T8[1] → A | Idea B is more novel and addresses a more fundamental and actionable research qu
+2026-04-17 12:40:55  INFO      judge    T9[1] → A | Idea B proposes a more novel and potentially transformative approach by modeling
+2026-04-17 12:41:00  INFO      judge    T7[2] → A | Idea A proposes a novel, practical solution (client-specific BN) to a core feder
+2026-04-17 12:41:01  INFO      judge    T8[2] → A | Idea A scores higher in novelty and scientific usefulness by proposing a novel i
+2026-04-17 12:41:03  INFO      judge    T9[2] → A | Idea B proposes a novel integration of feature-space density estimation with dee
+2026-04-17 12:41:08  INFO      judge    T7[3] → A | Idea A presents a more ambitious and novel framework, explicitly linking meta-le
+2026-04-17 12:41:10  INFO      judge    T8[3] → A | Idea A is more ambitious and novel, proposing a solution (multi-model training) 
+2026-04-17 12:41:11  INFO      judge    T9[3] → A | Idea A proposes a novel, constructive method to improve uncertainty quantificati
+2026-04-17 12:41:16  INFO      judge    T7[4] → A | Idea A presents a more novel, adaptive aggregation mechanism with a clear, robus
+2026-04-17 12:41:18  INFO      judge    T8[4] → A | Idea A addresses a more fundamental and impactful open problem in climate emulat
+2026-04-17 12:41:19  INFO      judge    T9[4] → A | Idea B proposes a more novel and scientifically useful core contribution by intr
+2026-04-17 12:41:19  INFO      judge  Done [deepseek] — A:50  B:25  ties:0  B win rate: 33.3%
+[backfill] done S15 vs S17: N=75 win_rate_b=0.333 -> blind_S15_vs_S17__deepseek-chat.json

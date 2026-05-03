@@ -1,0 +1,20 @@
+{
+  "created_utc": "2026-04-13T18:39:54.248930+00:00",
+  "git_rev": "24508b3f0c1aeff6b4f14b36b063ec69df9a06f5",
+  "topics_file": "/Users/dylanwilson/Documents/GitHub/self-play/EvoScientist/ideas/benchmark_topics_small.json",
+  "n_topics": 5,
+  "n_ideas": 2,
+  "generator_model": "deepseek-chat",
+  "system_a": "S15",
+  "system_b": "S_paper",
+  "judges_planned": [
+    "gemini-3-flash-preview",
+    "claude-sonnet-4-6",
+    "gpt-5.4"
+  ],
+  "gen_workers": 5,
+  "judge_workers": 5,
+  "parallel_judge_models": true,
+  "max_spend_usd_heuristic": 8.0,
+  "note": "USD fields are heuristic token-pricing estimates only; use provider dashboards for true cost."
+}

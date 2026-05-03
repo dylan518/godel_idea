@@ -1,0 +1,457 @@
+{
+  "pair": [
+    "S15",
+    "S_paper"
+  ],
+  "gen_model": "gpt-4.1-mini",
+  "n_ideas_per_system_per_topic": 3,
+  "n_topics": 12,
+  "human": {
+    "n_total_ratings": 60,
+    "overall_win_rate_b": 0.2916666666666667,
+    "by_topic": {
+      "CUSTOM:drug delivery": {
+        "n": 5,
+        "wins_a": 2,
+        "wins_b": 2,
+        "ties": 1,
+        "human_win_rate_b": 0.5
+      },
+      "CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs": {
+        "n": 5,
+        "wins_a": 2,
+        "wins_b": 3,
+        "ties": 0,
+        "human_win_rate_b": 0.6
+      },
+      "CUSTOM:ipsc derived cardiomyocytes on a chip": {
+        "n": 5,
+        "wins_a": 5,
+        "wins_b": 0,
+        "ties": 0,
+        "human_win_rate_b": 0.0
+      },
+      "CUSTOM:antigen specific antibody discovery methods": {
+        "n": 5,
+        "wins_a": 2,
+        "wins_b": 3,
+        "ties": 0,
+        "human_win_rate_b": 0.6
+      },
+      "CUSTOM:mandibular bone regeneration using tissue engineering": {
+        "n": 5,
+        "wins_a": 3,
+        "wins_b": 1,
+        "ties": 1,
+        "human_win_rate_b": 0.3
+      },
+      "CUSTOM:llm representation learning": {
+        "n": 5,
+        "wins_a": 3,
+        "wins_b": 2,
+        "ties": 0,
+        "human_win_rate_b": 0.4
+      },
+      "CUSTOM:scalable time-gated rendering": {
+        "n": 5,
+        "wins_a": 3,
+        "wins_b": 1,
+        "ties": 1,
+        "human_win_rate_b": 0.3
+      },
+      "CUSTOM:iron overload in senescent cells": {
+        "n": 5,
+        "wins_a": 4,
+        "wins_b": 1,
+        "ties": 0,
+        "human_win_rate_b": 0.2
+      },
+      "CUSTOM:conditional perfection and its connection to causation": {
+        "n": 5,
+        "wins_a": 4,
+        "wins_b": 0,
+        "ties": 1,
+        "human_win_rate_b": 0.1
+      },
+      "CUSTOM:cellular prion propagation": {
+        "n": 5,
+        "wins_a": 4,
+        "wins_b": 1,
+        "ties": 0,
+        "human_win_rate_b": 0.2
+      },
+      "CUSTOM:epoxide hydrolase catalytic mechanism": {
+        "n": 5,
+        "wins_a": 5,
+        "wins_b": 0,
+        "ties": 0,
+        "human_win_rate_b": 0.0
+      },
+      "CUSTOM:mechanical stress at tricellular junctions": {
+        "n": 5,
+        "wins_a": 3,
+        "wins_b": 1,
+        "ties": 1,
+        "human_win_rate_b": 0.3
+      }
+    }
+  },
+  "judges": {
+    "deepseek-chat": {
+      "overall_win_rate_b": 0.5833333333333334,
+      "per_topic": {
+        "CUSTOM:antigen specific antibody discovery methods": {
+          "n": 3,
+          "wins_a": 2,
+          "wins_b": 1,
+          "ties": 0,
+          "judge_win_rate_b": 0.3333333333333333
+        },
+        "CUSTOM:drug delivery": {
+          "n": 3,
+          "wins_a": 1,
+          "wins_b": 2,
+          "ties": 0,
+          "judge_win_rate_b": 0.6666666666666666
+        },
+        "CUSTOM:cellular prion propagation": {
+          "n": 3,
+          "wins_a": 2,
+          "wins_b": 1,
+          "ties": 0,
+          "judge_win_rate_b": 0.3333333333333333
+        },
+        "CUSTOM:conditional perfection and its connection to causation": {
+          "n": 3,
+          "wins_a": 2,
+          "wins_b": 1,
+          "ties": 0,
+          "judge_win_rate_b": 0.3333333333333333
+        },
+        "CUSTOM:epoxide hydrolase catalytic mechanism": {
+          "n": 3,
+          "wins_a": 1,
+          "wins_b": 2,
+          "ties": 0,
+          "judge_win_rate_b": 0.6666666666666666
+        },
+        "CUSTOM:iron overload in senescent cells": {
+          "n": 3,
+          "wins_a": 3,
+          "wins_b": 0,
+          "ties": 0,
+          "judge_win_rate_b": 0.0
+        },
+        "CUSTOM:ipsc derived cardiomyocytes on a chip": {
+          "n": 3,
+          "wins_a": 0,
+          "wins_b": 3,
+          "ties": 0,
+          "judge_win_rate_b": 1.0
+        },
+        "CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs": {
+          "n": 3,
+          "wins_a": 1,
+          "wins_b": 2,
+          "ties": 0,
+          "judge_win_rate_b": 0.6666666666666666
+        },
+        "CUSTOM:llm representation learning": {
+          "n": 3,
+          "wins_a": 1,
+          "wins_b": 2,
+          "ties": 0,
+          "judge_win_rate_b": 0.6666666666666666
+        },
+        "CUSTOM:mandibular bone regeneration using tissue engineering": {
+          "n": 3,
+          "wins_a": 0,
+          "wins_b": 3,
+          "ties": 0,
+          "judge_win_rate_b": 1.0
+        },
+        "CUSTOM:mechanical stress at tricellular junctions": {
+          "n": 3,
+          "wins_a": 2,
+          "wins_b": 1,
+          "ties": 0,
+          "judge_win_rate_b": 0.3333333333333333
+        },
+        "CUSTOM:scalable time-gated rendering": {
+          "n": 3,
+          "wins_a": 0,
+          "wins_b": 3,
+          "ties": 0,
+          "judge_win_rate_b": 1.0
+        }
+      }
+    },
+    "gpt-5.4": {
+      "overall_win_rate_b": 0.5416666666666666,
+      "per_topic": {
+        "CUSTOM:antigen specific antibody discovery methods": {
+          "n": 3,
+          "wins_a": 1,
+          "wins_b": 0,
+          "ties": 2,
+          "judge_win_rate_b": 0.3333333333333333
+        },
+        "CUSTOM:conditional perfection and its connection to causation": {
+          "n": 3,
+          "wins_a": 0,
+          "wins_b": 2,
+          "ties": 1,
+          "judge_win_rate_b": 0.8333333333333334
+        },
+        "CUSTOM:drug delivery": {
+          "n": 3,
+          "wins_a": 0,
+          "wins_b": 1,
+          "ties": 2,
+          "judge_win_rate_b": 0.6666666666666666
+        },
+        "CUSTOM:cellular prion propagation": {
+          "n": 3,
+          "wins_a": 2,
+          "wins_b": 0,
+          "ties": 1,
+          "judge_win_rate_b": 0.16666666666666666
+        },
+        "CUSTOM:epoxide hydrolase catalytic mechanism": {
+          "n": 3,
+          "wins_a": 1,
+          "wins_b": 1,
+          "ties": 1,
+          "judge_win_rate_b": 0.5
+        },
+        "CUSTOM:ipsc derived cardiomyocytes on a chip": {
+          "n": 3,
+          "wins_a": 1,
+          "wins_b": 1,
+          "ties": 1,
+          "judge_win_rate_b": 0.5
+        },
+        "CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs": {
+          "n": 3,
+          "wins_a": 0,
+          "wins_b": 1,
+          "ties": 2,
+          "judge_win_rate_b": 0.6666666666666666
+        },
+        "CUSTOM:iron overload in senescent cells": {
+          "n": 3,
+          "wins_a": 2,
+          "wins_b": 1,
+          "ties": 0,
+          "judge_win_rate_b": 0.3333333333333333
+        },
+        "CUSTOM:llm representation learning": {
+          "n": 3,
+          "wins_a": 1,
+          "wins_b": 1,
+          "ties": 1,
+          "judge_win_rate_b": 0.5
+        },
+        "CUSTOM:mandibular bone regeneration using tissue engineering": {
+          "n": 3,
+          "wins_a": 0,
+          "wins_b": 3,
+          "ties": 0,
+          "judge_win_rate_b": 1.0
+        },
+        "CUSTOM:mechanical stress at tricellular junctions": {
+          "n": 3,
+          "wins_a": 0,
+          "wins_b": 0,
+          "ties": 3,
+          "judge_win_rate_b": 0.5
+        },
+        "CUSTOM:scalable time-gated rendering": {
+          "n": 3,
+          "wins_a": 1,
+          "wins_b": 1,
+          "ties": 1,
+          "judge_win_rate_b": 0.5
+        }
+      }
+    },
+    "gemini-3-flash-preview": {
+      "overall_win_rate_b": 0.7222222222222222,
+      "per_topic": {
+        "CUSTOM:conditional perfection and its connection to causation": {
+          "n": 3,
+          "wins_a": 0,
+          "wins_b": 2,
+          "ties": 1,
+          "judge_win_rate_b": 0.8333333333333334
+        },
+        "CUSTOM:drug delivery": {
+          "n": 3,
+          "wins_a": 1,
+          "wins_b": 2,
+          "ties": 0,
+          "judge_win_rate_b": 0.6666666666666666
+        },
+        "CUSTOM:cellular prion propagation": {
+          "n": 3,
+          "wins_a": 1,
+          "wins_b": 1,
+          "ties": 1,
+          "judge_win_rate_b": 0.5
+        },
+        "CUSTOM:antigen specific antibody discovery methods": {
+          "n": 3,
+          "wins_a": 0,
+          "wins_b": 1,
+          "ties": 2,
+          "judge_win_rate_b": 0.6666666666666666
+        },
+        "CUSTOM:ipsc derived cardiomyocytes on a chip": {
+          "n": 3,
+          "wins_a": 0,
+          "wins_b": 2,
+          "ties": 1,
+          "judge_win_rate_b": 0.8333333333333334
+        },
+        "CUSTOM:iron overload in senescent cells": {
+          "n": 3,
+          "wins_a": 1,
+          "wins_b": 2,
+          "ties": 0,
+          "judge_win_rate_b": 0.6666666666666666
+        },
+        "CUSTOM:epoxide hydrolase catalytic mechanism": {
+          "n": 3,
+          "wins_a": 0,
+          "wins_b": 1,
+          "ties": 2,
+          "judge_win_rate_b": 0.6666666666666666
+        },
+        "CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs": {
+          "n": 3,
+          "wins_a": 0,
+          "wins_b": 1,
+          "ties": 2,
+          "judge_win_rate_b": 0.6666666666666666
+        },
+        "CUSTOM:mandibular bone regeneration using tissue engineering": {
+          "n": 3,
+          "wins_a": 0,
+          "wins_b": 3,
+          "ties": 0,
+          "judge_win_rate_b": 1.0
+        },
+        "CUSTOM:llm representation learning": {
+          "n": 3,
+          "wins_a": 0,
+          "wins_b": 3,
+          "ties": 0,
+          "judge_win_rate_b": 1.0
+        },
+        "CUSTOM:scalable time-gated rendering": {
+          "n": 3,
+          "wins_a": 1,
+          "wins_b": 1,
+          "ties": 1,
+          "judge_win_rate_b": 0.5
+        },
+        "CUSTOM:mechanical stress at tricellular junctions": {
+          "n": 3,
+          "wins_a": 0,
+          "wins_b": 1,
+          "ties": 2,
+          "judge_win_rate_b": 0.6666666666666666
+        }
+      }
+    },
+    "gemini-flash-lite-latest": {
+      "overall_win_rate_b": 0.8194444444444444,
+      "per_topic": {
+        "CUSTOM:drug delivery": {
+          "n": 3,
+          "wins_a": 1,
+          "wins_b": 2,
+          "ties": 0,
+          "judge_win_rate_b": 0.6666666666666666
+        },
+        "CUSTOM:antigen specific antibody discovery methods": {
+          "n": 3,
+          "wins_a": 0,
+          "wins_b": 3,
+          "ties": 0,
+          "judge_win_rate_b": 1.0
+        },
+        "CUSTOM:cellular prion propagation": {
+          "n": 3,
+          "wins_a": 2,
+          "wins_b": 1,
+          "ties": 0,
+          "judge_win_rate_b": 0.3333333333333333
+        },
+        "CUSTOM:conditional perfection and its connection to causation": {
+          "n": 3,
+          "wins_a": 0,
+          "wins_b": 3,
+          "ties": 0,
+          "judge_win_rate_b": 1.0
+        },
+        "CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs": {
+          "n": 3,
+          "wins_a": 1,
+          "wins_b": 2,
+          "ties": 0,
+          "judge_win_rate_b": 0.6666666666666666
+        },
+        "CUSTOM:iron overload in senescent cells": {
+          "n": 3,
+          "wins_a": 1,
+          "wins_b": 2,
+          "ties": 0,
+          "judge_win_rate_b": 0.6666666666666666
+        },
+        "CUSTOM:epoxide hydrolase catalytic mechanism": {
+          "n": 3,
+          "wins_a": 1,
+          "wins_b": 2,
+          "ties": 0,
+          "judge_win_rate_b": 0.6666666666666666
+        },
+        "CUSTOM:ipsc derived cardiomyocytes on a chip": {
+          "n": 3,
+          "wins_a": 0,
+          "wins_b": 3,
+          "ties": 0,
+          "judge_win_rate_b": 1.0
+        },
+        "CUSTOM:llm representation learning": {
+          "n": 3,
+          "wins_a": 0,
+          "wins_b": 3,
+          "ties": 0,
+          "judge_win_rate_b": 1.0
+        },
+        "CUSTOM:mandibular bone regeneration using tissue engineering": {
+          "n": 3,
+          "wins_a": 0,
+          "wins_b": 3,
+          "ties": 0,
+          "judge_win_rate_b": 1.0
+        },
+        "CUSTOM:mechanical stress at tricellular junctions": {
+          "n": 3,
+          "wins_a": 0,
+          "wins_b": 2,
+          "ties": 1,
+          "judge_win_rate_b": 0.8333333333333334
+        },
+        "CUSTOM:scalable time-gated rendering": {
+          "n": 3,
+          "wins_a": 0,
+          "wins_b": 3,
+          "ties": 0,
+          "judge_win_rate_b": 1.0
+        }
+      }
+    }
+  }
+}

@@ -78,13 +78,18 @@ def call_llm(prompt: str, model: str, client, temperature: float,
 
     def _call():
         if model.startswith(("gpt-", "o1-", "o3-", "o4-", "deepseek-")):
-            response = client.chat.completions.create(
-                model=model,
-                max_tokens=max_tokens,
-                temperature=temperature,
-                messages=[{"role": "user", "content": prompt}],
-                timeout=timeout,
-            )
+            kwargs = {
+                "model": model,
+                "temperature": temperature,
+                "messages": [{"role": "user", "content": prompt}],
+                "timeout": timeout,
+            }
+            # Newer GPT-5.x models require max_completion_tokens, not max_tokens.
+            if model.startswith("gpt-5"):
+                kwargs["max_completion_tokens"] = max_tokens
+            else:
+                kwargs["max_tokens"] = max_tokens
+            response = client.chat.completions.create(**kwargs)
             return response.choices[0].message.content.strip()
         elif model.startswith("gemini-"):
             import os
@@ -149,7 +154,6 @@ def call_llm(prompt: str, model: str, client, temperature: float,
             executor.shutdown(wait=False)
 
     raise last_err
-    raise last_err  # unreachable but satisfies type checker
 
 
 BATCH_PROMPT_TEMPLATE = """\

@@ -2,7 +2,7 @@
   "iterations": [
     {
       "version": "S12",
-      "champion": "S_sota",
+      "champion": "S_paper",
       "mini_eval_best": 0.8888888888888888,
       "accepted_edits": [
         {
@@ -18,7 +18,289 @@
           "win_rate": 0.6666666666666666
         }
       ],
+      "failed_edits": [],
+      "full_eval_win_rate": 0.8933333333333333,
+      "accepted": true
+    },
+    {
+      "version": "S13",
+      "champion": "S12",
+      "mini_eval_best": 0.5555555555555556,
+      "accepted_edits": [
+        {
+          "description": "PREVIOUS ATTEMPT FAILED (mini-eval: 33.3%, needed >52%).\n\nWhat was tried:\nTournament-selected strategy (11 candidates evaluated):\nApproach: Cross-Domain Analogy Mining\nTarget: Iterative Cross-Domain Hypothesis Expansion Loop\nStrategy: Iterative Multi-Agent Cross-Domain Expansion\n\nThe generate_idea() flow consists of multiple LLM calls organized as an iterative multi-agent loop. In each iteration, a group of specialized agents independently retrieve and propose analogous problem framings and solutions from distinct unrelated fields. Their outputs are aggregated via weighted consensus focusing o",
+          "win_rate": 0.5555555555555556
+        }
+      ],
+      "failed_edits": [
+        {
+          "description": "Tournament-selected strategy (11 candidates evaluated):\nApproach: Cross-Domain Analogy Mining\nTarget: Iterative Cross-Domain Hypothesis Expansion Loop\nStrategy: Iterative Multi-Agent Cross-Domain Expansion\n\nThe generate_idea() flow consists of multiple LLM calls organized as an iterative multi-agent loop. In each iteration, a group of specialized agents independently retrieve and propose analogous problem framings and solutions from distinct unrelated fields. Their outputs are aggregated via weighted consensus focusing on novelty and domain distance scores. The hypothesis is then refined by a ",
+          "win_rate": 0.3333333333333333
+        },
+        {
+          "description": "Tournament-selected strategy (9 candidates evaluated):\nApproach: Hypothesis-First Backward Design\nTarget: Constraint-First Seeding with Dynamic Feedback Loop\nStrategy: Multi-Agent Adversarial Dissolution with Hierarchical Critique\n\nThe generate_idea() flow involves three sequential LLM calls per iteration. First, a dedicated mining agent identifies fundamental impossibilities (blockers). Next, parallel dissolution agents each generate candidate mechanisms to overcome individual blockers, intentionally diverging by applying different domain heuristics or analogies. These candidates are then adv",
+          "win_rate": 0.4444444444444444
+        }
+      ]
+    },
+    {
+      "version": "S14",
+      "champion": "S12",
+      "mini_eval_best": 0.0,
+      "accepted_edits": [],
+      "failed_edits": [
+        {
+          "description": "Tournament-selected strategy (9 candidates evaluated):\nApproach: Multi-Agent Collaborative Debate\nTarget: Parallel Specialization Debate Agents\nStrategy: Multi-Round Nested Debate with Hierarchical Roles\n\nIn each generate_idea() cycle, spawn three Proposer agents that independently generate diverse candidate ideas in parallel (3 LLM calls). Then, launch three Critic agents per Proposer (9 LLM calls total), each focusing on different flaw categories (e.g., logical consistency, feasibility, novelty). Next, a single Synthesizer agent performs an integrated synthesis of all critiques and proposals",
+          "win_rate": 0.0
+        }
+      ],
+      "full_eval_win_rate": 0.54,
+      "accepted": false
+    },
+    {
+      "version": "S15",
+      "champion": "S12",
+      "mini_eval_best": 0.4444444444444444,
+      "accepted_edits": [],
+      "failed_edits": [
+        {
+          "description": "Tournament-selected strategy (12 candidates evaluated):\nApproach: Multi-Agent Persona Ensemble\nTarget: Cross-Domain Analogical Transfer Preprocessing\nStrategy: Iterative Analogy Refinement with Adversarial Filtering\n\nThe generate_idea() procedure initiates with an LLM call generating a broad set (e.g., 5) of candidate analogies from distinct external domains. A secondary adversarial agent LLM evaluates these analogies for structural relevance and transferability, pruning the set down to the 3 most promising. Another LLM call refines these 3 analogies into clear isomorphic principles, which are then appended to\n\n(Selected via IdeaTreeSearch from 12 leaf strategies, Elo=1563)\n\nEdit history this session:\n(none yet)\n\nContext:\n### 1. Current Pipeline\nCurrent champion: S12\nPipeline: IdeaTreeSearch (L1\u2192L2\u2192L3, ~12 candidates) \u2192 Elo tournament \u2192 Expansion\n\n  \u2022 build_idea_tree: using idea_tournament/tree_search.py\n  \u2022 run_tournament: using idea_tournament/tournament.py\n  \u2022 generate_idea: ~9 direct call_llm() calls + tree/tournament calls\n\nEditable modules (primary targets for improvement):\n  \u2022 idea_tournament/prompts.py (169 lines)\n  \u2022 idea_tournament/tree_search.py (145 lines)\n  \u2022 idea_tour",
+          "win_rate": 0.2222222222222222
+        },
+        {
+          "description": "PREVIOUS ATTEMPT FAILED (mini-eval: 22.2%, needed >52%).\n\nWhat was tried:\nTournament-selected strategy (12 candidates evaluated):\nApproach: Multi-Agent Persona Ensemble\nTarget: Cross-Domain Analogical Transfer Preprocessing\nStrategy: Iterative Analogy Refinement with Adversarial Filtering\n\nThe generate_idea() procedure initiates with an LLM call generating a broad set (e.g., 5) of candidate analogies from distinct external domains. A secondary adversarial agent LLM evaluates these analogies for structural relevance and transferability, pruning the set down to the 3 most promising. Another LLM call refines these 3 analogies into clear isomorphic principles, which are then appended to\n\n(Selected via IdeaTreeSearch from 12 leaf strategies, Elo=1563)\n\nEdit history this session:\n(none yet)\n\nContext:\n### 1. Current Pipeline\nCurrent champion: S12\nPipeline: IdeaTreeSearch (L1\u2192L2\u2192L3, ~12 candidates) \u2192 Elo tournament \u2192 Expansion\n\n  \u2022 build_idea_tree: using idea_tournament/tree_search.py\n  \u2022 run_tournament: using idea_tournament/tournament.py\n  \u2022 generate_idea: ~9 direct call_llm() calls + tree/tournament calls\n\nEditable modules (primary targets for improvement):\n  \u2022 idea_tournament/prompts.p",
+          "win_rate": 0.4444444444444444
+        },
+        {
+          "description": "PREVIOUS ATTEMPT FAILED (mini-eval: 44.4%, needed >52%).\n\nWhat was tried:\nPREVIOUS ATTEMPT FAILED (mini-eval: 22.2%, needed >52%).\n\nWhat was tried:\nTournament-selected strategy (12 candidates evaluated):\nApproach: Multi-Agent Persona Ensemble\nTarget: Cross-Domain Analogical Transfer Preprocessing\nStrategy: Iterative Analogy Refinement with Adversarial Filtering\n\nThe generate_idea() procedure initiates with an LLM call generating a broad set (e.g., 5) of candidate analogies from distinct external domains. A secondary adversarial agent LLM evaluates these analogies for structural relevance and transferability, pruning the set down to the 3 most promising. Another LLM call refines these 3 analogies into clear isomorphic principles, which are then appended to\n\n(Selected via IdeaTreeSearch from 12 leaf strategies, Elo=1563)\n\nEdit history this session:\n(none yet)\n\nContext:\n### 1. Current Pipeline\nCurrent champion: S12\nPipeline: IdeaTreeSearch (L1\u2192L2\u2192L3, ~12 candidates) \u2192 Elo tournament \u2192 Expansion\n\n  \u2022 build_idea_tree: using idea_tournament/tree_search.py\n  \u2022 run_tournament: using idea_tournament/tournament.py\n  \u2022 generate_idea: ~9 direct call_llm() calls + tree/tournament calls\n\nEditabl",
+          "win_rate": 0.2222222222222222
+        }
+      ],
+      "full_eval_win_rate": 0.5533333333333333,
+      "accepted": true
+    },
+    {
+      "version": "S16",
+      "champion": "S15",
+      "mini_eval_best": 0.7777777777777778,
+      "accepted_edits": [
+        {
+          "description": "DIAGNOSIS: Step 4 (IDEA CONSTRUCTION) is the primary failure point, but the specific mechanism is that the construction prompt fails to anchor the experimental design to the *mechanistic specificity* of the surviving hypothesis. In all four losing examples, the constructed idea drifts toward a generic \"method X applied to domain Y\" framing rather than building tightly around the falsification target. Compare: S15's zero-shot RL idea pivots to \"multi-modal sensory fusion\" (a technique name) instead of mechanistically explaining *why* that technique tests the selected hypothesis. The emergent communication idea becomes \"hierarchical meta-controller\" without specifying what observable signal would falsify it. The TDA idea becomes \"multi-parameter PH for classification\" without grounding in the stability theory the hypothesis implies. The QEC idea proposes FPGA-RNN integration that adds engineering complexity disconnected from the core claim. In each case, the construction call produces an idea that *resembles* the hypothesis domain but substitutes a plausible-sounding technique for the actual mechanistic claim, losing the sharp falsifiability that made the hypothesis valuable. The roo",
+          "win_rate": 0.7777777777777778
+        },
+        {
+          "description": "DIAGNOSIS: Step 4 (IDEA CONSTRUCTION) is the primary failure point, but the specific mechanism is that the construct_prompt asks for a generic \"3-4 paragraphs\" experimental design without forcing the idea to be anchored to a **mechanistically specific, theoretically grounded claim**. The result is ideas that are methodologically competent but intellectually shallow \u2014 they describe *what* to do but not *why* the mechanism works. In the RL example, S15 produced \"multi-modal fusion improves generalization\" (a known, incremental observation) while S12 produced a principled disentanglement argument. In the QEC example, S15 described FPGA+RNN machinery without justifying *why* that mechanism beats alternatives theoretically. In the TDA example, S15 proposed multi-parameter persistence without explaining the theoretical stability argument. The judges consistently reward ideas that name a **specific mechanism with theoretical grounding** (\"disentangling dynamics from rewards via hierarchical latent variables\") over ideas that name a **method stack** (\"RNN + FPGA + Surface-17\"). The construct_prompt currently says \"describe the key technical method in enough detail to implement\" \u2014 this bias",
+          "win_rate": 0.5555555555555556
+        }
+      ],
+      "failed_edits": [
+        {
+          "description": "DIAGNOSIS: Step 4 (IDEA CONSTRUCTION) is the primary failure point. In all four losing examples, the hypothesis selected is actually reasonable, but the construction step produces ideas that are either (a) tangential to the core challenge (multi-modal sensory fusion for zero-shot RL, which the judge explicitly called \"orthogonal\"), (b) architecturally vague (the hierarchical meta-controller with \"undefined theoretical framework\"), or (c) technically overloaded with engineering complexity that undermines feasibility (FPGA+RNN for QEC). The construction prompt asks for \"concrete datasets/baselines/metrics\" but does NOT force the idea to remain tightly coupled to WHY the hypothesis is novel relative to existing work \u2014 so the LLM drifts toward whatever method feels natural for the topic rather than the specific mechanistic claim in the hypothesis. Comparing the winners: S12's winning ideas consistently name a precise mechanistic insight (disentangling dynamics from rewards, temporally-correlated wireless noise, PH on PHATE embeddings, RL-based adaptive thresholds) and build the entire experiment around proving that one mechanism matters. S15's construction step loses this thread \u2014 the ",
+          "win_rate": 0.3333333333333333
+        }
+      ],
+      "full_eval_win_rate": 0.4866666666666667,
+      "accepted": false
+    },
+    {
+      "version": "S17",
+      "champion": "S15",
+      "mini_eval_best": 0.5555555555555556,
+      "accepted_edits": [
+        {
+          "description": "DIAGNOSIS: The losing ideas (S16) consistently fail because the adversarial loop selects hypotheses that are *theoretically maximally stressed* \u2014 the attack-and-revise process systematically pushes hypotheses toward the exotic, fault-tolerant, trillion-parameter, or highly complex end of the spectrum. The adversarial critic attacks feasibility and practicality, so the \"surviving\" revised hypothesis tends to be one that has hedged against all attacks by becoming more ambitious and abstract (fault-tolerant quantum hardware, 1T+ parameter models, complex hybrid mechanisms). This creates a structural anti-feasibility bias: the selection step rewards hypotheses that survived attacks, but surviving attacks on \"practical limitation\" means the hypothesis has retreated to a realm where practical limitations don't apply \u2014 i.e., far-future or resource-intensive settings. The judge consistently penalizes exactly this: ideas that are novel but not immediately actionable.\n\nREFINED FIX: ## Attacking the Proposed Fix\n\n### 1. ROOT CAUSE: Symptom, Not Cause\n\nThe fix misidentifies the root cause. The problem isn't *adversarial loops per se* \u2014 it's that **the fitness function rewards survival under at",
+          "win_rate": 0.5555555555555556
+        }
+      ],
+      "failed_edits": [
+        {
+          "description": "DIAGNOSIS: The losing ideas (S16) consistently fail on the FEASIBILITY dimension \u2014 they propose experiments requiring fault-tolerant quantum hardware, 500B-2T parameter models, or complex multi-component systems that most research groups cannot run. The structural cause is that S15's hypothesis-first loop has no mechanism to anchor hypotheses to what is *actually runnable*: the adversarial attack probes theoretical gaps and dataset biases but never asks \"can a real lab do this in 6 months with a GPU cluster?\" The surviving hypothesis is selected for novelty and falsifiability but not for feasibility, so the construction step builds an unfeasible experiment around an overly ambitious hypothesis. The ideas end up scientifically interesting but practically unreachable \u2014 judges consistently penalize this.\n\nREFINED FIX: ## Attacks on the Proposed Fix\n\n### 1. ROOT CAUSE: Symptom, Not Cause\n\nThe fix treats infeasibility as a *filtering problem* \u2014 bad hypotheses slip through and need to be caught. But the root cause is that **the hypothesis generation step has no feasibility prior at all**. S15's loop generates hypotheses in an unconstrained space, then tries to retroactively constrain the",
+          "win_rate": 0.4444444444444444
+        },
+        {
+          "description": "DIAGNOSIS: The losing ideas (S16) systematically fail because the hypothesis-first adversarial loop optimizes for *theoretical sharpness and novelty* at the expense of *experimental groundedness*. The adversarial attack step (Step 2) pressures hypotheses to become more ambitious and boundary-pushing to \"survive\" criticism, while the selection step (Step 3) rewards the most \"novel and non-obvious\" survivor. This creates a selection pressure toward ideas that are intellectually exciting but practically infeasible \u2014 requiring trillion-parameter models, fault-tolerant quantum hardware, or complex multi-component systems. The construction step (Step 4) then inherits this overreach and cannot recover it. The core structural flaw: novelty and feasibility are treated as independent axes, but the pipeline only optimizes novelty during hypothesis selection, leaving feasibility as an afterthought in critique.\n\nREFINED FIX: ## Attacking the Proposed Fix\n\n### 1. ROOT CAUSE: Symptom Treatment, Not Cure\n\nThe fix diagnoses \"novelty pressure during selection\" but the actual root cause is deeper: **the LLM has no ground truth about what is experimentally feasible in the current research landscape**.",
+          "win_rate": 0.5
+        }
+      ],
+      "full_eval_win_rate": 0.3333333333333333,
+      "accepted": false
+    },
+    {
+      "version": "S18",
+      "full_eval_win_rate": 0.43333333333333335,
+      "accepted": false
+    },
+    {
+      "version": "S19",
+      "champion": "S15",
+      "mini_eval_best": 1.0,
+      "accepted_edits": [
+        {
+          "description": "DIAGNOSIS: The losing ideas (S18) consistently fail on two structural dimensions: (1) **experimental clarity/concreteness** \u2014 they describe experiments at the level of \"we will compare X to Y\" without naming the precise mechanism, dataset splits, or quantitative falsification threshold, and (2) **hypothesis-experiment coupling** \u2014 the selected hypothesis and the experimental design exist as separate artifacts that don't tightly constrain each other. The S15 winner ideas succeed because the hypothesis IS the experiment: \"multimodal foundation models outperform unimodal on GRN prediction, validated by CRISPR perturbation datasets\" \u2014 the hypothesis names the exact comparison. S18 ideas tend to be either too broad (education equity), too vague in mechanism (adaptive curriculum), or propose a correct idea but fail to articulate the precise experimental discriminator. The adversarial loop selects for *surviving* hypotheses (ones that can't be easily killed) rather than *generative* hypotheses (ones that directly imply a clean experiment). The result is ideas that are intellectually defensible but experimentally murky.\n\nREFINED FIX: ## Attacks\n\n### 1. ROOT CAUSE: This treats a symptom, no",
+          "win_rate": 1.0
+        }
+      ],
+      "failed_edits": [],
+      "full_eval_win_rate": 0.10666666666666667,
+      "accepted": false
+    },
+    {
+      "version": "S20",
+      "champion": "S_paper",
+      "mini_eval_best": 0.8888888888888888,
+      "accepted_edits": [
+        {
+          "description": "DIAGNOSIS: The losing ideas fail because the tree-search + Elo pipeline optimizes for *internal coherence and novelty* but systematically underproduces the property judges weight most heavily: a **sharp, falsifiable hypothesis paired with a concrete experimental protocol**. The tree builds breadth (L1\u2192L2\u2192L3 directions) and the tournament selects the most *interesting-sounding* leaf, but neither step forces the idea to commit to a specific measurable claim, named baselines, or a decision procedure. The expansion step then inherits this vagueness \u2014 it receives a title+summary and is asked to \"be concrete,\" but without structural scaffolding it produces ideas that are novel in framing but underspecified in execution. The recurring judge complaint (\"vague hypothesis statement,\" \"less concrete,\" \"methodology less precise\") points to a single root cause: the pipeline never generates the experimental skeleton first; it generates the concept and hopes concreteness follows.\n\nREFINED FIX: ## Attacks\n\n### 1. ROOT CAUSE: This fixes a symptom, not the cause\n\nThe diagnosis correctly identifies that the output lacks falsifiable hypotheses and concrete protocols, but misattributes the cause to *wh",
+          "win_rate": 0.7777777777777778
+        },
+        {
+          "description": "DIAGNOSIS: The losing ideas fail because the tree-search + Elo pipeline optimizes for *internal tournament consistency* rather than *judge-facing quality*. The Elo ranking selects leaves that beat other leaves in the same narrow tree \u2014 but the tree itself is generated from a single topic prompt, so all candidates share the same conceptual frame. The expansion step then inflates a leaf summary into IDEA_FORMAT without any mechanism to stress-test whether the hypothesis is actually falsifiable, non-obvious, or experimentally crisp. The result is ideas that are either (a) vague/template-like because the leaf was thin and expansion just padded it, or (b) theoretically ambitious but experimentally underspecified because nothing in the pipeline forced a concrete experimental design to be constructed *before* the idea was written up. The judge feedback consistently penalizes exactly these two failure modes: \"vague hypothesis statement,\" \"less concrete methodology,\" \"feasibility concerns.\" The tournament selects the *most popular leaf among similar leaves*, not the leaf that would survive external scrutiny.\n\nREFINED FIX: ## Attacks\n\n### 1. ROOT CAUSE: This addresses a symptom, not the root",
+          "win_rate": 0.8888888888888888
+        }
+      ],
       "failed_edits": []
+    },
+    {
+      "version": "S21",
+      "champion": "S12",
+      "mini_eval_best": 0.8888888888888888,
+      "accepted_edits": [
+        {
+          "description": "DIAGNOSIS: The losing ideas (S15 and its descendants) consistently fail on a specific structural dimension: **the selected hypothesis is too narrow/domain-specific or too incremental, producing ideas that are either vague about mechanisms or over-specified on a single technical trick without grounding in a falsifiable experimental contrast**. Looking at the actual losing examples: (1) S15's causal graph learner idea lost because it \"lacks strong theoretical motivation\" and \"feels incremental\"; (2) S15's dynamic communication protocols lost because it had \"vague feedback mechanisms\" and \"undefined theoretical framework\"; (3) S15's persistent spectral graph idea lost because it made \"vague claims about scalable implementations\" and had a \"modest\" improvement threshold; (4) S15's temporal correlation decoder lost because it introduced \"substantial engineering overhead\" that was \"less well-justified.\" The root cause is in **Step 3 (HYPOTHESIS SELECTION)**: the selection prompt rewards \"most novel\" and \"most falsifiable\" but has no gate for **mechanistic specificity** \u2014 it does not force the selected hypothesis to name *why* the mechanism works, only *that* it works. This means the cons",
+          "win_rate": 0.6666666666666666
+        },
+        {
+          "description": "DIAGNOSIS: The losing ideas (S15 and its descendants) consistently lose because the adversarial loop selects hypotheses that are **methodologically complex but experimentally vague** \u2014 the attack/revision cycle rewards theoretical sophistication (causal graphs, variational autoencoders, multi-parameter persistence, FPGA decoders) while stripping away concrete experimental grounding. The revised hypotheses that survive the adversarial loop are \"stronger\" in the sense of being harder to falsify trivially, but they become harder to operationalize concretely. Then Step 4 (IDEA CONSTRUCTION) inherits this vagueness: it builds around a hypothesis whose falsification criteria are abstract, producing ideas that name datasets and metrics but fail to specify the precise quantitative threshold, the exact control condition, or the specific mechanism linking the hypothesis to the measurement. Judges consistently penalize this: \"vague feedback mechanisms,\" \"unclear how functional annotations are aggregated,\" \"less well-justified given the modest novelty gain,\" \"less precise methodology.\" The root cause is that the SELECTION prompt (Step 3) scores hypotheses on novelty and falsifiability in the a",
+          "win_rate": 0.8888888888888888
+        },
+        {
+          "description": "DIAGNOSIS: The losing ideas (S15 and earlier candidates) consistently lose on **experimental clarity and specificity of the falsification mechanism**, not on novelty or theoretical interest. Looking at the judge feedback across all losses: \"lacks specificity in how the meta-controller operates,\" \"vague feedback mechanisms,\" \"unclear how functional annotations are aggregated,\" \"less rigorous experimental design with undefined theoretical framework,\" \"FPGA integration introduces significant technical and practical challenges that are less well-justified.\" The root cause is in **Step 4 (IDEA CONSTRUCTION)**: the construct_prompt asks for \"concrete datasets, baselines, and metrics\" but does not force the LLM to explicitly write out the **falsification threshold** \u2014 the exact quantitative result that would disprove the hypothesis. Without a forced falsification threshold, the construction drifts toward describing a method rather than designing a decisive experiment. The winning S12 ideas all contain explicit numeric thresholds (\"at least 50% reduction,\" \">10% performance drop,\" \"<50% sensitivity\") that make the experiment feel decisive. The losing ideas describe interesting methods but ",
+          "win_rate": 0.7777777777777778
+        },
+        {
+          "description": "DIAGNOSIS: The losing ideas (S15 candidates) consistently fail on a specific structural dimension: they select hypotheses that are **methodologically ambitious but experimentally underspecified**. The adversarial attack loop in Step 2 probes theoretical gaps and assumption violations, which pushes the revised hypotheses toward *more complex mechanisms* (variational causal graphs, bi-filtration, FPGA decoders, dynamic meta-controllers) rather than toward *more testable and concrete* ones. The selection prompt in Step 3 rewards \"most concrete and specific (names mechanisms)\" but the mechanism-naming criterion gets captured by architectural complexity rather than experimental operationalizability. Then Step 4 (IDEA CONSTRUCTION) inherits this complexity and produces designs where the key technical method is underspecified (e.g., \"meta-controller\" with vague feedback, \"bi-filtration\" without scalability plan). The judge feedback consistently penalizes: vague falsification criteria, missing controls, underspecified baselines, and feasibility concerns from architectural overhead. The root cause is that the adversarial refinement loop *systematically trades experimental clarity for mechan",
+          "win_rate": 0.5555555555555556
+        },
+        {
+          "description": "DIAGNOSIS: The losing ideas (S15 and its descendants) lose primarily because the adversarial loop selects hypotheses that are **theoretically interesting but experimentally underspecified at the construction stage**. Specifically, the IDEA CONSTRUCTION prompt (Step 4) asks for concrete datasets/baselines/metrics, but the selected hypothesis often carries implicit scope ambiguity that lets the LLM drift toward describing a *framework* or *approach* rather than a single decisive experiment. The judge comments consistently penalize: vague mechanisms (\"context-dependent protocols,\" \"dynamic clustering,\" \"variational causal graph learner\") without saying *how* they work; modest or undefined success thresholds; and missing negative controls or falsification criteria. The root cause is that Step 3 (HYPOTHESIS SELECTION) optimizes for novelty and falsifiability in the abstract, but the selected hypothesis often lacks a **mechanistic claim** (a specific causal pathway that can be operationalized). Without a mechanism locked in, Step 4 construction produces ideas that are wide and shallow rather than narrow and deep. The champion ideas that win all share one property: a single, named mechani",
+          "win_rate": 0.5555555555555556
+        },
+        {
+          "description": "DIAGNOSIS: The losing ideas (S15 and its descendants) consistently fail on **specificity of mechanism and experimental grounding relative to the champion**. Looking at the concrete losing examples: the S15 losers propose sound but vague mechanisms (\"variational causal graph learner,\" \"dynamic context-dependent protocols,\" \"persistent spectral graph features,\" \"temporal correlation decoders\") without naming the precise algorithmic implementation, specific datasets, or quantitative falsification thresholds in the idea body itself. The champion S12 ideas win because they anchor to concrete named artifacts (IBM Quantum devices, validated wireless noise models, bottleneck distance minimization, reward relabeling) and state explicit numeric success criteria (\u226550% error reduction, >10% performance drop threshold). The root cause in the pipeline is **Step 4 (IDEA CONSTRUCTION)**: the construct_prompt asks for specificity but the selected hypothesis is often still abstract after Step 3, and there is no mechanism forcing the construction step to lock onto a concrete algorithmic mechanism before expanding. The hypothesis selection in Step 3 rewards \"falsifiability\" abstractly but does not req",
+          "win_rate": 0.7777777777777778
+        }
+      ],
+      "failed_edits": []
+    },
+    {
+      "version": "S22",
+      "champion": "S12",
+      "mini_eval_best": 0.6666666666666666,
+      "validation_eval_best": 0.6111111111111112,
+      "selected_round": 1,
+      "accepted_edits": [
+        {
+          "description": "DIAGNOSIS: The losing ideas (S15 candidates) consistently lose on two compounding structural flaws that trace back to Step 4 (IDEA CONSTRUCTION) and Step 3 (HYPOTHESIS SELECTION). First, the construction prompt asks the LLM to \"prove or disprove\" the hypothesis but does not force it to lock onto the *mechanism* named in the hypothesis \u2014 so the resulting draft drifts toward a general method paper that happens to mention the hypothesis, rather than an experiment whose entire design is organized around falsifying one specific mechanistic claim. This is visible in every losing example: S15's ideas name a method (variational causal graph learner, dynamic protocols, persistent spectral graph features, temporal-correlation decoders) but lack the tightly-scoped, single-question experimental logic that judges reward. Second, Step 3 (HYPOTHESIS SELECTION) selects for \"most novel\" without a concrete feasibility gate \u2014 so it systematically picks the most ambitious/complex hypothesis, which then produces ideas that judges penalize for vague feasibility and engineering overhead (FPGA integration, multi-parameter persistence at million-cell scale, audio simulation pipelines). The champion ideas t",
+          "win_rate": 0.6666666666666666,
+          "validation_win_rate": 0.6111111111111112,
+          "validation_score": 0.6111111111111112,
+          "health": {
+            "total": 9,
+            "invalid_count": 0,
+            "invalid_examples": []
+          },
+          "validation_health": {
+            "total": 9,
+            "invalid_count": 0,
+            "invalid_examples": []
+          }
+        }
+      ],
+      "failed_edits": [
+        {
+          "description": "DIAGNOSIS: The losing ideas (S15 and earlier candidates) lose primarily because their hypotheses are **too abstract or mechanism-free at the point of idea construction**. Looking at the concrete losing examples: the losing ideas propose general frameworks (\"variational causal graph learner,\" \"dynamic context-dependent protocols,\" \"persistent spectral graph features,\" \"temporal correlation decoders\") without naming the specific mechanistic *why* \u2014 the precise causal chain that makes the hypothesis true or false. The judges consistently reward ideas that name specific failure modes with quantitative thresholds and concrete controls (e.g., \"50% reduction,\" \"validated wireless noise models,\" \">10% performance drop\"), while penalizing ideas that are methodologically sound but lack the mechanistic specificity that makes falsification criteria crisp. The root cause in the pipeline is **Step 4 (IDEA CONSTRUCTION)**: the construct_prompt asks for \"concrete datasets, baselines, and metrics\" but does NOT force the author to explicitly state the **mechanistic causal chain** connecting the hypothesis to the experimental outcome \u2014 i.e., \"if mechanism M operates, then observable O will change by ",
+          "win_rate": 0.0,
+          "validation_win_rate": 0.0,
+          "health": {
+            "total": 9,
+            "invalid_count": 0,
+            "invalid_examples": []
+          },
+          "validation_health": {
+            "total": 0,
+            "invalid_count": 0,
+            "invalid_examples": []
+          }
+        }
+      ]
+    },
+    {
+      "version": "S23",
+      "champion": "S12",
+      "mini_eval_best": 0.5,
+      "accepted_edits": [],
+      "failed_edits": [
+        {
+          "description": "DIAGNOSIS: The losing ideas (S15 and earlier candidates) lose primarily because their **hypothesis selection criterion over-rewards theoretical novelty and mechanistic complexity at the expense of experimental clarity and feasibility**. Looking at the concrete losses: the losing ideas consistently propose architecturally complex mechanisms (variational causal graph learners, persistent spectral graph features, FPGA co-processors, dynamic meta-controllers) that sound novel but lack specific falsification experiments, named datasets, and concrete baselines. The judges repeatedly penalize vague experimental design (\"unclear how functional annotations are aggregated,\" \"less well-justified given the modest novelty gain,\" \"vague feedback mechanisms\"). The root cause in the code is Step 3 (HYPOTHESIS SELECTION): the selection prompt asks for the hypothesis that is \"most concrete and specific,\" \"most falsifiable,\" and \"most novel\" \u2014 but in practice the LLM selects for the most *intellectually striking* hypothesis, which tends to be the most complex and hardest to operationalize. Then Step 4 (IDEA CONSTRUCTION) inherits this complexity and produces an experiment that is ambitious but under-",
+          "win_rate": 0.0
+        },
+        {
+          "description": "DIAGNOSIS: The losing ideas (S15 and its descendants) lose because the **hypothesis selection step (Step 3) optimizes for novelty and falsifiability in isolation, without weighting for experimental concreteness and feasibility**. The judge feedback consistently shows the winning S12 ideas beat competitors on \"experimental clarity,\" \"concrete methodology,\" \"well-defined baselines/metrics,\" and \"feasibility\" \u2014 not on novelty. The losing ideas tend to select hypotheses that are theoretically ambitious or novel (e.g., variational causal graph learners, persistent spectral graph features, FPGA-integrated decoders) but then fail to construct experiments that are grounded, executable, and specific. The root cause is that the selection prompt in Step 3 ranks candidates on \"most concrete,\" \"most falsifiable,\" and \"most novel\" with equal weight, but the adversarial attack step (Step 2) tends to push revised hypotheses toward *more ambitious/complex* variants to survive the attacks \u2014 and then Step 3 picks the most ambitious survivor rather than the most *experimentally tractable* one. The construction step (Step 4) then inherits an over-ambitious hypothesis and produces vague or infeasible ex",
+          "win_rate": 0.1111111111111111
+        },
+        {
+          "description": "DIAGNOSIS: The losing ideas (S15 and descendants) lose because the **idea construction step (Step 4) drifts from the selected hypothesis into generic technique-combination territory**. Looking at the concrete failures: S15's \"variational causal graph learner\" idea, \"dynamic context-dependent communication protocols\" idea, and \"persistent spectral graph + VAE\" idea all share the same structural flaw \u2014 they name a technique stack and then loosely attach it to a hypothesis, rather than designing the experiment *around falsifying the hypothesis*. The construct_prompt asks the LLM to \"prove or disprove\" the hypothesis but doesn't enforce that the **core experimental contrast** directly maps to the hypothesis's specific claim. The result is ideas where the hypothesis and the experimental design are weakly coupled: the experiment could be run and the hypothesis could remain untested. Judges consistently penalize this as \"vague feedback mechanisms,\" \"unclear how X is aggregated,\" and \"less rigorous experimental design.\" Meanwhile, the champion's winning ideas (noise-tailored QEC, topology-preserving contrastive learning, curriculum reward relabeling) all have a tight 1-to-1 mapping between",
+          "win_rate": 0.5
+        }
+      ]
+    },
+    {
+      "version": "S24",
+      "champion": "S12",
+      "mini_eval_best": 0.125,
+      "accepted_edits": [],
+      "failed_edits": [
+        {
+          "description": "DIAGNOSIS: The losing ideas (S15 candidates) consistently lose because they propose methodologically complex, multi-component architectures (variational causal graph learners, persistent spectral graph features + VAEs, FPGA co-processors, hierarchical meta-learning) that score poorly on **feasibility** and **experimental clarity** \u2014 not because they lack novelty. The judge feedback repeatedly flags: vague theoretical justification for combined components, unclear how sub-components interact, modest or undefined success thresholds, and engineering overhead that obscures the core scientific question. The root cause is in **Step 4 (IDEA CONSTRUCTION)**: the construct_prompt asks the LLM to \"design a concrete experiment\" but gives no constraint against architectural complexity creep. The adversarial loop in Steps 2-3 selects hypotheses that \"survive\" attacks by becoming *more refined/nuanced*, which in practice means they accumulate qualifications and mechanism-stacking. The construction step then faithfully builds a complex multi-part system around this over-refined hypothesis, producing ideas that are novel but infeasible. Meanwhile, the winning S12 ideas are characterized by a **sin",
+          "win_rate": 0.125
+        }
+      ]
+    },
+    {
+      "version": "S25",
+      "champion": "S_paper",
+      "mini_eval_best": 0.35,
+      "accepted_edits": [],
+      "failed_edits": [
+        {
+          "description": "DIAGNOSIS: The losing ideas (S12) consistently fail on **feasibility** \u2014 they propose experiments requiring trillion-parameter model training, real NISQ hardware at scale, or other resource-prohibitive setups. The judge repeatedly cites this as the decisive factor even when novelty and clarity are comparable. The root cause is structural: the tournament (`run_tournament_ranked`) ranks leaves by a paper-style judge that weights novelty/scientific impact heavily, so it surfaces the most ambitious/speculative leaves for expansion. The `_expand_leaf` step then faithfully elaborates those ambitious leaves without any feasibility check or grounding step. There is no gate between \"high Elo rank\" and \"expansion\" that filters or re-anchors ideas toward executable experiments.\n\nREFINED FIX: ## Attacking the Proposed Fix\n\n### 1. ROOT CAUSE: Symptom, Not Cause\n\nThe fix treats the *expansion* step as the problem, but the diagnosis itself identifies the root cause: **the tournament's ranking function selects for ambition**. A feasibility anchor injected at expansion time is downstream damage control. The Elo system will continue surfacing resource-prohibitive leaves for expansion, meaning the an",
+          "win_rate": 0.35
+        }
+      ]
+    },
+    {
+      "version": "S26",
+      "champion": "S_paper",
+      "mini_eval_best": 0.125,
+      "accepted_edits": [],
+      "failed_edits": [
+        {
+          "description": "DIAGNOSIS: The losing ideas consistently fail on two correlated dimensions: (1) **experimental clarity/concreteness** \u2014 they lack named datasets, specific baselines, quantified thresholds, and falsifiable predictions; and (2) **feasibility drift** \u2014 the tree-tournament stage selects leaves that are novel but ambitious/speculative (e.g., \"distributed sensor focus,\" \"edge devices,\" \"sub-millisecond heterogeneous-node requirements\"), while the `_expand_leaf` prompt does not constrain the expansion to stay grounded. The root cause is in Step 4 (`_expand_leaf`): the expansion prompt asks for concreteness (\"name datasets, baselines, or evaluation metrics where applicable\") but provides no structural forcing function \u2014 it hands the LLM a high-level leaf title+description and a free-form instruction, so the LLM elaborates the leaf's speculative framing rather than anchoring it to a concrete, executable experiment. The tournament (Step 3) rewards novelty among abstract leaf descriptions, so the top-ranked leaves that reach Step 4 are already biased toward ambitious/novel framings. The expansion then inherits and amplifies that speculation instead of grounding it.\n\nREFINED FIX: ## Attacking ",
+          "win_rate": 0.125
+        }
+      ]
+    },
+    {
+      "version": "S27",
+      "champion": "S_paper",
+      "mini_eval_best": 0.125,
+      "accepted_edits": [],
+      "failed_edits": [
+        {
+          "description": "DIAGNOSIS: The losing ideas consistently fail on **experimental clarity and feasibility** \u2014 they are described by judges as \"less clear in methodology,\" \"more speculative,\" \"ambitious but less feasible,\" and targeting edge cases (distributed sensors, edge devices) rather than the core problem. The root cause is in Step 4 (_expand_leaf): the expansion prompt receives only a `title` and `description` from the tournament-ranked leaf, but these leaf dicts are compact L3 nodes from the idea tree that lack concrete experimental scaffolding (datasets, baselines, metrics, falsifiable thresholds). The expansion prompt then has to invent all concrete details from scratch, and without explicit constraints it drifts toward ambitious/novel framings over clear/testable ones. The tournament (Step 3) selects for novelty at the leaf level, but the expansion step doesn't inherit the concreteness signal \u2014 it re-introduces vagueness. The winning ideas (S12) consistently name specific hardware (IBM Quantum), specific metrics (50% reduction, sub-10ms latency), and specific baselines, while the losing ideas stay at the level of general mechanisms.\n\nREFINED FIX: ## Attacking the Proposed Fix\n\n### 1. ROOT ",
+          "win_rate": 0.125
+        }
+      ]
     }
   ]
 }

@@ -87,9 +87,10 @@ def run_system(
     """Run a generator system on all topics and save ideas to output_dir/ideas.json.
 
     Always starts clean: clears output_dir before writing.
-    Saves incrementally after each topic so crashes don't lose completed work.
-    workers > 1 runs topics concurrently (ideas within each topic stay sequential
-    to avoid burst rate-limiting).
+    Saves incrementally as work completes so crashes don't lose completed work.
+    workers > 1 runs all independent work concurrently. Systems that override
+    generate_batch() get one task per topic; otherwise each topic×idea pair is
+    scheduled independently.
 
     fresh=True: use generate_batch() — one LLM call per topic returns all n_ideas
     at once.  Results are NOT cached (run_config.json omitted) so the next call
@@ -97,7 +98,7 @@ def run_system(
     a fixed idea set.
     """
     sys.path.insert(0, str(Path(__file__).parent / "systems"))
-    from base import make_client
+    from base import IdeaGenerator, make_client
 
     generator = load_system(version, systems_dir)
     client = make_client(model)
@@ -111,6 +112,10 @@ def run_system(
     total = len(topics) * n_ideas
     results = []
     flush_lock = Lock()
+    topic_order = {t["id"]: i for i, t in enumerate(topics)}
+
+    has_custom_batch = type(generator).generate_batch is not IdeaGenerator.generate_batch
+    use_batch = fresh or (n_ideas > 1 and has_custom_batch)
 
     def _run_topic_fresh(topic_entry: dict) -> list[dict]:
         """Batch mode: one LLM call produces all n_ideas for this topic."""
@@ -137,34 +142,31 @@ def run_system(
             for i in range(n_ideas)
         ]
 
-    def _run_topic(topic_entry: dict) -> list[dict]:
+    def _run_idea(topic_entry: dict, idea_idx: int) -> dict:
         topic_id = topic_entry["id"]
         topic = topic_entry["topic"]
-        logger.info("[%s] %s", topic_id, topic)
-        topic_results = []
-        for idea_idx in range(n_ideas):
-            try:
-                text = generator.generate_idea(topic, client, model=model)
-                logger.info("  [%s] idea %d/%d — ok (%d chars)",
-                            topic_id, idea_idx + 1, n_ideas, len(text))
-            except TimeoutError as e:
-                logger.error("  [%s] idea %d/%d — TIMEOUT: %s", topic_id, idea_idx + 1, n_ideas, e)
-                text = f"TIMEOUT: {e}"
-            except Exception as e:
-                logger.error("  [%s] idea %d/%d — FAILED [%s]: %s",
-                             topic_id, idea_idx + 1, n_ideas, type(e).__name__, e)
-                text = f"ERROR: {e}"
-            topic_results.append({
-                "topic_id": topic_id,
-                "topic": topic,
-                "domain": topic_entry.get("domain", ""),
-                "idea_index": idea_idx,
-                "text": text,
-                "system_version": generator.VERSION,
-                "model": model,
-                "timestamp": datetime.now(timezone.utc).isoformat(),
-            })
-        return topic_results
+        logger.info("[%s] %s (idea %d/%d)", topic_id, topic, idea_idx + 1, n_ideas)
+        try:
+            text = generator.generate_idea(topic, client, model=model)
+            logger.info("  [%s] idea %d/%d — ok (%d chars)",
+                        topic_id, idea_idx + 1, n_ideas, len(text))
+        except TimeoutError as e:
+            logger.error("  [%s] idea %d/%d — TIMEOUT: %s", topic_id, idea_idx + 1, n_ideas, e)
+            text = f"TIMEOUT: {e}"
+        except Exception as e:
+            logger.error("  [%s] idea %d/%d — FAILED [%s]: %s",
+                         topic_id, idea_idx + 1, n_ideas, type(e).__name__, e)
+            text = f"ERROR: {e}"
+        return {
+            "topic_id": topic_id,
+            "topic": topic,
+            "domain": topic_entry.get("domain", ""),
+            "idea_index": idea_idx,
+            "text": text,
+            "system_version": generator.VERSION,
+            "model": model,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+        }
 
     # Flush on SIGTERM/SIGINT so partial results survive a kill
     # Signal handlers can only be set in the main thread; skip when called from workers
@@ -180,30 +182,66 @@ def run_system(
         signal.signal(signal.SIGTERM, _on_signal)
         signal.signal(signal.SIGINT, _on_signal)
 
-    effective_workers = min(workers, len(topics))
-    topic_fn = _run_topic_fresh if fresh else _run_topic
-    mode_label = "fresh-batch" if fresh else "cached"
+    if use_batch:
+        work_units = len(topics)
+        effective_workers = min(max(1, workers), work_units) if work_units else 1
+        mode_label = "batch" if not fresh else "fresh-batch"
+    else:
+        work_units = len(topics) * n_ideas
+        effective_workers = min(max(1, workers), work_units) if work_units else 1
+        mode_label = "idea-parallel"
+
+    # Generators that call the shared Swiss tournament can use otherwise-idle
+    # runner capacity inside each topic task.
+    prev_tournament_workers = os.environ.get("IDEAS_TOURNAMENT_WORKERS")
+    nested_workers = max(1, workers // max(1, effective_workers))
+    if prev_tournament_workers is None:
+        os.environ["IDEAS_TOURNAMENT_WORKERS"] = str(nested_workers)
+
     logger.info("Running %s on %d topic(s) × %d idea(s) = %d calls  "
                 "[%s, workers=%d]",
                 version, len(topics), n_ideas,
-                len(topics) if fresh else total,   # fresh = 1 call/topic
+                len(topics) if use_batch else total,
                 mode_label, effective_workers)
 
-    if effective_workers <= 1:
-        for topic_entry in topics:
-            topic_results = topic_fn(topic_entry)
-            results.extend(topic_results)
-            _flush_partial(results, out)
-            logger.debug("  flushed %d/%d ideas to disk", len(results), total)
-    else:
-        with ThreadPoolExecutor(max_workers=effective_workers) as executor:
-            future_map = {executor.submit(topic_fn, t): t for t in topics}
-            for future in as_completed(future_map):
-                topic_results = future.result()
-                with flush_lock:
+    try:
+        if effective_workers <= 1:
+            if use_batch:
+                for topic_entry in topics:
+                    topic_results = _run_topic_fresh(topic_entry)
                     results.extend(topic_results)
+                    results.sort(key=lambda r: (topic_order.get(r["topic_id"], 10**9), r["idea_index"]))
                     _flush_partial(results, out)
                     logger.debug("  flushed %d/%d ideas to disk", len(results), total)
+            else:
+                for topic_entry in topics:
+                    for idea_idx in range(n_ideas):
+                        results.append(_run_idea(topic_entry, idea_idx))
+                        results.sort(key=lambda r: (topic_order.get(r["topic_id"], 10**9), r["idea_index"]))
+                        _flush_partial(results, out)
+                        logger.debug("  flushed %d/%d ideas to disk", len(results), total)
+        else:
+            with ThreadPoolExecutor(max_workers=effective_workers) as executor:
+                if use_batch:
+                    future_map = {executor.submit(_run_topic_fresh, t): t for t in topics}
+                else:
+                    future_map = {
+                        executor.submit(_run_idea, t, i): (t, i)
+                        for t in topics for i in range(n_ideas)
+                    }
+                for future in as_completed(future_map):
+                    completed = future.result()
+                    with flush_lock:
+                        if isinstance(completed, list):
+                            results.extend(completed)
+                        else:
+                            results.append(completed)
+                        results.sort(key=lambda r: (topic_order.get(r["topic_id"], 10**9), r["idea_index"]))
+                        _flush_partial(results, out)
+                        logger.debug("  flushed %d/%d ideas to disk", len(results), total)
+    finally:
+        if prev_tournament_workers is None:
+            os.environ.pop("IDEAS_TOURNAMENT_WORKERS", None)
 
     # Fresh mode: skip run_config.json so cache_is_valid() returns False next time,
     # forcing regeneration on the next call.
@@ -233,6 +271,10 @@ def main():
                         help="Model to use (default: gpt-4.1-mini)")
     parser.add_argument("--n-ideas", type=int, default=1,
                         help="Number of ideas per topic (default: 1)")
+    parser.add_argument(
+        "--workers", type=int, default=1,
+        help="Parallel topic workers (default: 1; use e.g. 15 for full benchmark speed)",
+    )
     parser.add_argument("--topics", default=None,
                         help="Path to benchmark_topics.json (default: auto-detected)")
     args = parser.parse_args()
@@ -252,6 +294,7 @@ def main():
         model=args.model,
         n_ideas=args.n_ideas,
         systems_dir=systems_dir,
+        workers=args.workers,
     )
 
 

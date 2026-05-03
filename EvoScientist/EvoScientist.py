@@ -165,8 +165,8 @@ def _build_prompt_refs() -> dict:
     }
 
 
-def _build_base_kwargs(base_backend, base_middleware):
-    """Build agent kwargs *without* MCP (fast, no subprocess spawning)."""
+def _build_base_kwargs_with_model(base_backend, base_middleware, model):
+    """Build agent kwargs *without* MCP using an explicit chat model instance."""
     from .tools import skill_manager, tavily_search, think_tool
     from .utils import load_subagents
 
@@ -183,7 +183,7 @@ def _build_base_kwargs(base_backend, base_middleware):
     _inject_subagent_middleware(subs)
     return {
         "name": "EvoScientist",
-        "model": _ensure_chat_model(),
+        "model": model,
         "tools": list(base_tools),
         "backend": base_backend,
         "subagents": subs,
@@ -193,18 +193,46 @@ def _build_base_kwargs(base_backend, base_middleware):
     }
 
 
-def load_mcp_and_build_kwargs(base_backend, base_middleware):
+def _build_base_kwargs(base_backend, base_middleware):
+    """Build agent kwargs *without* MCP (fast, no subprocess spawning)."""
+    return _build_base_kwargs_with_model(
+        base_backend, base_middleware, _ensure_chat_model()
+    )
+
+
+def load_mcp_and_build_kwargs(
+    base_backend,
+    base_middleware,
+    *,
+    model=None,
+    disable_mcp: bool = False,
+):
     """Load MCP tools (cached by config) and build agent kwargs.
 
     Re-connects to MCP servers only when the effective MCP config changes.
     Falls back to base kwargs if no MCP configured.
+
+    Args:
+        base_backend: Composite backend for the agent.
+        base_middleware: Middleware stack (must match *model*).
+        model: Optional pre-built chat model; defaults to ``_ensure_chat_model()``.
+        disable_mcp: If True, never attach MCP tools (hosted / locked-down runs).
     """
     from .tools import skill_manager, tavily_search, think_tool
     from .utils import load_subagents
 
+    resolved_model = model if model is not None else _ensure_chat_model()
+
+    if disable_mcp:
+        return _build_base_kwargs_with_model(
+            base_backend, base_middleware, resolved_model
+        )
+
     mcp_by_agent = _load_mcp_tools_cached()
     if not mcp_by_agent:
-        return _build_base_kwargs(base_backend, base_middleware)
+        return _build_base_kwargs_with_model(
+            base_backend, base_middleware, resolved_model
+        )
 
     tool_registry = {"think_tool": think_tool}
     if os.environ.get("TAVILY_API_KEY"):
@@ -234,7 +262,7 @@ def load_mcp_and_build_kwargs(base_backend, base_middleware):
 
     return {
         "name": "EvoScientist",
-        "model": _ensure_chat_model(),
+        "model": resolved_model,
         "tools": base_tools + mcp_main,
         "backend": base_backend,
         "subagents": subs,
@@ -343,7 +371,13 @@ def __getattr__(name: str):
 # =============================================================================
 
 
-def create_cli_agent(workspace_dir: str | None = None, checkpointer=None, config=None):
+def create_cli_agent(
+    workspace_dir: str | None = None,
+    checkpointer=None,
+    config=None,
+    *,
+    anthropic_api_key: str | None = None,
+):
     """Create agent with checkpointer for CLI multi-turn support.
 
     A fresh backend is constructed on every call using the current
@@ -358,6 +392,9 @@ def create_cli_agent(workspace_dir: str | None = None, checkpointer=None, config
         config: Optional pre-loaded ``EvoScientistConfig``.  If ``None``,
             loads from file/env/defaults.  Passing this avoids double
             loading when the CLI has already loaded config.
+        anthropic_api_key: If set, build the main model with this key instead
+            of the process environment (BYOK / multi-tenant workers). Only
+            ``provider=anthropic`` is supported for this path.
     """
     import os as _os
 
@@ -421,7 +458,29 @@ def create_cli_agent(workspace_dir: str | None = None, checkpointer=None, config
         },
     )
 
-    model = _ensure_chat_model()
+    if anthropic_api_key:
+        from .llm import DEFAULT_MODEL, get_chat_model
+
+        prov = "anthropic"
+        mname = cfg.model
+        if not str(mname).startswith(("claude-", "anthropic")):
+            mname = DEFAULT_MODEL
+        model = get_chat_model(
+            model=mname,
+            provider=prov,
+            api_key=anthropic_api_key,
+        )
+    else:
+        # Build from cfg (not the process-global chat model cache) so multi-tenant
+        # workers and explicit config overrides (e.g. hosted Gemini) see the right model.
+        from .llm import get_chat_model
+
+        model = get_chat_model(model=cfg.model, provider=cfg.provider)
+
+    disable_mcp = os.environ.get(
+        "EVOSCIENTIST_HOSTED_DISABLE_MCP", ""
+    ).strip().lower() in ("1", "true", "yes")
+
     mw: list[AgentMiddleware] = [
         create_context_editing_middleware(model),
         ContextOverflowMapperMiddleware(),
@@ -435,7 +494,12 @@ def create_cli_agent(workspace_dir: str | None = None, checkpointer=None, config
         mw.insert(0, AskUserMiddleware())
 
     # Re-load MCP tools from current config (picks up /mcp add changes)
-    kwargs = load_mcp_and_build_kwargs(be, mw)
+    kwargs = load_mcp_and_build_kwargs(
+        be,
+        mw,
+        model=model,
+        disable_mcp=disable_mcp,
+    )
 
     # HITL: gate shell execution for user approval
     _interrupt_on: dict[str, bool] | None = None

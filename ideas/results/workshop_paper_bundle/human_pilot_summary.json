@@ -1,0 +1,12 @@
+{
+  "path": "results/human_blind_scores.jsonl",
+  "n_ratings": 60,
+  "counts_by_winner_version": {
+    "S15": 40,
+    "tie": 5,
+    "S_paper": 15
+  },
+  "s15_share_decisive_pairs": 0.7272727272727273,
+  "s15_share_including_half_ties": 0.7083333333333334,
+  "notes": "Single rater (dylan_pilot); winner_version is the preferred system after UI swap normalization."
+}

@@ -1,0 +1,10 @@
+transition,primary_compare_file,primary_n,primary_win_rate_b,primary_ci95_low,primary_ci95_high,blind_file,blind_n,blind_win_rate_b,blind_ci95_low,blind_ci95_high,cohen_kappa_primary_vs_blind_deepseek
+S_paper → S12,,,,,,blind_S_paper_vs_S12__deepseek-chat.json,75,0.806667,0.72,0.886667,
+S12 → S14,compare_S12_vs_S14.json,75,0.52,0.413333,0.613333,blind_S12_vs_S14__deepseek-chat.json,75,0.506667,0.38,0.626667,0.3243243243243243
+S12 → S15,compare_S12_vs_S15.json,75,0.553333,0.433333,0.666667,blind_S12_vs_S15__deepseek-chat.json,75,0.573333,0.493333,0.666667,0.17141838916607266
+S15 → S16,compare_S15_vs_S16.json,75,0.486667,0.373333,0.6,blind_S15_vs_S16__deepseek-chat.json,75,0.546667,0.466667,0.626667,0.27524158613795396
+S15 → S17,compare_S15_vs_S17.json,75,0.333333,0.226667,0.453333,blind_S15_vs_S17__deepseek-chat.json,75,0.333333,0.173333,0.506667,0.39999999999999986
+S15 → S18,compare_S15_vs_S18.json,45,0.433333,0.233333,0.633333,blind_S15_vs_S18__deepseek-chat.json,75,0.4,0.28,0.533333,0.604221635883905
+S15 → S19,compare_S15_vs_S19.json,75,0.106667,0.053333,0.16,blind_S15_vs_S19__deepseek-chat.json,75,0.153333,0.093333,0.213333,0.6580547112462009
+S15 → S13,compare_S15_vs_S13.json,75,0.326667,0.226667,0.433333,blind_S15_vs_S13__deepseek-chat.json,75,0.266667,0.173167,0.373333,0.0832018927444796
+S15 vs S_paper (blind only),,,,,,blind_S15_vs_S_paper__deepseek-chat.json,30,0.416667,0.233333,0.6,

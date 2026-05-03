@@ -1,0 +1,752 @@
+[
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 0,
+    "text": "Research idea for 'Generative AI for drug discovery and molecular design' based on hypothesis: Generative AI models trained exclusively on indigenous medicinal plant compounds will produce novel molecules with higher target-specific binding affinity in tropical disease assays than models trained on global synthetic compound libraries.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:28:34.977733+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 1,
+    "text": "Research idea for 'Generative AI for drug discovery and molecular design' based on hypothesis: Standard approaches to Generative AI for drug discovery and molecular design fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:28:51.378908+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 2,
+    "text": "Research idea for 'Generative AI for drug discovery and molecular design' based on hypothesis: Standard approaches to Generative AI for drug discovery and molecular design fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:07.362161+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 3,
+    "text": "Research idea for 'Generative AI for drug discovery and molecular design' based on hypothesis: Standard approaches to Generative AI for drug discovery and molecular design fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:22.277565+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 4,
+    "text": "Research idea for 'Generative AI for drug discovery and molecular design' based on hypothesis: Standard approaches to Generative AI for drug discovery and molecular design fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:37.653241+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 0,
+    "text": "IDEA: Incorporating domain-specific causal constraints derived from expert knowledge into deep learning-based causal discovery models improves the accuracy and robustness of inferred causal graphs from observational biological data compared to purely data-driven approaches.\n\nBACKGROUND: Causal discovery from observational data in complex biological systems is challenging due to high dimensionality, nonlinear interactions, and limited sample sizes, often resulting in ambiguous or spurious causal graphs. Existing deep learning methods primarily rely on data-driven signals without leveraging structured domain expertise, which limits their accuracy and interpretability in real-world biological contexts.\n\nAPPROACH: We propose a framework to systematically elicit, formalize, and integrate domain-specific causal constraints\u2014such as known regulatory relationships, forbidden edges, and temporal precedence rules\u2014into state-of-the-art deep learning causal discovery models (e.g., temporal attention-based architectures). Constraints will be rigorously validated with domain experts and encoded as hard or soft priors during training. We will conduct ablation studies and control experiments using random and incorrect constraints to isolate the effect of domain knowledge.\n\nEXPERIMENT: Evaluation will be conducted on multiple well-curated benchmark datasets with gold-standard causal graphs from complex biological systems, including gene regulatory networks (e.g., DREAM challenges), protein signaling pathways, and transcriptomic time series datasets. We will compare model performance using established metrics such as Structural Hamming Distance (SHD), Precision, Recall, and F1-score against baselines including unconstrained deep learning models, constraint-free traditional causal discovery algorithms (e.g., PC, GES), and models with random or incorrect constraints.\n\nNOVELTY: Unlike prior work focused solely on data-driven causal discovery or integrating interventional data, this study rigorously formalizes and integrates expert knowledge as causal constraints into deep learning frameworks, systematically evaluates their impact with robust baselines and ablations, and benchmarks on multiple gold-standard biological datasets\u2014thereby bridging domain expertise and scalable deep learning for improved causal inference in complex systems.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:02:37.332051+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 1,
+    "text": "Research idea for 'Causal discovery from observational data' based on hypothesis: Integrating temporal embeddings learned from self-supervised pretraining on large unlabeled time series improves the accuracy of causal graph recovery from nonlinear observational data beyond existing conditional independence tests.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:00.389472+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 2,
+    "text": "Research idea for 'Causal discovery from observational data' based on hypothesis: Standard approaches to Causal discovery from observational data fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:15.214438+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 3,
+    "text": "Research idea for 'Causal discovery from observational data' based on hypothesis: Standard approaches to Causal discovery from observational data fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:30.507964+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 4,
+    "text": "Research idea for 'Causal discovery from observational data' based on hypothesis: Standard approaches to Causal discovery from observational data fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:45.077413+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 0,
+    "text": "IDEA: Integrate experimentally derived dynamic conformational ensembles with AlphaFold\u2019s static protein structure predictions to accurately identify and predict functionally relevant protein conformations under physiological conditions.\n\nBACKGROUND: While AlphaFold has revolutionized static protein structure prediction, it primarily outputs single, static conformations that often do not capture the full spectrum of physiologically relevant dynamic states critical for protein function. Accurately modeling these functionally important conformers remains an open challenge, limiting mechanistic insight and applicability in drug discovery and protein engineering.\n\nAPPROACH: We propose a quantitative pipeline that combines AlphaFold\u2019s high-confidence static predictions with dynamic ensemble data from nuclear magnetic resonance (NMR) spectroscopy, hydrogen-deuterium exchange mass spectrometry (HDX-MS), and molecular dynamics (MD) simulations. By integrating these sources via a Bayesian ensemble refinement framework, we will generate weighted conformational ensembles representing functionally relevant states, validated against experimentally measurable functional readouts such as ligand binding affinities, enzymatic kinetics, and mutational phenotypes.\n\nEXPERIMENT: We will benchmark our integrative method on a curated dataset of proteins with well-characterized dynamic ensembles and functional assays (e.g., kinases, GPCRs, and allosteric enzymes) using metrics including ensemble RMSD against NMR structures, correlation with HDX-MS protection factors, and predictive accuracy for ligand binding affinity changes. Controls will include AlphaFold static predictions alone and existing MD-refined AlphaFold models to demonstrate statistically significant improvements.\n\nNOVELTY: Unlike prior approaches that apply MD refinement or ensemble generation downstream of AlphaFold without explicit integration of experimental dynamics data, our method fundamentally unifies static predictions and diverse experimental ensemble constraints within a rigorous probabilistic framework, enabling direct prediction of functionally validated conformational heterogeneity rather than mere structural variability.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:02:37.445178+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 1,
+    "text": "Research idea for 'Protein structure prediction beyond AlphaFold' based on hypothesis: Integrating experimentally derived dynamic conformational ensembles with AlphaFold predictions will significantly improve the accuracy of modeling intrinsically disordered regions in proteins compared to AlphaFold predictions alone.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:01.127229+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 2,
+    "text": "Research idea for 'Protein structure prediction beyond AlphaFold' based on hypothesis: Standard approaches to Protein structure prediction beyond AlphaFold fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:15.617459+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 3,
+    "text": "Research idea for 'Protein structure prediction beyond AlphaFold' based on hypothesis: Standard approaches to Protein structure prediction beyond AlphaFold fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:31.817343+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 4,
+    "text": "Research idea for 'Protein structure prediction beyond AlphaFold' based on hypothesis: Standard approaches to Protein structure prediction beyond AlphaFold fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:46.487915+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 0,
+    "text": "IDEA:  \nReinforcement learning agents that meta-learn and explicitly incorporate causal structure priors over latent task variables will achieve significantly better zero-shot generalization to unseen environments than agents relying solely on abstract representation learning via contrastive methods.\n\nBACKGROUND:  \nZero-shot generalization in reinforcement learning remains a core challenge, as agents often fail to transfer learned policies to out-of-distribution tasks with differing dynamics or reward structures. While abstract representation learning methods (e.g., contrastive learning) improve robustness by ignoring superficial details, they lack explicit causal reasoning, limiting their ability to factorize task variations and disentangle underlying mechanisms necessary for systematic generalization.\n\nAPPROACH:  \nWe propose a meta-reinforcement learning framework that jointly learns latent state representations and a sparse, differentiable causal graph over task variables using continuous acyclicity constraints (e.g., extensions of NOTEARS). This causal prior guides both state abstraction and policy learning by masking or modulating latent features according to discovered causal dependencies, enabling the agent to factor its policy on causally meaningful components. Meta-learning over task distributions refines both embeddings and causal structure end-to-end through gradient-based optimization, explicitly enforcing causal factorization rather than relying on purely contrastive features.\n\nEXPERIMENT:  \nWe evaluate on Procgen Benchmark and Meta-World ML1/ML10 tasks by training both the causal prior agent and a state-of-the-art contrastive baseline (CURL + PPO) on shared training sets, then measuring zero-shot generalization as average episodic return on held-out unseen levels/tasks. Significance is tested via paired t-tests over 10 random seeds, with a 10% or greater increase in average return for the causal agent confirming the hypothesis, and a decrease exceeding 5% falsifying it. Additional metrics include sample efficiency (steps to reach 90% training return) and robustness under spurious correlation perturbations.\n\nNOVELTY:  \nUnlike prior meta-RL and causal representation learning methods, this work uniquely integrates differentiable causal discovery into the RL training loop, jointly optimizing latent representations and causal graphs with continuous acyclicity constraints to directly shape policy learning. This explicit causal factorization provides a principled inductive bias for systematic zero-shot generalization beyond abstract or contrastive representations alone, supported by theoretical assumptions about causal identifiability under task distributions and empirical validation on challenging benchmarks.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:03:13.068604+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 1,
+    "text": "To test the hypothesis that incorporating task-agnostic causal structure learning into reinforcement learning (RL) agents improves zero-shot generalization across environments with systematically varying dynamics, we propose an experiment using benchmark continuous control datasets specifically designed for systematic environmental variation. We will use the **Meta-World ML1** and **ML10** benchmarks, which consist of multiple robotic manipulation tasks with varying object properties and interaction dynamics, as well as the **DeepMind Control Suite (DMC) Walker Walk** environment with systematically varying physical parameters (e.g., mass, friction). These datasets are chosen because they provide a range of environments where causal relationships between actions and outcomes vary subtly and can be disentangled, making them suitable to test causal structure learning effects.\n\nOur core technical method will augment a state-of-the-art RL agent, such as **SAC (Soft Actor-Critic)**, with a modular causal discovery component that learns a task-agnostic causal graph over latent environment variables. Specifically, we propose to use a differentiable causal discovery method, such as **NOTEARS** extended for RL latent states, to learn a directed acyclic graph representing causal dependencies between learned latent state features. This graph will be updated online during training, and its inferred causal relationships will be integrated into the policy network via a structured attention mechanism that dynamically gates features according to the causal graph. This approach allows the policy to focus on causally relevant features and ignore spurious correlations, hypothesized to improve zero-shot transfer to unseen dynamics. The causal discovery will be task-agnostic in that it does not depend on specific task labels but only on observed transitions, thus enabling generalization.\n\nBaselines will include standard SAC without causal structure learning, SAC augmented with popular representation learning methods such as contrastive learning or data augmentation (e.g., RAD or CURL), and an oracle baseline where the true causal graph (available for simulation environments) is provided to the agent. To evaluate zero-shot generalization, agents will be trained on a subset of environments with certain ranges of dynamics parameters and evaluated without further training on unseen environments with systematically varied parameters. Success metrics will include average episodic return and success rate over the zero-shot test environments. Quantitatively, our hypothesis will be considered supported if the causal-augmented agent significantly outperforms all baselines by at least 15% in mean episodic return and 10 percentage points in success rate (using paired t-tests with p < 0.05). Disproof occurs if the causal method performs no better than the best baseline or underperforms by more than 5%.\n\nA falsifying result would be that the causal structure learning augmented agent does not show statistically significant improvement in zero-shot generalization over state-of-the-art representation learning baselines, or that it overfits the causal graph to training environment specifics and performs worse on out-of-distribution environments. This would imply that either the causal discovery approach is unable to produce meaningful, task-agnostic causal representations in RL or that such representations do not confer the hypothesized generalization benefits. Ablations removing the causal gating module or replacing it with random gating will help isolate whether causal structure learning specifically enables improved zero-shot generalization.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:31.338166+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 2,
+    "text": "Research idea for 'Zero-shot generalization in reinforcement learning' based on hypothesis: Standard approaches to Zero-shot generalization in reinforcement learning fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:46.237038+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 3,
+    "text": "Research idea for 'Zero-shot generalization in reinforcement learning' based on hypothesis: Standard approaches to Zero-shot generalization in reinforcement learning fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:00.998923+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 4,
+    "text": "Research idea for 'Zero-shot generalization in reinforcement learning' based on hypothesis: Standard approaches to Zero-shot generalization in reinforcement learning fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:15.196783+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 0,
+    "text": "IDEA:  \nInvestigate whether the performance scaling of domain-specific large language models (LLMs) with respect to model size follows distinct power-law exponents compared to general-domain LLMs, particularly examining deviations beyond 100B parameters across multiple specialized language domains.\n\nBACKGROUND:  \nExisting scaling laws characterize LLM performance improvements as smooth power-law functions of model size primarily in general-domain settings, but it remains unclear if these laws hold or differ significantly for domain-specific LLMs trained at extreme scales. Understanding domain-dependent scaling behavior is critical for efficiently allocating compute and data resources when developing specialized LLMs in fields such as biomedical, legal, or scientific text. Prior studies have not conclusively connected domain characteristics to distinct optimal scaling regimes or quantified divergence from general-domain scaling at large model sizes.\n\nAPPROACH:  \nWe formalize \u201coptimal scaling\u201d as the power-law exponent relating model size to standardized perplexity or task-specific accuracy improvements, measured at fixed compute budgets and training data quality. We will train or leverage existing checkpoints of both general-domain and domain-specific LLMs (biomedical, legal, and scientific corpora) across a range of model sizes up to and beyond 100B parameters, controlling for dataset size and training procedures. Metrics will include perplexity on domain-specific benchmarks (e.g., MedMCQA, ECtHR, and SciQ), accuracy on downstream tasks, and calibration metrics to capture performance nuances.\n\nEXPERIMENT:  \nWe will conduct controlled scaling experiments by training transformer-based LLMs at multiple scales (from ~10B to 150B parameters) on curated domain-specific corpora\u2014such as PubMed Central for biomedical, European Court of Human Rights for legal, and ArXiv abstracts for scientific domains\u2014and compare their perplexity scaling curves to those of similarly sized general-domain models trained on The Pile or C4 datasets. Evaluation will use perplexity, exact match accuracy, and domain-specific metrics like BLEU or F1 on benchmark suites including MMLU, BioASQ, and LegalBench, ensuring consistent preprocessing and training hyperparameters.\n\nNOVELTY:  \nUnlike prior work that either focuses solely on continual pretraining or aggregate general-domain scaling laws, this study explicitly tests and quantifies distinct domain-specific scaling exponents beyond 100B parameters with rigorous controls, providing a formal theoretical framework linking domain linguistic properties to scaling behavior. This enables principled prediction and optimization of domain-specific LLM sizes and compute allocations, advancing beyond empirical heuristics or grid search approaches currently prevalent.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:02:37.351901+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 1,
+    "text": "To test the hypothesis that scaling efficiency degrades due to domain interference when training LLMs on multiple heterogeneous corpora\u2014and that this degradation depends on dataset balance, architecture, and can be mitigated by curriculum or multi-task learning\u2014we propose a controlled large-scale training experiment using well-established, diverse domain datasets. Specifically, we will use four heterogeneous corpora: The Pile (general domain), CodeSearchNet (programming/code), PubMed Central Open Access subset (biomedical), and ArXiv papers (scientific technical). These datasets represent distinct linguistic domains with varying vocabulary and style, providing a challenging testbed for domain interference effects.\n\nOur experimental design will train a family of transformer-based LLMs of fixed size (e.g., 1B parameters) under three conditions: 1) naive mixed-domain training with a uniform sampling mixture of all datasets; 2) curriculum learning with a schedule gradually introducing domains in increasing order of difficulty (general \u2192 code \u2192 biomedical \u2192 scientific); and 3) multi-task learning with domain-specific adapters and a domain classifier to encourage domain-aware representations. Baselines will include single-domain models trained exclusively on each corpus and a naive uniform-mix baseline matching prior scaling work (e.g., Kaplan et al. 2020). We will vary dataset mixture ratios systematically to test the impact of dataset balance on scaling efficiency.\n\nQuantitative metrics will center on domain-specific perplexity and cross-entropy loss on held-out test sets from each domain. We define \u201cscaling efficiency degradation\u201d as a statistically significant increase in perplexity beyond that predicted by power-law scaling when moving from single-domain to mixed-domain training. Success to prove the hypothesis requires (a) observed degradation in scaling efficiency for uniform mixture models relative to single-domain baselines, especially at imbalanced dataset ratios; (b) significant mitigation of this degradation (at least 10% relative perplexity reduction) by curriculum or multi-task approaches; and (c) evidence that architectural modifications (i.e., adapters) modulate the magnitude of interference effects. Disproving the hypothesis would require mixed-domain models achieving scaling efficiency statistically indistinguishable from single-domain baselines regardless of dataset balance or architectural intervention.\n\nTechnically, the key method involves training decoder-only transformers using standard autoregressive language modeling loss, implemented in frameworks such as DeepSpeed or Fairseq for efficient large-scale training. The curriculum schedule progressively increases domain complexity, controlled by epoch-wise dataset sampling probabilities, while multi-task learning appends small, domain-specific adapter layers and a domain classification loss added to the main LM loss with tuned weighting. We will apply rigorous statistical analysis and confidence intervals to compare perplexity metrics and determine significance. A falsification arises if uniform mixture models match or outperform single-domain models across all tested balances, or if curriculum and multi-task interventions fail to improve performance beyond noise levels, indicating domain interference is negligible or unaffected by these methods.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:30.782992+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 2,
+    "text": "Research idea for 'Scaling laws for Large Language Models' based on hypothesis: Standard approaches to Scaling laws for Large Language Models fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:45.925499+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 3,
+    "text": "Research idea for 'Scaling laws for Large Language Models' based on hypothesis: Standard approaches to Scaling laws for Large Language Models fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:00.886113+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 4,
+    "text": "Research idea for 'Scaling laws for Large Language Models' based on hypothesis: Standard approaches to Scaling laws for Large Language Models fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:16.298662+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 0,
+    "text": "IDEA:  \nInvestigate whether multi-agent systems employing explicitly parameterized, trigger-driven dynamic reconfiguration of communication protocols develop emergent languages that maintain higher mutual intelligibility under standardized adversarial noise than systems with fixed protocols.\n\nBACKGROUND:  \nEmergent communication in multi-agent systems often assumes fixed communication protocols, limiting adaptability to channel disruptions or adversarial noise. Robustness to such perturbations is critical for real-world deployment but remains underexplored, especially regarding how protocol plasticity affects language resilience. This research targets the open problem of quantifying and improving emergent language robustness through controlled protocol adaptability.\n\nAPPROACH:  \nWe propose a multi-agent framework where communication protocols are dynamically reconfigurable based on predefined environmental triggers (e.g., noise level thresholds) and temporal parameters, enabling agents to adjust encoding and decoding schemes during interaction. Mutual intelligibility post-disruption will be objectively quantified using normalized mutual information and semantic accuracy metrics, calibrated against baseline fixed-protocol systems. Noise conditions will be rigorously standardized via well-characterized channel models including burst and Gaussian noise, with adversarial perturbations designed to mimic realistic interference patterns.\n\nEXPERIMENT:  \nWe will train sender-receiver pairs on the CLEVR dataset for grounded visual communication, comparing fixed-protocol agents against dynamically reconfigurable ones. Robustness will be assessed by measuring normalized mutual information and task success rate after injecting controlled noise and adversarial disruptions during testing. Baselines include static protocol systems and ablated dynamic reconfiguration variants.\n\nNOVELTY:  \nUnlike prior work that either fixes communication protocols or lacks precise reconfiguration mechanisms, this study explicitly defines and constrains dynamic protocol adaptation triggered by environmental cues, paired with objective, validated measures of mutual intelligibility under adversarial noise. This enables causal conclusions about the benefits of protocol plasticity on emergent language robustness, advancing beyond prior surveys and compositional communication studies that do not focus on reconfiguration under noise.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:02:43.285281+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 1,
+    "text": "To test the hypothesis that multi-agent systems with heterogeneous sensory modalities spontaneously develop modality-specific symbol sets that improve task performance beyond universal, modality-agnostic protocols, we propose a controlled experimental framework combining multi-modal sensory inputs and cooperative tasks requiring communication. The experiment will use the **Multi-Agent Particle Environment (MPE) with the Multi-Modal Extension (MPE-MM)**, which provides agents with distinct sensory modalities such as vision (pixels), audio (waveform snippets), and proprioception (joint angles). We will design a cooperative navigation and object retrieval task where heterogeneous agents must communicate to locate and transport objects to specified zones. Each agent has access to only one sensory modality, forcing communication to bridge modality gaps.\n\nWe will implement two communication protocol training regimes. The first, **Modality-Specific Emergent Communication (MSEC)**, allows each agent to develop a private symbol set (embedding space) tied explicitly to its modality, with a learned communication bottleneck that permits only discrete symbols. The second, the **Universal Modality-Agnostic Protocol (UMAP)** baseline, trains a shared communication channel with a single symbol set across all agents, ignoring modality distinctions. Both regimes use deep reinforcement learning with the Proximal Policy Optimization (PPO) algorithm and a differentiable communication module, following the architecture of Sukhbaatar et al. (2016) for differentiable inter-agent messaging. Communication symbols are discrete vectors learned via Gumbel-Softmax relaxation for gradient propagation. The agents\u2019 policies and communication modules are jointly optimized to maximize team success.\n\nSuccess is quantitatively measured by task completion rate (percentage of episodes where all objects are retrieved and delivered within a fixed time), average episode completion time, and communication efficiency (average number of symbols transmitted per episode). The hypothesis is supported if MSEC achieves at least a 15% higher task completion rate and 10% faster episode completion than UMAP, while maintaining comparable or lower communication overhead. Statistical significance will be confirmed via paired t-tests (p < 0.05) over 30 independent runs. Conversely, if UMAP matches or outperforms MSEC on these metrics, or if both protocols achieve statistically indistinguishable results, the hypothesis is falsified, indicating that modality-specific symbol differentiation does not confer a practical advantage in emergent communication.\n\nKey to implementation is designing the communication bottleneck to enforce discrete symbol usage per modality while enabling backpropagation through Gumbel-Softmax. The agents\u2019 architectures will include modality-specific encoders feeding into the communication bottleneck, and modality-specific decoders on the receiver side. To confirm the emergence of modality-specific symbol sets, we will perform post-hoc clustering and mutual information analysis between symbols and sensory input embeddings. If symbols cluster distinctly per modality in MSEC but not in UMAP, this supports the claim of modality-specific symbolic emergence. If these analyses reveal symbol overlap or mixing across modalities despite performance advantages, the hypothesis would require refinement.\n\nIn summary, this experiment rigorously compares emergent communication protocols with and without modality specificity on a multi-modal multi-agent task, using concrete metrics, a well-established environment extended for multi-modal inputs, and state-of-the-art differentiable communication learning methods. The clear quantitative thresholds for success and falsification ensure that the hypothesis can be decisively tested.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:31.739736+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 2,
+    "text": "Research idea for 'Emergent communication in multi-agent systems' based on hypothesis: Standard approaches to Emergent communication in multi-agent systems fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:46.376201+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 3,
+    "text": "Research idea for 'Emergent communication in multi-agent systems' based on hypothesis: Standard approaches to Emergent communication in multi-agent systems fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:01.688263+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 4,
+    "text": "Research idea for 'Emergent communication in multi-agent systems' based on hypothesis: Standard approaches to Emergent communication in multi-agent systems fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:16.299148+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 0,
+    "text": "IDEA: Incorporating uncertainty-aware variational attention mechanisms into Vision Transformers significantly reduces predictive uncertainty compared to Monte Carlo dropout and other baselines in image classification tasks.\n\nBACKGROUND: Reliable uncertainty quantification in deep neural networks remains a critical challenge, especially for high-stakes vision applications where overconfident errors can be costly. While Monte Carlo dropout is a popular approximate Bayesian method for estimating uncertainty, it treats attention weights as deterministic and does not explicitly model epistemic uncertainty in the attention mechanism, limiting its expressiveness and calibration. Developing uncertainty-aware attention for transformers can improve uncertainty estimates and downstream decision reliability.\n\nAPPROACH: We propose a Vision Transformer variant where self-attention weights are modeled as variational distributions parameterized by learned means and variances, optimized via a joint variational inference and classification objective. During inference, multiple samples from these attention distributions are propagated to obtain predictive uncertainty that explicitly captures epistemic uncertainty in the attention mechanism. This approach is evaluated against MC dropout, deep ensembles, and deterministic baselines, with ablations isolating the contribution of uncertainty-aware attention.\n\nEXPERIMENT: We evaluate on CIFAR-100 and Tiny ImageNet datasets using Negative Log-Likelihood (NLL), Expected Calibration Error (ECE), and predictive entropy on misclassified and out-of-distribution samples (SVHN). Training and inference protocols include multiple stochastic forward passes (e.g., 30), hyperparameter tuning for dropout rates and variational priors, and statistical significance testing over at least 5 independent runs on GPUs (e.g., NVIDIA A100). Ablation studies will compare variants with and without uncertainty-aware attention, and scalability will be tested by monitoring convergence and training stability.\n\nNOVELTY: Unlike prior work that applies MC dropout or ensembles to Vision Transformers treating attention as deterministic, our method explicitly models attention weights as distributions, enabling richer epistemic uncertainty representation within the core transformer operation. This Bayesian-style attention mechanism tailored for vision transformers advances uncertainty quantification by integrating distributional attention modeling and variational inference, with rigorous evaluation across multiple datasets and uncertainty baselines.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:03:05.995651+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 1,
+    "text": "To test the hypothesis that ensembles of deep neural networks (DNNs) with heterogeneous architectures provide significantly better calibrated uncertainty estimates than ensembles of homogeneous architectures on out-of-distribution (OOD) medical imaging data, we propose a controlled empirical study using publicly available medical imaging datasets. Specifically, we will use the ChestX-ray14 dataset for in-distribution training and validation, and the MIMIC-CXR dataset as an OOD test set. Both datasets contain chest X-ray images along with multi-label diagnostic annotations, which is ideal for evaluating uncertainty calibration under domain shift, i.e., different patient populations, imaging devices, and hospital sites.\n\nOur baseline will include (1) ensembles of homogeneous architectures, specifically ensembles of ResNet-50 models trained independently with different random seeds, and (2) single-model baselines including Monte Carlo (MC) Dropout applied to ResNet-50, Bayesian neural networks approximated via variational inference on ResNet-50, and deep ensembles of DenseNet-121 models (also homogeneous but different from ResNet-50). Our proposed method is to build ensembles by combining multiple architecture types (e.g., ResNet-50, DenseNet-121, EfficientNet-B0, and MobileNetV3) trained independently on the in-distribution ChestX-ray14 training set. Each model will be trained with identical data augmentation and optimization protocols to control for confounders. At inference, the ensemble predictive distribution will be the average of the softmax outputs across all heterogeneous models.\n\nQuantitative evaluation will focus on uncertainty calibration, measured by Expected Calibration Error (ECE) and Negative Log-Likelihood (NLL) on the OOD MIMIC-CXR test set. We define success as the heterogeneous ensembles achieving at least a 15% relative reduction in ECE and NLL compared to the best homogeneous ensemble baseline (e.g., ResNet-50 deep ensemble), with statistical significance assessed via paired bootstrap tests (p < 0.05). Conversely, if the heterogeneous ensemble does not outperform the best homogeneous ensemble by at least 10% in both metrics, or if differences are not statistically significant, the hypothesis will be falsified. Additionally, we will evaluate robustness via out-of-distribution detection metrics such as Area Under the Receiver Operating Characteristic curve (AUROC) for OOD detection, expecting heterogeneous ensembles to also improve these metrics.\n\nThis experiment rigorously isolates the effect of architectural heterogeneity in ensembles by keeping data, training, and evaluation protocols consistent. Implementation-wise, models will be independently trained using PyTorch, checkpoints saved, and ensembles constructed by averaging class probabilities. Calibration metrics will be computed on the OOD test set without additional fine-tuning, to reflect true generalization of uncertainty estimates. This approach will clarify whether architectural diversity in ensembles is a viable path to better calibrated and more reliable uncertainty quantification in critical medical imaging applications.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:32.438282+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 2,
+    "text": "Research idea for 'Uncertainty quantification in deep neural networks' based on hypothesis: Standard approaches to Uncertainty quantification in deep neural networks fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:46.648996+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 3,
+    "text": "Research idea for 'Uncertainty quantification in deep neural networks' based on hypothesis: Standard approaches to Uncertainty quantification in deep neural networks fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:01.883900+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 4,
+    "text": "Research idea for 'Uncertainty quantification in deep neural networks' based on hypothesis: Standard approaches to Uncertainty quantification in deep neural networks fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:16.647542+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 0,
+    "text": "IDEA: Deep learning emulators trained on harmonized multi-model climate model ensembles provide superior generalization to unseen climate regimes compared to emulators trained on single-model data, as validated by out-of-distribution evaluation on independent climate model scenarios.\n\nBACKGROUND: Climate model emulators accelerate computationally expensive simulations by learning mappings from input forcings to climate variables, but commonly rely on single-model outputs that limit generalization to novel regimes. Multi-model ensembles offer diverse structural representations and physical parameterizations, yet pose challenges in data heterogeneity and consistent training. Addressing these gaps is crucial to develop robust emulators that reliably interpolate and extrapolate under future climate scenarios.\n\nAPPROACH: We propose to construct a comprehensive, harmonized dataset by spatially regridding, temporally aligning, and standardizing key climate variables (e.g., temperature, precipitation, radiation fluxes) from a multi-model ensemble (e.g., CMIP6 historical and scenario runs). Deep neural networks will be trained on this harmonized multi-model data and compared against emulators trained on individual models\u2019 outputs and naive statistical baselines. Rigorous training pipelines will incorporate quality control and physically informed normalization to mitigate structural heterogeneity.\n\nEXPERIMENT: Emulators will be evaluated on independent CMIP6 models withheld during training to quantify generalization to out-of-distribution climate regimes, using metrics such as root mean squared error (RMSE), mean bias, spatial pattern correlation, and the Continuous Ranked Probability Score (CRPS) across multiple variables and spatial domains. Controlled experiments include cross-validation across models and comparison to single-model and naive baselines to isolate the effects of multi-model training.\n\nNOVELTY: Unlike prior work focused on single-model emulation or subgrid-scale turbulence processes, this study explicitly addresses the challenges of multi-model data harmonization and systematically evaluates emulator generalization across structurally diverse climate models, providing a principled methodology to leverage ensemble diversity for robust, physically meaningful climate emulation.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:02:42.620375+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 1,
+    "text": "To test the hypothesis that deep learning (DL) emulators trained on multi-model climate simulation ensembles generalize better to unseen climate regimes than those trained on single-model datasets, we propose a controlled experiment leveraging large-scale multi-model datasets. Specifically, we will use output from the Coupled Model Intercomparison Project Phase 6 (CMIP6) ensemble, selecting a subset of climate variables critical for modeling key climate processes (e.g., temperature, precipitation, radiative fluxes) at monthly to seasonal scales. The multi-model training dataset will be composed of simulations from 10 different CMIP6 Earth system models (ESMs) under historical and future SSP5-8.5 scenarios. For the single-model baseline, we will train separate DL emulators on corresponding outputs from only one representative ESM (such as CESM2). To evaluate generalization, the test dataset will be held-out data from models not included in training (e.g., models from CMIP6 not in the 10 used for training) and future climate regimes (such as SSP2-4.5 or SSP1-2.6 scenarios) that differ in forcing pathways.\n\nWe will build a DL emulator architecture based on a spatiotemporal convolutional neural network (CNN) with attention mechanisms to capture multivariate dependencies and temporal evolution. The emulator will be trained to predict subgrid-scale climate process outputs (e.g., cloud radiative effects, convection parameterizations) from large-scale atmospheric state variables. Input features will include atmospheric temperature, humidity, winds, and surface fluxes on the native model grid, preprocessed for consistency. The multi-model emulator will be trained on data pooled from all 10 models, with domain adaptation layers to learn model-specific biases and a shared representation layer to capture common physical behaviors. The single-model emulator will use the same architecture but only trained on the CESM2 data. Both emulators will be optimized with mean squared error (MSE) loss and evaluated on their ability to reproduce the target variables in unseen models and climate regimes.\n\nQuantitative success for the hypothesis will be defined as the multi-model emulator achieving at least a 10% relative reduction in root mean squared error (RMSE) on the held-out multi-model and future-scenario test sets compared to the single-model emulator, averaged across key variables and spatial regions (e.g., tropics, mid-latitudes). Statistical significance will be tested via bootstrapping over spatial domains. Conversely, if the multi-model emulator performs within 5% or worse than the single-model baseline on these metrics, the hypothesis will be falsified. Additional secondary metrics will include spatial pattern correlation and fidelity in capturing extreme events. A failure mode where the multi-model emulator overfits to training models and fails to generalize would also falsify the hypothesis.\n\nThis experiment rigorously isolates the benefit of diverse training data from multiple model sources in improving emulator robustness to new climate regimes. It leverages state-of-the-art architectures designed for spatiotemporal climate data and enforces strict generalization evaluation on unseen models and forcing scenarios. The results will provide clear quantitative evidence for or against the utility of multi-model training in deep learning emulators for accelerating climate model components while maintaining accuracy and reliability under climate change.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:31.640655+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 2,
+    "text": "Research idea for 'Deep learning emulators for climate model acceleration' based on hypothesis: Standard approaches to Deep learning emulators for climate model acceleration fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:46.301734+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 3,
+    "text": "Research idea for 'Deep learning emulators for climate model acceleration' based on hypothesis: Standard approaches to Deep learning emulators for climate model acceleration fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:02.305232+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 4,
+    "text": "Research idea for 'Deep learning emulators for climate model acceleration' based on hypothesis: Standard approaches to Deep learning emulators for climate model acceleration fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:17.097701+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 0,
+    "text": "IDEA:  \nInvestigate whether quantum advantage in hybrid quantum-classical classifiers for image recognition collapses under distribution shift by systematically benchmarking their robustness against classical and domain-adaptive models using rigorously controlled, low-dimensional encodings.\n\nBACKGROUND:  \nQuantum machine learning (QML) models have shown competitive or superior performance on in-distribution data, but their practical utility is limited if performance degrades significantly under real-world distribution shifts. Existing work rarely isolates distribution shift effects in quantum models or compares them fairly to state-of-the-art classical methods incorporating domain adaptation. Addressing this gap is critical for understanding the true potential and limitations of QML in realistic scenarios where training and deployment data differ.\n\nAPPROACH:  \nWe propose to design hybrid quantum-classical classifiers using carefully justified dimensionality reduction techniques (e.g., PCA or classical feature extractors) to produce input features compatible with near-term quantum hardware constraints. These quantum models will be trained and evaluated alongside classical baselines\u2014including ResNet-18 and Domain-Adversarial Neural Networks (DANN)\u2014under controlled domain shifts. Experiments will be replicated with multiple random seeds, comprehensive hyperparameter tuning, and identical preprocessing pipelines to isolate the impact of distribution shift on model robustness.\n\nEXPERIMENT:  \nWe will train on source domains of MNIST and Office-31 (Amazon), then test on shifted domains\u2014MNIST-C (with 15 corruption types) and Office-31 target domains (DSLR and Webcam). Performance will be measured by classification accuracy, average corruption error (ACE) on MNIST-C, and domain adaptation accuracy gaps on Office-31. Statistical power analysis will determine sufficient run counts, and t-SNE visualizations of learned embeddings will assess feature generalization. The hypothesis that quantum models fail under distribution shift is falsified if their performance remains within \u00b12% of classical baselines across metrics despite the shift.\n\nNOVELTY:  \nThis work uniquely combines rigorous quantum-compatible feature encoding, strong domain adaptation classical baselines, and statistically controlled evaluation to dissect the influence of distribution shift on quantum advantage in machine learning. Unlike prior studies focused on IID settings or generative tasks, our systematic benchmark is the first to directly test and quantify quantum model robustness to real-world domain shifts, advancing understanding of practical QML limitations and guiding future algorithmic improvements.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:03:11.354219+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 1,
+    "text": "To test the hypothesis that quantum machine learning (QML) models trained on classical image datasets exhibiting intrinsic geometric symmetries outperform classical models in generalization accuracy on distorted or augmented images, we propose a controlled comparative experiment using the **MNIST-rotated** and **CIFAR-10** datasets augmented with systematic geometric transformations. MNIST-rotated contains handwritten digits rotated at various angles, explicitly capturing rotational symmetry; CIFAR-10 images augmented with random rotations, translations, and reflections will test generalization to common geometric distortions. These datasets ensure the presence of intrinsic symmetries necessary for the hypothesis.\n\nAs baselines, we will compare QML hybrid models\u2014specifically variational quantum circuits (VQCs) embedded with equivariant layers designed to respect geometric symmetries\u2014with classical convolutional neural networks (CNNs) equipped with state-of-the-art data augmentation and equivariant architectures such as Group Equivariant CNNs (G-CNNs). Both models will be trained from scratch on the original unaugmented training sets and tested on augmented/distorted test splits to evaluate out-of-distribution generalization. This setup isolates the effect of quantum processing on symmetry-aware generalization.\n\nQuantitative success metrics will focus on test accuracy differences when classifying augmented images. Specifically, a statistically significant improvement of at least 3% absolute accuracy over the best classical baseline on MNIST-rotated and CIFAR-10 augmented test sets would support the hypothesis. Conversely, if the QML model\u2019s accuracy is within \u00b11% of the classical baselines across multiple random seeds and runs (with overlapping confidence intervals), the hypothesis is falsified. Additional metrics will include robustness measured by accuracy degradation under increasing distortion severity, assessed via controlled transformation parameters.\n\nTechnically, the QML model will implement a hybrid pipeline with classical feature extraction layers followed by a parameterized quantum circuit designed to encode geometric symmetry via equivariant quantum gates (e.g., rotation-equivariant parameterized gates). The quantum circuit\u2019s parameters will be trained using gradient-based optimization with quantum-aware backpropagation (e.g., parameter-shift rule). Classical baselines will be trained using standard backpropagation with identical training regimes and data splits. The key experimental control is ensuring that both classical and quantum models have comparable model capacity (parameter count) to avoid confounding due to model size. The experimental result falsifying the hypothesis would be no statistically meaningful accuracy or robustness improvement of the QML model over classical equivariant CNNs on the symmetry-augmented benchmark datasets.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:31.349216+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 2,
+    "text": "Research idea for 'Quantum advantage in machine learning tasks' based on hypothesis: Standard approaches to Quantum advantage in machine learning tasks fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:46.101000+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 3,
+    "text": "Research idea for 'Quantum advantage in machine learning tasks' based on hypothesis: Standard approaches to Quantum advantage in machine learning tasks fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:02.229346+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 4,
+    "text": "Research idea for 'Quantum advantage in machine learning tasks' based on hypothesis: Standard approaches to Quantum advantage in machine learning tasks fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:17.278372+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 0,
+    "text": "IDEA: Employing hybrid organic-inorganic perovskite materials with enhanced environmental encapsulation in artificial neurons enables stable spiking behavior at ambient conditions and reduces the energy per spike compared to unencapsulated inorganic neuron devices under controlled laboratory settings.\n\nBACKGROUND: Achieving energy-efficient and stable neuromorphic computing hardware remains a critical challenge due to material degradation and variability in device performance, especially for hybrid perovskite-based neurons that are typically sensitive to ambient environmental factors. Existing inorganic neuron devices often require controlled environments or incur higher energy costs per spike, limiting their practical deployment.\n\nAPPROACH: We will engineer hybrid organic-inorganic perovskite artificial neurons with advanced encapsulation layers optimized to mitigate moisture and oxygen ingress, thereby preserving device integrity and spiking behavior at room temperature. The spiking function will be electrically characterized for stability (e.g., spike amplitude variance and timing jitter) and energy consumption per spike, normalized by device active area and input conditions, and benchmarked against encapsulated inorganic neurons and unencapsulated perovskite neurons tested identically.\n\nEXPERIMENT: Devices will undergo systematic ambient aging tests under controlled humidity (40\u201360% RH) and temperature (22\u201325\u00b0C) for up to 1000 hours, with spike metrics recorded periodically via high-resolution electrical measurements and energy per spike calculated using calibrated current-voltage-time profiles. Comparative datasets will include encapsulated inorganic neuron devices and unencapsulated perovskite devices measured concurrently under identical environmental and electrical test conditions.\n\nNOVELTY: This work is the first to rigorously quantify and compare the ambient stability and energy efficiency of hybrid perovskite neuromorphic neurons with advanced encapsulation against inorganic neuron benchmarks, using standardized spiking and energy metrics\u2014addressing the critical gap of environmental robustness and energy scaling in hybrid material neuromorphic devices beyond prior memristive or purely inorganic systems.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:02:37.322171+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 1,
+    "text": "To test the hypothesis that integrating ferroelectric tunnel junctions (FTJs) with memristive synapses reduces energy consumption per synaptic event by at least 30% compared to conventional HfO\u2082-based memristors, we propose a controlled device-level and system-level experimental study. At the device level, fabricate two sets of synaptic arrays: one with FTJ-integrated memristive synapses using, for example, a Pb(Zr,Ti)O\u2083 (PZT) thin ferroelectric layer coupled with a memristive channel, and the other using atomic layer deposited (ALD) HfO\u2082 memristors as in the baseline work [4]. Carefully characterize the switching energy per synaptic event through direct electrical measurements using an advanced source measure unit (SMU) with picojoule-scale resolution. Measurements should be conducted under identical pulse conditions (voltage amplitude, pulse width, and frequency) to ensure fair comparison.\n\nAt the system level, implement both synaptic device types in spiking neural network (SNN) simulations using a biologically relevant neuromorphic dataset such as the N-MNIST dataset (a spike-based variant of MNIST) and the DVS Gesture dataset to evaluate energy consumption within realistic operational contexts. Use the same network architecture (e.g., a two-layer SNN with spike-timing-dependent plasticity learning rules) for both device models, where device parameters (switching thresholds, endurance, and retention) are extracted from the physical prototypes. Energy per synaptic event will be estimated by multiplying measured device-level switching energy with the number of synaptic events during inference/training. The baseline for comparison is the existing HfO\u2082 memristor devices characterized in [4], which report energy consumption values typically in the range of tens of picojoules per event.\n\nQuantitative success metrics are defined as follows: if the FTJ-integrated memristive synapses demonstrate, on average across multiple device samples and across both datasets, at least a 30% reduction in energy per synaptic event relative to the HfO\u2082 memristor baseline under identical switching conditions (e.g., \u226470% of the baseline energy), the hypothesis is confirmed. Conversely, if energy reduction is less than 30% or statistically indistinguishable (p-value > 0.05) from the baseline, the hypothesis is falsified. Additionally, device endurance and switching reliability must be comparable (e.g., >10\u2075 cycles with <5% variation in switching energy), otherwise energy savings achieved at the cost of robustness will not support practical use.\n\nIn summary, this experiment directly compares energy consumption between FTJ-memristive synapses and ALD HfO\u2082 memristors at device and system levels using spike-based neuromorphic datasets (N-MNIST and DVS Gesture) and statistically rigorous analysis. A failure to establish a \u226530% energy reduction across these conditions falsifies the hypothesis, closing the gap on whether ferroelectric tunnel junction integration meaningfully improves the energy efficiency of memristive synapses for neuromorphic computing.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:33.164505+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 2,
+    "text": "Research idea for 'Energy-efficient neuromorphic computing' based on hypothesis: Standard approaches to Energy-efficient neuromorphic computing fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:47.451780+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 3,
+    "text": "Research idea for 'Energy-efficient neuromorphic computing' based on hypothesis: Standard approaches to Energy-efficient neuromorphic computing fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:02.915793+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 4,
+    "text": "Research idea for 'Energy-efficient neuromorphic computing' based on hypothesis: Standard approaches to Energy-efficient neuromorphic computing fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:17.546382+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 0,
+    "text": "IDEA: Implementing tailored, hardware-aware quantum error correction (QEC) codes that leverage native crosstalk patterns in superconducting NISQ devices will reduce logical error rates compared to standard surface codes at equivalent qubit overhead.\n\nBACKGROUND: NISQ devices are limited by noise and coherence times, constraining the effective use of quantum error correction. Standard QEC codes like the surface code are hardware-agnostic and do not exploit device-specific error structures such as qubit crosstalk, leaving untapped opportunities to optimize logical error resilience within existing hardware constraints.\n\nAPPROACH: We propose to develop and implement QEC codes customized to the measured native crosstalk and correlated error patterns of superconducting qubit arrays by first establishing repeatable hardware characterization and calibration protocols. Such hardware-aware codes will be benchmarked against standard surface codes using rigorously defined metrics under controlled gate fidelity, measurement error, circuit depth, and connectivity conditions. Logical error rates will be extracted using protocols that explicitly model and correct for correlated and measurement-induced errors.\n\nEXPERIMENT: Experiments will be run on fixed-size superconducting qubit arrays (e.g., 9 to 25 qubits) with matched qubit overhead for both tailored and surface codes. Logical error rates will be measured using randomized benchmarking adapted for QEC, repeated over time to assess stability, and analyzed with correlated error-aware decoders. Baselines will include standard surface code implementations under identical noise and calibration conditions.\n\nNOVELTY: This work advances beyond prior NISQ-era QEC research by explicitly integrating detailed, time-stable hardware characterization of crosstalk into QEC code design and benchmarking, establishing fair equivalence criteria, and deploying robust error extraction protocols that disentangle code performance from transient hardware noise\u2014thus providing actionable strategies to enhance logical qubit fidelity on current superconducting platforms.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:02:37.343690+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 1,
+    "text": "To test the hypothesis that lightweight, adaptive error decoding schemes that dynamically adjust to temporal noise fluctuations in NISQ devices reduce logical error rates by at least 30% compared to static decoding methods under identical noise models, we propose the following experiment. We will use datasets obtained from the IBM Quantum Experience public backend noise profiles, specifically the IBMQ Yorktown and IBMQ Boeblingen device calibration data over a continuous 30-day period. These datasets include detailed temporal variations in qubit coherence times (T1, T2), gate fidelities, and readout errors, providing realistic time-dependent noise characteristics. Using these datasets ensures that our adaptive decoder can exploit real temporal noise fluctuations, as opposed to synthetic noise models.\n\nOur key baselines will be (1) a standard static minimum-weight perfect matching (MWPM) decoder commonly used in surface code implementations, which does not adapt to temporal fluctuations, and (2) a static neural network-based decoder pre-trained on the average noise profile. We will encode logical qubits using a distance-3 surface code and repeatedly run error correction cycles for up to 10,000 rounds per noise snapshot to gather sufficient statistics. The primary success metric is the average logical error rate per error correction cycle over the test period. We define success as observing at least a 30% relative reduction in logical error rate for the adaptive decoder versus the best static baseline, at a 95% confidence level using a two-sided t-test. Failing to meet this threshold or observing statistically insignificant improvement will falsify the hypothesis.\n\nTechnically, the adaptive decoder will incorporate a lightweight online parameter estimation module that infers temporal noise parameters (e.g., fluctuating qubit error rates) on-the-fly using Bayesian updating from syndrome measurement data in real-time. These estimates will dynamically adjust the decoder's error model input, e.g., the edge weights in the MWPM graph or features in the neural decoder, to reflect current noise levels. The decoder will be implemented with a sliding time window (e.g., last 1000 syndrome cycles) to balance responsiveness with noise in parameter estimates. This design preserves low computational overhead suitable for NISQ-era hardware constraints. We will simulate the entire protocol using density matrix simulations incorporating the true time-dependent noise profiles extracted from IBM data, ensuring realistic system behavior.\n\nThe hypothesis will be falsified if the adaptive decoding scheme fails to reduce the logical error rate by 30% relative to the best static decoder or if the observed improvement falls within measurement noise (p > 0.05). Moreover, if the overhead in decoder adaptation introduces latency that offsets error rate gains (e.g., overall throughput drops or error mitigation effectiveness declines), this will also refute the hypothesis. Thus, the experiment rigorously quantifies the trade-off between adaptive decoding complexity and logical error suppression gains in realistic NISQ conditions.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:32.997678+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 2,
+    "text": "Research idea for 'Quantum error correction in NISQ devices' based on hypothesis: Standard approaches to Quantum error correction in NISQ devices fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:47.378461+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 3,
+    "text": "Research idea for 'Quantum error correction in NISQ devices' based on hypothesis: Standard approaches to Quantum error correction in NISQ devices fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:03.048511+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 4,
+    "text": "Research idea for 'Quantum error correction in NISQ devices' based on hypothesis: Standard approaches to Quantum error correction in NISQ devices fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:17.717986+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 0,
+    "text": "IDEA: Incorporate client-side adaptive data augmentation tailored to local data heterogeneity in federated learning to reduce client-drift more effectively than control variate correction methods like SCAFFOLD.\n\nBACKGROUND: Federated learning with heterogeneous and non-IID client data suffers from client-drift, where local model updates deviate from the global objective leading to slow and unstable convergence. Existing variance reduction techniques such as SCAFFOLD mitigate this drift by correcting local updates via control variates but do not leverage data-centric strategies to directly address distribution disparity at the data level.  \n\nAPPROACH: We propose a formally defined adaptive data augmentation protocol executed on each client that first estimates local data distribution characteristics through privacy-preserving summary statistics, then dynamically adjusts augmentation policies (e.g., mixup ratios, geometric transforms) to synthetically diversify data aligned with the observed heterogeneity. This adaptive augmentation reduces gradient variance by implicitly regularizing local updates towards the global distribution, thereby mitigating client-drift without explicit control variates.  \n\nEXPERIMENT: We will evaluate on benchmark federated datasets with pronounced non-IID partitions such as CIFAR-10 and FEMNIST, using metrics that quantify client-drift including average parameter divergence between local and global models, gradient variance, and convergence speed. Baselines include FedAvg without augmentation, FedAvg with static (non-adaptive) augmentation, and SCAFFOLD. Ablation studies will isolate augmentation adaptation effects, and convergence rates will be theoretically and empirically compared.  \n\nNOVELTY: Unlike prior work focusing on control variate corrections (e.g., SCAFFOLD), our method uniquely leverages client-side adaptive data augmentation explicitly informed by local distribution heterogeneity, providing a complementary, data-centric approach that reduces client-drift by shaping the data rather than correcting gradients, supported by a rigorous quantification framework and privacy-aware adaptation protocol.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:02:46.167569+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 1,
+    "text": "To test the hypothesis that incorporating adaptive client-side feature normalization within client clusters, combined with communication-efficient prototype sharing, mitigates client drift and improves global model convergence on moderately non-IID data, we propose a federated learning experiment using two realistic datasets: **PACS** (Photo, Art painting, Cartoon, and Sketch domains) for domain-shifted image classification, and **LEAF's FEMNIST** dataset for heterogeneous handwritten character recognition across users. PACS is chosen because its multi-domain nature naturally induces moderate non-IIDness with varying feature distributions, while FEMNIST represents user-partitioned, naturally heterogeneous data with diverse local feature distributions.\n\nOur experimental setup will cluster clients based on initial local feature statistics (e.g., batch mean and variance from initial passes) using a lightweight clustering algorithm (e.g., k-means) without exchanging raw data, thereby preserving privacy. Within each cluster, clients apply **adaptive feature normalization**: specifically, clients locally compute per-feature normalization parameters (mean, variance) aligned to their cluster prototypes instead of global statistics. Alongside model parameter updates, clients share communication-efficient **prototype vectors** (e.g., class-centroid embeddings or normalized feature statistics) compressed via quantization or sketching techniques to reduce bandwidth and preserve privacy. These prototypes inform local normalization and serve as soft guidance to reduce client drift during local training.\n\nWe will compare our method against the following baselines: (1) FedAvg without any normalization or clustering, (2) FedAvg with global batch normalization statistics shared, (3) SCAFFOLD for variance reduction addressing client drift, and (4) Local-Global knowledge distillation approach from (2021) which uses global teachers for local updates. Success will be measured primarily by test accuracy on each global round\u2019s aggregated model after 100 communication rounds: an improvement of at least **3% absolute test accuracy over SCAFFOLD** on PACS and FEMNIST will be considered statistically significant and supportive evidence of hypothesis validation. Additionally, we will monitor convergence speed (number of rounds to reach 90% of final accuracy) and communication overhead (bytes transmitted per round).\n\nTo falsify the hypothesis, results must show that the proposed adaptive cluster-wise feature normalization combined with prototype sharing yields no statistically significant improvement (within \u00b11% accuracy margin) over the strongest baseline (SCAFFOLD) on both datasets, or that it incurs worse convergence behavior (slower or unstable) or significantly higher communication costs without corresponding accuracy gains. This would imply that the overhead or assumptions of cluster alignment and prototype communication do not effectively mitigate client drift or improve convergence for moderately non-IID data, thus disproving the core premise.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:34.615101+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 2,
+    "text": "Research idea for 'Federated learning with heterogeneous and non-IID data' based on hypothesis: Standard approaches to Federated learning with heterogeneous and non-IID data fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:49.506825+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 3,
+    "text": "Research idea for 'Federated learning with heterogeneous and non-IID data' based on hypothesis: Standard approaches to Federated learning with heterogeneous and non-IID data fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:04.846139+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 4,
+    "text": "Research idea for 'Federated learning with heterogeneous and non-IID data' based on hypothesis: Standard approaches to Federated learning with heterogeneous and non-IID data fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:20.175570+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 0,
+    "text": "IDEA:  \nInvestigate and rigorously quantify the failure modes of standard topological data analysis methods under controlled distribution shifts in high-dimensional biological and imaging data, and develop a novel domain-adaptive topological feature alignment framework to restore robustness.\n\nBACKGROUND:  \nTopological methods like Mapper and persistent homology are widely used for extracting intrinsic geometric and topological structures from high-dimensional data, with applications in single-cell transcriptomics and medical imaging. However, their performance under realistic distribution shifts\u2014due to batch effects, biological condition changes, or acquisition variability\u2014remains poorly understood, limiting their practical utility in heterogeneous, multi-source datasets. Existing works primarily demonstrate topology\u2019s utility in visualization or embedding rather than systematically evaluating robustness to distribution shift or providing principled adaptation strategies.\n\nAPPROACH:  \nWe propose a domain adaptation pipeline that explicitly aligns topological descriptors\u2014persistence diagrams and Mapper graph features\u2014between source and target domains via optimal transport and graph matching, correcting for distributional discrepancies at the topological level before downstream classification. This alignment is complemented by rigorous quantification of distribution shifts using known covariate perturbations and batch effect simulations, alongside ablations contrasting adaptation of topological versus non-topological features and standard classifier-level domain adaptation.\n\nEXPERIMENT:  \nWe will evaluate on (1) the Mouse Cell Atlas scRNA-seq dataset, using controlled biological condition splits and batch-effect simulations, and (2) the BraTS 2020 brain tumor MRI dataset, partitioned by imaging centers and acquisition protocols to induce realistic domain shift. Baselines include Mapper, persistent homology using Ripser and GUDHI, UMAP, PHATE embeddings, and persistent spectral graph methods. Metrics comprise classification accuracy, F1-score on shifted test sets, computational efficiency of alignment, and novel topological alignment diagnostics. Success/failure is rigorously defined by performance degradation thresholds (<10% drop = robust; >20% = failure), with statistical testing of adaptation gains over raw and non-topological features.\n\nNOVELTY:  \nThis work goes beyond prior TDA applications by systematically defining and measuring distribution shifts with controlled perturbations, introducing a principled, interpretable domain adaptation framework at the topological feature level, and disentangling topology-specific versus general domain adaptation benefits\u2014addressing scalability, robustness, and interpretability in a reproducible, quantitatively rigorous manner.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:03:05.988550+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 1,
+    "text": "To test the hypothesis that integrating persistent spectral graph features with neural network embeddings enhances classification accuracy on heterogeneous high-dimensional biomedical datasets compared to neural network embeddings alone, we propose the following experiment. We will use two well-established public biomedical datasets with intrinsic heterogeneity and high dimensionality: (1) the Peripheral Blood Mononuclear Cell (PBMC) single-cell RNA-seq dataset from 10x Genomics (~68,000 cells, ~20,000 genes), widely used in cell type classification benchmarks; and (2) the TCGA Pan-Cancer multi-omics dataset, which integrates gene expression, DNA methylation, and copy number variation profiles across multiple cancer types, containing thousands of samples with tens of thousands of features. These datasets provide diverse and challenging contexts for classification, suitable for robust evaluation.\n\nOur baselines will include: (a) a state-of-the-art deep neural network trained on raw or preprocessed features alone (e.g., a fully connected feedforward network or variational autoencoder embeddings followed by downstream classification), (b) the same neural network architecture trained on concatenated raw features and standard topological features such as persistent homology Betti curves or persistence images, and (c) a model trained on graph neural network (GNN) embeddings constructed from k-nearest neighbor graphs without spectral persistence features. The experimental condition will augment neural embeddings with persistent spectral graph features computed as follows: construct a filtration of simplicial complexes from the high-dimensional point cloud (cells or samples) based on pairwise distances, compute the corresponding persistent combinatorial Laplacian matrices, and extract their eigenvalue spectra across filtration scales to obtain persistent spectral signatures capturing both topological and geometric information. These spectral signatures are concatenated with the neural embeddings and fed into a final classifier (e.g., a dense layer with softmax output).\n\nClassification accuracy on held-out test sets will serve as the primary metric. Improvement is defined as a statistically significant increase (p < 0.01 via paired t-tests across cross-validation folds) in accuracy over the neural embedding baseline by at least 2 percentage points on both datasets. Secondary metrics include F1-score and area under the ROC curve (AUC) to assess robustness across imbalanced classes. The hypothesis will be falsified if integrating persistent spectral graph features does not yield any statistically significant improvement over neural embeddings alone or leads to worse performance, indicating that these topological-spectral features do not add complementary discriminative power under this setting. Ablation studies will be conducted to isolate the contribution of spectral features versus traditional topological summaries.\n\nThis experiment rigorously tests the added value of persistent spectral graph features in conjunction with learned neural embeddings in challenging biomedical classification tasks. The detailed methodology ensures replicability: spectral signatures are computed using standard persistent homology software (e.g., GUDHI or Ripser) augmented with Laplacian eigenspectrum calculations, and neural networks are trained with identical architectures and hyperparameters across conditions. The result will clarify whether this hybrid topological-neural approach can outperform existing embeddings alone, shedding light on the utility of spectral-topological integration for high-dimensional biomedical data analysis.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:35.177706+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 2,
+    "text": "Research idea for 'Topological methods for high-dimensional data analysis' based on hypothesis: Standard approaches to Topological methods for high-dimensional data analysis fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:49.507109+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 3,
+    "text": "Research idea for 'Topological methods for high-dimensional data analysis' based on hypothesis: Standard approaches to Topological methods for high-dimensional data analysis fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:04.807748+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 4,
+    "text": "Research idea for 'Topological methods for high-dimensional data analysis' based on hypothesis: Standard approaches to Topological methods for high-dimensional data analysis fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:20.175890+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 0,
+    "text": "IDEA:  \nInvestigate whether individual attention heads in transformer models trained on algorithmically structured tasks consistently implement stable, human-interpretable algorithmic subroutines across independent training runs, using rigorously validated probing and robust cross-model clustering analyses.\n\nBACKGROUND:  \nMechanistic interpretability aims to reverse-engineer neural networks by identifying meaningful internal computations. While prior work suggests transformer attention heads can represent distinct algorithmic functions, it remains unclear whether these roles are stable and consistent across different random initializations and training seeds. Clarifying this stability is critical for validating the mechanistic interpretability paradigm at the level of attention heads.\n\nAPPROACH:  \nWe train multiple transformer models with identical architectures but varied random seeds on two canonical formal datasets\u2014ListOps and the Dyck language\u2014that induce clearly defined algorithmic behaviors. We design and rigorously validate specialized probing classifiers to decode interpretable algorithmic subroutines (e.g., stack operations, counting) from individual heads\u2019 activations, incorporating control tasks, complexity regularization, and ablations to ensure probe fidelity. Functional embeddings derived from these probes are clustered within and across models, and cluster correspondence is aligned and quantified via empirically justified Adjusted Rand Index and Normalized Mutual Information thresholds to assess role stability.\n\nEXPERIMENT:  \nTrain 10 independent 6-layer, 8-head transformers on ListOps and Dyck datasets, alongside baselines including randomly initialized models, models trained on the unrelated WikiText-103 corpus, and models trained on synthetic randomized-label tasks. Extract head-level probe embeddings, perform robust clustering with cross-model cluster alignment, and compute ARI/NMI scores to measure consistency of algorithmic subroutines across seeds. Validate interpretations with manual attention pattern inspection and activation patching to confirm human-interpretable algorithmic functionality.\n\nNOVELTY:  \nThis work distinguishes itself by explicitly quantifying cross-model functional stability of individual attention heads using rigorously validated probes and robust cluster alignment methods, extending beyond earlier mechanistic interpretability efforts that focus on single models or qualitative analyses. It provides a concrete falsifiable test of the hypothesis that transformer heads converge to stable, interpretable algorithmic subroutines, while controlling for confounders such as dataset specificity and probe artifacts.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:03:30.811210+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 1,
+    "text": "Research idea for 'Mechanistic interpretability of transformer models' based on hypothesis: The majority of high-level linguistic phenomena in transformer language models can be localized to a single, sparsely distributed circuit of fewer than 0.1% of neurons per layer, rather than being diffusely encoded across many units.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:41.033160+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 2,
+    "text": "Research idea for 'Mechanistic interpretability of transformer models' based on hypothesis: Standard approaches to Mechanistic interpretability of transformer models fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:56.397159+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 3,
+    "text": "Research idea for 'Mechanistic interpretability of transformer models' based on hypothesis: Standard approaches to Mechanistic interpretability of transformer models fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:11.118774+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 4,
+    "text": "Research idea for 'Mechanistic interpretability of transformer models' based on hypothesis: Standard approaches to Mechanistic interpretability of transformer models fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:26.123156+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 0,
+    "text": "IDEA:  \nFoundation models pre-trained on multi-omic single-cell datasets can more accurately predict novel cell-type-specific gene regulatory networks than models trained solely on bulk genomic data, leveraging joint RNA and chromatin accessibility embeddings to capture fine-grained regulatory dependencies.\n\nBACKGROUND:  \nInferring cell-type-specific gene regulatory networks (GRNs) remains a major challenge in genomics due to the complexity and heterogeneity of regulatory interactions, which are often masked in bulk assays. While multi-omic single-cell technologies provide unprecedented resolution, existing GRN inference methods typically do not fully exploit joint multi-modal data or leverage large-scale pre-trained foundation models to capture complex regulatory dependencies. Demonstrating that such foundation models improve GRN reconstruction accuracy over bulk-trained or single-modality models would validate their utility for elucidating cell-type-specific regulatory mechanisms.\n\nAPPROACH:  \nWe propose a multi-modal transformer-based foundation model pre-trained via masked token prediction and contrastive learning on paired single-cell RNA-seq and ATAC-seq data from the Human Cell Atlas (e.g., bone marrow CITE-seq datasets). The model jointly embeds gene expression and chromatin accessibility at single-cell resolution, enabling it to learn regulatory dependencies beyond single modalities or bulk data. Regulatory edges will be inferred from the model\u2019s attention weights and embeddings, supplemented by a downstream graph neural network trained on known interactions. Comparative models will be trained on matched bulk ENCODE multi-omic data and single-modality single-cell data to isolate modality versus architecture effects.\n\nEXPERIMENT:  \nWe will benchmark reconstructed GRNs against experimentally validated, cell-type-specific regulatory interactions from DoRothEA and TRRUST databases across multiple matched tissues. Performance will be quantified using area under the precision-recall curve (AUPR) and F1 score at fixed precision thresholds (e.g., 80%). The hypothesis will be falsified if the bulk-trained foundation model or single-modality models achieve equal or better performance (statistically non-significant improvements, p > 0.05 via paired bootstrap) or fail to generalize to held-out regulatory edges in cross-validation.\n\nNOVELTY:  \nThis work uniquely integrates transformer-based foundation models with multi-omic single-cell data to capture complex regulatory relationships at cellular resolution, surpassing prior methods that rely on single modalities or bulk data. By disentangling model architecture from data modality effects and incorporating rigorous biological validation, it advances beyond existing multi-omic single-cell integration approaches and traditional GRN inference, providing a new paradigm for predictive regulatory modeling in genomics.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:03:34.239745+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 1,
+    "text": "Research idea for 'Foundation models for genomics and single-cell biology' based on hypothesis: Foundation models pretrained on multimodal single-cell data (e.g., RNA, ATAC, and protein) outperform unimodal models in predicting cell-type-specific gene regulatory networks, as measured by cross-validation against experimentally validated networks.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:39.255225+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 2,
+    "text": "Research idea for 'Foundation models for genomics and single-cell biology' based on hypothesis: Standard approaches to Foundation models for genomics and single-cell biology fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:29:55.505513+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 3,
+    "text": "Research idea for 'Foundation models for genomics and single-cell biology' based on hypothesis: Standard approaches to Foundation models for genomics and single-cell biology fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:10.318892+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 4,
+    "text": "Research idea for 'Foundation models for genomics and single-cell biology' based on hypothesis: Standard approaches to Foundation models for genomics and single-cell biology fail because of distribution shift.",
+    "system_version": "S19",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-07T13:30:26.457185+00:00"
+  }
+]

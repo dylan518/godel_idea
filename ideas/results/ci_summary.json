@@ -1,0 +1,90 @@
+{
+  "meta": {
+    "bootstrap": "topic_block",
+    "iters": 3000,
+    "seed": 42,
+    "pattern": "compare_*.json",
+    "excluded_compare_files": [
+      "compare_S15_vs_S20.json"
+    ]
+  },
+  "summaries": [
+    {
+      "file": "results/compare_S12_vs_S14.json",
+      "n_pairs": 75,
+      "n_topics": 15,
+      "point_win_rate_b": 0.52,
+      "ci95_low": 0.41333333333333333,
+      "ci95_high": 0.6133333333333333,
+      "wins_a": 36,
+      "wins_b": 39,
+      "ties": 0
+    },
+    {
+      "file": "results/compare_S12_vs_S15.json",
+      "n_pairs": 75,
+      "n_topics": 15,
+      "point_win_rate_b": 0.5533333333333333,
+      "ci95_low": 0.43333333333333335,
+      "ci95_high": 0.6666666666666666,
+      "wins_a": 33,
+      "wins_b": 41,
+      "ties": 1
+    },
+    {
+      "file": "results/compare_S15_vs_S13.json",
+      "n_pairs": 75,
+      "n_topics": 15,
+      "point_win_rate_b": 0.32666666666666666,
+      "ci95_low": 0.22666666666666666,
+      "ci95_high": 0.43333333333333335,
+      "wins_a": 49,
+      "wins_b": 23,
+      "ties": 3
+    },
+    {
+      "file": "results/compare_S15_vs_S16.json",
+      "n_pairs": 75,
+      "n_topics": 15,
+      "point_win_rate_b": 0.4866666666666667,
+      "ci95_low": 0.37333333333333335,
+      "ci95_high": 0.6,
+      "wins_a": 38,
+      "wins_b": 36,
+      "ties": 1
+    },
+    {
+      "file": "results/compare_S15_vs_S17.json",
+      "n_pairs": 75,
+      "n_topics": 15,
+      "point_win_rate_b": 0.3333333333333333,
+      "ci95_low": 0.22666666666666666,
+      "ci95_high": 0.4533333333333333,
+      "wins_a": 50,
+      "wins_b": 25,
+      "ties": 0
+    },
+    {
+      "file": "results/compare_S15_vs_S18.json",
+      "n_pairs": 45,
+      "n_topics": 9,
+      "point_win_rate_b": 0.43333333333333335,
+      "ci95_low": 0.23333333333333334,
+      "ci95_high": 0.6333333333333333,
+      "wins_a": 24,
+      "wins_b": 18,
+      "ties": 3
+    },
+    {
+      "file": "results/compare_S15_vs_S19.json",
+      "n_pairs": 75,
+      "n_topics": 15,
+      "point_win_rate_b": 0.10666666666666667,
+      "ci95_low": 0.05333333333333334,
+      "ci95_high": 0.16,
+      "wins_a": 67,
+      "wins_b": 8,
+      "ties": 0
+    }
+  ]
+}

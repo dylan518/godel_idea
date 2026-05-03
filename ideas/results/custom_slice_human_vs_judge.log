@@ -1,0 +1,285 @@
+[gen] S15 topic=CUSTOM:drug delivery: 3 ideas
+[gen] S15 topic=CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs: 3 ideas
+[gen] S15 topic=CUSTOM:ipsc derived cardiomyocytes on a chip: 3 ideas
+[gen] S15 topic=CUSTOM:antigen specific antibody discovery methods: 3 ideas
+[gen] S15 topic=CUSTOM:mandibular bone regeneration using tissue engineering: 3 ideas
+[gen] S15 topic=CUSTOM:llm representation learning: 3 ideas
+[gen] S15 topic=CUSTOM:scalable time-gated rendering: 3 ideas
+[gen] S15 topic=CUSTOM:iron overload in senescent cells: 3 ideas
+[gen] S15 topic=CUSTOM:conditional perfection and its connection to causation: 3 ideas
+[gen] S15 topic=CUSTOM:cellular prion propagation: 3 ideas
+[gen] S15 topic=CUSTOM:epoxide hydrolase catalytic mechanism: 3 ideas
+[gen] S15 topic=CUSTOM:mechanical stress at tricellular junctions: 3 ideas
+2026-04-17 12:41:57  INFO      tree_search  IdeaTreeSearch complete: 12 candidates for 'Drug Delivery'
+2026-04-17 12:42:48  INFO      tournament  Tournament ranked 12 leaves for 'Drug Delivery' (best id=T1-D2-F1)
+[gen] S_paper topic=CUSTOM:drug delivery: 3 ideas
+2026-04-17 12:44:10  INFO      tree_search  IdeaTreeSearch complete: 12 candidates for 'immunoengineering for therapeutic use of'
+2026-04-17 12:44:52  INFO      tournament  Tournament ranked 12 leaves for 'immunoengineering for therapeutic use of' (best id=T2-D2-F2)
+[gen] S_paper topic=CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs: 3 ideas
+2026-04-17 12:46:01  INFO      tree_search  IdeaTreeSearch complete: 12 candidates for 'iPSC derived cardiomyocytes on a chip'
+2026-04-17 12:46:48  INFO      tournament  Tournament ranked 12 leaves for 'iPSC derived cardiomyocytes on a chip' (best id=T2-D2-F2)
+[gen] S_paper topic=CUSTOM:ipsc derived cardiomyocytes on a chip: 3 ideas
+2026-04-17 12:48:09  INFO      tree_search  IdeaTreeSearch complete: 12 candidates for 'Antigen specific antibody discovery meth'
+2026-04-17 12:48:57  INFO      tournament  Tournament ranked 12 leaves for 'Antigen specific antibody discovery meth' (best id=T2-D2-F2)
+[gen] S_paper topic=CUSTOM:antigen specific antibody discovery methods: 3 ideas
+2026-04-17 12:50:29  INFO      tree_search  IdeaTreeSearch complete: 12 candidates for 'Mandibular bone regeneration using tissu'
+2026-04-17 12:51:15  INFO      tournament  Tournament ranked 12 leaves for 'Mandibular bone regeneration using tissu' (best id=T3-D2-F2)
+[gen] S_paper topic=CUSTOM:mandibular bone regeneration using tissue engineering: 3 ideas
+2026-04-17 12:52:28  INFO      tree_search  IdeaTreeSearch complete: 12 candidates for 'llm representation learning'
+2026-04-17 12:53:17  INFO      tournament  Tournament ranked 12 leaves for 'llm representation learning' (best id=T1-D1-F1)
+[gen] S_paper topic=CUSTOM:llm representation learning: 3 ideas
+2026-04-17 12:54:37  INFO      tree_search  IdeaTreeSearch complete: 12 candidates for 'Scalable time-gated rendering'
+2026-04-17 12:55:34  INFO      tournament  Tournament ranked 12 leaves for 'Scalable time-gated rendering' (best id=T2-D1-F1)
+[gen] S_paper topic=CUSTOM:scalable time-gated rendering: 3 ideas
+2026-04-17 12:56:55  INFO      tree_search  IdeaTreeSearch complete: 12 candidates for 'iron overload in senescent cells'
+2026-04-17 12:57:45  INFO      tournament  Tournament ranked 12 leaves for 'iron overload in senescent cells' (best id=T2-D2-F2)
+[gen] S_paper topic=CUSTOM:iron overload in senescent cells: 3 ideas
+2026-04-17 12:59:02  INFO      tree_search  IdeaTreeSearch complete: 12 candidates for 'conditional perfection and its connectio'
+2026-04-17 12:59:53  INFO      tournament  Tournament ranked 12 leaves for 'conditional perfection and its connectio' (best id=T2-D1-F1)
+[gen] S_paper topic=CUSTOM:conditional perfection and its connection to causation: 3 ideas
+2026-04-17 13:01:11  INFO      tree_search  IdeaTreeSearch complete: 12 candidates for 'Cellular prion propagation'
+2026-04-17 13:01:59  INFO      tournament  Tournament ranked 12 leaves for 'Cellular prion propagation' (best id=T1-D1-F1)
+[gen] S_paper topic=CUSTOM:cellular prion propagation: 3 ideas
+2026-04-17 13:03:23  INFO      tree_search  IdeaTreeSearch complete: 12 candidates for 'Epoxide hydrolase catalytic mechanism'
+2026-04-17 13:04:11  INFO      tournament  Tournament ranked 12 leaves for 'Epoxide hydrolase catalytic mechanism' (best id=T3-D1-F1)
+[gen] S_paper topic=CUSTOM:epoxide hydrolase catalytic mechanism: 3 ideas
+2026-04-17 13:05:19  INFO      tree_search  IdeaTreeSearch complete: 12 candidates for 'mechanical stress at tricellular junctio'
+2026-04-17 13:06:04  INFO      tournament  Tournament ranked 12 leaves for 'mechanical stress at tricellular junctio' (best id=T2-D1-F1)
+[gen] S_paper topic=CUSTOM:mechanical stress at tricellular junctions: 3 ideas
+[judge] deepseek-chat on S15 vs S_paper
+2026-04-17 13:06:23  INFO      judge  Judging CUSTOM:antigen specific antibody discovery methods [deepseek] (3 pair(s)): Antigen specific antibody discovery methods
+2026-04-17 13:06:23  INFO      judge  Judging CUSTOM:cellular prion propagation [deepseek] (3 pair(s)): Cellular prion propagation
+2026-04-17 13:06:23  INFO      judge  Judging CUSTOM:conditional perfection and its connection to causation [deepseek] (3 pair(s)): conditional perfection and its connection to causation
+2026-04-17 13:06:23  INFO      judge  Judging CUSTOM:drug delivery [deepseek] (3 pair(s)): Drug Delivery
+2026-04-17 13:06:30  INFO      judge    CUSTOM:cellular prion propagation[0] → B | Idea A is exceptionally novel and useful for directly visualizing dynamic prion 
+2026-04-17 13:06:30  INFO      judge    CUSTOM:conditional perfection and its connection to causation[0] → A | While Idea B is more novel and potentially more useful for universal theory, Ide
+2026-04-17 13:06:30  INFO      judge    CUSTOM:antigen specific antibody discovery methods[0] → B | Idea A addresses a more fundamental and challenging problem in antigen presentat
+2026-04-17 13:06:30  INFO      judge    CUSTOM:drug delivery[0] → B | Idea A addresses a critical, multi-faceted bottleneck in CNS drug delivery with 
+2026-04-17 13:06:36  INFO      judge    CUSTOM:cellular prion propagation[1] → A | Idea A scores highly on scientific usefulness, clarity, and feasibility, directl
+2026-04-17 13:06:36  INFO      judge    CUSTOM:drug delivery[1] → B | Idea B scores slightly higher overall, with superior novelty in its specific bio
+2026-04-17 13:06:36  INFO      judge    CUSTOM:antigen specific antibody discovery methods[1] → A | Idea A scores higher on feasibility and experimental clarity, offering a well-de
+2026-04-17 13:06:36  INFO      judge    CUSTOM:conditional perfection and its connection to causation[1] → A | Idea A is more feasible and has exceptional experimental clarity, making it a st
+2026-04-17 13:06:43  INFO      judge    CUSTOM:antigen specific antibody discovery methods[2] → A | Idea A is a highly feasible and clearly articulated experimental method that dir
+2026-04-17 13:06:43  INFO      judge    CUSTOM:drug delivery[2] → A | Idea B has a higher total score (32 vs 30), driven by its strong feasibility and
+2026-04-17 13:06:43  INFO      judge  Judging CUSTOM:epoxide hydrolase catalytic mechanism [deepseek] (3 pair(s)): Epoxide hydrolase catalytic mechanism
+2026-04-17 13:06:43  INFO      judge  Judging CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs [deepseek] (3 pair(s)): immunoengineering for therapeutic use of drugs. antibod
+2026-04-17 13:06:43  INFO      judge    CUSTOM:cellular prion propagation[2] → A | Idea A's total score is 32, while Idea B's is 33. The difference is 1 point, whi
+2026-04-17 13:06:43  INFO      judge  Judging CUSTOM:ipsc derived cardiomyocytes on a chip [deepseek] (3 pair(s)): iPSC derived cardiomyocytes on a chip
+2026-04-17 13:06:43  INFO      judge    CUSTOM:conditional perfection and its connection to causation[2] → B | Idea A's ambition to isolate universal cognitive mechanisms through language-neu
+2026-04-17 13:06:43  INFO      judge  Judging CUSTOM:iron overload in senescent cells [deepseek] (3 pair(s)): iron overload in senescent cells
+2026-04-17 13:06:49  INFO      judge    CUSTOM:epoxide hydrolase catalytic mechanism[0] → B | Idea A scores higher overall due to its exceptional scientific usefulness and cl
+2026-04-17 13:06:49  INFO      judge    CUSTOM:ipsc derived cardiomyocytes on a chip[0] → B | Idea B scores higher in novelty and scientific usefulness by explicitly targetin
+2026-04-17 13:06:49  INFO      judge    CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs[0] → A | Idea A is a highly feasible and clear extension of existing ADC and checkpoint i
+2026-04-17 13:06:49  INFO      judge    CUSTOM:iron overload in senescent cells[0] → A | Idea A is a highly feasible, clear, and useful mechanistic study that directly a
+2026-04-17 13:06:55  INFO      judge    CUSTOM:epoxide hydrolase catalytic mechanism[1] → A | Idea A is a highly feasible, clear, and useful experimental study that directly 
+2026-04-17 13:06:55  INFO      judge    CUSTOM:ipsc derived cardiomyocytes on a chip[1] → B | Idea A scores higher overall by addressing a critical, widespread bottleneck in 
+2026-04-17 13:06:55  INFO      judge    CUSTOM:iron overload in senescent cells[1] → A | Both ideas are strong, but Idea A scores higher on experimental clarity and feas
+2026-04-17 13:06:56  INFO      judge    CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs[1] → B | Idea A scores higher in novelty and scientific usefulness for its sophisticated,
+2026-04-17 13:07:01  INFO      judge    CUSTOM:epoxide hydrolase catalytic mechanism[2] → B | Idea A is more novel and directly addresses the critical gap of studying enzyme 
+2026-04-17 13:07:01  INFO      judge  Judging CUSTOM:llm representation learning [deepseek] (3 pair(s)): llm representation learning
+2026-04-17 13:07:01  INFO      judge    CUSTOM:iron overload in senescent cells[2] → A | Idea A is a highly feasible and clearly defined foundational study that will gen
+2026-04-17 13:07:01  INFO      judge  Judging CUSTOM:mandibular bone regeneration using tissue engineering [deepseek] (3 pair(s)): Mandibular bone regeneration using tissue engineering
+2026-04-17 13:07:02  INFO      judge    CUSTOM:ipsc derived cardiomyocytes on a chip[2] → B | Idea B addresses a more complex and less-served niche—acute neuro-cardiac toxici
+2026-04-17 13:07:02  INFO      judge  Judging CUSTOM:mechanical stress at tricellular junctions [deepseek] (3 pair(s)): mechanical stress at tricellular junctions
+2026-04-17 13:07:03  INFO      judge    CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs[2] → B | Idea A scores higher in novelty and scientific usefulness by tackling the comple
+2026-04-17 13:07:03  INFO      judge  Judging CUSTOM:scalable time-gated rendering [deepseek] (3 pair(s)): Scalable time-gated rendering
+2026-04-17 13:07:08  INFO      judge    CUSTOM:llm representation learning[0] → A | While Idea B is more novel and addresses a critical real-world problem, Idea A s
+2026-04-17 13:07:08  INFO      judge    CUSTOM:mandibular bone regeneration using tissue engineering[0] → B | Idea B is significantly more novel and addresses a more complex, clinically pres
+2026-04-17 13:07:08  INFO      judge    CUSTOM:mechanical stress at tricellular junctions[0] → A | Idea A scores higher due to superior experimental clarity and feasibility, offer
+2026-04-17 13:07:09  INFO      judge    CUSTOM:scalable time-gated rendering[0] → B | Idea B scores higher in scientific usefulness and experimental clarity, addressi
+2026-04-17 13:07:15  INFO      judge    CUSTOM:llm representation learning[1] → B | Idea A scores higher overall due to its strong novelty in integrating symbolic c
+2026-04-17 13:07:15  INFO      judge    CUSTOM:mechanical stress at tricellular junctions[1] → A | Idea A scores highly across all criteria, with exceptional clarity and feasibili
+2026-04-17 13:07:15  INFO      judge    CUSTOM:mandibular bone regeneration using tissue engineering[1] → B | Idea B scores higher in novelty and scientific usefulness by directly tackling t
+2026-04-17 13:07:16  INFO      judge    CUSTOM:scalable time-gated rendering[1] → B | Idea B scores higher in novelty and scientific usefulness by addressing a critic
+2026-04-17 13:07:22  INFO      judge    CUSTOM:llm representation learning[2] → B | Idea A scores higher overall due to its strong novelty in integrating hierarchic
+2026-04-17 13:07:22  INFO      judge    CUSTOM:mandibular bone regeneration using tissue engineering[2] → B | Idea B scores higher in novelty and scientific usefulness by directly tackling t
+2026-04-17 13:07:22  INFO      judge    CUSTOM:mechanical stress at tricellular junctions[2] → B | Idea B edges out Idea A primarily due to its higher novelty and scientific usefu
+2026-04-17 13:07:23  INFO      judge    CUSTOM:scalable time-gated rendering[2] → B | Idea A addresses a more concrete and underserved niche (extreme memory constrain
+2026-04-17 13:07:23  INFO      judge  Done [deepseek] — A:15  B:21  ties:0  B win rate: 58.3%
+[judge] gemini-flash-lite-latest on S15 vs S_paper
+2026-04-17 13:07:23  INFO      judge  Judging CUSTOM:antigen specific antibody discovery methods [gemini] (3 pair(s)): Antigen specific antibody discovery methods
+2026-04-17 13:07:23  INFO      judge  Judging CUSTOM:cellular prion propagation [gemini] (3 pair(s)): Cellular prion propagation
+2026-04-17 13:07:23  INFO      judge  Judging CUSTOM:conditional perfection and its connection to causation [gemini] (3 pair(s)): conditional perfection and its connection to causation
+2026-04-17 13:07:23  INFO      judge  Judging CUSTOM:drug delivery [gemini] (3 pair(s)): Drug Delivery
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:25  INFO      judge    CUSTOM:drug delivery[0] → B | Idea A addresses a sophisticated, high-impact challenge in neuro-pharmacology by
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:25  INFO      judge    CUSTOM:conditional perfection and its connection to causation[0] → B | Idea B offers a significantly more ambitious and scientifically valuable contrib
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:25  INFO      judge    CUSTOM:antigen specific antibody discovery methods[0] → B | Idea B addresses a significantly more difficult and high-impact bottleneck in st
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:25  INFO      judge    CUSTOM:cellular prion propagation[0] → B | Idea A proposes a sophisticated, high-impact technological leap that addresses a
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:27  INFO      judge    CUSTOM:cellular prion propagation[1] → A | Idea A addresses a fundamental biological question with high clinical relevance 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:27  INFO      judge    CUSTOM:conditional perfection and its connection to causation[1] → B | Idea A addresses a concrete, high-impact challenge in conversational AI with a w
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:27  INFO      judge    CUSTOM:drug delivery[1] → B | Idea B provides a more concrete and well-defined experimental framework with cle
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:27  INFO      judge    CUSTOM:antigen specific antibody discovery methods[1] → B | Idea B addresses a significantly more difficult and clinically impactful bottlen
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:28  INFO      judge    CUSTOM:drug delivery[2] → A | Idea A addresses a high-impact clinical need with a well-defined, feasible appro
+2026-04-17 13:07:28  INFO      judge  Judging CUSTOM:epoxide hydrolase catalytic mechanism [gemini] (3 pair(s)): Epoxide hydrolase catalytic mechanism
+2026-04-17 13:07:28  INFO      judge    CUSTOM:antigen specific antibody discovery methods[2] → B | Idea A addresses a critical bottleneck in pandemic preparedness with a high-impa
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:28  INFO      judge  Judging CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs [gemini] (3 pair(s)): immunoengineering for therapeutic use of drugs. antibod
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:29  INFO      judge    CUSTOM:cellular prion propagation[2] → A | Idea B addresses a fundamental mechanistic gap in prion biology with high-impact
+2026-04-17 13:07:29  INFO      judge  Judging CUSTOM:ipsc derived cardiomyocytes on a chip [gemini] (3 pair(s)): iPSC derived cardiomyocytes on a chip
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:29  INFO      judge    CUSTOM:conditional perfection and its connection to causation[2] → B | Idea B offers a more fundamental, theoretically rigorous approach that addresses
+2026-04-17 13:07:29  INFO      judge  Judging CUSTOM:iron overload in senescent cells [gemini] (3 pair(s)): iron overload in senescent cells
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:30  INFO      judge    CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs[0] → B | Idea B addresses a significant unmet need in chronic disease management through 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:30  INFO      judge    CUSTOM:epoxide hydrolase catalytic mechanism[0] → A | Idea A addresses a fundamental mechanistic gap in enzymology with a high-impact,
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:30  INFO      judge    CUSTOM:ipsc derived cardiomyocytes on a chip[0] → B | Idea A addresses a specific, high-impact bottleneck in the field—assay turnaroun
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:31  INFO      judge    CUSTOM:iron overload in senescent cells[0] → B | Idea A proposes a sophisticated, high-impact therapeutic strategy that addresses
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:31  INFO      judge    CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs[1] → B | Idea B offers a more sophisticated approach to precision medicine by integrating
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:32  INFO      judge    CUSTOM:epoxide hydrolase catalytic mechanism[1] → B | Idea B addresses a significant computational bottleneck in structural biology wi
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:32  INFO      judge    CUSTOM:iron overload in senescent cells[1] → B | Idea B is superior because it addresses the critical translational barriers of n
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:32  INFO      judge    CUSTOM:ipsc derived cardiomyocytes on a chip[1] → B | Idea B addresses a fundamental bottleneck in the field—the high cell-input requi
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:33  INFO      judge    CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs[2] → A | Idea A offers a more modular and clinically translatable platform for localized 
+2026-04-17 13:07:33  INFO      judge  Judging CUSTOM:llm representation learning [gemini] (3 pair(s)): llm representation learning
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:34  INFO      judge    CUSTOM:iron overload in senescent cells[2] → A | Idea A provides a robust, foundational approach that is highly feasible and like
+2026-04-17 13:07:34  INFO      judge  Judging CUSTOM:mandibular bone regeneration using tissue engineering [gemini] (3 pair(s)): Mandibular bone regeneration using tissue engineering
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:34  INFO      judge    CUSTOM:epoxide hydrolase catalytic mechanism[2] → B | Idea A introduces a highly innovative, cutting-edge experimental paradigm that a
+2026-04-17 13:07:34  INFO      judge  Judging CUSTOM:mechanical stress at tricellular junctions [gemini] (3 pair(s)): mechanical stress at tricellular junctions
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:34  INFO      judge    CUSTOM:ipsc derived cardiomyocytes on a chip[2] → B | Idea B addresses a significant bottleneck in drug discovery—the need for rapid, 
+2026-04-17 13:07:34  INFO      judge  Judging CUSTOM:scalable time-gated rendering [gemini] (3 pair(s)): Scalable time-gated rendering
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:34  INFO      judge    CUSTOM:llm representation learning[0] → B | Idea B addresses a high-impact, critical bottleneck in robotics (real-time neuro
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:35  INFO      judge    CUSTOM:mandibular bone regeneration using tissue engineering[0] → B | Idea A addresses the sophisticated challenge of the inflammatory microenvironmen
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:35  INFO      judge    CUSTOM:mechanical stress at tricellular junctions[0] → B | Idea A offers a more sophisticated theoretical framework that addresses the caus
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:35  INFO      judge    CUSTOM:scalable time-gated rendering[0] → B | Idea B addresses a more fundamental and universally applicable problem in real-t
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:36  INFO      judge    CUSTOM:llm representation learning[1] → B | Idea A addresses a high-impact, specific domain challenge (neuro-symbolic integr
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:36  INFO      judge    CUSTOM:mandibular bone regeneration using tissue engineering[1] → B | Idea B addresses a critical, fundamental engineering challenge in mandibular rec
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:37  INFO      judge    CUSTOM:mechanical stress at tricellular junctions[1] → tie | Idea A offers a high-impact, sophisticated computational approach to a complex c
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:37  INFO      judge    CUSTOM:scalable time-gated rendering[1] → B | Idea A addresses a critical, high-impact constraint in mobile AR (energy efficie
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-17 13:07:37  INFO      judge    CUSTOM:llm representation learning[2] → B | Idea A provides a highly specialized, domain-specific application that addresses
+2026-04-17 13:07:38  INFO      judge    CUSTOM:mandibular bone regeneration using tissue engineering[2] → B | Idea A addresses the critical challenge of spatiotemporal signaling in large-sca
+2026-04-17 13:07:38  INFO      judge    CUSTOM:mechanical stress at tricellular junctions[2] → B | Idea B addresses a more complex and biologically relevant problem by incorporati
+2026-04-17 13:07:38  INFO      judge    CUSTOM:scalable time-gated rendering[2] → B | Idea B addresses a significantly more challenging and impactful niche—extreme ed
+2026-04-17 13:07:38  INFO      judge  Done [gemini] — A:6  B:29  ties:1  B win rate: 81.9%
+[judge] claude-sonnet-4-6 on S15 vs S_paper
+2026-04-17 13:07:38  INFO      judge  Judging CUSTOM:antigen specific antibody discovery methods [claude] (3 pair(s)): Antigen specific antibody discovery methods
+2026-04-17 13:07:38  INFO      judge  Judging CUSTOM:cellular prion propagation [claude] (3 pair(s)): Cellular prion propagation
+2026-04-17 13:07:38  INFO      judge  Judging CUSTOM:conditional perfection and its connection to causation [claude] (3 pair(s)): conditional perfection and its connection to causation
+2026-04-17 13:07:38  INFO      judge  Judging CUSTOM:drug delivery [claude] (3 pair(s)): Drug Delivery
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:antigen specific antibody discovery methods pair 0: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAMxeeGpcoTVCgTHFG'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:cellular prion propagation pair 0: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAN1d1uhsa65j2V74h'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:conditional perfection and its connection to causation pair 0: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAN2cgfdDgYVTX46W1'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:antigen specific antibody discovery methods pair 1: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iANRvZGjHStscaQH6g'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:drug delivery pair 0: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAN7aNkRsernAUwsJU'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:conditional perfection and its connection to causation pair 1: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iANf4mw5Cbq54iJ8kV'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:cellular prion propagation pair 1: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iANeKxce323uosud17'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:antigen specific antibody discovery methods pair 2: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iANk2SNR1v9YT9c3tq'}
+2026-04-17 13:07:39  INFO      judge  Judging CUSTOM:epoxide hydrolase catalytic mechanism [claude] (3 pair(s)): Epoxide hydrolase catalytic mechanism
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:drug delivery pair 1: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iANmmKmCADVbBgF9sq'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:drug delivery pair 2: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAP38kVRjcjtPRScSK'}
+2026-04-17 13:07:39  INFO      judge  Judging CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs [claude] (3 pair(s)): immunoengineering for therapeutic use of drugs. antibod
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:cellular prion propagation pair 2: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iANyRK6BmH9TvXJ85a'}
+2026-04-17 13:07:39  INFO      judge  Judging CUSTOM:ipsc derived cardiomyocytes on a chip [claude] (3 pair(s)): iPSC derived cardiomyocytes on a chip
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:conditional perfection and its connection to causation pair 2: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iANyv1TL8Kt2StYXNz'}
+2026-04-17 13:07:39  INFO      judge  Judging CUSTOM:iron overload in senescent cells [claude] (3 pair(s)): iron overload in senescent cells
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:epoxide hydrolase catalytic mechanism pair 0: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAP57tyGVfTiQ7J4Vu'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs pair 0: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAPHXCDSkV9AnRsBm1'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:ipsc derived cardiomyocytes on a chip pair 0: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAPNET9CAYJfrrJVNb'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:epoxide hydrolase catalytic mechanism pair 1: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAPTSWHm9cD5djcxDd'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:iron overload in senescent cells pair 0: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAPQi76uf9wdbVAXkB'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs pair 1: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAPY9f29JB9CRVNNFs'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:ipsc derived cardiomyocytes on a chip pair 1: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAPeM8SWHSRHvbScaT'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:iron overload in senescent cells pair 1: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAPjZXvrmkizP5EBxV'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:epoxide hydrolase catalytic mechanism pair 2: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAPj4LYVGeWPPQhVoo'}
+2026-04-17 13:07:39  INFO      judge  Judging CUSTOM:llm representation learning [claude] (3 pair(s)): llm representation learning
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:ipsc derived cardiomyocytes on a chip pair 2: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAPvTwN1NdzsrQhu1d'}
+2026-04-17 13:07:39  INFO      judge  Judging CUSTOM:mandibular bone regeneration using tissue engineering [claude] (3 pair(s)): Mandibular bone regeneration using tissue engineering
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs pair 2: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAPqWRukLher2PUugK'}
+2026-04-17 13:07:39  INFO      judge  Judging CUSTOM:mechanical stress at tricellular junctions [claude] (3 pair(s)): mechanical stress at tricellular junctions
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:mandibular bone regeneration using tissue engineering pair 0: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAQBbLLxieTM5sZWim'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:mechanical stress at tricellular junctions pair 0: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAQD5o2eXCAzybGxsy'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:llm representation learning pair 0: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAQ3fQB5kGJnhu4N5k'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:llm representation learning pair 1: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAQctSrLQWohHd1rYk'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:mechanical stress at tricellular junctions pair 1: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAQZui5rbCRBfo7CyP'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:mandibular bone regeneration using tissue engineering pair 1: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAQWwE4Jz3Lkdo4jM7'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:llm representation learning pair 2: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAQwV6r9mA6BhJnUvS'}
+2026-04-17 13:07:39  INFO      judge  Judging CUSTOM:scalable time-gated rendering [claude] (3 pair(s)): Scalable time-gated rendering
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:iron overload in senescent cells pair 2: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAQ2fbSLqBgbXbyLAE'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:mandibular bone regeneration using tissue engineering pair 2: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAQvFSY3P61CS2QJDL'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:scalable time-gated rendering pair 0: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iARM3hmQHnsGjU7ozw'}
+2026-04-17 13:07:39  ERROR     judge  Judge failed for CUSTOM:mechanical stress at tricellular junctions pair 2: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAQzDEiBFcH2ppEKxR'}
+2026-04-17 13:07:40  ERROR     judge  Judge failed for CUSTOM:scalable time-gated rendering pair 1: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iARj7iw9XNuQbkzN5r'}
+2026-04-17 13:07:40  ERROR     judge  Judge failed for CUSTOM:scalable time-gated rendering pair 2: [BadRequestError] Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ca9iAS9AaFdMPszxPnmqK'}
+2026-04-17 13:07:40  INFO      judge  Done [claude] — A:0  B:0  ties:0  B win rate: 0.0%
+[judge] gpt-5.4 on S15 vs S_paper
+2026-04-17 13:07:40  INFO      judge  Judging CUSTOM:antigen specific antibody discovery methods [gpt] (3 pair(s)): Antigen specific antibody discovery methods
+2026-04-17 13:07:40  INFO      judge  Judging CUSTOM:cellular prion propagation [gpt] (3 pair(s)): Cellular prion propagation
+2026-04-17 13:07:40  INFO      judge  Judging CUSTOM:conditional perfection and its connection to causation [gpt] (3 pair(s)): conditional perfection and its connection to causation
+2026-04-17 13:07:40  INFO      judge  Judging CUSTOM:drug delivery [gpt] (3 pair(s)): Drug Delivery
+2026-04-17 13:07:43  INFO      judge    CUSTOM:cellular prion propagation[0] → A | Idea A is conceptually innovative and could reveal dynamic prion biology in situ
+2026-04-17 13:07:43  INFO      judge    CUSTOM:antigen specific antibody discovery methods[0] → tie | Idea A is stronger in novelty and addresses a particularly important bottleneck 
+2026-04-17 13:07:44  INFO      judge    CUSTOM:drug delivery[0] → B | Idea A tackles a major unmet challenge in drug delivery—BBB transport with expli
+2026-04-17 13:07:44  INFO      judge    CUSTOM:conditional perfection and its connection to causation[0] → tie | Idea A is more ambitious and theoretically richer, especially in targeting unive
+2026-04-17 13:07:46  INFO      judge    CUSTOM:antigen specific antibody discovery methods[1] → tie | Idea A is clearer and more feasible because it builds on existing antigen-specif
+2026-04-17 13:07:47  INFO      judge    CUSTOM:conditional perfection and its connection to causation[1] → B | Idea B is stronger overall because it targets a clearly identifiable gap—conditi
+2026-04-17 13:07:48  INFO      judge    CUSTOM:drug delivery[1] → tie | Idea A is stronger in experimental definition and near-term feasibility, with a 
+2026-04-17 13:07:48  INFO      judge    CUSTOM:cellular prion propagation[1] → A | Idea A is creative and technically novel in combining compressed sensing with mi
+2026-04-17 13:07:50  INFO      judge    CUSTOM:antigen specific antibody discovery methods[2] → A | Idea A addresses an important outbreak-response problem, but transfer learning f
+2026-04-17 13:07:50  INFO      judge  Judging CUSTOM:epoxide hydrolase catalytic mechanism [gpt] (3 pair(s)): Epoxide hydrolase catalytic mechanism
+2026-04-17 13:07:51  INFO      judge    CUSTOM:conditional perfection and its connection to causation[2] → B | Idea A tackles a central theoretical question about whether conditional perfecti
+2026-04-17 13:07:51  INFO      judge  Judging CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs [gpt] (3 pair(s)): immunoengineering for therapeutic use of drugs. antibod
+2026-04-17 13:07:52  INFO      judge    CUSTOM:drug delivery[2] → tie | Idea A is more conceptually novel because dynamically tunable microneedle penetr
+2026-04-17 13:07:52  INFO      judge  Judging CUSTOM:ipsc derived cardiomyocytes on a chip [gpt] (3 pair(s)): iPSC derived cardiomyocytes on a chip
+2026-04-17 13:07:52  INFO      judge    CUSTOM:cellular prion propagation[2] → tie | Idea A is more conceptually innovative and could answer a major mechanistic ques
+2026-04-17 13:07:52  INFO      judge  Judging CUSTOM:iron overload in senescent cells [gpt] (3 pair(s)): iron overload in senescent cells
+2026-04-17 13:07:53  INFO      judge    CUSTOM:epoxide hydrolase catalytic mechanism[0] → B | Idea A is less conceptually novel than Idea B, but it is more directly actionabl
+2026-04-17 13:07:54  INFO      judge    CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs[0] → tie | Idea A is more experimentally straightforward and closer to current antibody eng
+2026-04-17 13:07:55  INFO      judge    CUSTOM:ipsc derived cardiomyocytes on a chip[0] → tie | Idea A is more distinctive because it targets rapid 48-hour neuro-cardiac co-cul
+2026-04-17 13:07:56  INFO      judge    CUSTOM:iron overload in senescent cells[0] → A | Idea A is more conceptually novel because it proposes targeted epigenetic resett
+2026-04-17 13:07:57  INFO      judge    CUSTOM:epoxide hydrolase catalytic mechanism[1] → A | Idea A is more conceptually novel and could be highly informative for membrane-a
+2026-04-17 13:07:58  INFO      judge    CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs[1] → B | Idea A addresses a major unmet need in CNS delivery, but bispecific BBB-shuttlin
+2026-04-17 13:07:58  INFO      judge    CUSTOM:ipsc derived cardiomyocytes on a chip[1] → B | Idea A addresses a highly practical bottleneck in patient-specific iPSC-CM studi
+2026-04-17 13:07:59  INFO      judge    CUSTOM:iron overload in senescent cells[1] → B | Idea A is stronger overall because it presents a more differentiated concept, wi
+2026-04-17 13:08:01  INFO      judge    CUSTOM:epoxide hydrolase catalytic mechanism[2] → tie | Idea A is more conceptually novel because it combines genetic code expansion wit
+2026-04-17 13:08:01  INFO      judge  Judging CUSTOM:llm representation learning [gpt] (3 pair(s)): llm representation learning
+2026-04-17 13:08:02  INFO      judge    CUSTOM:ipsc derived cardiomyocytes on a chip[2] → A | Idea A targets an important gap in rapid neuro-cardiac toxicity testing and is c
+2026-04-17 13:08:02  INFO      judge  Judging CUSTOM:mandibular bone regeneration using tissue engineering [gpt] (3 pair(s)): Mandibular bone regeneration using tissue engineering
+2026-04-17 13:08:02  INFO      judge    CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs[2] → tie | Idea A is more conceptually innovative because it adds closed-loop feedback cont
+2026-04-17 13:08:02  INFO      judge  Judging CUSTOM:mechanical stress at tricellular junctions [gpt] (3 pair(s)): mechanical stress at tricellular junctions
+2026-04-17 13:08:03  INFO      judge    CUSTOM:iron overload in senescent cells[2] → A | Idea A addresses a well-supported open question in senescence biology with a cle
+2026-04-17 13:08:03  INFO      judge  Judging CUSTOM:scalable time-gated rendering [gpt] (3 pair(s)): Scalable time-gated rendering
+2026-04-17 13:08:05  INFO      judge    CUSTOM:llm representation learning[0] → tie | Idea A targets an important real-time robotics bottleneck and is somewhat distin
+2026-04-17 13:08:06  INFO      judge    CUSTOM:mandibular bone regeneration using tissue engineering[0] → B | Idea A is more innovative because it tackles a major unmet challenge in mandibul
+2026-04-17 13:08:06  INFO      judge    CUSTOM:mechanical stress at tricellular junctions[0] → tie | Idea A is stronger conceptually because it tackles a real gap in dynamic, mechan
+2026-04-17 13:08:07  INFO      judge    CUSTOM:scalable time-gated rendering[0] → tie | Idea A is more conceptually novel because it unifies hierarchical spatiotemporal
+2026-04-17 13:08:08  INFO      judge    CUSTOM:llm representation learning[1] → A | Idea B addresses a broad and important open problem in LLM representation learni
+2026-04-17 13:08:10  INFO      judge    CUSTOM:mechanical stress at tricellular junctions[1] → tie | Idea A is strong because it targets a clear and important open question—how TCJ-
+2026-04-17 13:08:10  INFO      judge    CUSTOM:mandibular bone regeneration using tissue engineering[1] → B | Idea B more directly addresses a major translational bottleneck in mandibular re
+2026-04-17 13:08:11  INFO      judge    CUSTOM:scalable time-gated rendering[1] → B | Idea A is technically solid and feasible, but it mainly combines known GPU optim
+2026-04-17 13:08:12  INFO      judge    CUSTOM:llm representation learning[2] → B | Idea A is stronger overall because it targets a concrete, high-value domain prob
+2026-04-17 13:08:13  INFO      judge    CUSTOM:mandibular bone regeneration using tissue engineering[2] → B | Idea A more directly tackles a central translational bottleneck in mandibular re
+2026-04-17 13:08:14  INFO      judge    CUSTOM:mechanical stress at tricellular junctions[2] → tie | Idea A is stronger in experimental tractability and validation design, offering 
+2026-04-17 13:08:14  INFO      judge    CUSTOM:scalable time-gated rendering[2] → A | Idea A targets a central scalability bottleneck in time-gated rendering and pres
+2026-04-17 13:08:14  INFO      judge  Done [gpt] — A:9  B:12  ties:15  B win rate: 54.2%
+Wrote /Users/dylanwilson/Documents/GitHub/self-play/EvoScientist/ideas/results/custom_slice_human_vs_judge/summary.json

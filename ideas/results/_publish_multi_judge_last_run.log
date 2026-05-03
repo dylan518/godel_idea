@@ -1,0 +1,401 @@
+2026-04-13 12:38:07  INFO      runner  Running S15 on 15 topic(s) × 2 idea(s) = 30 calls  [cached, workers=3]
+2026-04-13 12:38:07  INFO      runner  [T1] Scaling laws for Large Language Models
+2026-04-13 12:38:07  INFO      runner  [T2] Protein structure prediction beyond AlphaFold
+2026-04-13 12:38:07  INFO      runner  [T3] Quantum error correction in NISQ devices
+2026-04-13 12:41:18  INFO      runner    [T1] idea 1/2 — ok (1399 chars)
+2026-04-13 12:41:24  INFO      runner    [T3] idea 1/2 — ok (1641 chars)
+2026-04-13 12:41:28  INFO      runner    [T2] idea 1/2 — ok (1408 chars)
+2026-04-13 12:44:05  INFO      runner    [T1] idea 2/2 — ok (1727 chars)
+2026-04-13 12:44:05  INFO      runner  [T4] Causal discovery from observational data
+2026-04-13 12:44:20  INFO      runner    [T2] idea 2/2 — ok (1691 chars)
+2026-04-13 12:44:20  INFO      runner  [T5] Energy-efficient neuromorphic computing
+2026-04-13 12:44:22  INFO      runner    [T3] idea 2/2 — ok (1877 chars)
+2026-04-13 12:44:22  INFO      runner  [T6] Generative AI for drug discovery and molecular design
+2026-04-13 12:46:59  INFO      runner    [T4] idea 1/2 — ok (1799 chars)
+2026-04-13 12:47:37  INFO      runner    [T5] idea 1/2 — ok (1816 chars)
+2026-04-13 12:47:43  INFO      runner    [T6] idea 1/2 — ok (1816 chars)
+2026-04-13 12:49:53  INFO      runner    [T4] idea 2/2 — ok (1702 chars)
+2026-04-13 12:49:53  INFO      runner  [T7] Federated learning with heterogeneous and non-IID data
+2026-04-13 12:50:39  INFO      runner    [T6] idea 2/2 — ok (1672 chars)
+2026-04-13 12:50:39  INFO      runner  [T8] Deep learning emulators for climate model acceleration
+2026-04-13 12:50:56  INFO      runner    [T5] idea 2/2 — ok (1636 chars)
+2026-04-13 12:50:56  INFO      runner  [T9] Uncertainty quantification in deep neural networks
+2026-04-13 12:52:46  INFO      runner    [T7] idea 1/2 — ok (1688 chars)
+2026-04-13 12:53:31  INFO      runner    [T8] idea 1/2 — ok (1689 chars)
+2026-04-13 12:54:02  INFO      runner    [T9] idea 1/2 — ok (1543 chars)
+2026-04-13 12:55:30  INFO      runner    [T7] idea 2/2 — ok (1670 chars)
+2026-04-13 12:55:30  INFO      runner  [T10] Foundation models for genomics and single-cell biology
+2026-04-13 12:56:23  INFO      runner    [T8] idea 2/2 — ok (1634 chars)
+2026-04-13 12:56:23  INFO      runner  [T11] Emergent communication in multi-agent systems
+2026-04-13 12:56:42  INFO      runner    [T9] idea 2/2 — ok (1609 chars)
+2026-04-13 12:56:42  INFO      runner  [T12] Mechanistic interpretability of transformer models
+2026-04-13 12:57:54  INFO      runner    [T10] idea 1/2 — ok (1635 chars)
+2026-04-13 12:59:12  INFO      runner    [T11] idea 1/2 — ok (1924 chars)
+2026-04-13 12:59:27  INFO      runner    [T12] idea 1/2 — ok (1551 chars)
+2026-04-13 13:00:42  INFO      runner    [T10] idea 2/2 — ok (1866 chars)
+2026-04-13 13:00:42  INFO      runner  [T13] Zero-shot generalization in reinforcement learning
+2026-04-13 13:01:59  INFO      runner    [T11] idea 2/2 — ok (1923 chars)
+2026-04-13 13:01:59  INFO      runner  [T14] Topological methods for high-dimensional data analysis
+2026-04-13 13:02:20  INFO      runner    [T12] idea 2/2 — ok (1666 chars)
+2026-04-13 13:02:20  INFO      runner  [T15] Quantum advantage in machine learning tasks
+2026-04-13 13:03:40  INFO      runner    [T13] idea 1/2 — ok (1824 chars)
+2026-04-13 13:04:58  INFO      runner    [T14] idea 1/2 — ok (1680 chars)
+2026-04-13 13:05:08  INFO      runner    [T15] idea 1/2 — ok (1921 chars)
+2026-04-13 13:06:12  INFO      runner    [T13] idea 2/2 — ok (1675 chars)
+2026-04-13 13:07:39  INFO      runner    [T14] idea 2/2 — ok (1721 chars)
+2026-04-13 13:08:00  INFO      runner    [T15] idea 2/2 — ok (1789 chars)
+2026-04-13 13:08:00  INFO      runner  Saved 30 ideas to /Users/dylanwilson/Documents/GitHub/self-play/EvoScientist/ideas/results/publish_eval_20260413T163806Z/S15/ideas.json
+2026-04-13 13:08:00  INFO      runner  Running S_paper on 15 topic(s) × 2 idea(s) = 30 calls  [cached, workers=3]
+2026-04-13 13:08:00  INFO      runner  [T1] Scaling laws for Large Language Models
+2026-04-13 13:08:00  INFO      runner  [T2] Protein structure prediction beyond AlphaFold
+2026-04-13 13:08:00  INFO      runner  [T3] Quantum error correction in NISQ devices
+2026-04-13 13:09:38  WARNING   tree_search  L3 failed: Expecting ',' delimiter: line 62 column 6 (char 9568) — falling back to L2 as leaves
+2026-04-13 13:09:38  WARNING   tree_search  L3 failed: Expecting ',' delimiter: line 68 column 6 (char 9744) — falling back to L2 as leaves
+2026-04-13 13:10:03  INFO      tree_search  IdeaTreeSearch complete: 6 candidates for 'Scaling laws for Large Language Models'
+2026-04-13 13:10:04  INFO      tree_search  IdeaTreeSearch complete: 6 candidates for 'Protein structure prediction beyond Alph'
+2026-04-13 13:10:06  WARNING   tree_search  L3 failed: LLM call exceeded 90s timeout (model=deepseek-chat) — falling back to L2 as leaves
+2026-04-13 13:10:32  INFO      tree_search  IdeaTreeSearch complete: 6 candidates for 'Quantum error correction in NISQ devices'
+2026-04-13 13:10:39  INFO      tournament  Tournament ranked 6 leaves for 'Protein structure prediction beyond Alph' (best id=T3-D2-F1)
+2026-04-13 13:10:39  INFO      tournament  Tournament ranked 6 leaves for 'Scaling laws for Large Language Models' (best id=T1-D1-F1)
+2026-04-13 13:10:50  INFO      runner    [T2] idea 1/2 — ok (1634 chars)
+2026-04-13 13:10:52  INFO      runner    [T1] idea 1/2 — ok (1961 chars)
+2026-04-13 13:11:02  INFO      runner    [T2] idea 2/2 — ok (1781 chars)
+2026-04-13 13:11:02  INFO      runner  [T4] Causal discovery from observational data
+2026-04-13 13:11:03  INFO      tournament  Tournament ranked 6 leaves for 'Quantum error correction in NISQ devices' (best id=T1-D2-F1)
+2026-04-13 13:11:03  INFO      runner    [T1] idea 2/2 — ok (1759 chars)
+2026-04-13 13:11:03  INFO      runner  [T5] Energy-efficient neuromorphic computing
+2026-04-13 13:11:16  INFO      runner    [T3] idea 1/2 — ok (1851 chars)
+2026-04-13 13:11:25  INFO      runner    [T3] idea 2/2 — ok (1577 chars)
+2026-04-13 13:11:25  INFO      runner  [T6] Generative AI for drug discovery and molecular design
+2026-04-13 13:12:45  WARNING   tree_search  L3 failed: Expecting ',' delimiter: line 62 column 6 (char 9819) — falling back to L2 as leaves
+2026-04-13 13:13:05  WARNING   tree_search  L3 failed: LLM call exceeded 90s timeout (model=deepseek-chat) — falling back to L2 as leaves
+2026-04-13 13:13:07  WARNING   tree_search  L3 failed: Expecting ',' delimiter: line 68 column 6 (char 9703) — falling back to L2 as leaves
+2026-04-13 13:13:15  INFO      tree_search  IdeaTreeSearch complete: 6 candidates for 'Energy-efficient neuromorphic computing'
+2026-04-13 13:13:36  INFO      tree_search  IdeaTreeSearch complete: 6 candidates for 'Generative AI for drug discovery and mol'
+2026-04-13 13:13:41  INFO      tree_search  IdeaTreeSearch complete: 6 candidates for 'Causal discovery from observational data'
+2026-04-13 13:13:57  INFO      tournament  Tournament ranked 6 leaves for 'Energy-efficient neuromorphic computing' (best id=T1-D1-F1)
+2026-04-13 13:14:10  INFO      runner    [T5] idea 1/2 — ok (1633 chars)
+2026-04-13 13:14:15  INFO      tournament  Tournament ranked 6 leaves for 'Generative AI for drug discovery and mol' (best id=T2-D1-F1)
+2026-04-13 13:14:21  INFO      tournament  Tournament ranked 6 leaves for 'Causal discovery from observational data' (best id=T1-D2-F1)
+2026-04-13 13:14:24  INFO      runner    [T5] idea 2/2 — ok (1948 chars)
+2026-04-13 13:14:24  INFO      runner  [T7] Federated learning with heterogeneous and non-IID data
+2026-04-13 13:14:28  INFO      runner    [T6] idea 1/2 — ok (1955 chars)
+2026-04-13 13:14:35  INFO      runner    [T4] idea 1/2 — ok (1921 chars)
+2026-04-13 13:14:44  INFO      runner    [T6] idea 2/2 — ok (2041 chars)
+2026-04-13 13:14:45  INFO      runner  [T8] Deep learning emulators for climate model acceleration
+2026-04-13 13:14:49  INFO      runner    [T4] idea 2/2 — ok (1886 chars)
+2026-04-13 13:14:49  INFO      runner  [T9] Uncertainty quantification in deep neural networks
+2026-04-13 13:16:14  WARNING   tree_search  L3 failed: Expecting ',' delimiter: line 69 column 6 (char 10198) — falling back to L2 as leaves
+2026-04-13 13:16:33  WARNING   tree_search  L3 failed: Expecting ',' delimiter: line 68 column 6 (char 10071) — falling back to L2 as leaves
+2026-04-13 13:16:35  WARNING   tree_search  L3 failed: Expecting ',' delimiter: line 62 column 6 (char 9658) — falling back to L2 as leaves
+2026-04-13 13:16:44  INFO      tree_search  IdeaTreeSearch complete: 6 candidates for 'Federated learning with heterogeneous an'
+2026-04-13 13:17:05  INFO      tree_search  IdeaTreeSearch complete: 6 candidates for 'Uncertainty quantification in deep neura'
+2026-04-13 13:17:05  INFO      tree_search  IdeaTreeSearch complete: 6 candidates for 'Deep learning emulators for climate mode'
+2026-04-13 13:17:22  INFO      tournament  Tournament ranked 6 leaves for 'Federated learning with heterogeneous an' (best id=T3-D2-F1)
+2026-04-13 13:17:36  INFO      runner    [T7] idea 1/2 — ok (2003 chars)
+2026-04-13 13:17:38  INFO      tournament  Tournament ranked 6 leaves for 'Uncertainty quantification in deep neura' (best id=T1-D1-F1)
+2026-04-13 13:17:44  INFO      tournament  Tournament ranked 6 leaves for 'Deep learning emulators for climate mode' (best id=T1-D1-F1)
+2026-04-13 13:17:50  INFO      runner    [T7] idea 2/2 — ok (1900 chars)
+2026-04-13 13:17:50  INFO      runner  [T10] Foundation models for genomics and single-cell biology
+2026-04-13 13:17:53  INFO      runner    [T9] idea 1/2 — ok (1940 chars)
+2026-04-13 13:17:57  INFO      runner    [T8] idea 1/2 — ok (1912 chars)
+2026-04-13 13:18:06  INFO      runner    [T9] idea 2/2 — ok (1832 chars)
+2026-04-13 13:18:06  INFO      runner  [T11] Emergent communication in multi-agent systems
+2026-04-13 13:18:11  INFO      runner    [T8] idea 2/2 — ok (1976 chars)
+2026-04-13 13:18:11  INFO      runner  [T12] Mechanistic interpretability of transformer models
+2026-04-13 13:19:46  WARNING   tree_search  L3 failed: Expecting ',' delimiter: line 68 column 6 (char 10477) — falling back to L2 as leaves
+2026-04-13 13:20:00  WARNING   tree_search  L3 failed: Expecting ',' delimiter: line 68 column 6 (char 9435) — falling back to L2 as leaves
+2026-04-13 13:20:04  WARNING   tree_search  L3 failed: Expecting ',' delimiter: line 62 column 6 (char 9669) — falling back to L2 as leaves
+2026-04-13 13:20:20  INFO      tree_search  IdeaTreeSearch complete: 6 candidates for 'Foundation models for genomics and singl'
+2026-04-13 13:20:28  INFO      tree_search  IdeaTreeSearch complete: 6 candidates for 'Mechanistic interpretability of transfor'
+2026-04-13 13:20:31  INFO      tree_search  IdeaTreeSearch complete: 6 candidates for 'Emergent communication in multi-agent sy'
+2026-04-13 13:20:58  INFO      tournament  Tournament ranked 6 leaves for 'Foundation models for genomics and singl' (best id=T3-D1-F1)
+2026-04-13 13:21:06  INFO      tournament  Tournament ranked 6 leaves for 'Mechanistic interpretability of transfor' (best id=T2-D2-F1)
+2026-04-13 13:21:09  INFO      runner    [T10] idea 1/2 — ok (1659 chars)
+2026-04-13 13:21:09  INFO      tournament  Tournament ranked 6 leaves for 'Emergent communication in multi-agent sy' (best id=T1-D2-F1)
+2026-04-13 13:21:19  INFO      runner    [T12] idea 1/2 — ok (1922 chars)
+2026-04-13 13:21:21  INFO      runner    [T10] idea 2/2 — ok (1846 chars)
+2026-04-13 13:21:21  INFO      runner  [T13] Zero-shot generalization in reinforcement learning
+2026-04-13 13:21:21  INFO      runner    [T11] idea 1/2 — ok (1858 chars)
+2026-04-13 13:21:30  INFO      runner    [T12] idea 2/2 — ok (1720 chars)
+2026-04-13 13:21:30  INFO      runner  [T14] Topological methods for high-dimensional data analysis
+2026-04-13 13:21:33  INFO      runner    [T11] idea 2/2 — ok (1799 chars)
+2026-04-13 13:21:33  INFO      runner  [T15] Quantum advantage in machine learning tasks
+2026-04-13 13:23:06  WARNING   tree_search  L3 failed: Expecting ',' delimiter: line 68 column 6 (char 10259) — falling back to L2 as leaves
+2026-04-13 13:23:33  INFO      tree_search  IdeaTreeSearch complete: 6 candidates for 'Quantum advantage in machine learning ta'
+2026-04-13 13:23:50  INFO      tree_search  IdeaTreeSearch complete: 12 candidates for 'Zero-shot generalization in reinforcemen'
+2026-04-13 13:23:57  INFO      tree_search  IdeaTreeSearch complete: 12 candidates for 'Topological methods for high-dimensional'
+2026-04-13 13:24:02  INFO      tournament  Tournament ranked 6 leaves for 'Quantum advantage in machine learning ta' (best id=T2-D2-F1)
+2026-04-13 13:24:14  INFO      runner    [T15] idea 1/2 — ok (1910 chars)
+2026-04-13 13:24:25  INFO      runner    [T15] idea 2/2 — ok (1777 chars)
+2026-04-13 13:25:22  INFO      tournament  Tournament ranked 12 leaves for 'Zero-shot generalization in reinforcemen' (best id=T2-D1-F2)
+2026-04-13 13:25:28  INFO      tournament  Tournament ranked 12 leaves for 'Topological methods for high-dimensional' (best id=T1-D1-F2)
+2026-04-13 13:25:35  INFO      runner    [T13] idea 1/2 — ok (2018 chars)
+2026-04-13 13:25:38  INFO      runner    [T14] idea 1/2 — ok (1571 chars)
+2026-04-13 13:25:45  INFO      runner    [T13] idea 2/2 — ok (1823 chars)
+2026-04-13 13:25:51  INFO      runner    [T14] idea 2/2 — ok (2179 chars)
+2026-04-13 13:25:51  INFO      runner  Saved 30 ideas to /Users/dylanwilson/Documents/GitHub/self-play/EvoScientist/ideas/results/publish_eval_20260413T163806Z/S_paper/ideas.json
+2026-04-13 13:25:51  INFO      judge  Judging T1 [gemini] (2 pair(s)): Scaling laws for Large Language Models
+2026-04-13 13:25:51  INFO      judge  Judging T10 [gemini] (2 pair(s)): Foundation models for genomics and single-cell biology
+2026-04-13 13:25:51  INFO      judge  Judging T11 [gemini] (2 pair(s)): Emergent communication in multi-agent systems
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:26:01  INFO      judge    T11[0] → A | Idea A is the winner because it provides a precise, information-theoretic framew
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:26:03  INFO      judge    T10[0] → tie | Idea A is a highly feasible and practically useful application of reinforcement 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:26:05  INFO      judge    T1[0] → tie | Idea A offers a high-novelty scientific hypothesis that challenges the interchan
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:26:14  INFO      judge    T11[1] → A | Idea A is the winner due to its exceptional experimental design and the introduc
+2026-04-13 13:26:14  INFO      judge  Judging T12 [gemini] (2 pair(s)): Mechanistic interpretability of transformer models
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:26:15  INFO      judge    T1[1] → A | Idea B is a well-grounded and highly feasible study that addresses a practical g
+2026-04-13 13:26:15  INFO      judge  Judging T13 [gemini] (2 pair(s)): Zero-shot generalization in reinforcement learning
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:26:15  INFO      judge    T10[1] → A | Idea A is a highly focused and methodologically sound proposal that addresses a 
+2026-04-13 13:26:15  INFO      judge  Judging T14 [gemini] (2 pair(s)): Topological methods for high-dimensional data analysis
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:26:20  INFO      judge    T14[0] → A | Idea B is superior because it integrates advanced generative modeling (Schröding
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:26:22  INFO      judge    T12[0] → A | Idea A is a well-structured proposal that applies rigorous mechanistic interpret
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:26:24  INFO      judge    T13[0] → A | Idea B is the winner because it addresses a fundamental theoretical gap in RL ge
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:26:30  INFO      judge    T13[1] → A | Idea A offers a more principled and theoretically grounded approach to represent
+2026-04-13 13:26:30  INFO      judge  Judging T15 [gemini] (2 pair(s)): Quantum advantage in machine learning tasks
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:26:32  INFO      judge    T12[1] → A | Idea B is the winner due to its exceptional experimental clarity and feasibility
+2026-04-13 13:26:32  INFO      judge  Judging T2 [gemini] (2 pair(s)): Protein structure prediction beyond AlphaFold
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:26:35  INFO      judge    T15[0] → A | Idea A is a more rigorous and scientifically grounded approach to demonstrating 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:26:40  INFO      judge    T14[1] → tie | Idea A is a technically sound and highly feasible refinement of the Mapper algor
+2026-04-13 13:26:40  INFO      judge  Judging T3 [gemini] (2 pair(s)): Quantum error correction in NISQ devices
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:26:52  INFO      judge    T2[0] → tie | Idea A offers high novelty by addressing the critical gap of PTM-induced conform
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:26:53  INFO      judge    T3[0] → A | Idea B is the winner because it addresses a fundamental and immediate challenge 
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:26:55  INFO      judge    T15[1] → tie | Idea A provides a highly practical and well-defined application for materials sc
+2026-04-13 13:26:55  INFO      judge  Judging T4 [gemini] (2 pair(s)): Causal discovery from observational data
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:26:59  INFO      judge    T3[1] → A | Idea B is the winner due to its highly specific experimental design and its inno
+2026-04-13 13:26:59  INFO      judge  Judging T5 [gemini] (2 pair(s)): Energy-efficient neuromorphic computing
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:27:02  INFO      judge    T4[0] → A | Idea A is a well-defined, highly feasible study with a clear falsifiable hypothe
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:27:03  INFO      judge    T2[1] → A | Idea A is the winner because it provides a highly rigorous and immediately actio
+2026-04-13 13:27:03  INFO      judge  Judging T6 [gemini] (2 pair(s)): Generative AI for drug discovery and molecular design
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:27:06  INFO      judge    T5[0] → A | Idea A presents a highly rigorous and well-defined experimental framework with s
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:27:15  INFO      judge    T6[0] → tie | Idea A presents a highly novel technical approach by embedding periodic physical
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:27:16  INFO      judge    T5[1] → A | Idea A is the winner due to its exceptional experimental clarity and high feasib
+2026-04-13 13:27:16  INFO      judge  Judging T7 [gemini] (2 pair(s)): Federated learning with heterogeneous and non-IID data
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:27:40  ERROR     judge  Judge failed for T4 pair 1: Judge returned invalid JSON: Expecting property name enclosed in double quotes: line 3 column 103 (char 207)
+Raw:
+{
+  "scores_a": {"novelty": 9, "scientific_usefulness": 9, "experimental_clarity": 6, "feasibility": 6},
+  "scores_b": {"novelty": 7, "scientific_usefulness": 8, "experimental_clarity": 9, "feasibility": 9},
+2026-04-13 13:27:40  INFO      judge  Judging T8 [gemini] (2 pair(s)): Deep learning emulators for climate model acceleration
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:27:48  INFO      judge    T8[0] → A | Idea A addresses a fundamental and urgent scientific question: whether AI emulat
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:27:54  ERROR     judge  Judge failed for T6 pair 1: Judge returned invalid JSON: Expecting property name enclosed in double quotes: line 10 column 32 (char 191)
+Raw:
+{
+  "scores_a": {
+    "novelty": 10,
+    "scientific_usefulness": 9,
+    "experimental_clarity": 6,
+    "feasibility": 5
+  },
+  "scores_b": {
+    "novelty": 7,
+    "scientific_usefulness": 8,
+2026-04-13 13:27:54  INFO      judge  Judging T9 [gemini] (2 pair(s)): Uncertainty quantification in deep neural networks
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:27:55  ERROR     judge  Judge failed for T7 pair 0: Judge returned invalid JSON: Expecting property name enclosed in double quotes: line 10 column 32 (char 190)
+Raw:
+{
+  "scores_a": {
+    "novelty": 7,
+    "scientific_usefulness": 8,
+    "experimental_clarity": 9,
+    "feasibility": 9
+  },
+  "scores_b": {
+    "novelty": 9,
+    "scientific_usefulness": 9,
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:27:59  INFO      judge    T8[1] → A | Idea A is a rigorous, hypothesis-driven study that addresses the critical issue 
+2026-04-13 13:28:03  INFO      judge    T9[0] → B | Idea A addresses a fundamental theoretical limitation of conformal prediction—th
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 13:28:10  INFO      judge    T9[1] → tie | Idea A provides high practical value by addressing clinical fairness and regulat
+2026-04-13 13:28:15  INFO      judge    T7[1] → tie | Idea A offers a highly rigorous and feasible approach to a fundamental federated
+2026-04-13 13:28:15  INFO      judge  Done [gemini] — A:18  B:1  ties:8  B win rate: 18.5%
+2026-04-13 13:28:15  INFO      judge  Judging T1 [claude] (2 pair(s)): Scaling laws for Large Language Models
+2026-04-13 13:28:15  INFO      judge  Judging T10 [claude] (2 pair(s)): Foundation models for genomics and single-cell biology
+2026-04-13 13:28:15  INFO      judge  Judging T11 [claude] (2 pair(s)): Emergent communication in multi-agent systems
+2026-04-13 13:28:20  INFO      judge    T11[0] → A | Idea B is stronger across most dimensions: it proposes a concrete, falsifiable h
+2026-04-13 13:28:21  INFO      judge    T1[0] → B | Idea A addresses a genuinely underexplored problem space—hardware-constrained ar
+2026-04-13 13:28:21  INFO      judge    T10[0] → tie | Idea A addresses a real and important problem in therapeutic protein design but 
+2026-04-13 13:28:25  INFO      judge    T11[1] → tie | Both ideas address genuine open problems in emergent communication with comparab
+2026-04-13 13:28:25  INFO      judge  Judging T12 [claude] (2 pair(s)): Mechanistic interpretability of transformer models
+2026-04-13 13:28:26  INFO      judge    T1[1] → A | Idea A is conceptually ambitious but fundamentally flawed: '100% deterministic r
+2026-04-13 13:28:26  INFO      judge  Judging T13 [claude] (2 pair(s)): Zero-shot generalization in reinforcement learning
+2026-04-13 13:28:26  INFO      judge    T10[1] → tie | Idea A is a well-scoped, methodologically rigorous diagnostic study with clear f
+2026-04-13 13:28:26  INFO      judge  Judging T14 [claude] (2 pair(s)): Topological methods for high-dimensional data analysis
+2026-04-13 13:28:29  INFO      judge    T12[0] → A | Idea B scores higher overall due to stronger experimental clarity and feasibilit
+2026-04-13 13:28:31  INFO      judge    T14[0] → A | Idea A scores higher on novelty and scientific usefulness by combining Schröding
+2026-04-13 13:28:31  INFO      judge    T13[0] → A | Idea B offers a more scientifically rigorous and novel contribution by moving fr
+2026-04-13 13:28:35  INFO      judge    T12[1] → A | Idea B has a clear, well-specified experimental design with a falsifiable hypoth
+2026-04-13 13:28:35  INFO      judge  Judging T15 [claude] (2 pair(s)): Quantum advantage in machine learning tasks
+2026-04-13 13:28:37  INFO      judge    T14[1] → A | Idea A has a tighter, more focused scope with a clearly defined falsification cr
+2026-04-13 13:28:37  INFO      judge  Judging T2 [claude] (2 pair(s)): Protein structure prediction beyond AlphaFold
+2026-04-13 13:28:37  INFO      judge    T13[1] → tie | Idea A presents a practical and well-grounded sim-to-real transfer approach with
+2026-04-13 13:28:37  INFO      judge  Judging T3 [claude] (2 pair(s)): Quantum error correction in NISQ devices
+2026-04-13 13:28:40  INFO      judge    T15[0] → A | Idea A addresses a fundamental open problem in quantum computing—provable quantu
+2026-04-13 13:28:43  INFO      judge    T2[0] → tie | Idea A is a well-grounded, practically useful approach to a known limitation of 
+2026-04-13 13:28:43  INFO      judge    T3[0] → A | Idea A presents a well-defined, experimentally rigorous investigation of a genui
+2026-04-13 13:28:46  INFO      judge    T15[1] → tie | Idea A offers a concrete, practically grounded approach combining physical symme
+2026-04-13 13:28:46  INFO      judge  Judging T4 [claude] (2 pair(s)): Causal discovery from observational data
+2026-04-13 13:28:48  INFO      judge    T2[1] → tie | Idea A is methodologically rigorous with clear benchmarks, falsifiable predictio
+2026-04-13 13:28:48  INFO      judge  Judging T5 [claude] (2 pair(s)): Energy-efficient neuromorphic computing
+2026-04-13 13:28:49  INFO      judge    T3[1] → A | Idea A presents a more focused and experimentally concrete proposal with a clear
+2026-04-13 13:28:49  INFO      judge  Judging T6 [claude] (2 pair(s)): Generative AI for drug discovery and molecular design
+2026-04-13 13:28:49  INFO      judge    T4[0] → A | Idea B is more focused, scientifically rigorous, and feasible with a clearly fal
+2026-04-13 13:28:53  INFO      judge    T5[0] → A | Idea A is more precisely scoped with clear success criteria, well-defined contro
+2026-04-13 13:28:54  INFO      judge    T6[0] → tie | Idea A is highly practical and well-specified, addressing a genuine pain point i
+2026-04-13 13:28:55  INFO      judge    T4[1] → A | Idea B scores higher overall due to substantially better feasibility and experim
+2026-04-13 13:28:55  INFO      judge  Judging T7 [claude] (2 pair(s)): Federated learning with heterogeneous and non-IID data
+2026-04-13 13:28:59  INFO      judge    T5[1] → A | Idea B scores higher overall due to its superior experimental clarity with well-
+2026-04-13 13:28:59  INFO      judge  Judging T8 [claude] (2 pair(s)): Deep learning emulators for climate model acceleration
+2026-04-13 13:29:00  INFO      judge    T6[1] → tie | Both ideas score similarly overall (A: 29, B: 29). Idea A is more technically gr
+2026-04-13 13:29:00  INFO      judge  Judging T9 [claude] (2 pair(s)): Uncertainty quantification in deep neural networks
+2026-04-13 13:29:00  INFO      judge    T7[0] → tie | Idea A is more novel and domain-impactful, combining physics-informed generative
+2026-04-13 13:29:03  INFO      judge    T8[0] → A | Idea B addresses a more fundamental and scientifically critical open problem—whe
+2026-04-13 13:29:05  INFO      judge    T9[0] → B | Idea B addresses a more fundamental and practically impactful problem—the violat
+2026-04-13 13:29:06  INFO      judge    T7[1] → tie | Idea A offers a more novel and domain-specific contribution by tackling dynamic 
+2026-04-13 13:29:09  INFO      judge    T8[1] → A | Idea A scores higher overall due to its exceptional experimental clarity and str
+2026-04-13 13:29:09  INFO      judge    T9[1] → tie | Idea A offers a genuinely novel mechanistic hypothesis about the decoupling of g
+2026-04-13 13:29:09  INFO      judge  Done [claude] — A:16  B:2  ties:12  B win rate: 26.7%
+2026-04-13 13:29:09  INFO      judge  Judging T1 [gpt] (2 pair(s)): Scaling laws for Large Language Models
+2026-04-13 13:29:09  INFO      judge  Judging T10 [gpt] (2 pair(s)): Foundation models for genomics and single-cell biology
+2026-04-13 13:29:09  INFO      judge  Judging T11 [gpt] (2 pair(s)): Emergent communication in multi-agent systems
+2026-04-13 13:29:13  INFO      judge    T11[0] → A | Idea B is stronger overall because it poses a sharper, falsifiable scientific hy
+2026-04-13 13:29:13  INFO      judge    T1[0] → tie | Idea A is more practically impactful because it targets a real gap in scaling-la
+2026-04-13 13:29:13  INFO      judge    T10[0] → A | Idea A is more distinctive scientifically because it leverages aligned multi-spe
+2026-04-13 13:29:16  INFO      judge    T1[1] → A | Idea A targets a concrete and important gap in scaling-law practice by linking b
+2026-04-13 13:29:16  INFO      judge  Judging T12 [gpt] (2 pair(s)): Mechanistic interpretability of transformer models
+2026-04-13 13:29:17  INFO      judge    T11[1] → B | Both ideas are strong and genuinely interesting, but Idea B scores higher overal
+2026-04-13 13:29:17  INFO      judge  Judging T13 [gpt] (2 pair(s)): Zero-shot generalization in reinforcement learning
+2026-04-13 13:29:17  INFO      judge    T10[1] → A | Idea A is ambitious and potentially high-impact, especially in linking causal re
+2026-04-13 13:29:17  INFO      judge  Judging T14 [gpt] (2 pair(s)): Topological methods for high-dimensional data analysis
+2026-04-13 13:29:20  INFO      judge    T13[0] → A | Idea B is stronger overall because it targets a broad, important question in zer
+2026-04-13 13:29:21  INFO      judge    T14[0] → A | Idea B is more conceptually original because it links persistent homology in a k
+2026-04-13 13:29:21  INFO      judge    T12[0] → A | Idea A is ambitious and conceptually fresh, but it bundles several difficult ste
+2026-04-13 13:29:25  INFO      judge    T14[1] → A | Idea A is ambitious and conceptually novel, but it relies on a difficult chain o
+2026-04-13 13:29:25  INFO      judge  Judging T15 [gpt] (2 pair(s)): Quantum advantage in machine learning tasks
+2026-04-13 13:29:26  INFO      judge    T12[1] → A | Idea A is ambitious and conceptually fresh, especially in bringing dynamical sys
+2026-04-13 13:29:26  INFO      judge  Judging T2 [gpt] (2 pair(s)): Protein structure prediction beyond AlphaFold
+2026-04-13 13:29:26  INFO      judge    T13[1] → tie | Idea A targets a highly important real-world sim-to-real assembly problem with a
+2026-04-13 13:29:26  INFO      judge  Judging T3 [gpt] (2 pair(s)): Quantum error correction in NISQ devices
+2026-04-13 13:29:29  INFO      judge    T15[0] → A | Idea A targets a central open question in quantum machine learning—whether there
+2026-04-13 13:29:29  INFO      judge    T3[0] → A | Idea B is more tightly connected to a concrete and important open question in ne
+2026-04-13 13:29:29  INFO      judge    T2[0] → tie | Idea A is more conceptually novel because it proposes learning a transferable PT
+2026-04-13 13:29:33  INFO      judge    T3[1] → tie | Idea A is more scientifically pointed and experimentally sharper, with a concret
+2026-04-13 13:29:33  INFO      judge  Judging T4 [gpt] (2 pair(s)): Causal discovery from observational data
+2026-04-13 13:29:33  INFO      judge    T15[1] → B | Idea A is a strong, actionable applied research program: embedding physical symm
+2026-04-13 13:29:33  INFO      judge  Judging T5 [gpt] (2 pair(s)): Energy-efficient neuromorphic computing
+2026-04-13 13:29:33  INFO      judge    T2[1] → A | Idea A is more ambitious and conceptually novel because it targets ordered, chem
+2026-04-13 13:29:33  INFO      judge  Judging T6 [gpt] (2 pair(s)): Generative AI for drug discovery and molecular design
+2026-04-13 13:29:36  INFO      judge    T5[0] → A | Idea A is stronger because it targets a well-defined and important reliability b
+2026-04-13 13:29:36  INFO      judge    T4[0] → A | Idea A is sharper scientifically: it targets a concrete open question in causal 
+2026-04-13 13:29:37  INFO      judge    T6[0] → A | Idea A targets a highly practical bottleneck in molecular generation—synthetic a
+2026-04-13 13:29:40  INFO      judge    T4[1] → A | Idea A targets a concrete and important gap in causal discovery for chaotic syst
+2026-04-13 13:29:40  INFO      judge  Judging T7 [gpt] (2 pair(s)): Federated learning with heterogeneous and non-IID data
+2026-04-13 13:29:40  INFO      judge    T5[1] → A | Idea A is conceptually bold and potentially impactful because it targets a real 
+2026-04-13 13:29:40  INFO      judge  Judging T8 [gpt] (2 pair(s)): Deep learning emulators for climate model acceleration
+2026-04-13 13:29:40  INFO      judge    T6[1] → tie | Idea A is more original and targets a highly underexplored but important bottlen
+2026-04-13 13:29:40  INFO      judge  Judging T9 [gpt] (2 pair(s)): Uncertainty quantification in deep neural networks
+2026-04-13 13:29:44  INFO      judge    T7[0] → tie | Idea A is more original and tackles an important industrial FL problem by combin
+2026-04-13 13:29:44  INFO      judge    T8[0] → A | Idea A targets a sharp and important scientific question—whether emulators train
+2026-04-13 13:29:44  INFO      judge    T9[0] → tie | Idea A is cleaner and more immediately executable, with a well-specified archite
+2026-04-13 13:29:47  INFO      judge    T7[1] → tie | Idea A is more original because it tackles federated GNN learning under dynamic 
+2026-04-13 13:29:48  INFO      judge    T8[1] → A | Idea A targets a concrete and important failure mode in climate emulation, and i
+2026-04-13 13:29:50  INFO      judge    T9[1] → A | Idea A poses a sharper and more novel scientific question: whether adversarial r
+2026-04-13 13:29:50  INFO      judge  Done [gpt] — A:20  B:2  ties:8  B win rate: 20.0%
+{
+  "out_dir": "results/publish_eval_20260413T163806Z",
+  "heuristic_spend_usd_total": 0.8382,
+  "heuristic_spend_note": "includes generation guess + per-judge blocks",
+  "judges": {
+    "gemini-3-flash-preview": {
+      "skipped": false,
+      "report_path": "results/publish_eval_20260413T163806Z/judge_gemini-3-flash-preview.json",
+      "wins_a": 18,
+      "wins_b": 1,
+      "ties": 8,
+      "total_judged": 27,
+      "win_rate_b": 0.18518518518518517,
+      "heuristic_usd_block": 0.0093,
+      "wilson_95_win_rate_b": [
+        0.0818058657428532,
+        0.36699056505191746
+      ]
+    },
+    "claude-sonnet-4-6": {
+      "skipped": false,
+      "report_path": "results/publish_eval_20260413T163806Z/judge_claude-sonnet-4-6.json",
+      "wins_a": 16,
+      "wins_b": 2,
+      "ties": 12,
+      "total_judged": 30,
+      "win_rate_b": 0.26666666666666666,
+      "heuristic_usd_block": 0.3375,
+      "wilson_95_win_rate_b": [
+        0.14182495553910618,
+        0.4444830204431169
+      ]
+    },
+    "gpt-5.4": {
+      "skipped": false,
+      "report_path": "results/publish_eval_20260413T163806Z/judge_gpt-5.4.json",
+      "wins_a": 20,
+      "wins_b": 2,
+      "ties": 8,
+      "total_judged": 30,
+      "win_rate_b": 0.2,
+      "heuristic_usd_block": 0.4725,
+      "wilson_95_win_rate_b": [
+        0.09504978102401235,
+        0.37306047381027446
+      ]
+    }
+  },
+  "judge_pair_agreement": {
+    "gemini-3-flash-preview": {
+      "claude-sonnet-4-6": 0.7777777777777778,
+      "gpt-5.4": 0.6666666666666666
+    },
+    "claude-sonnet-4-6": {
+      "gpt-5.4": 0.6666666666666666
+    },
+    "gpt-5.4": {}
+  },
+  "default_primary_judge_env": "gpt-5.4"
+}

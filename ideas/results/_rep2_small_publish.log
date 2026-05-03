@@ -1,0 +1,132 @@
+2026-04-13 14:39:54  INFO      runner  Running S15 on 5 topic(s) × 2 idea(s) = 10 calls  [cached, workers=5]
+2026-04-13 14:39:54  INFO      runner  [T1] Scaling laws for Large Language Models
+2026-04-13 14:39:54  INFO      runner  [T2] Protein structure prediction beyond AlphaFold
+2026-04-13 14:39:54  INFO      runner  [T3] Quantum error correction in NISQ devices
+2026-04-13 14:39:54  INFO      runner  [T4] Causal discovery from observational data
+2026-04-13 14:39:54  INFO      runner  [T5] Energy-efficient neuromorphic computing
+2026-04-13 14:42:31  INFO      runner    [T1] idea 1/2 — ok (1749 chars)
+2026-04-13 14:42:32  INFO      runner    [T3] idea 1/2 — ok (1737 chars)
+2026-04-13 14:42:33  INFO      runner    [T4] idea 1/2 — ok (1645 chars)
+2026-04-13 14:42:35  INFO      runner    [T2] idea 1/2 — ok (1676 chars)
+2026-04-13 14:42:49  INFO      runner    [T5] idea 1/2 — ok (1750 chars)
+2026-04-13 14:44:49  INFO      runner    [T4] idea 2/2 — ok (1932 chars)
+2026-04-13 14:44:51  INFO      runner    [T1] idea 2/2 — ok (1659 chars)
+2026-04-13 14:44:54  INFO      runner    [T2] idea 2/2 — ok (1511 chars)
+2026-04-13 14:44:59  INFO      runner    [T3] idea 2/2 — ok (1476 chars)
+2026-04-13 14:45:13  INFO      runner    [T5] idea 2/2 — ok (1938 chars)
+2026-04-13 14:45:13  INFO      runner  Saved 10 ideas to ideas/results/publish_eval_rep2_small/S15/ideas.json
+2026-04-13 14:45:13  INFO      runner  Running S_paper on 5 topic(s) × 2 idea(s) = 10 calls  [cached, workers=5]
+2026-04-13 14:45:13  INFO      runner  [T1] Scaling laws for Large Language Models
+2026-04-13 14:45:13  INFO      runner  [T2] Protein structure prediction beyond AlphaFold
+2026-04-13 14:45:13  INFO      runner  [T3] Quantum error correction in NISQ devices
+2026-04-13 14:45:13  INFO      runner  [T4] Causal discovery from observational data
+2026-04-13 14:45:13  INFO      runner  [T5] Energy-efficient neuromorphic computing
+2026-04-13 14:46:43  WARNING   tree_search  L3 failed: Expecting ',' delimiter: line 67 column 6 (char 9833) — falling back to L2 as leaves
+2026-04-13 14:46:44  WARNING   tree_search  L3 failed: Expecting ',' delimiter: line 63 column 6 (char 9370) — falling back to L2 as leaves
+2026-04-13 14:46:44  WARNING   tree_search  L3 failed: Expecting ',' delimiter: line 68 column 6 (char 10152) — falling back to L2 as leaves
+2026-04-13 14:46:47  WARNING   tree_search  L3 failed: Expecting ',' delimiter: line 62 column 6 (char 10237) — falling back to L2 as leaves
+2026-04-13 14:46:48  WARNING   tree_search  L3 failed: Expecting ',' delimiter: line 56 column 6 (char 9083) — falling back to L2 as leaves
+2026-04-13 14:47:08  INFO      tree_search  IdeaTreeSearch complete: 6 candidates for 'Protein structure prediction beyond Alph'
+2026-04-13 14:47:10  INFO      tree_search  IdeaTreeSearch complete: 6 candidates for 'Causal discovery from observational data'
+2026-04-13 14:47:11  INFO      tree_search  IdeaTreeSearch complete: 6 candidates for 'Scaling laws for Large Language Models'
+2026-04-13 14:47:13  INFO      tree_search  IdeaTreeSearch complete: 6 candidates for 'Energy-efficient neuromorphic computing'
+2026-04-13 14:47:19  INFO      tree_search  IdeaTreeSearch complete: 6 candidates for 'Quantum error correction in NISQ devices'
+2026-04-13 14:47:35  INFO      tournament  Tournament ranked 6 leaves for 'Protein structure prediction beyond Alph' (best id=T2-D2-F1)
+2026-04-13 14:47:41  INFO      tournament  Tournament ranked 6 leaves for 'Causal discovery from observational data' (best id=T1-D2-F1)
+2026-04-13 14:47:42  INFO      tournament  Tournament ranked 6 leaves for 'Scaling laws for Large Language Models' (best id=T2-D2-F1)
+2026-04-13 14:47:44  INFO      tournament  Tournament ranked 6 leaves for 'Energy-efficient neuromorphic computing' (best id=T1-D1-F1)
+2026-04-13 14:47:45  INFO      runner    [T2] idea 1/2 — ok (1600 chars)
+2026-04-13 14:47:48  INFO      tournament  Tournament ranked 6 leaves for 'Quantum error correction in NISQ devices' (best id=T1-D2-F1)
+2026-04-13 14:47:50  INFO      runner    [T4] idea 1/2 — ok (1578 chars)
+2026-04-13 14:47:53  INFO      runner    [T1] idea 1/2 — ok (1964 chars)
+2026-04-13 14:47:53  INFO      runner    [T5] idea 1/2 — ok (1593 chars)
+2026-04-13 14:47:55  INFO      runner    [T2] idea 2/2 — ok (1759 chars)
+2026-04-13 14:47:59  INFO      runner    [T3] idea 1/2 — ok (1928 chars)
+2026-04-13 14:48:00  INFO      runner    [T4] idea 2/2 — ok (1893 chars)
+2026-04-13 14:48:04  INFO      runner    [T5] idea 2/2 — ok (1817 chars)
+2026-04-13 14:48:06  INFO      runner    [T1] idea 2/2 — ok (1953 chars)
+2026-04-13 14:48:11  INFO      runner    [T3] idea 2/2 — ok (1883 chars)
+2026-04-13 14:48:11  INFO      runner  Saved 10 ideas to ideas/results/publish_eval_rep2_small/S_paper/ideas.json
+2026-04-13 14:48:11  INFO      judge  Judging T1 [gemini] (2 pair(s)): Scaling laws for Large Language Models
+2026-04-13 14:48:11  INFO      judge  Judging T2 [gemini] (2 pair(s)): Protein structure prediction beyond AlphaFold
+2026-04-13 14:48:11  INFO      judge  Judging T3 [gemini] (2 pair(s)): Quantum error correction in NISQ devices
+2026-04-13 14:48:11  INFO      judge  Judging T4 [gemini] (2 pair(s)): Causal discovery from observational data
+2026-04-13 14:48:11  INFO      judge  Judging T5 [gemini] (2 pair(s)): Energy-efficient neuromorphic computing
+2026-04-13 14:48:11  INFO      judge  Judging T1 [gpt] (2 pair(s)): Scaling laws for Large Language Models
+2026-04-13 14:48:11  INFO      judge  Judging T2 [gpt] (2 pair(s)): Protein structure prediction beyond AlphaFold
+2026-04-13 14:48:11  INFO      judge  Judging T3 [gpt] (2 pair(s)): Quantum error correction in NISQ devices
+2026-04-13 14:48:11  INFO      judge  Judging T4 [gpt] (2 pair(s)): Causal discovery from observational data
+2026-04-13 14:48:11  INFO      judge  Judging T5 [gpt] (2 pair(s)): Energy-efficient neuromorphic computing
+2026-04-13 14:48:12  INFO      judge  Judging T1 [claude] (2 pair(s)): Scaling laws for Large Language Models
+2026-04-13 14:48:12  INFO      judge  Judging T2 [claude] (2 pair(s)): Protein structure prediction beyond AlphaFold
+2026-04-13 14:48:12  INFO      judge  Judging T3 [claude] (2 pair(s)): Quantum error correction in NISQ devices
+2026-04-13 14:48:12  INFO      judge  Judging T4 [claude] (2 pair(s)): Causal discovery from observational data
+2026-04-13 14:48:12  INFO      judge  Judging T5 [claude] (2 pair(s)): Energy-efficient neuromorphic computing
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 14:48:16  INFO      judge    T2[0] → A | Idea A asks a sharper scientific question about what AlphaFold has actually lear
+2026-04-13 14:48:16  INFO      judge    T4[0] → A | Idea A is conceptually ambitious and tackles an important failure mode of invari
+2026-04-13 14:48:16  INFO      judge    T3[0] → B | Idea A targets a central bottleneck for realistic QEC on emerging cryogenic-CMOS
+2026-04-13 14:48:16  INFO      judge    T1[0] → tie | Idea A is more tightly specified and experimentally cleaner, with a clear interv
+2026-04-13 14:48:16  INFO      judge    T5[0] → A | Idea A is stronger overall because it targets a concrete and important hardware 
+2026-04-13 14:48:18  INFO      judge    T4[0] → tie | Idea A offers a methodologically sound and well-scoped integration of surrogate 
+2026-04-13 14:48:18  INFO      judge    T1[0] → tie | Idea A introduces a genuinely novel and ambitious framework incorporating tempor
+2026-04-13 14:48:19  INFO      judge    T5[0] → A | Idea B scores higher overall due to its exceptional experimental clarity with we
+2026-04-13 14:48:19  INFO      judge    T2[0] → tie | Idea A is a well-scoped engineering effort with clear industrial utility and str
+2026-04-13 14:48:19  INFO      judge    T1[1] → tie | Idea A is more tightly specified and more feasible, with a clear falsifiable reg
+2026-04-13 14:48:19  INFO      judge    T2[1] → A | Idea A targets a concrete and important bottleneck in using AlphaFold-derived st
+2026-04-13 14:48:20  INFO      judge    T3[0] → tie | Both ideas score comparably across criteria. Idea A is more novel in its specifi
+2026-04-13 14:48:20  INFO      judge    T5[1] → A | Idea A is highly original in pushing photonic neuromorphic computing to data-cen
+2026-04-13 14:48:20  INFO      judge    T3[1] → tie | Idea A is more tightly specified and experimentally cleaner: it poses a concrete
+2026-04-13 14:48:21  INFO      judge    T4[1] → tie | Idea A is more conceptually original, using topological changes in delay-embedde
+2026-04-13 14:48:21  INFO      judge  Done [gpt] — A:5  B:1  ties:4  B win rate: 30.0%
+2026-04-13 14:48:23  INFO      judge    T5[0] → A | Idea B is the winner due to its exceptional experimental clarity and high feasib
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 14:48:23  INFO      judge    T4[1] → tie | Idea A offers a genuinely novel theoretical contribution by linking manifold top
+2026-04-13 14:48:23  INFO      judge    T1[1] → A | Idea A has stronger experimental clarity with well-defined success criteria (R² 
+2026-04-13 14:48:24  INFO      judge    T3[1] → tie | Idea A addresses a genuinely underexplored problem—context-dependent crosstalk i
+2026-04-13 14:48:24  INFO      judge    T2[1] → tie | Idea A is a well-scoped, highly feasible mechanistic study with clear experiment
+2026-04-13 14:48:24  INFO      judge    T5[1] → A | Idea A presents a well-defined, experimentally rigorous approach with clear succ
+2026-04-13 14:48:24  INFO      judge  Done [claude] — A:3  B:0  ties:7  B win rate: 35.0%
+2026-04-13 14:48:26  INFO      judge    T1[0] → tie | Idea A is an exceptionally well-defined and feasible study that addresses the st
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 14:48:29  INFO      judge    T5[1] → A | Idea B is the winner due to its superior experimental clarity and feasibility; i
+2026-04-13 14:48:33  INFO      judge    T1[1] → A | Idea B is superior because it proposes a more generalizable and predictive frame
+2026-04-13 14:48:33  INFO      judge    T3[0] → A | Idea A presents a more concrete and experimentally rigorous proposal with a spec
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 14:48:33  INFO      judge    T2[0] → A | Idea A provides a more rigorous scientific framework for understanding the funda
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 14:48:36  INFO      judge    T4[0] → tie | Idea A is highly innovative, addressing a critical and specific failure point in
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 14:48:40  INFO      judge    T3[1] → tie | Idea A is a highly feasible and methodologically sound study that addresses a cr
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 14:48:55  INFO      judge    T2[1] → tie | Idea A is a high-impact generative proposal that addresses the 'holy grail' of f
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-13 14:49:14  ERROR     judge  Judge failed for T4 pair 1: Judge returned invalid JSON: Expecting property name enclosed in double quotes: line 10 column 32 (char 190)
+Raw:
+{
+  "scores_a": {
+    "novelty": 7,
+    "scientific_usefulness": 8,
+    "experimental_clarity": 8,
+    "feasibility": 9
+  },
+  "scores_b": {
+    "novelty": 9,
+    "scientific_usefulness": 9,
+2026-04-13 14:49:14  INFO      judge  Done [gemini] — A:5  B:0  ties:4  B win rate: 22.2%
+Traceback (most recent call last):
+  File "/Users/dylanwilson/Documents/GitHub/self-play/EvoScientist/ideas/publish_multi_judge.py", line 426, in <module>
+    raise SystemExit(main())
+  File "/Users/dylanwilson/Documents/GitHub/self-play/EvoScientist/ideas/publish_multi_judge.py", line 411, in main
+    "out_dir": str(out_root.relative_to(IDEAS_DIR)),
+  File "/opt/homebrew/Cellar/python@3.10/3.10.16/Frameworks/Python.framework/Versions/3.10/lib/python3.10/pathlib.py", line 818, in relative_to
+    raise ValueError("{!r} is not in the subpath of {!r}"
+ValueError: 'ideas/results/publish_eval_rep2_small' is not in the subpath of '/Users/dylanwilson/Documents/GitHub/self-play/EvoScientist/ideas' OR one path is relative and the other is absolute.

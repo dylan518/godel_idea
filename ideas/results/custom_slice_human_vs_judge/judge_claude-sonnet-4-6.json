@@ -1,0 +1,12 @@
+{
+  "judge_model": "claude-sonnet-4-6",
+  "current": "S15",
+  "candidate": "S_paper",
+  "gen_model": "gpt-4.1-mini",
+  "wins_a": 0,
+  "wins_b": 0,
+  "ties": 0,
+  "total_judged": 0,
+  "win_rate_b": 0.0,
+  "verdicts": []
+}

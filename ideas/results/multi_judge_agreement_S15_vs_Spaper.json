@@ -1,0 +1,95 @@
+{
+  "n_shared_pairs": 64,
+  "per_judge": [
+    {
+      "model": "deepseek-chat",
+      "n_pairs": 64,
+      "counts": {
+        "A": 43,
+        "B": 20,
+        "tie": 1
+      },
+      "win_rate_b": 0.3203125
+    },
+    {
+      "model": "gpt-5.4",
+      "n_pairs": 64,
+      "counts": {
+        "A": 39,
+        "B": 5,
+        "tie": 20
+      },
+      "win_rate_b": 0.234375
+    },
+    {
+      "model": "gemini-3-flash-preview",
+      "n_pairs": 64,
+      "counts": {
+        "A": 32,
+        "B": 4,
+        "tie": 28
+      },
+      "win_rate_b": 0.28125
+    }
+  ],
+  "pairwise": [
+    {
+      "judge_a": "deepseek-chat",
+      "judge_b": "gpt-5.4",
+      "n_overlap": 64,
+      "agreement_rate": 0.53125,
+      "decisive_overlap_n": 43,
+      "flip_rate_decisive": 0.20930232558139536,
+      "cohen_kappa": 0.16485428447150935
+    },
+    {
+      "judge_a": "deepseek-chat",
+      "judge_b": "gemini-3-flash-preview",
+      "n_overlap": 64,
+      "agreement_rate": 0.40625,
+      "decisive_overlap_n": 36,
+      "flip_rate_decisive": 0.3055555555555556,
+      "cohen_kappa": 0.06891271056661562
+    },
+    {
+      "judge_a": "gpt-5.4",
+      "judge_b": "gemini-3-flash-preview",
+      "n_overlap": 64,
+      "agreement_rate": 0.5625,
+      "decisive_overlap_n": 27,
+      "flip_rate_decisive": 0.07407407407407407,
+      "cohen_kappa": 0.20987654320987653
+    }
+  ],
+  "pair_keys_sample": [
+    [
+      "T1",
+      0
+    ],
+    [
+      "T1",
+      1
+    ],
+    [
+      "T1",
+      2
+    ],
+    [
+      "T1",
+      3
+    ],
+    [
+      "T10",
+      0
+    ]
+  ],
+  "meta": {
+    "bundle": "publish_eval_n75_gemini3_deepseek_S15_Spaper",
+    "pairwise_verdict_files": [
+      "judge_deepseek-chat.json",
+      "judge_gpt-5.4.json",
+      "judge_gemini-3-flash-preview.json"
+    ],
+    "n_note": "Headline N = 64 (pair-key intersection for Gemini 3 Flash Preview, GPT-5.4, DeepSeek). Bundle dir name `publish_eval_n75_*` reflects 75 pair-slots in ideas.json; 11 keys lack Gemini 3 in-folder. Optional `judge_gemini-flash-lite-latest.json` covers all 75 slots if needed."
+  }
+}

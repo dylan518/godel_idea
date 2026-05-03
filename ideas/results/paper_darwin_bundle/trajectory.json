@@ -1,18 +1,18 @@
 {
-  "git_rev": "24508b3f0c1aeff6b4f14b36b063ec69df9a06f5",
+  "git_rev": "ad7b927f7be90c1d0206a73176f13bb64ffc6908",
   "current_version_file": "S15",
   "events": [
     {
       "timestamp": "2026-04-06T13:19:00+00:00",
       "from_version": "bootstrap",
-      "to_version": "S_sota",
+      "to_version": "S_paper",
       "win_rate": null,
       "blind_win_rate": null,
-      "note": "fresh loop from S_sota"
+      "note": "fresh loop from S_paper (reboot baseline; generator S_sota.py, cache dir results/S_sota/)"
     },
     {
       "timestamp": "2026-04-06T19:48:15.772852+00:00",
-      "from_version": "S_sota",
+      "from_version": "S_paper",
       "to_version": "S12",
       "win_rate": 0.8933333333333333,
       "blind_win_rate": 0.7

@@ -36,7 +36,7 @@ GENERATOR = ConcreteGenerator()  # module-level singleton — required
 - **Prompt templates** — the text inside `get_prompt()`
 - **Reasoning steps** — add chain-of-thought, step-by-step decomposition
 - **Multi-step generation** — override `generate_idea()` to make multiple LLM calls
-  (e.g., draft → critique → revise)
+(e.g., draft → critique → revise)
 - **Self-critique loops** — ask the model to evaluate and improve its own output
 - **Sampling parameters** — temperature, max_tokens passed to `generate_idea()`
 - **Helper prompts** — add private methods (prefixed `_`) on the class
@@ -61,57 +61,53 @@ GENERATOR = ConcreteGenerator()  # module-level singleton — required
 ## How to Create S{n+1}
 
 1. Copy the current version file:
-   ```bash
+  ```bash
    cp ideas/systems/S2.py ideas/systems/S3.py
-   ```
-
+  ```
 2. Update the class name (e.g., `S2Generator` → `S3Generator`)
-
 3. Update `VERSION = "S3"` and write a clear `DESCRIPTION` of the single change made
-
 4. Make **one targeted improvement** — keep the diff minimal and focused
-
 5. Update the module-level singleton:
-   ```python
+  ```python
    GENERATOR = S3Generator()
-   ```
-
+  ```
 6. Test it loads:
-   ```bash
+  ```bash
    python -c "import importlib.util, sys; sys.path.insert(0,'ideas'); \
        spec = importlib.util.spec_from_file_location('S3','ideas/systems/S3.py'); \
        m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m); \
        print(m.GENERATOR.VERSION)"
-   ```
-
+  ```
 7. Run comparison:
-   ```bash
+  ```bash
    python ideas/godel_loop.py compare --candidate S3
-   ```
-
+  ```
 8. If win rate > 60%, accept:
-   ```bash
+  ```bash
    python ideas/godel_loop.py accept S3
-   ```
+  ```
 
 ---
 
 ## Improvement Ideas (Ordered by Expected Impact)
 
-| Idea | Strategy |
-|------|----------|
-| S3 | Add a self-critique step: generate idea, then ask model to identify weaknesses and revise |
-| S4 | Generate 3 candidates, ask model to select and synthesize the best elements |
-| S5 | Add domain-specific framing: prepend field-specific context before the main prompt |
-| S6 | Use structured output: ask for explicit Hypothesis / Method / Expected Result sections |
-| S7 | Add analogical reasoning: prompt model to find analogies from other fields first |
-| S8 | Chain-of-thought decomposition: break problem into subproblems before ideating |
+
+| Idea | Strategy                                                                                  |
+| ---- | ----------------------------------------------------------------------------------------- |
+| S3   | Add a self-critique step: generate idea, then ask model to identify weaknesses and revise |
+| S4   | Generate 3 candidates, ask model to select and synthesize the best elements               |
+| S5   | Add domain-specific framing: prepend field-specific context before the main prompt        |
+| S6   | Use structured output: ask for explicit Hypothesis / Method / Expected Result sections    |
+| S7   | Add analogical reasoning: prompt model to find analogies from other fields first          |
+| S8   | Chain-of-thought decomposition: break problem into subproblems before ideating            |
+
 
 ---
 
 ## Evaluation Criteria
 
 Ideas are judged on four axes (0–10 each):
+
 - **Novelty** — genuinely new angle, not obvious incremental work
 - **Scientific usefulness** — addresses real open problems, actionable by researchers
 - **Experimental clarity** — clear methodology, testable predictions

@@ -1,0 +1,1754 @@
+{
+  "current": "S15",
+  "candidate": "S17",
+  "wins_a": 50,
+  "wins_b": 25,
+  "ties": 0,
+  "total_judged": 75,
+  "win_rate_b": 0.3333333333333333,
+  "verdicts": [
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "B",
+      "reasoning": "Idea A is a highly feasible and clearly defined benchmarking study that provides directly actionable data for the field, addressing a critical gap. While Idea B is more novel and ambitious, its lower feasibility score, due to the complexity of fabricating and characterizing a novel hybrid device, gives Idea A a narrow overall victory based on the total score."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 10,
+        "feasibility": 10
+      },
+      "winner": "B",
+      "reasoning": "Idea A excels in experimental clarity and feasibility, offering a crucial, actionable simulation study that directly bridges device physics and system performance. While Idea B is highly novel, its lower feasibility score due to fabrication complexity and integration risks gives Idea A a higher total score."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea B presents a more novel and holistic co-design approach, addressing the critical system-level energy question which is of high scientific usefulness. While Idea A is clearer and more feasible, Idea B's ambitious, integrated methodology offers a more significant potential advance for the field."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A proposes a novel hardware-centric solution with high potential impact on energy efficiency, a core bottleneck, and its system-level benchmarking approach is highly useful. While Idea B is exceptionally clear and feasible, its scope is narrower and more incremental, leading to a lower total score."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "winner": "A",
+      "reasoning": "Idea B scores higher in novelty and scientific usefulness by proposing a new material integration to solve a core hardware energy problem. While Idea A is exceptionally clear and feasible, Idea B's potential impact on enabling scalable, energy-efficient neuromorphic hardware gives it the overall edge."
+    },
+    {
+      "topic_id": "T7",
+      "topic": "Federated learning with heterogeneous and non-IID data",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 10,
+        "feasibility": 10
+      },
+      "winner": "B",
+      "reasoning": "Idea A's strength lies in its exceptional scientific usefulness and clarity, offering a crucial controlled study to isolate a core problem. While Idea B is more novel, A's foundational contribution to understanding client drift is more immediately actionable for the research community, and its experimental design is perfectly clear and feasible."
+    },
+    {
+      "topic_id": "T7",
+      "topic": "Federated learning with heterogeneous and non-IID data",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 4,
+        "scientific_usefulness": 5,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "winner": "A",
+      "reasoning": "Idea A proposes a novel, adaptive solution to a core FL problem with a comprehensive experimental plan, offering high scientific utility. Idea B is a well-defined but incremental falsification study with limited novelty and narrower impact, despite its excellent clarity and feasibility."
+    },
+    {
+      "topic_id": "T7",
+      "topic": "Federated learning with heterogeneous and non-IID data",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 4,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "winner": "A",
+      "reasoning": "Idea B proposes a novel, actionable solution (client-specific BN) to a core federated learning problem, with high potential impact. While Idea A is exceptionally clear and useful for foundational understanding, its novelty is limited as it focuses on quantifying a known relationship rather than proposing a new method."
+    },
+    {
+      "topic_id": "T7",
+      "topic": "Federated learning with heterogeneous and non-IID data",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a more novel and comprehensive approach by integrating local meta-learning for dynamic personalization and drift mitigation, with a rigorous, multi-faceted experimental plan on established heterogeneous benchmarks. While Idea B is highly feasible and useful, its novelty is more incremental, focusing on an adaptive tweak within an existing FedAvg framework on a single dataset."
+    },
+    {
+      "topic_id": "T7",
+      "topic": "Federated learning with heterogeneous and non-IID data",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 5,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 10
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a more novel, adaptive aggregation mechanism with a clear, comprehensive experimental plan across multiple datasets and metrics. While Idea B is highly feasible and addresses a real problem, its novelty is lower and its experimental scope is narrower, focusing on a single, specific benchmark."
+    },
+    {
+      "topic_id": "T13",
+      "topic": "Zero-shot generalization in reinforcement learning",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 3,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "winner": "A",
+      "reasoning": "Idea B proposes a novel algorithmic contribution with high scientific utility for a core RL challenge, while Idea A is a well-defined but narrow and incremental robustness test. Idea B's higher novelty and usefulness outweigh Idea A's superior clarity and feasibility, leading to a clear win."
+    },
+    {
+      "topic_id": "T13",
+      "topic": "Zero-shot generalization in reinforcement learning",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 4,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A proposes a novel, ambitious framework for learning symbolic abstractions to address a core RL challenge, offering high scientific utility. While Idea B is exceptionally clear and feasible, its scope is more limited and confirmatory. Idea A's higher novelty and usefulness outweigh its greater technical risk."
+    },
+    {
+      "topic_id": "T13",
+      "topic": "Zero-shot generalization in reinforcement learning",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "B",
+      "reasoning": "Idea A is less novel but exceptionally clear and feasible, offering a direct, testable contribution. Idea B is highly novel and useful but its experimental clarity is lower and feasibility is a significant concern, making its total score lower despite its ambitious promise."
+    },
+    {
+      "topic_id": "T13",
+      "topic": "Zero-shot generalization in reinforcement learning",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 3,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "winner": "A",
+      "reasoning": "Idea B proposes a more novel and scientifically useful investigation into the intrinsic benefits of multi-modal perception for generalization, a less explored and potentially transformative angle. While Idea A is exceptionally clear and feasible, its contribution is more incremental, focusing on quantifying a known vulnerability rather than proposing a new mechanism."
+    },
+    {
+      "topic_id": "T13",
+      "topic": "Zero-shot generalization in reinforcement learning",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 5,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "winner": "B",
+      "reasoning": "While Idea B is more novel and addresses a fundamental problem, Idea A's exceptional experimental clarity and near-certain feasibility make it a more immediately actionable and reliable contribution. Idea A's focused, testable hypothesis provides a clear benchmark, whereas Idea B's ambitious integration of online causal discovery presents significant technical and stability risks."
+    },
+    {
+      "topic_id": "T10",
+      "topic": "Foundation models for genomics and single-cell biology",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 10,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 5,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "winner": "A",
+      "reasoning": "Idea A addresses a more fundamental and impactful biological challenge (GRN inference) with a novel multimodal foundation model approach and a rigorous, perturbation-based validation scheme. While Idea B is clear and highly feasible, it tackles a narrower, more methodological problem with less conceptual novelty."
+    },
+    {
+      "topic_id": "T10",
+      "topic": "Foundation models for genomics and single-cell biology",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "B",
+      "reasoning": "Idea B wins due to superior feasibility and clarity, making it a more immediately actionable and definitive study. While Idea A is more ambitious and potentially transformative, its higher technical risk and resource demands slightly reduce its overall score compared to the focused, efficient, and critical evaluation of model fairness in Idea B."
+    },
+    {
+      "topic_id": "T10",
+      "topic": "Foundation models for genomics and single-cell biology",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A is more ambitious and addresses a fundamental, high-impact problem in regulatory genomics with a novel multi-modal architecture. While its feasibility score is lower due to complexity, its superior novelty and potential scientific impact outweigh Idea B's more focused and executable, but more incremental, contribution."
+    },
+    {
+      "topic_id": "T10",
+      "topic": "Foundation models for genomics and single-cell biology",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A scores higher overall due to its greater scientific usefulness and novelty in architectural design and biological application. While Idea B is exceptionally clear and feasible, Idea A's potential to advance a core methodology in single-cell biology gives it a more significant impact."
+    },
+    {
+      "topic_id": "T10",
+      "topic": "Foundation models for genomics and single-cell biology",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A addresses a more fundamental and impactful challenge (GRN inference) with a novel multimodal foundation model approach, offering high scientific utility and clear, rigorous experiments. While Idea B is highly feasible and useful, its scope is narrower and its novelty is more incremental, focusing on improving an existing model for a specific limitation."
+    },
+    {
+      "topic_id": "T9",
+      "topic": "Uncertainty quantification in deep neural networks",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 5,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "winner": "B",
+      "reasoning": "Idea A is a highly focused, clear, and feasible hypothesis test that directly addresses a well-known, practical limitation of a popular method. Idea B is more novel and ambitious but is less clearly motivated for clean datasets and faces higher feasibility risks due to the complexity of NAS for calibration."
+    },
+    {
+      "topic_id": "T9",
+      "topic": "Uncertainty quantification in deep neural networks",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 4,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A proposes a more novel and potentially impactful architectural change for uncertainty propagation, addressing a core theoretical gap. While Idea B is exceptionally clear and feasible, its scope is narrow and more confirmatory, making Idea A's higher potential scientific contribution decisive despite greater implementation risk."
+    },
+    {
+      "topic_id": "T9",
+      "topic": "Uncertainty quantification in deep neural networks",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 2,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "winner": "A",
+      "reasoning": "Idea B proposes a more novel and potentially impactful integration of feature-space density estimation with ensembles, directly addressing core limitations in uncertainty quantification. While Idea A is exceptionally clear and feasible, it is largely a focused replication study with limited novelty, making Idea B the stronger overall contribution."
+    },
+    {
+      "topic_id": "T9",
+      "topic": "Uncertainty quantification in deep neural networks",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 3,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "winner": "A",
+      "reasoning": "Idea B is significantly more novel and addresses a more impactful, open problem by integrating domain knowledge into Bayesian priors, which has high scientific utility. While Idea A is exceptionally clear and feasible, its incremental nature and lower novelty result in a lower total score, making Idea B the stronger research contribution."
+    },
+    {
+      "topic_id": "T9",
+      "topic": "Uncertainty quantification in deep neural networks",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 2,
+        "scientific_usefulness": 4,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "winner": "A",
+      "reasoning": "Idea A proposes a novel, theoretically grounded method to improve a core limitation of Bayesian neural networks, with high potential impact. Idea B is a clear but incremental replication study with limited novelty and scientific utility, despite being perfectly feasible."
+    },
+    {
+      "topic_id": "T14",
+      "topic": "Topological methods for high-dimensional data analysis",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 4,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A proposes a novel, integrative method with high potential impact for a core challenge in single-cell analysis, and its experimental plan is exceptionally clear. Idea B addresses a useful but narrower validation gap, offering less novelty and a more modest scope of contribution."
+    },
+    {
+      "topic_id": "T14",
+      "topic": "Topological methods for high-dimensional data analysis",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 4,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "winner": "A",
+      "reasoning": "Idea B is significantly more novel and proposes a more impactful, integrative methodology for representation learning, despite being slightly less straightforward to implement. Idea A is exceptionally clear and feasible but is largely a focused validation study with more incremental novelty."
+    },
+    {
+      "topic_id": "T14",
+      "topic": "Topological methods for high-dimensional data analysis",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 4,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "winner": "A",
+      "reasoning": "Idea A is highly novel and addresses a significant open problem in dynamic biological data analysis, offering substantial scientific utility despite moderate feasibility challenges. Idea B is a clear, highly feasible reproducibility study, but its scope is narrow and its novelty is limited, making its overall impact lower."
+    },
+    {
+      "topic_id": "T14",
+      "topic": "Topological methods for high-dimensional data analysis",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "B",
+      "reasoning": "Idea B is more focused, experimentally clear, and highly feasible, directly tackling a known reproducibility crisis in topological data analysis. While Idea A is highly novel, its complexity and computational demands lower its feasibility and clarity, making B the more immediately actionable and robust proposal."
+    },
+    {
+      "topic_id": "T14",
+      "topic": "Topological methods for high-dimensional data analysis",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 3,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "winner": "A",
+      "reasoning": "Idea A proposes a novel and powerful integration of multi-parameter topology with biological knowledge, addressing a significant open problem with a clear, ambitious methodology. While its feasibility is more challenging, its high potential impact and novelty outweigh Idea B, which is a clear and feasible but largely confirmatory benchmarking study."
+    },
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 5,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 7,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A addresses a more fundamental and less explored problem in scaling laws, offering a novel, rigorous framework with high scientific utility for efficient model training. While Idea B is clear and feasible, its scope is narrower and its core claim\u2014that fine-tuning on factual data improves calibration\u2014is less surprising and has been explored in related contexts."
+    },
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 4,
+        "scientific_usefulness": 5,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea B is significantly more novel and scientifically useful, as it investigates the under-explored interaction of domain diversity and benchmark sensitivity in scaling laws for continual pre-training. While Idea A is clearer and more feasible, its scope is narrow and its findings are likely to be more incremental."
+    },
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 5,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A proposes a foundational, theory-grounded investigation into scaling laws with high novelty and scientific usefulness, despite higher resource demands. Idea B is a clear, feasible, but more incremental test of a specific intervention on a known problem. The total score for A (32) exceeds B (30), and the difference is greater than 2 points."
+    },
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A addresses a broader, more complex, and less understood interaction (KG integration vs. scaling) with a highly systematic and falsifiable experimental design, offering greater scientific utility. While Idea B is more focused and feasible, Idea A's comprehensive, multi-factorial investigation into scaling laws provides a more significant potential contribution to the field."
+    },
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 5,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea B proposes a more novel and impactful investigation into a nonlinear scaling regime for domain adaptation, a clear open problem. While Idea A is methodologically sound and feasible, its scope is narrower and more incremental, focusing on confirming known dataset-dependent trends rather than uncovering a new scaling phenomenon."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 2,
+        "scientific_usefulness": 5,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "winner": "A",
+      "reasoning": "Idea B is significantly more novel and addresses a broader, more impactful open problem in causal representation learning for complex time series. While Idea A is exceptionally clear and feasible, its incremental nature and narrow scope result in a lower total score, making Idea B the stronger research proposal."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 3,
+        "scientific_usefulness": 5,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A proposes a novel, systematic integration of domain knowledge into neural causal discovery, addressing a core challenge in high-dimensional nonlinear time series with a comprehensive and theoretically grounded approach. Idea B, while clear and feasible, is a focused, incremental comparison that largely confirms an expected result, offering less scientific impact."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 3,
+        "scientific_usefulness": 5,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "winner": "A",
+      "reasoning": "Idea A proposes a novel, integrated framework to address a core open problem (latent confounders) with a clear, testable methodology, offering high potential impact despite moderate feasibility challenges. Idea B is a clear and highly feasible benchmarking study, but its novelty and scientific usefulness are limited as it primarily documents known limitations of established methods on a well-studied dataset."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 4,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A proposes a novel integration of contrastive learning and causal discovery to tackle the significant open problem of latent confounders, with a clear, ambitious, and testable experimental plan. Idea B is a valuable but more incremental benchmarking study, offering clearer feasibility but less novelty and transformative potential."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 3,
+        "scientific_usefulness": 5,
+        "experimental_clarity": 7,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A proposes a novel, integrated methodological advance with high potential impact on a core challenge in causal discovery, despite higher technical risk. Idea B, while clear and feasible, offers limited novelty as it is a focused, well-understood comparison on a standard benchmark."
+    },
+    {
+      "topic_id": "T12",
+      "topic": "Mechanistic interpretability of transformer models",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "winner": "B",
+      "reasoning": "While Idea B is more novel and ambitious in its validation approach, Idea A is superior in experimental clarity and feasibility. Its focused, quantitative correlation study addresses a well-defined open problem with a clear, testable methodology, making it more immediately actionable and likely to yield a solid scientific contribution."
+    },
+    {
+      "topic_id": "T12",
+      "topic": "Mechanistic interpretability of transformer models",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A's novelty and scientific usefulness are exceptionally high, tackling a core, underexplored question in multilingual interpretability with a rigorous, falsifiable design. While Idea B is clearer and more feasible, Idea A's potential impact on understanding cross-lingual generalization gives it the edge, as its ambitious scope is justified by a well-structured experimental plan."
+    },
+    {
+      "topic_id": "T12",
+      "topic": "Mechanistic interpretability of transformer models",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A scores higher overall due to its broader scientific impact, exceptional methodological rigor, and focus on a fundamental, generalizable question in mechanistic interpretability. While Idea B is strong and feasible, its scope is more narrow, focusing on a specific causal question within a single task and model family."
+    },
+    {
+      "topic_id": "T12",
+      "topic": "Mechanistic interpretability of transformer models",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "B",
+      "reasoning": "Idea A is exceptionally strong in experimental clarity and feasibility, offering a clean, causal test for a well-defined hypothesis. While Idea B is more novel and ambitious in its ultimate goal, its feasibility is more uncertain, making Idea A the more reliably executable and immediately useful contribution."
+    },
+    {
+      "topic_id": "T12",
+      "topic": "Mechanistic interpretability of transformer models",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "winner": "B",
+      "reasoning": "Idea A has a sharper, more novel causal test linking circuit disentanglement directly to a specific generalization failure, with a clear success threshold. Idea B is more methodologically comprehensive and broadly useful, but its novelty is slightly more incremental. Idea A's total score (32) edges out Idea B's (31) due to its exceptional clarity and focused feasibility."
+    },
+    {
+      "topic_id": "T8",
+      "topic": "Deep learning emulators for climate model acceleration",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A scores higher on novelty and scientific usefulness by tackling the critical, unsolved problem of cross-model generalization for extreme events, a major barrier to trustworthy climate emulation. While Idea B is exceptionally clear and feasible, its scope is more focused on refining a known approach (PINNs) for a specific metric, making its overall impact slightly less transformative."
+    },
+    {
+      "topic_id": "T8",
+      "topic": "Deep learning emulators for climate model acceleration",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea B is more novel and addresses a more fundamental and actionable research question about improving emulator robustness through multi-model training. While Idea A is exceptionally clear and feasible, its scope is narrower and more diagnostic, whereas Idea B proposes a constructive solution with potentially higher scientific impact."
+    },
+    {
+      "topic_id": "T8",
+      "topic": "Deep learning emulators for climate model acceleration",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "B",
+      "reasoning": "Idea A is exceptionally clear, feasible, and directly tackles a critical, well-defined problem in hydrological emulation. While Idea B is more novel and ambitious, its experimental plan is less concrete and its feasibility is lower, giving Idea A a higher total score based on its strong, actionable design."
+    },
+    {
+      "topic_id": "T8",
+      "topic": "Deep learning emulators for climate model acceleration",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 10,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 10,
+        "feasibility": 9
+      },
+      "winner": "B",
+      "reasoning": "Idea A excels in experimental clarity and feasibility with a precise, testable hypothesis and a well-defined, achievable scope. While Idea B is more novel and addresses a broader, highly useful problem, its methodology is more complex and its success criteria are less sharply defined, making it a higher-risk endeavor."
+    },
+    {
+      "topic_id": "T8",
+      "topic": "Deep learning emulators for climate model acceleration",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 3,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "winner": "A",
+      "reasoning": "Idea B addresses a more profound and urgent challenge in climate AI\u2014generalization to unseen regimes\u2014with high novelty and scientific impact, despite greater complexity. Idea A is exceptionally clear and feasible but offers limited novelty as an incremental diagnostic study on well-known models and data."
+    },
+    {
+      "topic_id": "T6",
+      "topic": "Generative AI for drug discovery and molecular design",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A addresses a critical, high-impact problem in drug discovery (metabolic toxicity) with a novel, integrated, and adaptive AI approach, offering greater potential for direct scientific advancement. While Idea B is exceptionally clear and feasible, its contribution is more diagnostic and foundational, making Idea A the winner based on superior novelty and scientific usefulness."
+    },
+    {
+      "topic_id": "T6",
+      "topic": "Generative AI for drug discovery and molecular design",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 3,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "winner": "A",
+      "reasoning": "Idea A is highly novel and addresses a critical, impactful problem in generative drug discovery, despite significant feasibility challenges. Idea B is a clear, useful, and highly feasible benchmark, but its novelty is low as it is a controlled replication study. The substantial gap in novelty and scientific usefulness gives Idea A the win."
+    },
+    {
+      "topic_id": "T6",
+      "topic": "Generative AI for drug discovery and molecular design",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 4,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea B is significantly more novel and addresses a broader, impactful problem of chemical space diversity and ethnopharmacological relevance. While Idea A is exceptionally clear and feasible, its incremental nature and lower novelty result in a lower total score, making Idea B the stronger overall proposal."
+    },
+    {
+      "topic_id": "T6",
+      "topic": "Generative AI for drug discovery and molecular design",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 4,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A proposes a more transformative, multi-modal approach with high novelty and potential impact, directly tackling the biological context of drug efficacy. While its experimental validation is more complex and costly, its scientific ambition and clear, testable hypothesis outweigh the more incremental but highly feasible improvement in Idea B."
+    },
+    {
+      "topic_id": "T6",
+      "topic": "Generative AI for drug discovery and molecular design",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 4,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "B",
+      "reasoning": "Idea A is a focused, exceptionally clear, and highly feasible study that provides immediately actionable insights into a known practical problem in generative chemistry. While Idea B is more novel and ambitious, its lower feasibility and experimental clarity, due to the complexity and cost of integrating quantum chemistry and experimental validation, make it a riskier proposition for a definitive, timely contribution."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "B",
+      "reasoning": "Idea A is a highly feasible, clear, and useful incremental advance with immediate practical value. While Idea B is more novel and ambitious in tackling the difficult problem of IDPs, its lower feasibility and higher resource demands give Idea A the edge in total score for a focused, actionable contribution."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "B",
+      "reasoning": "While Idea B is more novel and addresses a fundamental limitation of static predictions, Idea A is exceptionally clear, highly feasible, and directly tackles a well-defined, actionable problem in computational biology. Its superior feasibility and clarity, combined with strong usefulness, give it a narrow overall advantage."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 10,
+        "experimental_clarity": 9,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 5,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "winner": "A",
+      "reasoning": "Idea A is more ambitious and novel, directly extending the core AlphaFold framework to integrate a new data modality (cryo-EM density) for a critical unsolved problem (complex assembly). While less feasible due to potential technical and resource hurdles, its potential impact on structural biology is significantly higher. Idea B is a well-defined, highly feasible application of existing tools but is more incremental in its approach."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 5,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "B",
+      "reasoning": "Idea A is a highly feasible, clear, and useful incremental improvement with a high likelihood of success. Idea B is more novel and addresses a profound open problem, but its experimental complexity and resource demands lower its feasibility score, resulting in a lower total."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "B",
+      "reasoning": "Idea A is more focused, with a clear, testable hypothesis and a highly feasible, resource-conscious methodology. Idea B is more ambitious and novel in scope but is less clear on specifics and significantly less feasible due to the immense computational cost of enhanced sampling MD on a large scale."
+    },
+    {
+      "topic_id": "T15",
+      "topic": "Quantum advantage in machine learning tasks",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A is more feasible and has superior experimental clarity, making it a more actionable and definitive study. While Idea B is highly novel and useful, its ambitious scope and higher technical risk, especially regarding quantum advantage on complex medical data, make it less certain to yield a clear, reproducible result."
+    },
+    {
+      "topic_id": "T15",
+      "topic": "Quantum advantage in machine learning tasks",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 5,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A proposes a more novel and scientifically useful test of quantum inductive biases in a realistic, data-limited regime with strong classical baselines. While Idea B is more feasible, its novelty is lower as it primarily aims to confirm a suspected performance degradation. Idea A's superior novelty and usefulness outweigh its lower feasibility."
+    },
+    {
+      "topic_id": "T15",
+      "topic": "Quantum advantage in machine learning tasks",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 10,
+        "experimental_clarity": 9,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 4,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A addresses a foundational and open question in quantum machine learning with a rigorous, falsifiable methodology, offering high scientific impact despite greater experimental complexity. Idea B is a clear and feasible incremental study, but its scope and potential for a decisive conclusion are more limited."
+    },
+    {
+      "topic_id": "T15",
+      "topic": "Quantum advantage in machine learning tasks",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 4,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 7,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A is far more comprehensive, novel, and useful for the field, proposing a rigorous, multi-faceted evaluation framework. While less feasible in the short term, its holistic approach to isolating quantum advantage under realistic constraints is significantly more valuable. Idea B is clearer and more feasible but is a narrower, less innovative replication of existing kernel method comparisons."
+    },
+    {
+      "topic_id": "T15",
+      "topic": "Quantum advantage in machine learning tasks",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 5,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A addresses a more fundamental and less explored question (generalization in low-data regimes) with a more rigorous and novel experimental design, offering higher scientific impact despite greater experimental complexity. Idea B is a valuable, highly feasible replication study but is more incremental in its goals and scope."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "B",
+      "reasoning": "Idea A is a highly focused, clear, and feasible study that provides actionable, foundational knowledge for hardware design. While Idea B is more novel and ambitious, its experimental path is less clear and its feasibility is significantly lower, making Idea A the more reliably valuable contribution at present."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "B",
+      "reasoning": "Idea A is a highly feasible and clearly defined foundational study that provides essential, actionable data on decoder performance under realistic noise. While Idea B is more novel and ambitious, its experimental complexity and reliance on unproven real-time control systems significantly lower its feasibility, making A the more reliably impactful contribution for the near term."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 4,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "B",
+      "reasoning": "Idea A is a highly feasible, clear, and useful incremental study that provides concrete, actionable hardware-specific insights. While Idea B is more novel and ambitious, its feasibility is significantly lower due to the complexity of real-time ML-FPGA integration on live quantum hardware, making its near-term impact less certain."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 6,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "winner": "B",
+      "reasoning": "Idea A excels in experimental clarity and scientific usefulness by proposing a definitive, cross-platform test of a key hardware-dependent hypothesis using public data. Idea B is novel but methodologically vaguer and faces greater feasibility challenges due to its reliance on real-time optimization on noisy hardware."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 4,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A proposes a novel, adaptive QEC protocol that directly addresses a critical open problem in NISQ-era error correction with a clear, testable methodology. While more ambitious and less certain in feasibility, its potential impact and originality significantly outweigh Idea B's more incremental, though highly feasible, benchmarking study."
+    },
+    {
+      "topic_id": "T11",
+      "topic": "Emergent communication in multi-agent systems",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 4,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "winner": "A",
+      "reasoning": "Idea A proposes a novel and useful investigation into how realistic constraints shape emergent communication, offering new insights into error correction. Idea B is a valuable but largely confirmatory replication study with high clarity and feasibility, making it more incremental. The significant lead in novelty and scientific usefulness makes Idea A the winner."
+    },
+    {
+      "topic_id": "T11",
+      "topic": "Emergent communication in multi-agent systems",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 4,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "B",
+      "reasoning": "Idea A is a highly focused, clear, and feasible benchmark study that provides directly actionable data for the community, despite lower novelty. Idea B is more novel and ambitious but is less clear in its core hypothesis and faces greater feasibility challenges due to its complex, multi-faceted experimental setup."
+    },
+    {
+      "topic_id": "T11",
+      "topic": "Emergent communication in multi-agent systems",
+      "idea_index": 2,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 3,
+        "scientific_usefulness": 5,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "winner": "A",
+      "reasoning": "Idea A proposes a novel and useful investigation into sensor heterogeneity's role in robust communication, addressing a clear gap with a well-defined, if complex, methodology. Idea B is highly feasible and clear but offers limited novelty and narrower scientific impact, primarily providing a specific scaling data point."
+    },
+    {
+      "topic_id": "T11",
+      "topic": "Emergent communication in multi-agent systems",
+      "idea_index": 3,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "winner": "B",
+      "reasoning": "Idea A is more ambitious and addresses a broader, impactful problem (robustness under noise), but its experimental clarity and feasibility are lower. Idea B is more focused, has exceptional clarity and feasibility, and directly tackles a well-defined, important sub-problem (compositional generalization), making it a stronger, more actionable research proposal overall."
+    },
+    {
+      "topic_id": "T11",
+      "topic": "Emergent communication in multi-agent systems",
+      "idea_index": 4,
+      "system_a": "S15",
+      "system_b": "S17",
+      "judge_model": "deepseek-chat",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea A addresses a more fundamental and impactful open problem in robust multi-agent cooperation under realistic noisy conditions, with a highly novel and well-specified integration of communication theory and MARL. While Idea B is clear and feasible, its contribution is more incremental, applying known techniques to a new dataset with a narrower scope."
+    }
+  ],
+  "stopped_early": false,
+  "blind": {
+    "wins_a": 3,
+    "wins_b": 0,
+    "ties": 0,
+    "total_judged": 3,
+    "win_rate_b": 0.0,
+    "sampled_topics": [
+      "T11",
+      "T14",
+      "T1"
+    ],
+    "verdicts": [
+      {
+        "topic_id": "T11",
+        "topic": "Emergent communication in multi-agent systems",
+        "idea_index": 0,
+        "system_a": "S15",
+        "system_b": "S17",
+        "judge_model": "gemini-flash-lite-latest",
+        "scores_a": {
+          "novelty": 7,
+          "scientific_usefulness": 8,
+          "experimental_clarity": 7,
+          "feasibility": 8
+        },
+        "scores_b": {
+          "novelty": 2,
+          "scientific_usefulness": 4,
+          "experimental_clarity": 9,
+          "feasibility": 10
+        },
+        "winner": "A",
+        "reasoning": "Idea B addresses a significant, under-explored gap in emergent communication by applying information-theoretic rigor to noisy channels, whereas Idea A is essentially a replication study of well-documented phenomena. While Idea A is highly feasible and clear, Idea B offers substantially more scientific value and conceptual novelty."
+      },
+      {
+        "topic_id": "T14",
+        "topic": "Topological methods for high-dimensional data analysis",
+        "idea_index": 0,
+        "system_a": "S15",
+        "system_b": "S17",
+        "judge_model": "gemini-flash-lite-latest",
+        "scores_a": {
+          "novelty": 8,
+          "scientific_usefulness": 9,
+          "experimental_clarity": 8,
+          "feasibility": 7
+        },
+        "scores_b": {
+          "novelty": 4,
+          "scientific_usefulness": 6,
+          "experimental_clarity": 9,
+          "feasibility": 9
+        },
+        "winner": "A",
+        "reasoning": "Idea A proposes a novel methodological synthesis that addresses a significant bottleneck in single-cell analysis, offering high potential for impact. While Idea B is highly feasible and methodologically sound, it is essentially a benchmarking study that lacks the transformative potential of the integrative framework proposed in Idea A."
+      },
+      {
+        "topic_id": "T1",
+        "topic": "Scaling laws for Large Language Models",
+        "idea_index": 0,
+        "system_a": "S15",
+        "system_b": "S17",
+        "judge_model": "gemini-flash-lite-latest",
+        "scores_a": {
+          "novelty": 8,
+          "scientific_usefulness": 9,
+          "experimental_clarity": 9,
+          "feasibility": 8
+        },
+        "scores_b": {
+          "novelty": 3,
+          "scientific_usefulness": 4,
+          "experimental_clarity": 7,
+          "feasibility": 9
+        },
+        "winner": "A",
+        "reasoning": "Idea A proposes a fundamental investigation into scaling laws that addresses a significant gap in current LLM research, whereas Idea B is a narrow, incremental empirical application that lacks broader theoretical contribution. Idea A's methodology is rigorous and provides actionable insights for the field of data curation, while Idea B is limited by the use of an outdated model architecture (GPT-2) for a task that may not generalize to modern LLMs."
+      }
+    ]
+  },
+  "confusion_matrix": {
+    "n_compared": 3,
+    "agreement_rate": 1.0,
+    "flip_rate": 0.0,
+    "both_say_B": 0,
+    "primary_only_B": 0,
+    "blind_only_B": 0,
+    "both_say_A": 3,
+    "matrix": {
+      "A_A": 3
+    }
+  }
+}

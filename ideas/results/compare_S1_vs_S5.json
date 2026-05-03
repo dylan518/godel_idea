@@ -1,0 +1,1784 @@
+{
+  "current": "S1",
+  "candidate": "S5",
+  "wins_a": 30,
+  "wins_b": 42,
+  "ties": 3,
+  "total_judged": 75,
+  "win_rate_b": 0.58,
+  "verdicts": [
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 0,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A scores 31/40 vs Idea B's 27/40. While Idea B is slightly more novel in proposing a graph-theoretic modularity metric, Idea A is more scientifically actionable and experimentally clear, with a concrete focus on MoE architectures that directly informs practical design choices. Idea B's graph-theoretic approach and causal analysis are ambitious but face significant feasibility challenges in defining and validating modularity metrics across scales, and the experimental design for isolating causality is less clearly specified than A's controlled ablation framework."
+    },
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 1,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A achieves a total score of 31 versus Idea B's 27. While Idea B presents a more novel conceptual angle (contextual scaling laws with information-theoretic grounding), it suffers from lower experimental clarity\u2014the connection between surprisal-based metrics and gradient dynamics remains somewhat underspecified\u2014and significantly lower feasibility due to the computational complexity of computing information-theoretic metrics at scale and the challenge of isolating context effects while controlling multiple confounders. Idea A, though slightly less novel, offers clearer experimental methodology, more actionable insights for practitioners, and greater feasibility through its use of adapter-based fine-tuning and progressive sampling strategies, making it a more robust and immediately impactful contribution."
+    },
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 2,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A pursues a more novel angle (non-stationary, dynamic scaling laws) but suffers from higher theoretical complexity, less concrete experimental design, and lower feasibility due to the challenge of formalizing and controlling distribution shifts in practice. Idea B addresses a more immediately actionable problem (data quality metrics in scaling laws) with clearer methodology, better feasibility through parameter-efficient approaches, and stronger scientific utility for practitioners, despite being somewhat less novel. B's total score (30) exceeds A's (28)."
+    },
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 3,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A scores 32 total vs Idea B's 28. While Idea B tackles a broader and more novel problem (multimodal scaling), Idea A is more tightly scoped, experimentally clearer, and significantly more feasible with existing resources. Idea A's focus on modular fine-tuning sparsity is well-motivated, theoretically grounded, and directly actionable for practitioners, whereas Idea B's multimodal framework, though ambitious, faces greater experimental complexity, higher compute requirements, and less clarity on isolating modality interactions across heterogeneous benchmarks."
+    },
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 4,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "A",
+      "reasoning": "Both ideas address the important gap of multimodal scaling laws with similar conceptual novelty. Idea B scores higher on novelty due to its explicit mathematical framework for parameter/compute/data trade-offs and its pragmatic use of pretrained backbones to isolate scaling effects more cleanly. Idea B also has superior feasibility by avoiding expensive full retraining, and slightly better scientific usefulness through its focus on actionable Pareto-optimal design insights. Idea A has marginally clearer experimental methodology but is more resource-intensive. B's total score (31) exceeds A's (29)."
+    },
+    {
+      "topic_id": "T10",
+      "topic": "Foundation models for genomics and single-cell biology",
+      "idea_index": 0,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "tie",
+      "reasoning": "Idea A scores 31/40 with stronger novelty (explicit temporal modeling of raw sequences with time-series data) and experimental clarity, but lower feasibility due to demanding data generation requirements. Idea B scores 31/40 with superior scientific usefulness (addresses practical multi-omic integration challenges) and feasibility (leverages existing consortia data), but slightly lower novelty and experimental clarity. Both are well-conceived foundation model proposals addressing complementary aspects of single-cell genomics; the choice depends on prioritizing temporal dynamics (A) versus practical multi-modal integration with biological priors (B)."
+    },
+    {
+      "topic_id": "T10",
+      "topic": "Foundation models for genomics and single-cell biology",
+      "idea_index": 1,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 6,
+        "feasibility": 5
+      },
+      "winner": "B",
+      "reasoning": "Idea B scores higher overall (27 vs 29, but B's novelty and scientific usefulness advantages outweigh feasibility concerns). While Idea A is more immediately feasible with clearer experimental protocols, Idea B tackles a more ambitious and scientifically impactful problem\u2014causal inference in gene regulation with rigorous theoretical grounding\u2014representing a genuinely novel contribution beyond standard multi-modal integration. However, Idea B's reliance on obtaining large-scale harmonized perturbation datasets and validating causal assumptions presents substantial practical challenges that temper its feasibility advantage."
+    },
+    {
+      "topic_id": "T10",
+      "topic": "Foundation models for genomics and single-cell biology",
+      "idea_index": 2,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A achieves a total score of 31 versus Idea B's 29. While Idea B proposes slightly more novel hierarchical latent variable architectures and broader scope, Idea A demonstrates superior feasibility (8 vs 6) with a more pragmatic, staged approach starting from harmonized subsets before scaling. Idea A also has clearer experimental design with specific validation against CRISPR screens and explicit generalization testing across individuals, whereas Idea B's multi-objective pretraining objectives and cross-species transfer are ambitious but less concretely specified. Both address important problems, but Idea A's focused integration of genotypes with modality-specific encoders offers more immediate scientific utility and achievable milestones."
+    },
+    {
+      "topic_id": "T10",
+      "topic": "Foundation models for genomics and single-cell biology",
+      "idea_index": 3,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 6,
+        "feasibility": 5
+      },
+      "winner": "A",
+      "reasoning": "Idea A achieves a total score of 29 versus Idea B's 26. While Idea B proposes more ambitious novelty (temporal dynamics, lineage modeling), it suffers from lower feasibility due to unrealistic demands for truly matched multimodal data across diverse perturbations and tissues, plus expensive prospective experimental validation. Idea A is more pragmatic, with clearer experimental methodology, better feasibility using existing public datasets, and still addresses genuine scientific gaps through modular design and uncertainty quantification. Idea A's incremental but well-scoped approach is more likely to deliver actionable results."
+    },
+    {
+      "topic_id": "T10",
+      "topic": "Foundation models for genomics and single-cell biology",
+      "idea_index": 4,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "winner": "B",
+      "reasoning": "Idea B achieves a total score of 31 versus Idea A's 30, with superior experimental clarity and feasibility. While Idea A proposes more novel technical components (graph-based alignment, cross-species generalization, trajectory-aware regularization), Idea B's focused scope on rigorously matched multi-modal data from well-defined biological systems (hematopoiesis and tumor progression) makes it more immediately actionable and achievable. Idea B's emphasis on interpretability and explicit batch effect modeling, combined with clearer experimental validation against gold-standard datasets, provides a more pragmatic path to impact despite slightly less architectural novelty."
+    },
+    {
+      "topic_id": "T11",
+      "topic": "Emergent communication in multi-agent systems",
+      "idea_index": 0,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea A achieves a total of 29 points versus Idea B's 29 points, making this technically a tie by the stated criterion. However, Idea A demonstrates stronger novelty (8 vs 7) by formalizing the underexplored problem of evolving semantic grounding with explicit stability-plasticity mechanisms, and higher scientific usefulness (8 vs 7) by addressing a more fundamental gap in non-stationary multi-agent communication. Idea B is more experimentally clear and feasible but tackles a somewhat more incremental problem (heterogeneous agents with decentralized training) that has received more prior attention. Given the marginal difference and Idea A's stronger conceptual contribution to an underexplored problem space, A edges ahead."
+    },
+    {
+      "topic_id": "T11",
+      "topic": "Emergent communication in multi-agent systems",
+      "idea_index": 1,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "winner": "tie",
+      "reasoning": "Idea A scores 31/40 with strong experimental clarity and feasibility, offering a well-grounded investigation of context-adaptive dual-modality communication with clear metrics and testable baselines. Idea B scores 30/40 with slightly higher novelty due to its meta-learning approach and semantic drift disentanglement, but faces greater complexity in implementation and experimental validation. Both address genuine open problems with rigorous frameworks, making them effectively equivalent in overall contribution despite different strengths."
+    },
+    {
+      "topic_id": "T11",
+      "topic": "Emergent communication in multi-agent systems",
+      "idea_index": 2,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 5,
+        "feasibility": 7
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a more technically concrete and actionable framework by combining established meta-learning techniques (MAML, EWC) with quantifiable communication constraints (mutual information, bandwidth bottlenecks), yielding clearer experimental predictions and stronger technical novelty. Idea B, while conceptually interesting in connecting social hierarchies to language emergence, lacks specificity in how social constructs will be operationalized and measured, making its experimental methodology less clear and its scientific contributions less sharply defined. Idea A's total score (28) exceeds Idea B's (24) by a meaningful margin."
+    },
+    {
+      "topic_id": "T11",
+      "topic": "Emergent communication in multi-agent systems",
+      "idea_index": 3,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A scores higher overall (29 vs 27) with stronger scientific usefulness and feasibility, addressing a well-motivated open problem in protocol adaptation with clear, information-theoretic metrics and realistic experimental design. Idea B presents genuine novelty in cross-modal alignment but suffers from lower experimental clarity (the custom multi-modal environment is underspecified), reduced feasibility (requires coordinating three distinct sensory modalities), and less immediate scientific utility compared to A's more tractable and broadly applicable framework."
+    },
+    {
+      "topic_id": "T11",
+      "topic": "Emergent communication in multi-agent systems",
+      "idea_index": 4,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "winner": "A",
+      "reasoning": "Idea A achieves a total score of 33 versus Idea B's 30. While Idea B presents broader ambitions with dynamic environments and meta-learning, Idea A excels in experimental clarity and feasibility through its systematic, controlled approach to isolating causal factors. Idea A's methodological rigor\u2014varying one affordance parameter at a time with clear baselines\u2014makes it more immediately actionable and reproducible, whereas Idea B's simultaneous introduction of multiple complexities (heterogeneity, dynamics, meta-learning) risks confounding effects and reduced feasibility despite its theoretical aspirations."
+    },
+    {
+      "topic_id": "T12",
+      "topic": "Mechanistic interpretability of transformer models",
+      "idea_index": 0,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea B achieves a higher total score (30 vs 28) by combining stronger novelty through nonlinear manifold interventions with superior experimental clarity via synthetic tasks with explicit state annotations. While Idea A addresses important modularity questions at scale, it relies on more established intervention paradigms and faces greater feasibility challenges in managing combinatorial complexity. Idea B's focused scope on attention heads with ground-truth algorithmic tasks makes it more immediately testable and actionable."
+    },
+    {
+      "topic_id": "T12",
+      "topic": "Mechanistic interpretability of transformer models",
+      "idea_index": 1,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea B scores higher on novelty (8 vs 7) by explicitly challenging the causal modularity assumption with rigorous statistical controls and formal theoretical grounding\u2014a more fundamental contribution than Idea A's hierarchical task decomposition. While Idea A has slightly better experimental clarity and feasibility, Idea B's principled causal framework with Bayesian hierarchical models and permutation tests represents a more significant methodological advance. Both address real problems, but B's emphasis on validating core assumptions and quantifying causal effects with statistical rigor gives it the edge (29 vs 30 total)."
+    },
+    {
+      "topic_id": "T12",
+      "topic": "Mechanistic interpretability of transformer models",
+      "idea_index": 2,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A scores 31/40 while Idea B scores 27/40. Idea A offers clearer experimental methodology with well-defined metrics (mediation effect sizes, parsing accuracy) on established benchmarks, making it more immediately actionable and feasible. While Idea B presents a more novel theoretical framework (formalizing SCM-based temporal causality), it suffers from lower experimental clarity\u2014the connection between SCM formalism and practical implementation on transformers remains underspecified, and the scalability claims lack concrete detail. Idea A's focus on syntactic subnetworks provides more grounded scientific utility for the interpretability community."
+    },
+    {
+      "topic_id": "T12",
+      "topic": "Mechanistic interpretability of transformer models",
+      "idea_index": 3,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Both ideas are novel and address genuine gaps in mechanistic interpretability, but Idea A achieves a higher total score (30 vs 29) through superior scientific usefulness and feasibility. Idea A's focus on longitudinal tracking of micro-circuits across training is more broadly applicable and actionable for architecture design, while Idea B's motif-preserving rewiring, though innovative, introduces additional technical complexity that may limit feasibility. Idea B has slightly clearer experimental methodology but proposes more ambitious cross-scale comparisons that could be resource-intensive."
+    },
+    {
+      "topic_id": "T12",
+      "topic": "Mechanistic interpretability of transformer models",
+      "idea_index": 4,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "winner": "B",
+      "reasoning": "Idea A achieves a total score of 31 versus Idea B's 29. While Idea B has slightly higher novelty in its specific focus on automata extraction with causal validation, Idea A demonstrates superior scientific usefulness and experimental clarity through its more direct engagement with the hierarchical syntax problem and clearer metrics. Idea A's approach is also marginally more feasible due to its reliance on well-established synthetic language benchmarks, whereas Idea B's state extraction pipeline introduces additional methodological complexity that could compound feasibility challenges."
+    },
+    {
+      "topic_id": "T13",
+      "topic": "Zero-shot generalization in reinforcement learning",
+      "idea_index": 0,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea B achieves higher total score (30 vs 27) through superior experimental clarity, theoretical rigor, and scientific usefulness. While Idea A is more technically novel in combining causal discovery with model-based RL, Idea B's explicit use of ground-truth SCMs, formal identifiability analysis, and strict zero-shot evaluation protocols make it more scientifically actionable and feasible. Idea B's approach is also more directly testable with clear baselines and metrics, whereas Idea A's joint learning of causal structure and policy introduces significant optimization complexity that may hinder reproducibility and clarity."
+    },
+    {
+      "topic_id": "T13",
+      "topic": "Zero-shot generalization in reinforcement learning",
+      "idea_index": 1,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Both ideas are well-motivated and address the critical problem of zero-shot generalization through causal discovery in RL. Idea B edges ahead with slightly higher novelty (explicit contrastive causal discovery for modular factorization is more novel than auxiliary task integration), clearer experimental methodology (more concrete domains and metrics), and better articulation of the causal factorization mechanism. Both face similar feasibility challenges around identifiability guarantees and scalability, but Idea B's hierarchical factorization approach is more directly testable through disentanglement metrics."
+    },
+    {
+      "topic_id": "T13",
+      "topic": "Zero-shot generalization in reinforcement learning",
+      "idea_index": 2,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea B scores higher across all dimensions, particularly in experimental clarity (8 vs 6) and scientific usefulness (8 vs 7) due to its explicit theoretical framework, formal characterization of compositionality guarantees, and well-designed ablation studies that isolate causal contributions. While Idea A proposes interesting technical innovations (attention-based graph pruning, curriculum learning), it lacks the theoretical rigor and clarity of testable predictions that Idea B provides. Idea B's focus on clearly stated assumptions, modular recombination with formal guarantees, and comprehensive ablations makes it more actionable for the research community."
+    },
+    {
+      "topic_id": "T13",
+      "topic": "Zero-shot generalization in reinforcement learning",
+      "idea_index": 3,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 7
+      },
+      "winner": "A",
+      "reasoning": "Idea A scores higher overall (29 vs 26) with stronger novelty through explicit causal supervision and clearer experimental methodology with well-defined metrics (causal graph accuracy, disentanglement scores). While Idea A has lower feasibility due to requiring annotated causal interventions, it provides more concrete and actionable contributions to the zero-shot RL problem. Idea B, though more feasible, relies on less novel attention mechanisms and lacks specificity in how latent task structure is formally characterized, making its experimental validation less rigorous."
+    },
+    {
+      "topic_id": "T13",
+      "topic": "Zero-shot generalization in reinforcement learning",
+      "idea_index": 4,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea B scores higher across all dimensions, particularly in experimental clarity (formal task specifications enable reproducible evaluation) and scientific usefulness (addresses compositional generalization with theoretical grounding). While Idea A tackles an important problem, it combines existing techniques (disentanglement + causal discovery + model-based RL) with less concrete experimental design and higher technical complexity. Idea B's integration of formal logic with skill learning is more novel and its evaluation methodology is more rigorous and testable."
+    },
+    {
+      "topic_id": "T14",
+      "topic": "Topological methods for high-dimensional data analysis",
+      "idea_index": 0,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 5
+      },
+      "winner": "A",
+      "reasoning": "Idea A pursues a theoretically ambitious but highly complex direction (time-augmented multiparameter persistence with causality constraints) that, while novel, faces significant feasibility challenges and unclear experimental validation paths for real-time streaming scenarios. Idea B addresses a more tractable and immediately actionable problem\u2014adaptive filtrations with stability guarantees\u2014with clearer experimental protocols, stronger practical applicability across multiple domains (genomics, materials science), and better feasibility given existing robust estimation techniques. B's integration with differentiable learning also provides concrete bridges to applied workflows, making it more scientifically useful despite slightly lower novelty."
+    },
+    {
+      "topic_id": "T14",
+      "topic": "Topological methods for high-dimensional data analysis",
+      "idea_index": 1,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea B scores higher across all dimensions, particularly in novelty (first adaptive framework with rigorous theoretical guarantees), scientific usefulness (addresses real heterogeneity challenges in modern datasets), and experimental clarity (well-defined metrics and ablation studies). While Idea A tackles an important temporal tracking problem, it combines existing techniques (incremental Mapper + multiparameter persistence) with less theoretical grounding. Idea B's explicit treatment of stability guarantees, uncertainty quantification, and comprehensive experimental design (including negative controls) demonstrates greater scientific rigor and broader applicability to heterogeneous real-world data."
+    },
+    {
+      "topic_id": "T14",
+      "topic": "Topological methods for high-dimensional data analysis",
+      "idea_index": 2,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 8
+      },
+      "winner": "A",
+      "reasoning": "Idea A addresses a more pressing and underexplored problem\u2014real-time topological analysis of streaming data with principled noise discrimination\u2014which has broader applicability across neuroscience, finance, and sensor networks. While Idea B tackles an important geometric heterogeneity problem, anisotropic filtrations are more incremental extensions of existing multi-scale TDA work. Idea A's integration of adaptive smoothing, incremental computation, and statistical hypothesis testing represents a more cohesive and novel contribution, though it carries slightly higher implementation complexity. Both are well-articulated, but A's focus on temporal dynamics and streaming contexts provides greater scientific impact for an underserved application domain."
+    },
+    {
+      "topic_id": "T14",
+      "topic": "Topological methods for high-dimensional data analysis",
+      "idea_index": 3,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A scores 30/40 while Idea B scores 27/40. Idea A presents a more mature, well-articulated framework with clearer experimental validation pathways, stronger feasibility through explicit computational strategies, and direct applicability to temporal dynamics problems. Idea B is more novel in its neural network-based differentiable approach but suffers from lower experimental clarity (surrogate loss design is underspecified), reduced feasibility (requires solving non-trivial optimization challenges), and narrower scientific scope focused primarily on classification tasks rather than fundamental topological discovery."
+    },
+    {
+      "topic_id": "T14",
+      "topic": "Topological methods for high-dimensional data analysis",
+      "idea_index": 4,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A scores higher overall (31 vs 27) by offering a more concrete, mathematically grounded approach centered on intrinsic dimensionality estimation with sheaf-theoretic merging\u2014a genuinely novel combination with clearer algorithmic specificity. Idea B, while addressing an important problem through learned metrics, introduces additional complexity (neural network training, metric learning) that increases feasibility risks and dilutes focus, and the stability guarantees for learned metrics are less straightforward to establish than for dimension-adaptive methods. Both are solid contributions, but A's tighter theoretical framework and more direct path to implementation give it an edge."
+    },
+    {
+      "topic_id": "T15",
+      "topic": "Quantum advantage in machine learning tasks",
+      "idea_index": 0,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "winner": "A",
+      "reasoning": "Idea A targets a more ambitious and scientifically important problem (causal discovery with provable speedups) but faces significant feasibility challenges in proving quantum advantage on near-term hardware and handling the complexity of noise-aware analysis. Idea B is more incremental but offers superior experimental clarity, higher feasibility on NISQ devices, and a pragmatic approach to a well-defined problem (barren plateaus in quantum kernels) with clear benchmarking metrics. B's total score (29) exceeds A's (27), and B's stronger feasibility and experimental clarity make it more likely to yield publishable results."
+    },
+    {
+      "topic_id": "T15",
+      "topic": "Quantum advantage in machine learning tasks",
+      "idea_index": 1,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea A scores higher overall (29 vs 27) due to stronger novelty in combining RL with adaptive quantum kernels and clearer scientific usefulness in addressing the specific challenge of kernel expressivity optimization. While Idea B is more feasible with its focus on gradient-based optimization and selective parameter tuning, Idea A's theoretical framework for expressivity guarantees and more ambitious scope provide greater scientific impact, despite slightly lower feasibility due to the complexity of RL-based circuit adaptation on NISQ devices."
+    },
+    {
+      "topic_id": "T15",
+      "topic": "Quantum advantage in machine learning tasks",
+      "idea_index": 2,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea B scores higher overall (30 vs 28) by addressing a more concrete, practically motivated problem (streaming anomaly detection) with stronger theoretical grounding and clearer complexity-theoretic claims. While both ideas are well-articulated, Idea B's focus on provable speedups in a well-defined problem setting and its explicit formalization of data models provides greater scientific rigor, though its feasibility is slightly lower due to the demanding requirements of quantum streaming protocols on near-term hardware."
+    },
+    {
+      "topic_id": "T15",
+      "topic": "Quantum advantage in machine learning tasks",
+      "idea_index": 3,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Both ideas are well-articulated and address genuine gaps in quantum machine learning with similar novelty levels. Idea B scores higher on experimental clarity with more concrete specifications (10-15 qubits, specific noise models, well-defined benchmarks) and feasibility due to its narrower scope and more achievable hardware requirements. Idea A, while addressing an important problem in continual learning, proposes a more ambitious framework that may face greater implementation challenges and requires more extensive theoretical development. Idea B's total score (29) exceeds Idea A's (28), making it the stronger proposal for near-term execution."
+    },
+    {
+      "topic_id": "T15",
+      "topic": "Quantum advantage in machine learning tasks",
+      "idea_index": 4,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea B scores higher overall (30 vs 27) due to stronger theoretical grounding with explicit generalization bounds, more rigorous experimental controls with matched classical baselines and noise-injected simulations, and clearer methodology for isolating quantum advantage. While Idea A is more concrete in its meta-learning integration, Idea B's emphasis on theoretical guarantees and systematic experimental design addresses the fundamental open problem of when quantum advantage genuinely occurs, making it more scientifically impactful despite slightly lower feasibility due to the theoretical analysis requirements."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 0,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A achieves a total score of 31 versus Idea B's 30, with a decisive advantage in novelty (8 vs 7) due to its more explicit integration of physics-informed constraints into the generative framework and its emphasis on rigorous synchronized multi-modal data acquisition under matched conditions. While both ideas are scientifically sound and address similar problems, Idea A's more detailed experimental design with orthogonal validation (NMR relaxation, mutagenesis kinetics) and explicit enforcement of thermodynamic consistency provides stronger methodological rigor, though at slightly higher complexity cost. Idea B's modular MSM integration and slightly higher feasibility score reflect its more pragmatic approach, but Idea A's comprehensive framework and clearer path to mechanistic insight give it the edge."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 1,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 6,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A achieves a total score of 30 versus Idea B's 28. While Idea B presents slightly higher novelty through its modality-specific embedding strategy and joint latent space approach, Idea A compensates with superior experimental clarity (concrete validation metrics and cross-validation strategy) and better feasibility (more straightforward Bayesian framework implementation versus the complex multi-stage VAE-MSM integration in B). Idea A's principled probabilistic framework and clearer experimental validation pathway make it more immediately actionable, despite Idea B's conceptually ambitious integration of simulation and experiment."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 2,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Both ideas address the important gap of predicting conformational ensembles beyond AlphaFold's static structures with comparable novelty. Idea B scores higher on scientific usefulness due to its explicit focus on kinetic transition pathways and mechanistic insights into protein function, which are more directly actionable for understanding allosteric regulation and ligand binding. Idea B also demonstrates superior experimental clarity by specifying concrete, time-resolved experimental modalities (HDX-MS, FRET, cryo-EM) with well-established kinetic modeling frameworks, whereas Idea A's physics-informed normalizing flows are more technically complex and less clearly operationalized. Idea B's feasibility is also higher as it leverages existing AlphaFold predictions and established Bayesian data fusion methods, while Idea A requires developing and validating a more novel generative architecture with multi-modal data harmonization."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 3,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea A scores higher overall (31 vs 29) due to superior scientific usefulness and experimental clarity, with more comprehensive validation strategies and explicit treatment of timescale heterogeneity. While Idea A is slightly less feasible due to its greater complexity and data requirements, its more ambitious scope and rigorous experimental design addressing disorder-function relationships provide greater scientific impact. Idea B is more pragmatic and modular but somewhat incremental in combining existing techniques (VAE + GNNs + MSMs) without as clear a conceptual advance."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 4,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Both ideas are scientifically ambitious and address the critical gap of predicting dynamic protein ensembles beyond AlphaFold's static structures. Idea B achieves higher scores primarily due to superior experimental clarity\u2014the mutation-driven validation strategy with orthogonal assays is more concrete and testable than Idea A's comparative approach. Idea B also demonstrates better feasibility by leveraging AlphaFold priors as explicit constraints rather than requiring joint training with molecular simulations, reducing computational overhead. While Idea A's hybrid physics-simulation integration is conceptually novel, Idea B's generative modeling framework with rigorous mutation-based perturbation validation represents a more practical and immediately implementable advance. Total scores: A=29, B=31."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 0,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea A scores higher overall (30 vs 27) due to superior novelty in proposing real-time mid-circuit code structure adaptation (not just decoder tuning), clearer experimental methodology with rigorous interleaved comparisons and timing budgets, and more actionable scientific contributions. While Idea B offers better feasibility through its reliance on established Bayesian methods and avoids the ambitious latency constraints of Idea A, it is more incremental\u2014focusing on adaptive decoding rather than dynamic code parameter modification\u2014and lacks the detailed experimental clarity and timing analysis that makes Idea A's approach more scientifically rigorous and practically demonstrable."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 1,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea B achieves a total score of 30 versus Idea A's 26. While Idea A presents a more novel hardware-algorithm co-design with SNNs, it suffers from lower experimental clarity (lacks detailed noise models and testable predictions) and significantly lower feasibility (microsecond latency requirements and tight FPGA integration are extremely challenging). Idea B balances novelty with superior scientific usefulness, clearer experimental methodology, and substantially higher feasibility by leveraging existing noise characterization protocols and standard ML approaches compatible with current NISQ hardware constraints."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 2,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A scores higher across all dimensions with a total of 32 vs. 26 for Idea B. Idea A provides superior experimental clarity with specific, testable benchmarks (logical error rates vs. static codes, ML prediction validation), tighter technical constraints (sub-millisecond timescales), and more rigorous control experiments. While both address adaptive QEC, Idea A's focus on continuous noise tomography within coherence timescales is more novel and concrete than Idea B's broader but vaguer multi-layer framework. Idea A also demonstrates better feasibility by clearly specifying hardware requirements (mid-circuit measurement, fast classical processing) and quantifiable overhead metrics, whereas Idea B's reinforcement learning approach and pulse-level optimization add complexity without corresponding experimental clarity or demonstrated feasibility gains."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 3,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A achieves a total score of 31 versus Idea B's 28. While Idea B claims greater novelty through ML integration, Idea A demonstrates superior feasibility and experimental clarity with a more concrete, hardware-aware approach using partial syndrome extraction and FPGA-based decoding\u2014technologies already mature in NISQ labs. Idea B's reliance on continuous noise tomography and ML-based code patch selection introduces greater complexity and potential overhead that may undermine its practical advantage, whereas Idea A's focused engineering approach to sub-microsecond feedback loops directly addresses the stated timing constraints of NISQ devices."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 4,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "While Idea A presents a more ambitious and theoretically comprehensive framework with explicit latency modeling and stability analysis (higher novelty), Idea B achieves a better overall balance across all criteria. Idea B's combination of hardware-optimized spectroscopy with lightweight Bayesian inference is more immediately implementable (higher feasibility: 8 vs 6) and has clearer experimental methodology (8 vs 7), while maintaining strong novelty (7) and scientific usefulness (8). Idea A's reliance on embedded RL agents and complex dynamic reconfiguration introduces significant implementation challenges and unclear real-time feasibility on current NISQ hardware, despite its theoretical sophistication. Total scores: A=29, B=31."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 0,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea A presents a more ambitious and novel conceptual framework addressing the underexplored problem of latent context-dependent causal discovery with formal identifiability guarantees, whereas Idea B tackles the more conventional latent confounder problem with incremental methodological improvements. While Idea B is more feasible and has clearer practical applicability to biomedical domains, Idea A's total score (29) exceeds Idea B's (27) due to stronger novelty and scientific usefulness, despite slightly lower feasibility. Idea A's explicit treatment of context-specific causal graphs and smoothness assumptions represents a more significant conceptual advance."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 1,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea B achieves a higher total score (29 vs 30, but B's novelty and theoretical grounding are stronger). While Idea A is more immediately feasible and experimentally clear with its hybrid neural-probabilistic approach, Idea B presents a more fundamental conceptual advance by jointly modeling latent context dynamics and causal mechanisms with formal identifiability guarantees\u2014addressing a deeper theoretical gap in causal discovery. However, Idea B's feasibility is lower due to the complexity of proving identifiability conditions and jointly inferring latent dynamics alongside causal structure, making it more ambitious but also riskier."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 2,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea B scores higher on novelty (8 vs 7) by introducing neural ODEs for continuous latent confounders with formal identifiability theory\u2014a more sophisticated theoretical contribution than Idea A's hierarchical latent variable approach. Idea B also achieves better experimental clarity (8 vs 7) through explicit identifiability analysis and validation strategies. While Idea A has slightly better feasibility (7 vs 6) due to more established variational inference techniques, Idea B's total score (30) exceeds Idea A's (29), and the theoretical rigor combined with handling of irregular sampling represents a more substantial advance in causal discovery methodology."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 3,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea A presents a more novel and ambitious integration of change point detection with causal discovery, addressing a genuinely underexplored problem (joint latent intervention detection without labels) with clearer theoretical positioning and more comprehensive experimental design. Idea B, while solid, tackles a more incremental extension of existing ICP methods to latent environments\u2014a more constrained problem space\u2014and its experimental clarity is somewhat weakened by reliance on semi-synthetic data with injected contexts rather than naturally occurring heterogeneity. Idea A's total score (29) exceeds Idea B's (27), with A's advantages in novelty and scientific usefulness outweighing B's slightly better feasibility."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 4,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea B achieves a higher total score (30 vs 29) primarily due to stronger novelty and experimental clarity. While both ideas address the important problem of joint latent context and causal graph discovery, Idea B more explicitly emphasizes theoretical identifiability guarantees and provides clearer experimental design with domain-inspired benchmarks and external validation markers. Idea A's semi-supervised approach is practical but somewhat incremental; Idea B's integration of invariant causal prediction with latent variable modeling and rigorous theoretical characterization represents a more novel contribution, though it may face slightly greater feasibility challenges in implementation."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 0,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 5
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents genuinely novel bio-electronic integration with strong experimental clarity but faces significant feasibility challenges (enzyme stability, microfluidic integration, scalability to dense arrays). Idea B combines existing technologies (memristors, energy harvesting) in a more incremental but practically achievable way, with clearer real-world applicability and higher feasibility. While A is more scientifically ambitious, B's total score (28) exceeds A's (28) when weighted by practical impact, and B's superior feasibility and scientific usefulness for edge deployment make it the stronger proposal overall."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 1,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 5
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a more concrete and technically focused contribution with clear monolithic integration of TEVGs and digitally-assisted control, achieving higher feasibility and experimental clarity with well-defined benchmarks. Idea B, while theoretically ambitious in formalizing meta-plasticity trade-offs, suffers from lower feasibility due to the complexity of fabricating a prototype chip with multiple sensor types and memristor controllers, and its experimental design is less clearly specified regarding isolation of meta-plasticity effects from sensor contributions. Idea A's total score is 31 versus Idea B's 25."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 2,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A achieves a total score of 31 versus Idea B's 27, with stronger performance across all criteria. Idea A presents a more fundamental and elegant solution\u2014self-adaptive synapses without external control\u2014backed by rigorous operando characterization and a coupled theoretical framework, making it more scientifically impactful. Idea B's dual-layer approach with separate sensing and gating is more incremental and introduces additional complexity (transistor integration, multi-layer fabrication) that reduces feasibility while addressing a narrower problem (standby power). Idea A's focus on intrinsic ionic dynamics and scalability without peripheral circuitry represents a more significant advance in neuromorphic computing efficiency."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 3,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea B scores higher overall (29 vs 30, but B's novelty and scientific usefulness edge ahead). While Idea A is more feasible and experimentally clear with straightforward benchmarking, Idea B presents a more genuinely innovative approach by combining complementary technologies (memristive + photonic) with context-aware dynamic switching\u2014a less-explored integration strategy. However, Idea B's feasibility is lower due to heterogeneous integration complexity and the need for rigorous multi-domain modeling, making it more ambitious but riskier. The scores are very close, reflecting that both are solid contributions with different risk-reward profiles."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 4,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea B achieves a total score of 30 versus Idea A's 28. While Idea A presents a more novel hardware concept (ionic gating for metabolic regulation), Idea B offers superior scientific usefulness, clearer experimental methodology, and better feasibility through its hybrid memristive-CMOS approach with well-defined control mechanisms. Idea B's synapse-level context inference and ablation study design provide more actionable insights for the neuromorphic community, whereas Idea A's ionic gating mechanism, though innovative, introduces greater fabrication complexity and less clearly defined feedback control pathways."
+    },
+    {
+      "topic_id": "T6",
+      "topic": "Generative AI for drug discovery and molecular design",
+      "idea_index": 0,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea A addresses a more fundamental and clinically relevant gap\u2014incorporating dynamic cellular states across disease heterogeneity\u2014with higher scientific impact for precision medicine, though it faces greater data integration and validation complexity. Idea B is more technically feasible and experimentally clear with well-defined kinase validation, but tackles a narrower problem (protein dynamics in scaffold hopping) with more incremental novelty. Idea A's total score (30) exceeds Idea B's (30) by virtue of stronger scientific usefulness and novelty despite lower feasibility, reflecting its higher potential impact despite greater execution challenges."
+    },
+    {
+      "topic_id": "T6",
+      "topic": "Generative AI for drug discovery and molecular design",
+      "idea_index": 1,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a more ambitious and theoretically sophisticated approach with stronger novelty in its contrastive learning framework for phenotype-conditioned generation, but faces significant feasibility challenges in synthesizing and validating generated compounds at scale. Idea B offers a more pragmatic, modular design that leverages existing public datasets and established methods (GNNs, transformers, RL), with clearer experimental pathways and higher likelihood of near-term implementation, while still addressing genuine off-target and patient variability challenges. B's total score (30) exceeds A's (29), and its superior feasibility and experimental clarity make it more actionable for the research community."
+    },
+    {
+      "topic_id": "T6",
+      "topic": "Generative AI for drug discovery and molecular design",
+      "idea_index": 2,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 6,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A scores higher overall (30 vs 24) due to superior experimental clarity, feasibility, and scientific usefulness. While both ideas present novel multi-modal approaches, Idea A grounds its validation in directly measurable phenotypic outcomes from standardized imaging data with clear experimental protocols, whereas Idea B relies on more abstract pathway perturbation scores and contrastive embeddings that are harder to validate experimentally. Idea A's approach is more immediately actionable and achievable with current resources, whereas Idea B's integration of dynamic pathway modules with patient-specific conditioning introduces significant technical and data integration complexity that may be premature given current capabilities."
+    },
+    {
+      "topic_id": "T6",
+      "topic": "Generative AI for drug discovery and molecular design",
+      "idea_index": 3,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a more ambitious and novel vision of integrating time-resolved microenvironmental dynamics into molecular generation, addressing a genuine gap in current approaches. However, Idea B achieves a higher total score (30 vs 29) due to superior experimental clarity, better feasibility through established modular and transfer learning strategies, and comparable scientific usefulness with more pragmatic implementation pathways. While A's temporal dynamics focus is innovative, B's integration of mechanistic biological networks with multi-omics through a modular framework is more immediately actionable and reproducible."
+    },
+    {
+      "topic_id": "T6",
+      "topic": "Generative AI for drug discovery and molecular design",
+      "idea_index": 4,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 5
+      },
+      "winner": "A",
+      "reasoning": "Idea A scores 31/40 vs Idea B's 26/40. While Idea B presents a more ambitious conceptual advance (temporal phenotypic modeling), it suffers from lower experimental clarity (phenotypic trajectory definition and causality attribution are underspecified) and substantially lower feasibility (generating large-scale paired longitudinal single-cell transcriptomics datasets with rigorous controls is resource-intensive and technically challenging). Idea A offers a more concrete, immediately actionable approach with clearer experimental validation pathways and proven component technologies, making it more likely to yield reproducible results and advance the field."
+    },
+    {
+      "topic_id": "T7",
+      "topic": "Federated learning with heterogeneous and non-IID data",
+      "idea_index": 0,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 6,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A achieves a total score of 29 versus Idea B's 28, making it the marginal winner. While Idea B introduces slightly more novelty through its privacy-preserving and hierarchical clustering components, Idea A demonstrates superior experimental clarity and feasibility with more concrete convergence guarantees and clearer ablation study design. Idea B's multi-layered approach (privacy mechanisms + hierarchical clustering + meta-learning) introduces greater implementation complexity and potential feasibility challenges, whereas Idea A's focused integration of meta-learned embeddings is more tractable while still addressing the core temporal heterogeneity problem."
+    },
+    {
+      "topic_id": "T7",
+      "topic": "Federated learning with heterogeneous and non-IID data",
+      "idea_index": 1,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea A scores higher overall (29 vs 25) with stronger novelty in explicitly integrating causal discovery with uncertainty quantification into federated aggregation\u2014a genuinely underexplored angle. Idea A also has clearer experimental design with well-defined metrics and more realistic evaluation pathways. While Idea B addresses important concerns (privacy, temporal dynamics, convergence theory), it combines existing techniques (hierarchical variational inference, differential privacy, meta-learning) in a more incremental manner. Idea A's causal framing is more novel and its feasibility, though challenging, is more concrete than B's complex hierarchical Bayesian setup requiring simultaneous advances in multiple technical areas."
+    },
+    {
+      "topic_id": "T7",
+      "topic": "Federated learning with heterogeneous and non-IID data",
+      "idea_index": 2,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "winner": "B",
+      "reasoning": "Idea A scores 31/40 while Idea B scores 29/40. Both address important problems in federated learning with non-IID data, but Idea A offers better feasibility (8 vs 6) due to more straightforward implementation without cryptographic overhead, and clearer experimental methodology. Idea B has slightly higher novelty (8 vs 7) by combining differential privacy with Bayesian clustering, but introduces significant complexity with VAEs, DP-SGD, and homomorphic encryption that raises practical deployment concerns and reduces experimental clarity. Idea A's continual representation learning with dynamic clustering is more operationally grounded while still providing theoretical guarantees."
+    },
+    {
+      "topic_id": "T7",
+      "topic": "Federated learning with heterogeneous and non-IID data",
+      "idea_index": 3,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea B scores higher on novelty (8 vs 7) by explicitly addressing label space heterogeneity through adaptive embedding projection, a less-explored problem in federated learning. While both ideas are scientifically useful and well-motivated, Idea B provides clearer experimental methodology with specific embedding alignment metrics (MMD, CKA) and more concrete benchmark datasets (medical imaging, sensor data). Idea A's resource-aware focus is practical but somewhat incremental; Idea B's bi-level meta-learning optimization with formal embedding stability analysis represents a more novel theoretical contribution. Feasibility slightly favors A due to simpler statistical meta-features, but B remains achievable with standard deep learning frameworks."
+    },
+    {
+      "topic_id": "T7",
+      "topic": "Federated learning with heterogeneous and non-IID data",
+      "idea_index": 4,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea B achieves a higher total score (30 vs 29) with stronger novelty through its principled soft clustering framework on sparse embeddings\u2014a less-explored angle than meta-architecture search. While Idea A is more comprehensive in scope, it faces feasibility challenges with joint optimization of architectures and aggregation, whereas Idea B's embedding-based approach is more tractable. Both address real problems, but Idea B's communication-efficient protocols and clearer path to scalability give it a slight edge in practical impact."
+    },
+    {
+      "topic_id": "T8",
+      "topic": "Deep learning emulators for climate model acceleration",
+      "idea_index": 0,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Both ideas present genuinely novel approaches combining uncertainty quantification with adaptive mechanisms for climate emulation. Idea B scores higher on scientific usefulness by directly addressing the critical long-term stability and drift problem in multi-decadal climate projections, and on experimental clarity by specifying concrete datasets (CESM, CMIP6) and well-defined metrics. Idea B also appears more feasible with its graph neural network architecture and regime-aware correction scheme being more implementable than Idea A's theoretically ambitious backbone-modulator design requiring extensive convergence proofs. Idea A's total score is 29, while Idea B's is 32."
+    },
+    {
+      "topic_id": "T8",
+      "topic": "Deep learning emulators for climate model acceleration",
+      "idea_index": 1,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A scores higher overall (30 vs 26) with stronger novelty in its systematic integration of interpretable regime classification with uncertainty-aware mixture-of-experts gating, clearer experimental design with multi-decadal ESM integration benchmarks, and more realistic feasibility given established MoE architectures. Idea B, while addressing important problems, relies on less mature PINNs-ensemble coupling for climate systems and proposes more ambitious theoretical guarantees that are harder to validate empirically, with less concrete experimental protocols."
+    },
+    {
+      "topic_id": "T8",
+      "topic": "Deep learning emulators for climate model acceleration",
+      "idea_index": 2,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "winner": "A",
+      "reasoning": "Idea A scores higher on novelty (8 vs 7) due to its explicit integration of an adaptive temporal-stepping algorithm with Lyapunov-inspired stability constraints, which represents a more concrete methodological innovation beyond standard physics-informed neural operators. Idea A also achieves superior experimental clarity (8 vs 7) through its specific focus on cloud microphysics with detailed fallback mechanisms and direct CAM integration, whereas Idea B remains more general across multiple sub-grid processes. Both ideas are scientifically useful and feasible, but Idea A's targeted scope and theoretically grounded adaptive mechanism provide a more compelling and differentiated contribution."
+    },
+    {
+      "topic_id": "T8",
+      "topic": "Deep learning emulators for climate model acceleration",
+      "idea_index": 3,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea B scores higher overall (30 vs 29) due to superior experimental clarity and feasibility. While Idea A is slightly more novel in its continuous physics-informed adaptation approach, Idea B's discrete multi-model framework with RL-based switching is more operationally concrete and testable. Idea B's explicit focus on stability verification, interface protocols, and ablation studies demonstrates clearer scientific methodology, whereas Idea A's meta-learning regime detection and continuous resolution adaptation introduce greater implementation complexity and potential runtime instability risks that are less thoroughly addressed."
+    },
+    {
+      "topic_id": "T8",
+      "topic": "Deep learning emulators for climate model acceleration",
+      "idea_index": 4,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea A scores higher overall (31 vs 30) with stronger novelty in formally integrating provable physical constraints within neural operators and superior scientific usefulness by directly addressing long-term stability and conservation\u2014critical gaps in climate emulation. While Idea B is more feasible with clearer practical implementation, Idea A's rigorous theoretical framework and centennial-scale validation benchmarks represent a more significant scientific advance, despite requiring greater computational resources. The tie-breaking advantage goes to A's explicit focus on formal stability guarantees and conservation laws, which are fundamental to climate modeling reliability."
+    },
+    {
+      "topic_id": "T9",
+      "topic": "Uncertainty quantification in deep neural networks",
+      "idea_index": 0,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 6,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a more focused and technically novel contribution by explicitly modeling latent shift embeddings to hierarchically adapt uncertainty calibration, with clearer computational constraints and practical deployment considerations. Idea B addresses a broader problem (multi-task learning) but introduces additional complexity (task embeddings, multi-task coordination) that reduces experimental clarity and feasibility without proportionally stronger novelty; the theoretical guarantees mentioned lack specificity. Idea A's total score is 29 versus Idea B's 27, with A's superior novelty and feasibility offsetting B's slightly higher scientific usefulness."
+    },
+    {
+      "topic_id": "T9",
+      "topic": "Uncertainty quantification in deep neural networks",
+      "idea_index": 1,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 6,
+        "feasibility": 6
+      },
+      "winner": "tie",
+      "reasoning": "Idea A scores 28/40 with strong clarity and feasibility but moderate novelty, while Idea B scores 28/40 with higher novelty and scientific ambition but lower experimental clarity and feasibility concerns. Idea A's contrastive context embedding approach is well-grounded and testable, whereas Idea B's temporal stochastic process formulation is conceptually bolder but vague on implementation details and theoretical guarantees. Both address real problems in dynamic uncertainty quantification, but neither decisively outperforms the other across all dimensions."
+    },
+    {
+      "topic_id": "T9",
+      "topic": "Uncertainty quantification in deep neural networks",
+      "idea_index": 2,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A achieves a total score of 31 versus Idea B's 29, with stronger performance in novelty (8 vs 7), scientific usefulness (8 vs 7), and experimental clarity (8 vs 7). Idea A presents a more distinctive contribution by grounding self-supervised signals theoretically to calibration degradation proxies and providing formal stability guarantees, whereas Idea B combines existing techniques (test-time training, domain adaptation, Bayesian updates) in a more incremental manner. While Idea B is slightly more feasible (8 vs 7) due to leveraging established domain adaptation methods, Idea A's theoretical rigor and clearer experimental protocol for validating assumptions under which self-supervised objectives indicate miscalibration make it the stronger research contribution."
+    },
+    {
+      "topic_id": "T9",
+      "topic": "Uncertainty quantification in deep neural networks",
+      "idea_index": 3,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 5,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea A presents a more focused and theoretically grounded contribution with clear novelty in hierarchical uncertainty propagation through intermediate layers, supported by formal theoretical analysis and well-defined experimental metrics. Idea B addresses an important practical problem but suffers from lower experimental clarity (vague integration of multi-modal signals, unclear shift-detection mechanism), lower feasibility (real-time deployment constraints, stability concerns with continual learning), and less concrete novelty (meta-learning + calibration is more incremental). Idea A scores 28 total versus Idea B's 23 total."
+    },
+    {
+      "topic_id": "T9",
+      "topic": "Uncertainty quantification in deep neural networks",
+      "idea_index": 4,
+      "system_a": "S1",
+      "system_b": "S5",
+      "judge_model": "claude-haiku-4-5-20251001",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 6,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "B",
+      "reasoning": "Idea A proposes theoretically ambitious integration of causal inference and information theory for hierarchical uncertainty decomposition, achieving high novelty but suffering from lower experimental clarity (causal intervention validation is underspecified) and feasibility concerns (identifiability proofs and scalability of variational causal layers are non-trivial). Idea B addresses a more practically grounded problem (domain shift robustness) with clearer experimental methodology, stronger feasibility given established meta-learning infrastructure, and comparable novelty through its focus on continual unsupervised adaptation. Idea B's total score (30) exceeds Idea A's (26), with the gap driven by superior experimental clarity and feasibility."
+    }
+  ],
+  "blind": {
+    "wins_a": 3,
+    "wins_b": 2,
+    "ties": 0,
+    "total_judged": 5,
+    "win_rate_b": 0.4,
+    "sampled_topics": [
+      "T10",
+      "T11",
+      "T13",
+      "T5",
+      "T2"
+    ],
+    "verdicts": [
+      {
+        "topic_id": "T10",
+        "topic": "Foundation models for genomics and single-cell biology",
+        "system_a": "S1",
+        "system_b": "S5",
+        "judge_model": "gemini-flash-lite-latest",
+        "scores_a": {
+          "novelty": 8,
+          "scientific_usefulness": 9,
+          "experimental_clarity": 8,
+          "feasibility": 7
+        },
+        "scores_b": {
+          "novelty": 7,
+          "scientific_usefulness": 8,
+          "experimental_clarity": 7,
+          "feasibility": 6
+        },
+        "winner": "A",
+        "reasoning": "Idea A is more compelling due to its explicit integration of biological priors (GRNs and spatial context) into the transformer architecture, which directly addresses the 'black box' nature of current foundation models. While Idea B is scientifically ambitious, the technical challenge of aligning raw genomic sequences with longitudinal single-cell data at scale is significantly more complex and prone to data sparsity issues."
+      },
+      {
+        "topic_id": "T11",
+        "topic": "Emergent communication in multi-agent systems",
+        "system_a": "S1",
+        "system_b": "S5",
+        "judge_model": "gemini-flash-lite-latest",
+        "scores_a": {
+          "novelty": 7,
+          "scientific_usefulness": 8,
+          "experimental_clarity": 8,
+          "feasibility": 8
+        },
+        "scores_b": {
+          "novelty": 9,
+          "scientific_usefulness": 9,
+          "experimental_clarity": 8,
+          "feasibility": 7
+        },
+        "scores_a_total": 33,
+        "scores_b_total": 31,
+        "winner": "B",
+        "reasoning": "Idea A addresses the fundamental challenge of semantic drift and stability-plasticity in non-stationary environments, which is a more profound theoretical hurdle than the heterogeneity focus of Idea B. While Idea B is highly practical for robotics, Idea A's focus on formalizing evolving semantics offers a more significant contribution to the foundational understanding of emergent communication."
+      },
+      {
+        "topic_id": "T13",
+        "topic": "Zero-shot generalization in reinforcement learning",
+        "system_a": "S1",
+        "system_b": "S5",
+        "judge_model": "gemini-flash-lite-latest",
+        "scores_a": {
+          "novelty": 8,
+          "scientific_usefulness": 9,
+          "experimental_clarity": 8,
+          "feasibility": 7
+        },
+        "scores_b": {
+          "novelty": 7,
+          "scientific_usefulness": 8,
+          "experimental_clarity": 9,
+          "feasibility": 6
+        },
+        "winner": "A",
+        "reasoning": "Idea A proposes a more scalable, end-to-end approach that addresses the practical challenge of discovering causal structures from raw interaction data, whereas Idea B relies on the availability of ground-truth SCMs, which limits its real-world applicability. Idea A's integration of differentiable structure learning with model-based RL offers a more robust path toward general-purpose agents."
+      },
+      {
+        "topic_id": "T5",
+        "topic": "Energy-efficient neuromorphic computing",
+        "system_a": "S1",
+        "system_b": "S5",
+        "judge_model": "gemini-flash-lite-latest",
+        "scores_a": {
+          "novelty": 6,
+          "scientific_usefulness": 9,
+          "experimental_clarity": 9,
+          "feasibility": 8
+        },
+        "scores_b": {
+          "novelty": 9,
+          "scientific_usefulness": 7,
+          "experimental_clarity": 7,
+          "feasibility": 4
+        },
+        "winner": "A",
+        "reasoning": "Idea B is a highly practical, systems-level engineering approach that addresses the immediate bottleneck of energy-constrained edge computing with high feasibility. While Idea A is more scientifically novel and disruptive, the immense challenges of integrating microfluidics with CMOS for long-term stability make it significantly less feasible for near-term research impact."
+      },
+      {
+        "topic_id": "T2",
+        "topic": "Protein structure prediction beyond AlphaFold",
+        "system_a": "S1",
+        "system_b": "S5",
+        "judge_model": "gemini-flash-lite-latest",
+        "scores_a": {
+          "novelty": 7,
+          "scientific_usefulness": 8,
+          "experimental_clarity": 7,
+          "feasibility": 8
+        },
+        "scores_b": {
+          "novelty": 9,
+          "scientific_usefulness": 9,
+          "experimental_clarity": 9,
+          "feasibility": 7
+        },
+        "winner": "B",
+        "reasoning": "Idea A is more ambitious and conceptually rigorous, specifically by proposing a unified physics-informed architecture that integrates heterogeneous experimental data as direct inputs rather than just training targets. While Idea B is more feasible due to its reliance on established MSM frameworks, Idea A's focus on enforcing thermodynamic consistency and detailed balance within the generative model represents a more significant leap in the field of protein dynamics."
+      }
+    ]
+  }
+}

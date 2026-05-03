@@ -1,0 +1,12 @@
+{
+  "generated_by": "ideas/export_workshop_paper_bundle.py",
+  "bootstrap": {
+    "method": "topic_block",
+    "iters": 3000,
+    "seed": 42
+  },
+  "outputs": {
+    "trajectory_table_csv": "results/workshop_paper_bundle/trajectory_table.csv",
+    "human_pilot_summary_json": "results/workshop_paper_bundle/human_pilot_summary.json"
+  }
+}

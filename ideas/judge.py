@@ -9,6 +9,7 @@ Usage:
 
 import argparse
 import json
+import os
 import random
 import re
 import sys
@@ -20,11 +21,11 @@ import log as _log
 
 logger = _log.setup("judge")
 
-JUDGE_MODEL = "deepseek-chat"
-JUDGE_TEMPERATURE = 0.2
+JUDGE_MODEL = os.environ.get("IDEAS_JUDGE_MODEL", "deepseek-chat")
+JUDGE_TEMPERATURE = float(os.environ.get("IDEAS_JUDGE_TEMPERATURE", "0.2"))
 
-BLIND_JUDGE_MODEL = "gemini-flash-lite-latest"
-BLIND_JUDGE_TEMPERATURE = 0.2
+BLIND_JUDGE_MODEL = os.environ.get("IDEAS_BLIND_JUDGE_MODEL", "gemini-flash-lite-latest")
+BLIND_JUDGE_TEMPERATURE = float(os.environ.get("IDEAS_BLIND_JUDGE_TEMPERATURE", "0.2"))
 
 
 JUDGE_PROMPT_TEMPLATE = """\
@@ -85,10 +86,25 @@ def judge_pair(topic: str, idea_a: str, idea_b: str, client, model: str = JUDGE_
 
     prompt = JUDGE_PROMPT_TEMPLATE.format(topic=topic, idea_a=presented_a, idea_b=presented_b)
     temperature = BLIND_JUDGE_TEMPERATURE if model == BLIND_JUDGE_MODEL else JUDGE_TEMPERATURE
-    raw = call_llm(prompt, model, client, temperature, max_tokens=1024)
-    logger.debug("Raw %s response for '%s' (flipped=%s): %s", model, topic[:40], flipped, raw[:200])
+    verdict = None
+    prompt_curr = prompt
+    for attempt in range(3):
+        raw = call_llm(prompt_curr, model, client, temperature, max_tokens=2048)
+        logger.debug("Raw %s response for '%s' (flipped=%s): %s", model, topic[:40], flipped, raw[:200])
+        try:
+            verdict = _parse_verdict(raw)
+            break
+        except ValueError:
+            if attempt == 2:
+                raise
+            prompt_curr = (
+                prompt
+                + "\n\nYour previous response was not valid JSON. "
+                + "Return ONLY a single valid JSON object with all fields present. "
+                + "Do not include markdown fences or any extra text."
+            )
 
-    verdict = _parse_verdict(raw)
+    assert verdict is not None
 
     if flipped:
         verdict["scores_a"], verdict["scores_b"] = verdict["scores_b"], verdict["scores_a"]
@@ -205,7 +221,7 @@ def compare_systems(results_a: list[dict], results_b: list[dict], client,
                     early_stop_threshold: float | None = None) -> dict:
     """Pairwise comparison across all shared topics.
 
-    workers > 1 judges multiple topics concurrently for faster throughput.
+    workers > 1 judges individual topic×idea pairs concurrently for faster throughput.
     early_stop_threshold: if set, stop judging early when P(win_rate >= threshold) < 10%.
       Pass the acceptance threshold (e.g. 0.55) to skip wasted judging on clear losers.
     """
@@ -230,16 +246,17 @@ def compare_systems(results_a: list[dict], results_b: list[dict], client,
     verdicts = []
     stopped_early = False
 
-    def _collect(topic_verdicts):
+    def _collect(verdict):
         nonlocal wins_a, wins_b, ties
-        for v in topic_verdicts:
-            if v["winner"] == "A":
-                wins_a += 1
-            elif v["winner"] == "B":
-                wins_b += 1
-            else:
-                ties += 1
-            verdicts.append(v)
+        if verdict is None:
+            return
+        if verdict["winner"] == "A":
+            wins_a += 1
+        elif verdict["winner"] == "B":
+            wins_b += 1
+        else:
+            ties += 1
+        verdicts.append(verdict)
 
     def _should_stop():
         if early_stop_threshold is None:
@@ -247,12 +264,39 @@ def compare_systems(results_a: list[dict], results_b: list[dict], client,
         return _check_early_stop(wins_b, wins_a, ties, n_total_pairs,
                                  early_stop_threshold)
 
-    effective_workers = min(workers, len(valid_topics))
+    work_items = []
+    for topic_id in valid_topics:
+        entries_a = groups_a[topic_id]
+        entries_b = groups_b[topic_id]
+        topic = entries_a[0]["topic"]
+        for pair_idx in range(min(len(entries_a), len(entries_b))):
+            work_items.append((topic_id, topic, pair_idx, entries_a[pair_idx], entries_b[pair_idx]))
+
+    def _judge_one(item) -> dict | None:
+        topic_id, topic, pair_idx, ea, eb = item
+        logger.info("Judging %s[%d] [%s]: %s",
+                    topic_id, pair_idx, model.split("-")[0], topic[:55])
+        try:
+            verdict = judge_pair(topic, ea["text"], eb["text"], client, model)
+        except Exception as e:
+            logger.error("Judge failed for %s pair %d: %s", topic_id, pair_idx, e)
+            return None
+        logger.info("  %s[%d] → %s | %s", topic_id, pair_idx, verdict["winner"],
+                    verdict["reasoning"][:80])
+        return {
+            "topic_id": topic_id,
+            "topic": topic,
+            "idea_index": pair_idx,
+            "system_a": ea["system_version"],
+            "system_b": eb["system_version"],
+            "judge_model": model,
+            **verdict,
+        }
+
+    effective_workers = min(max(1, workers), len(work_items)) if work_items else 1
     if effective_workers <= 1:
-        for topic_id in valid_topics:
-            topic = groups_a[topic_id][0]["topic"]
-            _collect(_judge_topic(topic_id, topic, groups_a[topic_id],
-                                  groups_b[topic_id], client, model))
+        for item in work_items:
+            _collect(_judge_one(item))
             stop, reason = _should_stop()
             if stop:
                 logger.info("Early stop: %s", reason)
@@ -260,13 +304,7 @@ def compare_systems(results_a: list[dict], results_b: list[dict], client,
                 break
     else:
         with ThreadPoolExecutor(max_workers=effective_workers) as executor:
-            futures = {
-                executor.submit(
-                    _judge_topic, topic_id, groups_a[topic_id][0]["topic"],
-                    groups_a[topic_id], groups_b[topic_id], client, model
-                ): topic_id
-                for topic_id in valid_topics
-            }
+            futures = {executor.submit(_judge_one, item): item for item in work_items}
             for future in as_completed(futures):
                 try:
                     _collect(future.result())
@@ -293,11 +331,13 @@ def compare_systems(results_a: list[dict], results_b: list[dict], client,
 
 
 def blind_compare_systems(results_a: list[dict], results_b: list[dict],
-                          n_sample: int | None = None) -> dict:
+                          n_sample: int | None = None, workers: int = 1) -> dict:
     """Run blind Gemini judge on topics, using idea[0] per topic.
 
     n_sample=None (default) runs on ALL shared topics for a full confusion matrix.
     Pass an int to subsample (legacy behaviour).
+
+    workers > 1 runs independent topic judgments concurrently.
 
     Deliberately isolated — creates its own client, never touches primary judge.
     Results are for tracking only, never used for accept/reject.
@@ -316,13 +356,14 @@ def blind_compare_systems(results_a: list[dict], results_b: list[dict],
         sample = shared          # all topics
     else:
         sample = random.sample(shared, min(n_sample, len(shared)))
-    logger.info("Blind judge [%s] running %d/%d topics",
-                BLIND_JUDGE_MODEL, len(sample), len(shared))
+    work_order = sorted(sample)
+    logger.info("Blind judge [%s] running %d/%d topics (workers=%d)",
+                BLIND_JUDGE_MODEL, len(sample), len(shared), max(1, workers))
 
     wins_a = wins_b = ties = 0
     verdicts = []
 
-    for topic_id in sample:
+    def _one(topic_id: str) -> dict | None:
         topic = groups_a[topic_id][0]["topic"]
         logger.info("Blind judging %s: %s", topic_id, topic[:55])
         try:
@@ -330,26 +371,45 @@ def blind_compare_systems(results_a: list[dict], results_b: list[dict],
                                  groups_b[topic_id][0]["text"], client, BLIND_JUDGE_MODEL)
         except Exception as e:
             logger.error("Blind judge failed for %s: %s", topic_id, e)
-            continue
+            return None
+        logger.info("  blind %s → %s | %s", topic_id, verdict["winner"],
+                    verdict["reasoning"][:80])
+        return {
+            "topic_id": topic_id,
+            "topic": topic,
+            "idea_index": 0,
+            "system_a": groups_a[topic_id][0]["system_version"],
+            "system_b": groups_b[topic_id][0]["system_version"],
+            "judge_model": BLIND_JUDGE_MODEL,
+            **verdict,
+        }
 
-        winner = verdict["winner"]
+    effective_workers = min(max(1, workers), len(work_order)) if work_order else 1
+    results_flat: list[dict | None]
+    if effective_workers <= 1:
+        results_flat = [_one(tid) for tid in work_order]
+    else:
+        results_flat = [None] * len(work_order)
+        with ThreadPoolExecutor(max_workers=effective_workers) as executor:
+            future_map = {executor.submit(_one, tid): i for i, tid in enumerate(work_order)}
+            for fut in as_completed(future_map):
+                i = future_map[fut]
+                try:
+                    results_flat[i] = fut.result()
+                except Exception as e:
+                    logger.error("Blind judge future failed: %s", e)
+
+    for row in results_flat:
+        if row is None:
+            continue
+        winner = row["winner"]
         if winner == "A":
             wins_a += 1
         elif winner == "B":
             wins_b += 1
         else:
             ties += 1
-
-        logger.info("  blind %s → %s | %s", topic_id, winner, verdict["reasoning"][:80])
-        verdicts.append({
-            "topic_id": topic_id,
-            "topic": topic,
-            "idea_index": 0,          # always idea[0] — enables confusion matrix matching
-            "system_a": groups_a[topic_id][0]["system_version"],
-            "system_b": groups_b[topic_id][0]["system_version"],
-            "judge_model": BLIND_JUDGE_MODEL,
-            **verdict,
-        })
+        verdicts.append(row)
 
     total = wins_a + wins_b + ties
     win_rate_b = (wins_b + 0.5 * ties) / total if total > 0 else 0.0

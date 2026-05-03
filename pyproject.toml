@@ -4,7 +4,7 @@ version = "0.0.6"
 description = "EvoScientist: Towards Self-Evolving AI Scientists for End-to-End Scientific Discovery"
 readme = "README.md"
 requires-python = ">=3.11"
-license = "Apache-2.0"
+license = { text = "Apache-2.0" }
 authors = [
     { name = "Xi Zhang" },
 ]
@@ -76,6 +76,16 @@ all-channels = [
     "lark-oapi>=1.4.0",
     "qq-botpy>=1.0",
 ]
+hosted = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "arq>=0.26",
+    "redis>=5",
+    "sqlalchemy[asyncio]>=2.0",
+    "asyncpg>=0.30",
+    "pydantic-settings>=2.6",
+    "cryptography>=43",
+]
 
 [project.urls]
 "Homepage" = "https://github.com/EvoScientist/EvoScientist"
@@ -87,6 +97,9 @@ evoscientist = "EvoScientist.cli:main"
 EvoScientist = "EvoScientist.cli:main"
 evosci = "EvoScientist.cli:main"
 EvoSci = "EvoScientist.cli:main"
+hosted-api = "EvoScientist.hosted.cli:run_api"
+hosted-worker = "EvoScientist.hosted.cli:run_worker"
+hosted-admin = "EvoScientist.hosted.admin:main"
 
 [build-system]
 requires = ["setuptools>=68.0"]

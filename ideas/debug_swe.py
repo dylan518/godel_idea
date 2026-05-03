@@ -24,6 +24,7 @@ sys.path.insert(0, str(IDEAS_DIR / "systems"))
 import log as _log
 _log.load_dotenv()   # must call before any API clients are created
 import swe_agent
+from canonical_skills import ideas_path_prefix, workspace_root
 
 # Force DEBUG level so we see everything
 import logging
@@ -136,8 +137,12 @@ def main() -> None:
     import subprocess, os as _os
     shutil.copy(champion_path, output_path)
 
-    repo_root = IDEAS_DIR.parent
-    rel_output = output_path.relative_to(repo_root)
+    wr = workspace_root(IDEAS_DIR)
+    ip = ideas_path_prefix(IDEAS_DIR, wr)
+    try:
+        rel_output = output_path.relative_to(wr)
+    except ValueError:
+        rel_output = output_path
     task_prompt = f"""You are improving a Python research idea generator. Make ONE focused, surgical improvement.
 
 ## Improvement strategy
@@ -148,7 +153,7 @@ def main() -> None:
 
 ## What to do
 1. Read `{rel_output}` — already a copy of the champion, your starting point
-2. Read `ideas/idea_tournament/prompts.py`, `ideas/idea_tournament/tree_search.py`, `ideas/idea_tournament/tournament.py` for full context
+2. Read `{ip}idea_tournament/prompts.py`, `{ip}idea_tournament/tree_search.py`, `{ip}idea_tournament/tournament.py` for full context
 3. Implement the improvement strategy above with TARGETED edits to `{rel_output}`
 
 ## Hard constraints
@@ -168,7 +173,7 @@ def main() -> None:
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             text=True,
-            cwd=str(repo_root),
+            cwd=str(wr),
             env=clean_env,
         )
         proc.stdin.write(task_prompt)

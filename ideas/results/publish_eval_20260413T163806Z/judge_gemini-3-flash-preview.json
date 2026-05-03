@@ -1,0 +1,673 @@
+{
+  "judge_model": "gemini-3-flash-preview",
+  "current": "S15",
+  "candidate": "S_paper",
+  "wins_a": 19,
+  "wins_b": 1,
+  "ties": 10,
+  "total_judged": 30,
+  "win_rate_b": 0.2,
+  "stopped_early": false,
+  "verdicts": [
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 10
+      },
+      "winner": "tie",
+      "reasoning": "Idea A offers a high-novelty scientific hypothesis that challenges the interchangeability of depth and width by using rigorous controls like loss-matched checkpoints to isolate architectural bias. Idea B is exceptionally practical and feasible, addressing the critical need for hardware-constrained scaling laws, though it follows a more traditional empirical optimization path similar to neural architecture search."
+    },
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 6,
+        "feasibility": 5
+      },
+      "winner": "A",
+      "reasoning": "Idea B is a well-grounded and highly feasible study that addresses a practical gap in training efficiency by integrating hardware-level metrics into scaling laws. Idea A is conceptually ambitious and novel, but its reliance on achieving 100% deterministic reliability on adversarial benchmarks is likely unreachable at the proposed scale, making the experimental goal potentially impossible to measure."
+    },
+    {
+      "topic_id": "T10",
+      "topic": "Foundation models for genomics and single-cell biology",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "winner": "tie",
+      "reasoning": "Idea A is a highly feasible and practically useful application of reinforcement learning to protein design that addresses immediate needs in therapeutic development. Idea B is more conceptually ambitious and novel, proposing a sophisticated alignment-aware genomic model that could unlock new understanding of evolutionary constraints, though it faces higher data engineering hurdles. Both ideas are excellent and score equally well by balancing feasibility against conceptual innovation."
+    },
+    {
+      "topic_id": "T10",
+      "topic": "Foundation models for genomics and single-cell biology",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 10,
+        "feasibility": 10
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 6,
+        "feasibility": 5
+      },
+      "winner": "A",
+      "reasoning": "Idea A is a highly focused and methodologically sound proposal that addresses a specific, critical bottleneck in genomic foundation models with a clear falsification test. Idea B is visionary and addresses a high-value problem, but it suffers from major feasibility concerns regarding the availability of linked EHR and single-cell data, as well as a lack of technical detail on how the causal framework bridges these disparate data modalities."
+    },
+    {
+      "topic_id": "T11",
+      "topic": "Emergent communication in multi-agent systems",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 10,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 6,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A is the winner because it provides a precise, information-theoretic framework for understanding the grounding bottleneck, complete with a clear metric (Alignment Index) and specific falsification criteria. Idea B addresses an important practical problem but remains somewhat vague in its implementation details and faces significant feasibility challenges regarding the stability of neuro-symbolic induction across diverse software environments."
+    },
+    {
+      "topic_id": "T11",
+      "topic": "Emergent communication in multi-agent systems",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 10,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "winner": "A",
+      "reasoning": "Idea A is the winner due to its exceptional experimental design and the introduction of the 'Alignment Score,' which provides a quantifiable, a priori metric to predict lexicon formation. While Idea B addresses critical safety and bandwidth issues, Idea A's methodology is more scientifically rigorous, offering clear falsification criteria and a novel way to bridge the gap between hardware constraints and semantic task requirements."
+    },
+    {
+      "topic_id": "T12",
+      "topic": "Mechanistic interpretability of transformer models",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 6,
+        "feasibility": 5
+      },
+      "winner": "A",
+      "reasoning": "Idea A is a well-structured proposal that applies rigorous mechanistic interpretability methods to a timely architectural comparison, using a concrete and objective MDL metric. While Idea B addresses the important frontier of long-context models, its methodology is more speculative and the computational cost of performing activation patching on 7B models with million-token contexts is likely prohibitive."
+    },
+    {
+      "topic_id": "T12",
+      "topic": "Mechanistic interpretability of transformer models",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 6,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea B is the winner due to its exceptional experimental clarity and feasibility; it defines a specific, falsifiable hypothesis with a concrete statistical framework and established datasets. While Idea A is highly novel in its attempt to bridge dynamical systems and continual learning, it lacks methodological precision regarding how complex geometric metrics like persistent homology will be meaningfully applied to high-dimensional transformer activations."
+    },
+    {
+      "topic_id": "T13",
+      "topic": "Zero-shot generalization in reinforcement learning",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "winner": "A",
+      "reasoning": "Idea B is the winner because it addresses a fundamental theoretical gap in RL generalization by moving from observational metrics to causal interventions. Its methodology for isolating task-irrelevant factors via Local Policy Sensitivity (LPS) offers a more rigorous diagnostic framework and includes a clear falsification test, whereas Idea A is a more standard, albeit well-designed, architectural improvement for a specific robotics task."
+    },
+    {
+      "topic_id": "T13",
+      "topic": "Zero-shot generalization in reinforcement learning",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "winner": "A",
+      "reasoning": "Idea A offers a more principled and theoretically grounded approach to representation learning in offline RL, addressing the fundamental challenge of action-agnostic dynamics. It features a superior experimental design with clear falsification criteria and higher feasibility for the broader research community compared to the hardware-dependent and more incremental nature of Idea B."
+    },
+    {
+      "topic_id": "T14",
+      "topic": "Topological methods for high-dimensional data analysis",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "A",
+      "reasoning": "Idea B is superior because it integrates advanced generative modeling (Schr\u00f6dinger Bridges) with topological data analysis to solve a fundamental problem in biophysics with high scientific rigor. While Idea A is a strong engineering proposal for real-time systems, Idea B's methodology for mapping persistent cycles to physical metastable states and validating them against experimental phi-values represents a more significant scientific contribution."
+    },
+    {
+      "topic_id": "T14",
+      "topic": "Topological methods for high-dimensional data analysis",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "tie",
+      "reasoning": "Idea A is a technically sound and highly feasible refinement of the Mapper algorithm with a very clear experimental design. Idea B is significantly more ambitious and novel, applying TDA to generative drug design, but it faces substantial feasibility challenges regarding the computational cost and differentiability of the persistence loss in a deep learning training loop."
+    },
+    {
+      "topic_id": "T15",
+      "topic": "Quantum advantage in machine learning tasks",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "winner": "A",
+      "reasoning": "Idea A is a more rigorous and scientifically grounded approach to demonstrating quantum advantage, specifically addressing the 'catch-22' of quantum data generation with a clear methodology based on scaling laws. Idea B is highly ambitious but faces significant feasibility challenges, particularly in mapping high-dimensional LIDAR data to near-term quantum hardware and justifying why a quantum feature map would outperform classical denoising in a real-time robotics context."
+    },
+    {
+      "topic_id": "T15",
+      "topic": "Quantum advantage in machine learning tasks",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "winner": "tie",
+      "reasoning": "Idea A provides a highly practical and well-defined application for materials science that addresses immediate bottlenecks in sample efficiency, while Idea B tackles a fundamental theoretical challenge regarding the nature of quantum advantage with classical data. Both are high-quality proposals with complementary strengths in application and theory, resulting in nearly identical total scores."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "winner": "tie",
+      "reasoning": "Idea A offers high novelty by addressing the critical gap of PTM-induced conformational changes using a sophisticated latent-direction approach, while Idea B provides a highly feasible and industrially relevant refinement of antibody modeling. Both projects are well-defined and address major limitations of current models, balancing innovative methodology (A) against practical application in a data-rich domain (B)."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 10,
+        "feasibility": 10
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 10,
+        "experimental_clarity": 6,
+        "feasibility": 5
+      },
+      "winner": "A",
+      "reasoning": "Idea A is the winner because it provides a highly rigorous and immediately actionable experimental framework with specific metrics and success thresholds. While Idea B is more ambitious and addresses a critical gap in enzyme dynamics, it suffers from significant feasibility concerns regarding the availability of high-quality training data for multi-domain trajectories and the reliability of synthetic MD-derived inputs."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea B is the winner because it addresses a fundamental and immediate challenge in QEC\u2014the trade-off between decoherence suppression and crosstalk\u2014using a rigorous, well-defined experimental protocol. Idea A, while imaginative, suffers from a significant feasibility flaw: characterizing qubit metrics like T1 and T2 on microsecond timescales is physically impractical, as these measurements typically require extensive averaging over much longer periods."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 9
+      },
+      "winner": "A",
+      "reasoning": "Idea B is the winner due to its highly specific experimental design and its innovative approach to converting coherent errors into structured events within dynamical decoupling frames. While Idea A addresses the important problem of distributed scaling, Idea B offers a more rigorous physical hypothesis that can be immediately validated on current hardware with clear statistical benchmarks."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 10,
+        "feasibility": 10
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 6,
+        "feasibility": 5
+      },
+      "winner": "A",
+      "reasoning": "Idea A is a well-defined, highly feasible study with a clear falsifiable hypothesis and a rigorous methodology for isolating error propagation in causal discovery. While Idea B addresses a high-impact problem in autonomous driving, it remains conceptually vague regarding the integration of constraint-based discovery with high-dimensional latent representation learning, making its feasibility significantly lower."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 10
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 6,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A is a well-defined, rigorous study with a clear experimental path and high feasibility, addressing a specific theoretical gap in dynamical systems. While Idea B is highly ambitious and addresses a critical problem in personalized medicine, its methodology for creating 'virtual environments' is vague and the lack of ground truth in EHR data makes its validation significantly more difficult than the controlled simulations proposed in Idea A."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 10,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A presents a highly rigorous and well-defined experimental framework with specific metrics and controls to solve a fundamental bottleneck in analog neuromorphic hardware. While Idea B addresses a high-impact application, it lacks the methodological precision of Idea A and faces significantly higher feasibility hurdles regarding biocompatibility and in vitro integration."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 10,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A is the winner due to its exceptional experimental clarity and high feasibility; it targets a fundamental physical bottleneck in memristor training with a well-defined, falsifiable methodology. While Idea B is highly ambitious and addresses a critical need for medical AI, the complexity of designing a custom mixed-signal ASIC with hardcoded clinical priors presents significant feasibility risks compared to the focused device-level innovation of Idea A."
+    },
+    {
+      "topic_id": "T6",
+      "topic": "Generative AI for drug discovery and molecular design",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "tie",
+      "reasoning": "Idea A presents a highly novel technical approach by embedding periodic physical laws directly into diffusion models for materials, while Idea B addresses the critical 'synthesizability' gap in drug discovery with a rigorous, expert-validated experimental design. Both projects are high-impact and well-structured, balancing technical innovation in crystal design against practical utility and feasibility in medicinal chemistry."
+    },
+    {
+      "topic_id": "T6",
+      "topic": "Generative AI for drug discovery and molecular design",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 10,
+        "scientific_usefulness": 10,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "tie",
+      "reasoning": "Idea A is a scientifically rigorous advancement of structure-based design that addresses the critical challenge of protein flexibility with a clear, testable hypothesis. Idea B is a highly ambitious and novel shift toward formulation science, which has immense industrial value but faces significant hurdles in data availability and the complexity of modeling multi-component bulk properties."
+    },
+    {
+      "topic_id": "T7",
+      "topic": "Federated learning with heterogeneous and non-IID data",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "tie",
+      "reasoning": "Idea A is highly innovative, addressing the root cause of non-IID data in industrial settings through physics-constrained generation, while Idea B offers a robust, well-defined algorithmic improvement for general FL drift. Although Idea A has higher potential impact, Idea B's experimental design is more rigorous and feasible, leading to a balanced evaluation."
+    },
+    {
+      "topic_id": "T7",
+      "topic": "Federated learning with heterogeneous and non-IID data",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "winner": "tie",
+      "reasoning": "Idea A offers a highly rigorous and feasible approach to a fundamental federated learning problem with a very clear experimental design, whereas Idea B presents a more ambitious and novel solution for the complex challenge of graph-based learning under network instability. The two ideas are balanced, with A excelling in methodological clarity and B excelling in conceptual innovation and potential impact."
+    },
+    {
+      "topic_id": "T8",
+      "topic": "Deep learning emulators for climate model acceleration",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 10,
+        "experimental_clarity": 10,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 8
+      },
+      "winner": "A",
+      "reasoning": "Idea A addresses a fundamental and urgent scientific question: whether AI emulators can generalize to out-of-distribution climate tipping points. Its experimental design is exceptionally rigorous, featuring clear falsification criteria and a direct comparison of training data requirements, whereas Idea B focuses more on engineering optimizations for weather forecasting that are less central to the core challenges of climate model acceleration."
+    },
+    {
+      "topic_id": "T8",
+      "topic": "Deep learning emulators for climate model acceleration",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 10,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "A",
+      "reasoning": "Idea A is a rigorous, hypothesis-driven study that addresses the critical issue of extreme precipitation through a clever causal sampling framework, offering high feasibility and clear metrics. Idea B is visionary but suffers from significant feasibility concerns regarding the stability of coupled emulators and lacks the experimental specificity found in Idea A."
+    },
+    {
+      "topic_id": "T9",
+      "topic": "Uncertainty quantification in deep neural networks",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 9
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "winner": "B",
+      "reasoning": "Idea A addresses a fundamental theoretical limitation of conformal prediction\u2014the exchangeability assumption\u2014within the high-stakes context of autonomous driving, providing a clear path toward provable safety guarantees in real-time. While Idea B is experimentally sound and highly feasible, it offers a more incremental architectural improvement for OOD detection compared to the significant methodological shift proposed in Idea A."
+    },
+    {
+      "topic_id": "T9",
+      "topic": "Uncertainty quantification in deep neural networks",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gemini-3-flash-preview",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 7,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 9
+      },
+      "winner": "tie",
+      "reasoning": "Idea A provides high practical value by addressing clinical fairness and regulatory needs through a statistically sound conformal prediction framework, while Idea B offers a sophisticated scientific inquiry into the mechanistic relationship between adversarial robustness and uncertainty. Both ideas are exceptionally well-defined with clear experimental protocols, resulting in a tie where Idea A excels in application and Idea B in theoretical rigor."
+    }
+  ]
+}

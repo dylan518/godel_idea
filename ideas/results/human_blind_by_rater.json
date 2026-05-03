@@ -1,0 +1,86 @@
+{
+  "source": "results/human_blind_scores.jsonl",
+  "total_comparisons": 60,
+  "pooled": {
+    "n": 60,
+    "S15_wins": 40,
+    "S_paper_wins": 15,
+    "ties": 5,
+    "win_rate_b": 0.2917,
+    "s15_share": 0.7083
+  },
+  "per_rater": [
+    {
+      "rater_id": "dylan_pilot",
+      "n": 20,
+      "S15_wins": 13,
+      "S_paper_wins": 6,
+      "ties": 1,
+      "win_rate_b": 0.325,
+      "s15_share": 0.675
+    },
+    {
+      "rater_id": "Matt Stoner",
+      "n": 10,
+      "S15_wins": 5,
+      "S_paper_wins": 4,
+      "ties": 1,
+      "win_rate_b": 0.45,
+      "s15_share": 0.55
+    },
+    {
+      "rater_id": "Rachel Pepin",
+      "n": 6,
+      "S15_wins": 5,
+      "S_paper_wins": 1,
+      "ties": 0,
+      "win_rate_b": 0.1667,
+      "s15_share": 0.8333
+    },
+    {
+      "rater_id": "Caleb Kendrick",
+      "n": 5,
+      "S15_wins": 4,
+      "S_paper_wins": 0,
+      "ties": 1,
+      "win_rate_b": 0.1,
+      "s15_share": 0.9
+    },
+    {
+      "rater_id": "Jack Cui",
+      "n": 5,
+      "S15_wins": 3,
+      "S_paper_wins": 1,
+      "ties": 1,
+      "win_rate_b": 0.3,
+      "s15_share": 0.7
+    },
+    {
+      "rater_id": "Jolene Iseler",
+      "n": 5,
+      "S15_wins": 3,
+      "S_paper_wins": 1,
+      "ties": 1,
+      "win_rate_b": 0.3,
+      "s15_share": 0.7
+    },
+    {
+      "rater_id": "josh",
+      "n": 5,
+      "S15_wins": 3,
+      "S_paper_wins": 2,
+      "ties": 0,
+      "win_rate_b": 0.4,
+      "s15_share": 0.6
+    },
+    {
+      "rater_id": "Noor Taher",
+      "n": 4,
+      "S15_wins": 4,
+      "S_paper_wins": 0,
+      "ties": 0,
+      "win_rate_b": 0.0,
+      "s15_share": 1.0
+    }
+  ]
+}

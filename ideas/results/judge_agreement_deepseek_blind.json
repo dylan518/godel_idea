@@ -1,0 +1,160 @@
+{
+  "meta": {
+    "blind_model": "deepseek-chat",
+    "primary_pattern": "results/compare_*.json",
+    "blind_pattern": "results/blind_*__deepseek-chat.json",
+    "excluded_compare_files": [
+      "compare_S15_vs_S20.json"
+    ]
+  },
+  "transitions": [
+    {
+      "current": "S12",
+      "candidate": "S14",
+      "primary_file": "results/compare_S12_vs_S14.json",
+      "blind_file": "results/blind_S12_vs_S14__deepseek-chat.json",
+      "overlap_n": 75,
+      "agreement_rate": 0.6533333333333333,
+      "decisive_overlap_n": 73,
+      "flip_rate_decisive": 0.3287671232876712,
+      "cohen_kappa": 0.3243243243243243,
+      "label_counts_primary": {
+        "A": 36,
+        "B": 39,
+        "tie": 0
+      },
+      "label_counts_blind": {
+        "A": 36,
+        "B": 37,
+        "tie": 2
+      }
+    },
+    {
+      "current": "S12",
+      "candidate": "S15",
+      "primary_file": "results/compare_S12_vs_S15.json",
+      "blind_file": "results/blind_S12_vs_S15__deepseek-chat.json",
+      "overlap_n": 75,
+      "agreement_rate": 0.5866666666666667,
+      "decisive_overlap_n": 74,
+      "flip_rate_decisive": 0.40540540540540543,
+      "cohen_kappa": 0.17141838916607266,
+      "label_counts_primary": {
+        "A": 33,
+        "B": 41,
+        "tie": 1
+      },
+      "label_counts_blind": {
+        "A": 32,
+        "B": 43,
+        "tie": 0
+      }
+    },
+    {
+      "current": "S15",
+      "candidate": "S13",
+      "primary_file": "results/compare_S15_vs_S13.json",
+      "blind_file": "results/blind_S15_vs_S13__deepseek-chat.json",
+      "overlap_n": 75,
+      "agreement_rate": 0.5866666666666667,
+      "decisive_overlap_n": 70,
+      "flip_rate_decisive": 0.37142857142857144,
+      "cohen_kappa": 0.0832018927444796,
+      "label_counts_primary": {
+        "A": 49,
+        "B": 23,
+        "tie": 3
+      },
+      "label_counts_blind": {
+        "A": 54,
+        "B": 19,
+        "tie": 2
+      }
+    },
+    {
+      "current": "S15",
+      "candidate": "S16",
+      "primary_file": "results/compare_S15_vs_S16.json",
+      "blind_file": "results/blind_S15_vs_S16__deepseek-chat.json",
+      "overlap_n": 75,
+      "agreement_rate": 0.6133333333333333,
+      "decisive_overlap_n": 70,
+      "flip_rate_decisive": 0.34285714285714286,
+      "cohen_kappa": 0.27524158613795396,
+      "label_counts_primary": {
+        "A": 38,
+        "B": 36,
+        "tie": 1
+      },
+      "label_counts_blind": {
+        "A": 32,
+        "B": 39,
+        "tie": 4
+      }
+    },
+    {
+      "current": "S15",
+      "candidate": "S17",
+      "primary_file": "results/compare_S15_vs_S17.json",
+      "blind_file": "results/blind_S15_vs_S17__deepseek-chat.json",
+      "overlap_n": 75,
+      "agreement_rate": 0.7333333333333333,
+      "decisive_overlap_n": 75,
+      "flip_rate_decisive": 0.26666666666666666,
+      "cohen_kappa": 0.39999999999999986,
+      "label_counts_primary": {
+        "A": 50,
+        "B": 25,
+        "tie": 0
+      },
+      "label_counts_blind": {
+        "A": 50,
+        "B": 25,
+        "tie": 0
+      }
+    },
+    {
+      "current": "S15",
+      "candidate": "S18",
+      "primary_file": "results/compare_S15_vs_S18.json",
+      "blind_file": "results/blind_S15_vs_S18__deepseek-chat.json",
+      "overlap_n": 45,
+      "agreement_rate": 0.7777777777777778,
+      "decisive_overlap_n": 40,
+      "flip_rate_decisive": 0.175,
+      "cohen_kappa": 0.604221635883905,
+      "label_counts_primary": {
+        "A": 24,
+        "B": 18,
+        "tie": 3
+      },
+      "label_counts_blind": {
+        "A": 23,
+        "B": 18,
+        "tie": 4
+      }
+    },
+    {
+      "current": "S15",
+      "candidate": "S19",
+      "primary_file": "results/compare_S15_vs_S19.json",
+      "blind_file": "results/blind_S15_vs_S19__deepseek-chat.json",
+      "overlap_n": 75,
+      "agreement_rate": 0.92,
+      "decisive_overlap_n": 74,
+      "flip_rate_decisive": 0.06756756756756757,
+      "cohen_kappa": 0.6580547112462009,
+      "label_counts_primary": {
+        "A": 67,
+        "B": 8,
+        "tie": 0
+      },
+      "label_counts_blind": {
+        "A": 63,
+        "B": 11,
+        "tie": 1
+      }
+    }
+  ],
+  "missing_blind_files": []
+}

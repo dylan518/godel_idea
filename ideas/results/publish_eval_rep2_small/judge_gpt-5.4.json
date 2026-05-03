@@ -1,0 +1,233 @@
+{
+  "judge_model": "gpt-5.4",
+  "current": "S15",
+  "candidate": "S_paper",
+  "wins_a": 5,
+  "wins_b": 1,
+  "ties": 4,
+  "total_judged": 10,
+  "win_rate_b": 0.3,
+  "stopped_early": false,
+  "verdicts": [
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gpt-5.4",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "tie",
+      "reasoning": "Idea A is more tightly specified and experimentally cleaner, with a clear intervention and falsifiable outcome under a realistic fixed-compute setup. Idea B is more ambitious and arguably more scientifically important because it extends scaling laws to non-stationary streams, but it is harder to operationalize and fit cleanly; overall the totals are close enough to call a tie."
+    },
+    {
+      "topic_id": "T1",
+      "topic": "Scaling laws for Large Language Models",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gpt-5.4",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 6
+      },
+      "winner": "tie",
+      "reasoning": "Idea A is more tightly specified and more feasible, with a clear falsifiable regression-based test for predicting optimal continual pre-training mixtures from measurable domain properties. Idea B targets a broader and highly important open problem with stronger potential impact and novelty, but its experimental program is more complex and resource-intensive, making execution risk higher; overall the totals are close enough to call a tie."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gpt-5.4",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 8,
+        "feasibility": 5
+      },
+      "winner": "A",
+      "reasoning": "Idea A asks a sharper scientific question about what AlphaFold has actually learned, and its regression-based design could yield actionable insight for both protein design and model development. Idea B targets an important application, but distillation for fast docking is a more crowded and engineering-heavy direction, and its dependence on AlphaFold 3-generated supervision and industrial-scale screening constraints makes feasibility less convincing."
+    },
+    {
+      "topic_id": "T2",
+      "topic": "Protein structure prediction beyond AlphaFold",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gpt-5.4",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 4
+      },
+      "winner": "A",
+      "reasoning": "Idea A targets a concrete and important bottleneck in using AlphaFold-derived structures for drug discovery, with a well-controlled experimental design and a clear falsification criterion. Idea B is ambitious and conceptually exciting, but its validation plan relies heavily on proxy metrics and the integrated QM-aware design loop is substantially less feasible with current data and modeling capabilities."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gpt-5.4",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "winner": "A",
+      "reasoning": "Idea A is stronger overall because it targets a concrete and important hardware bottleneck with a well-specified device concept, clear baselines, explicit falsification criteria, and a realistic fabrication path. Idea B is highly original and potentially impactful, but its experimental plan is less tightly grounded and the coupled challenges of harvested-power dynamics, phase stability, and adaptive control make near-term execution substantially riskier."
+    },
+    {
+      "topic_id": "T5",
+      "topic": "Energy-efficient neuromorphic computing",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gpt-5.4",
+      "scores_a": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 9,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "winner": "A",
+      "reasoning": "Idea A is highly original in pushing photonic neuromorphic computing to data-center-scale orchestration, but its feasibility is limited by substantial systems-integration, thermal control, and scaling challenges, and the proposed experiment only partially validates the full vision. Idea B addresses a concrete and important bottleneck in online neuromorphic learning with a clearer device-to-system methodology, stronger benchmark plan, and more plausible near-term implementation, giving it the higher overall score."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gpt-5.4",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 6,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 8,
+        "feasibility": 6
+      },
+      "winner": "B",
+      "reasoning": "Idea A targets a central bottleneck for realistic QEC on emerging cryogenic-CMOS hardware and proposes a concrete optimization-and-benchmarking workflow with clear logical-error metrics. Idea B is interesting and reasonably testable, but its mechanism is more speculative, its applicability is narrower, and the claimed threshold condition may be difficult to isolate cleanly in current hybrid digital-analog platforms."
+    },
+    {
+      "topic_id": "T3",
+      "topic": "Quantum error correction in NISQ devices",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gpt-5.4",
+      "scores_a": {
+        "novelty": 7,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 9,
+        "feasibility": 7
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "winner": "tie",
+      "reasoning": "Idea A is more tightly specified and experimentally cleaner: it poses a concrete, hardware-grounded comparison with clear metrics and realistic noise modeling for a specific QEC primitive. Idea B is arguably broader and more novel in systems impact, but its feasibility is weaker because real-time context sensing, cloud-level control, and just-in-time PEC on commercial platforms are difficult to obtain; overall the totals are close enough to call a tie."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 0,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gpt-5.4",
+      "scores_a": {
+        "novelty": 6,
+        "scientific_usefulness": 9,
+        "experimental_clarity": 9,
+        "feasibility": 8
+      },
+      "scores_b": {
+        "novelty": 8,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 5
+      },
+      "winner": "A",
+      "reasoning": "Idea A is conceptually ambitious and tackles an important failure mode of invariance-based causal discovery, but it combines latent-variable discovery, corruption inference, adversarial training, and graph learning in a way that makes identification and implementation challenging. Idea B is less novel in absolute terms, since it integrates existing ingredients, but it addresses a major practical problem with a clearer methodological path, stronger falsifiability, and substantially better near-term feasibility."
+    },
+    {
+      "topic_id": "T4",
+      "topic": "Causal discovery from observational data",
+      "idea_index": 1,
+      "system_a": "S15",
+      "system_b": "S_paper",
+      "judge_model": "gpt-5.4",
+      "scores_a": {
+        "novelty": 9,
+        "scientific_usefulness": 7,
+        "experimental_clarity": 8,
+        "feasibility": 5
+      },
+      "scores_b": {
+        "novelty": 6,
+        "scientific_usefulness": 8,
+        "experimental_clarity": 7,
+        "feasibility": 7
+      },
+      "winner": "tie",
+      "reasoning": "Idea A is more conceptually original, using topological changes in delay-embedded manifolds as a causal signal, but it is also riskier because the claimed link between intervention targets and persistent-homology shifts may be fragile and hard to validate broadly. Idea B addresses an important practical problem and is more implementable with current tools, but much of it feels like a synthesis of existing ingredients rather than a sharply new scientific principle; overall the totals are close enough to call a tie."
+    }
+  ]
+}

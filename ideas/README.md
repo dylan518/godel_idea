@@ -33,30 +33,34 @@ A self-improving research idea generator that uses pairwise LLM evaluation to ev
 
 ## Current Architecture
 
-| Component | Model | Role |
-|-----------|-------|------|
-| Generator | `deepseek-chat` (DeepSeek V3) | Cheap, fast idea generation |
-| Meta-LLM / SWE agent | `claude-sonnet-4-6` | Writes new S{n}.py strategy files |
-| Primary judge | `deepseek-chat` (DeepSeek V3) | Accept/reject decisions |
-| Blind judge | `gemini-flash-lite-latest` | Independent canary (never used for accept/reject) |
+
+| Component            | Model                         | Role                                              |
+| -------------------- | ----------------------------- | ------------------------------------------------- |
+| Generator            | `deepseek-chat` (DeepSeek V3) | Cheap, fast idea generation                       |
+| Meta-LLM / SWE agent | `claude-sonnet-4-6`           | Writes new S{n}.py strategy files                 |
+| Primary judge        | `deepseek-chat` (DeepSeek V3) | Accept/reject decisions                           |
+| Blind judge          | `gemini-flash-lite-latest`    | Independent canary (never used for accept/reject) |
+
 
 **Current champion**: `S15` — Hypothesis-First Adversarial Loop (55.3% vs S12)
 
-**Full results table + how this relates to the main EvoScientist agent**: see [`RESULTS_SUMMARY.md`](RESULTS_SUMMARY.md).
+**Full results table + how this relates to the main EvoScientist agent**: see `[RESULTS_SUMMARY.md](RESULTS_SUMMARY.md)`.
 
 ---
 
 ## Evolution History
 
-Loop started fresh from `S_sota` as the bootstrap champion (prior S0–S6 experiments archived).
+Loop started fresh from `**S_paper`** (log label for the reboot baseline; implemented as `S_sota.py`, cache `results/S_sota/`) as the bootstrap champion (prior S0–S6 experiments archived).
 
-| Version | Strategy | Win Rate vs Prev Champion | Status |
-|---------|----------|--------------------------|--------|
-| S_sota | SOTA retrieval + intra-topic Elo tournament + multi-perspective critique | — | bootstrap champion |
-| S12 | Hypothesis-First Adversarial Loop (v1) | **89.3%** vs S_sota | champion |
-| S13 | SWE refinement of S12 (round 1) | 54% vs S12 | rejected |
-| S14 | SWE refinement of S12 (round 2) | 54% vs S12 | rejected |
-| S15 | Hypothesis-First Adversarial Loop (SWE-refined) | **55.3%** vs S12 | **champion** |
+
+| Version                       | Strategy                                                                 | Win Rate vs Prev Champion | Status             |
+| ----------------------------- | ------------------------------------------------------------------------ | ------------------------- | ------------------ |
+| S_paper (reboot; `S_sota.py`) | SOTA retrieval + intra-topic Elo tournament + multi-perspective critique | —                         | bootstrap champion |
+| S12                           | Hypothesis-First Adversarial Loop (v1)                                   | **89.3%** vs S_paper      | champion           |
+| S13                           | SWE refinement of S12 (round 1)                                          | 54% vs S12                | rejected           |
+| S14                           | SWE refinement of S12 (round 2)                                          | 54% vs S12                | rejected           |
+| S15                           | Hypothesis-First Adversarial Loop (SWE-refined)                          | **55.3%** vs S12          | **champion**       |
+
 
 **Key finding**: the judge rewards *specificity and measurability* as much as novelty. Vague ambitious ideas consistently lose to concrete, actionable ones. Starting from falsifiable hypotheses rather than technique names produces significantly stronger ideas.
 
@@ -135,10 +139,12 @@ SOTA paper context is fetched via the **OpenAlex API** (switched from Semantic S
 
 A Goodhart alert fires when primary judge (DeepSeek) and blind judge (Gemini) diverge significantly. The system tracks a **per-pair confusion matrix** across every comparison run:
 
-| | Gemini says B wins | Gemini says A wins |
-|---|---|---|
-| **DeepSeek says B wins** | agreement | flip |
-| **DeepSeek says A wins** | flip | agreement |
+
+|                          | Gemini says B wins | Gemini says A wins |
+| ------------------------ | ------------------ | ------------------ |
+| **DeepSeek says B wins** | agreement          | flip               |
+| **DeepSeek says A wins** | flip               | agreement          |
+
 
 - Alert threshold: `flip_rate > 30%`
 - Blind judge runs on 3 randomly sampled topics (not all 15) to save cost
@@ -240,13 +246,13 @@ class S16Generator(IdeaGenerator):
         ...
 ```
 
-2. Compare against champion:
+1. Compare against champion:
 
 ```bash
 python3 ideas/godel_loop.py compare --candidate S16 --n-ideas 5 --workers 3
 ```
 
-3. If win_rate > 55% with no Goodhart alert, accept:
+1. If win_rate > 55% with no Goodhart alert, accept:
 
 ```bash
 python3 ideas/godel_loop.py accept S16

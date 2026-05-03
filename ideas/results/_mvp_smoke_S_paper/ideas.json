@@ -1,0 +1,12 @@
+[
+  {
+    "topic_id": "M1",
+    "topic": "Robustness of vision transformers under distribution shift",
+    "domain": "ML",
+    "idea_index": 0,
+    "text": "IDEA: Develop a stable continuous prompt adaptation method for Vision Transformers that uses a fixed-memory buffer of past prompts and constrained optimization to enable real-time adaptation to dynamic distribution shifts in video surveillance, while preventing catastrophic forgetting.\n\nBACKGROUND: Vision Transformers adapted via prompt tuning are effective for distribution shifts, but in persistent, real-world settings like video surveillance, conditions (e.g., weather, lighting) change dynamically. Current online prompt adaptation methods suffer from a stability-plasticity dilemma, causing catastrophic forgetting of earlier conditions and unacceptable performance drops, which limits their deployment in 24/7 operational systems.\n\nAPPROACH: We propose a novel stable prompt update rule that maintains a small, fixed buffer of learned prompts from past distributional modes. For each new video segment, the current prompt is updated via a constrained optimization that minimizes loss on new data while ensuring performance on distributions represented by the buffered prompts does not degrade, using a lightweight projection step to guarantee near-zero adaptation latency.\n\nEXPERIMENT: We will test on the SHIFT dataset (continuous driving scenes with weather/time shifts) and a curated real-world surveillance stream, evaluating average accuracy across all encountered conditions (primary metric) and per-condition accuracy drop, comparing to baselines like CoOp and existing online adaptation methods (e.g., O-Prompt).\n\nNOVELTY: This method uniquely provides a formal guarantee of no performance drop on prior distributions via constrained optimization with a prompt buffer, a guarantee absent in prior prompt-based or online adaptation work, while maintaining the real-time latency required for live video streams.",
+    "system_version": "S_paper",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-09T22:30:10.298467+00:00"
+  }
+]

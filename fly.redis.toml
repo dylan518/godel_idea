@@ -1,0 +1,16 @@
+# Minimal Redis on Fly (same account as the main app — no extra vendor signup).
+# Deploy: fly apps create evoscientist-redis   # if name is free
+#         fly deploy --config fly.redis.toml
+#
+# Internal URL for secrets: redis://evoscientist-redis.internal:6379/0
+
+app = "evoscientist-redis"
+primary_region = "iad"
+
+[build]
+  image = "redis:7-alpine"
+
+[[vm]]
+  cpus = 1
+  cpu_kind = "shared"
+  memory = "256mb"

@@ -1,25 +1,33 @@
-"""S16_r2: Cross-Domain Isomorphism Transfer + Adversarial Loop.
+"""S16_r2: Hypothesis-First Adversarial Loop with Mechanistic Construction Lock.
 
-Extends S15's adversarial hypothesis loop with a cross-domain isomorphism step
-BEFORE hypothesis generation. Given the research topic, the system identifies
-2-3 analogous problems in different fields that have already been solved, extracts
-their solution structures, and instantiates those structures back into the target
-domain as seeded hypotheses. This produces ideas that are:
-  - Structurally grounded (borrowed from a proven solution in another field)
-  - Genuinely novel in the target domain (no one has made the transfer yet)
-  - Experimentally concrete (inherited specificity from the source solution)
+Replaces the top-down tree/tournament with a FALSIFIABLE-HYPOTHESIS-FIRST loop:
 
-Pipeline:
-1. SOTA RETRIEVAL (external): fetch 5 related papers
-2. CROSS-DOMAIN ANALOGS (1 call): identify 2-3 isomorphic solved problems in other fields
-3. ISOMORPHISM TRANSFER (1 call): extract solution structures and instantiate as hypotheses
-4. ADVERSARIAL ATTACKS (5 calls, parallel): attack each transferred hypothesis
-5. HYPOTHESIS SELECTION (1 call): pick strongest survivor
-6. IDEA CONSTRUCTION (1 call): design full experiment around hypothesis
-7. MULTI-PERSPECTIVE CRITIQUE (4 calls: exp + theory + skeptic + synthesis)
-8. FINAL REVISION (1 call): incorporate critique
+1. HYPOTHESIS GENERATION: One LLM call produces 5 sharp, testable scientific
+   hypotheses about the topic (e.g., "scaling laws break under data-constrained
+   regimes because X"). Starting from *claimed truths about the world* rather
+   than technique names.
 
-LLM calls: 1 + 1 + 5 + 1 + 1 + 4 + 1 = ~14
+2. ADVERSARIAL ATTACK (parallel, 5 calls): Each hypothesis gets independently
+   attacked by an adversarial critic that probes assumption violations, dataset
+   biases, theoretical gaps, and practical limitations. Each attack also forces
+   a refined/alternative variant.
+
+3. HYPOTHESIS SELECTION (1 call): Aggregate attack+revision pairs and pick the
+   strongest surviving hypothesis — the one whose refined version is most
+   concrete, novel, and falsifiable.
+
+4. IDEA CONSTRUCTION (1 call): Design the full experimental idea around
+   proving/disproving the surviving hypothesis. Uses a locked preamble that
+   forces the LLM to (a) restate the precise mechanistic claim, (b) specify the
+   null result numerically before designing the experiment, and (c) justify why
+   the chosen method is the MINIMAL SUFFICIENT test — not a general improvement.
+
+5. MULTI-PERSPECTIVE CRITIQUE (4 calls): Experimentalist, theorist, skeptic
+   critique + synthesis.
+
+6. FINAL REVISION (1 call): Incorporate critique.
+
+LLM calls: 1 (hyp) + 5 (attacks) + 1 (select) + 1 (construct) + 4 (critique) + 1 (revise) = ~13
 """
 
 import sys
@@ -33,10 +41,10 @@ from systems.base import IdeaGenerator, DEFAULT_MODEL, call_llm, IDEA_FORMAT
 class S16_r2Generator(IdeaGenerator):
     VERSION = "S16_r2"
     DESCRIPTION = (
-        "Cross-domain isomorphism transfer + adversarial loop: find analogous solved "
-        "problems in other fields, transfer solution structures as hypotheses, attack "
-        "each in parallel, select strongest survivor, build experimental idea around "
-        "falsification, then multi-perspective critique."
+        "Hypothesis-first adversarial loop with mechanistic construction lock: "
+        "generate falsifiable hypotheses, attack each in parallel, select strongest "
+        "survivor, then lock mechanistic claim + null result BEFORE designing the "
+        "experiment to prevent drift toward generic technique proposals."
     )
 
     def get_prompt(self, topic: str) -> str:
@@ -60,65 +68,26 @@ class S16_r2Generator(IdeaGenerator):
 
         context_block = f"\n\n{sota_context}\n" if sota_context else ""
 
-        # ── Step 1: identify cross-domain analogs ────────────────────────────
-        # Find 2-3 isomorphic problems in DIFFERENT fields that have already been solved.
-        # The goal: harvest proven solution structures and transfer them to the target domain.
-        analog_prompt = (
+        # ── Step 1: generate 5 falsifiable hypotheses ───────────────────────
+        hyp_prompt = (
             f"Research topic: {topic}{context_block}\n"
-            "Identify 2-3 analogous problems in DIFFERENT scientific or engineering fields "
-            "that are structurally isomorphic to this topic and have already been solved.\n\n"
-            "Structural isomorphism means: the underlying mathematical or causal structure "
-            "is similar even if the surface domain is completely different.\n\n"
-            "Examples of good analogies:\n"
-            "  - 'zero-shot generalization in NLP' ↔ 'species distribution shift in ecology' "
-            "(both: model trained on one distribution must generalize to unseen environments)\n"
-            "  - 'neural network compression' ↔ 'signal compression in telecommunications' "
-            "(both: preserve information while reducing representation size)\n"
-            "  - 'reward hacking in RL' ↔ 'Goodhart's law in economics' "
-            "(both: optimization pressure on a proxy metric corrupts the true objective)\n\n"
-            "For each analog, output:\n"
-            "ANALOG 1:\n"
-            "  Source field: <field name>\n"
-            "  Analogous problem: <1 sentence — what problem was solved in that field>\n"
-            "  Solution structure: <2-3 sentences — the KEY mechanism/principle that solved it, "
-            "abstracted away from field-specific details>\n"
-            "  Structural mapping: <1 sentence — how the source problem maps to the target topic>\n\n"
-            "ANALOG 2:\n"
-            "  ...\n\n"
-            "ANALOG 3:\n"
-            "  ..."
+            "Generate exactly 5 sharp, falsifiable scientific hypotheses about this topic.\n"
+            "Each hypothesis must:\n"
+            "- Make a specific claim about the world (not just 'we can improve X')\n"
+            "- Be testable: name what experiment would prove it false\n"
+            "- Be non-obvious: it should NOT be directly supported by the related work above\n"
+            "- Be concise: 1-2 sentences max\n\n"
+            "Format each as:\n"
+            "H1: <hypothesis statement>\n"
+            "H2: <hypothesis statement>\n"
+            "H3: <hypothesis statement>\n"
+            "H4: <hypothesis statement>\n"
+            "H5: <hypothesis statement>"
         )
         try:
-            analogs_raw = call_llm(analog_prompt, model, client, temperature=0.9)
+            hyp_raw = call_llm(hyp_prompt, model, client, temperature)
         except Exception as e:
-            analogs_raw = f"ANALOG 1:\n  Source field: Control theory\n  Analogous problem: Robust control under model uncertainty\n  Solution structure: Decompose uncertainty into structured and unstructured parts; design controllers that are robust to the former and adaptive to the latter.\n  Structural mapping: {topic} faces similar structure-versus-noise decomposition challenges."
-
-        # ── Step 2: transfer solution structures as hypotheses ───────────────
-        transfer_prompt = (
-            f"Research topic: {topic}{context_block}\n"
-            f"Cross-domain analogs with proven solution structures:\n{analogs_raw}\n\n"
-            "Your task: for each analog, INSTANTIATE the solution structure as a concrete, "
-            "falsifiable hypothesis about the target research topic.\n\n"
-            "Rules for transfer:\n"
-            "  - Keep the MECHANISM from the source field, replace all domain-specific terms\n"
-            "  - The hypothesis must be non-obvious: it should NOT be a simple restatement of "
-            "the original problem. The novelty comes from the structural transfer.\n"
-            "  - Each hypothesis must be testable: name what experiment would disprove it\n"
-            "  - Add 1-2 hypotheses that combine insights from multiple analogs (optional bonus)\n\n"
-            "Also generate 1-2 additional hypotheses that are NOT derived from analogs — "
-            "purely field-internal hypotheses that challenge conventional wisdom about the topic.\n\n"
-            "Format:\n"
-            "H1: <transferred hypothesis from ANALOG 1>\n"
-            "H2: <transferred hypothesis from ANALOG 2>\n"
-            "H3: <transferred hypothesis from ANALOG 3 OR cross-analog synthesis>\n"
-            "H4: <field-internal challenge hypothesis>\n"
-            "H5: <field-internal challenge hypothesis>"
-        )
-        try:
-            hyp_raw = call_llm(transfer_prompt, model, client, temperature=temperature)
-        except Exception as e:
-            # Fallback: generate hypotheses directly without transfer
-            hyp_raw = f"H1: Standard approaches to {topic} fail because of distribution shift between training and deployment."
+            hyp_raw = f"H1: Standard approaches to {topic} fail because of distribution shift."
 
         # Parse hypotheses
         hypotheses = []
@@ -132,7 +101,7 @@ class S16_r2Generator(IdeaGenerator):
             hypotheses = [hyp_raw.strip()]
         hypotheses = hypotheses[:5]  # cap at 5
 
-        # ── Step 3: parallel adversarial attacks on each hypothesis ─────────
+        # ── Step 2: parallel adversarial attacks on each hypothesis ─────────
         def attack_hypothesis(hyp: str) -> str:
             attack_prompt = (
                 f"Research topic: {topic}\n\n"
@@ -159,20 +128,19 @@ class S16_r2Generator(IdeaGenerator):
                 except Exception as e:
                     attacks.append(f"Revised: (timeout) {e}")
 
-        # ── Step 4: select the strongest surviving hypothesis ────────────────
+        # ── Step 3: select the strongest surviving hypothesis ────────────────
         pairs_str = ""
         for i, (hyp, attack) in enumerate(zip(hypotheses, attacks)):
             pairs_str += f"\n--- Hypothesis {i+1} ---\nOriginal: {hyp}\nCritique+Revision:\n{attack}\n"
 
         select_prompt = (
             f"Research topic: {topic}\n\n"
-            f"Below are {len(hypotheses)} hypotheses (some transferred from cross-domain analogs, "
-            f"some field-internal), each attacked by an adversarial critic and refined:\n{pairs_str}\n"
+            f"Below are {len(hypotheses)} original hypotheses, each attacked by an adversarial critic "
+            f"and refined into a stronger revised form:\n{pairs_str}\n"
             "Select the ONE hypothesis (by number) whose REVISED form is:\n"
             "- Most concrete and specific (names mechanisms, not just outcomes)\n"
             "- Most falsifiable (clearest path to a disproof experiment)\n"
-            "- Most novel (least covered by standard literature — cross-domain transfers "
-            "are especially valuable if they hold up to the attacks)\n\n"
+            "- Most novel (least covered by standard literature)\n\n"
             "Respond with:\n"
             "SELECTED: <number 1-5>\n"
             "REVISED HYPOTHESIS: <copy the revised hypothesis text exactly>\n"
@@ -192,27 +160,49 @@ class S16_r2Generator(IdeaGenerator):
                     selected_hyp = candidate
                     break
 
-        # ── Step 5: construct experimental idea around the hypothesis ────────
+        # ── Step 4: construct experimental idea around the hypothesis ────────
         context_reminder = (
             f"\nExisting work to differentiate from:\n{sota_context}\n"
             if sota_context else ""
         )
+        # Two-phase construction: first lock the mechanistic claim and null result,
+        # then design the experiment. This prevents drift toward generic technique
+        # proposals by forcing explicit commitment before method selection.
+        lock_prompt = (
+            f"Research topic: {topic}\n"
+            f"Core hypothesis: {selected_hyp}\n\n"
+            "Before designing any experiment, answer these three questions in order:\n\n"
+            "MECHANISTIC CLAIM: State in one sentence exactly what causal mechanism "
+            "or structural property this hypothesis asserts. This must name a specific "
+            "relationship (e.g. 'X causes Y via Z') not just a domain or outcome.\n\n"
+            "NULL RESULT: If the hypothesis is FALSE, what will the experiment show? "
+            "Give a specific numeric threshold or observable pattern that would constitute "
+            "disproof (e.g. 'accuracy improves <2% over baseline on dataset D because '). "
+            "Derive this from the mechanistic claim, not from the experiment design.\n\n"
+            "MINIMAL TEST: What is the SIMPLEST experiment that directly tests the "
+            "mechanistic claim above — no more complex than necessary? Name the method "
+            "only after explaining why it is the minimal sufficient test of this specific "
+            "mechanism (not a general improvement attempt). If a simpler design would "
+            "suffice, use it."
+        )
+        try:
+            mechanism_lock = call_llm(lock_prompt, model, client, temperature=0.3)
+        except Exception as e:
+            mechanism_lock = f"MECHANISTIC CLAIM: {selected_hyp}\nNULL RESULT: No improvement over baseline.\nMINIMAL TEST: Direct ablation study."
+
         construct_prompt = (
             f"Research topic: {topic}\n"
             f"{context_reminder}\n"
-            f"Core hypothesis to test: {selected_hyp}\n\n"
-            "This hypothesis was derived via cross-domain structural transfer — "
-            "it borrows a proven solution mechanism from another field. "
-            "Leverage that provenance: reference the source analogy when explaining "
-            "why the mechanism should work, then ground it in the specific constraints "
-            "of the target field.\n\n"
-            "Design a concrete research experiment to PROVE OR DISPROVE this hypothesis.\n"
+            f"Core hypothesis: {selected_hyp}\n\n"
+            f"Mechanistic analysis (use this to anchor the experiment):\n{mechanism_lock}\n\n"
+            "Now design the full experiment. CONSTRAINT: every design decision must "
+            "directly serve testing the MECHANISTIC CLAIM above — do not add methods, "
+            "datasets, or complexity that test something else.\n\n"
             "The experiment must:\n"
-            "- Name specific datasets you will use (not just 'standard benchmarks')\n"
-            "- Name specific baselines you will compare against\n"
-            "- Define quantitative success metrics (what number proves it, what number disproves it)\n"
-            "- Describe the key technical method in enough detail to implement\n"
-            "- Explain precisely what result would falsify the hypothesis\n\n"
+            "- Name specific datasets (not 'standard benchmarks')\n"
+            "- Name specific baselines to compare against\n"
+            "- Use the NULL RESULT threshold above as the falsification criterion\n"
+            "- Describe only the minimal method needed to test the mechanism\n\n"
             "Write 3-4 paragraphs. Be direct and specific."
         )
         try:
@@ -220,7 +210,7 @@ class S16_r2Generator(IdeaGenerator):
         except Exception as e:
             draft = f"Research idea for '{topic}' based on hypothesis: {selected_hyp}"
 
-        # ── Step 6: multi-perspective critique ───────────────────────────────
+        # ── Step 5: multi-perspective critique ───────────────────────────────
         exp_prompt = (
             f"You are a hard-nosed experimentalist reviewing a research proposal about '{topic}'.\n\n"
             f"Hypothesis being tested: {selected_hyp}\n\n"
@@ -274,7 +264,7 @@ class S16_r2Generator(IdeaGenerator):
         except Exception:
             synthesis = "Improve specificity, add baselines, clarify falsification criteria."
 
-        # ── Step 7: final revision ────────────────────────────────────────────
+        # ── Step 6: final revision ────────────────────────────────────────────
         revise_prompt = (
             f"Research topic: {topic}\n\n"
             f"Core hypothesis: {selected_hyp}\n\n"
@@ -283,9 +273,7 @@ class S16_r2Generator(IdeaGenerator):
             f"{context_reminder}\n"
             "Write the final, improved version of the research idea. "
             "Ensure the hypothesis is clearly stated, the falsification experiment is concrete, "
-            "and all datasets/baselines/metrics are named explicitly. "
-            "If the hypothesis was derived from a cross-domain analogy, briefly mention "
-            "the structural parallel — this strengthens the novelty claim."
+            "and all datasets/baselines/metrics are named explicitly."
             + IDEA_FORMAT
         )
         try:

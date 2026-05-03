@@ -20,6 +20,7 @@ import random
 import re
 import sys
 import os
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -28,6 +29,15 @@ ELO_K = 32          # Rating change per match (higher = more volatile)
 ELO_START = 1500.0  # Starting Elo for all candidates
 N_ROUNDS_LARGE = 4  # Rounds for ≥10 candidates (paper recommends 4-5)
 N_ROUNDS_SMALL = 3  # Rounds for <10 candidates
+
+
+def _parallel_workers(n_pairs: int) -> int:
+    """Tournament pair concurrency for a single Swiss round."""
+    try:
+        requested = int(os.environ.get("IDEAS_TOURNAMENT_WORKERS", "1"))
+    except ValueError:
+        requested = 1
+    return min(max(1, requested), max(1, n_pairs))
 
 
 def _parse_json(raw: str) -> dict:
@@ -109,8 +119,28 @@ def _run_swiss_elo(
         if not pairs:
             break
 
+        winners: dict[tuple[int, int], str] = {}
+        workers = _parallel_workers(len(pairs))
+        if workers <= 1:
+            for a, b in pairs:
+                winners[(a, b)] = _compare_pair(topic, leaves[a], leaves[b], client, model)
+        else:
+            with ThreadPoolExecutor(max_workers=workers) as executor:
+                future_map = {
+                    executor.submit(_compare_pair, topic, leaves[a], leaves[b], client, model): (a, b)
+                    for a, b in pairs
+                }
+                for future in as_completed(future_map):
+                    pair = future_map[future]
+                    try:
+                        winners[pair] = future.result()
+                    except Exception:
+                        winners[pair] = "tie"
+
+        # Apply Elo updates in deterministic pair order after all parallel calls
+        # for the round finish, preserving Swiss-round semantics.
         for a, b in pairs:
-            winner = _compare_pair(topic, leaves[a], leaves[b], client, model)
+            winner = winners.get((a, b), "tie")
             ea = 1.0 / (1.0 + 10 ** ((ratings[b] - ratings[a]) / 400))
             score_a = 1.0 if winner == "A" else (0.0 if winner == "B" else 0.5)
             ratings[a] += ELO_K * (score_a - ea)

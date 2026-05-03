@@ -1,42 +1,38 @@
 # Darwin Gödel loop — paper prep bundle
 
-Generated from repo state `git rev = 24508b3f0c1aeff6b4f14b36b063ec69df9a06f5`; `CURRENT_VERSION` = `S15`.
+Generated from repo state `git rev = ad7b927f7be90c1d0206a73176f13bb64ffc6908`; `CURRENT_VERSION` = `S15`.
 
 ## 1. Evolution trajectory (accept chain)
 
-
-| time                | from      | to      | primary win_rate (B) | blind              | notes                                                                          |
-| ------------------- | --------- | ------- | -------------------- | ------------------ | ------------------------------------------------------------------------------ |
-| 2026-04-06T13:19:00 | bootstrap | S_sota  | —                    | —                  | fresh loop from S_sota                                                         |
-| 2026-04-06T19:48:15 | S_sota    | S12     | 0.8933333333333333   | 0.7                |                                                                                |
-| 2026-04-06T21:36:36 | S12       | S15     | 0.5533333333333333   | 0.6666666666666666 |                                                                                |
-| 2026-04-12T20:52:52 | S15       | S_paper | —                    | —                  |                                                                                |
-
+| time | from | to | primary win_rate (B) | blind | notes |
+|------|------|-----|----------------------|-------|-------|
+| 2026-04-06T13:19:00 | bootstrap | S_paper | — | — | fresh loop from S_paper (reboot baseline; generator S_sota.py, cache dir results |
+| 2026-04-06T19:48:15 | S_paper | S12 | 0.8933333333333333 | 0.7 |  |
+| 2026-04-06T21:36:36 | S12 | S15 | 0.5533333333333333 | 0.6666666666666666 |  |
+| 2026-04-12T20:52:52 | S15 | S_paper | — | — |  |
 
 **Reads:** `ideas/results/evolution_log.jsonl` (+ `trajectory.json` here).**
 
 ## 2. Head-to-head compares on disk (non-archive)
 
-
-| report                            | champion (A) | candidate (B) | B win rate | judged |
-| --------------------------------- | ------------ | ------------- | ---------- | ------ |
-| `results/compare_S12_vs_S14.json` | S12          | S14           | 0.5400     | 75     |
-| `results/compare_S12_vs_S15.json` | S12          | S15           | 0.5533     | 75     |
-| `results/compare_S15_vs_S16.json` | S15          | S16           | 0.4867     | 75     |
-| `results/compare_S15_vs_S17.json` | S15          | S17           | 0.3333     | 75     |
-| `results/compare_S15_vs_S18.json` | S15          | S18           | 0.4333     | 45     |
-| `results/compare_S15_vs_S19.json` | S15          | S19           | 0.1067     | 75     |
-| `results/compare_S15_vs_S20.json` | S15          | S20           | 0.7500     | 12     |
-
+| report | champion (A) | candidate (B) | B win rate | judged |
+|--------|----------------|---------------|------------|--------|
+| `results/compare_S12_vs_S14.json` | S12 | S14 | 0.5200 | 75 |
+| `results/compare_S12_vs_S15.json` | S12 | S15 | 0.5533 | 75 |
+| `results/compare_S15_vs_S13.json` | S15 | S13 | 0.1000 | 10 |
+| `results/compare_S15_vs_S16.json` | S15 | S16 | 0.4867 | 75 |
+| `results/compare_S15_vs_S17.json` | S15 | S17 | 0.3333 | 75 |
+| `results/compare_S15_vs_S18.json` | S15 | S18 | 0.4333 | 45 |
+| `results/compare_S15_vs_S19.json` | S15 | S19 | 0.1067 | 75 |
 
 ## 3. Mechanisms (from system module docstrings)
 
-### S_sota
+### S_paper
 
 - **Call budget hint:** LLM calls per idea: 3 (candidates) + tournament (2-4 comparisons) + 5 (critique) = ~12
 
 ```
-S_sota: SOTA-grounded + tournament + multi-perspective critique.
+S_paper (reboot baseline in results logs): SOTA-grounded + tournament + multi-perspective critique.
 
 This is the new strong baseline that replaces S0 as the starting point
 for the self-improvement loop. It combines three components:
@@ -56,8 +52,8 @@ for the self-improvement loop. It combines three components:
    the "finals".
 
 This is the EvoScientist-inspired baseline: tournament + SOTA context
-+ multi-perspective critique, all in one pipeline.
 
+(Implementation: ideas/systems/S_sota.py; cache: ideas/results/S_sota/.)
 ```
 
 ### S12
@@ -118,9 +114,9 @@ Replaces the top-down tree/tournament with a FALSIFIABLE-HYPOTHESIS-FIRST loop:
 
 ```
 
-### S_paper
+### S_paper_skills
 
-- **Call budget hint:** 2. `build_idea_tree` — L1→L2→L3 JSON tree + review (4 LLM calls), once per topic
+- **Call budget hint:** 2. ``build_idea_tree`` — L1→L2→L3 JSON tree + review (4 LLM calls), once per topic
 
 ```
 S_paper: IdeaTreeSearch + Elo wired to repo-root ``skills/`` (idea-tournament + research-ideation).
@@ -130,7 +126,7 @@ Markdown from ``skills/idea-tournament/references/*.md`` and
 ``skills/research-ideation/references/literature-tree.md`` (same sources as Claude Code).
 
 Per benchmark topic (``generate_idea`` × n_ideas uses thread-local cache):
-  1. OpenAlex SOTA context (same retrieval as S_sota / S15)
+  1. OpenAlex SOTA context (same retrieval as reboot baseline / S15)
   2. ``build_idea_tree`` — L1→L2→L3 JSON tree + review (4 LLM calls), once per topic
   3. ``run_tournament_ranked`` — Swiss Elo on leaf dicts (paper-style judge), once per topic
   4. Each idea slot: expand one ranked leaf to ``IDEA_FORMAT`` (1 LLM call each)
@@ -146,20 +142,18 @@ after editing ``skills/…`` rubrics or ``idea_tournament/prompts.py``.
 
 ## 4. Baselines vs champion (supporting eval, not thesis)
 
-- **Main loop accepts:** see trajectory — `S_sota`→`S12`→`S15` used primary + blind in log.
-- `**S_paper`:** paper-aligned idea search; see `publish_eval_`* / `judge_*.json` if present.
-- **Protocol mismatch warning:** some `compare_*.json` files use **75** judged pairs (e.g. `n_ideas=5`); `publish_eval_`* uses **30** pairs (`n_ideas=2`). Do not mix in one table without labeling.
+- **Main loop accepts:** see trajectory — `S_paper`→`S12`→`S15` used primary + blind in log (reboot baseline = `S_sota.py`).
+- **`S_paper_skills` (`S_paper.py`):** idea-tree / skills-aligned search; see `publish_eval_*` / `judge_*.json` if present.
+- **Protocol mismatch warning:** some `compare_*.json` files use **75** judged pairs (e.g. `n_ideas=5`); `publish_eval_*` uses **30** pairs (`n_ideas=2`). Do not mix in one table without labeling.
 
 ### Rough LLM budget per idea (from docstrings — verify in code)
 
-
-| system    | hint (per idea)                                                                        |
-| --------- | -------------------------------------------------------------------------------------- |
-| `S_sota`  | LLM calls per idea: 3 (candidates) + tournament (2-4 comparisons) + 5 (critique) = ~12 |
-| `S12`     | 1. HYPOTHESIS GENERATION: One LLM call produces 5 sharp, testable scientific           |
-| `S15`     | 1. HYPOTHESIS GENERATION: One LLM call produces 5 sharp, testable scientific           |
-| `S_paper` | 2. `build_idea_tree` — L1→L2→L3 JSON tree + review (4 LLM calls), once per topic       |
-
+| system | hint (per idea) |
+|--------|-----------------|
+| `S_paper` | LLM calls per idea: 3 (candidates) + tournament (2-4 comparisons) + 5 (critique) = ~12 |
+| `S12` | 1. HYPOTHESIS GENERATION: One LLM call produces 5 sharp, testable scientific |
+| `S15` | 1. HYPOTHESIS GENERATION: One LLM call produces 5 sharp, testable scientific |
+| `S_paper_skills` | 2. ``build_idea_tree`` — L1→L2→L3 JSON tree + review (4 LLM calls), once per topic |
 
 Multiply by topics×ideas for a **benchmark generation** cost envelope; add judge pairs × judge calls for evaluation.
 
@@ -230,7 +224,7 @@ Multiply by topics×ideas for a **benchmark generation** cost envelope; add judg
 
 ## 5. Rejection reason samples (candidate lost)
 
-See `rejection_reason_samples.json` (25 rows).
+See `rejection_reason_samples.json` (30 rows).
 
 ## 6. Replication / next runs (manual)
 
@@ -248,9 +242,9 @@ python3 ideas/rerun_missing_verdicts.py --publish-dir ideas/results/publish_eval
 2. **Method:** champion/candidate/compare/accept; blind judge rule; SWE/meta optional.
 3. **Results — dynamics:** trajectory figure from `trajectory.json` + plateaus.
 4. **Results — mechanisms:** per-hop docstrings / diffs (`mechanisms_from_docstrings.json` + git).
-5. **Results — baselines:** `S_paper` / `S_sota` vs champion with explicit protocol rows.
+5. **Results — baselines:** `S_paper_skills` (`S_paper.py`) vs champion with explicit protocol rows; reboot row uses log label `S_paper` + `S_sota.py`.
 6. **Results — failures:** rejection samples + Goodhart episodes from logs.
 7. **Cost:** calls per idea from docstrings; $ heuristic from publish harness.
 8. **Discussion:** limits of self-improvement; judge coupling.
-9. **Appendix:** frozen `compare_*.json`, `publish_eval_`*, judge outputs.
+9. **Appendix:** frozen `compare_*.json`, `publish_eval_*`, judge outputs.
 

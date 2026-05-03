@@ -1,0 +1,102 @@
+[
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 0,
+    "text": "IDEA: A causal discovery method for high-dimensional linear-nonlinear time series that identifies direct causal links by applying surrogate-controlled, lag-specific transfer entropy tests within a proven constraint-based conditional independence framework.\n\nBACKGROUND: Current methods for detecting direct causal links in high-dimensional, nonlinear time series with sparse lagged dependencies struggle to reliably distinguish direct from indirect causation and autocorrelation effects. This is a critical open problem in fields like climate science and neuroscience, where observational data is prevalent but underlying mechanisms are complex.\n\nAPPROACH: The core method integrates a rigorous surrogate test (using model-based or iterative surrogates on residuals) for lag-specific transfer entropy to control for autocorrelation and common drivers, and embeds this test within the PCMCI+ constraint-based causal discovery algorithm to systematically condition on potential indirect pathways and avoid statistical pitfalls.\n\nEXPERIMENT: The method will be tested on the simulated Linear-Nonlinear VAR benchmark and the CauseMe platform's real-world time series challenges, with success quantified by the F1-score for exact lag recovery against known ground truth, and falsified if its performance is statistically lower than PCMCI+ and TCDF baselines.\n\nNOVELTY: It uniquely combines a statistically rigorous surrogate test for direct coupling with a proven constraint-based causal discovery framework, moving beyond ad-hoc conditional steps or purely linear methods to robustly isolate direct causation in nonlinear, high-dimensional settings.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T18:42:33.324428+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 1,
+    "text": "IDEA: We propose that a necessary condition for a variable being the target of an intervention in a nonlinear dynamical system is a statistically significant shift in the multiscale topological features (persistent homology) of its delay-embedded state-space manifold, detectable via a permutation test on persistence landscapes.\n\nBACKGROUND: Causal discovery from time series data is challenging under nonlinear dynamics and hidden confounding. Existing methods often rely on conditional independence or predictive asymmetry, which can fail when mechanisms are non-equivalent under transformations. We address the specific problem of distinguishing true intervention targets from variables affected only via propagation in such systems.\n\nAPPROACH: For each variable, we compare persistence diagrams from observational and interventional data segments, constructed via delay-embedding with bootstrapped parameters. We convert diagrams to persistence landscapes and apply a two-sample Hotelling's T\u00b2 permutation test. A variable is flagged as an intervention target if its landscape difference is significant after FDR correction, formalizing a link between the autonomy of a causal mechanism and the topological invariance of its reconstructed manifold.\n\nEXPERIMENT: We test on the 5-variable Lorenz-96 model (with known interventions) and the CauseMe `Wien` neurophysiological benchmark, measuring AUPRC for identifying ground-truth intervention targets against baselines PCMCI+ and TCDF. The hypothesis is falsified if AUPRC \u22640.6 on synthetic data or if the method is statistically worse (p<0.01, Wilcoxon) than the best baseline on real data.\n\nNOVELTY: This method uniquely tests for intervention via changes in manifold topology, a different invariant than conditional independence or predictive accuracy, and is formally embedded within a structural causal model framework to distinguish it from generic change-point detection.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T18:44:49.189940+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 0,
+    "text": "IDEA: We hypothesize that for a fixed compute budget, the few-shot generalization of LLMs is maximized by an optimal trade-off between in-context example length and batch-level task diversity, which can be engineered by strategically packing multiple demonstrations of distinct tasks into each training sequence.\n\nBACKGROUND: Scaling laws dictate performance from model size, data, and compute, but they treat tokens uniformly. The open problem is whether the *structural distribution* of training tokens\u2014specifically, how in-context demonstrations are grouped within and across batches\u2014is an independent lever for improving in-context learning efficiency beyond total token count.\n\nAPPROACH: We will train 1.3B parameter models on a fixed FLOP budget, varying how FLANv2 demonstrations are packed into sequences. We directly compare three batch-construction policies: **Homogeneous** (all demos in a sequence are from one task), **Heterogeneous** (demos from many tasks per sequence), and **Random** (uncontrolled packing), while holding average sequence length and batch size constant to isolate the diversity mechanism.\n\nEXPERIMENT: Models will be evaluated on a decontaminated suite from MMLU, BIG-Bench Hard, and TydiQA using multiple few-shot prompt lengths. Success is defined by the Heterogeneous policy significantly outperforming both Homogeneous and Random baselines, falsified if no policy beats Random or if gains are attributable to evaluation prompt length alone.\n\nNOVELTY: This goes beyond scaling laws for uniform tokens by introducing \"task-diversity scaling\" as a trainable variable, and differentiates from prior packing methods by directly testing batch composition\u2014not just sequence length\u2014as a mediator of in-context learning.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T18:42:31.104335+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 1,
+    "text": "IDEA: For a fixed model size, the deviation of the optimal domain-specific continual pre-training mixture ratio from a compute-optimal baseline is a linear function of the distributional divergence and a domain complexity measure derived from the model's own learning dynamics.\n\nBACKGROUND: Continual pre-training (CPT) on domain data requires choosing a mixture ratio with the general corpus, but current methods rely on costly grid search. Existing scaling laws do not predict how the optimal ratio varies with fundamental domain properties, leaving a gap for a predictive, domain-aware CPT law.\n\nAPPROACH: We will derive a predictive model where the optimal ratio deviation is predicted by symmetrized KL divergence and a novel \"early learning difficulty\" metric, defined as the relative reduction in training loss on the domain corpus versus the general corpus in the first few training steps. We will test this across 12 diverse domains (e.g., Python code, legal text, biomedical abstracts) using CodeLlama-7B.\n\nEXPERIMENT: For each domain, we perform CPT at multiple mixture ratios, compute the two domain metrics, and identify the empirically optimal ratio via a suite of domain-specific tasks. Success is a multivariate linear regression (R\u00b2 > 0.8) with significant coefficients across the 12 domains, falsified if R\u00b2 < 0.4 or if optimal ratios cluster at the baseline.\n\nNOVELTY: This goes beyond the D-CPT Law's grid-search approach and static complexity measures by predicting the optimal ratio from fundamental corpus properties and a learning-dynamic-based complexity metric, validated across a statistically significant number of diverse domains.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T18:44:51.482645+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 0,
+    "text": "IDEA: To test whether AlphaFold's accuracy on de novo designed proteins is governed by an internal model of local structural plausibility rather than by evolutionary signals, by analyzing predictions stratified by both sequence homolog count and quantitative deviations from learned structural grammar.\n\nBACKGROUND: AlphaFold excels at predicting natural protein structures but performs inconsistently on novel de novo designs. It is unclear whether its failures stem from a lack of evolutionary data (MSAs) or from designs violating the local structural \"grammar\" implicitly learned from the PDB, a distinction critical for guiding future protein design and model improvement.\n\nAPPROACH: We will run AlphaFold2 (with templates disabled) on curated de novo designs and control natural proteins. We will stratify results using two orthogonal axes: the number of sequence homologs and a direct metric of local structural deviation from AlphaFold's training distribution, derived from per-residue pLDDT, predicted dihedral distributions, and packing density.\n\nEXPERIMENT: Using designs from TopoBuilder/SCUBA (natural-like) and RFdiffusion/Chroma (novel motifs), we will measure prediction accuracy (TM-score to experimental structure) and model confidence (pLDDT), then perform a multiple regression analysis with an interaction term between homolog count and the local structural deviation metric.\n\nNOVELTY: This moves beyond correlating global fold novelty with accuracy by directly quantifying local structural plausibility and testing its interaction with evolutionary signals, while strictly controlling for template and fragment-homology bias to isolate AlphaFold's prior.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T18:42:35.654785+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 1,
+    "text": "IDEA: To test if the dominant error in physics-based binding affinity predictions from high-confidence AlphaFold2 models stems from the miscalculation of displaceable conserved water molecules, rather than from errors in the predicted protein-ligand geometry.\n\nBACKGROUND: While AlphaFold2 (AF2) predicts protein structures with high accuracy, its generated apo models are not reliably used for computational drug discovery. A key open problem is identifying the specific source of error when these high-confidence models fail to predict binding affinities, hindering their standalone utility in lead optimization.\n\nAPPROACH: We will isolate the error by comparing free energy perturbation (FEP) predictions from AF2 models and experimental apo structures. For each, we will run FEP protocols that either ignore, displace, or restrain key water molecules predicted *in silico* from the structure itself using Schr\u00f6dinger's WaterMap.\n\nEXPERIMENT: Using the PDBbind refined set, we will measure the mean absolute error (MAE) in \u0394G prediction for AF2 and experimental apo structures across the three FEP protocols. The hypothesis is falsified if the error from AF2 models with restrained waters remains significantly higher than from experimental apo structures.\n\nNOVELTY: This directly isolates the water-displacement error component unique to AF2 by using *in silico* predicted waters and benchmarking against experimental apo structures, moving beyond hybrid corrections and generic scoring function validation.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T18:44:54.217066+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 0,
+    "text": "IDEA: Extending idle-qubit coherence in hybrid digital-analog NISQ devices by applying a stabilized, off-resonant drive that induces a virtual coupling to an active analog block, provided the drive's amplitude noise is below a threshold set by the qubit's anharmonicity.\n\nBACKGROUND: In hybrid digital-analog quantum processors, idle qubits decohere during long analog entangling blocks on neighboring qubits, limiting algorithm depth. Existing dynamical decoupling is incompatible with concurrent analog operations, and crosstalk from the analog block can introduce additional dephasing noise that standard idling does not address.\n\nAPPROACH: We will apply a carefully stabilized, off-resonant continuous drive to an idle qubit during an analog Ising interaction on its neighbors. The drive is engineered to virtually couple the idle qubit to the active block, symmetrizing its environment against the dominant Markovian noise from the block, while its amplitude noise is actively suppressed below a critical ratio of \u03c3_\u03a9/|\u03b1|.\n\nEXPERIMENT: Using a modified CPMG sequence during the analog block, we will measure the idle qubit's pure dephasing time (T_\u03c6) across two datasets: a sweep of the stabilized drive's amplitude noise and a comparison across qubits with different anharmonicities (\u03b1). Success is defined by a >20% increase in T_\u03c6 only when \u03c3_\u03a9/|\u03b1| < 0.1, validated against baselines with no drive, an unstabilized drive, and standard dynamical decoupling.\n\nNOVELTY: This goes beyond generic dynamical decoupling by using a virtual coupling to an active operation for stabilization, and establishes a concrete, testable noise threshold based on a fundamental qubit parameter (anharmonicity) rather than general drift suppression.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T18:42:32.606285+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 1,
+    "text": "IDEA: We propose that on a superconducting processor with tunable couplers, implementing a repetition code's encoding via a single, calibrated analog Ising block yields a higher final logical fidelity than a digitized gate sequence, provided the analog evolution is fast and syndrome extraction is deferred.\n\nBACKGROUND: Current NISQ devices waste coherence time on deep, sequential two-qubit gates for error-correction encoding. A faster, parallel analog entangling block could preserve more coherence, but its practical advantage is unclear due to control errors and crosstalk. This work tests if real device imperfections nullify the theoretical speed advantage.\n\nAPPROACH: Using Google Sycamore calibration data, we simulate a 9-qubit bit-flip code. We compare a digitized encoding circuit against an analog block modeled as a programmable nearest-neighbor Ising Hamiltonian. We incorporate measured crosstalk and drift to create a realistic error budget for the analog control.\n\nEXPERIMENT: We perform master-equation simulations to compute the final logical error rate after a deferred syndrome extraction, directly comparing the analog and digitized strategies under identical noise parameters from the `rainier` device.\n\nNOVELTY: This moves beyond theoretical digital-analog schemes by performing a hardware-grounded, noise-aware comparison for a concrete QEC task, using a real device's crosstalk data to quantify the control precision needed for an analog advantage.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T18:44:59.388670+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 0,
+    "text": "IDEA: Implementing signed, energy-efficient analog multiplication for neural networks by using designed and shielded BEOL capacitive coupling cells, with differential signaling and calibration to suppress parasitics, and testing against digital and analog SRAM baselines.\n\nBACKGROUND: Analog in-memory computing using SRAM or memristors faces challenges with device nonlinearity, write energy, and CMOS incompatibility. This work addresses the open problem of achieving linear, energy-efficient, and CMOS-backend-compatible analog multiplication by intentionally using the BEOL for computation, rather than treating its capacitance as a parasitic to be minimized.\n\nAPPROACH: We design a differential, shielded parallel-plate capacitor (M7-M8) as a linear synaptic cell, with weights stored in a reconfigurable SRAM-driven switched-capacitor circuit. A foreground calibration cycle measures and cancels column offsets. This is fabricated in a 65nm test chip alongside a digital SRAM MAC array baseline.\n\nEXPERIMENT: We benchmark on CIFAR-10 and Google Speech Commands using ternary-weight networks, measuring energy per MAC at iso-accuracy (within 1% of FP32). Success is >2x lower energy than the digital baseline and within 80% of an advanced analog SRAM baseline (ISSCC 2020). Falsification occurs if calibration overhead exceeds 30% of MAC energy or if capacitor nonlinearity >5% causes a >5% absolute accuracy drop.\n\nNOVELTY: Unlike prior charge-domain or memristive approaches, this uses designed, shielded BEOL capacitors as the core linear multiply element, theoretically breaking traditional analog trade-offs by exploiting the backend's intrinsic precision and isolation for computation, distinct from parasitic coupling in digital circuits.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T18:42:49.994906+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 1,
+    "text": "IDEA: A hybrid neuromorphic chip using volatile VO\u2082 metal-insulator transition (MIT) devices as sparse, event-triggered short-term plasticity buffers for hidden states, which are periodically consolidated into non-volatile HfO\u2082 memristors, will achieve a lower energy-delay product for unsupervised temporal pattern learning than a pure memristive system.\n\nBACKGROUND: Current memristive neuromorphic systems suffer from high write energy for frequent synaptic updates during online learning. Volatile MIT devices offer ultra-low switching energy but cannot retain long-term states. The open problem is designing a memory hierarchy that leverages the efficiency of volatility for temporary dynamics while ensuring stable long-term learning, without incurring excessive consolidation overhead.\n\nAPPROACH: We will design a spiking recurrent network where hidden-layer synapses are implemented with a dual-element cell: a volatile VO\u2082 MIT device (engineered for <1nJ switching) handles online short-term plasticity, and a non-volatile HfO\u2082 memristor stores the consolidated long-term weight. A dedicated circuit controller will trigger a weight transfer from the MIT device to the memristor only when a hidden neuron's activity surpasses a stable, high threshold.\n\nEXPERIMENT: We will benchmark the system on N-MNIST and DVS128 Gesture datasets, measuring the total energy-delay product (EDP) per inference epoch and classification accuracy against two baselines: a fully memristive network and a simulated SRAM-based network with refresh. Success requires a \u226525% lower EDP than the memristive baseline while maintaining within 2% accuracy.\n\nNOVELTY: This work moves beyond using a single device for both dynamics and storage, instead co-designing a volatile/non-volatile synaptic memory hierarchy with an event-driven consolidation controller, explicitly optimizing for the sparsity of significant hidden-state updates in temporal learning.",
+    "system_version": "S15",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-13T18:45:13.913344+00:00"
+  }
+]

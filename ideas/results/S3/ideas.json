@@ -1,0 +1,752 @@
+[
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 0,
+    "text": "IDEA: We will resolve the fundamental identifiability of causal direction between two variables by testing whether the minimal description length of the true causal mechanism is always shorter than that of the reversed model when the data-generating process is nonlinear with additive, non-Gaussian noise.\n\nBACKGROUND: The precise identification of causal direction from two variables without parametric assumptions is blocked because, in general, P(X,Y) can be factorized in both directions. This makes the direction non-identifiable without constraints, leaving a core problem unsolved.\n\nAPPROACH: We hypothesize that for any continuous, nonlinear causal relationship Y = f(X) + N, with N additive and non-Gaussian and independent of X, the shortest algorithmic description of the causal model (X \u2192 Y) is always less complex than that of the anticausal model (Y \u2192 X). We will formalize this using algorithmic information theory and develop a practical estimator using normalized maximum likelihood coding.\n\nEXPERIMENT: We will test this on a vast, synthetic benchmark of known ground-truth causal pairs spanning functional forms and noise types, measuring the accuracy of direction identification and the gap in description length between the two candidate models.\n\nNOVELTY: This moves beyond existing asymmetry-based methods (like ANMs) by proposing a universal, non-parametric identifiability principle based on algorithmic minimality, and provides a concrete, computable test of its validity.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:44.449560+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 1,
+    "text": "**IDEA:** A decisive experiment to test whether a new, assumption-lean method can uniquely identify causal direction in bivariate pairs by exploiting asymmetries in local conditional variance under non-linear, non-additive noise.\n\n**BACKGROUND:** The fundamental unsolved problem is precisely identifying causal direction from two variables without strict parametric assumptions (e.g., linearity, additive noise) or faithfulness violations. Current methods fail under realistic noise structures, making this core building block unreliable.\n\n**APPROACH:** We hypothesize that for any cause-effect pair X\u2192Y, the local variance of Y conditioned on narrow slices of X will exhibit a systematic asymmetry not present in the reverse direction, provided the causal mechanism is sufficiently non-linear. We will develop a statistical test based on comparing the smoothness and monotonicity of estimated conditional variance functions for X|Y vs. Y|X.\n\n**EXPERIMENT:** We will test the method on a large, curated benchmark of real and simulated bivariate datasets with known ground truth, spanning diverse functional forms and noise models. Success will be measured by decisively outperforming existing constraint-free methods (like ANM, IGCI) in accuracy, especially on pairs where those methods fail.\n\n**NOVELTY:** This moves beyond global independence tests (like noise independence) to exploit finer-grained, local statistical properties of the data, and does not assume a pre-specified functional class or additive error, directly tackling the core limitation of current methods.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:59.640354+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 2,
+    "text": "IDEA: We hypothesize that a novel constraint-based algorithm, which iteratively applies asymmetric conditional independence tests on nonstationary data, can uniquely identify the direction of causal edges in the presence of latent confounding.\n\nBACKGROUND: The precise identification conditions for causal structure under latent confounding are unknown. Current methods often recover only a Markov equivalence class with many indistinguishable edge directions, leaving the true causal graph ambiguous when unmeasured common causes exist.\n\nAPPROACH: We will develop an algorithm that exploits distribution shifts across heterogeneous environments. It will test for the invariance of conditional independence relationships, specifically looking for asymmetries where a variable is independent of an ancestor's cause only in specific contexts, to infer directionality despite latent confounders.\n\nEXPERIMENT: We will test the algorithm on established synthetic benchmarks with known latent confounders and on real-world gene expression time-series data with known interventions, measuring the percentage of directed edges correctly identified beyond the standard Markov equivalence class.\n\nNOVELTY: This moves beyond testing invariance of conditional distributions (as in ICP) to testing for the invariance of *conditional independence constraints* across environments, a largely unexplored identification strategy for latent variable models.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:12.974086+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 3,
+    "text": "**IDEA:** Develop a provably consistent causal discovery algorithm for linear systems with latent confounding by leveraging rank constraints of special covariance matrices across increasing dimensional projections.\n\n**BACKGROUND:** This addresses subproblem #1: consistent discovery under latent confounding. Current methods either assume no latent confounders (e.g., PC algorithm) or make restrictive assumptions about their structure (e.g., latent variable models with a known number of latents). A general, consistent method without such strong assumptions is lacking.\n\n**APPROACH:** We hypothesize that the rank deficiency of specific cross-covariance matrices between increasing subsets of variables provides a necessary and sufficient fingerprint for distinguishing direct causal edges from spurious associations induced by arbitrary latent confounders. We will formalize this via an algebraic geometric argument and construct an algorithm that systematically tests these rank constraints.\n\n**EXPERIMENT:** We will test the method on synthetic linear-Gaussian datasets with arbitrary latent confounding and compare it against FCI and RFCI using structural Hamming distance to the true causal graph. A positive result is statistically significant outperformance, especially in recovering direct edges.\n\n**NOVELTY:** Unlike constraint-based methods that rely on conditional independence tests (which fail under latent confounding), this approach uses a different class of algebraic constraints that remain informative in the presence of unobserved common causes, offering a new pathway to consistency.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:28.869597+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 4,
+    "text": "IDEA: We hypothesize that a novel constraint-based algorithm using rank-based conditional independence tests on non-Gaussian, nonlinear data can reliably distinguish direct causation from latent confounding in high dimensions.\n\nBACKGROUND: This addresses subproblem #1: consistent discovery under latent confounding. Current methods fail when unobserved common causes induce spurious correlations in nonlinear, high-dimensional systems, which is the norm in fields like genomics.\n\nAPPROACH: We will develop an algorithm that leverages the generalized covariance measure conditioned on the residual of a random forest regression. This test for conditional independence is nonparametric, works on non-Gaussian data, and maintains validity in high dimensions, enabling the detection of d-separation even with hidden variables.\n\nEXPERIMENT: We will benchmark against FCI and RFCI on simulated datasets with known latent confounders and nonlinear relationships, using structural Hamming distance to the true Markov equivalence class as the primary metric, followed by validation on a curated gene expression dataset with known causal variants.\n\nNOVELTY: This moves beyond linear Gaussian assumptions and standard kernel-based tests by combining robust regression residuals with a rank statistic, aiming to provide the first provably consistent constraint-based method for latent confounding in general nonlinear settings.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:44.476247+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 0,
+    "text": "**IDEA:** To isolate and measure the distinct effects of network depth and activation function non-linearity on the calibration of aleatoric uncertainty estimates under controlled noise conditions.\n\n**BACKGROUND:** This addresses subproblem 4: the interaction between aleatoric uncertainty and architectural choices is not formally understood. Without this, we cannot design networks whose uncertainty estimates are reliably calibrated across different tasks and noise levels, as architectural hyperparameters are currently tuned for accuracy, not uncertainty quality.\n\n**APPROACH:** We will construct a controlled synthetic data pipeline where the true aleatoric noise function is known. We will then systematically train a factorial set of architectures (varying depth and activation function type) and fit their learned noise models, directly comparing them to the ground-truth noise distribution.\n\n**EXPERIMENT:** Using synthetic regression datasets with known, heterogeneous noise functions, we will measure the deviation between the predicted variance (aleatoric uncertainty) and the true noise variance across the input space, using a proposed \"Noise Reconstruction Error\" metric, alongside standard calibration metrics.\n\n**NOVELTY:** Prior work correlates architecture with aggregate calibration scores on real data, conflating many factors. This experiment directly manipulates architecture in isolation against a known noise ground truth, enabling causal attribution of architectural effects on aleatoric uncertainty modeling.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:43.721512+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 1,
+    "text": "**IDEA:** A controlled scaling experiment to empirically derive the functional form of epistemic uncertainty decay in wide neural networks across data regimes.\n\n**BACKGROUND:** The precise characterization of how epistemic uncertainty should asymptotically vanish with sufficient data and model capacity is unknown. This prevents the development of calibrated uncertainty estimates for out-of-distribution detection, as we lack a theoretical baseline for expected behavior in the non-asymptotic regimes typical of practice.\n\n**APPROACH:** Systematically train ensembles of wide MLPs and CNNs on synthetic data (e.g., Gaussian processes) and standard image data (CIFAR), scaling both dataset size (N) and network width (d) independently. Precisely measure epistemic uncertainty (via ensemble variance) while controlling for aleatoric noise, fitting models to the joint scaling law U_epistemic \u2248 f(N, d).\n\n**EXPERIMENT:** Use controlled synthetic datasets with known data-generating functions and CIFAR with added synthetic noise. Measure the power-law exponents and transition points where uncertainty decay saturates with respect to N and d, using out-of-distribution detection AUC as a downstream performance metric.\n\n**NOVELTY:** Prior work studies scaling in loss or accuracy; this directly targets the scaling of the *uncertainty decomposition itself* under joint model and data scaling, providing the first empirical law to guide architecture and dataset design for uncertainty quantification.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:59.567913+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 2,
+    "text": "**IDEA:** A controlled scaling experiment to empirically characterize the asymptotic behavior of epistemic uncertainty in overparameterized neural networks as a function of both dataset size and model complexity.\n\n**BACKGROUND:** The precise characterization of how epistemic uncertainty should asymptotically vanish with sufficient data in overparameterized networks is unknown. This challenges the Bayesian principle that model uncertainty reduces with more data, creating a fundamental gap in understanding the reliability of predictive distributions in modern, large-scale models.\n\n**APPROACH:** We will train ensembles of deterministic networks\u2014a gold standard for approximating epistemic uncertainty\u2014across a meticulously designed 2D grid of dataset size (N) and model parameters (P). We will systematically vary the overparameterization ratio (P/N) from underparameterized to heavily overparameterized regimes on synthetic data with known ground-truth functions and controlled noise.\n\n**EXPERIMENT:** We will measure epistemic uncertainty as the variance of ensemble predictions, analyzing its decay rate with N at fixed P/N ratios. The key metric is the empirical scaling law, specifically the exponent `\u03b1` in the power-law fit `U_epistemic \u221d N^{-\u03b1}`, across the overparameterization spectrum.\n\n**NOVELTY:** This directly tests the interaction between data and model scale on uncertainty decay, moving beyond theoretical edge-case analyses to provide an empirical map of asymptotic behavior, which is currently entirely missing for practical deep learning regimes.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:15.093307+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 3,
+    "text": "**IDEA:** We will empirically establish the fundamental Pareto frontier between uncertainty quality, computational cost, and predictive accuracy for deep neural networks by systematically benchmarking and modeling the trade-offs of major UQ methods across a controlled task spectrum.\n\n**BACKGROUND:** The third key unsolved problem is the lack of formal bounds on the trade-offs between uncertainty quality, cost, and accuracy. This prevents the design of optimally efficient UQ methods for real-world deployment, as practitioners cannot know the exact reliability cost of a chosen approximation.\n\n**APPROACH:** We will conduct a massive, controlled benchmarking study across three axes: UQ methods (Deep Ensembles, MC-Dropout, Laplace Approximation, SNGP, and a deterministic baseline), model sizes (from 1M to 100M parameters), and task difficulties (in-distribution accuracy, distribution shift, and out-of-distribution detection). We will fit a multi-objective performance model to the results to derive empirical Pareto frontiers.\n\n**EXPERIMENT:** Using standardized vision (CIFAR-10/100, ImageNet-R) and language (GLUE, ANLI) benchmarks, we will measure each method's predictive accuracy, computational cost (FLOPs, memory, latency), and uncertainty quality (via calibration error, AUC on OOD detection, and sharpness) to map the trade-off surface.\n\n**NOVELTY:** Prior work compares methods in isolation; this is the first experiment designed explicitly to model the *trade-off relationships* themselves, providing a quantitative map for selecting UQ techniques and exposing whether any method dominates the Pareto frontier.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:31.616987+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 4,
+    "text": "**IDEA:** A novel, computationally efficient method to isolate and quantify epistemic uncertainty in deep neural networks by analyzing the geometry of the loss landscape during training.\n\n**BACKGROUND:** The inability to separate aleatoric (data) and epistemic (model) uncertainty blocks reliable model trust assessment. Current methods, like deep ensembles or Monte Carlo dropout, conflate these uncertainties or are prohibitively expensive for large models, making it impossible to know if low confidence stems from noisy data or insufficient model knowledge.\n\n**APPROACH:** We hypothesize that the local curvature (Hessian spectrum) and the stability of minima found by stochastic optimizers are directly sensitive to epistemic uncertainty but robust to aleatoric noise. We will develop a lightweight method that tracks optimizer trajectory and approximates local curvature using a Lanczos algorithm, requiring only forward passes and a single backward pass per batch, making it scalable.\n\n**EXPERIMENT:** We will test on curated vision (CIFAR-10/100, ImageNet-O) and NLP (CLINC Out-of-Scope) benchmarks with controlled out-of-distribution shifts. Success is measured by a >20% improvement in AUROC for OOD detection and by demonstrating our metric's rise with epistemic uncertainty (e.g., on sparse data) while remaining flat with increased label noise.\n\n**NOVELTY:** Unlike prior Bayesian approximations that modify the training objective or ensemble multiple models, this is a post-hoc, architecture-agnostic diagnostic tool that directly analyzes training dynamics to isolate epistemic uncertainty, offering a fundamentally new and scalable signal.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:45.847866+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 0,
+    "text": "**IDEA:** Train a generative model on a unified graph representation that explicitly encodes both molecular connectivity and a learned, context-aware synthetic accessibility score derived from reaction databases.\n\n**BACKGROUND:** Current models for *de novo* molecular design often prioritize novelty and predicted activity, resulting in molecules that are synthetically intractable. This subproblem (#1) is a critical bottleneck because an unsynthesizable molecule has zero drug discovery utility, regardless of its computational promise.\n\n**APPROACH:** We will develop a graph-based generative model where each node and edge feature vector is augmented with a \"synthetic cost\" embedding. This embedding will be pre-trained on a vast corpus of published reaction rules (e.g., from Reaxys or USPTO) using a graph neural network to predict the feasibility and step-count of retrosynthetic pathways, then frozen during molecule generation.\n\n**EXPERIMENT:** We will benchmark the model against standard generative baselines (e.g., JT-VAE, GCPN) by generating molecules optimized for a target property (e.g., DRD2 activity). Success will be measured by a significant increase in the percentage of generated molecules rated as synthesizable by expert chemists and by computational retrosynthesis software (ASKCOS, AiZynthFinder), without a loss in property optimization performance.\n\n**NOVELTY:** Unlike post-hoc filters or simplistic penalty terms, this method bakes synthetic realism directly into the generative process via a structure-aware, data-driven cost function, fundamentally reshaping the exploration of chemical space toward accessible regions from the outset.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:44.696467+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 1,
+    "text": "**IDEA:** A generative model that explicitly learns and applies retrosynthetic rules from reaction databases to construct novel, synthetically accessible molecules in a single step.\n\n**BACKGROUND:** Current generative models for molecular design often produce chemically unrealistic or synthetically intractable structures. This creates a major bottleneck, as promising computational designs cannot be made for experimental testing. The subproblem of ensuring synthetic accessibility remains a critical unsolved barrier.\n\n**APPROACH:** We will develop a transformer-based model trained directly on published reaction data (e.g., USPTO, Reaxys). Instead of generating a molecular graph *de novo*, the model will be trained to perform *forward synthetic planning*: given a target property profile, it will iteratively select commercially available building blocks and apply learned reaction transformations to assemble a final product.\n\n**EXPERIMENT:** We will benchmark the model against state-of-the-art generative methods (e.g., GFlowNet, JT-VAE) on the task of generating novel molecules with predicted activity against a target (e.g., DRD2). Success will be measured by a significant increase in the percentage of generated molecules rated as synthetically accessible by expert chemists and by computational SA-score, without a loss in predicted bioactivity or novelty.\n\n**NOVELTY:** Unlike post-hoc filtering or scoring for synthetic accessibility, this method bakes synthetic logic directly into the generative process. It also moves beyond simple fragment linking by employing a learned model of realistic chemical transformations, ensuring each proposed step has a known precedent.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:00.541693+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 2,
+    "text": "IDEA: A generative model that uses a differentiable, data-driven synthetic accessibility score as its primary reward signal will produce novel molecules with significantly higher synthetic feasibility than current state-of-the-art methods.\n\nBACKGROUND: This addresses subproblem 1: generating synthetically accessible and novel molecules. Current models use coarse, rule-based filters (e.g., SA_Score) or post-hoc retrosynthesis analysis, which do not guide the generative process in a fine-grained, learnable manner. This disconnect between generation and synthesis planning is a primary bottleneck.\n\nAPPROACH: We will develop a GFlowNet conditioned on target properties, where the reward function integrates a novel Neural Synthetic Accessibility (NSA) score. This NSA score will be trained end-to-end on a large dataset of successful reaction sequences from Reaxys, using a transformer to predict the likelihood and cost of a proposed molecule's optimal synthetic route.\n\nEXPERIMENT: We will benchmark our model against prior generative methods (e.g., REINVENT, MoLeR) on standard tasks (e.g., DRD2 optimization), measuring novelty, property improvement, and the percentage of generated molecules deemed synthesizable in under 5 steps by both a computational retrosynthesis tool (ASKCOS) and expert medicinal chemists.\n\nNOVELTY: Unlike prior work that uses static filters, our NSA score is a differentiable, learnable component of the generative model itself, directly steering the exploration of chemical space toward synthetically tractable regions from first principles of reactivity.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:16.637688+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 3,
+    "text": "**IDEA:** Train a generative model on a combined dataset of synthetic reaction pathways and molecular structures to directly generate novel, synthetically accessible molecules.\n\n**BACKGROUND:** Current generative models for molecular design often produce chemically unrealistic or synthetically intractable structures. This subproblem is a critical bottleneck because it prevents computational designs from being physically tested. The field lacks models that natively integrate synthetic feasibility as a core generative constraint.\n\n**APPROACH:** We will develop a dual-encoder transformer model trained jointly on molecular graphs and their corresponding synthetic reaction sequences from public databases like USPTO and Reaxys. The model's architecture will force the latent representation to encode both structural and synthetic route information, enabling generation through a \"synthetic pathway decoder\" that proposes molecules stepwise via plausible retrosynthetic disconnections.\n\n**EXPERIMENT:** We will measure the model's ability to generate 10,000 novel molecules for a given target profile and calculate the percentage that expert medicinal chemists rate as synthetically accessible in one step (primary metric >80%), compared to a state-of-the-art structure-only generative model as a baseline.\n\n**NOVELTY:** Unlike post-hoc filtering or scoring for synthetic accessibility, this model bakes synthetic route planning directly into the generative process, and its training on reaction sequences rather than just molecular structures is a fundamental shift in representation learning for drug discovery.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:31.246421+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 4,
+    "text": "IDEA: A generative model trained on a dual representation of molecules\u2014as both SMILES strings and synthetic reaction pathways\u2014will produce novel compounds with significantly higher synthetic accessibility than current single-representation models.\n\nBACKGROUND: Current generative models for molecular design often propose novel molecules that are chemically unstable or require impractical synthetic routes, blocking their translation into real-world compounds. This is because they primarily learn from static molecular structures, ignoring the chemical logic of how molecules are actually built.\n\nAPPROACH: We will develop a transformer-based model trained jointly on two data streams: a standard molecular structure corpus (e.g., ChEMBL) and a large database of published organic reaction rules (e.g., from USPTO or Reaxys). The model's architecture will force the shared latent space to encode both molecular identity and feasible retrosynthetic disconnections.\n\nEXPERIMENT: We will benchmark the model against state-of-the-art structure-only generators (like REINVENT or GENTRL) by measuring the synthetic accessibility (SA) score and the percentage of generated novel molecules deemed synthesizable by expert chemists on a blinded set of 500 proposals.\n\nNOVELTY: Unlike post-hoc filters or reward functions for synthetic accessibility, this method bakes synthetic logic directly into the generative process from the ground up, using a novel dual-training regimen on reaction data rather than just molecular outcomes.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:45.940568+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 0,
+    "text": "**IDEA:** A definitive experimental comparison of sparse temporal coding versus rate coding for real-world vision tasks on an analog neuromorphic processor, using a novel, hardware-implementable spike-based autoencoder to isolate coding efficiency.\n\n**BACKGROUND:** The optimal spike coding scheme for sensory processing under hardware constraints is unknown. Rate coding is robust but inefficient; temporal coding is efficient but sensitive to noise. This lack of clarity dictates sensor and processor design without empirical grounding in real hardware.\n\n**APPROACH:** We will design a spike-based autoencoder with a single hidden layer, where the coding scheme is enforced as a hard constraint in the loss function. Identical networks will be trained with rate-coding and precise temporal-coding objectives, then mapped onto a prototype analog neuromorphic chip (e.g., Intel Loihi 2 or an in-memory compute array).\n\n**EXPERIMENT:** We will measure total system energy per inference, task accuracy (on MNIST & DVS Gesture), and latency on-chip, while sweeping simulated hardware noise and input event sparsity to map the Pareto frontier of each coding scheme.\n\n**NOVELTY:** This directly pits the schemes against each other on *actual hardware metrics*, moving beyond simulations, and uses a constrained autoencoder to isolate the coding contribution separate from complex learning algorithms.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:43.949236+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 1,
+    "text": "**IDEA:** A decisive experiment to establish the fundamental energy limits of spike-based communication by mapping the thermodynamic cost of information transfer in a neuromorphic system solving a canonical computational problem.\n\n**BACKGROUND:** The third key unsolved subproblem is the unknown fundamental energy limits of spike-based communication for real-world computation. Without this, we cannot benchmark ultimate efficiency gains or know if we are designing hardware near physical limits, stalling meaningful progress in the field.\n\n**APPROACH:** We will implement a single, well-defined temporal computation (coincidence detection in a noisy stream) on a controlled, asynchronous neuromorphic chip. We will then systematically vary the coding scheme (rate, temporal, population) and measure the total system energy per correct decision, isolating the communication cost by physically disabling unused cores and routing paths.\n\n**EXPERIMENT:** Using a synthetic spike dataset with controllable statistics and noise, we will measure the minimum energy per correct classification (joules/decision) as a function of coding fidelity and network size, establishing a Pareto frontier of accuracy versus energy for this canonical task.\n\n**NOVELTY:** Prior work measures task efficiency; this directly measures the irreducible communication cost of a computation, providing the first empirical lower bound for spike-based hardware and a new, physically-grounded benchmark metric (energy-per-correct-spike).",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:57.976565+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 2,
+    "text": "**IDEA:** Develop and characterize a novel, scalable, and hardware-aware learning algorithm that can provably train spiking neural networks on complex tasks while respecting the severe precision and stochasticity constraints of analog neuromorphic cores.\n\n**BACKGROUND:** The absence of a formal, hardware-aware learning framework is a key blocker for on-chip learning in neuromorphic systems. Current algorithms either ignore the severe non-idealities (e.g., low-precision, asymmetric, noisy weight updates) of analog synaptic arrays or are only demonstrated on trivial tasks, preventing their use for training large-scale systems on real-world problems.\n\n**APPROACH:** We will design a surrogate gradient learning algorithm that directly incorporates a detailed statistical model of a specific analog memory device's non-idealities (e.g., conductance response, write noise, asymmetry) into its backward pass. This will be implemented as a differentiable hardware layer within a deep learning framework, enabling end-to-end training where the algorithm learns to compensate for hardware constraints.\n\n**EXPERIMENT:** We will train SNNs on standard benchmarks (CIFAR-10, DVS Gesture) using our hardware-in-the-loop simulator and compare performance (accuracy, convergence speed) against standard surrogate gradient methods. Success is measured by closing the accuracy gap (<5% loss) between ideal software training and training with the full non-ideality model.\n\n**NOVELTY:** Unlike prior work that either ignores non-idealities or uses generic noise models, this approach is co-designed with a specific, characterized memory element, creating a provable and portable learning framework that bridges formal machine learning and physical device constraints.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:14.840632+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 3,
+    "text": "IDEA: Develop and characterize a novel, scalable, multi-terminal ferroelectric synaptic transistor that decouples read and write paths to achieve linear, symmetric, and low-stochasticity conductance updates.\n\nBACKGROUND: This addresses subproblem #1: the lack of a unified, scalable memory element for analog synaptic weights. Current memristive devices suffer from non-linear updates, asymmetry, and high stochasticity, which are fundamental hardware bottlenecks for on-chip training of large-scale neuromorphic systems.\n\nAPPROACH: We will engineer a three-terminal device where the channel conductance (synaptic weight) is modulated by the polarization state of a ferroelectric gate dielectric. Crucially, a separate, optimized terminal will control polarization switching, physically decoupling the delicate analog read operation from the write process to enable linear and symmetric conductance tuning.\n\nEXPERIMENT: We will fabricate a crossbar array of these devices and measure update linearity (fitting deviation <5%), symmetry (write energy difference <10%), and cycle-to-cycle variation (coefficient of variation <3%) across 10^4 update pulses, using a standardized protocol for synaptic emulation.\n\nNOVELTY: Unlike two-terminal memristors where read and write are intrinsically coupled, our multi-terminal design explicitly separates these functions, a structural innovation that directly targets the root causes of non-ideal synaptic behavior.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:28.846169+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 4,
+    "text": "**IDEA:** Develop a novel, fully-integrated ferroelectric field-effect transistor (FeFET) with a graded alloy composition to create a unified synaptic memory element that simultaneously achieves analog programmability, non-volatility, low write energy, and high endurance.\n\n**BACKGROUND:** This addresses subproblem #1: the lack of a unified, scalable, and energy-efficient memory element for synaptic weights. Current devices (e.g., RRAM, PCM) trade off one key property for another; for instance, achieving low write energy often sacrifices endurance or analog precision, blocking the creation of large-scale, fully analog in-memory computing systems.\n\n**APPROACH:** We will engineer a single FeFET device where the ferroelectric layer has a spatially graded Hf\u2093Zr\u2081\u208b\u2093O\u2082 composition. This creates a continuous distribution of switching voltages within one device, enabling smooth, analog conductance modulation via partial polarization switching. The ferroelectric nature ensures non-volatility and ultra-low write energy, while the graded design avoids the discrete filament formation that degrades endurance in resistive memories.\n\n**EXPERIMENT:** We will fabricate a crossbar array of these graded FeFETs and benchmark them using a standardized synaptic update protocol (e.g., MNIST training on a perceptron), directly measuring write energy (fJ), endurance (>10\u00b9\u00b9 cycles), analog levels (>100), retention (10 years at 85\u00b0C), and cycle-to-cycle variability (<1%).\n\n**NOVELTY:** Prior FeFET work focuses on binary operation for digital memory. This proposal uniquely uses a *graded alloy* within a single ferroelectric layer to intrinsically create multiple, stable analog states, unifying all key synaptic properties in one mainstream CMOS-compatible device, unlike hybrid or filamentary approaches.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:45.942613+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 0,
+    "text": "**IDEA:** Systematically vary data quality while holding compute and architecture constant to derive a scaling law for data quality and determine if it can replace the epoch-scaling assumption.\n\n**BACKGROUND:** This addresses subproblem 3: the scaling behavior and limits of data quality are not quantitatively understood. Current scaling laws treat data as a uniform bulk resource, using \"epoch scaling\" (repeating data) as a proxy for more data. A principled theory of optimal data curation is blocked by the lack of a quantitative law linking quality, quantity, and model performance.\n\n**APPROACH:** We will train a series of fixed-size transformer models on datasets of identical token count but varying, quantifiable quality levels. Quality will be controlled by synthetically filtering a base corpus (e.g., C4) along measurable dimensions like perplexity under a reference model, deduplication level, and code-to-text ratio, creating a precise \"quality score\" for each dataset mixture.\n\n**EXPERIMENT:** We will measure the final loss of each model on a held-out, high-quality validation set. By fitting the performance against the dataset's quality score and size, we will test for a clean, predictive relationship that could replace the epoch-scaling variable in current scaling laws.\n\n**NOVELTY:** Prior work mixes quality with quantity or uses heuristic curation. This experiment isolates quality as a controlled, continuous variable, aiming to derive its first scaling exponent and directly test if a quality-aware law makes epoch scaling obsolete.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:43.301920+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 1,
+    "text": "**IDEA:** A controlled scaling experiment to determine the fundamental compute-optimal frontier by training hundreds of models across a 2D grid of model sizes and dataset sizes, while directly measuring the scaling exponents for loss and isolating architectural constants.\n\n**BACKGROUND:** The optimal allocation of compute between model parameters and training data for a fixed budget (subproblem #2) is currently guided by the Chinchilla law, which is an empirical fit from a limited set of points. Its generalizability across architectures and data distributions is unproven, risking massive inefficiency. A first-principles derivation is impossible without knowing the precise mathematical form of the scaling law (subproblem #1).\n\n**APPROACH:** We will fix a single, modern transformer architecture (e.g., Llama-style) and a massive, high-quality data source (e.g., a refined web corpus). We will then train a full factorial design of models, varying model size (N) and dataset size (D) independently across orders of magnitude, while holding all other hyperparameters constant. Each (N, D) point will be trained to convergence on its dataset.\n\n**EXPERIMENT:** We will measure the final cross-entropy loss for each model, creating a dense loss landscape L(N,D). We will fit this surface to the generalized scaling law L(N,D) = (N_c / N)^\u03b1 + (D_c / D)^\u03b2 + L\u221e, directly extracting the exponents (\u03b1, \u03b2) and constants (N_c, D_c, L\u221e) with high confidence, thereby defining the compute-optimal frontier.\n\n**NOVELTY:** Prior work like Chinchilla used a sparse set of ~400 models and joint scaling of N and D. Our high-resolution, fully independent 2D grid provides the data density needed to disentangle the exponents and constants definitively, moving from a fitted rule-of-thumb to a measured law for a given architecture.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:00.146304+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 2,
+    "text": "IDEA: A controlled scaling experiment to derive the first principles optimal scaling ratio between model parameters and dataset size by training hundreds of models across a 2D compute frontier.\n\nBACKGROUND: The optimal scaling ratio for a fixed compute budget is not derived from first principles, leading to potentially massive inefficiency. Current \"Chinchilla-optimal\" ratios are empirical observations from a limited set of models, not a predictive law grounded in the interaction of scaling dimensions.\n\nAPPROACH: We will fix total training FLOPs as our budget and systematically vary the parameter count (N) and tokens processed (D) across a dense grid, training hundreds of small but architecturally identical models. We will fit a parametric loss function L(N,D) to this 2D surface to solve for the optimal isoFLOP contour, N \u221d D^\u03b1.\n\nEXPERIMENT: We will train over 200 transformer decoder models (from 10M to 1B params) on a massive, fixed-quality text corpus (C4), measuring final cross-entropy loss across the entire N-D frontier to map the loss landscape and identify the precise optimal scaling exponent \u03b1.\n\nNOVELTY: This moves beyond sparse, anecdotal optimal points by mapping the *complete* loss landscape for a fixed FLOP budget, enabling the derivation of an optimal scaling exponent from data rather than confirming a single point.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:14.356981+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 3,
+    "text": "IDEA: A controlled scaling experiment to isolate and quantify the effect of data diversity versus data quality on the scaling laws of a fixed model architecture.\n\nBACKGROUND: The limits of data scaling and the role of data quality versus diversity are not quantified. It is unknown if performance plateaus arise from exhausting novel information (diversity) or from insufficient high-grade examples for specific skills (quality), leading to inefficient multi-trillion token training efforts.\n\nAPPROACH: We will train a series of models from a single, highly controlled architecture (e.g., decoder-only transformers) on synthetic data. We will independently vary two parameters: the size of the unique token universe (diversity) and the number of high-quality \"demonstration\" examples per skill/topic (quality), while holding total tokens constant.\n\nEXPERIMENT: We will measure scaling curves for each configuration using a battery of downstream tasks, specifically tracking where and how performance plateaus as a function of the two independent variables, using the exponent of the power-law fit as the key metric.\n\nNOVELTY: Prior work mixes quality and diversity conflated in real datasets. This experiment uses synthetic data to disentangle them as first-principles variables, allowing us to establish separate scaling exponents for data diversity and data quality for the first time.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:29.601426+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 4,
+    "text": "IDEA: Systematically map scaling phase transitions by training hundreds of small, architecturally-identical models across a dense grid of model sizes and dataset sizes to identify the precise compute and data conditions that trigger deviations from smooth power-law scaling.\n\nBACKGROUND: This addresses subproblem #3, the dynamics and causes of scaling law phase transitions. These unpredictable breakdowns invalidate scaling predictions, but their triggers are unknown because prior studies sample the scaling space too sparsely, treating transitions as anomalies rather than phenomena to be deliberately induced and studied.\n\nAPPROACH: We will conduct a massively parallelized, dense exploration of the (N, D) parameter space\u2014where N is model size and D is dataset size\u2014using a fixed, modern transformer architecture. Instead of a few large models, we will train thousands of smaller models across a finely-grained 2D grid, deliberately spanning the suspected boundary where smooth scaling breaks down, as identified by extrapolation from existing sparse data.\n\nEXPERIMENT: We will measure training loss and a suite of targeted capability metrics on a held-out evaluation suite. A positive result is the identification of a sharp, reproducible boundary in (N, D) space where loss scaling deviates by >2 standard errors from the extrapolated power law, allowing us to model the transition condition as a function of compute.\n\nNOVELTY: Prior work fits laws to sparse, large-scale data points, treating transitions as noise. This proposal treats the transition as the primary object of study, using a high-resolution, low-cost mapping approach made feasible by focusing on the *onset* of the phenomenon in smaller, replicable models.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:46.173319+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 0,
+    "text": "**IDEA:** We hypothesize that the convergence of Federated Averaging (FedAvg) under extreme non-IID data is guaranteed if client participation in each round is constrained by a novel measure of distributional \"coverage,\" which can be experimentally validated by constructing a critical counterexample.\n\n**BACKGROUND:** The precise theoretical conditions for FL convergence with arbitrary client data and participation are unknown. This prevents the design of provably robust algorithms for real-world, heterogeneous deployments, as current theories rely on unrealistic assumptions like bounded gradient dissimilarity.\n\n**APPROACH:** We will design a controlled experiment to test the necessity of a proposed condition: that the aggregate data distribution of participating clients in each training round must have a bounded total variation distance from the global distribution. We will engineer pathological non-IID client datasets (e.g., each client holds only one class) and systematically manipulate participation sequences to violate this condition.\n\n**EXPERIMENT:** Using CIFAR-10 split in an extreme non-IID (one-class-per-client) manner, we will run FedAvg with two participation schedules: one that satisfies the proposed coverage condition via stratified client sampling, and one that deliberately violates it. We measure divergence by the exploding norm of model updates and the collapse of test accuracy on a held-out global validation set.\n\n**NOVELTY:** Prior work identifies symptoms of divergence (e.g., client drift) but does not construct a verifiable, necessary condition for convergence based on per-round participation. This experiment moves from observing failure to defining and testing a specific, falsifiable rule that must hold for convergence.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:45.107996+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 1,
+    "text": "**IDEA:** We will create a benchmark of canonical, extreme non-IID data partitions derived from real-world federated datasets to serve as a universal stress-test for algorithms.\n\n**BACKGROUND:** Progress in federated learning is fragmented because researchers evaluate methods on different, often synthetic, data splits. There is no consensus on a set of canonical, extreme non-IID partitions that reflect real-world heterogeneity, making comparative evaluation and fundamental insight difficult.\n\n**APPROACH:** We will systematically define and generate a taxonomy of non-IID partitions along key axes (label distribution skew, feature distribution skew, and quantity skew) for datasets like CIFAR-100, FEMNIST, and a real-world medical imaging dataset. Each partition will be algorithmically generated to represent a specific, reproducible, and extreme \"type\" of real-world heterogeneity.\n\n**EXPERIMENT:** We will evaluate a suite of state-of-the-art FL algorithms (e.g., FedAvg, FedProx, SCAFFOLD) on this benchmark, measuring final accuracy, convergence speed, and communication efficiency to establish a clear ranking of which algorithms fail or succeed under which type of partition.\n\n**NOVELTY:** Unlike prior work that uses ad-hoc splits, this creates a standardized, open-source benchmark of *extreme but realistic* partitions, transforming the field from reporting on custom setups to evaluating on a common, rigorous set of challenges.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:59.637212+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 2,
+    "text": "IDEA: We hypothesize that the minimax optimal convergence rate for federated optimization over general non-IID distributions is fundamentally constrained by a measure of distributional spread, and this limit can be empirically discovered via a meta-experiment on synthesized pathological client distributions.\n\nBACKGROUND: A fundamental limit on the minimax optimal convergence rate for federated optimization over general non-IID distributions has not been established. This matters because it prevents us from knowing if existing algorithms are as efficient as possible or if significant improvements are still possible.\n\nAPPROACH: We will design a family of synthetic, maximally heterogeneous non-IID client distributions parameterized by a \"spread\" variable, and run a comprehensive meta-search over algorithm hyperparameters and client sampling strategies to find the best achievable convergence rate for each spread level. The envelope of these rates defines an empirical lower bound.\n\nEXPERIMENT: We will measure the convergence rate (test loss vs. communication rounds) of state-of-the-art algorithms (e.g., FedAvg, SCAFFOLD, FedProx) on controlled synthetic datasets where client data distributions are systematically varied from IID to maximally skewed, using a standard convex model (logistic regression) and a non-convex CNN.\n\nNOVELTY: This shifts the research paradigm from proposing new algorithms to first empirically mapping the fundamental performance landscape, using synthesized worst-case distributions to probe the limits of any possible federated optimization algorithm.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:14.771356+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 3,
+    "text": "IDEA: A controlled experiment to establish a causal link between a measurable, geometric property of client gradient distributions and the divergence of federated averaging under non-IID data.\n\nBACKGROUND: The precise theoretical conditions under which client drift causes divergence are unknown. Current theory relies on bounded dissimilarity assumptions, but the exact data distributions that violate these bounds and make divergence unavoidable are not characterized, hindering the design of robust algorithms.\n\nAPPROACH: We will synthetically generate a parameterized space of client data distributions, systematically varying skew in label quantity and feature covariance. We will then measure the geometric property of \"gradient dispersion\" \u2013 the maximal directional variance of client gradients around the global optimum \u2013 and run FedAvg to observe convergence or divergence.\n\nEXPERIMENT: We will train a simple model on partitioned CIFAR-10/SVHN, controlling the skew (\u03b1) and feature shift, directly correlating the pre-computed gradient dispersion at initialization with the final training loss and gradient norm after a fixed number of rounds.\n\nNOVELTY: This moves beyond correlation to causality by engineering distributions to test specific geometric hypotheses, aiming to establish gradient dispersion as a necessary, measurable precursor to divergence, which is a more direct and actionable diagnostic than existing statistical heterogeneity measures.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:29.605385+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 4,
+    "text": "IDEA: A single, well-designed experiment can most decisively advance the field by establishing the fundamental limits of model personalization through a unified framework that decomposes models into provably optimal shared and client-specific components.\n\nBACKGROUND: The third subproblem\u2014the lack of a general theoretical framework for model decomposition into shared and client-specific parts under severe non-IID data\u2014is the core bottleneck. Solving this would directly enable efficient personalization and inform solutions for convergence, privacy, and robustness, making it the highest-leverage target.\n\nHYPOTHESIS: An information-theoretic objective that minimizes the sum of (a) the description length of the shared model and (b) the expected description length of client-specific residuals given the shared model will yield a Pareto-optimal decomposition that generalizes better than variance-based or multi-task learning baselines.\n\nMETHOD: We will design a novel federated learning algorithm that explicitly trains two model components: a global \"core\" and client-specific \"delta\" networks. The training objective formalizes the Minimum Description Length (MDL) principle, where the compression cost of communicating the core plus all deltas is minimized during federated optimization. We will test this on a controlled synthetic dataset with tunable heterogeneity (via latent variables) and real-world benchmarks (FEMNIST, Shakespeare, CIFAR-10 split by label distribution).\n\nEXPECTED RESULT: A positive result would show our MDL-based decomposition achieves a superior Pareto frontier on the trade-off between global model accuracy (measured on a held-out heterogeneous test set) and per-client personalization accuracy (measured as average gain over the global model), outperforming state-of-the-art personalization methods like FedPer, APFL, and Ditto.\n\nNOVELTY: This moves beyond heuristics and regularization-based personalization by grounding the decomposition problem in the formal, generalizable principle of description length, which does not require parametric data assumptions and provides a direct measure of overfitting versus under-sharing.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:46.639040+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 0,
+    "text": "**IDEA:** We will discover the precise computational role of superposition in MLP layers by training a series of transformer models with progressively sparser, less superposed MLP representations and directly measuring the emergence of specific, interpretable features.\n\n**BACKGROUND:** The precise computational role of superposition in MLP layers is a key unsolved problem. We don't know if polysemantic neurons are a necessary, efficient computational strategy or an incidental byproduct of training pressure, which blocks our understanding of how models compute non-linear functions.\n\n**APPROACH:** We will enforce varying degrees of sparsity (via L1 regularization and architectural bottlenecks) on the MLP activations during training, creating a spectrum of models from highly superposed to highly sparse. We will then use feature visualization and causal ablation to compare the interpretability and functionality of individual neurons and subspaces across this spectrum.\n\n**EXPERIMENT:** We will train medium-scale language models (e.g., 100M-1B parameters) on a controlled data mixture and measure the polysemanticity of MLP neurons using automated interpretability (e.g., SAEs) and the model's performance on tasks requiring non-linear feature combinations.\n\n**NOVELTY:** This moves beyond analyzing superposition in existing models to actively manipulating its presence during training, establishing a causal relationship between architectural/training constraints and the emergence of interpretable vs. superposed features.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:43.857053+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 1,
+    "text": "IDEA: Train a series of progressively larger transformer models on a synthetic algorithmic task requiring in-context pattern matching, and use causal interventions to isolate and characterize the developmental sequence of the induction circuit.\n\nBACKGROUND: This addresses subproblem #2, the mechanistic cause of induction heads and their exact role in in-context learning. While we can identify mature induction heads, we lack a causal, developmental understanding of the minimal necessary architecture and training dynamics that give rise to the full circuit enabling this capability.\n\nAPPROACH: We will construct a controlled, synthetic dataset of sequences requiring a precise \"copy-next-step\" operation. We will then train a progression of small transformers (1-4 layers, varying widths) on this task, using path patching and activation patching to trace the development of the induction mechanism, specifically testing if a two-layer, two-head circuit is the minimal sufficient architecture.\n\nEXPERIMENT: We will measure the causal effect of ablating specific attention heads and MLP neurons on task accuracy during training, pinpointing the exact training step and architectural conditions where the induction circuit emerges and becomes robust.\n\nNOVELTY: Unlike prior work that reverse-engineers circuits in large, pre-trained models, this work proactively engineers the *emergence* of the circuit in a controlled setting, allowing us to establish a causal, developmental map from architecture and data to algorithm.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:59.642044+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 2,
+    "text": "**IDEA:** We will identify the precise, minimal circuit that implements the generalizing algorithm after grokking by performing causal interventions on a model trained to grok modular addition.\n\n**BACKGROUND:** The complete causal mechanism of grokking is unsolved. We know a sharp transition occurs, but the exact internal changes and the final, generalizing circuit have not been isolated. Mapping this circuit is the key to understanding how models compress memorized data into general rules.\n\n**APPROACH:** We will train a small transformer on modular addition until far past the grokking point. Using a combination of path patching and activation patching, we will iteratively ablate model components to find the minimal sufficient subnetwork that performs the generalized algorithm with perfect accuracy, while destroying the earlier memorization circuit.\n\n**EXPERIMENT:** We will test the pruned model on held-out test data, measuring accuracy. A positive result is a dramatically pruned network (<20% of original components) that maintains >99% test accuracy but fails on the original training data, proving isolation of the pure generalization circuit.\n\n**NOVELTY:** Prior work describes grokking dynamics but does not causally isolate the final algorithm. This experiment moves from observation to direct causal identification of the minimal generalizing circuit, providing a concrete artifact for reverse-engineering.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:16.448071+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 3,
+    "text": "**IDEA:** Use causal interventions on MLP neuron subspaces during in-context learning tasks to isolate the superpositional algorithm implementing gradient descent.\n\n**BACKGROUND:** This addresses subproblem #2, the exact mechanism of in-context learning induction. We hypothesize that MLP layers dynamically encode task-specific, superpositional weight vectors in response to the prompt, and that these vectors implement the core step of an on-the-fly learning algorithm.\n\n**APPROACH:** We will train a medium-scale transformer on a synthetic in-context linear regression task. Using sparse autoencoders, we will identify latent task-specific directions in late-layer MLP activations. We will then perform precise causal patching and ablation of these subspaces during inference to test their necessity and sufficiency.\n\n**EXPERIMENT:** We will measure the causal effect of interventions on the model's in-context prediction error, comparing it to the error trajectory of an explicit gradient descent algorithm. Success is a high correlation between ablation of a specific subspace and the disruption of the algorithmic step (e.g., parameter update).\n\n**NOVELTY:** Prior work identifies induction heads or broad capabilities; this directly tests if a specific, known algorithm is superpositionally encoded and causally active within MLPs, moving from correlation to mechanistic causality for in-context learning.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:32.520373+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 4,
+    "text": "**IDEA:** Use causal interventions on the residual stream to isolate and characterize the computational role of individual attention heads in later transformer layers by enforcing sparse, orthogonal feature activation.\n\n**BACKGROUND:** The precise computational role of attention heads in later layers is unknown because they implement polysemantic, superpositional circuits. This entanglement blocks our ability to explain high-level reasoning steps like chain-of-thought.\n\n**APPROACH:** We will train a sparse autoencoder on the residual stream activations immediately before a target late-layer attention head. We will then perform causal interventions by ablating all but a single autoencoder-derived feature before the head, forcing the head to operate on a sparse, interpretable basis.\n\n**EXPERIMENT:** We will apply this to a 6-layer decoder-only transformer trained on modular arithmetic, using a dataset of (a, b, c) tuples for (a + b) mod c. Success is measured by the head's post-intervention accuracy on its specific sub-task (e.g., attending to 'b') and by human interpretability of the sparse feature.\n\n**NOVELTY:** Prior work analyzes heads on natural, entangled activations. This method actively *enforces* a sparse feature basis as input to the head, directly testing its isolated function and breaking the superposition that obscures its role.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:46.762973+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 0,
+    "text": "**IDEA:** Develop a stable, injective, and computationally efficient feature map for persistence diagrams by leveraging the theory of negative definite kernels and persistence landscapes, enabling robust topological machine learning.\n\n**BACKGROUND:** This addresses the unsolved problem of creating stable and interpretable vectorizations of persistence diagrams. Current embeddings, like persistence images or Betti curves, either lose information or lack stability, hindering their use in statistical learning pipelines that require fixed-length, discriminative features.\n\n**APPROACH:** We will construct a new family of feature maps by composing a stable coordinate transformation of the persistence diagram with a learned sampling of a novel negative definite kernel derived from persistence landscapes. This ensures stability via the kernel properties and injectivity via a dense sampling strategy, creating a finite-dimensional vector that faithfully represents the diagram.\n\n**EXPERIMENT:** We will test the method on standard synthetic and real-world datasets (e.g., shape meshes, 3D protein structures), measuring its performance against baselines using the metric of kernel approximation error, downstream classification accuracy, and its stability constant via bottleneck distance.\n\n**NOVELTY:** Unlike prior fixed embeddings, this method formally guarantees stability through its kernel foundation and aims for injectivity, while its computational design allows for efficient approximation, directly tackling the trade-off between expressivity and practicality that plagues existing approaches.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:46.920488+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 1,
+    "text": "**IDEA:** Develop a method to compute persistent homology for large, high-dimensional data by leveraging locality-sensitive hashing (LSH) to construct a provably accurate sparse approximation of the Vietoris-Rips filtration graph.\n\n**BACKGROUND:** The computational bottleneck for persistent homology in high dimensions is constructing and processing the massive Vietoris-Rips complex, where the dense proximity graph scales quadratically. Current sparsification techniques (e.g., witness complexes, sparsified Rips) lack guarantees of topological fidelity for general high-dimensional data, limiting reliability.\n\n**APPROACH:** We will use multi-probe LSH to efficiently identify, with high probability, all point pairs within a critical distance threshold, constructing a sparse graph that approximates the 1-skeleton of the Rips complex. We will then prove that the persistent homology of this sparse graph\u2019s clique complex is interleaved with that of the full Rips complex, ensuring stability. The method will be implemented for GPU acceleration.\n\n**EXPERIMENT:** We will test on high-dimensional point clouds (single-cell RNA-seq, image patches) and synthetic manifolds, measuring the bottleneck distance between our diagrams and baseline diagrams, while benchmarking wall-clock time and memory against standard software (Ripser, GUDHI).\n\n**NOVELTY:** Unlike heuristic sparsifications, this provides the first computationally efficient construction with rigorous interleaving guarantees for high-dimensional data, directly tackling the complexity barrier by merging algorithmic data structures with topological stability theory.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:02.675795+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 2,
+    "text": "**IDEA:** Develop a computationally efficient, dimension-agnostic algorithm for persistent homology by leveraging a novel geometric sparsification technique that provably preserves the persistence diagram.\n\n**BACKGROUND:** The effective computation of high-dimensional persistent homology is a critical bottleneck. Current algorithms scale poorly with dimension and simplex count, forcing reliance on drastic dimensionality reduction that can destroy the topological signal we aim to measure.\n\n**APPROACH:** We will design a pre-processing filter based on metric distortion and discrete Morse theory. The method will aggressively prune the Vietoris-Rips complex by removing simplices that are provably non-essential for homology, using a dimension-independent geometric criterion related to the stability of persistent homology.\n\n**EXPERIMENT:** We will test the algorithm on standardized high-dimensional point clouds (e.g., image patches, single-cell RNA-seq data) and compare the computed persistence diagrams and runtimes against state-of-the-art software (Ripser, GUDHI). Success is measured by orders-of-magnitude speedup with controlled, statistically insignificant deviation in bottleneck distance.\n\n**NOVELTY:** Unlike existing combinatorial optimizations or sampling, this approach directly targets the geometric redundancy in high-dimensional metric spaces, offering a theoretical guarantee of topological fidelity without requiring an initial manifold assumption.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:17.588224+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 3,
+    "text": "**IDEA:** Develop a method to identify the minimal subset of data dimensions responsible for a significant topological cycle by analyzing the sensitivity of its persistence to coordinate-wise perturbations.\n\n**BACKGROUND:** This addresses subproblem 4, topological feature selection in high dimensions. Currently, we can detect a persistent cycle in a high-dimensional point cloud, but we cannot systematically determine which specific features or coordinates are essential to its existence, crippling interpretability.\n\n**APPROACH:** We propose to define the *topological importance* of a data dimension for a given persistent cycle by measuring the rate of decay in the cycle's persistence when that dimension is iteratively blurred via noise injection. The core hypothesis is that dimensions critical to the cycle's geometry will cause the fastest decay, pinpointing the relevant feature subspace.\n\n**EXPERIMENT:** We will test this on synthetic high-dimensional datasets (e.g., noisy samples from spheres, tori) embedded in ambient noise dimensions, and on real high-feature biological data. Success is measured by the method's accuracy in recovering the known low-dimensional manifold in synthetic cases and by producing biologically interpretable, sparse feature sets in real data.\n\n**NOVELTY:** Prior work often uses full-dimensional projections or machine learning proxies. This approach is novel because it directly attacks the persistence of a specific topological feature, providing a causal, geometric explanation tied directly to the cycle itself, not just the overall data shape.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:32.356728+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 4,
+    "text": "**IDEA:** Develop a novel, computationally efficient method for computing persistent homology in ultra-high dimensions by leveraging a sparse, cohomological approach and discrete Morse theory to drastically reduce the size of the boundary matrix.\n\n**BACKGROUND:** The computation of persistent homology in dimensions >20 is intractable due to the explosive combinatorial growth of the simplicial complex and its dense boundary matrix. This prevents the application of topological data analysis to high-dimensional feature spaces common in modern machine learning, where data often resides in \u211d^d for large d.\n\n**APPROACH:** We will design an algorithm that constructs a sparse, discrete Morse gradient field compatible with the Vietoris-Rips filtration in high dimensions, directly generating a reduced cochain complex. By working with cohomology and using the Morse reduction, we avoid building the full boundary matrix, computing persistence on a dramatically smaller cellular complex.\n\n**EXPERIMENT:** We will test the algorithm on synthetic point clouds on high-dimensional spheres (S^d, d>20) and standard high-dimensional machine learning datasets (e.g., MNIST in its pixel space). Success will be measured by a >10x speedup over the state-of-the-art (e.g., Ripser) while maintaining exact persistence intervals.\n\n**NOVELTY:** Unlike existing optimizations that focus on low-dimensional expansions or approximations, this method directly attacks the high-dimensional combinatorial explosion by integrating discrete Morse theory for filtrations, a technique not yet fully leveraged for persistent homology computation in this regime.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:47.121053+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 0,
+    "text": "**IDEA:** Use time-resolved cryo-electron microscopy to experimentally determine the complete folding pathway and kinetic ensemble of a designed protein with tunable folding speed, directly validating and refining next-generation kinetic prediction algorithms.\n\n**BACKGROUND:** Predicting folding pathways and kinetics from sequence remains unsolved. Current computational models lack high-resolution experimental data on transient intermediate states and their transition rates, which is required to move beyond equilibrium structure prediction.\n\n**APPROACH:** We will design a series of proteins with identical native folds but systematically varied folding rates via strategic mutation of postulated \"kinetic gatekeeper\" residues. We will then capture their folding journeys using a novel microfluidic spray-freezing device coupled to cryo-EM, enabling millisecond-to-second time resolution.\n\n**EXPERIMENT:** We will collect hundreds of thousands of particle images at sequential time points after initiating folding, reconstruct 3D density maps for all populated states, and derive a Markov state model of the pathway with experimentally measured transition rates between intermediates.\n\n**NOVELTY:** This moves beyond static snapshots or ensemble-averaged spectroscopic data to provide a direct, structural movie of folding, creating the first ground-truth dataset of high-resolution intermediate structures with associated kinetics for algorithm training and validation.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:43.974673+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 1,
+    "text": "**IDEA:** Use time-resolved cryo-electron microscopy to structurally characterize the complete, kinetically resolved folding pathway of a designed protein variant that is predisposed to populate multiple stable intermediate states.\n\n**BACKGROUND:** The subproblem of predicting conformational dynamics and ensembles remains unsolved because current methods, including AlphaFold, predict a single static structure. Function often depends on the transitions between states, but we lack high-resolution structural data on the full set of conformations a protein samples in solution, especially transient intermediates.\n\n**APPROACH:** We will design a small protein domain with strategically placed destabilizing mutations that slow its folding and enrich for meta-stable intermediate states, without preventing native fold formation. We will then use a novel microfluidic mixing device coupled to a cryo-EM grid plunger to trap the protein at precise timepoints along its folding trajectory, from unfolded to native state.\n\n**EXPERIMENT:** We will solve cryo-EM structures for each timepoint, generating a time-resolved structural movie of the folding pathway. Success is measured by resolving at least three distinct, non-native intermediate structures with defined secondary and tertiary structure at resolutions better than 4 \u00c5.\n\n**NOVELTY:** This moves beyond equilibrium ensemble averaging or computational simulation by providing direct, high-resolution, kinetic structural data on folding intermediates. The combination of a designed \"slow-folding\" protein with time-resolved cryo-EM trapping creates a definitive experimental benchmark for dynamics.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:59.279044+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 2,
+    "text": "**IDEA:** Use time-resolved cryo-electron microscopy with a temperature-jump apparatus to experimentally determine the complete conformational ensemble of a model allosteric protein.\n\n**BACKGROUND:** Predicting the full set of structures a protein adopts in solution (its conformational ensemble) is a critical unsolved problem. Current computational methods generate plausible states but cannot reliably rank their populations or confirm their kinetic connectivity, which is essential for understanding allosteric mechanisms and drug design.\n\n**APPROACH:** We will combine a microsecond laser-induced temperature-jump with rapid plunge-freezing to trap a protein at precise time points as it relaxes through its conformational landscape. This time-resolved cryo-EM approach will be applied to a well-studied allosteric enzyme (e.g., imidazole glycerol phosphate synthase), generating millions of particle images representing a true kinetic trajectory.\n\n**EXPERIMENT:** We will process the time-point datasets to reconstruct distinct structural states and, using manifold embedding, map their populations and transitions. Success is measured by the identification of at least three functionally relevant metastable states not present in static structures and the experimental determination of transition rates between them.\n\n**NOVELTY:** This moves beyond static snapshots or computational sampling by providing a direct, experimental movie of a protein's native ensemble dynamics. The temperature-jump perturbation is non-specific and global, unlike ligand-mixing, allowing observation of the intrinsic landscape.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:14.702258+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 3,
+    "text": "**IDEA:** Develop a deep learning model that predicts the structural ensemble of intrinsically disordered proteins (IDPs) by integrating sequence, evolutionary couplings, and experimental NMR chemical shifts as a direct constraint on conformational sampling.\n\n**BACKGROUND:** AlphaFold2 cannot predict the dynamic structural ensembles of IDPs, which are crucial for function and disease. This leaves the disorder-function relationship unknown for a large fraction of the proteome. Current computational methods for IDP ensembles are either physics-based and low-throughput or lack a robust link to experimental data for validation and training.\n\n**APPROACH:** We will train a transformer-based architecture that uses sequence and co-evolutionary information to generate a diverse set of conformers. The key innovation is a dedicated neural network layer trained to minimize the discrepancy between predicted and experimentally measured NMR chemical shifts (C\u03b1, C\u03b2, N, H\u03b1) for each residue across the generated ensemble, forcing the model to learn the Boltzmann-weighted distribution of states.\n\n**EXPERIMENT:** We will train and test the model on a curated dataset of ~200 IDPs/regions with publicly available NMR chemical shift data and, where available, ensemble-averaged small-angle X-ray scattering (SAXS) profiles. Success will be measured by the model's ability to predict held-out NMR chemical shifts and SAXS curves more accurately than current state-of-the-art methods like AlphaFold2 (AF2-multimer) and ensemble-generators like Flexible-Meccano.\n\n**NOVELTY:** Unlike AF2 which outputs a single structure, or pure molecular dynamics which is computationally expensive, this method directly integrates high-throughput experimental data (NMR shifts) as a differentiable training target to learn the generative rules for biologically relevant disordered ensembles.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:32.156923+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 4,
+    "text": "**IDEA:** Develop a deep learning model that predicts the conformational ensemble of a protein by integrating evolutionary co-variance with explicit molecular dynamics simulations in a learned latent space.\n\n**BACKGROUND:** AlphaFold predicts a single, static structure, but protein function often depends on conformational dynamics and ensembles. The key unsolved problem is predicting the full spectrum of functionally relevant states, especially for allosteric regulation and signaling, where the dominant static structure provides an incomplete mechanistic picture.\n\n**APPROACH:** We will train a diffusion model on a latent representation that jointly encodes sequence co-evolution patterns and short-timescale molecular dynamics (MD) simulation trajectories. The model will learn to generate diverse, thermodynamically weighted conformational states directly from sequence by using the MD trajectories to ground the generative process in physically realistic dynamics.\n\n**EXPERIMENT:** We will train on a curated dataset of proteins with experimentally validated multiple conformations (e.g., from NMR or multi-state crystal structures) and test the model's ability to recapitulate known conformational distributions, measured by the overlap of predicted and experimental ensembles using statistical metrics like the Jensen-Shannon divergence.\n\n**NOVELTY:** Unlike methods that either extrapolate from a single static prediction or run expensive brute-force MD, this approach directly learns a generative model of the ensemble, making it both computationally efficient and capable of sampling rare but functionally critical states that are obscured in standard MD.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:47.578266+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 0,
+    "text": "**IDEA:** We propose to isolate and measure the emergence of pragmatic reasoning by training agents in a signaling game where optimal success requires them to infer unobserved contextual goals from a partner's ambiguous signals.\n\n**BACKGROUND:** This addresses subproblem 5, the unsolved theory of emergent pragmatics. We lack understanding of how implicit reasoning like implicature\u2014where meaning is inferred beyond literal signals\u2014can arise from pure goal-driven reinforcement without pre-defined social biases or explicit models of other minds.\n\n**APPROACH:** We will design a multi-step reference game where a Sender observes a goal (e.g., \"fetch the blue key\") and a Receiver must act, but the Sender's message channel is artificially restricted to a single symbol. The only way to succeed across varied goals is for the Sender to use the symbol pragmatically, conditioned on the *set* of possible goals, and for the Receiver to interpret it accordingly.\n\n**EXPERIMENT:** We will train deep RL agents (with recurrent policies) on this game and measure success on held-out goal sets. Crucially, we will use causal intervention tests to distinguish literal from pragmatic interpretation by manipulating the agents' belief states about the possible goal space.\n\n**NOVELTY:** Prior work studies emergent lexicons in unambiguous settings. This forces the *necessity* of pragmatic inference by design, providing a clean testbed to measure if and how goal-driven agents spontaneously develop a theory of mind to resolve ambiguity, moving beyond compositionality.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:45.509741+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 1,
+    "text": "IDEA: A counterfactual credit assignment mechanism using causal influence graphs will enable agents to scalably learn sophisticated multi-step emergent protocols.\n\nBACKGROUND: This addresses the Credit Assignment Problem in Emergent Protocols. Current multi-agent reinforcement learning struggles to attribute the outcome of a communicative sequence to specific message choices, blocking the learning of complex, temporally extended protocols beyond simple one-shot signaling.\n\nAPPROACH: We propose augmenting agents with a learned causal model that estimates the effect of each sent message on team reward by constructing counterfactual message-ablation graphs. Training will use a modified policy gradient where an agent\u2019s reward is weighted by the causal influence of its message stream on the final outcome.\n\nEXPERIMENT: Test in a multi-step referential game with distractor objects and required coordination sequences. Measure protocol complexity (entropy of message sequences), task success rate, and the causal fidelity of the learned graphs compared to a ground-truth simulation model.\n\nNOVELTY: Prior work uses reward shaping or centralized critics; this directly estimates and leverages the counterfactual causal impact of communication acts for individual credit, enabling a scalable, principled solution to credit assignment in emergent language.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:59.724568+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 2,
+    "text": "**IDEA:** A disentangled representation learning approach to quantify and optimize for compositionality in emergent languages by directly measuring the causal effect of concept combinations on message structure.\n\n**BACKGROUND:** This addresses subproblem #2: Quantifying Compositionality and Generalization. Current metrics (e.g., topographic similarity) are correlational and indirect, failing to provide an objective, causal measure of how systematically an emergent language combines meaning elements. This blocks progress in comparing and steering languages toward human-like generalization.\n\n**APPROACH:** We propose training agents with a novel auxiliary loss that encourages disentangled latent representations of the objects/actions they communicate about. We will then intervene on these latent factors during communication and use causal information theory (specifically, the information gain from observing a message when systematically varying individual concept dimensions) to compute a direct Compositional Causal Influence (CCI) score.\n\n**EXPERIMENT:** We test this in a referential game with systematically combinable attributes (shape, color, size) and measure the CCI score. Crucially, we evaluate generalization on held-out, novel concept combinations and correlate CCI with zero-shot generalization performance.\n\n**NOVELTY:** Prior work measures statistical correlations in produced languages; this method actively *intervenes* to measure causal compositionality and uses disentangled representations as a scaffold to define and optimize for compositionality during learning itself.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:17.144650+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 3,
+    "text": "**IDEA:** We will isolate the causal role of emergent messages in multi-agent coordination by surgically ablating communication channels during critical decision points and measuring the resulting collapse in task performance.\n\n**BACKGROUND:** This addresses subproblem #5: The Causal Influence of Communication vs. Co-adaptation. It is currently impossible to distinguish whether successful coordination is driven by the content of messages or by agents simply learning complementary, predictable individual policies. This blocks a foundational understanding of what \"communication\" means in these learned systems.\n\n**APPROACH:** We will train agents on a cooperative task requiring long-horizon coordination with a discrete communication channel. After convergence, we will run evaluation episodes where we forcibly replace each transmitted discrete symbol with a random one at precisely timed, single-step interventions, while leaving all other agent parameters and environmental inputs unchanged.\n\n**EXPERIMENT:** We will measure the instantaneous drop in task reward and coordination metrics (e.g., goal completion) following each intervention, compared to a non-intervened baseline. A positive causal role for messages is confirmed if performance collapses specifically at the intervened step, not at later steps.\n\n**NOVELTY:** Prior work analyzes correlation between messages and actions or uses channel silencing, which confounds co-adaptation. Our single-step, in-channel symbol randomization directly tests the counterfactual causal impact of specific messages on the immediate joint policy, a more precise surgical method.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:32.965338+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 4,
+    "text": "**IDEA:** We will resolve the trade-off between expressivity and learnability by proving that a specific, minimal learning bias\u2014pressure for *minimal sufficient context* in message interpretation\u2014is necessary and sufficient for the emergence of compositional language.\n\n**BACKGROUND:** The unsolved problem is understanding the precise conditions that cause emergent protocols to become compositional versus holistic. Current work manipulates environmental or architectural factors, but the fundamental learning bias that directly shapes linguistic structure remains unknown, blocking reliable emergence of scalable languages.\n\n**APPROACH:** We will train speaker-listener agent pairs in a structured reference game where the optimal language is factorial. Crucially, we will algorithmically enforce the bias by modifying the listener's objective: it must correctly identify the target using a message *while also minimizing the amount of task context needed to interpret it*, formalized as the mutual information between the message and irrelevant contextual variables.\n\n**EXPERIMENT:** We will systematically vary the strength of this bias against control objectives (e.g., only task success, or pressure for message brevity) and measure emergent language compositionality using topographic similarity and context independence tests, alongside zero-shot generalization to novel attribute combinations.\n\n**NOVELTY:** This directly tests a *causal mechanism* for compositionality (a specific inductive bias) rather than correlational environmental factors. Prior work incentivizes efficiency or generalization *outcomes*; we intervene at the level of the *interpretive process* itself to isolate a sufficient cognitive bias.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:49.876712+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 0,
+    "text": "**IDEA:** Develop a contrastive learning framework that forces a foundation model to align its latent embeddings with a curated, perturbation-based ground truth of pathway activity, enabling direct mapping from embeddings to causal regulatory programs.\n\n**BACKGROUND:** The \"black box\" nature of genomic foundation models blocks biological interpretation and trust. Current post-hoc attribution methods are correlative and fail to map embeddings to specific, causal mechanisms like pathway activation, which is the core of subproblem #1 (Interpretable latent representations).\n\n**APPROACH:** We will train a transformer on single-cell RNA-seq data using a novel dual-objective: standard masked language modeling plus a contrastive loss that pulls embeddings of cells from the same genetic/chemical perturbation closer, while pushing apart embeddings from perturbations targeting different pathways. The key is using a curated benchmark of paired control/perturbation datasets (e.g., from Perturb-seq) targeting known pathways as a supervised anchor.\n\n**EXPERIMENT:** We will evaluate on held-out perturbation datasets, measuring if the model's embedding distances directly cluster by pathway perturbation rather than by batch or cell type, and if the top-attended genomic regions for a given embedding cluster are enriched for the known cis-regulatory elements of the targeted pathway.\n\n**NOVELTY:** Unlike post-hoc analysis of existing models, we bake interpretability into the training objective itself using causal perturbation data as a biological \"Rosetta Stone,\" directly linking embeddings to mechanistic ground truth rather than inferred correlations.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:44.251699+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 1,
+    "text": "**IDEA:** We will establish the first scaling laws for genomic foundation models by systematically training a family of transformer architectures on a massive, multi-species transcriptomic dataset to discover predictable relationships between compute, data, model size, and biological task performance.\n\n**BACKGROUND:** Scaling laws predict how model capability improves with resources and are foundational to efficient AI development. For genomics, the relationship between model size, dataset diversity (across species/tissues), and predictive performance is unknown. This lack of understanding makes model and data curation inefficient and purely empirical.\n\n**APPROACH:** We will curate a standardized dataset of uniformly processed RNA-seq data spanning 10 diverse species, from yeast to human, across 1000+ tissues/conditions. We will then train a series of decoder-only transformer models, varying model size (parameters) and training tokens (data scale) in a controlled grid, while holding architecture constant.\n\n**EXPERIMENT:** We will measure scaling laws by evaluating each model on held-out cross-species prediction tasks and functional genomic benchmarks (e.g., pathway activity inference). A positive result is a predictable power-law relationship between training compute and downstream biological accuracy, enabling optimal allocation of future resources.\n\n**NOVELTY:** Prior genomic models are single-scale and species-specific. This is the first controlled, multi-scale experiment designed explicitly to derive biological scaling laws, treating phylogenetic and experimental diversity as a quantifiable resource.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:58.847987+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 2,
+    "text": "**IDEA:** We will develop a biologically interpretable foundation model by explicitly training it to predict the activity of a universal set of transcription factors (TFs) from single-cell RNA-seq data, using orthogonal CRISPR-based TF activity screens as a ground-truth training signal.\n\n**BACKGROUND:** This addresses the subproblem of **interpretable and biologically grounded latent spaces**. Current models produce black-box embeddings that cannot be reliably mapped to specific mechanistic drivers like transcription factor activity, which limits scientific utility and clinical trust.\n\n**APPROACH:** We will train a transformer model where the final latent representation is forced through a sparse linear layer that predicts the activity levels of ~1,600 human TFs. The key innovation is training this layer not on inferred targets, but on direct, genome-wide measurements of TF activity from a new, orthogonal perturbation atlas (see Experiment).\n\n**EXPERIMENT:** We will generate a foundational training dataset by performing single-cell CRISPRi knockdowns of each TF in a uniform cell line, measuring both the transcriptional outcome (RNA-seq) and direct TF activity (using a multiplexed reporter assay). Model success is measured by its accuracy in predicting held-out TF activities and its ability to identify correct, sparse TF drivers in independent perturbation datasets.\n\n**NOVELTY:** Unlike prior work that uses post-hoc analysis to *interpret* latents, this model is *architecturally constrained* to represent a biologically verifiable quantity (TF activity) from the outset. The use of orthogonal perturbation-based activity measurements as training labels is a decisive shift from correlation-based to causation-grounded representation learning.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:16.040598+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 3,
+    "text": "**IDEA:** A massively parallel, single-cell-resolution CRISPR screen targeting candidate cis-regulatory elements (CREs) in a model cell type, coupled with multimodal single-cell readouts (transcriptome, chromatin accessibility, and a live-cell phenotypic reporter), to directly map sequence-to-regulatory grammar rules.\n\n**BACKGROUND:** This addresses subproblem #1: the unknown mapping between genomic sequence and the grammar of gene regulation in specific cellular contexts. Current models are correlative and fail to predict the effect of non-coding variants, especially in a cell-type-specific manner, because they lack direct, causal experimental data linking sequence perturbations to multi-layered molecular and phenotypic outputs in the same cell.\n\n**APPROACH:** We will design a library of ~100,000 guide RNAs tiling across thousands of validated and candidate CREs in a well-characterized human cell line (e.g., K562). We will perform a pooled CRISPRi/a screen where each cell receives a single CRE-targeting perturbation and is profiled with single-cell multimodal RNA-seq + ATAC-seq (10x Multiome). Crucially, each cell will also be engineered with a live-cell reporter for a specific phenotypic consequence of the perturbed regulatory network (e.g., a differentiation marker or a stress response gene).\n\n**EXPERIMENT:** We will measure, for each CRE perturbation, the direct change in local chromatin accessibility, the consequent change in expression of linked gene(s), and the ultimate effect on the engineered phenotypic reporter. Success is quantified by deriving a predictive model where the CRE sequence and perturbation context specify the sign, magnitude, and cell-state dependence of the regulatory effect.\n\n**NOVELTY:** This moves beyond linking perturbations to just transcriptomic outputs by adding simultaneous chromatin-state and a defined functional readout in the same cell, creating the first causal, multi-layered dataset sufficient to train a context-aware sequence-to-regulatory-phenotype model.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:33.120428+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 4,
+    "text": "**IDEA:** Develop a method to extract interpretable, causally grounded representations of transcription factor logic by systematically perturbing foundation model embeddings and measuring their alignment with orthogonal CRISPR-based functional assays.\n\n**BACKGROUND:** Foundation models for genomics act as black-box predictors, making it difficult to extract mechanistic insights like transcription factor (TF) regulatory logic from their latent spaces. This limits their use for hypothesis generation and target discovery. The core unsolved problem is linking model-internal representations to verifiable, causal biological mechanisms.\n\n**APPROACH:** We will treat a pre-trained single-cell foundation model as a fixed encoder and train a sparse, modular \"probe network\" on its embeddings. This probe will be forced to learn a dictionary of human-interpretable computational motifs (e.g., TF activity scores) by using a novel training objective that combines in-silico motif ablation with fitness to predict orthogonal, genome-wide CRISPR perturbation outcomes (Perturb-seq/CROP-seq).\n\n**EXPERIMENT:** We will train the probe on a large-scale Perturb-seq dataset (e.g., from a cancer cell line) targeting 50+ TFs, using the model's embeddings of control cells. Success is measured by the probe's ability to zero-shot predict the differential expression outcome of held-out combinatorial TF perturbations, outperforming black-box baselines and yielding sparse, alignable motif weights.\n\n**NOVELTY:** Unlike post-hoc attribution methods, this approach directly bakes causal, functional validation into the interpretability framework, moving from correlative \"importance scores\" to representations whose components are explicitly trained to mirror real-world perturbation effects.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:50.233481+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 0,
+    "text": "**IDEA:** Develop a hybrid neural network architecture that enforces exact, discrete conservation laws via a corrective projection layer, enabling long-term stable climate emulation without sacrificing expressivity.\n\n**BACKGROUND:** This addresses subproblem #5: the inability to hard-code exact physical conservation laws into neural network emulators. Current methods, like soft constraint penalties, allow drift, while strict architectural constraints (e.g., linear layers) cripple model capacity. This gap prevents trustworthy century-scale simulations.\n\n**APPROACH:** We will design a model where a standard, expressive neural network (e.g., a U-Net) first makes a prediction. Its output is then passed through a novel \"physics-projection\" layer that solves a small, local quadratic program to minimally adjust the field to exactly conserve mass, energy, and momentum as discretized in the source climate model's grid.\n\n**EXPERIMENT:** We will train and test the emulator on 1000 years of pre-industrial simulation data from the CESM2. The key metric is the accumulation of global conservation error over a 100-year emulated rollout, compared to a baseline network with only penalty terms.\n\n**NOVELTY:** Unlike penalty-based methods, this guarantees zero accumulation of conservation error at each timestep. Unlike overly restrictive architectures, it preserves the network's ability to learn complex, nonlinear dynamics before the final corrective step.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:44.220683+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 1,
+    "text": "**IDEA:** Develop a hybrid neural operator that enforces physical conservation laws as a hard architectural constraint via a differentiable, parameterized projection layer, and test its ability to maintain stable, long-term simulations when coupled within an Earth system model.\n\n**BACKGROUND:** This addresses subproblem #2: the lack of methods to guarantee physical consistency in emulator outputs without sacrificing performance. Current approaches use soft penalty terms in the loss function, which are often violated in practice, leading to non-physical states and instability in coupled model feedback loops.\n\n**APPROACH:** We will design a neural operator architecture where the final step is a learned, differentiable projection onto a physically-consistent manifold (e.g., enforcing mass/energy conservation via a constrained optimization layer). This layer will be trained end-to-end with the emulator, making physical consistency a non-negotiable architectural output rather than a soft training suggestion.\n\n**EXPERIMENT:** We will train the emulator on high-resolution atmospheric data (e.g., ERA5) to predict the next timestep, then perform a stringent 10-year coupled simulation within a simplified Earth system model framework (like SPEEDY). We will measure stability by the growth of spurious trends in global mass/energy and the time to catastrophic model blow-up compared to baseline emulators.\n\n**NOVELTY:** Unlike prior work that penalizes physical violations in the loss, this method architecturally guarantees key conservation laws are satisfied at every forward pass. This shifts the paradigm from encouraging to enforcing consistency, which is critical for stable coupling.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:00.639746+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 2,
+    "text": "IDEA: A novel hybrid architecture that enforces conservation laws as hard, differentiable constraints within a graph neural network to emulate ocean dynamics, eliminating mass and energy drift.\n\nBACKGROUND: This addresses subproblem #3: encoding hard physical constraints into expressive deep learning emulators. Current methods use soft penalty terms, allowing violations that accumulate over long simulations. A method to enforce them exactly without crippling model capacity is a critical unsolved bottleneck.\n\nAPPROACH: We will design a Graph Neural Network (GNN) operating on an unstructured ocean mesh, where the final layer is a differentiable optimization step. This step will project the GNN's raw output onto the nearest state that exactly satisfies discrete, cell-local conservation of mass and energy, using a fast, learned iterative solver.\n\nEXPERIMENT: We will train the model to emulate the MITgcm ocean component and test it in a 100-year offline simulation. Success is measured by near-zero cumulative drift in global mass and energy compared to a baseline emulator, while maintaining or improving standard skill metrics (e.g., RMSE, pattern correlation) on key fields like temperature and velocity.\n\nNOVELTY: Unlike penalty-based methods, this enforces exact conservation at each step. Unlike overly rigid architectures, it preserves expressive power by letting the GNN learn dynamics freely before the final physically-consistent projection.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:16.554441+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 3,
+    "text": "**IDEA:** Train a deep learning emulator using a novel loss function that combines standard regression with a dynamically-weighted extreme event penalty, forcing the model to prioritize accuracy in the tails of the climate variable distribution.\n\n**BACKGROUND:** This addresses subproblem 1: the accurate emulation of extreme, low-probability events. Current emulators minimize mean squared error, biasing them toward the mean and causing poor performance on rare extremes critical for risk assessment. The core block is the training objective, not just the architecture or data quantity.\n\n**APPROACH:** We will design a composite loss function: L = L_MSE + \u03bb * L_Extreme. L_Extreme will be a quantile-focused loss (e.g., a tilted absolute loss) applied only to samples exceeding a high percentile threshold. Crucially, \u03bb will be dynamically adjusted during training based on the emulator's current extreme error relative to its mean error, preventing the extreme task from dominating or being ignored.\n\n**EXPERIMENT:** We will train a convolutional LSTM to emulate surface wind speeds from a high-resolution climate model dataset (e.g., ERA5). Success will be measured by a significant improvement over a baseline MSE-trained model in capturing the 99th percentile events, using the Continuous Ranked Probability Score (CRPS) for extremes, while maintaining overall skill.\n\n**NOVELTY:** Unlike prior work that uses post-hoc correction or simply adds more extreme data, this directly attacks the objective function bias. The dynamic weighting of the extreme loss is a novel optimization strategy tailored for stable climate emulation, ensuring the model learns the full distribution without catastrophic forgetting of the mean state.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:32.563317+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 4,
+    "text": "**IDEA:** A novel experiment to isolate and quantify the propagation of emulator-introduced uncertainty in a full Earth System Model (ESM) pipeline by using a hierarchy of interchangeable, uncertainty-characterized emulators for key components.\n\n**BACKGROUND:** The precise quantification and propagation of emulator-introduced uncertainty within full ESM pipelines is unknown. This is the critical bottleneck for trusting emulator-accelerated projections, as unquantified errors from components like the atmosphere or ocean physics can cascade nonlinearly, corrupting policy-relevant outputs like regional precipitation or climate sensitivity.\n\n**APPROACH:** We will construct a modular ESM pipeline where traditional physical components (e.g., atmospheric dynamics, radiation) can be replaced with their neural emulators. Crucially, each emulator will be trained with a method that provides well-calibrated, per-time-step predictive uncertainty estimates (e.g., via deep ensembles or evidential regression). We will then run multi-decadal simulations, propagating these component-level uncertainties through the coupled system using a novel tracing algorithm.\n\n**EXPERIMENT:** We will run a massive ensemble of 200-year simulations under an SSP scenario, systematically swapping in/out uncertain emulators, and measure how their intrinsic uncertainty distributions propagate to key outputs (global mean temperature, Arctic amplification, ENSO statistics) using variance decomposition and divergence metrics from the baseline physics-run distribution.\n\n**NOVELTY:** Prior work quantifies emulator error in isolation; this is the first experiment designed to explicitly trace and attribute the *coupled-system* error budget to specific emulator components, providing a direct map from component uncertainty to projection uncertainty.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:50.546853+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 0,
+    "text": "**IDEA:** We hypothesize that agents can achieve zero-shot compositional generalization by learning a library of temporally extended, symbolically grounded skills and a meta-controller that leverages large language models for novel task planning.\n\n**BACKGROUND:** This addresses subproblem #2: the compositionality of skills for unseen tasks. Current methods struggle to recombine learned primitives in novel hierarchical sequences. The core issue is the lack of a high-level planning mechanism that can decompose an unseen instruction into a feasible sequence of existing skills.\n\n**APPROACH:** We propose to train a skill-conditioned policy where each skill is anchored to a discrete, human-interpretable symbol (e.g., `pick(red_block)`, `move_to(blue_zone)`). We will then train a separate, lightweight meta-controller that takes a natural language task description, uses a frozen LLM to propose a symbolic skill sequence, and executes it by calling the pre-trained skill policies.\n\n**EXPERIMENT:** We will test this in a new benchmark of procedurally generated 3D manipulation tasks, where test tasks are novel compositions of trained subtasks. Success is measured by the zero-shot completion rate on unseen composite instructions compared to monolithic and non-compositional baselines.\n\n**NOVELTY:** Unlike prior work on skill chaining, this explicitly uses the abstract reasoning and knowledge priors of LLMs for zero-shot task decomposition, while keeping low-level control grounded in trained, reliable skills\u2014decoupling high-level planning from policy learning.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:46.153327+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 1,
+    "text": "**IDEA:** We will test whether training agents with a novel \"counterfactual dynamics penalty\" can enforce the robust alignment of latent world models, preventing hallucinated dynamics and enabling zero-shot generalization to structurally novel environments.\n\n**BACKGROUND:** The robust alignment of latent world models with reality is a key unsolved problem. Agents often learn internally inconsistent dynamics models that work on training data but hallucinate impossible physics in new settings, leading to catastrophic planning failures. Current regularization methods do not guarantee physical consistency under distribution shift.\n\n**APPROACH:** We propose a training-time objective that penalizes the world model for predicting dynamics that violate a set of universal physical principles (e.g., object permanence, conservation of energy, temporal consistency) in counterfactual states generated through targeted interventions. The model will be trained to minimize both standard prediction error and this consistency penalty, forcing it to learn dynamics grounded in general rules rather than spurious correlations.\n\n**EXPERIMENT:** We will use a suite of procedurally generated 3D physics environments (e.g., based on ThreeDWorld) where the training set contains objects with a subset of properties (e.g., only rigid, non-elastic cubes). Zero-shot testing will introduce novel but physically plausible object types (e.g., elastic spheres) and implausible \"trick\" environments that violate core physics. Success is measured by the agent's planning performance and a low rate of physical violations in its model's rollouts.\n\n**NOVELTY:** Unlike prior work that regularizes for smoothness or ensemble disagreement, this method explicitly encodes and enforces high-level, domain-agnostic physical laws as inviolable constraints during learning, directly targeting the root cause of hallucination in model-based RL.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:04.303555+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 2,
+    "text": "**IDEA:** Train agents with a meta-objective to actively seek out and identify dynamics that violate the predictions of their learned causal world model, using this intrinsic signal to drive exploration in novel environments.\n\n**BACKGROUND:** This addresses the exploration problem in novel contexts for zero-shot generalization. Current agents lack systematic strategies to explore when their trained policies fail, leading to paralysis or random actions in OOD states. Decisive progress requires a principled exploration signal derived from the agent's own understanding of the world.\n\n**APPROACH:** We will train an agent with a two-headed model: a causal transition model learned over intervened training environments, and an \"OOD detector\" trained to predict the model's own prediction error. The agent will be meta-trained using adversarial environment generation, where its exploration policy is rewarded for maximizing the detector's activation (surprise) in novel test settings.\n\n**EXPERIMENT:** Test on the ProcGen benchmark's hardest generalization mode, using held-out levels with never-seen game mechanics. The key metric is the rate of successful task completion in the novel levels compared to strong baselines, measured by the agent's ability to discover necessary new skills within a fixed, small number of timesteps.\n\n**NOVELTY:** Unlike prior intrinsic curiosity or uncertainty methods, this directly couples exploration to violations of *causal* mechanisms, not random or noisy states, and uses meta-learning to explicitly optimize the exploration policy for detecting model-breaking dynamics.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:20.150812+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 3,
+    "text": "**IDEA:** We hypothesize that training an exploration policy to maximize the mutual information between its latent skill variable and a learned dynamics model's latent state transitions will produce exploration strategies that are robust to novel dynamics.\n\n**BACKGROUND:** This addresses subproblem 1: the exploration problem in novel contexts. Current intrinsic motivation methods (e.g., curiosity) often fail under unseen dynamics because they rely on prediction errors in a learned model that itself fails to generalize. A principled approach for dynamics-agnostic exploration is missing.\n\n**APPROACH:** We will train an exploration policy with a latent skill vector `z`. Concurrently, we will train a dynamics model that maps (state, action) to a latent representation of the next state. The exploration policy's objective is to maximize the mutual information between its skill `z` and the latent transition representations induced by its trajectory, incentivizing it to discover interactions that are informative under the *current* dynamics.\n\n**EXPERIMENT:** We will test this in a procedurally generated robotic manipulation benchmark with held-out, structurally different physics parameters (e.g., new friction, object masses, actuator delays). The key metric is the rate of successful novel goal achievement in zero-shot evaluation compared to state-of-the-art exploration baselines.\n\n**NOVELTY:** Unlike curiosity, this method does not seek hard-to-predict states, but seeks to *characterize* the dynamics through diverse interactions. Unlike prior skill-discovery methods that maximize state coverage, it explicitly ties skill diversity to the learned dynamics representation, promoting robustness when that representation generalizes.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:35.685246+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 4,
+    "text": "**IDEA:** We propose to test whether agents trained with a self-supervised objective to maximize causal influence over abstract environment variables demonstrate systematic zero-shot exploration in novel contexts without rewards.\n\n**BACKGROUND:** This addresses the unsolved exploration problem in novel contexts for zero-shot generalization. Current agents lack mechanisms for systematic, efficient exploration in unseen settings without reward signals, relying instead on random or curiosity-driven noise, which fails to guarantee coverage of semantically meaningful behaviors.\n\n**APPROACH:** We will train an agent using a novel intrinsic objective: to learn policies that maximize the mutual information between its actions and a set of abstract, disentangled state variables learned concurrently via a causal world model. This forces the agent to discover and practice policies that are minimal interventions on the environment's underlying causal factors.\n\n**EXPERIMENT:** We will test the agent in a suite of procedurally generated physical reasoning environments with locked doors, movable obstacles, and toggleable switches. Zero-shot performance will be measured by the success rate and time to solve novel puzzle configurations, compared against state-of-the-art exploration baselines like empowerment and random network distillation.\n\n**NOVELTY:** Unlike prior exploration methods that seek novelty in observations or dynamics, this approach explicitly targets the causal structure of the environment, providing a principled, task-agnostic objective for generating semantically meaningful behavior primitives in any new setting.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:50.618993+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 0,
+    "text": "IDEA: We will experimentally demonstrate that a classically hard learning task, derived from a cryptographic pseudorandom function, can be performed by a shallow noisy quantum circuit but cannot be reproduced by any polynomial-time classical learner given the same data samples.\n\nBACKGROUND: This addresses subproblem 2: the lack of provable quantum advantage for realistic, classically hard data. Current demonstrations use artificial data with built-in quantum structure; we need a natural source of classical hardness that forces any efficient classical learner to fail, while remaining learnable by a near-term quantum device.\n\nAPPROACH: We will generate a dataset where the labels are defined by a function classically believed to be a secure pseudorandom function (PRF), such as those based on Learning With Errors. A quantum neural network with a matching ansatz will be trained on this data. The classical hardness is rooted in the cryptographic assumption that no polynomial-time classical algorithm can learn this PRF from input-output examples.\n\nEXPERIMENT: We will train the quantum model on the PRF-labeled data and measure its test accuracy against a held-out set. We will then challenge state-of-the-art classical ML models (large neural networks, gradient-boosted trees) on the same supervised learning task, using identical training sample budgets. A decisive positive result is the quantum model achieving >95% accuracy while all efficient classical models perform at or near random guessing (~50%).\n\nNOVELTY: Unlike prior quantum advantage experiments which focus on sampling or abstract oracle problems, this directly frames learning from data as a cryptographically hard problem for classical computers, creating a clear, practical separation in a machine learning context.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:45.388561+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 1,
+    "text": "IDEA: A definitive experiment to test if quantum kernel methods can achieve a provable, noise-resilient learning advantage on a classically hard, real-world-inspired dataset.\n\nBACKGROUND: This addresses subproblem #1 (theoretical separation for relevant problems) and #2 (robustness on NISQ devices). Current claims of quantum advantage use artificial oracles; a demonstration on a natural, classically challenging problem with real-world structure under noise would be decisive.\n\nAPPROACH: We will engineer a dataset based on discrete logarithm problems embedded in financial time-series signatures, a task believed to be classically hard for learning. We will train a classical ML model against a quantum kernel method using an explicitly constructed, hardware-efficient feature map on a superconducting NISQ processor.\n\nEXPERIMENT: We measure the test accuracy and sample complexity of both models on the engineered dataset, using cross-validation. A positive result requires the quantum model to achieve >95% accuracy with significantly fewer training samples than any classical counterpart, while maintaining this separation under measured NISQ noise levels.\n\nNOVELTY: The dataset is not an oracle but a crafted real-world proxy with a proven classical hardness reduction, and the experiment is designed to isolate quantum advantage in learning efficiency, not just final accuracy, under realistic noise constraints.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:01.195940+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 2,
+    "text": "IDEA: Implement a quantum kernel method on a programmable photonic processor to solve a classically hard learning problem derived from discrete logarithm-structured data, directly testing for a quantum advantage on classical data without QRAM.\n\nBACKGROUND: This addresses subproblem #5: the necessity of quantum data for a quantum advantage in learning. A major obstacle is the assumption that quantum advantage for classical data requires a QRAM for efficient state preparation, which is considered unrealistic. Demonstrating an advantage without QRAM would redefine the path to practical quantum machine learning.\n\nAPPROACH: We will engineer a kernel based on the discrete logarithm problem, which is believed to be classically hard but allows for efficient quantum feature map construction. Using a programmable linear optical quantum circuit, we will directly implement this kernel on a classical dataset where samples are encoded as phases in the optical modes, bypassing the need for QRAM by leveraging the natural parallelism of the interferometer.\n\nEXPERIMENT: We will train a quantum kernel SVM to classify synthetic data with labels defined by the parity of discrete logarithms, comparing its test accuracy and scaling against state-of-the-art classical kernel methods (including deep neural networks) on problem instances of increasing bit size.\n\nNOVELTY: Unlike prior quantum kernel experiments on artificial data or with simulators, this uses a physically scalable photonic platform to implement a provably hard kernel on a classical data encoding, directly testing the end-to-end advantage proposition without relying on QRAM or exponential classical simulation.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:17.263406+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 3,
+    "text": "**IDEA:** A definitive, end-to-end experiment to test if a noisy, intermediate-scale quantum (NISQ) kernel method, with all data encoding and readout costs rigorously accounted for, can achieve a provable and classically irreplicable accuracy advantage on a real-world, classical dataset.\n\n**BACKGROUND:** This addresses subproblem #3 (Resource Accounting) and #2 (Practical Utility). Claims of quantum advantage in ML often ignore the exponential overhead of loading classical data into quantum states (state preparation) and reading out results (measurement/tomography). A decisive experiment must include these costs in the total runtime comparison to determine if any quantum model provides a *net* advantage.\n\n**APPROACH:** We will implement a quantum kernel method using a problem-inspired, hardware-efficient feature map on a superconducting quantum processor. Crucially, we will develop and use a novel, optimized measurement protocol (Classical Shadows with tailored bases) to read out kernel matrix entries with minimal shots. The total quantum runtime, from data loading through repeated circuit execution and measurement, will be the primary resource metric.\n\n**EXPERIMENT:** We will benchmark against optimized classical kernel methods (e.g., SVMs with RBF kernels) and neural networks on a curated, classically challenging dataset (e.g., a specific quantum chemistry simulation dataset where the feature map is naturally inspired). The key metric is the test accuracy vs. total wall-clock time, requiring the quantum system to beat the classical baseline on both axes within a practical time window.\n\n**NOVELTY:** Unlike prior demonstrations that isolate a quantum subroutine, this experiment enforces a strict end-to-end wall-clock accounting. The use of an optimized measurement strategy specifically designed to minimize the dominant readout overhead for kernel evaluation is a critical technical innovation for a fair comparison.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:37.050087+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 4,
+    "text": "IDEA: We will construct a classically hard, realistic dataset by embedding a cryptographically secure pseudorandom function into high-dimensional image features, then demonstrate a provable quantum learning advantage on this dataset using a fault-tolerant quantum linear algebra algorithm.\n\nBACKGROUND: This addresses subproblem #2: the lack of provably hard, realistic data for quantum advantage. Current \"hard\" datasets are artificial and not representative of practical data. We need a method to generate realistic data with a proven classical hardness guarantee.\n\nAPPROACH: We will use a pseudorandom function (PRF) with a secret key, conjectured to be hard for classical circuits in the polynomial hierarchy, to generate labels for a high-dimensional feature space derived from a public, realistic image corpus (e.g., ImageNet). We will then train a quantum model based on the quantum linear systems algorithm (HHL) to learn this PRF mapping.\n\nEXPERIMENT: We will measure the quantum model's test accuracy and learning speed against state-of-the-art classical models (e.g., deep neural networks, kernel methods) on the constructed dataset. A positive result is the quantum model achieving high accuracy with efficient quantum resources, while all efficient classical models fail to learn beyond random guessing, as measured by statistical significance tests.\n\nNOVELTY: This directly bridges cryptographic hardness and realistic data features for the first time, and uses a fault-tolerant quantum algorithm with a clear classical hardness guarantee, moving beyond heuristic quantum circuits or artificial data distributions.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:53.179095+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 0,
+    "text": "IDEA: To experimentally determine the threshold and logical error rate of a distance-3 rotated surface code on a high-fidelity, 17-qubit NISQ processor, using real-time decoding, to establish if a single logical qubit can achieve a longer coherence time than the best physical qubit on the same device.\n\nBACKGROUND: This directly addresses subproblem #1: the unknown optimal balance between error suppression and overhead. A small surface code is the leading candidate for NISQ-era error correction, but it is unknown if it can demonstrably extend logical coherence on real hardware, as current implementations often fail to break even due to physical errors and slow decoding.\n\nAPPROACH: We will implement a distance-3 rotated surface code using 17 physical data qubits, plus additional ancilla qubits for syndrome extraction, on a superconducting processor with median gate fidelities >99.9%. We will execute repeated syndrome measurement cycles using a customized, low-latency FPGA decoder to correct errors in real-time and preserve the logical state.\n\nEXPERIMENT: We will measure the logical memory error rate over many cycles using logical Pauli eigenstate preparations and measurements, and directly compare the logical \\( T_1 \\) and \\( T_2 \\) times to the best individual physical qubit's coherence times on the same chip. Success is defined as a logical error rate per cycle lower than the best physical qubit's error rate per equivalent idle time.\n\nNOVELTY: Prior work often uses post-processing decoding or smaller codes; this experiment integrates fast, real-time decoding with a full distance-3 code on a single, modern NISQ device to perform a definitive \"break-even\" test, moving from proof-of-concept to a benchmark of practical utility.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:46.789054+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 1,
+    "text": "**IDEA:** Develop a hardware-efficient, bias-tailored quantum error-correcting code by experimentally mapping the correlated error structure of a superconducting qubit array and using it to design and test a customized surface code variant.\n\n**BACKGROUND:** This addresses subproblem #2: the lack of practical, high-threshold QEC codes for NISQ devices. Current codes assume idealized noise, but real hardware has structured, correlated errors that make standard code performance suboptimal and overhead prohibitive.\n\n**APPROACH:** First, we will perform intensive process tomography on a 17-qubit superconducting lattice to build a spatially and temporally correlated error map. We will then use this map to design a \"skewed\" surface code, where qubit connectivity and stabilizer measurement circuits are optimized to avoid dominant error pathways and exploit error bias.\n\n**EXPERIMENT:** We will implement the customized code and the standard surface code on the same device, comparing logical error rates per cycle using randomized benchmarking of the logical subspace. The key metric is the reduction in the effective logical error rate relative to the standard code.\n\n**NOVELTY:** Unlike codes designed for abstract noise models, this code is directly informed by the comprehensive error correlation map of a specific processor. The optimization is experimental, not just theoretical, and targets the precise correlated error channels that break standard decoders.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:04.571194+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 2,
+    "text": "IDEA: Implement and benchmark a real-time, hardware-accelerated decoder for the surface code on a superconducting NISQ processor to establish the first experimental demonstration of logical qubit lifetime extension limited by decoding speed and accuracy.\n\nBACKGROUND: This addresses subproblem #2, practical real-time decoding. Without a decoder that can keep pace with syndrome measurement cycles (~1 \u00b5s), errors accumulate, making quantum error correction ineffective. Current decoders are either too slow or too inaccurate for real-time operation on NISQ hardware.\n\nAPPROACH: We will design a heterogeneous decoding system pairing a fast, hardware-embedded FPGA with a more accurate, neural-network-based co-processor. The FPGA will perform minimum-weight perfect matching for immediate correction, while the neural network, trained on device-specific noise models, will asynchronously refine the decoding path.\n\nEXPERIMENT: We will run repeated memory experiments on a distance-3 surface code logical qubit, comparing the logical error rate and the fraction of syndrome cycles successfully decoded in real-time against a baseline of offline, high-accuracy decoding.\n\nNOVELTY: This moves beyond offline decoding simulations by enforcing a strict real-time latency budget on real hardware, and it introduces a hybrid decoder architecture specifically optimized for the timing constraints and structured noise of a specific NISQ device.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:21.562209+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 3,
+    "text": "**IDEA:** A real-time, hardware-adaptive decoder that uses a co-designed classical FPGA to implement a fast, neural-network-based decoding algorithm trained directly on the unique error signature of a target NISQ device.\n\n**BACKGROUND:** This addresses subproblem #2, Practical real-time decoding. The lack of a decoding method fast enough for NISQ qubit cycles negates the advantage of error detection. Current decoders are either too slow (software-based) or too inflexible (static lookup tables) to handle the real-time demands and unique noise of a specific quantum processor.\n\n**APPROACH:** We will implement a small surface code on a fixed-frequency superconducting qubit device. A neural network decoder will be trained via simulation on a detailed error model of that specific chip, then its final weights will be compiled onto a low-latency FPGA physically interfaced with the quantum control hardware. The FPGA will perform inference on syndrome bitstreams within the coherence window.\n\n**EXPERIMENT:** We will compare the logical error rate and lifetime of an encoded qubit using our FPGA decoder against the same code using an optimal but slower offline decoder. Success is a statistically significant extension of the logical lifetime with the FPGA decoder active, measured via logical state tomography.\n\n**NOVELTY:** Unlike offline neural decoders or static lookup decoders, this integrates device-specific training with a dedicated, ultra-low-latency hardware implementation, creating a closed, adaptive loop between the quantum processor's noise and the classical correction system.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:38.872195+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 4,
+    "text": "**IDEA:** Implement a distance-3 surface code on a NISQ processor and use real-time feedforward of syndrome data to experimentally determine the code distance at which logical error rates cross below the physical error rate, establishing the first hardware-specific threshold for a net fidelity gain.\n\n**BACKGROUND:** The optimal balance between error suppression and correction overhead is unknown for NISQ devices. Without knowing the code distance at which logical performance surpasses physical qubit performance, QEC cannot provide a net benefit, making this the foundational barrier to progress.\n\n**APPROACH:** We will execute repeated syndrome measurement cycles on a distance-3 surface code logical qubit, using mid-circuit measurement and feedforward to apply single-qubit corrections in real-time. This minimizes the memory time required for a full cycle, isolating the logical error per cycle from state preparation and measurement (SPAM) errors.\n\n**EXPERIMENT:** We will compare the logical error rate per cycle, extracted via randomized benchmarking of the logical qubit, against the average physical two-qubit gate error rate. A positive result is a statistically significant logical error rate lower than the physical baseline.\n\n**NOVELTY:** Prior work focuses on post-selected or offline decoding; this experiment uses real-time feedforward to complete full QEC cycles, providing the first direct measurement of a \"break-even\" point under active correction on NISQ hardware.",
+    "system_version": "S3",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:16:57.043275+00:00"
+  }
+]

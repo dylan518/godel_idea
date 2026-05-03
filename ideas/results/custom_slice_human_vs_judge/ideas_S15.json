@@ -1,0 +1,362 @@
+[
+  {
+    "topic_id": "CUSTOM:drug delivery",
+    "topic": "Drug Delivery",
+    "domain": "",
+    "idea_index": 0,
+    "text": "IDEA: Develop stimuli-responsive nanoparticles for targeted, on-demand drug release in tumor microenvironments.  \nBACKGROUND: Current chemotherapeutic delivery often suffers from systemic toxicity and poor targeting, reducing efficacy and increasing side effects. Tumor microenvironments have unique chemical characteristics such as acidic pH and elevated enzyme levels that can be exploited for selective drug release.  \nAPPROACH: Engineer nanoparticles that remain stable in circulation but undergo structural changes to release their payload upon exposure to acidic pH or specific enzymes overexpressed in tumors. This can be achieved by incorporating pH-sensitive linkers or enzyme-cleavable bonds within the nanoparticle design.  \nEXPERIMENT: Test the nanoparticles in vitro using cancer cell lines with varying microenvironment conditions, measuring drug release rates and cytotoxicity, followed by in vivo assessment in tumor-bearing animal models to evaluate targeting specificity and therapeutic outcomes.  \nNOVELTY: Unlike conventional nanoparticles, this system leverages dual-responsive triggers to enhance site-specific drug release, improving therapeutic index and minimizing off-target effects.\n\n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:39:35.931530+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:drug delivery",
+    "topic": "Drug Delivery",
+    "domain": "",
+    "idea_index": 1,
+    "text": "IDEA: Utilize exosome-mimetic nanovesicles for efficient and biocompatible delivery of RNA therapeutics.  \nBACKGROUND: RNA-based drugs such as siRNA and mRNA face delivery challenges due to instability and poor cellular uptake. Natural exosomes have shown promise as delivery vehicles but are difficult to isolate and standardize at scale.  \nAPPROACH: Design synthetic nanovesicles that mimic exosome membrane proteins and surface markers to facilitate cellular uptake and immune evasion. Incorporate RNA-loading techniques that preserve RNA integrity and functionality.  \nEXPERIMENT: Evaluate cellular uptake and gene silencing efficiency using reporter assays in vitro, followed by biodistribution and efficacy studies in relevant animal disease models. Compare performance against traditional lipid nanoparticles.  \nNOVELTY: This approach combines the biocompatibility and targeting advantages of exosomes with the scalability and tunability of synthetic systems, aiming to overcome key translational barriers in RNA drug delivery.\n\n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:39:35.931585+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:drug delivery",
+    "topic": "Drug Delivery",
+    "domain": "",
+    "idea_index": 2,
+    "text": "IDEA: Create implantable hydrogel depots for sustained, localized delivery of combination therapies in chronic wound healing.  \nBACKGROUND: Chronic wounds require prolonged treatment with multiple drugs (antibiotics, growth factors) to promote healing, but systemic administration results in poor local drug concentration and side effects. Current hydrogels lack precise control over multi-drug release kinetics.  \nAPPROACH: Develop a multi-layered hydrogel matrix with differential degradation rates and drug-binding affinities to sequentially release antibiotics followed by growth factors over weeks. Incorporate stimuli-responsive elements to accelerate release in response to infection markers.  \nEXPERIMENT: Characterize release profiles in vitro under simulated wound conditions, then assess healing efficacy and infection control in diabetic rat wound models with histological and microbiological analyses.  \nNOVELTY: This system offers programmable, stage-specific drug delivery from a single implant, addressing the temporal complexity of wound healing treatments more effectively than single-drug or non-responsive hydrogels.\n\n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:39:35.931589+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs",
+    "topic": "immunoengineering for therapeutic use of drugs. antibody drugs",
+    "domain": "",
+    "idea_index": 0,
+    "text": "IDEA: Engineering multi-specific antibody-drug conjugates (ADCs) that selectively target tumor antigens and immune checkpoint proteins to enhance cancer immunotherapy efficacy.  \nBACKGROUND: Current antibody-drug conjugates mainly target single tumor-associated antigens, which can limit their specificity and lead to off-target toxicity. Additionally, combining checkpoint inhibition with targeted delivery remains challenging.  \nAPPROACH: Design and synthesize ADCs that simultaneously bind a tumor antigen and an immune checkpoint receptor (e.g., PD-1/PD-L1), delivering cytotoxic drugs directly while modulating the tumor immune microenvironment. Use protein engineering to optimize binding affinity and linker stability.  \nEXPERIMENT: Evaluate efficacy and specificity in vitro using cancer cell lines expressing both targets, followed by tumor xenograft mouse models, measuring tumor regression, immune cell infiltration, and off-target toxicity markers.  \nNOVELTY: This dual-targeting ADC integrates immune checkpoint modulation with targeted drug delivery in a single molecule, a strategy not widely explored, aiming to synergistically enhance antitumor responses while minimizing adverse effects.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:39:45.777630+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs",
+    "topic": "immunoengineering for therapeutic use of drugs. antibody drugs",
+    "domain": "",
+    "idea_index": 1,
+    "text": "IDEA: Development of antibody-based nanocarriers engineered to penetrate the blood-brain barrier (BBB) for targeted delivery of neurotherapeutic drugs.  \nBACKGROUND: Many neurological disorders lack effective treatments because therapeutic antibodies or drugs cannot efficiently cross the BBB. Existing delivery systems often fail to achieve sufficient brain bioavailability.  \nAPPROACH: Engineer bispecific antibodies where one arm targets BBB transport receptors (e.g., transferrin receptor) to facilitate receptor-mediated transcytosis, and the other arm binds a therapeutic payload or neurodegenerative disease biomarker. Conjugate these antibodies to nanoparticle carriers encapsulating small-molecule drugs or biologics.  \nEXPERIMENT: Test BBB penetration efficiency using in vitro BBB models and in vivo rodent models. Assess brain drug concentration, target engagement, and therapeutic effect in models of diseases such as Alzheimer\u2019s or glioblastoma.  \nNOVELTY: Employing immunoengineered bispecific antibodies as targeting moieties for nanocarriers provides enhanced specificity and transport efficiency compared to conventional antibody or nanoparticle systems, potentially enabling effective CNS drug delivery.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:39:45.777694+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:immunoengineering for therapeutic use of drugs. antibody drugs",
+    "topic": "immunoengineering for therapeutic use of drugs. antibody drugs",
+    "domain": "",
+    "idea_index": 2,
+    "text": "IDEA: Utilizing synthetic biology to create antibody-secreting immune cells that conditionally release therapeutic antibodies in response to disease-specific inflammatory signals.  \nBACKGROUND: Systemic administration of antibody drugs can cause off-target effects and requires frequent dosing. There is a need for localized, controlled antibody delivery triggered by disease-relevant cues.  \nAPPROACH: Engineer immune cells (e.g., T cells or macrophages) with synthetic genetic circuits that detect pathological cytokines (e.g., TNF-\u03b1 or IL-6) and respond by producing and secreting therapeutic antibodies directly at the disease site. Optimize circuit sensitivity and antibody secretion kinetics.  \nEXPERIMENT: Validate cellular response to inflammatory signals in vitro and test therapeutic efficacy and safety in animal models of autoimmune or inflammatory diseases, monitoring antibody production levels, disease markers, and side effects.  \nNOVELTY: This approach leverages immunoengineering and synthetic biology to create \u201csmart\u201d living drug factories that provide on-demand, site-specific antibody therapy, reducing systemic exposure and improving treatment precision compared to conventional dosing.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:39:45.777697+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:ipsc derived cardiomyocytes on a chip",
+    "topic": "iPSC derived cardiomyocytes on a chip",
+    "domain": "",
+    "idea_index": 0,
+    "text": "IDEA: Develop a microfluidic heart-on-a-chip model integrating iPSC-derived cardiomyocytes with real-time electrophysiology and contractility sensors to study arrhythmogenic drug effects.  \nBACKGROUND: Current cardiotoxicity assays often lack physiological relevance and real-time functional readouts, limiting predictive power for arrhythmogenic side effects. There is a need for platforms that reproduce human cardiac electrophysiology and mechanical function in vitro for precise drug safety evaluation.  \nAPPROACH: Utilize microfabrication to build a multi-electrode array (MEA) integrated microfluidic chip seeded with iPSC-derived cardiomyocytes arranged in anisotropic patterns to mimic native cardiac tissue architecture. Incorporate flexible strain gauges or optical sensors for contractility measurement alongside electrical activity monitoring under fluidic drug perfusion.  \nEXPERIMENT: Test known arrhythmogenic and non-arrhythmogenic drugs by recording changes in electrophysiological parameters (e.g., action potential duration, conduction velocity) and contractility metrics, comparing against standard in vitro assays and clinical data.  \nNOVELTY: Combines structured iPSC-cardiomyocyte alignment with simultaneous multimodal functional readouts on a microfluidic chip, enabling more comprehensive and dynamic cardiotoxicity assessment than traditional static cultures or single-mode assays.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:39:55.295769+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:ipsc derived cardiomyocytes on a chip",
+    "topic": "iPSC derived cardiomyocytes on a chip",
+    "domain": "",
+    "idea_index": 1,
+    "text": "IDEA: Engineer a perfusable vascularized iPSC-derived cardiomyocyte chip to model ischemia-reperfusion injury and screen cardioprotective compounds.  \nBACKGROUND: Modeling ischemia-reperfusion injury in vitro is challenging due to the lack of vascular perfusion and oxygen/nutrient gradients in traditional cardiac cultures, restricting the ability to study injury mechanisms and test therapeutics.  \nAPPROACH: Fabricate a microfluidic chip combining iPSC-derived endothelial cells to form perfusable microvascular networks interfaced with iPSC-cardiomyocyte layers. Control oxygen levels via perfusion to simulate ischemia followed by reperfusion, enabling investigation of cellular responses and drug effects under physiologically relevant conditions.  \nEXPERIMENT: Induce ischemia-reperfusion cycles on-chip and assess cardiomyocyte viability, contractility, and molecular markers of injury with and without candidate cardioprotective drugs; validate findings against animal models or clinical biomarkers.  \nNOVELTY: Introduces vascular perfusion and oxygen control into an iPSC-cardiomyocyte chip platform, creating a more physiologically accurate injury model than existing non-perfused or mono-culture systems.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:39:55.295830+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:ipsc derived cardiomyocytes on a chip",
+    "topic": "iPSC derived cardiomyocytes on a chip",
+    "domain": "",
+    "idea_index": 2,
+    "text": "IDEA: Create a genetically encoded calcium indicator iPSC-cardiomyocyte chip platform for high-throughput, non-invasive assessment of intracellular calcium dynamics during drug screening.  \nBACKGROUND: Intracellular calcium handling is critical to cardiomyocyte function, but current calcium assays often require dyes that can be toxic or interfere with cell physiology, limiting longitudinal studies and throughput.  \nAPPROACH: Generate iPSC lines stably expressing genetically encoded calcium indicators (GECIs) such as GCaMP, differentiate them into cardiomyocytes, and culture on microfluidic chips designed for automated live-cell fluorescence imaging. Integrate automated image analysis pipelines to quantify calcium transient kinetics at scale.  \nEXPERIMENT: Perform drug dose-response studies monitoring calcium transient amplitude, rise and decay times, and arrhythmic events, benchmarking against traditional dye-based calcium imaging and electrophysiology data.  \nNOVELTY: Combines GECI technology with microfluidic chip culture for continuous, non-invasive, and scalable calcium dynamics monitoring in human iPSC-cardiomyocytes, improving assay robustness and enabling chronic studies unavailable in dye-based approaches.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:39:55.295835+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:antigen specific antibody discovery methods",
+    "topic": "Antigen specific antibody discovery methods",
+    "domain": "",
+    "idea_index": 0,
+    "text": "IDEA: Develop a microfluidics-based high-throughput single B-cell screening platform for rapid isolation of antigen-specific antibodies.  \nBACKGROUND: Traditional hybridoma and phage display techniques are time-consuming and often inefficient in isolating high-affinity antigen-specific antibodies. There is a need for faster, more scalable methods that preserve native heavy and light chain pairing to enhance antibody discovery pipelines.  \nAPPROACH: Utilize microfluidic droplet technology to encapsulate single B cells with fluorescently labeled antigens, enabling fluorescence-activated sorting of B cells secreting antigen-specific antibodies. Follow with single-cell sequencing to recover paired heavy and light chain sequences.  \nEXPERIMENT: Validate the platform using human peripheral blood mononuclear cells (PBMCs) stimulated with known antigens; measure throughput, antigen specificity (via ELISA), and affinity (using SPR) of isolated antibodies.  \nNOVELTY: Combines microfluidics and single B-cell sequencing in a streamlined workflow, improving speed and retention of native antibody pairing compared to separate bulk cell and sequencing methods.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:40:04.501833+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:antigen specific antibody discovery methods",
+    "topic": "Antigen specific antibody discovery methods",
+    "domain": "",
+    "idea_index": 1,
+    "text": "IDEA: Design a machine learning model to predict antigen-specific antibody sequences from B cell receptor repertoires enriched from immunized subjects.  \nBACKGROUND: Large-scale B cell sequencing generates vast repertoires, but distinguishing antigen-specific from nonspecific antibodies computationally remains a challenge. Current models often lack specificity or require extensive experimental validation.  \nAPPROACH: Train a deep learning classifier on paired BCR sequence data labeled by antigen specificity using features from CDR regions and physicochemical properties. Integrate modeled structural features to improve prediction accuracy of antigen binding.  \nEXPERIMENT: Use publicly available antigen-specific BCR datasets and newly generated immunized mouse datasets to evaluate model precision, recall, and area under the ROC curve. Compare with baseline motif and clustering approaches.  \nNOVELTY: Incorporates structural modeling features into sequence-based prediction to enhance accuracy of identifying antigen-specific antibodies directly from repertoire sequencing, reducing experimental burden.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:40:04.501865+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:antigen specific antibody discovery methods",
+    "topic": "Antigen specific antibody discovery methods",
+    "domain": "",
+    "idea_index": 2,
+    "text": "IDEA: Engineer a yeast surface display library screening method combined with next-generation sequencing to map antigen-specific antibody epitope landscapes at high resolution.  \nBACKGROUND: Understanding not just antibody sequences but their targeted epitopes is crucial for vaccine and therapeutic antibody design. Traditional mapping techniques are low-throughput and often lack resolution.  \nAPPROACH: Construct yeast display libraries expressing diverse antibody fragments; incubate with labeled antigens bearing epitope variants; sort yeast displaying antigen binding; sequence antibody fragments and correlate with epitope variants to pinpoint binding sites.  \nEXPERIMENT: Apply the method to influenza hemagglutinin antigen variants and compare epitope maps generated with known structural data; assess resolution and coverage versus existing epitope mapping methods.  \nNOVELTY: Integrates yeast display with systematic antigen epitope variant libraries and sequencing to provide detailed, scalable epitope specificity maps for antigen-specific antibodies.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:40:04.501867+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:mandibular bone regeneration using tissue engineering",
+    "topic": "Mandibular bone regeneration using tissue engineering",
+    "domain": "",
+    "idea_index": 0,
+    "text": "IDEA: Develop a 3D bioprinted scaffold embedded with osteoinductive growth factors and vascular endothelial cells to enhance mandibular bone regeneration.  \nBACKGROUND: Current mandibular bone regeneration techniques often face challenges in achieving sufficient vascularization within engineered constructs, leading to poor integration and limited bone growth. Enhancing angiogenesis alongside osteogenesis remains a critical hurdle for functional mandibular reconstruction.  \nAPPROACH: Use 3D bioprinting to fabricate a porous scaffold composed of biocompatible polymers infused with controlled-release osteoinductive factors like BMP-2, combined with co-cultured vascular endothelial cells to promote rapid vascular network formation within the scaffold.  \nEXPERIMENT: Implant scaffolds in a mandibular critical-size defect model in rodents and evaluate bone volume, vascular density, and mechanical strength over 8 weeks using micro-CT, histology, and biomechanical testing.  \nNOVELTY: This approach uniquely integrates simultaneous spatial delivery of growth factors and vascular cells via 3D bioprinting specifically tailored for mandibular defects, improving early vascularization compared to scaffolds delivering factors alone.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:40:14.257342+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:mandibular bone regeneration using tissue engineering",
+    "topic": "Mandibular bone regeneration using tissue engineering",
+    "domain": "",
+    "idea_index": 1,
+    "text": "IDEA: Utilize patient-derived mesenchymal stem cells (MSCs) genetically engineered to overexpress osteogenic transcription factors for mandibular bone regeneration.  \nBACKGROUND: Autologous MSCs have shown potential in bone repair, but their differentiation efficiency and bone-forming capacity remain suboptimal, limiting clinical application for large mandibular defects. Enhancing their osteogenic potential via gene modification could improve bone regeneration outcomes.  \nAPPROACH: Isolate MSCs from the patient\u2019s bone marrow, transduce them with viral vectors encoding osteogenic transcription factors such as RUNX2 and Osterix, then seed these engineered cells onto biodegradable scaffolds before implantation.  \nEXPERIMENT: Compare the bone regeneration efficacy of engineered MSCs versus non-modified MSCs in a mandibular defect model using radiographic imaging, histological staining, and quantitative PCR for bone marker expression over a 12-week period.  \nNOVELTY: This work pioneers the targeted enhancement of MSC osteogenic capacity through transcription factor overexpression specifically applied to mandibular defects, rather than relying on external growth factors or unmodified stem cells.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:40:14.257426+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:mandibular bone regeneration using tissue engineering",
+    "topic": "Mandibular bone regeneration using tissue engineering",
+    "domain": "",
+    "idea_index": 2,
+    "text": "IDEA: Design a dynamic bioreactor system that applies mechanical stimulation to mandibular bone tissue constructs to improve bone matrix organization and regeneration potential.  \nBACKGROUND: Mechanical forces are crucial in native bone remodeling and regeneration, yet most engineered mandibular constructs are cultured statically, which may limit their functional integration and bone quality. Reproducing physiological loading in vitro could enhance tissue maturation.  \nAPPROACH: Develop a custom bioreactor that applies cyclic compressive and shear forces to mandibular bone tissue constructs seeded with osteoprogenitor cells on biomimetic scaffolds during in vitro culture, mimicking masticatory mechanical environment.  \nEXPERIMENT: Assess the differences in bone matrix deposition, collagen fiber orientation, and mineral density between mechanically stimulated constructs and static controls using histology, polarized light microscopy, and micro-CT after 4 weeks of culture.  \nNOVELTY: This method introduces mandibular-specific mechanical cues into the tissue engineering process, aiming to replicate functional bone anisotropy and improve regeneration quality beyond conventional static culturing techniques.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:40:14.257433+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:llm representation learning",
+    "topic": "llm representation learning",
+    "domain": "",
+    "idea_index": 0,
+    "text": "IDEA: Develop a hierarchical representation learning framework for large language models (LLMs) that captures semantic and syntactic information at multiple granularities simultaneously.  \nBACKGROUND: Current LLMs typically learn flat contextual embeddings that mix multiple linguistic features, making it challenging to disentangle semantic from syntactic knowledge for downstream tasks requiring interpretable features. Addressing this can improve model explainability and task-specific performance by explicitly modeling language structure.  \nAPPROACH: Propose a multi-level representation learning approach that leverages auxiliary supervision signals such as part-of-speech tags and semantic roles. Integrate these tasks via multi-task learning to induce separate but aligned representation subspaces within the LLM\u2019s embeddings, enforced by contrastive losses to disentangle information.  \nEXPERIMENT: Evaluate on standard benchmarks like GLUE for semantic tasks and syntactic evaluation sets such as the SyntaxGym dataset, measuring improvements in interpretability and downstream task accuracy.  \nNOVELTY: Unlike existing methods that learn entangled contextual embeddings, this approach explicitly disentangles semantic and syntactic representations hierarchically within a single LLM, allowing targeted fine-tuning and interpretability.\n\n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:40:23.630748+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:llm representation learning",
+    "topic": "llm representation learning",
+    "domain": "",
+    "idea_index": 1,
+    "text": "IDEA: Investigate continual representation learning in large language models to dynamically update embeddings as language and knowledge evolve over time without catastrophic forgetting.  \nBACKGROUND: LLMs are typically trained once on static corpora, limiting their ability to adapt to emergent language use or new knowledge. Existing continual learning methods often focus on task performance rather than maintaining stable, meaningful representations that evolve gracefully.  \nAPPROACH: Design a continual learning mechanism that incrementally updates the LLM\u2019s internal representations using memory replay and dynamic regularization on embedding spaces, encouraging stability while integrating new semantic concepts. Employ attention-based gating to selectively update parts of the representation to retain prior knowledge.  \nEXPERIMENT: Use temporal datasets such as social media corpora or news articles spanning multiple years, evaluating representation drift, knowledge retention, and adaptability with metrics including representation similarity analysis and downstream task consistency.  \nNOVELTY: This is among the first approaches focusing on representation stability and evolution in LLM embeddings over time, rather than solely model accuracy, enabling lifelong learning with harmonious embedding updates.\n\n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:40:23.630787+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:llm representation learning",
+    "topic": "llm representation learning",
+    "domain": "",
+    "idea_index": 2,
+    "text": "IDEA: Create interpretable representation learning techniques for LLMs by aligning latent embedding dimensions with human-understandable concepts derived from structured knowledge bases.  \nBACKGROUND: Although LLM embeddings encode rich information, their latent dimensions remain opaque, hindering interpretability and trustworthiness. Mapping these dimensions to explicit concepts could make representations more transparent and controllable for users and downstream tasks.  \nAPPROACH: Use contrastive learning to align LLM embeddings with concept vectors extracted from knowledge bases such as ConceptNet or Wikidata, regularizing the embedding space so that specific dimensions correspond to distinct semantic concepts. Incorporate sparsity constraints to improve dimension-concept fidelity.  \nEXPERIMENT: Validate on benchmarks requiring semantic reasoning (e.g., CommonsenseQA), assessing interpretability through human evaluation of concept alignment and downstream accuracy to verify utility.  \nNOVELTY: This work uniquely bridges the gap between continuous LLM embeddings and discrete, interpretable semantic concepts by designing representation spaces with explicitly aligned latent factors, advancing explainable AI in NLP.",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:40:23.630790+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:scalable time-gated rendering",
+    "topic": "Scalable time-gated rendering",
+    "domain": "",
+    "idea_index": 0,
+    "text": "IDEA: Develop a hierarchical spatiotemporal data structure for scalable time-gated rendering that dynamically adjusts gating precision based on scene complexity and viewer focus.  \nBACKGROUND: Time-gated rendering benefits from precise temporal control but often suffers from high computational cost in complex scenes or when rendering large-scale environments. Existing methods typically apply uniform gating, leading to inefficiencies in regions with differing temporal sensitivity or geometric detail.  \nAPPROACH: Introduce a multi-resolution temporal hierarchy that subdivides the scene spatially and temporally, allowing the renderer to allocate finer time gates to regions with high motion or viewer attention while using coarser gating elsewhere. This adaptive refinement is driven by real-time analysis of scene dynamics and gaze tracking data.  \nEXPERIMENT: Evaluate on dynamic 3D scenes with known temporal effects, measuring frame rate, rendering error versus ground truth, and perceptual quality under varying scene complexities and viewer focus patterns.  \nNOVELTY: Combines spatial hierarchy and temporal gating adaptation in a unified framework, leveraging viewer attention data for dynamic resource allocation, which prior time-gated rendering systems have not jointly addressed at scale.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:40:30.100673+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:scalable time-gated rendering",
+    "topic": "Scalable time-gated rendering",
+    "domain": "",
+    "idea_index": 1,
+    "text": "IDEA: Implement a GPU-accelerated, tile-based time-gated rendering algorithm with asynchronous compute to achieve real-time scalability on heterogeneous hardware.  \nBACKGROUND: Current time-gated rendering techniques often lack efficient hardware utilization, especially on modern GPUs with multiple compute queues, causing bottlenecks and limiting scalability in real-time applications. Balancing computation and memory bandwidth remains a challenge.  \nAPPROACH: Design a rendering pipeline that partitions the frame into spatial tiles, applying time gating within each tile asynchronously on separate compute queues. This method schedules workloads to overlap temporal sampling, shading, and compositing phases, maximizing parallelism and reducing latency.  \nEXPERIMENT: Benchmark performance on various GPU architectures with scenes of varying complexity, analyzing throughput, power consumption, and frame latency compared to baseline synchronous time-gated renderers.  \nNOVELTY: Exploits asynchronous compute and fine-grained tile scheduling in time-gated rendering, which has not been systematically explored for scaling rendering workloads across heterogeneous GPU resources.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:40:30.100735+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:scalable time-gated rendering",
+    "topic": "Scalable time-gated rendering",
+    "domain": "",
+    "idea_index": 2,
+    "text": "IDEA: Integrate machine learning-based prediction models to approximate time-gated illumination responses, reducing the number of temporal samples needed for scalable rendering.  \nBACKGROUND: High-fidelity time-gated rendering typically requires dense temporal sampling to capture transient light transport accurately, resulting in high computational overhead that hinders scalability. Approximate methods often trade off quality or temporal resolution.  \nAPPROACH: Train neural networks on precomputed time-gated illumination datasets to predict intermediate time gates and transient responses from sparse samples. The model guides adaptive sampling decisions during rendering, selectively increasing sample density only where predicted errors exceed thresholds.  \nEXPERIMENT: Use synthetic transient datasets and real-world scanned scenes to quantify the accuracy of predicted time gates and overall rendering quality, comparing rendering time and error metrics against uniform sampling baselines.  \nNOVELTY: Applies learned temporal interpolation and error prediction to time-gated rendering, enabling efficient sampling strategies that outperform traditional heuristic-based adaptive sampling methods.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:40:30.100741+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:iron overload in senescent cells",
+    "topic": "iron overload in senescent cells",
+    "domain": "",
+    "idea_index": 0,
+    "text": "IDEA: Investigate the role of iron-induced oxidative stress in accelerating the senescence-associated secretory phenotype (SASP) of senescent cells.  \nBACKGROUND: Senescent cells accumulate iron, which can catalyze the formation of reactive oxygen species (ROS), potentially exacerbating the SASP that drives chronic inflammation. However, the direct mechanistic link between iron overload and SASP modulation remains poorly understood. Understanding this could reveal new targets to mitigate age-related tissue dysfunction.  \nAPPROACH: Use cellular models of senescence induced by replicative exhaustion and DNA damage, then manipulate intracellular iron levels using iron chelators or iron supplementation. Measure changes in SASP factors via qPCR and ELISA, along with ROS quantification and markers of oxidative damage.  \nEXPERIMENT: Treat senescent fibroblasts with deferoxamine to chelate iron and assess subsequent changes in SASP cytokine secretion compared to iron-overloaded controls. Metrics include cytokine levels, ROS intensity, and cell viability over time.  \nNOVELTY: This study directly links iron overload with SASP regulation, moving beyond correlative studies to mechanistic insights that could inform targeted anti-senescence therapies.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:40:38.888001+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:iron overload in senescent cells",
+    "topic": "iron overload in senescent cells",
+    "domain": "",
+    "idea_index": 1,
+    "text": "IDEA: Develop and test nanoparticles designed to selectively remove excess iron from senescent cells without affecting healthy proliferative cells.  \nBACKGROUND: Current systemic iron chelation therapies lack cellular specificity and can cause anemia or other side effects. Targeting iron overload specifically in senescent cells could alleviate iron-associated pathologies while minimizing off-target effects, but no such selective delivery systems currently exist.  \nAPPROACH: Engineer iron-chelating nanoparticles conjugated with ligands for senescence-associated cell surface markers (e.g., \u03b2-galactosidase-activated peptides). Assess nanoparticle uptake, iron removal efficiency, and impact on senescent cell function in vitro.  \nEXPERIMENT: Compare iron levels, senescence markers, and cell viability in mixed cultures of senescent and proliferating cells treated with targeted nanoparticles versus non-targeted controls. Use flow cytometry and atomic absorption spectroscopy for quantitative analysis.  \nNOVELTY: Introduces a precision nanomedicine approach to selectively modulate iron in senescent cells\u2014addressing a critical gap in the treatment of iron-related aging phenotypes.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:40:38.888085+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:iron overload in senescent cells",
+    "topic": "iron overload in senescent cells",
+    "domain": "",
+    "idea_index": 2,
+    "text": "IDEA: Characterize the transcriptomic and epigenomic changes driven by iron overload in senescent cells to identify novel regulatory networks involved in iron homeostasis during senescence.  \nBACKGROUND: While iron accumulation is a hallmark of senescent cells, how it reshapes gene expression and chromatin states is largely unexplored. A comprehensive multi-omics analysis could uncover novel iron-sensitive pathways that regulate senescence progression or maintenance.  \nAPPROACH: Induce senescence in cultured human cells, then manipulate intracellular iron levels and perform RNA-seq and ATAC-seq to profile gene expression and chromatin accessibility changes. Integrate datasets to identify iron-dependent regulatory elements and transcription factors.  \nEXPERIMENT: Validate key candidate genes/pathways by CRISPR-based knockdown or overexpression and assess effects on iron levels, senescence markers, and cell function. Use bioinformatics metrics such as differential expression and motif enrichment.  \nNOVELTY: Provides an integrated molecular atlas of iron overload effects in senescent cells, offering a systems-level understanding that surpasses prior single-pathway studies.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:40:38.888092+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:conditional perfection and its connection to causation",
+    "topic": "conditional perfection and its connection to causation",
+    "domain": "",
+    "idea_index": 0,
+    "text": "IDEA: Investigate how conditional perfection influences human causal reasoning through psycholinguistic experiments.  \nBACKGROUND: Conditional perfection (CP) occurs when a conditional \"If P, then Q\" is interpreted as \"If and only if P, then Q,\" which can strongly affect how people infer cause-effect relations from conditionals. Existing literature lacks detailed insights into how CP bias interacts with causal judgment under uncertainty or ambiguous conditions.  \nAPPROACH: Design psycholinguistic tasks presenting participants with conditionals exhibiting potential CP and measure their causal attributions using scenarios with varying evidential strength. Analyze whether and when CP leads to stronger or weaker causal beliefs compared to non-CP interpretations.  \nEXPERIMENT: Use controlled experimental stimuli with conditionals embedded in causal vignettes; collect causal endorsement ratings and response times from participants; analyze data for CP effect on causation judgments.  \nNOVELTY: This study connects CP\u2014previously examined mainly in semantics/pragmatics\u2014to cognitive causal inference, providing empirical data on its influence on real-world causal reasoning rather than purely linguistic interpretation.\n\n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:40:46.474310+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:conditional perfection and its connection to causation",
+    "topic": "conditional perfection and its connection to causation",
+    "domain": "",
+    "idea_index": 1,
+    "text": "IDEA: Develop a formal computational model that integrates conditional perfection into causal Bayesian networks to improve causal inference accuracy.  \nBACKGROUND: Bayesian networks model causal relations probabilistically but typically treat conditionals literally rather than incorporating pragmatic enrichments like CP, potentially limiting inference quality. The role of CP in modulating causal strengths within such models remains underexplored.  \nAPPROACH: Formalize a mechanism that revises conditional probability tables by embedding CP assumptions, effectively treating conditionals as biconditionals when appropriate, and test how this impacts inference outcomes in causal Bayesian networks.  \nEXPERIMENT: Implement the model on benchmark causal datasets (e.g., causally annotated medical or social science datasets) and compare inference accuracy and predictive performance with standard Bayesian network approaches.  \nNOVELTY: By explicitly encoding CP in probabilistic causal models, this work bridges pragmatic semantics and causal inference, offering a novel hybrid approach that better captures human-like causal reasoning patterns.\n\n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:40:46.474372+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:conditional perfection and its connection to causation",
+    "topic": "conditional perfection and its connection to causation",
+    "domain": "",
+    "idea_index": 2,
+    "text": "IDEA: Analyze the frequency and contexts of conditional perfection in causal statements across scientific literature to understand its role in causal explanation and communication.  \nBACKGROUND: Scientific discourse often uses conditionals to express causal relationships, but it is unknown to what extent CP shapes the presentation and interpretation of these relationships across disciplines. Understanding CP's presence can clarify how causal claims are communicated and potentially misinterpreted.  \nAPPROACH: Employ computational linguistics techniques to automatically identify and classify conditional statements exhibiting CP in a large corpus of scientific texts from varied fields (e.g., biology, psychology, economics). Examine correlations with explicit causal claims, certainty levels, and disciplinary norms.  \nEXPERIMENT: Use NLP pipelines combining conditional detection, CP cue identification, and causal relation extraction on databases like PubMed, PsycINFO, or arXiv; evaluate patterns via statistical analyses and qualitative validation.  \nNOVELTY: This corpus-driven approach uncovers the pragmatic dimension of causal communication in science, offering quantitative evidence on how CP influences scientific argumentation and possibly informing improved science communication strategies.",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:40:46.474378+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:cellular prion propagation",
+    "topic": "Cellular prion propagation",
+    "domain": "",
+    "idea_index": 0,
+    "text": "IDEA: Investigate the role of cellular exosomes in mediating prion protein propagation between neurons.  \nBACKGROUND: While it is known that prions can spread from cell to cell, the specific mechanisms of intercellular transfer remain poorly understood. Exosomes have emerged as key mediators of intercellular communication, but their role in prion dissemination requires clarification.  \nAPPROACH: Isolate exosomes from prion-infected neuronal cultures and characterize their prion content using biochemical assays and electron microscopy. Use inhibitors of exosome release and uptake to assess their effect on prion propagation in vitro.  \nEXPERIMENT: Measure prion infectivity and propagation rates in neuronal cultures with modified exosome pathways, using RT-QuIC assays for prion detection. Track prion spreading using fluorescence-tagged prion proteins.  \nNOVELTY: This research will provide mechanistic insights into the vesicle-mediated spread of prions, moving beyond bulk transfer hypotheses to specific exosomal involvement, which has not been thoroughly characterized before.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:40:52.782361+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:cellular prion propagation",
+    "topic": "Cellular prion propagation",
+    "domain": "",
+    "idea_index": 1,
+    "text": "IDEA: Elucidate the influence of cellular chaperone proteins on the efficiency and fidelity of prion propagation within mammalian cells.  \nBACKGROUND: Chaperone proteins are known to modulate protein folding and aggregation, but their exact role in prion propagation and strain diversity inside cells is not fully defined. Understanding this modulation could reveal targets for therapeutic intervention.  \nAPPROACH: Use CRISPR-Cas9 to selectively knock out or overexpress key chaperones (e.g., Hsp70, Hsp90) in prion-susceptible cell lines, then quantify changes in prion replication kinetics and strain characteristics using biochemical and cell-based assays.  \nEXPERIMENT: Perform time-course measurements of prion accumulation with biochemical assays (e.g., Western blot, RT-QuIC) and analyze strain-specific conformations using proteinase K resistance profiles.  \nNOVELTY: This project will clarify the regulatory roles of cellular quality control machinery on prion propagation, offering a direct link between chaperone activity and prion strain evolution not extensively explored in mammalian systems.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:40:52.782424+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:cellular prion propagation",
+    "topic": "Cellular prion propagation",
+    "domain": "",
+    "idea_index": 2,
+    "text": "IDEA: Develop and utilize a high-resolution live-cell imaging platform to visualize real-time prion protein conversion and aggregation dynamics within single neurons.  \nBACKGROUND: The dynamic process of cellular prion protein (PrP^C) conversion to the misfolded prion form (PrP^Sc) is poorly understood due to limitations in temporal and spatial resolution of existing methods. Capturing these events live could reveal critical intermediates.  \nAPPROACH: Engineer fluorescently tagged cellular prion proteins compatible with F\u00f6rster resonance energy transfer (FRET) to monitor conformational changes, and apply advanced microscopy techniques such as lattice light-sheet microscopy for minimal phototoxicity and high temporal resolution.  \nEXPERIMENT: Observe prion aggregation in cultured neurons exposed to infectious prions, quantifying conversion rates and aggregation patterns over time, correlating with cellular viability markers.  \nNOVELTY: This approach enables unprecedented visualization of prion propagation dynamics in living cells, surpassing static or endpoint assays and providing new insights into the spatiotemporal features of prion conversion.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:40:52.782429+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:epoxide hydrolase catalytic mechanism",
+    "topic": "Epoxide hydrolase catalytic mechanism",
+    "domain": "",
+    "idea_index": 0,
+    "text": "IDEA: Investigate the role of active site water molecules in epoxide hydrolase catalysis using time-resolved crystallography and molecular dynamics simulations.  \nBACKGROUND: Although the catalytic residues in epoxide hydrolases are well characterized, the dynamic role of active site waters in facilitating epoxide ring opening and hydrolysis remains poorly understood. Clarifying this could illuminate intermediate states and transition mechanisms permanently missing from static enzyme models.  \nAPPROACH: Combine time-resolved X-ray crystallography to capture transient water molecule positions during catalysis with long-timescale molecular dynamics simulations to model water dynamics and interactions throughout the reaction cycle. This integrative approach aims to map the water-mediated proton transfer pathway.  \nEXPERIMENT: Use crystallographic snapshots at various reaction time points complemented by molecular dynamics trajectories; validate key water positions via site-directed mutagenesis of residues coordinating water molecules and measure changes in kinetic parameters.  \nNOVELTY: Unlike prior static structural studies, this research integrates dynamic experimental and computational methods to reveal the precise functional role of water molecules, offering deeper mechanistic insights into enzyme catalysis.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:41:00.672114+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:epoxide hydrolase catalytic mechanism",
+    "topic": "Epoxide hydrolase catalytic mechanism",
+    "domain": "",
+    "idea_index": 1,
+    "text": "IDEA: Elucidate the sequence-structure-function relationship in epoxide hydrolase variants to identify critical residues influencing substrate specificity and catalytic rates.  \nBACKGROUND: Epoxide hydrolases exhibit diverse substrate selectivity and catalytic efficiencies across species, but the molecular determinants driving these differences are not fully resolved. Understanding these relationships is key to engineering improved biocatalysts.  \nAPPROACH: Perform a systematic mutational analysis guided by comparative sequence alignment and structural modeling of several epoxide hydrolase homologs. Measure kinetic activity and substrate range changes to correlate specific residue substitutions with functional outcomes.  \nEXPERIMENT: Generate a library of mutants targeting conserved and variable residues near the active site; assay enzymatic activity using a panel of epoxide substrates and determine kinetic constants (Km, kcat). Structural impacts assessed via computational modeling.  \nNOVELTY: This study combines evolutionary analysis with experimental mutagenesis to pinpoint functional hotspots, enabling rational design principles that go beyond traditional trial-and-error mutagenesis.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:41:00.672185+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:epoxide hydrolase catalytic mechanism",
+    "topic": "Epoxide hydrolase catalytic mechanism",
+    "domain": "",
+    "idea_index": 2,
+    "text": "IDEA: Develop and validate a quantum mechanics/molecular mechanics (QM/MM) model of the full catalytic cycle of epoxide hydrolase to identify energy barriers and intermediate states.  \nBACKGROUND: The detailed energetic landscape of epoxide hydrolase catalysis, including transition states and intermediates, is not comprehensively mapped due to the challenges of simulating enzymatic reactions at atomic resolution. Such knowledge is crucial for rational enzyme design.  \nAPPROACH: Construct a hybrid QM/MM computational model encompassing the active site and key catalytic residues, simulating each step of the hydrolysis reaction to calculate free energy profiles and characterize transition states.  \nEXPERIMENT: Validate the model predictions by comparing calculated activation energies with experimentally determined kinetic isotope effects and reaction rates from site-specific mutant enzymes.  \nNOVELTY: This approach offers a full reaction pathway mechanistic model with detailed energetic insights, surpassing prior studies that relied on static structures or incomplete computational treatments.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:41:00.672188+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:mechanical stress at tricellular junctions",
+    "topic": "mechanical stress at tricellular junctions",
+    "domain": "",
+    "idea_index": 0,
+    "text": "IDEA: Quantify the spatiotemporal dynamics of mechanical stress accumulation at tricellular junctions during epithelial tissue morphogenesis.  \nBACKGROUND: While the role of mechanical forces in epithelial dynamics is widely studied, the specific stress behavior localized at tricellular junctions (TCJs) during morphogenetic events remains poorly understood. Understanding these dynamics is crucial for elucidating how tissue shape and integrity are maintained or remodeled.  \nAPPROACH: Use high-resolution live-cell imaging combined with F\u00f6rster Resonance Energy Transfer (FRET)-based tension sensors targeted to proteins localized at TCJs (e.g., tricellulin or angulins) to directly measure mechanical forces. Complement these measurements with computational modeling of tissue mechanics to interpret stress distribution and predict effects on tissue morphology.  \nEXPERIMENT: Perform time-lapse imaging of developing epithelial tissues (e.g., Drosophila wing discs or cultured MDCK monolayers) expressing TCJ-targeted tension sensors and analyze FRET efficiency changes as a proxy for mechanical stress; validate models by comparing predicted versus observed tissue deformation patterns.  \nNOVELTY: This approach integrates molecular-scale force measurements specifically at TCJs with dynamic tissue-level modeling, offering the first quantitative characterization of stress dynamics localized at TCJs during morphogenesis, beyond general junctional tension studies.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:41:08.849980+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:mechanical stress at tricellular junctions",
+    "topic": "mechanical stress at tricellular junctions",
+    "domain": "",
+    "idea_index": 1,
+    "text": "IDEA: Investigate how mechanical stress at tricellular junctions influences the recruitment and activation of mechanosensitive signaling pathways controlling epithelial barrier function.  \nBACKGROUND: TCJs are critical for maintaining epithelial barrier integrity, but how mechanical stimuli at these sites are transduced into biochemical signals remains unclear. Elucidating this mechanotransduction could reveal new regulatory mechanisms of barrier homeostasis and repair.  \nAPPROACH: Combine mechanical manipulation methods such as laser ablation or micropipette aspiration to selectively alter forces at TCJs with live-cell imaging of fluorescent reporters for mechanosensitive pathways (e.g., YAP/TAZ, RhoA activity sensors) and junctional proteins involved in barrier regulation.  \nEXPERIMENT: Apply localized mechanical perturbations at TCJs in cultured epithelial monolayers and measure changes in signaling activity and barrier permeability (e.g., transepithelial electrical resistance) over time, comparing perturbed versus control conditions.  \nNOVELTY: This work uniquely focuses on the direct causal link between mechanical stress at TCJs and downstream signaling affecting barrier function, rather than general junctional or cellular mechanics, revealing specific mechanotransduction frameworks localized to TCJs.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:41:08.850016+00:00"
+  },
+  {
+    "topic_id": "CUSTOM:mechanical stress at tricellular junctions",
+    "topic": "mechanical stress at tricellular junctions",
+    "domain": "",
+    "idea_index": 2,
+    "text": "IDEA: Develop a multi-scale computational model to predict failure points at tricellular junctions under pathological mechanical stress conditions in epithelial tissues.  \nBACKGROUND: Excessive mechanical stress can cause epithelial dysfunction and disease, but quantitative predictions of mechanical failure localized at TCJs\u2014key weak points in tissue architecture\u2014are lacking. Such predictive models are important for understanding disease progression and designing interventions.  \nAPPROACH: Integrate molecular-scale data on TCJ protein mechanical properties with cell-level mechanical interactions in a finite element or agent-based tissue model to simulate stress distribution under various loading scenarios (e.g., inflammation-induced contraction or tumor growth). Incorporate experimentally derived mechanical parameters from atomic force microscopy or magnetic twisting cytometry.  \nEXPERIMENT: Validate model predictions by comparing simulated mechanical failure locations with experimental observations of junctional disruption in epithelial culture models subjected to controlled mechanical stresses or pathological stimuli.  \nNOVELTY: This is the first comprehensive predictive model incorporating molecular to tissue scale mechanics focused specifically on TCJs as failure loci, providing a novel computational tool to investigate mechanical pathologies in epithelia.  \n---",
+    "system_version": "S15",
+    "model": "gpt-4.1-mini",
+    "timestamp": "2026-04-17T16:41:08.850018+00:00"
+  }
+]

@@ -1,8 +1,8 @@
 """SWE Agent: multi-turn self-editing loop for the idea generator pipeline.
 
 Instead of writing whole new S{n}.py files from scratch, the SWE agent
-makes targeted, surgical edits to the current champion's code, tests each
-edit with a fast mini-eval, and iterates until it can't improve further.
+makes one targeted, surgical edit to the current champion's code, then tests it
+against a fixed SWE holdout set.
 
 This is the proper Gödel loop: the agent reads its own failure modes,
 proposes specific code changes, tests them, and accumulates improvements.
@@ -11,15 +11,15 @@ Loop per iteration:
   1. Analyze failures: read comparison report, extract what ideas lost and why
   2. Propose edit: ask meta-LLM for ONE specific targeted code change
   3. Apply edit: meta-LLM writes complete new version of the file
-  4. Mini-eval: run 3 topics × 3 ideas = 9 pairs against current champion
-  5. Accept (keep edit, continue) or reject (revert, try again)
-  6. Stop when: max_rounds reached, or max_failures consecutive rejections,
-     or mini-eval win rate hasn't improved for 2 consecutive rounds
+  4. Holdout eval: run fixed dev topics against current champion
+  5. Accept (write candidate) or reject (do not write final S{n}.py)
+  6. Stop after the one edit attempt by default
 
 After the loop: the accumulated edits form the new candidate S{n}.py,
 which is then evaluated with a FULL 75-pair comparison against the champion.
 """
 
+import ast
 import json
 import re
 import shutil
@@ -30,7 +30,9 @@ from typing import Optional
 
 sys.path.insert(0, str(Path(__file__).parent))
 import log as _log
+from canonical_skills import ideas_path_prefix, workspace_root
 
+_log.load_dotenv()
 logger = _log.setup("swe_agent")
 
 SWE_MEMORY_FILE = "results/swe_memory.json"
@@ -94,6 +96,7 @@ def format_memory_str(memory: list[dict]) -> str:
 # ── Meta-model (writes the edits) ─────────────────────────────────────────────
 SWE_MODEL = "claude-sonnet-4-6"
 SWE_TIMEOUT = 180
+SWE_CODE_MAX_TOKENS = 12000
 
 # When True, use `claude --print` (Claude Code CLI) for the actual code editing
 # instead of a raw API call. Claude Code reads files with its own tools and makes
@@ -101,11 +104,16 @@ SWE_TIMEOUT = 180
 USE_CLAUDE_CODE = True
 
 # ── Stopping criteria ─────────────────────────────────────────────────────────
-DEFAULT_MAX_ROUNDS = 6       # max accepted edits per session
-DEFAULT_MAX_FAILURES = 3     # stop if this many consecutive mini-evals fail
-MINI_IMPROVEMENT_THRESHOLD = 0.52  # mini-eval must show >52% to count as improvement
-MINI_N_TOPICS = 3
-MINI_N_IDEAS = 3
+DEFAULT_MAX_ROUNDS = 1       # one edit attempt; repeated rounds overfit the eval
+DEFAULT_MAX_FAILURES = 1     # stop immediately after a failed holdout eval
+MINI_IMPROVEMENT_THRESHOLD = 0.52  # holdout eval must show >52% to count as improvement
+MINI_N_TOPICS = 10
+MINI_N_IDEAS = 1
+VALIDATION_N_TOPICS = 0
+VALIDATION_N_IDEAS = 0
+DEFAULT_SWE_WORKERS = 50
+MAX_INVALID_IDEAS_FOR_ACCEPT = 0
+SWE_HOLDOUT_TOPICS_FILE = "dev_topics.json"
 
 # ── Editable file list (relative to ideas_dir) ────────────────────────────────
 EDITABLE_FILES = [
@@ -246,34 +254,55 @@ def update_swe_context(
 def build_pipeline_overview(ideas_dir: Path, champion_version: str) -> str:
     """Generate a concise human-readable overview of the current champion pipeline.
 
-    Reads the champion file and idea_tournament modules to produce a short
-    description the SWE agent can use without parsing all the raw code.
+    The champion source is the source of truth. Older runs stored stale summaries
+    in swe_context.json, so this overview is rebuilt from systems/{version}.py
+    whenever prompts are formatted.
     """
     lines = [f"Current champion: {champion_version}"]
-    lines.append("Pipeline: IdeaTreeSearch (L1→L2→L3, ~12 candidates) → Elo tournament → Expansion")
-    lines.append("")
 
-    # Check what the champion has customized vs vanilla S_sota
     champion_path = ideas_dir / "systems" / f"{champion_version}.py"
-    if champion_path.exists():
-        code = champion_path.read_text()
+    if not champion_path.exists():
+        lines.append(f"Source file missing: systems/{champion_version}.py")
+    else:
+        code = champion_path.read_text(encoding="utf-8", errors="replace")
+        lines.append(f"Source: systems/{champion_version}.py")
+
+        try:
+            module_doc = ast.get_docstring(ast.parse(code)) or ""
+        except SyntaxError:
+            module_doc = ""
+        if module_doc:
+            doc = module_doc.strip()
+            if len(doc) > 1200:
+                doc = doc[:1200].rstrip() + "..."
+            lines.append("")
+            lines.append("Pipeline from champion module docstring:")
+            lines.extend(f"  {line}" for line in doc.splitlines())
+        else:
+            lines.append("")
+            lines.append("Pipeline from champion module docstring: (none found; inspect source directly)")
+
+        lines.append("")
+        lines.append("Source-derived implementation notes:")
         if "EXPAND_WINNER_PROMPT_V2" in code or "EXPAND_WINNER_PROMPT" in code:
             # Find the custom prompt name
             m = re.search(r"(EXPAND_WINNER_PROMPT\w*)\s*=\s*\"\"\"", code)
             if m:
                 lines.append(f"  • Expansion prompt: custom {m.group(1)} (overrides idea_tournament default)")
-        for func, module in [("build_idea_tree", "tree_search"), ("run_tournament", "tournament")]:
+        for func in ["build_idea_tree", "run_tournament", "run_tournament_ranked"]:
             if f"def {func}" in code:
                 lines.append(f"  • {func}: inlined custom version in champion file")
-            else:
-                lines.append(f"  • {func}: using idea_tournament/{module}.py")
+            elif func in code:
+                lines.append(f"  • {func}: referenced/imported by champion")
         if "def generate_idea" in code:
             # Count approximate LLM calls (each call_llm = 1 call)
             n_calls = code.count("call_llm(")
-            lines.append(f"  • generate_idea: ~{n_calls} direct call_llm() calls + tree/tournament calls")
+            lines.append(f"  • generate_idea: ~{n_calls} direct call_llm() call sites")
+        if "idea_tournament" not in code:
+            lines.append("  • idea_tournament modules are not referenced by this champion")
 
     lines.append("")
-    lines.append("Editable modules (primary targets for improvement):")
+    lines.append("Shared editable modules (only modify when the champion imports/uses them):")
     for rel in EDITABLE_FILES:
         p = (ideas_dir / rel).resolve()
         if p.exists():
@@ -294,7 +323,9 @@ def format_swe_context(ctx: dict, ideas_dir: Path, champion_version: str) -> str
     sections = []
 
     # ── Section 1: Pipeline overview ──────────────────────────────────────────
-    overview = ctx.get("pipeline_overview") or build_pipeline_overview(ideas_dir, champion_version)
+    # Always rebuild from the live champion source. Stored pipeline_overview values
+    # have gone stale across promotions and can mislead the SWE agent.
+    overview = build_pipeline_overview(ideas_dir, champion_version)
     sections.append("### 1. Current Pipeline\n" + overview)
 
     # ── Section 2: Judge profile (what the judge consistently rewards) ─────────
@@ -384,22 +415,25 @@ You are diagnosing exactly why a research idea generator is losing pairwise eval
 {swe_context}
 
 ## Your task
-Study the losing ideas above carefully. Diagnose WHY they lose — but then propose a
-FUNDAMENTALLY DIFFERENT ideation strategy, not a prompt tweak.
+Study the losing ideas above carefully. Diagnose WHY they lose, starting from the
+actual champion code above as the source of truth. Preserve the current working
+scaffold unless the failures specifically implicate that scaffold.
 
-We are NOT looking for: "add a sentence to the critique prompt" or "change the temperature".
-We ARE looking for: a new algorithm, a new step, a new way of generating or selecting hypotheses.
+Prefer the smallest structural change that should change outcomes: a new gate,
+selection criterion, construction substep, or information flow inside the existing
+pipeline. Do NOT replace the whole algorithm unless the evidence says the current
+algorithmic structure is the root cause.
 
 Examples of the level of change we want:
-- Replace hypothesis generation with contradiction-mining across fetched papers
-- Add cross-domain transfer: find the analogous problem in a different field, adapt its solution
-- Replace adversarial attack with a "what would make this boring/obvious" step, then invert it
-- Add a step that generates the NULL hypothesis first, then forces the idea to contradict it
-- Keep two competing hypotheses through construction and let the experiment discriminate between them
+- If hypothesis generation is too generic, add contradiction-mining across fetched papers
+- If selection over-rewards novelty, add a feasibility or clarity gate before selection
+- If construction drifts from the selected hypothesis, add a mechanism-locking substep
+- If hypotheses are too one-sided, keep two competing hypotheses through construction
+- If the pipeline is truly wrong, replace the implicated stage, not unrelated stages
 
 Output EXACTLY in this format (no other text):
 DIAGNOSIS: <what structural property of the losing ideas caused them to lose>
-FIX: <a new ideation algorithm or step — describe it concretely enough to implement>
+FIX: <the smallest structural algorithm/prompt-flow change that addresses it — describe it concretely enough to implement>
 EXPECTED_IMPACT: <how this changes the KIND of ideas that come out, not just their polish>
 """
 
@@ -423,15 +457,16 @@ _OUTPUT_FORMAT = """\
 ## Output format — CRITICAL isolation rule
 Your output is a SINGLE complete Python file: systems/{next_version}.py
 
-The champion S_sota.py imports from idea_tournament/ at runtime.
-Your candidate will be evaluated HEAD-TO-HEAD against S_sota.
+The current champion may or may not import from idea_tournament/ at runtime.
+Your candidate will be evaluated HEAD-TO-HEAD against the current champion.
 For a fair comparison, you MUST inline any code you are modifying:
 
   - Changing a prompt?  → Define the new prompt string as a local variable in
     generate_idea(), do NOT use the idea_tournament.prompts version.
   - Changing tree_search or tournament logic?  → Copy + modify the relevant
     functions inline inside generate_idea() or as module-level helpers.
-  - NOT changing something?  → You may still import it from idea_tournament/.
+  - NOT changing something?  → You may still import it from idea_tournament/ if
+    the champion already does so.
 
 If you import from idea_tournament/ for code you modified, both systems will
 run the SAME code and the comparison will be meaningless.
@@ -469,6 +504,11 @@ CRITICAL robustness requirements:
 - Every call_llm() call MUST be wrapped in try/except with a sensible fallback
 - Never call len(), enumerate(), or index into a variable that might be None or empty
 - The generate_idea() method must ALWAYS return a non-empty string, even on full failure
+- Avoid brittle giant mandatory output templates. Prefer targeted prompt changes over
+  escalating into stricter formatting machinery unless malformed output is the diagnosed failure.
+- Do NOT call .format() on large prompt strings that may contain literal braces from
+  IDEA_FORMAT, math notation, JSON, or examples. Use f-strings with escaped braces or
+  simple .replace() on explicit placeholders instead.
 - Budget ~10-15 LLM calls per idea
 
 Then write the output file following the format below.
@@ -476,7 +516,7 @@ Then write the output file following the format below.
 """ + _OUTPUT_FORMAT
 
 REFLECT_PROMPT = """\
-The last edit did NOT improve performance (mini-eval: {win_rate:.1%}, needed >{threshold:.1%}).
+The last edit did NOT improve performance (holdout eval: {win_rate:.1%}, needed >{threshold:.1%}).
 
 ## Edit that was tried
 {edit_description}
@@ -492,6 +532,8 @@ Implement the revised fix. The previous attempt failed — the refined fix above
 addresses why. Make a targeted change that differs from what was tried.
 
 CRITICAL: Wrap every call_llm() in try/except. generate_idea() must always return a string.
+Avoid adding giant mandatory output templates or using .format() on prompt strings that may
+contain literal braces; those changes are brittle and have previously caused invalid ideas.
 
 Then write the output file following the format below.
 
@@ -533,41 +575,37 @@ _BENCHMARK_TOPICS = [
 ]
 
 
-def _generate_mini_eval_topics(n: int = 5, model: str = "gpt-4.1-mini") -> list[dict]:
-    """Generate n fresh random research topics for a mini-eval round.
+def _load_swe_holdout_topics(
+    ideas_dir: Path,
+    n: int = MINI_N_TOPICS,
+    offset: int = 0,
+) -> list[dict]:
+    """Load a fixed SWE holdout slice.
 
-    Uses a cheap LLM call so topics are never reused — prevents overfitting
-    to any fixed dev set. Falls back to random sampling from dev_topics.json
-    on failure.
+    This intentionally does not generate topics with an LLM. The eval questions
+    should be stable and outside the agent's control; repeated generated
+    mini-evals were too easy to overfit.
     """
     import json as _json
-    import re as _re
-    sys.path.insert(0, str(Path(__file__).parent / "systems"))
-    from base import make_client, call_llm
 
-    exclude_str = "; ".join(_BENCHMARK_TOPICS[:8])  # keep prompt short
-    prompt = _TOPIC_GEN_PROMPT.format(n=n, exclude=exclude_str)
-    try:
-        client = make_client(model)
-        raw = call_llm(prompt, model, client, temperature=1.0, max_tokens=512, timeout=30)
-        raw = _re.sub(r"^```(?:json)?\s*\n?", "", raw.strip())
-        raw = _re.sub(r"\n?```\s*$", "", raw)
-        topics = _json.loads(raw)
-        if isinstance(topics, list) and topics and "topic" in topics[0]:
-            logger.debug("Generated %d fresh mini-eval topics", len(topics))
-            return topics[:n]
-    except Exception as e:
-        logger.warning("Topic generation failed (%s) — falling back to dev_topics.json", e)
+    holdout_path = ideas_dir / SWE_HOLDOUT_TOPICS_FILE
+    if holdout_path.exists():
+        with open(holdout_path) as f:
+            holdout_topics = _json.load(f).get("topics", [])
+        if holdout_topics:
+            start = offset % len(holdout_topics)
+            return [holdout_topics[(start + i) % len(holdout_topics)] for i in range(n)]
 
-    # Fallback: load from dev_topics.json
-    dev_path = Path(__file__).parent / "dev_topics.json"
-    if dev_path.exists():
-        with open(dev_path) as f:
-            return _json.load(f).get("topics", [])[:n]
+    logger.warning("SWE holdout file missing (%s); falling back to benchmark tail", holdout_path)
     return [{"id": f"E{i}", "topic": t, "domain": "ML"}
             for i, t in enumerate(_BENCHMARK_TOPICS[-n:], 1)]
 
-def _extract_grounded_failures(report_path: Path, ideas_dir: Path, n: int = 4) -> str:
+def _extract_grounded_failures(
+    report_path: Path,
+    ideas_dir: Path,
+    target_version: str | None = None,
+    n: int = 4,
+) -> str:
     """Extract concrete failing examples with actual idea text for grounded diagnosis.
 
     Shows champion idea vs candidate idea side-by-side with scores and full judge
@@ -579,53 +617,89 @@ def _extract_grounded_failures(report_path: Path, ideas_dir: Path, n: int = 4) -
         with open(report_path) as f:
             report = json.load(f)
         verdicts = report.get("verdicts", [])
-        losses = [v for v in verdicts if v.get("winner") == "A"]
+        if target_version:
+            losses = [
+                v for v in verdicts
+                if (
+                    v.get("system_a") == target_version and v.get("winner") == "B"
+                ) or (
+                    v.get("system_b") == target_version and v.get("winner") == "A"
+                )
+            ]
+        else:
+            # Backwards-compatible fallback for old compare_current_vs_candidate reports.
+            losses = [v for v in verdicts if v.get("winner") == "A"]
 
-        # Detect infrastructure failures: B score=0 on most losses → quota error
-        zero_score_losses = [v for v in losses if sum(v.get("scores_b", {}).values()) == 0]
+        def _target_scores(v: dict) -> dict:
+            if target_version and v.get("system_a") == target_version:
+                return v.get("scores_a", {})
+            return v.get("scores_b", {})
+
+        def _winner_scores(v: dict) -> dict:
+            if v.get("winner") == "A":
+                return v.get("scores_a", {})
+            if v.get("winner") == "B":
+                return v.get("scores_b", {})
+            return {}
+
+        # Detect infrastructure failures: target score=0 on most losses → quota error
+        zero_score_losses = [v for v in losses if sum(_target_scores(v).values()) == 0]
         if len(losses) > 0 and len(zero_score_losses) / len(losses) > 0.5:
             return (
-                "⚠️  INFRASTRUCTURE FAILURE: candidate scored 0/40 on "
+                "⚠️  INFRASTRUCTURE FAILURE: target system scored 0/40 on "
                 f"{len(zero_score_losses)}/{len(losses)} comparisons — API quota error, "
                 "not a quality failure. Focus on improving idea quality, not error handling."
             )
 
-        losses.sort(key=lambda v: sum(v.get("scores_a", {}).values()) -
-                    sum(v.get("scores_b", {}).values()), reverse=True)
+        losses.sort(
+            key=lambda v: sum(_winner_scores(v).values()) - sum(_target_scores(v).values()),
+            reverse=True,
+        )
 
         # Load actual idea texts from results JSONs
-        system_a = losses[0]["system_a"] if losses else None
-        system_b = losses[0]["system_b"] if losses else None
+        systems = sorted({
+            s for v in losses for s in (v.get("system_a"), v.get("system_b")) if s
+        })
         ideas_a: dict = {}
         ideas_b: dict = {}
-        for sys_name, store in [(system_a, ideas_a), (system_b, ideas_b)]:
+        ideas_by_system: dict[str, dict] = {}
+        for sys_name in systems:
             if not sys_name:
                 continue
             p = ideas_dir / "results" / sys_name / "ideas.json"
+            store: dict = {}
             if p.exists():
                 try:
                     for item in json.load(open(p)):
                         store[(item["topic_id"], item.get("idea_index", 0))] = item.get("text", "")
                 except Exception:
                     pass
+            ideas_by_system[sys_name] = store
 
         lines = []
         for v in losses[:n]:
             topic = v.get("topic", "")
             tid = v.get("topic_id", "")
             idx = v.get("idea_index", 0)
-            sa = sum(v.get("scores_a", {}).values())
-            sb = sum(v.get("scores_b", {}).values())
             reasoning = v.get("reasoning", "")
 
-            champ_text = ideas_a.get((tid, idx), "(text unavailable)")
-            cand_text  = ideas_b.get((tid, idx), "(text unavailable)")
+            target_side = "A" if v.get("system_a") == target_version else "B"
+            winner_side = "B" if target_side == "A" else "A"
+            target_system = v.get(f"system_{target_side.lower()}")
+            winner_system = v.get(f"system_{winner_side.lower()}")
+            target_scores = v.get(f"scores_{target_side.lower()}", {})
+            winner_scores = v.get(f"scores_{winner_side.lower()}", {})
+            target_total = sum(target_scores.values())
+            winner_total = sum(winner_scores.values())
+
+            target_text = ideas_by_system.get(target_system, {}).get((tid, idx), "(text unavailable)")
+            winner_text = ideas_by_system.get(winner_system, {}).get((tid, idx), "(text unavailable)")
 
             lines.append(f"### Topic: {topic}")
-            lines.append(f"**Champion ({system_a}) — {sa}/40 — WON:**")
-            lines.append(champ_text[:600])
-            lines.append(f"\n**Candidate ({system_b}) — {sb}/40 — LOST:**")
-            lines.append(cand_text[:600])
+            lines.append(f"**Comparison winner ({winner_system}) — {winner_total}/40 — WON:**")
+            lines.append(winner_text[:600])
+            lines.append(f"\n**Current target ({target_system}) — {target_total}/40 — LOST:**")
+            lines.append(target_text[:600])
             lines.append(f"\n**Judge:** {reasoning}")
             lines.append("")
 
@@ -640,7 +714,7 @@ def _call_swe_llm(prompt: str) -> str:
     from base import make_client, call_llm
     client = make_client(SWE_MODEL)
     raw = call_llm(prompt, SWE_MODEL, client, temperature=0.7,
-                   max_tokens=4096, timeout=SWE_TIMEOUT)
+                   max_tokens=SWE_CODE_MAX_TOKENS, timeout=SWE_TIMEOUT)
     raw = raw.strip()
 
     # If response contains a fenced Python block, extract it (handles explanatory preamble)
@@ -729,16 +803,15 @@ def _build_self_improvement_topic(
         f"{grounded_failures_str[:1500]}\n\n"
         f"PREVIOUSLY ATTEMPTED FIXES THAT DID NOT WORK:\n"
         f"{failed_attempts_str[:600]}\n\n"
-        f"Your task: propose a FUNDAMENTALLY DIFFERENT ideation strategy for the APPROACH section.\n"
-        f"Prompt-level tweaks (e.g. 'add a sentence to the critique prompt') are NOT acceptable.\n"
-        f"Think about the ideation algorithm itself — how ideas are generated, selected, and refined.\n\n"
+        f"Your task: propose a targeted ideation-strategy change for the APPROACH section.\n"
+        f"Use the current pipeline overview above as the source of truth. Preserve working\n"
+        f"stages unless the failures specifically implicate them.\n\n"
         f"Examples of the level of change we want:\n"
-        f"- Replace hypothesis generation with contradiction-mining: find two conflicting recent papers and generate an idea that resolves the contradiction\n"
-        f"- Add cross-domain transfer: map the topic to an analogous problem in a different field, adapt the best solution from that field\n"
-        f"- Replace adversarial attack with a null-result adversary: generate the most boring/obvious outcome first, then force the idea to contradict it\n"
-        f"- Add a 'what would falsify every prior approach' step before hypothesis generation\n"
-        f"- Replace selection with a bet-hedging step: keep two competing hypotheses and build experiments that discriminate between them\n\n"
-        f"Describe a concrete new algorithm or step in the APPROACH section."
+        f"- If hypothesis generation is too generic, add contradiction-mining from recent papers\n"
+        f"- If selection over-rewards novelty, add a feasibility or clarity gate before selection\n"
+        f"- If construction drifts from the selected hypothesis, add a mechanism-locking substep\n"
+        f"- If hypotheses are too one-sided, keep two competing hypotheses through construction\n\n"
+        f"Describe the smallest concrete algorithm or information-flow change likely to help."
     )
     return topic
 
@@ -849,17 +922,18 @@ def _call_claude_code_edit(
     # Start from champion as a base so Claude Code can diff/edit rather than rewrite
     shutil.copy(champion_path, output_path)
 
-    repo_root = ideas_dir.parent
+    wr = workspace_root(ideas_dir)
+    ip = ideas_path_prefix(ideas_dir, wr)
     try:
-        rel_output = output_path.relative_to(repo_root)
-        rel_prompts = Path("ideas/idea_tournament/prompts.py")
-        rel_tree    = Path("ideas/idea_tournament/tree_search.py")
-        rel_tourn   = Path("ideas/idea_tournament/tournament.py")
+        rel_output = output_path.relative_to(wr)
+        rel_prompts = Path(ip) / "idea_tournament/prompts.py"
+        rel_tree = Path(ip) / "idea_tournament/tree_search.py"
+        rel_tourn = Path(ip) / "idea_tournament/tournament.py"
     except ValueError:
         rel_output = output_path
         rel_prompts = ideas_dir / "idea_tournament/prompts.py"
-        rel_tree    = ideas_dir / "idea_tournament/tree_search.py"
-        rel_tourn   = ideas_dir / "idea_tournament/tournament.py"
+        rel_tree = ideas_dir / "idea_tournament/tree_search.py"
+        rel_tourn = ideas_dir / "idea_tournament/tournament.py"
 
     task_prompt = f"""You are redesigning the ideation algorithm inside a Python research idea generator.
 
@@ -871,15 +945,20 @@ def _call_claude_code_edit(
 
 ## What to do
 1. Read `{rel_output}` — this is already a copy of the champion, your starting point
-2. Read `ideas/idea_tournament/` (Python) and repo-root `skills/idea-tournament/` + `skills/research-ideation/` (Markdown — same specs Claude Code uses; `prompts.py` loads them)
+2. Treat `{rel_output}` as the source of truth for the current pipeline. Only read
+   `{ip}idea_tournament/` or repo-root `skills/idea-tournament/` if `{rel_output}`
+   imports or references them.
 3. Implement the new ideation strategy above — rewrite or add to `generate_idea()` in `{rel_output}`
+4. After editing, run cheap local checks yourself, at minimum:
+   `python3 -m py_compile {rel_output}`.
+   You may run small import/smoke checks, but do not run expensive idea generation
+   or judge evaluations from inside this edit step.
 
 ## What we want
-The current pipeline generates ideas incrementally. We want a fundamentally different approach
-to how hypotheses are generated and selected. This means:
-- Adding new steps, new sub-pipelines, or replacing existing steps entirely
-- NOT just tweaking wording in an existing prompt
-- The change should affect what KIND of ideas come out, not just how polished they are
+Preserve the champion's working scaffold unless the diagnosis identifies it as the
+root cause. Prefer targeted changes to the specific failing stage: generation,
+attack/revision, selection, construction, critique, or final revision. The change
+should affect what KIND of ideas come out, not just how polished they are.
 
 ## Hard constraints (failure to meet these causes the system to crash or be disqualified)
 - Class name MUST be `{next_version}Generator(IdeaGenerator)`
@@ -888,6 +967,11 @@ to how hypotheses are generated and selected. This means:
 - Any code you MODIFY from `idea_tournament/` must be inlined in the champion file (not imported). You MAY edit `skills/**/*.md` in place when changing rubrics those prompts load.
 - Every `call_llm()` call must be wrapped in try/except with a sensible fallback
 - `generate_idea(self, topic, client, model, temperature)` must always return a non-empty string
+- Avoid brittle giant mandatory output templates. Prefer one targeted mechanism change over
+  accumulating stricter formatting rules unless the diagnosed failure is malformed output.
+- Do NOT call `.format()` on large prompt strings that may contain literal braces from
+  `IDEA_FORMAT`, math notation, JSON examples, or generated text. Use f-strings with escaped
+  braces or explicit `.replace()` placeholders instead.
 - Keep total LLM calls per idea: ~10-20 (can use more than champion if the strategy warrants it)
 
 ## What the judge rewards (optimise for this)
@@ -903,9 +987,9 @@ to how hypotheses are generated and selected. This means:
 
     try:
         result = subprocess.run(
-            ["claude", "--print", "--allowedTools", "Read,Edit,Write"],
+            ["claude", "--print", "--allowedTools", "Read,Edit,Write,Bash"],
             input=task_prompt,
-            cwd=str(repo_root),
+            cwd=str(wr),
             capture_output=True,
             text=True,
             timeout=600,
@@ -985,6 +1069,54 @@ except Exception:
         return f"Smoke test runner error: {e}"
 
 
+def _idea_output_health(results: list[dict]) -> dict:
+    """Summarize invalid generated ideas that would poison evaluation results."""
+    invalid = []
+    for rec in results or []:
+        text = str(rec.get("text", "") if isinstance(rec, dict) else rec).strip()
+        if (
+            not text
+            or len(text) < 200
+            or text.startswith("ERROR:")
+            or text.startswith("TIMEOUT:")
+            or text in {"-", "—"}
+        ):
+            invalid.append({
+                "topic_id": rec.get("topic_id") if isinstance(rec, dict) else None,
+                "idea_index": rec.get("idea_index") if isinstance(rec, dict) else None,
+                "text": text[:120],
+            })
+    return {
+        "total": len(results or []),
+        "invalid_count": len(invalid),
+        "invalid_examples": invalid[:5],
+    }
+
+
+def _rename_candidate_code(code: str, next_version: str) -> str:
+    """Rename a generated snapshot's class/version/singleton to the final system name."""
+    final_code = re.sub(
+        r'VERSION\s*=\s*["\'].*?["\']',
+        f'VERSION = "{next_version}"',
+        code,
+    )
+    old_class = (
+        re.search(r'class\s+(\w+Generator)\s*\(\s*IdeaGenerator', final_code)
+        or re.search(r'class\s+(\w+Generator)\s*\(', final_code)
+    )
+    new_cls_name = f"{next_version}Generator"
+    if old_class and old_class.group(1) != new_cls_name:
+        old_cls_name = old_class.group(1)
+        final_code = final_code.replace(f"class {old_cls_name}", f"class {new_cls_name}")
+        final_code = final_code.replace(f"GENERATOR = {old_cls_name}()", f"GENERATOR = {new_cls_name}()")
+    final_code = re.sub(
+        r'GENERATOR\s*=\s*\w+\(\)',
+        f'GENERATOR = {new_cls_name}()',
+        final_code,
+    )
+    return final_code
+
+
 def _run_mini_eval(
     ideas_dir: Path,
     candidate_path: Path,
@@ -992,12 +1124,13 @@ def _run_mini_eval(
     n_topics: int = MINI_N_TOPICS,
     n_ideas: int = MINI_N_IDEAS,
     model: str = "gpt-4.1-mini",
-    workers: int = 3,
-) -> float:
+    workers: int = DEFAULT_SWE_WORKERS,
+    topic_offset: int = 0,
+) -> dict:
     """Run a fast comparison of candidate vs champion on a topic subset.
 
-    Returns win_rate_b (candidate win rate, 0..1).
-    Returns 0.0 on failure to avoid false positives.
+    Returns a dict with win_rate_b and candidate output-health metadata.
+    Returns win_rate=0.0 on failure to avoid false positives.
     """
     import concurrent.futures
     import importlib.util
@@ -1008,8 +1141,8 @@ def _run_mini_eval(
     from runner import run_system
     from judge import compare_systems, JUDGE_MODEL
 
-    # Generate fresh topics per mini-eval round — prevents overfitting to any fixed set
-    sampled = _generate_mini_eval_topics(n=n_topics, model=model)
+    # Fixed holdout questions; the SWE agent must not generate its own eval set.
+    sampled = _load_swe_holdout_topics(ideas_dir, n=n_topics, offset=topic_offset)
 
     # Load candidate module dynamically
     try:
@@ -1019,7 +1152,7 @@ def _run_mini_eval(
         candidate_version = mod.GENERATOR.VERSION
     except Exception as e:
         logger.error("Failed to load candidate %s: %s", candidate_path, e)
-        return 0.0
+        return {"win_rate": 0.0, "health": {"total": 0, "invalid_count": 1, "invalid_examples": [{"text": str(e)[:120]}]}}
 
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp = Path(tmpdir)
@@ -1073,11 +1206,21 @@ def _run_mini_eval(
                 err_candidate = e
 
         if err_champion:
-            logger.error("Mini-eval champion run failed: %s", err_champion)
-            return 0.0
+            logger.error("Holdout eval champion run failed: %s", err_champion)
+            return {"win_rate": 0.0, "health": {"total": 0, "invalid_count": 1, "invalid_examples": [{"text": str(err_champion)[:120]}]}}
         if err_candidate:
-            logger.error("Mini-eval candidate run failed: %s", err_candidate)
-            return 0.0
+            logger.error("Holdout eval candidate run failed: %s", err_candidate)
+            return {"win_rate": 0.0, "health": {"total": 0, "invalid_count": 1, "invalid_examples": [{"text": str(err_candidate)[:120]}]}}
+
+        health = _idea_output_health(results_candidate or [])
+        if health["invalid_count"]:
+            logger.warning(
+                "Holdout eval output health: %s produced %d/%d invalid ideas; examples=%s",
+                candidate_version,
+                health["invalid_count"],
+                health["total"],
+                health["invalid_examples"],
+            )
 
         # Judge (parallel across topics)
         try:
@@ -1086,13 +1229,13 @@ def _run_mini_eval(
                                      workers=workers,
                                      early_stop_threshold=MINI_IMPROVEMENT_THRESHOLD)
             win_rate = result["win_rate_b"]
-            logger.info("Mini-eval: %s vs %s → win_rate=%.1f%% (%d pairs)",
+            logger.info("Holdout eval: %s vs %s → win_rate=%.1f%% (%d pairs)",
                         champion_version, candidate_version, win_rate * 100,
                         result["total_judged"])
-            return win_rate
+            return {"win_rate": win_rate, "health": health, "comparison": result}
         except Exception as e:
-            logger.error("Mini-eval judging failed: %s", e)
-            return 0.0
+            logger.error("Holdout eval judging failed: %s", e)
+            return {"win_rate": 0.0, "health": health}
 
 
 # ── Main SWE agent loop ───────────────────────────────────────────────────────
@@ -1105,11 +1248,12 @@ def run_swe_loop(
     max_rounds: int = DEFAULT_MAX_ROUNDS,
     max_failures: int = DEFAULT_MAX_FAILURES,
     generator_model: str = "gpt-4.1-mini",
+    workers: int = DEFAULT_SWE_WORKERS,
 ) -> Path:
     """Multi-turn SWE agent loop.
 
-    Starts from the champion's code and makes iterative targeted edits,
-    testing each with a mini-eval. Returns path to the final candidate file.
+    Starts from the champion's code and makes targeted edits, testing each with
+    the fixed SWE holdout. Returns path to the final candidate file.
 
     Arguments:
         ideas_dir: root of the ideas/ directory
@@ -1117,8 +1261,9 @@ def run_swe_loop(
         champion_version: current champion (e.g. "S5")
         compare_report_path: path to comparison report for failure analysis
         max_rounds: max accepted edits
-        max_failures: max consecutive failed mini-evals before stopping
+        max_failures: max consecutive failed holdout evals before stopping
         generator_model: model used for idea generation
+        workers: parallel topic/judge workers for holdout eval
     """
     systems_dir = ideas_dir / "systems"
     champion_path = systems_dir / f"{champion_version}.py"
@@ -1150,7 +1295,11 @@ def run_swe_loop(
     swe_ctx = load_swe_context(ideas_dir)
     swe_context_str = format_swe_context(swe_ctx, ideas_dir, champion_version)
 
-    grounded_failures_str = _extract_grounded_failures(compare_report_path, ideas_dir)
+    grounded_failures_str = _extract_grounded_failures(
+        compare_report_path,
+        ideas_dir,
+        target_version=champion_version,
+    )
 
     # Initial win_rate for context
     initial_win_rate = 0.5
@@ -1170,7 +1319,7 @@ def run_swe_loop(
         logger.info("── SWE round %d/%d ──────────────────────────────────", rnd, max_rounds)
 
         edit_history_str = "\n".join(
-            f"Round {i+1}: {e['description'][:100]} → mini-eval {e['win_rate']:.1%}"
+            f"Round {i+1}: {e['description'][:100]} → holdout {e['win_rate']:.1%}"
             for i, e in enumerate(edit_history)
         ) or "(none yet)"
 
@@ -1271,49 +1420,81 @@ def run_swe_loop(
             failures += 1
             continue
 
-        # ── Smoke test: validate the file imports cleanly before spending mini-eval ──
+        # ── Smoke test: validate the file imports cleanly before spending holdout eval ──
         smoke_err = _smoke_test(tmp_path, ideas_dir)
         if smoke_err:
-            logger.error("Smoke test FAILED for %s — skipping mini-eval:\n%s", tmp_version, smoke_err[-600:])
+            logger.error("Smoke test FAILED for %s — skipping holdout eval:\n%s", tmp_version, smoke_err[-600:])
             tmp_path.unlink(missing_ok=True)
             failures += 1
             continue
         logger.info("Smoke test passed for %s", tmp_version)
 
-        # ── Step 3: mini-eval ────────────────────────────────────────────────
+        # ── Step 3: fixed holdout eval ───────────────────────────────────────
         try:
-            win_rate = _run_mini_eval(
+            primary_eval = _run_mini_eval(
                 ideas_dir=ideas_dir,
                 candidate_path=tmp_path,
                 champion_version=champion_version,  # always compare against original champion
                 n_topics=MINI_N_TOPICS,
                 n_ideas=MINI_N_IDEAS,
                 model=generator_model,
+                workers=workers,
+                topic_offset=(rnd - 1) * MINI_N_TOPICS,
             )
         except Exception as e:
-            logger.error("Mini-eval crashed: %s", e)
-            win_rate = 0.0
+            logger.error("Holdout eval crashed: %s", e)
+            primary_eval = {"win_rate": 0.0, "health": {"total": 0, "invalid_count": 1, "invalid_examples": [{"text": str(e)[:120]}]}}
         finally:
             pass  # keep temp file — rejected rounds are preserved for inspection
 
-        improved = win_rate > MINI_IMPROVEMENT_THRESHOLD
+        win_rate = float(primary_eval.get("win_rate", 0.0))
+        health = primary_eval.get("health", {})
+        health_ok = health.get("invalid_count", 0) <= MAX_INVALID_IDEAS_FOR_ACCEPT
+
+        if not health_ok:
+            logger.info(
+                "%s failed output-health gate (%d/%d invalid ideas)",
+                tmp_version,
+                health.get("invalid_count", 0),
+                health.get("total", 0),
+            )
+
+        validation_win_rate = win_rate
+        validation_health = health
+        validation_health_ok = health_ok
+        validation_score = win_rate
+        improved = (
+            win_rate > MINI_IMPROVEMENT_THRESHOLD
+            and health_ok
+        )
+
         edit_history.append({
             "round": rnd,
             "description": task_description[:1200],
             "failure_analysis": grounded_failures_str[:2000],
             "win_rate": win_rate,
+            "validation_win_rate": validation_win_rate,
+            "validation_score": validation_score,
+            "health": health,
+            "validation_health": validation_health,
             "accepted": improved,
             "code_snippet": new_code[:2000],
         })
 
         if improved:
-            logger.info("Round %d ACCEPTED (mini-eval %.1f%% > %.0f%%)",
-                        rnd, win_rate * 100, MINI_IMPROVEMENT_THRESHOLD * 100)
+            logger.info(
+                "Round %d ACCEPTED (holdout %.1f%%, invalid ideas %d/%d)",
+                rnd,
+                win_rate * 100,
+                health.get("invalid_count", 0),
+                health.get("total", 0),
+            )
             # Save intermediate accepted round as a permanent snapshot
             round_path = systems_dir / f"{tmp_version}.py"
             try:
                 round_path.write_text(new_code)
                 logger.info("Saved intermediate snapshot: %s", round_path.name)
+                edit_history[-1]["snapshot_path"] = str(round_path)
             except Exception as _rpe:
                 logger.warning("Could not save round snapshot %s: %s", round_path, _rpe)
             current_code = new_code
@@ -1329,44 +1510,70 @@ def run_swe_loop(
             failures = 0
 
             # Check for improvement stall (winning but not by much more each time)
-            if last_win_rate is not None and abs(win_rate - last_win_rate) < 0.02:
+            if last_win_rate is not None and abs(validation_score - last_win_rate) < 0.02:
                 stall_count += 1
                 if stall_count >= 2:
-                    logger.info("SWE loop stopping: win rate stalled at %.1f%%", win_rate * 100)
+                    logger.info("SWE loop stopping: validation score stalled at %.1f%%", validation_score * 100)
                     break
             else:
                 stall_count = 0
-            last_win_rate = win_rate
+            last_win_rate = validation_score
         else:
-            logger.info("Round %d REJECTED (mini-eval %.1f%% ≤ %.0f%%)",
-                        rnd, win_rate * 100, MINI_IMPROVEMENT_THRESHOLD * 100)
+            logger.info(
+                "Round %d REJECTED (holdout %.1f%%, invalid ideas %d/%d)",
+                rnd,
+                win_rate * 100,
+                health.get("invalid_count", 0),
+                health.get("total", 0),
+            )
             failures += 1
 
-    # Write final output
-    # Update VERSION in code to final name
-    final_code = re.sub(
-        r'VERSION\s*=\s*["\'].*?["\']',
-        f'VERSION = "{next_version}"',
-        current_code,
+    # Write final output only if at least one edit survived holdout eval. Writing a
+    # renamed copy of the champion creates misleading no-op candidates.
+    if not any(e.get("accepted") for e in edit_history):
+        log_path = ideas_dir / "results" / f"swe_log_{next_version}.json"
+        with open(log_path, "w") as f:
+            json.dump({
+                "champion": champion_version,
+                "output": next_version,
+                "rounds": rnd,
+                "edits": edit_history,
+            }, f, indent=2)
+        if edit_history:
+            best_mini = max((e["win_rate"] for e in edit_history), default=0.0)
+            update_swe_memory(ideas_dir, {
+                "version": next_version,
+                "champion": champion_version,
+                "mini_eval_best": best_mini,
+                "accepted_edits": [],
+                "failed_edits": [
+                    {"description": e["description"], "win_rate": e["win_rate"]}
+                    for e in edit_history if not e.get("accepted")
+                ],
+            })
+        raise RuntimeError(f"No accepted SWE edits for {next_version}; not writing no-op candidate")
+
+    # Write the accepted snapshot. With the default one-shot loop there is only
+    # one; the ranking logic remains for manual multi-round runs.
+    accepted_entries = [e for e in edit_history if e.get("accepted")]
+    best_entry = max(
+        accepted_entries,
+        key=lambda e: (e.get("validation_score", 0.0), e.get("validation_win_rate", 0.0), e.get("win_rate", 0.0)),
     )
-    # Update class name — search the ACCUMULATED final_code (not champion_code),
-    # since intermediate rounds may have renamed the class (e.g. S3_r2Generator)
-    old_class = (
-        re.search(r'class\s+(\w+Generator)\s*\(\s*IdeaGenerator', final_code)
-        or re.search(r'class\s+(\w+Generator)\s*\(', final_code)
+    best_snapshot = Path(best_entry.get("snapshot_path", ""))
+    if best_snapshot.is_file():
+        selected_code = best_snapshot.read_text()
+    else:
+        selected_code = current_code
+        logger.warning("Best snapshot path missing (%s); falling back to latest accepted code", best_snapshot)
+    logger.info(
+        "Selected best accepted snapshot for final %s: round %s (holdout %.1f%%)",
+        next_version,
+        best_entry.get("round"),
+        best_entry.get("win_rate", 0.0) * 100,
     )
-    new_cls_name = f"{next_version}Generator"
-    if old_class and old_class.group(1) != new_cls_name:
-        old_cls_name = old_class.group(1)
-        final_code = final_code.replace(f"class {old_cls_name}", f"class {new_cls_name}")
-        # Also fix any direct references in GENERATOR singleton
-        final_code = final_code.replace(f"GENERATOR = {old_cls_name}()", f"GENERATOR = {new_cls_name}()")
-    # Ensure GENERATOR singleton is correct regardless
-    final_code = re.sub(
-        r'GENERATOR\s*=\s*\w+\(\)',
-        f'GENERATOR = {new_cls_name}()',
-        final_code,
-    )
+
+    final_code = _rename_candidate_code(selected_code, next_version)
 
     output_path.write_text(final_code)
     logger.info("SWE loop complete: wrote %s (%d chars, %d rounds, %d accepted edits)",
@@ -1386,18 +1593,34 @@ def run_swe_loop(
 
     # Update cross-iteration memory
     accepted_edits = [
-        {"description": e["description"], "win_rate": e["win_rate"]}
+        {
+            "description": e["description"],
+            "win_rate": e["win_rate"],
+            "validation_win_rate": e.get("validation_win_rate"),
+            "validation_score": e.get("validation_score"),
+            "health": e.get("health"),
+            "validation_health": e.get("validation_health"),
+        }
         for e in edit_history if e["accepted"]
     ]
     failed_edits = [
-        {"description": e["description"], "win_rate": e["win_rate"]}
+        {
+            "description": e["description"],
+            "win_rate": e["win_rate"],
+            "validation_win_rate": e.get("validation_win_rate"),
+            "health": e.get("health"),
+            "validation_health": e.get("validation_health"),
+        }
         for e in edit_history if not e["accepted"]
     ]
     best_mini = max((e["win_rate"] for e in edit_history), default=0.0)
+    best_validation = max((e.get("validation_win_rate", 0.0) for e in edit_history), default=0.0)
     update_swe_memory(ideas_dir, {
         "version": next_version,
         "champion": champion_version,
         "mini_eval_best": best_mini,
+        "validation_eval_best": best_validation,
+        "selected_round": best_entry.get("round"),
         "accepted_edits": accepted_edits,
         "failed_edits": failed_edits,
         # full_eval_win_rate and accepted filled in later by cmd_swe_evolve

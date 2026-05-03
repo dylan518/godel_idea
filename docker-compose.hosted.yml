@@ -1,0 +1,87 @@
+# Scalable hosted stack: Postgres + Redis + FastAPI + Arq workers.
+#
+# Quick start (creates .env.hosted with a key if missing):
+#   ./scripts/hosted-up.sh
+# Add to .env.hosted: GOOGLE_API_KEY=... (default Gemini) or ANTHROPIC_API_KEY=..., TAVILY_API_KEY=... (see EvoScientist/hosted/KEYS.md)
+# UI: http://localhost:8765/ui/  (open mode + server keys — no invite, no pasted keys)
+# Invite: ./scripts/hosted-invite.sh --uses 50  (only if HOSTED_OPEN_MODE=false)
+#
+# If you had an older DB volume and jobs fail on insert, reset data:
+#   docker compose --env-file .env.hosted -f docker-compose.hosted.yml down -v
+#
+# Manual: set HOSTED_ENCRYPTION_KEY in .env.hosted, then
+#   docker compose --env-file .env.hosted -f docker-compose.hosted.yml up --build
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: evo
+      POSTGRES_PASSWORD: evo
+      POSTGRES_DB: evosci_hosted
+    volumes:
+      - hosted_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U evo -d evosci_hosted"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.hosted
+    command: ["hosted-api"]
+    env_file:
+      - .env.hosted
+    # Host port (left) can be any free port on your machine; API inside the container stays on 8080.
+    ports:
+      - "8765:8080"
+    environment:
+      HOSTED_DATABASE_URL: postgresql+asyncpg://evo:evo@postgres:5432/evosci_hosted
+      HOSTED_REDIS_URL: redis://redis:6379/0
+      HOSTED_ENCRYPTION_KEY: ${HOSTED_ENCRYPTION_KEY:?set HOSTED_ENCRYPTION_KEY}
+      HOSTED_OPEN_MODE: "true"
+      HOSTED_USE_SERVER_KEYS: "true"
+      HOSTED_CORS_ORIGINS: "*"
+      # Static UI: open http://localhost:8765/ui/ (change left side of ports: above if 8765 is taken)
+      HOSTED_WEB_DIR: /app/EvoScientist/hosted/web
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.hosted
+    command: ["hosted-worker"]
+    env_file:
+      - .env.hosted
+    environment:
+      HOSTED_DATABASE_URL: postgresql+asyncpg://evo:evo@postgres:5432/evosci_hosted
+      HOSTED_REDIS_URL: redis://redis:6379/0
+      HOSTED_ENCRYPTION_KEY: ${HOSTED_ENCRYPTION_KEY:?set HOSTED_ENCRYPTION_KEY}
+      HOSTED_OPEN_MODE: "true"
+      HOSTED_USE_SERVER_KEYS: "true"
+      EVOSCIENTIST_HOSTED_DISABLE_MCP: "1"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+# Scale workers: docker compose -f docker-compose.hosted.yml up --scale worker=4
+
+volumes:
+  hosted_pg:

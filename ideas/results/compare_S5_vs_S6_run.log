@@ -1,0 +1,309 @@
+2026-04-19 16:16:18  INFO      godel  Running S5 on benchmark topics...
+2026-04-19 16:16:18  INFO      runner  Running S5 on 15 topic(s) × 5 idea(s) = 75 calls  [cached, workers=15]
+2026-04-19 16:16:18  INFO      runner  [T1] Scaling laws for Large Language Models
+2026-04-19 16:16:18  INFO      runner  [T2] Protein structure prediction beyond AlphaFold
+2026-04-19 16:16:18  INFO      runner  [T3] Quantum error correction in NISQ devices
+2026-04-19 16:16:18  INFO      runner  [T4] Causal discovery from observational data
+2026-04-19 16:16:18  INFO      runner  [T5] Energy-efficient neuromorphic computing
+2026-04-19 16:16:18  INFO      runner  [T6] Generative AI for drug discovery and molecular design
+2026-04-19 16:16:18  INFO      runner  [T7] Federated learning with heterogeneous and non-IID data
+2026-04-19 16:16:18  INFO      runner  [T8] Deep learning emulators for climate model acceleration
+2026-04-19 16:16:18  INFO      runner  [T9] Uncertainty quantification in deep neural networks
+2026-04-19 16:16:18  INFO      runner  [T10] Foundation models for genomics and single-cell biology
+2026-04-19 16:16:18  INFO      runner  [T11] Emergent communication in multi-agent systems
+2026-04-19 16:16:18  INFO      runner  [T12] Mechanistic interpretability of transformer models
+2026-04-19 16:16:18  INFO      runner  [T13] Zero-shot generalization in reinforcement learning
+2026-04-19 16:16:18  INFO      runner  [T14] Topological methods for high-dimensional data analysis
+2026-04-19 16:16:18  INFO      runner  [T15] Quantum advantage in machine learning tasks
+2026-04-19 16:16:38  INFO      runner    [T11] idea 1/5 — ok (2792 chars)
+2026-04-19 16:16:39  INFO      runner    [T15] idea 1/5 — ok (2765 chars)
+2026-04-19 16:16:40  INFO      runner    [T12] idea 1/5 — ok (2456 chars)
+2026-04-19 16:16:40  INFO      runner    [T9] idea 1/5 — ok (3088 chars)
+2026-04-19 16:16:41  INFO      runner    [T7] idea 1/5 — ok (2757 chars)
+2026-04-19 16:16:41  INFO      runner    [T10] idea 1/5 — ok (2761 chars)
+2026-04-19 16:16:41  INFO      runner    [T8] idea 1/5 — ok (2816 chars)
+2026-04-19 16:16:42  INFO      runner    [T5] idea 1/5 — ok (2769 chars)
+2026-04-19 16:16:42  INFO      runner    [T1] idea 1/5 — ok (2779 chars)
+2026-04-19 16:16:43  INFO      runner    [T4] idea 1/5 — ok (3074 chars)
+2026-04-19 16:16:43  INFO      runner    [T3] idea 1/5 — ok (3147 chars)
+2026-04-19 16:16:44  INFO      runner    [T2] idea 1/5 — ok (2995 chars)
+2026-04-19 16:16:44  INFO      runner    [T6] idea 1/5 — ok (3427 chars)
+2026-04-19 16:16:45  INFO      runner    [T13] idea 1/5 — ok (2817 chars)
+2026-04-19 16:16:54  INFO      runner    [T14] idea 1/5 — ok (2902 chars)
+2026-04-19 16:16:57  INFO      runner    [T11] idea 2/5 — ok (2786 chars)
+2026-04-19 16:17:00  INFO      runner    [T15] idea 2/5 — ok (2684 chars)
+2026-04-19 16:17:01  INFO      runner    [T1] idea 2/5 — ok (2907 chars)
+2026-04-19 16:17:01  INFO      runner    [T12] idea 2/5 — ok (3111 chars)
+2026-04-19 16:17:02  INFO      runner    [T2] idea 2/5 — ok (2826 chars)
+2026-04-19 16:17:03  INFO      runner    [T10] idea 2/5 — ok (2991 chars)
+2026-04-19 16:17:03  INFO      runner    [T9] idea 2/5 — ok (3112 chars)
+2026-04-19 16:17:03  INFO      runner    [T5] idea 2/5 — ok (2986 chars)
+2026-04-19 16:17:03  INFO      runner    [T8] idea 2/5 — ok (3154 chars)
+2026-04-19 16:17:04  INFO      runner    [T4] idea 2/5 — ok (2928 chars)
+2026-04-19 16:17:04  INFO      runner    [T7] idea 2/5 — ok (2815 chars)
+2026-04-19 16:17:06  INFO      runner    [T3] idea 2/5 — ok (2935 chars)
+2026-04-19 16:17:06  INFO      runner    [T13] idea 2/5 — ok (2309 chars)
+2026-04-19 16:17:08  INFO      runner    [T6] idea 2/5 — ok (3174 chars)
+2026-04-19 16:17:15  INFO      runner    [T14] idea 2/5 — ok (2623 chars)
+2026-04-19 16:17:18  INFO      runner    [T11] idea 3/5 — ok (2462 chars)
+2026-04-19 16:17:20  INFO      runner    [T5] idea 3/5 — ok (2789 chars)
+2026-04-19 16:17:21  INFO      runner    [T1] idea 3/5 — ok (2432 chars)
+2026-04-19 16:17:21  INFO      runner    [T15] idea 3/5 — ok (2449 chars)
+2026-04-19 16:17:23  INFO      runner    [T9] idea 3/5 — ok (2697 chars)
+2026-04-19 16:17:23  INFO      runner    [T12] idea 3/5 — ok (3000 chars)
+2026-04-19 16:17:23  INFO      runner    [T8] idea 3/5 — ok (2739 chars)
+2026-04-19 16:17:24  INFO      runner    [T2] idea 3/5 — ok (2735 chars)
+2026-04-19 16:17:26  INFO      runner    [T10] idea 3/5 — ok (3015 chars)
+2026-04-19 16:17:27  INFO      runner    [T13] idea 3/5 — ok (2659 chars)
+2026-04-19 16:17:28  INFO      runner    [T4] idea 3/5 — ok (2604 chars)
+2026-04-19 16:17:29  INFO      runner    [T6] idea 3/5 — ok (3094 chars)
+2026-04-19 16:17:29  INFO      runner    [T7] idea 3/5 — ok (3274 chars)
+2026-04-19 16:17:30  INFO      runner    [T3] idea 3/5 — ok (2584 chars)
+2026-04-19 16:17:35  INFO      runner    [T14] idea 3/5 — ok (3092 chars)
+2026-04-19 16:17:37  INFO      runner    [T11] idea 4/5 — ok (2720 chars)
+2026-04-19 16:17:41  INFO      runner    [T15] idea 4/5 — ok (3277 chars)
+2026-04-19 16:17:42  INFO      runner    [T5] idea 4/5 — ok (3316 chars)
+2026-04-19 16:17:42  INFO      runner    [T8] idea 4/5 — ok (2667 chars)
+2026-04-19 16:17:43  INFO      runner    [T1] idea 4/5 — ok (2815 chars)
+2026-04-19 16:17:43  INFO      runner    [T9] idea 4/5 — ok (3212 chars)
+2026-04-19 16:17:46  INFO      runner    [T10] idea 4/5 — ok (2868 chars)
+2026-04-19 16:17:46  INFO      runner    [T12] idea 4/5 — ok (3130 chars)
+2026-04-19 16:17:47  INFO      runner    [T2] idea 4/5 — ok (2811 chars)
+2026-04-19 16:17:48  INFO      runner    [T7] idea 4/5 — ok (2494 chars)
+2026-04-19 16:17:50  INFO      runner    [T4] idea 4/5 — ok (2966 chars)
+2026-04-19 16:17:51  INFO      runner    [T6] idea 4/5 — ok (3334 chars)
+2026-04-19 16:17:51  INFO      runner    [T13] idea 4/5 — ok (2517 chars)
+2026-04-19 16:17:54  INFO      runner    [T3] idea 4/5 — ok (2978 chars)
+2026-04-19 16:17:57  INFO      runner    [T11] idea 5/5 — ok (2391 chars)
+2026-04-19 16:17:59  INFO      runner    [T14] idea 4/5 — ok (2798 chars)
+2026-04-19 16:18:03  INFO      runner    [T8] idea 5/5 — ok (2817 chars)
+2026-04-19 16:18:04  INFO      runner    [T5] idea 5/5 — ok (2691 chars)
+2026-04-19 16:18:05  INFO      runner    [T15] idea 5/5 — ok (3072 chars)
+2026-04-19 16:18:05  INFO      runner    [T1] idea 5/5 — ok (2476 chars)
+2026-04-19 16:18:07  INFO      runner    [T9] idea 5/5 — ok (3246 chars)
+2026-04-19 16:18:08  INFO      runner    [T10] idea 5/5 — ok (2909 chars)
+2026-04-19 16:18:08  INFO      runner    [T7] idea 5/5 — ok (3223 chars)
+2026-04-19 16:18:09  INFO      runner    [T12] idea 5/5 — ok (2793 chars)
+2026-04-19 16:18:11  INFO      runner    [T2] idea 5/5 — ok (2882 chars)
+2026-04-19 16:18:12  INFO      runner    [T6] idea 5/5 — ok (2626 chars)
+2026-04-19 16:18:13  INFO      runner    [T4] idea 5/5 — ok (3127 chars)
+2026-04-19 16:18:16  INFO      runner    [T13] idea 5/5 — ok (2720 chars)
+2026-04-19 16:18:18  INFO      runner    [T3] idea 5/5 — ok (2718 chars)
+2026-04-19 16:18:22  INFO      runner    [T14] idea 5/5 — ok (2876 chars)
+2026-04-19 16:18:22  INFO      runner  Saved 75 ideas to /Users/dylanwilson/Documents/GitHub/self-play/EvoScientist/ideas/results/S5/ideas.json
+2026-04-19 16:18:22  INFO      godel  Running candidate S6 on benchmark topics...
+2026-04-19 16:18:22  INFO      runner  Running S6 on 15 topic(s) × 5 idea(s) = 75 calls  [cached, workers=15]
+2026-04-19 16:18:22  INFO      runner  [T1] Scaling laws for Large Language Models
+2026-04-19 16:18:22  INFO      runner  [T2] Protein structure prediction beyond AlphaFold
+2026-04-19 16:18:22  INFO      runner  [T3] Quantum error correction in NISQ devices
+2026-04-19 16:18:22  INFO      runner  [T4] Causal discovery from observational data
+2026-04-19 16:18:22  INFO      runner  [T5] Energy-efficient neuromorphic computing
+2026-04-19 16:18:22  INFO      runner  [T6] Generative AI for drug discovery and molecular design
+2026-04-19 16:18:22  INFO      runner  [T7] Federated learning with heterogeneous and non-IID data
+2026-04-19 16:18:22  INFO      runner  [T8] Deep learning emulators for climate model acceleration
+2026-04-19 16:18:22  INFO      runner  [T9] Uncertainty quantification in deep neural networks
+2026-04-19 16:18:22  INFO      runner  [T10] Foundation models for genomics and single-cell biology
+2026-04-19 16:18:22  INFO      runner  [T11] Emergent communication in multi-agent systems
+2026-04-19 16:18:22  INFO      runner  [T12] Mechanistic interpretability of transformer models
+2026-04-19 16:18:22  INFO      runner  [T13] Zero-shot generalization in reinforcement learning
+2026-04-19 16:18:22  INFO      runner  [T14] Topological methods for high-dimensional data analysis
+2026-04-19 16:18:22  INFO      runner  [T15] Quantum advantage in machine learning tasks
+2026-04-19 16:18:56  INFO      runner    [T8] idea 1/5 — ok (2448 chars)
+2026-04-19 16:18:57  INFO      runner    [T13] idea 1/5 — ok (2255 chars)
+2026-04-19 16:18:58  INFO      runner    [T14] idea 1/5 — ok (2766 chars)
+2026-04-19 16:19:00  INFO      runner    [T1] idea 1/5 — ok (2173 chars)
+2026-04-19 16:19:00  INFO      runner    [T11] idea 1/5 — ok (2238 chars)
+2026-04-19 16:19:00  INFO      runner    [T9] idea 1/5 — ok (2549 chars)
+2026-04-19 16:19:01  INFO      runner    [T2] idea 1/5 — ok (2525 chars)
+2026-04-19 16:19:01  INFO      runner    [T15] idea 1/5 — ok (2481 chars)
+2026-04-19 16:19:03  INFO      runner    [T4] idea 1/5 — ok (2359 chars)
+2026-04-19 16:19:03  INFO      runner    [T10] idea 1/5 — ok (2477 chars)
+2026-04-19 16:19:03  INFO      runner    [T12] idea 1/5 — ok (2420 chars)
+2026-04-19 16:19:03  INFO      runner    [T6] idea 1/5 — ok (2820 chars)
+2026-04-19 16:19:06  INFO      runner    [T7] idea 1/5 — ok (2597 chars)
+2026-04-19 16:19:10  INFO      runner    [T5] idea 1/5 — ok (2958 chars)
+2026-04-19 16:19:17  INFO      runner    [T3] idea 1/5 — ok (2761 chars)
+2026-04-19 16:19:34  INFO      runner    [T13] idea 2/5 — ok (2579 chars)
+2026-04-19 16:19:36  INFO      runner    [T8] idea 2/5 — ok (2639 chars)
+2026-04-19 16:19:38  INFO      runner    [T11] idea 2/5 — ok (2750 chars)
+2026-04-19 16:19:39  INFO      runner    [T2] idea 2/5 — ok (2688 chars)
+2026-04-19 16:19:41  INFO      runner    [T15] idea 2/5 — ok (2577 chars)
+2026-04-19 16:19:41  INFO      runner    [T12] idea 2/5 — ok (2582 chars)
+2026-04-19 16:19:43  INFO      runner    [T10] idea 2/5 — ok (2661 chars)
+2026-04-19 16:19:43  INFO      runner    [T1] idea 2/5 — ok (2443 chars)
+2026-04-19 16:19:44  INFO      runner    [T9] idea 2/5 — ok (2575 chars)
+2026-04-19 16:19:45  INFO      runner    [T4] idea 2/5 — ok (2346 chars)
+2026-04-19 16:19:46  INFO      runner    [T7] idea 2/5 — ok (2762 chars)
+2026-04-19 16:19:47  INFO      runner    [T14] idea 2/5 — ok (2595 chars)
+2026-04-19 16:19:48  INFO      runner    [T6] idea 2/5 — ok (2738 chars)
+2026-04-19 16:19:48  INFO      runner    [T5] idea 2/5 — ok (2663 chars)
+2026-04-19 16:19:59  INFO      runner    [T3] idea 2/5 — ok (2564 chars)
+2026-04-19 16:20:09  INFO      runner    [T13] idea 3/5 — ok (2649 chars)
+2026-04-19 16:20:13  INFO      runner    [T8] idea 3/5 — ok (2368 chars)
+2026-04-19 16:20:15  INFO      runner    [T11] idea 3/5 — ok (2660 chars)
+2026-04-19 16:20:20  INFO      runner    [T12] idea 3/5 — ok (2618 chars)
+2026-04-19 16:20:20  INFO      runner    [T2] idea 3/5 — ok (2673 chars)
+2026-04-19 16:20:23  INFO      runner    [T7] idea 3/5 — ok (2824 chars)
+2026-04-19 16:20:24  INFO      runner    [T9] idea 3/5 — ok (2877 chars)
+2026-04-19 16:20:25  INFO      runner    [T15] idea 3/5 — ok (2427 chars)
+2026-04-19 16:20:25  INFO      runner    [T10] idea 3/5 — ok (2651 chars)
+2026-04-19 16:20:26  INFO      runner    [T6] idea 3/5 — ok (2723 chars)
+2026-04-19 16:20:31  INFO      runner    [T1] idea 3/5 — ok (2555 chars)
+2026-04-19 16:20:31  INFO      runner    [T14] idea 3/5 — ok (2320 chars)
+2026-04-19 16:20:32  INFO      runner    [T5] idea 3/5 — ok (2341 chars)
+2026-04-19 16:20:35  INFO      runner    [T3] idea 3/5 — ok (2525 chars)
+2026-04-19 16:20:35  INFO      runner    [T4] idea 3/5 — ok (3029 chars)
+2026-04-19 16:20:49  INFO      runner    [T13] idea 4/5 — ok (2487 chars)
+2026-04-19 16:20:55  INFO      runner    [T11] idea 4/5 — ok (2481 chars)
+2026-04-19 16:20:57  INFO      runner    [T2] idea 4/5 — ok (2496 chars)
+2026-04-19 16:20:59  INFO      runner    [T12] idea 4/5 — ok (2719 chars)
+2026-04-19 16:20:59  INFO      runner    [T8] idea 4/5 — ok (2586 chars)
+2026-04-19 16:21:04  INFO      runner    [T7] idea 4/5 — ok (2919 chars)
+2026-04-19 16:21:04  INFO      runner    [T9] idea 4/5 — ok (2421 chars)
+2026-04-19 16:21:06  INFO      runner    [T6] idea 4/5 — ok (2957 chars)
+2026-04-19 16:21:06  INFO      runner    [T15] idea 4/5 — ok (2979 chars)
+2026-04-19 16:21:09  INFO      runner    [T14] idea 4/5 — ok (2396 chars)
+2026-04-19 16:21:10  INFO      runner    [T1] idea 4/5 — ok (2351 chars)
+2026-04-19 16:21:12  INFO      runner    [T5] idea 4/5 — ok (2519 chars)
+2026-04-19 16:21:15  INFO      runner    [T4] idea 4/5 — ok (2467 chars)
+2026-04-19 16:21:16  INFO      runner    [T3] idea 4/5 — ok (2446 chars)
+2026-04-19 16:21:20  INFO      runner    [T10] idea 4/5 — ok (2871 chars)
+2026-04-19 16:21:31  INFO      runner    [T11] idea 5/5 — ok (2431 chars)
+2026-04-19 16:21:31  INFO      runner    [T13] idea 5/5 — ok (2309 chars)
+2026-04-19 16:21:31  INFO      runner    [T2] idea 5/5 — ok (2745 chars)
+2026-04-19 16:21:39  INFO      runner    [T12] idea 5/5 — ok (2293 chars)
+2026-04-19 16:21:41  INFO      runner    [T8] idea 5/5 — ok (2845 chars)
+2026-04-19 16:21:42  INFO      runner    [T9] idea 5/5 — ok (2740 chars)
+2026-04-19 16:21:43  INFO      runner    [T7] idea 5/5 — ok (2289 chars)
+2026-04-19 16:21:44  INFO      runner    [T14] idea 5/5 — ok (2691 chars)
+2026-04-19 16:21:46  INFO      runner    [T15] idea 5/5 — ok (2624 chars)
+2026-04-19 16:21:48  INFO      runner    [T6] idea 5/5 — ok (2767 chars)
+2026-04-19 16:21:50  INFO      runner    [T1] idea 5/5 — ok (2390 chars)
+2026-04-19 16:21:51  INFO      runner    [T5] idea 5/5 — ok (2512 chars)
+2026-04-19 16:21:54  INFO      runner    [T4] idea 5/5 — ok (2567 chars)
+2026-04-19 16:21:59  INFO      runner    [T3] idea 5/5 — ok (2575 chars)
+2026-04-19 16:22:03  INFO      runner    [T10] idea 5/5 — ok (2616 chars)
+2026-04-19 16:22:03  INFO      runner  Saved 75 ideas to /Users/dylanwilson/Documents/GitHub/self-play/EvoScientist/ideas/results/S6/ideas.json
+2026-04-19 16:22:03  INFO      godel  Primary judge (deepseek-chat): S5 (A) vs S6 (B)...
+2026-04-19 16:22:03  INFO      judge  Judging T1 [deepseek] (5 pair(s)): Scaling laws for Large Language Models
+2026-04-19 16:22:03  INFO      judge  Judging T10 [deepseek] (5 pair(s)): Foundation models for genomics and single-cell biology
+2026-04-19 16:22:03  INFO      judge  Judging T11 [deepseek] (5 pair(s)): Emergent communication in multi-agent systems
+2026-04-19 16:22:03  INFO      judge  Judging T12 [deepseek] (5 pair(s)): Mechanistic interpretability of transformer models
+2026-04-19 16:22:03  INFO      judge  Judging T13 [deepseek] (5 pair(s)): Zero-shot generalization in reinforcement learning
+2026-04-19 16:22:03  INFO      judge  Judging T14 [deepseek] (5 pair(s)): Topological methods for high-dimensional data analysis
+2026-04-19 16:22:03  INFO      judge  Judging T15 [deepseek] (5 pair(s)): Quantum advantage in machine learning tasks
+2026-04-19 16:22:03  INFO      judge  Judging T2 [deepseek] (5 pair(s)): Protein structure prediction beyond AlphaFold
+2026-04-19 16:22:03  INFO      judge  Judging T3 [deepseek] (5 pair(s)): Quantum error correction in NISQ devices
+2026-04-19 16:22:03  INFO      judge  Judging T4 [deepseek] (5 pair(s)): Causal discovery from observational data
+2026-04-19 16:22:03  INFO      judge  Judging T5 [deepseek] (5 pair(s)): Energy-efficient neuromorphic computing
+2026-04-19 16:22:03  INFO      judge  Judging T6 [deepseek] (5 pair(s)): Generative AI for drug discovery and molecular design
+2026-04-19 16:22:03  INFO      judge  Judging T7 [deepseek] (5 pair(s)): Federated learning with heterogeneous and non-IID data
+2026-04-19 16:22:03  INFO      judge  Judging T8 [deepseek] (5 pair(s)): Deep learning emulators for climate model acceleration
+2026-04-19 16:22:03  INFO      judge  Judging T9 [deepseek] (5 pair(s)): Uncertainty quantification in deep neural networks
+2026-04-19 16:22:11  INFO      judge    T13[0] → B | Idea A is more feasible and experimentally clear, providing an immediately actio
+2026-04-19 16:22:11  INFO      judge    T11[0] → B | Idea A scores higher overall due to superior experimental clarity and feasibilit
+2026-04-19 16:22:12  INFO      judge    T2[0] → B | Idea A scores higher in novelty by proposing a more direct, end-to-end integrati
+2026-04-19 16:22:14  INFO      judge    T9[0] → B | Idea A is exceptionally clear, feasible, and directly useful for practitioners s
+2026-04-19 16:22:14  INFO      judge    T3[0] → B | Idea A is more concrete and feasible, with a clear experimental path to demonstr
+2026-04-19 16:22:14  INFO      judge    T14[0] → A | Idea A is more ambitious and novel, tackling the foundational challenge of dynam
+2026-04-19 16:22:14  INFO      judge    T5[0] → B | Idea B scores higher on feasibility and experimental clarity, addressing a well-
+2026-04-19 16:22:14  INFO      judge    T1[0] → B | Idea A offers a highly novel and actionable investigation into how a core archit
+2026-04-19 16:22:14  INFO      judge    T6[0] → B | Idea A scores highly on feasibility and experimental clarity, presenting a focus
+2026-04-19 16:22:15  INFO      judge    T15[0] → B | Idea A scores higher on scientific usefulness and experimental clarity due to it
+2026-04-19 16:22:15  INFO      judge    T10[0] → A | Both ideas are highly novel and useful, but Idea A's reliance on curated public 
+2026-04-19 16:22:15  INFO      judge    T8[0] → B | Idea A is more ambitious and novel in scope, but its modular, multi-component in
+2026-04-19 16:22:15  INFO      judge    T4[0] → B | Idea A is highly novel and addresses a profound theoretical challenge, but its f
+2026-04-19 16:22:15  INFO      judge    T7[0] → B | Idea A offers a more focused, testable, and immediately actionable contribution 
+2026-04-19 16:22:16  INFO      judge    T12[0] → B | Idea A scores higher overall due to its exceptionally clear and actionable focus
+2026-04-19 16:22:21  INFO      judge    T3[1] → B | Idea A is more focused and experimentally concrete, with a clear path to validat
+2026-04-19 16:22:21  INFO      judge    T13[1] → A | Idea A is more ambitious and novel, uniquely integrating language grounding with
+2026-04-19 16:22:22  INFO      judge    T11[1] → B | Idea A scores higher on scientific usefulness, experimental clarity, and feasibi
+2026-04-19 16:22:23  INFO      judge    T2[1] → B | Idea A scores higher due to superior experimental clarity and a more focused, fe
+2026-04-19 16:22:23  INFO      judge    T7[1] → B | Idea A scores higher on scientific usefulness and experimental clarity, addressi
+2026-04-19 16:22:23  INFO      judge    T8[1] → B | Both ideas are highly novel and useful, but Idea B presents a more focused, feas
+2026-04-19 16:22:23  INFO      judge    T1[1] → B | Idea A edges out Idea B due to its slightly higher novelty in addressing a more 
+2026-04-19 16:22:23  INFO      judge    T4[1] → A | Idea B addresses a more fundamental and timely challenge (causal discovery under
+2026-04-19 16:22:25  INFO      judge    T12[1] → B | Idea B is more focused, feasible, and immediately actionable, offering a clear c
+2026-04-19 16:22:25  INFO      judge    T9[1] → B | Idea A scores higher on feasibility and experimental clarity, presenting a concr
+2026-04-19 16:22:25  INFO      judge    T15[1] → B | Idea B scores higher in scientific usefulness and experimental clarity by tackli
+2026-04-19 16:22:25  INFO      judge    T6[1] → B | Idea A is highly novel and ambitious but suffers from lower feasibility and expe
+2026-04-19 16:22:26  INFO      judge    T14[1] → A | Idea A scores higher on feasibility and clarity, offering a rigorous but tractab
+2026-04-19 16:22:26  INFO      judge    T10[1] → B | Idea B edges out Idea A due to superior feasibility and a slight edge in novelty
+2026-04-19 16:22:26  INFO      judge    T5[1] → A | Both ideas are excellent, addressing critical and complementary problems. Idea A
+2026-04-19 16:22:30  INFO      judge    T3[2] → B | While Idea A is exceptionally novel and comprehensive in its theoretical ambitio
+2026-04-19 16:22:30  INFO      judge    T13[2] → B | Idea A is more feasible and experimentally clear, offering a direct, testable pa
+2026-04-19 16:22:32  INFO      judge    T7[2] → B | Idea B offers a more foundational and actionable contribution with superior clar
+2026-04-19 16:22:32  INFO      judge    T8[2] → A | Idea B addresses the critical, practical challenge of long-term emulator drift a
+2026-04-19 16:22:33  INFO      judge    T9[2] → B | Idea A is more ambitious and novel in its unsupervised, theory-grounded approach
+2026-04-19 16:22:33  INFO      judge    T11[2] → B | Idea A scores higher overall due to its exceptional scientific usefulness and ex
+2026-04-19 16:22:33  INFO      judge    T2[2] → B | Idea A is highly novel and useful but is more ambitious and less experimentally 
+2026-04-19 16:22:34  INFO      judge    T12[2] → B | Idea A's focus on graded, temporally precise causal interventions directly tackl
+2026-04-19 16:22:34  INFO      judge    T4[2] → B | Idea B scores higher overall due to superior experimental clarity and feasibilit
+2026-04-19 16:22:35  INFO      judge    T1[2] → B | Idea A is highly novel and useful but is more complex and less feasible due to i
+2026-04-19 16:22:35  INFO      judge    T10[2] → A | Idea A is highly novel and useful but its ambitious scope (causal, temporal, mul
+2026-04-19 16:22:35  INFO      judge    T15[2] → B | Idea A is more ambitious and addresses the core 'quantum advantage' question wit
+2026-04-19 16:22:36  INFO      judge    T14[2] → B | Idea A scores slightly higher overall due to its exceptional clarity and immedia
+2026-04-19 16:22:37  INFO      judge    T6[2] → B | Idea A scores higher overall due to its exceptional clarity, direct experimental
+2026-04-19 16:22:38  INFO      judge    T3[3] → A | Idea A is more ambitious and novel, proposing a 'living' code with real-time str
+2026-04-19 16:22:39  INFO      judge    T5[2] → B | Idea A scores higher due to superior experimental clarity and a more concrete, f
+2026-04-19 16:22:40  INFO      judge    T7[3] → A | Idea B scores higher on novelty and scientific usefulness by addressing the crit
+2026-04-19 16:22:40  INFO      judge    T13[3] → B | Idea A scores higher on feasibility and experimental clarity, offering a concret
+2026-04-19 16:22:43  INFO      judge    T15[3] → B | Idea A scores higher in feasibility and experimental clarity, presenting a concr
+2026-04-19 16:22:44  INFO      judge    T8[3] → B | Both ideas are highly novel and useful, but Idea A presents a more concrete and 
+2026-04-19 16:22:44  INFO      judge    T2[3] → B | Idea A is more ambitious and potentially transformative, but its lower feasibili
+2026-04-19 16:22:44  INFO      judge    T9[3] → A | Idea A is more ambitious and novel, proposing a fully unsupervised, online recal
+2026-04-19 16:22:44  INFO      judge    T12[3] → A | Idea A is more ambitious and novel, proposing a foundational framework for dynam
+2026-04-19 16:22:44  INFO      judge    T11[3] → B | Idea A is more focused, with superior experimental clarity and feasibility, dire
+2026-04-19 16:22:45  INFO      judge    T4[3] → A | Idea A is more ambitious and novel, tackling the complex, open problem of dynami
+2026-04-19 16:22:45  INFO      judge    T1[3] → B | Idea B is more focused, experimentally clear, and highly feasible, directly addr
+2026-04-19 16:22:47  INFO      judge    T10[3] → B | Idea B edges out Idea A primarily due to its superior experimental clarity and a
+2026-04-19 16:22:47  INFO      judge    T14[3] → B | Idea A is highly novel and theoretically ambitious but presents greater feasibil
+2026-04-19 16:22:48  INFO      judge    T6[3] → B | Idea A is exceptionally ambitious and useful but is less clear and feasible due 
+2026-04-19 16:22:48  INFO      judge    T3[4] → A | Idea A is more ambitious and novel, proposing a holistic adaptive control system
+2026-04-19 16:22:51  INFO      judge    T7[4] → A | Idea A scores higher on novelty and scientific usefulness due to its unique focu
+2026-04-19 16:22:51  INFO      judge    T13[4] → A | Idea B scores higher on novelty and scientific usefulness due to its stronger th
+2026-04-19 16:22:51  INFO      judge    T5[3] → A | Idea A presents a more fundamental and novel hardware innovation with autonomous
+2026-04-19 16:22:52  INFO      judge    T15[4] → B | Idea A is more ambitious and novel in its theoretical scope, but its experimenta
+2026-04-19 16:22:53  INFO      judge    T11[4] → B | Idea A scores slightly higher due to superior experimental clarity and feasibili
+2026-04-19 16:22:53  INFO      judge    T1[4] → B | Both ideas are highly novel and useful, addressing critical gaps in scaling law 
+2026-04-19 16:22:55  INFO      judge    T2[4] → B | Idea A is exceptionally novel and useful but presents significant feasibility ch
+2026-04-19 16:22:55  INFO      judge    T12[4] → B | Both ideas are excellent, but Idea A's focus on rigorously testing a foundationa
+2026-04-19 16:22:55  INFO      judge    T14[4] → B | Idea A scores higher on scientific usefulness, experimental clarity, and feasibi
+2026-04-19 16:22:55  INFO      judge    T8[4] → B | Idea A scores higher due to its superior experimental clarity and slightly highe
+2026-04-19 16:22:55  INFO      judge    T4[4] → A | Idea A presents a highly focused and clear approach to exploiting temporal heter
+2026-04-19 16:22:56  INFO      judge    T9[4] → A | Idea B addresses a more critical and open real-world challenge—continuous, unlab
+2026-04-19 16:22:57  INFO      judge    T6[4] → A | Idea A addresses a more fundamental and challenging frontier in structural biolo
+2026-04-19 16:22:58  INFO      judge    T10[4] → A | Idea A's phased, explicitly noise-aware approach with orthogonal validation is m
+2026-04-19 16:23:02  INFO      judge    T5[4] → tie | Both ideas are highly novel and useful, addressing critical hardware-algorithm c
+2026-04-19 16:23:02  INFO      judge  Done [deepseek] — A:21  B:53  ties:1  B win rate: 71.3%
+2026-04-19 16:23:02  INFO      godel  ============================================================
+2026-04-19 16:23:02  INFO      godel  S5 (current) wins: 21/75
+2026-04-19 16:23:02  INFO      godel  S6 (candidate) wins: 53/75
+2026-04-19 16:23:02  INFO      godel  Ties: 1/75
+2026-04-19 16:23:02  INFO      godel  S6 win rate: 71.3%  (threshold: 55%)
+2026-04-19 16:23:02  INFO      godel  ============================================================
+2026-04-19 16:23:02  INFO      godel  VERDICT: S6 wins 71% — ACCEPTED (run `accept S6` to apply)
+2026-04-19 16:23:02  INFO      godel  Running blind judge on 5 sampled topic(s)...
+2026-04-19 16:23:02  INFO      judge  Blind judge [gemini-flash-lite-latest] running 5/15 topics
+2026-04-19 16:23:02  INFO      judge  Blind judging T13: Zero-shot generalization in reinforcement learning
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-19 16:23:04  INFO      judge    blind T13 → tie | Idea A offers a highly practical, actionable diagnostic tool for the RL communit
+2026-04-19 16:23:04  INFO      judge  Blind judging T8: Deep learning emulators for climate model acceleration
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-19 16:23:06  INFO      judge    blind T8 → A | Idea A is more ambitious and scientifically rigorous, focusing on the broader ar
+2026-04-19 16:23:06  INFO      judge  Blind judging T2: Protein structure prediction beyond AlphaFold
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-19 16:23:07  INFO      judge    blind T2 → A | Idea A is more ambitious and scientifically rigorous, as it incorporates thermod
+2026-04-19 16:23:07  INFO      judge  Blind judging T10: Foundation models for genomics and single-cell biology
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-19 16:23:09  INFO      judge    blind T10 → B | Idea A proposes a highly specific, ambitious experimental design that directly a
+2026-04-19 16:23:09  INFO      judge  Blind judging T14: Topological methods for high-dimensional data analysis
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-04-19 16:23:10  INFO      judge    blind T14 → A | Idea A addresses a significantly more challenging and foundational problem in TD
+2026-04-19 16:23:10  INFO      judge  Blind done — A:3  B:1  ties:1  blind win rate: 30.0%
+2026-04-19 16:23:10  INFO      godel  Blind win rate: 30.0%  (primary: 71.3%)
+2026-04-19 16:23:10  INFO      godel  Judge confusion: agreement=20%  flip=60%  (5 pairs)
+2026-04-19 16:23:10  INFO      godel    both→B:0  primary_only→B:2  blind_only→B:1  both→A:1
+2026-04-19 16:23:10  WARNING   godel  GOODHART ALERT (confusion): flip_rate=60% > 30% — candidate may be gaming primary judge
+2026-04-19 16:23:10  WARNING   godel  GOODHART ALERT (divergence): primary=71% vs blind=30% (41%)
+2026-04-19 16:23:10  INFO      godel  Detailed report saved to: /Users/dylanwilson/Documents/GitHub/self-play/EvoScientist/ideas/results/compare_S5_vs_S6.json

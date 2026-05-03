@@ -1,0 +1,14 @@
+{
+  "rerun_utc": "2026-04-19T19:39:51.975861+00:00",
+  "eval_dir": "results/publish_eval_n75_gemini3_deepseek_S15_Spaper",
+  "ideas_counts": {
+    "S15": 75,
+    "S_paper": 75
+  },
+  "judges": [
+    "gpt-5.4"
+  ],
+  "workers": 30,
+  "out_suffix": "rerun",
+  "note": "Judge-only rerun; ideas unchanged."
+}

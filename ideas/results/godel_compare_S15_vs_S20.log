@@ -1,0 +1,143 @@
+2026-04-12 17:51:04  INFO      godel  Running S15 on benchmark topics...
+2026-04-12 17:51:04  INFO      runner  Running S15 on 15 topic(s) × 2 idea(s) = 30 calls  [cached, workers=1]
+2026-04-12 17:51:04  INFO      runner  [T1] Scaling laws for Large Language Models
+2026-04-12 17:52:54  INFO      runner    [T1] idea 1/2 — ok (1351 chars)
+2026-04-12 17:54:41  INFO      runner    [T1] idea 2/2 — ok (1807 chars)
+2026-04-12 17:54:41  INFO      runner  [T2] Protein structure prediction beyond AlphaFold
+2026-04-12 17:56:24  INFO      runner    [T2] idea 1/2 — ok (1587 chars)
+2026-04-12 17:58:22  INFO      runner    [T2] idea 2/2 — ok (1824 chars)
+2026-04-12 17:58:22  INFO      runner  [T3] Quantum error correction in NISQ devices
+2026-04-12 18:00:43  INFO      runner    [T3] idea 1/2 — ok (1519 chars)
+2026-04-12 18:03:24  INFO      runner    [T3] idea 2/2 — ok (1666 chars)
+2026-04-12 18:03:24  INFO      runner  [T4] Causal discovery from observational data
+2026-04-12 18:05:42  INFO      runner    [T4] idea 1/2 — ok (1521 chars)
+API error [CONNECTION_ERROR (APIConnectionError)] — pausing 5s before retry 1/3 (model=deepseek-chat)
+API error [CONNECTION_ERROR (APIConnectionError)] — pausing 15s before retry 2/3 (model=deepseek-chat)
+API error [CONNECTION_ERROR (APIConnectionError)] — pausing 30s before retry 3/3 (model=deepseek-chat)
+API error [CONNECTION_ERROR (APIConnectionError)] — pausing 5s before retry 1/3 (model=deepseek-chat)
+API error [CONNECTION_ERROR (APIConnectionError)] — pausing 15s before retry 2/3 (model=deepseek-chat)
+API error [CONNECTION_ERROR (APIConnectionError)] — pausing 30s before retry 3/3 (model=deepseek-chat)
+API error [CONNECTION_ERROR (APIConnectionError)] — pausing 5s before retry 1/3 (model=deepseek-chat)
+API error [CONNECTION_ERROR (APIConnectionError)] — pausing 15s before retry 2/3 (model=deepseek-chat)
+API error [CONNECTION_ERROR (APIConnectionError)] — pausing 30s before retry 3/3 (model=deepseek-chat)
+2026-04-12 23:30:49  INFO      runner    [T4] idea 2/2 — ok (3329 chars)
+2026-04-12 23:30:49  INFO      runner  [T5] Energy-efficient neuromorphic computing
+API error [CONNECTION_ERROR (APIConnectionError)] — pausing 5s before retry 1/3 (model=deepseek-chat)
+API error [CONNECTION_ERROR (APIConnectionError)] — pausing 15s before retry 2/3 (model=deepseek-chat)
+API error [CONNECTION_ERROR (APIConnectionError)] — pausing 30s before retry 3/3 (model=deepseek-chat)
+2026-04-13 00:50:07  INFO      runner    [T5] idea 1/2 — ok (1622 chars)
+2026-04-13 00:52:32  INFO      runner    [T5] idea 2/2 — ok (1782 chars)
+2026-04-13 00:52:32  INFO      runner  [T6] Generative AI for drug discovery and molecular design
+2026-04-13 00:54:57  INFO      runner    [T6] idea 1/2 — ok (1991 chars)
+2026-04-13 00:57:29  INFO      runner    [T6] idea 2/2 — ok (1823 chars)
+2026-04-13 00:57:29  INFO      runner  [T7] Federated learning with heterogeneous and non-IID data
+2026-04-13 01:00:06  INFO      runner    [T7] idea 1/2 — ok (1738 chars)
+2026-04-13 01:02:39  INFO      runner    [T7] idea 2/2 — ok (1729 chars)
+2026-04-13 01:02:39  INFO      runner  [T8] Deep learning emulators for climate model acceleration
+2026-04-13 01:21:18  INFO      runner    [T8] idea 1/2 — ok (1853 chars)
+2026-04-13 01:24:32  INFO      runner    [T8] idea 2/2 — ok (1594 chars)
+2026-04-13 01:24:32  INFO      runner  [T9] Uncertainty quantification in deep neural networks
+2026-04-13 01:43:00  INFO      runner    [T9] idea 1/2 — ok (1504 chars)
+2026-04-13 01:45:33  INFO      runner    [T9] idea 2/2 — ok (1479 chars)
+2026-04-13 01:45:33  INFO      runner  [T10] Foundation models for genomics and single-cell biology
+2026-04-13 01:47:57  INFO      runner    [T10] idea 1/2 — ok (1852 chars)
+2026-04-13 01:50:12  INFO      runner    [T10] idea 2/2 — ok (1708 chars)
+2026-04-13 01:50:12  INFO      runner  [T11] Emergent communication in multi-agent systems
+2026-04-13 01:52:45  INFO      runner    [T11] idea 1/2 — ok (1843 chars)
+2026-04-13 01:55:23  INFO      runner    [T11] idea 2/2 — ok (1674 chars)
+2026-04-13 01:55:23  INFO      runner  [T12] Mechanistic interpretability of transformer models
+2026-04-13 01:58:00  INFO      runner    [T12] idea 1/2 — ok (1671 chars)
+2026-04-13 02:00:31  INFO      runner    [T12] idea 2/2 — ok (1810 chars)
+2026-04-13 02:00:31  INFO      runner  [T13] Zero-shot generalization in reinforcement learning
+2026-04-13 02:03:11  INFO      runner    [T13] idea 1/2 — ok (1530 chars)
+2026-04-13 02:06:08  INFO      runner    [T13] idea 2/2 — ok (1829 chars)
+2026-04-13 02:06:08  INFO      runner  [T14] Topological methods for high-dimensional data analysis
+2026-04-13 02:09:23  INFO      runner    [T14] idea 1/2 — ok (1625 chars)
+2026-04-13 02:12:37  INFO      runner    [T14] idea 2/2 — ok (1713 chars)
+2026-04-13 02:12:37  INFO      runner  [T15] Quantum advantage in machine learning tasks
+2026-04-13 02:15:49  INFO      runner    [T15] idea 1/2 — ok (1814 chars)
+2026-04-13 02:18:37  INFO      runner    [T15] idea 2/2 — ok (1933 chars)
+2026-04-13 02:18:37  INFO      runner  Saved 30 ideas to /Users/dylanwilson/Documents/GitHub/self-play/EvoScientist/ideas/results/S15/ideas.json
+2026-04-13 02:18:37  INFO      godel  Running candidate S20 on benchmark topics...
+2026-04-13 02:18:37  INFO      runner  Running S20 on 15 topic(s) × 2 idea(s) = 30 calls  [cached, workers=2]
+2026-04-13 02:18:37  INFO      runner  [T1] Scaling laws for Large Language Models
+2026-04-13 02:18:37  INFO      runner  [T2] Protein structure prediction beyond AlphaFold
+2026-04-13 02:21:07  INFO      runner    [T2] idea 1/2 — ok (1608 chars)
+2026-04-13 02:21:14  INFO      runner    [T1] idea 1/2 — ok (2290 chars)
+2026-04-13 02:23:43  INFO      runner    [T1] idea 2/2 — ok (1837 chars)
+2026-04-13 02:23:43  INFO      runner  [T3] Quantum error correction in NISQ devices
+2026-04-13 02:23:48  INFO      runner    [T2] idea 2/2 — ok (1900 chars)
+2026-04-13 02:23:48  INFO      runner  [T4] Causal discovery from observational data
+2026-04-13 02:25:56  INFO      runner    [T4] idea 1/2 — ok (1759 chars)
+2026-04-13 02:26:07  INFO      runner    [T3] idea 1/2 — ok (1888 chars)
+2026-04-13 02:28:18  INFO      runner    [T4] idea 2/2 — ok (2112 chars)
+2026-04-13 02:28:18  INFO      runner  [T5] Energy-efficient neuromorphic computing
+2026-04-13 02:28:23  INFO      runner    [T3] idea 2/2 — ok (1684 chars)
+2026-04-13 02:28:23  INFO      runner  [T6] Generative AI for drug discovery and molecular design
+2026-04-13 02:31:07  INFO      runner    [T5] idea 1/2 — ok (1723 chars)
+2026-04-13 02:31:12  INFO      runner    [T6] idea 1/2 — ok (1761 chars)
+2026-04-13 02:33:44  INFO      runner    [T5] idea 2/2 — ok (1590 chars)
+2026-04-13 02:33:44  INFO      runner  [T7] Federated learning with heterogeneous and non-IID data
+2026-04-13 02:34:00  INFO      runner    [T6] idea 2/2 — ok (2228 chars)
+2026-04-13 02:34:00  INFO      runner  [T8] Deep learning emulators for climate model acceleration
+2026-04-13 02:36:18  INFO      runner    [T7] idea 1/2 — ok (1766 chars)
+2026-04-13 02:36:36  INFO      runner    [T8] idea 1/2 — ok (1843 chars)
+2026-04-13 02:38:51  INFO      runner    [T7] idea 2/2 — ok (2446 chars)
+2026-04-13 02:38:51  INFO      runner  [T9] Uncertainty quantification in deep neural networks
+2026-04-13 02:39:21  INFO      runner    [T8] idea 2/2 — ok (1809 chars)
+2026-04-13 02:39:21  INFO      runner  [T10] Foundation models for genomics and single-cell biology
+2026-04-13 02:41:46  INFO      runner    [T9] idea 1/2 — ok (1902 chars)
+2026-04-13 02:42:01  INFO      runner    [T10] idea 1/2 — ok (1658 chars)
+2026-04-13 02:44:07  INFO      runner    [T9] idea 2/2 — ok (1784 chars)
+2026-04-13 02:44:07  INFO      runner  [T11] Emergent communication in multi-agent systems
+2026-04-13 02:44:38  INFO      runner    [T10] idea 2/2 — ok (1753 chars)
+2026-04-13 02:44:38  INFO      runner  [T12] Mechanistic interpretability of transformer models
+2026-04-13 02:46:33  INFO      runner    [T11] idea 1/2 — ok (1548 chars)
+2026-04-13 02:46:59  INFO      runner    [T12] idea 1/2 — ok (2051 chars)
+2026-04-13 02:48:55  INFO      runner    [T11] idea 2/2 — ok (1767 chars)
+2026-04-13 02:48:55  INFO      runner  [T13] Zero-shot generalization in reinforcement learning
+2026-04-13 02:49:26  INFO      runner    [T12] idea 2/2 — ok (1791 chars)
+2026-04-13 02:49:26  INFO      runner  [T14] Topological methods for high-dimensional data analysis
+2026-04-13 02:51:26  INFO      runner    [T13] idea 1/2 — ok (1899 chars)
+2026-04-13 02:51:59  INFO      runner    [T14] idea 1/2 — ok (2141 chars)
+2026-04-13 02:53:51  INFO      runner    [T13] idea 2/2 — ok (2201 chars)
+2026-04-13 02:53:51  INFO      runner  [T15] Quantum advantage in machine learning tasks
+2026-04-13 02:54:30  INFO      runner    [T14] idea 2/2 — ok (2118 chars)
+2026-04-13 02:56:14  INFO      runner    [T15] idea 1/2 — ok (1599 chars)
+2026-04-13 02:58:40  INFO      runner    [T15] idea 2/2 — ok (1760 chars)
+2026-04-13 02:58:40  INFO      runner  Saved 30 ideas to /Users/dylanwilson/Documents/GitHub/self-play/EvoScientist/ideas/results/S20/ideas.json
+2026-04-13 02:58:40  INFO      godel  Primary judge (deepseek-chat): S15 (A) vs S20 (B)...
+2026-04-13 02:58:40  INFO      judge  Judging T1 [deepseek] (2 pair(s)): Scaling laws for Large Language Models
+2026-04-13 02:58:40  INFO      judge  Judging T10 [deepseek] (2 pair(s)): Foundation models for genomics and single-cell biology
+2026-04-13 02:58:47  INFO      judge    T1[0] → A | Idea A edges out Idea B due to a superior combination of scientific usefulness a
+2026-04-13 02:58:47  INFO      judge    T10[0] → A | Idea A scores higher due to its exceptional combination of novelty, clear utilit
+2026-04-13 02:58:53  INFO      judge    T1[1] → B | Idea B scores higher overall due to superior experimental clarity and feasibilit
+2026-04-13 02:58:53  INFO      judge  Judging T11 [deepseek] (2 pair(s)): Emergent communication in multi-agent systems
+2026-04-13 02:58:55  INFO      judge    T10[1] → B | Idea A edges out Idea B due to its exceptionally high novelty and scientific use
+2026-04-13 02:58:55  INFO      judge  Judging T12 [deepseek] (2 pair(s)): Mechanistic interpretability of transformer models
+2026-04-13 02:59:00  INFO      judge    T11[0] → A | Idea A presents a highly novel and precise hypothesis linking semantic structure
+2026-04-13 02:59:01  INFO      judge    T12[0] → B | Idea A scores higher due to its exceptional clarity and a highly novel, falsifia
+2026-04-13 02:59:06  INFO      judge    T11[1] → B | Idea A proposes a more fundamental and elegantly falsifiable mechanism (perceptu
+2026-04-13 02:59:06  INFO      judge  Judging T13 [deepseek] (2 pair(s)): Zero-shot generalization in reinforcement learning
+2026-04-13 02:59:08  INFO      judge    T12[1] → B | Idea A scores higher on novelty and scientific usefulness by directly challengin
+2026-04-13 02:59:08  INFO      judge  Judging T14 [deepseek] (2 pair(s)): Topological methods for high-dimensional data analysis
+2026-04-13 02:59:13  INFO      judge    T13[0] → B | Idea B scores higher on novelty and scientific usefulness by directly targeting 
+2026-04-13 02:59:15  INFO      judge    T14[0] → B | Idea A presents a more fundamental methodological advance with a clear causal me
+2026-04-13 02:59:20  INFO      judge    T13[1] → B | Idea A scores higher overall due to exceptional clarity in its hypothesis, metho
+2026-04-13 02:59:20  INFO      judge  Judging T15 [deepseek] (2 pair(s)): Quantum advantage in machine learning tasks
+2026-04-13 02:59:22  INFO      judge    T14[1] → B | Idea B presents a more novel and impactful challenge to a core TDA assumption, w
+2026-04-13 02:59:22  INFO      judge  Judging T2 [deepseek] (2 pair(s)): Protein structure prediction beyond AlphaFold
+2026-04-13 02:59:22  INFO      judge  Early stop: early stop (accept) — P(win_rate<55%) < 10% (90th-pct lower bound 56.7% after 12/30 pairs, 9W/3L/0T)
+2026-04-13 02:59:26  INFO      judge    T15[0] → A | Idea A directly tackles the core, pressing challenge of proving quantum advantag
+2026-04-13 02:59:28  INFO      judge    T2[0] → B | Idea A wins by a narrow margin due to its exceptionally high novelty and clarity
+2026-04-13 02:59:32  INFO      judge    T15[1] → B | Idea A directly and powerfully challenges a foundational assumption in quantum M
+2026-04-13 02:59:35  INFO      judge    T2[1] → B | Idea A scores higher due to exceptional clarity and feasibility in testing a fou
+2026-04-13 02:59:35  INFO      judge  Done [deepseek] — A:3  B:9  ties:0  B win rate: 75.0% [early stop after 12/30]
+2026-04-13 02:59:35  INFO      godel  ============================================================
+2026-04-13 02:59:35  INFO      godel  S15 (current) wins: 3/12
+2026-04-13 02:59:35  INFO      godel  S20 (candidate) wins: 9/12
+2026-04-13 02:59:35  INFO      godel  Ties: 0/12
+2026-04-13 02:59:35  INFO      godel  S20 win rate: 75.0%  (threshold: 55%)
+2026-04-13 02:59:35  INFO      godel  ============================================================
+2026-04-13 02:59:35  INFO      godel  VERDICT: S20 wins 75% — ACCEPTED (run `accept S20` to apply)
+2026-04-13 02:59:35  INFO      godel  Detailed report saved to: /Users/dylanwilson/Documents/GitHub/self-play/EvoScientist/ideas/results/compare_S15_vs_S20.json

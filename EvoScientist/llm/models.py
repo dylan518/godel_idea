@@ -293,31 +293,37 @@ def get_chat_model(
     _is_openai_proxy = False
     _original_provider: str | None = None
     if provider == "anthropic":
-        base_url = os.environ.get("ANTHROPIC_BASE_URL", "")
-        if base_url:
-            kwargs["base_url"] = base_url
-        api_key = os.environ.get("ANTHROPIC_API_KEY", "")
-        if api_key:
-            kwargs["api_key"] = api_key
+        if "base_url" not in kwargs:
+            base_url = os.environ.get("ANTHROPIC_BASE_URL", "")
+            if base_url:
+                kwargs["base_url"] = base_url
+        if not kwargs.get("api_key"):
+            api_key = os.environ.get("ANTHROPIC_API_KEY", "")
+            if api_key:
+                kwargs["api_key"] = api_key
 
     # Native OpenAI base_url override (e.g. ccproxy Codex at localhost:8000/codex/v1)
     elif provider == "openai":
-        base_url = os.environ.get("OPENAI_BASE_URL", "")
-        if base_url:
-            kwargs["base_url"] = base_url
+        if "base_url" not in kwargs:
+            base_url = os.environ.get("OPENAI_BASE_URL", "")
+            if base_url:
+                kwargs["base_url"] = base_url
+                _is_openai_proxy = _is_ccproxy_codex()
+                if _is_openai_proxy:
+                    # Default to Chat Completions for ccproxy: its Chat
+                    # Completions → Responses API converter handles system messages
+                    # correctly; its native Responses API endpoint does not.
+                    # (User can override via EVOSCIENTIST_USE_RESPONSES_API=true.)
+                    kwargs.setdefault("use_responses_api", False)
+                    # Default streaming off: ccproxy duplicates tool call names
+                    # in streaming Chat Completions chunks.
+                    kwargs.setdefault("streaming", False)
+        else:
             _is_openai_proxy = _is_ccproxy_codex()
-            if _is_openai_proxy:
-                # Default to Chat Completions for ccproxy: its Chat
-                # Completions → Responses API converter handles system messages
-                # correctly; its native Responses API endpoint does not.
-                # (User can override via EVOSCIENTIST_USE_RESPONSES_API=true.)
-                kwargs.setdefault("use_responses_api", False)
-                # Default streaming off: ccproxy duplicates tool call names
-                # in streaming Chat Completions chunks.
-                kwargs.setdefault("streaming", False)
-        api_key = os.environ.get("OPENAI_API_KEY", "")
-        if api_key:
-            kwargs["api_key"] = api_key
+        if not kwargs.get("api_key"):
+            api_key = os.environ.get("OPENAI_API_KEY", "")
+            if api_key:
+                kwargs["api_key"] = api_key
 
     # OpenAI-routed providers → route through OpenAI provider with base_url
     elif provider in _OPENAI_ROUTED_PROVIDERS:

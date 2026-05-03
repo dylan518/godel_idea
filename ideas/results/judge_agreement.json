@@ -1,0 +1,98 @@
+{
+  "meta": {
+    "blind_model": "gemini-flash-lite-latest",
+    "primary_pattern": "results/compare_*.json",
+    "blind_pattern": "results/blind_*__gemini-flash-lite-latest.json"
+  },
+  "transitions": [
+    {
+      "current": "S12",
+      "candidate": "S15",
+      "primary_file": "results/compare_S12_vs_S15.json",
+      "blind_file": "results/blind_S12_vs_S15__gemini-flash-lite-latest.json",
+      "overlap_n": 75,
+      "agreement_rate": 0.6266666666666667,
+      "decisive_overlap_n": 67,
+      "flip_rate_decisive": 0.29850746268656714,
+      "cohen_kappa": 0.3264913406029507,
+      "label_counts_primary": {
+        "A": 33,
+        "B": 41,
+        "tie": 1
+      },
+      "label_counts_blind": {
+        "A": 36,
+        "B": 32,
+        "tie": 7
+      }
+    },
+    {
+      "current": "S15",
+      "candidate": "S16",
+      "primary_file": "results/compare_S15_vs_S16.json",
+      "blind_file": "results/blind_S15_vs_S16__gemini-flash-lite-latest.json",
+      "overlap_n": 75,
+      "agreement_rate": 0.4533333333333333,
+      "decisive_overlap_n": 65,
+      "flip_rate_decisive": 0.47692307692307695,
+      "cohen_kappa": 0.03846153846153842,
+      "label_counts_primary": {
+        "A": 38,
+        "B": 36,
+        "tie": 1
+      },
+      "label_counts_blind": {
+        "A": 21,
+        "B": 45,
+        "tie": 9
+      }
+    },
+    {
+      "current": "S15",
+      "candidate": "S17",
+      "primary_file": "results/compare_S15_vs_S17.json",
+      "blind_file": "results/blind_S15_vs_S17__gemini-flash-lite-latest.json",
+      "overlap_n": 75,
+      "agreement_rate": 0.7333333333333333,
+      "decisive_overlap_n": 72,
+      "flip_rate_decisive": 0.2361111111111111,
+      "cohen_kappa": 0.3181818181818182,
+      "label_counts_primary": {
+        "A": 50,
+        "B": 25,
+        "tie": 0
+      },
+      "label_counts_blind": {
+        "A": 65,
+        "B": 7,
+        "tie": 3
+      }
+    },
+    {
+      "current": "S15",
+      "candidate": "S19",
+      "primary_file": "results/compare_S15_vs_S19.json",
+      "blind_file": "results/blind_S15_vs_S19__gemini-flash-lite-latest.json",
+      "overlap_n": 75,
+      "agreement_rate": 0.88,
+      "decisive_overlap_n": 75,
+      "flip_rate_decisive": 0.12,
+      "cohen_kappa": 0.4595676541232985,
+      "label_counts_primary": {
+        "A": 67,
+        "B": 8,
+        "tie": 0
+      },
+      "label_counts_blind": {
+        "A": 64,
+        "B": 11,
+        "tie": 0
+      }
+    }
+  ],
+  "missing_blind_files": [
+    "results/blind_S12_vs_S14__gemini-flash-lite-latest.json",
+    "results/blind_S15_vs_S18__gemini-flash-lite-latest.json",
+    "results/blind_S15_vs_S20__gemini-flash-lite-latest.json"
+  ]
+}

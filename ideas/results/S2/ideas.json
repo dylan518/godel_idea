@@ -1,0 +1,752 @@
+[
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 0,
+    "text": "IDEA: Predicting functional conformational ensembles from single-sequence data by modeling evolutionary couplings for intrinsic disorder and condition-specific perturbations.\n\nBACKGROUND: AlphaFold2 provides static structures but fails to predict the dynamic ensembles of conformations that underlie protein function, especially for intrinsically disordered regions (IDRs) and under non-equilibrium cellular conditions like post-translational modifications. This is a critical gap for understanding signaling, regulation, and allosteric drug design.\n\nAPPROACH: We will develop a deep learning model that uses evolutionary couplings from multiple sequence alignments to predict a \"conformational latent space,\" generating probabilistic multi-state ensembles. Crucially, this model will be conditioned to predict how specific, rapid perturbations\u2014such as phosphorylation or crowding\u2014immediately reshape the conformational landscape, trained on time-resolved experimental data and molecular dynamics trajectories.\n\nEXPERIMENT: We will validate predictions using single-molecule FRET and time-resolved SAXS on a set of engineered reporter proteins subjected to light-triggered perturbations in vitro, comparing experimentally observed transient ensembles against the model's condition-specific outputs.\n\nNOVELTY: This moves beyond equilibrium structure prediction by integrating evolutionary signals of disorder with condition-specific perturbation modeling to directly predict non-equilibrium conformational landscapes from sequence alone.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:12:20.013035+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 1,
+    "text": "IDEA: Predict functional conformational ensembles by training a generative model on single-molecule force spectroscopy data, using the mechanical unfolding pathway as a direct experimental constraint on the protein's energy landscape.\n\nBACKGROUND: AlphaFold predicts static structures but cannot reveal the ensemble of dynamic, often transient states a protein samples under physiological conditions, which are crucial for function and allostery. Current methods lack a way to integrate sparse, noisy, but information-rich experimental data that directly probes the energy landscape.\n\nAPPROACH: We will develop a contrastive learning model trained on paired datasets of experimental single-molecule force spectroscopy (SMFS) trajectories and their corresponding conformational ensembles from molecular dynamics. The model will learn to invert the process: given a new protein's AlphaFold structure and an experimental SMFS trace, it will generate a probabilistic 3D ensemble whose simulated force-extension profile matches the real data.\n\nEXPERIMENT: The model will be validated on proteins with known functional intermediates (e.g., titin, T4 lysozyme). Success will be measured by the accurate prediction of metastable state structures, which will be tested via independent site-specific spectroscopy or mutagenesis of predicted critical residues.\n\nNOVELTY: This directly uses a protein's mechanical response\u2014a functional readout of its landscape\u2014as the primary experimental constraint for ensemble prediction, moving beyond sequence or static structures to learn from energy landscape perturbations.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:12:59.288026+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 2,
+    "text": "IDEA: To predict a protein's functional conformational ensemble by training a conditional diffusion model on experimental data that maps how specific, quantifiable non-equilibrium cellular processes reshape the energy landscape.\n\nBACKGROUND: AlphaFold predicts static, equilibrium structures, but a protein's functional state in the cell is a dynamic ensemble sculpted by transient, non-equilibrium processes like co-translational folding, sudden entry into biomolecular condensates, or exposure to shear forces. The critical open problem is predicting how these specific physical processes determine the populated conformational landscapes that govern function, misfolding, and interactions.\n\nAPPROACH: We will develop a Conditional Conformational Diffusion Model that takes both a protein sequence and a defined \"process vector\" (e.g., ribosome tunnel geometry, condensate physicochemical parameters) as input. It will be trained on a bespoke, high-throughput experimental dataset that directly measures process-dependent ensembles using single-molecule FRET and time-resolved structural probing under microfluidically controlled non-equilibrium conditions.\n\nEXPERIMENT: The model will be validated by its ability to predict, for unseen proteins, conformational distributions that match subsequent experimental observations from NMR/DEER spectroscopy, and by functionally testing its predictions via mutations designed to lock proteins in model-predicted, process-specific states.\n\nNOVELTY: This moves beyond the sequence-to-structure paradigm to a quantifiable process-to-ensemble paradigm, directly integrating the physics of cellular non-equilibrium conditions into generative structural prediction from the ground up.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:41.631517+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 3,
+    "text": "IDEA: Predicting co-translational conformational ensembles by integrating mRNA sequence features with cellular context using a multi-modal deep learning model trained on time-resolved structural data.\n\nBACKGROUND: AlphaFold predicts static, equilibrium structures but cannot model the functional ensembles proteins sample during synthesis on the ribosome. The critical open problem is predicting the non-equilibrium conformational landscape of a nascent chain, which is programmed by mRNA features and shaped by the crowded cellular environment.\n\nAPPROACH: Develop a two-stream diffusion model where one stream processes the amino acid sequence and the other processes mRNA features like codon usage and translational kinetics. The model will be conditioned on a learned representation of cellular context, including macromolecular crowding, and trained on conformational snapshots from time-resolved cryo-electron tomography of an *in vitro* translation system.\n\nEXPERIMENT: Validate predicted ensembles against single-molecule FRET folding trajectories for known co-translational folding domains and use the model to design mRNA sequences that alter folding pathways, testing outcomes with in-cell NMR.\n\nNOVELTY: It moves beyond the amino acid sequence to use mRNA features as a direct, programmable input for predicting non-equilibrium ensembles and explicitly integrates vectorial synthesis with a quantifiable cellular context.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:14:20.123624+00:00"
+  },
+  {
+    "topic_id": "T2",
+    "topic": "Protein structure prediction beyond AlphaFold",
+    "domain": "Biology",
+    "idea_index": 4,
+    "text": "IDEA: Develop a deep learning model that predicts a protein\u2019s functional conformational ensemble from its sequence and a quantifiable vector of cellular context parameters, such as metabolite concentrations and crowding density.\n\nBACKGROUND: AlphaFold provides static structures but cannot predict the ensembles of conformations a protein samples under physiological conditions. A critical open problem is understanding how specific, measurable cellular contexts\u2014like ATP:ADP ratios, pH, and macromolecular crowding\u2014reshape a protein\u2019s conformational landscape to modulate function, allostery, and binding.\n\nAPPROACH: A graph neural network will be trained on a curated dataset pairing protein sequences with experimental ensemble data from in-cell NMR and cryo-electron tomography, where each ensemble is linked to a vector of controlled contextual parameters. The model will learn to map a sequence and a context vector directly to a population-weighted set of 3D conformations, effectively predicting how the cellular environment redistributes conformational states.\n\nEXPERIMENT: The model will be validated on held-out proteins by comparing its predicted ensembles against experimental distance distributions measured by pulsed EPR spectroscopy under the same precisely defined contextual conditions used during training.\n\nNOVELTY: This moves beyond predicting a single structure or a generic ensemble by explicitly modeling how quantifiable, non-equilibrium cellular conditions actively reshape conformational populations, directly linking cell physiology to protein dynamics.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:14:57.370449+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 0,
+    "text": "IDEA: We propose a unified scaling law that predicts the emergence of specific capabilities by modeling the interaction between model scale, the complexity of training data, and the resulting \"conceptual resolution\" of internal representations.\n\nBACKGROUND: Current scaling laws predict smooth improvements in loss but fail to forecast which specific, complex capabilities will emerge at a given scale. The open problem is to move beyond predictive loss to a law that quantifies how the granularity of a model's internal concepts and its meta-reasoning abilities depend on both scale and the structural complexity of its training data.\n\nAPPROACH: We will train a series of architecturally consistent models on a controlled corpus spiked with synthetically generated \"meta-reasoning traces\" of varying complexity. We will then measure each model's \"conceptual resolution\" by probing its ability to recover hierarchical taxonomies from knowledge graphs, and correlate this with its performance on held-out reasoning tasks.\n\nEXPERIMENT: Using a multi-scale model family and a diagnostic task suite, we will create a phase map plotting model scale, conceptual resolution (quantified via taxonomy depth and separability), and meta-reasoning performance to derive a predictive law.\n\nNOVELTY: This integrates the scaling of internal representational structure with capability emergence, proposing a data-aware and architecturally-agnostic law that quantifies \"how\" models learn, not just \"how much.\"",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:12:23.265189+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 1,
+    "text": "IDEA: Deriving scaling laws for the emergence and degradation of discrete conceptual capabilities to predict non-monotonic performance and identify fundamental scaling bottlenecks.\n\nBACKGROUND: Current scaling laws describe smooth, aggregate performance but fail to capture the discontinuous emergence of new abilities or the temporary regressions in nuanced understanding, such as conceptual aliasing, that occur at specific scales. This leaves a critical gap in predicting *which* qualitative capabilities will appear or deteriorate at a given compute threshold and why.\n\nAPPROACH: We will model scaling not as a single power law for loss, but as distinct, quantifiable trajectories for dozens of isolated micro-capabilities, from logical deduction to conceptual discrimination. By tracking these trajectories across a dense spectrum of model scales, we can identify which capabilities scale smoothly, which emerge discontinuously, and which exhibit non-monotonic regressions due to conceptual aliasing.\n\nEXPERIMENT: We will train a family of models from scratch and evaluate them on a procedurally generated \"Capability Spectrum Test,\" which includes minimally contrasting pairs to measure conceptual discrimination, allowing us to plot precise capability-specific scaling curves and map thresholds for emergence and degradation.\n\nNOVELTY: This moves beyond predicting aggregate loss to quantitatively model the scaling of discrete cognitive skills, directly linking the phenomenon of conceptual aliasing to capability-specific scaling laws and providing a diagnostic map for bottlenecks that require architectural, not merely scale-based, solutions.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:03.625717+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 2,
+    "text": "IDEA: We propose a new scaling law for \"computational depth,\" defined as the maximum number of implicit, serial reasoning steps a model can sustain, by measuring the collapse point in synthetic chain tasks and using targeted sparsity to isolate the architectural topology required for this depth to emerge.\n\nBACKGROUND: Current scaling laws predict smooth loss improvements but cannot explain the discontinuous emergence of complex reasoning. The core open problem is whether scaling merely adds parameters or fundamentally enables deeper, more structured internal computation that is qualitatively different from pattern matching.\n\nAPPROACH: We will measure computational depth by identifying the critical chain length (N_crit) at which accuracy collapses on synthetic N-step deduction tasks. We will then use structured sparsity to prune a large model to various effective sizes, testing if the loss of depth mirrors the inverse of its emergence curve, thereby separating the effects of parameter count from necessary architectural connectivity.\n\nEXPERIMENT: We will train a dense series of models and create pruned submodels, benchmarking them on a progression of chain tasks to derive N_crit. The key metrics are the scaling of N_crit with parameters and the discrepancy in depth between natively small models and pruned equivalents.\n\nNOVELTY: This moves beyond loss-based scaling by directly quantifying a model's internal computational capacity and uses sparsity as a unique tool to simulate reverse scaling, testing if emergent reasoning requires specific circuit topologies that only form at scale.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:47.708142+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 3,
+    "text": "IDEA: We propose to discover scaling laws for the emergence of \"conceptual scaffolding\"\u2014the internal, reusable representations of abstract operations\u2014by measuring the phase transition where models shift from monolithic to factorized conceptual representations, enabling new capabilities.\n\nBACKGROUND: Current scaling laws predict smooth loss reduction but fail to forecast the discontinuous emergence of new reasoning abilities. This addresses the open problem of whether the acquisition of the underlying conceptual abstractions follows a quantifiable, task-agnostic scaling law based on representational complexity.\n\nAPPROACH: We will train a family of models on a curated data mixture while administering a longitudinal battery of minimal, diagnostic tasks designed to isolate specific conceptual operations. We will use mechanistic interpretability tools, like sparse autoencoders, to measure the \"conceptual factorization\" of internal activations in response to these probes throughout training.\n\nEXPERIMENT: We will track the first sustained emergence of each conceptual ability against model scale and a novel \"Representational Complexity Score,\" derived from the intrinsic dimensionality and intervenability of the model's activations on precursor tasks, to identify clustering and phase transitions.\n\nNOVELTY: This moves beyond predicting loss to directly quantifying the emergence of internal representational geometry, combining the predictive framework of scaling laws with causal, mechanistic analysis of how concepts are factorized at scale.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:14:28.274742+00:00"
+  },
+  {
+    "topic_id": "T1",
+    "topic": "Scaling laws for Large Language Models",
+    "domain": "ML",
+    "idea_index": 4,
+    "text": "IDEA: To establish scaling laws for \"Conceptual Resolution\"\u2014the predictable refinement of an LLM's ability to make nuanced distinctions between semantically adjacent concepts\u2014by measuring the evolution of its internal probability distributions over controlled contrast pairs.\n\nBACKGROUND: Current scaling laws predict loss but fail to capture how model growth translates into finer-grained conceptual understanding, such as distinguishing \"satire\" from \"parody.\" This open problem masks the discontinuous emergence of high-level capabilities, which may depend on reaching critical thresholds of conceptual precision.\n\nAPPROACH: We will define conceptual resolution as the model's *confidence gap*: the log probability difference it assigns to a more appropriate word versus a carefully chosen near-synonym within a specific context. We will then train a family of models on a concept-centrically filtered dataset, enriched with examples illustrating subtle contrasts, to isolate the effect of scale on resolution.\n\nEXPERIMENT: We will track the confidence gap across thousands of conceptual contrast pairs for models of varying scale, analyzing its power-law relationship with compute and using the models' own chain-of-thought explanations to identify the parameter scale at which they reliably cite defining distinguishing features.\n\nNOVELTY: This moves beyond task accuracy to measure the direct scaling of internal semantic discrimination, and uniquely uses chain-of-thought to validate that improved statistical discrimination corresponds to articulable conceptual understanding, yielding a capability-focused scaling law.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:07.603751+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 0,
+    "text": "IDEA: Investigating the emergence of meta-communication for strategic signal manipulation, including deceptive broadcasts and tactical silence, in a competitive multi-agent ecosystem with eavesdropping adversaries.\n\nBACKGROUND: Emergent communication research focuses on cooperative signal creation, neglecting how agents in adversarial, mixed-motive settings strategically manage information flow. The open problem is whether agents can develop a meta-communication protocol that governs not just *what* to signal, but *when* and *how* to signal, including the ability to intentionally deceive or withhold information as a stable, evolved strategy.\n\nAPPROACH: We will construct a competitive predator-prey-resource simulation where all agents learn via deep reinforcement learning. A bandwidth-limited broadcast channel is shared, but signals can be overheard by adversaries with a defined probability. Crucially, agents are endowed with a second, costly meta-channel to learn signals about signal reliability, enabling protocols for strategic deception or coordinated silence.\n\nEXPERIMENT: We will analyze the emergent languages using information-theoretic metrics and causal influence, measuring ecosystem stability, the pragmatic context of deception, and the causal link between meta-signals and subsequent drops in team communication entropy or adversary confusion.\n\nNOVELTY: This integrates the adversarial meta-communication problem with the complex pressures of a mixed-motive ecosystem, testing the evolution of strategic information manipulation\u2014including prosocial deception and tactical silence\u2014as a foundational component of an emergent language, not a parasitic outlier.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:12:23.863018+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 1,
+    "text": "IDEA: We will investigate whether multi-agent systems, under the constraints of egocentric perception and competitive pressure, can develop deictic communication protocols that are tactically obfuscated from adversaries.\n\nBACKGROUND: Current research in emergent communication largely assumes cooperative agents with shared perspectives, overlooking the dual challenges of embodied, egocentric perception and mixed-motive environments. The open problem is whether agents can co-develop a shared spatial reference system from first-person views alone, and then strategically adapt this system to be ambiguous to competitors, turning a grounding challenge into a tactical advantage.\n\nAPPROACH: We will design a competitive 3D environment where two teams, each with two agents, must locate and retrieve hidden target objects. Crucially, each agent has only a first-person view. Teammates must collaborate using a discrete communication channel, but their broadcasts are overheard by the opposing team, creating pressure for efficient yet private coordination. Agents will be trained with deep reinforcement learning to develop protocols from scratch.\n\nEXPERIMENT: Success will be measured by the team's retrieval accuracy and the emergent protocol's robustness to novel object arrangements. We will analyze the signals for directional specificity (useful only to teammates) and their correlation with egocentric action sequences, testing if a deictic system emerges and is subsequently obfuscated under competition.\n\nNOVELTY: This work uniquely combines the embodied challenge of establishing joint attention without a global view with the selective pressure for tactical obfuscation, moving beyond cooperative, allocentric paradigms to study how competition shapes the very structure of an emergent spatial language.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:04.320429+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 2,
+    "text": "IDEA: We propose that competitive pressure and sensory occlusion will catalyze the emergence of deictic communication protocols, which enable zero-shot generalization to novel coalitional tasks by establishing abstract, relational references.\n\nBACKGROUND: A fundamental open problem is how abstract, symbolic communication emerges from grounded interaction, as most work assumes cooperative, homogeneous agents with full observability. This fails to capture real-world conditions where agents have asymmetric, occluded perspectives and must navigate mixed-motive relationships, which may be essential drivers for more sophisticated, generalizable language.\n\nAPPROACH: We will train populations of agents with asymmetric sensory capabilities (e.g., high-detail vs. long-range) in a mixed-motive 3D environment with dynamic occlusion. Agents must form temporary coalitions under a competitive gradient, using a discrete channel. We will incentivize the development of consistent, abstract communicative sequences (\"rituals\") across varied tasks to scaffold generalization.\n\nEXPERIMENT: We will measure the abstraction and deictic nature of emergent signals under competitive and occluded conditions, and then test zero-shot performance on novel coalitional tasks requiring composite coordination, comparing to controls without cross-task consistency incentives or sensory asymmetry.\n\nNOVELTY: This integrates competition and sensory asymmetry as catalytic constraints for abstraction, and combines them with a ritual-based learning objective to yield protocols that are both referentially sophisticated and capable of zero-shot task generalization.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:45.896941+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 3,
+    "text": "IDEA: To systematically measure how competitive pressure and asymmetric embodiment jointly drive the emergence of efficient, deictic communication protocols in multi-agent systems.\n\nBACKGROUND: A key open problem is understanding how grounded, efficient communication emerges from realistic conditions of mixed motivations and heterogeneous agent capabilities. Prior work often assumes cooperative homogeneity, neglecting how strategic incentives and the fundamental \"cost\" of translating between different perceptual-motor frameworks shape a language's structure and stability.\n\nAPPROACH: We will train populations of agents with complementary, asymmetric embodiments (e.g., ground vs. aerial perspectives) in a competitive foraging game where individual rewards create tension. Agents must form temporary, strategic alliances by communicating through a bottlenecked channel, forcing them to develop efficient protocols to bridge their embodiment gap under pressure.\n\nEXPERIMENT: In a 3D simulated environment, we will compare heterogeneous agent pairs under cooperative and competitive reward structures, analyzing the emergent language's compositionality, stability across partners, and the transfer entropy between agents' internal states to quantify communicative efficiency and cognitive load.\n\nNOVELTY: This integrates competitive strategic dynamics with systematic embodiment asymmetry to study emergent communication, proposing a novel quantitative framework\u2014the \"cost of misalignment\"\u2014to predict protocol robustness from first principles.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:14:28.435199+00:00"
+  },
+  {
+    "topic_id": "T11",
+    "topic": "Emergent communication in multi-agent systems",
+    "domain": "Robotics",
+    "idea_index": 4,
+    "text": "IDEA: Investigating the emergence of \"procedural delegation\" protocols, where agents with asymmetric cognitive constraints use a low-bandwidth channel to dynamically allocate computational subtasks, and examining how this strategic communication is shaped by competitive incentives.\n\nBACKGROUND: A fundamental open problem is how communication emerges not just to share data, but to manage distributed cognition under stringent resource limits. Furthermore, prior work largely ignores how such cooperative protocols are corrupted or made strategically ambiguous when agents operate in mixed-motive environments with partial goal alignment.\n\nAPPROACH: We will train heterogeneous agents with complementary cognitive limitations (e.g., planning, memory, perception) via multi-agent reinforcement learning in collaborative time-pressed tasks. A key manipulation is the \"alignment gradient,\" systematically varying the competitiveness of rewards to observe how purely cooperative delegation protocols evolve into strategically obfuscated ones.\n\nEXPERIMENT: Agents will be tested in modified foraging/construction environments with a dynamic cognitive load meter. We will analyze the emergent language for syntactic separation of instruction vs. data tokens and measure the strategic entropy of signals under different competitive pressures.\n\nNOVELTY: This moves beyond sharing observations to dynamically organizing *how* the group thinks, and uniquely studies how these functional protocols are transformed by strategic incentives, bridging resource-aware distributed AI with game-theoretic pragmatics.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:10.744776+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 0,
+    "text": "IDEA: Quantifying epistemic uncertainty by measuring the divergence of latent concept trajectories across an ensemble of models during inference.\n\nBACKGROUND: A key open problem is distinguishing epistemic uncertainty, stemming from model ignorance, from aleatoric uncertainty, arising from data noise. Current methods often conflate these by analyzing only final-layer outputs, failing to capture whether uncertainty is due to novel concepts or ambiguous but known features.\n\nAPPROACH: We will train an ensemble of models with a shared \"concept probe\" network attached to multiple intermediate layers. For a given input, we measure epistemic uncertainty not by output variance, but by the ensemble's divergence in the *trajectory* of concept vectors across network depth, quantified by a novel Conceptual Trajectory Divergence (CTD) score.\n\nEXPERIMENT: We will evaluate on benchmarks including in-distribution data, standard OOD data, and semantically ambiguous hybrid images, testing if CTD better isolates epistemic uncertainty and improves active learning query efficiency compared to output-based baselines.\n\nNOVELTY: This moves beyond static latent space analysis by dynamically tracking how conceptual representations *evolve* within the network, and directly ties epistemic uncertainty to instability in the model's internal parsing process across an ensemble.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:12:26.409285+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 1,
+    "text": "IDEA: Quantifying epistemic uncertainty by measuring the stability of human-interpretable concept representations in a model's latent space under parameter perturbation.\n\nBACKGROUND: A key open problem is disentangling epistemic from aleatoric uncertainty in deep neural networks, especially for unfamiliar or ambiguous inputs. Current methods treat latent representations as static and fail to provide interpretable diagnostics about *which* abstract concepts the model finds unstable.\n\nAPPROACH: We will measure \"Conceptual Drift\" by probing the stability of pre-defined, human-interpretable concept vectors (e.g., \"striped,\" \"metallic\") within a network's latent space. Using a Monte Carlo ensemble to generate parameter variations, we will compute the variance in a sample's alignment with these concept vectors across forward passes, creating a fine-grained drift profile across network depth.\n\nEXPERIMENT: We will train a Concept Bottleneck Model on CIFAR-10/100 and test on hybrid images and OOD benchmarks (e.g., ImageNet-Sketch), correlating the layer-wise concept drift profile with ensemble predictive uncertainty and misclassification rates.\n\nNOVELTY: This moves beyond measuring uncertainty in outputs or generic latent distances to instead quantify instability in *interpretable concept directions*, directly linking epistemic uncertainty to the model's shaky grasp of specific semantic attributes.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:06.642288+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 2,
+    "text": "IDEA: Quantify epistemic uncertainty by measuring the stability of a model's internal semantic concept representations under stochastic forward passes, with a focus on detecting novel recombinations of known features.\n\nBACKGROUND: A key open problem is distinguishing epistemic from aleatoric uncertainty, especially for inputs that are out-of-distribution not because they contain entirely novel features, but because they present known semantic concepts in novel configurations or contexts. Current methods often fail to identify these semantically shifted inputs as uncertain.\n\nAPPROACH: We will extract a set of interpretable \"concept vectors\" from a model's latent space using training data. For a given input, we will perform multiple stochastic forward passes (e.g., via MC Dropout) and compute a **Conceptual Coherence Score (CCS)** based on the variance in the activation patterns' alignment with these concept vectors, directly measuring latent \"concept drift.\"\n\nEXPERIMENT: We will test on vision datasets containing both standard OOD samples and synthesized \"concept hybrids\" (e.g., objects with anomalous feature correlations), comparing the CCS's detection performance against baseline metrics like predictive entropy and deep ensemble variance.\n\nNOVELTY: This moves beyond monolithic latent space distance measures by diagnosing the *reason* for uncertainty\u2014instability in specific semantic concepts\u2014and is uniquely sensitive to novel *recombinations* of known features that bypass output-layer checks.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:50.472868+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 3,
+    "text": "IDEA: Quantifying epistemic uncertainty by measuring the topological instability of semantic concept manifolds in a model's latent space.\n\nBACKGROUND: A key open problem is disentangling epistemic from aleatoric uncertainty in high-dimensional models, as current methods provide composite scores without identifying which internal learned concepts have become unreliable under distribution shifts. This fails to explain *why* a model is uncertain, limiting interpretability and targeted adaptation.\n\nAPPROACH: We will instrument a deep ensemble to measure \"conceptual drift\" not as activation variance alone, but by analyzing the topological properties\u2014specifically local intrinsic dimensionality and curvature\u2014of the neighborhoods around activations in semantically meaningful latent subspaces. High epistemic uncertainty is hypothesized to manifest as unstable local manifold geometry (e.g., high curvature, fluctuating dimensionality) for specific concept representations when processing novel inputs.\n\nEXPERIMENT: We will train ensembles on datasets like ImageNet, probe them with shifted data (e.g., ImageNet-A, stylized variants), and correlate topological instability metrics from concept-specific latent neighborhoods with prediction error and out-of-distribution detection, benchmarking against standard uncertainty baselines.\n\nNOVELTY: This moves beyond scalar uncertainty scores by attributing epistemic uncertainty to the geometric instability of specific internal concept manifolds, combining the diagnostic goal of conceptual drift with the rigorous, geometry-aware tools of topological data analysis.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:14:30.719119+00:00"
+  },
+  {
+    "topic_id": "T9",
+    "topic": "Uncertainty quantification in deep neural networks",
+    "domain": "ML Theory",
+    "idea_index": 4,
+    "text": "IDEA: Quantify epistemic uncertainty by measuring the topological instability of a sample's local neighborhood across an ensemble's latent spaces, using this to drive active learning.\n\nBACKGROUND: A key open problem is disentangling epistemic uncertainty from aleatoric uncertainty in a way that reflects the model's structural confusion in its learned representations. Current methods provide composite scores but fail to explain why a sample is uncertain, often leading to inefficient queries in iterative learning.\n\nAPPROACH: We propose a metric based on the variance in local topological complexity across a frozen ensemble. For a query sample, we extract its latent embedding from each ensemble member, compute a topological summary (e.g., persistence entropy) of the local neighborhood around each embedding, and measure the statistical spread of these summaries across the ensemble. This \"topological dispersion\" directly measures instability in the learned feature manifold, signaling epistemic uncertainty.\n\nEXPERIMENT: We will use this metric as an acquisition function in active learning on CIFAR-10/100 with controlled corruptions, comparing it against predictive entropy and ensemble variance on final accuracy, uncertainty calibration after each cycle, and out-of-distribution detection performance.\n\nNOVELTY: This shifts the focus from output distribution variance to the geometric structure of latent representations, providing an interpretable, architecture-aware measure of model ignorance that is inherently disentangled from aleatoric noise.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:11.316132+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 0,
+    "text": "IDEA: Developing a \"Topological Stability Signature\" to diagnose and improve the robustness of high-dimensional data representations by quantifying the sensitivity of their intrinsic topology to perturbations.\n\nBACKGROUND: Current methods for evaluating generative models, manifold embeddings, and classifier robustness rely on statistical or local geometric metrics, failing to assess the preservation of the data's intrinsic topological shape\u2014its loops, voids, and connectivity. This is a critical gap because distortions in this global structure can lead to unrealistic generation, misleading visualizations, and hidden vulnerabilities, even when standard performance metrics appear strong.\n\nAPPROACH: We propose a unified framework that treats any high-dimensional representation\u2014whether from a generative model, a manifold learning algorithm, or a neural network layer\u2014as a candidate manifold. Its topological stability is quantified by measuring the divergence in persistent homology features between the original data manifold and its systematically perturbed versions, using a novel, scalable metric based on the Wasserstein distance between distributions of persistence landscapes derived from sampled local geodesic paths.\n\nEXPERIMENT: The method will be validated on synthetic manifolds with known topology, then applied to benchmark real-world scenarios: assessing generative models on cell microscopy data, evaluating UMAP/t-SNE embeddings on single-cell RNA-seq data, and diagnosing adversarial fragility in image classifiers by correlating topological divergence with misclassification rates under attack.\n\nNOVELTY: This moves beyond analyzing static topology to actively measuring its dynamic stability under perturbation, creating a general diagnostic for representation quality that directly links global geometric integrity to practical reliability across multiple domains.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:12:24.975328+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 1,
+    "text": "IDEA: To develop a topology-guided adversarial attack that generates perturbations by directly minimizing the persistence of the homological features connecting a sample to its class cluster in activation space.\n\nBACKGROUND: Current adversarial attacks optimize geometric distance metrics, ignoring the underlying topological structure of a model's decision regions. The open problem is whether a model's vulnerability is better characterized by the topological fragility\u2014the ease with which the local connectivity of a point's neighborhood can be severed\u2014rather than its proximity to a decision boundary.\n\nAPPROACH: We will create a Persistence-Guided Adversarial Search (PGAS) algorithm. It defines a loss function on the persistence diagram of a point's local Vietoris-Rips complex in a hidden layer, then iteratively perturbs the input to induce the smallest topological change necessary to break its connection to the original class.\n\nEXPERIMENT: We will benchmark PGAS against gradient-based attacks on CIFAR-10 and ImageNet models, measuring both attack success rate and the correlation between a novel \"topological fragility score\" and empirical robustness across multiple attack types.\n\nNOVELTY: This inverts the typical use of topology for analysis or defense, instead using persistent homology as a direct, optimizable objective for generating attacks, providing a fundamental topological lens on model vulnerability.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:05.665107+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 2,
+    "text": "IDEA: Developing a predictive framework for adversarial vulnerability by quantifying how attacks exploit and collapse the minimal topological features separating classes in a neural network's latent space.\n\nBACKGROUND: Adversarial attacks succeed by exploiting geometric weaknesses in a model's decision boundaries, but the underlying topological fragility of the learned data manifold remains unquantified. The open problem is to move beyond descriptive topological analysis to a causal, predictive understanding of which regions of input space are most vulnerable based on the stability of the latent space's topological scaffolding.\n\nAPPROACH: We will use persistent homology to compute a \"topological stability signature\" of the activation manifold for clean data across network layers. We will then introduce a novel metric, **Cycle Crossing Distance**, which measures the minimal perturbation required to collapse key separating topological features (like 1D cycles) that distinguish classes in this latent space.\n\nEXPERIMENT: On standard classifiers (e.g., ResNet on CIFAR-10/ImageNet), we will correlate low Cycle Crossing Distance with successful adversarial examples from standard attacks, and then validate causality by designing a novel adversarial attack that explicitly optimizes for collapsing these identified topological separators.\n\nNOVELTY: This shifts topological data analysis from a descriptive to a predictive and causal role in robustness, uniquely using the collapse of specific topological features as both an explanatory lens for existing attacks and an engine for generating novel, topologically-guided ones.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:50.936684+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 3,
+    "text": "IDEA: We propose to detect and characterize adversarial attacks by quantifying the dynamic instability they induce in the topological signatures of a neural network's latent space across layers.\n\nBACKGROUND: A critical unsolved challenge is developing a model-agnostic framework to detect subtle adversarial attacks and fingerprint their type, moving beyond simple geometric distances. Current methods lack a principled way to characterize how adversarial perturbations warp the intrinsic topology of a model's feature representations in real-time.\n\nAPPROACH: The core method extracts \"Topological Stability Signatures\" (TSS) by tracking the rate of change in persistent homology (0D/1D) for local synthetic neighborhoods of a sample as it passes through network layers. A meta-classifier is then trained on these layer-wise sequences of topological perturbation vectors to both detect attacks and identify the attack algorithm.\n\nEXPERIMENT: Using ResNet and Vision Transformers on standard datasets, we will generate clean and adversarial pairs (via PGD, C&W, AutoAttack), compute their TSS, and evaluate detection/fingerprinting accuracy. We will correlate the timing and magnitude of topological divergence (Persistence Diagram Wasserstein Distance Trajectory) with model robustness.\n\nNOVELTY: This moves beyond static topological summaries by using the dynamic stability of topology under local perturbation as a discriminative feature, enabling both detection and algorithmic fingerprinting of attacks based on their unique topological pathway disruption.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:14:31.893111+00:00"
+  },
+  {
+    "topic_id": "T14",
+    "topic": "Topological methods for high-dimensional data analysis",
+    "domain": "Mathematics",
+    "idea_index": 4,
+    "text": "IDEA: Developing a topological fragility metric for neural network latent spaces to predict model robustness and proactively detect concept drift.\n\nBACKGROUND: While topological data analysis describes the structure of learned representations, there is no framework to measure their stability. The open problem is to quantify how resilient a model's essential latent topology is to perturbation, and to determine if this \"fragility\" is a fundamental signature of non-robust generalization and a precursor to performance degradation from concept drift.\n\nAPPROACH: We will define Representational Topological Fragility (RTF) as the minimal adversarial perturbation required to induce a catastrophic change (e.g., merging two class clusters) in the persistent homology of a latent space. This metric will then be used as a time-series signal; its increase will act as a proactive, topological early-warning system for impending concept drift in continual learning.\n\nEXPERIMENT: We will train continual learning models on sequences with controlled drift, measure RTF via targeted topological adversarial attacks on latent representations, and correlate its dynamics with subsequent accuracy drops and robustness benchmarks to validate its predictive power.\n\nNOVELTY: This moves beyond descriptive topology to create a diagnostic fragility metric, and uniquely uses topological instability in the model's own feature space as a proactive trigger for intervention, rather than a reactive description of data.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:13.904781+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 0,
+    "text": "IDEA: A generative AI framework for the de novo design of context-aware molecular glues that selectively stabilize target protein complexes within specific subcellular compartments.\n\nBACKGROUND: Current generative models for molecular glues focus narrowly on inducing protein-protein interactions, treating the cell as a uniform environment. This ignores the critical challenge of subcellular localization, where a glue must not only form a ternary complex but also reach the correct organelle to engage a misfolded or compartment-specific target, such as a mutant protein in the endoplasmic reticulum.\n\nAPPROACH: We will develop a **Dual-Conditional 3D Diffusion Model** that generates molecular structures conditioned on two constraints: first, the geometric and physicochemical fingerprint of a target protein-protein interface (learned from MD simulations), and second, a learned embedding of subcellular trafficking motifs. A reinforcement learning loop, guided by a reward function combining predicted ternary complex stability and organelle-specific localization, will optimize the designs.\n\nEXPERIMENT: The model will be tasked to design glues for a known system (e.g., stabilizing a misfolded CFTR mutant in the ER via engagement of an E3 ligase). Top candidates will be synthesized and tested in a tiered validation using organelle-specific bioreporter cell lines, followed by functional rescue and degradation assays to measure efficacy and selectivity.\n\nNOVELTY: This moves beyond static ternary complex design by integrating the dynamic problem of induced-fit binding with the critical pharmacokinetic dimension of subcellular targeting, generating functional molecules that are explicitly designed for spatial context within the cell.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:12:25.966996+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 1,
+    "text": "IDEA: A generative AI framework that designs molecular glue degraders by directly optimizing for the emergent dynamic stability of the target protein-E3 ligase ternary complex.\n\nBACKGROUND: The discovery of molecular glues is hindered by their cryptic mechanism, which depends on inducing and stabilizing a novel protein-protein interaction rather than statically binding a single pocket. Current generative models fail because they optimize for static binding affinity and cannot capture the essential requirement for dynamic interfacial stabilization between three flexible components.\n\nAPPROACH: We will develop a Ternary Interaction-Conditioned Diffusion Model (TIC-DM) that generates molecules conditioned on the predicted interfacial geometry of a target/E3 pair. Candidate molecules are then evaluated by a coarse-grained, differentiable molecular dynamics simulator that calculates a \"Ternary Stability Score\" based on reduced interfacial fluctuations, with this score used as a reinforcement learning reward to fine-tune the generative model.\n\nEXPERIMENT: We will validate the framework by generating glues for a known pair (e.g., CRBN/IKZF1), synthesizing top candidates that are structurally novel, and testing them in cell-based degradation assays and biophysical ternary complex assays (e.g., TR-FRET).\n\nNOVELTY: This moves beyond generating static binders to explicitly co-optimize molecules for the emergent property of dynamic ternary complex stabilization, integrating generative design with a differentiable physics-based simulator in a closed loop.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:08.293377+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 2,
+    "text": "IDEA: A generative AI framework that co-designs drug candidates for both therapeutic activity and context-specific stability by learning from systematic generative failures within a simulated host-microbiome environment.\n\nBACKGROUND: Current generative models for molecular design ignore the critical spatial and biological context of the human microbiome, often producing candidates that may fail due to degradation by bacterial enzymes. Furthermore, these models treat failures as discardable waste, rather than as a source of latent chemical rules about metabolic instability and other undesirable properties.\n\nAPPROACH: We will develop a metabolically-guided diffusion model conditioned on both a target protein and a latent \"metabolic pressure\" signature derived from metagenomic data of specific bodily sites. This generator will be trained via an adversarial feedback loop with a differentiable predictor of microbial metabolism and a novel \"Failure Interpreter\" model, which is trained explicitly on the generator's failed outputs to identify and penalize subgraph motifs linked to metabolic instability and other failure modes.\n\nEXPERIMENT: We will validate the framework by generating candidates for a colonic disease target, then performing *in vitro* incubation with defined human gut bacterial consortia and mass spectrometry analysis, comparing metabolic stability against both clinically failed compounds and molecules from a context-agnostic generative baseline.\n\nNOVELTY: This integrates the multi-scale design for microbiome context with a paradigm-shifting learning mechanism that actively mines and corrects for systematic generative failures, moving beyond single-target optimization to co-design for biological environment and synthesizing heuristic stability rules from failure data.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:51.432547+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 3,
+    "text": "IDEA: A generative AI model conditioned on dynamic protein-protein interface simulations is used to design molecular glue degraders that stabilize a specific, transient ternary complex for targeted protein degradation.\n\nBACKGROUND: The discovery of molecular glue degraders remains largely serendipitous because they function by inducing novel, often cryptic, interactions between an E3 ligase and a target protein. The core challenge is generating molecules that stabilize a specific ternary complex, a dynamic, induced-fit interface not predictable from the static structures of the individual proteins alone.\n\nAPPROACH: We will develop a Ternary Complex Diffusion Model trained on structural and dynamic simulation data. The key innovation is conditioning the generator on a learned latent representation of the *dynamic interface*, derived from molecular dynamics simulations that capture the conformational shift required to bring the two proteins into proximity, rather than on static pockets.\n\nEXPERIMENT: The model will be benchmarked by generating candidates for a novel target like GSPT1 with CRBN; top molecules will be synthesized and tested in a cellular degradation assay (e.g., nanoBRET), followed by biophysical validation (e.g., TR-FRET) to confirm ternary complex stabilization.\n\nNOVELTY: This shifts the paradigm from generating molecules for single-target affinity to *ab initio* generation for induced proximity, explicitly optimizing for the stability of a dynamic, multi-protein complex that only fully forms upon ligand binding.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:14:31.802224+00:00"
+  },
+  {
+    "topic_id": "T6",
+    "topic": "Generative AI for drug discovery and molecular design",
+    "domain": "Chemistry",
+    "idea_index": 4,
+    "text": "IDEA: A generative AI framework to design small-molecule \"dynamic molecular glues\" that induce and stabilize novel, functional protein-protein interfaces for targeted disaggregation or degradation.\n\nBACKGROUND: A critical unsolved challenge is the rational design of small molecules that orchestrate precise protein-protein interactions, such as inducing an E3 ligase to degrade a pathologic target or recruiting a chaperone to disaggregate misfolded proteins. Current generative models focus on static binding to a single target, failing to address the dynamic, three-body problem of creating a novel, stabilized interface between two proteins that have no natural affinity.\n\nAPPROACH: We will develop a reinforcement learning-driven molecular generator with a physics-informed reward function. The agent builds molecules stepwise, and the reward is computed by a fast, coarse-grained molecular dynamics simulation that models the induced fit and stabilization of the two protein surfaces in the molecule's presence, directly optimizing for reduced interface fluctuation and the formation of complementary interaction patches.\n\nEXPERIMENT: The model will be trained on known ternary complexes (e.g., molecular glue degraders) and validated by generating candidates for a chosen pathogenic protein interface; top molecules will be tested in cell-based degradation assays and FRET-based disaggregation assays using target-derived peptides.\n\nNOVELTY: This moves beyond generating binders for a single pocket to co-designing molecules within the dynamic, allosteric context of an emerging protein-protein interface, explicitly optimizing for interface stabilization as the primary generative objective.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:14.753463+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 0,
+    "text": "IDEA: Federated learning of a dynamic causal graph to enable robust, interpretable personalization for clients with evolving, non-IID data.\n\nBACKGROUND: Current federated learning methods treat data heterogeneity as a statistical nuisance to be averaged, ignoring the underlying causal processes that generate non-IID distributions and cause them to evolve over time. This results in models that are fragile, uninterpretable, and fail to adapt to local or temporal shifts.\n\nAPPROACH: We propose a framework where clients collaboratively discover a shared, skeleton causal graph using federated conditional independence tests, then personalize this graph locally by inferring time-varying latent task variables that modulate causal mechanisms (e.g., edge weights). Model updates are aggregated via dynamic subnetworks formed based on causal graph similarity and aligned latent task codes.\n\nEXPERIMENT: We will test on synthetic datasets with known, time-varying causal graphs and on partitioned real-world data (e.g., medical or traffic benchmarks), evaluating causal graph accuracy, personalized prediction performance on evolving local tasks, and robustness to distribution shift.\n\nNOVELTY: This moves beyond predictive modeling to federated causal discovery, uniquely combining causal structure learning with dynamic, latent task inference to provide an interpretable foundation for personalization that adapts to temporal evolution.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:12:24.948341+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 1,
+    "text": "IDEA: Federated learning with dynamic, task-aware client coalitions formed via a meta-learned selector that optimizes for multi-objective synergy.\n\nBACKGROUND: In heterogeneous FL, static clustering and naive subsampling fail in non-IID regimes where client utility is not just data-based but defined by competing objectives: local accuracy, global generalization, and fairness. The open problem is dynamically forming coalitions whose aggregated updates are Pareto-optimal across these objectives without costly pre-evaluation of all clients.\n\nAPPROACH: A lightweight, meta-trained selector network on the server predicts client update utility and compatibility using compact, privacy-preserving task signatures. Each round, it forms coalitions by solving a multi-objective optimization for synergistic updates that advance the Pareto front across local, global, and fairness metrics, allowing multiple model variants to evolve.\n\nEXPERIMENT: Test on curated non-IID benchmarks (e.g., CIFAR-100 with latent \"data tribes\" and cross-cutting styles) by measuring Pareto front progression, final model accuracy on held-out global and personalized tasks, and the coalition selector's generalization to unseen client distributions.\n\nNOVELTY: It replaces static clustering or simple heuristics with a meta-learned, multi-objective coalition former that dynamically groups clients based on the synergistic task relevance of their updates, not just data similarity, to explicitly shape the Pareto frontier.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:05.097149+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 2,
+    "text": "IDEA: Federated learning with a dynamic, concept-aware client update filter, where clients use a shared memory bank of global concepts to identify and prune locally learned representations that are harmful to global aggregation.\n\nBACKGROUND: In heterogeneous, non-IID federated learning, client drift is exacerbated because local updates contain a mixture of globally beneficial knowledge and client-specific \"outlier\" representations that poison aggregation. Current methods treat client models monolithically and fail to dynamically isolate and filter these harmful components during training, especially as client data distributions evolve.\n\nAPPROACH: Each client is equipped with a small, globally maintained Conceptual Memory Bank (CMB) of prototype vectors representing disentangled, globally relevant data concepts. Before uploading an update, a client uses the CMB to analyze its local model, identifying neurons or filters whose activation patterns on its private data diverge significantly from their activation on CMB-aligned concepts. These divergent, non-generalizable pathways are masked, producing a pruned update for secure aggregation, while the CMB is periodically updated via secure clustering of client-proposed new concepts.\n\nEXPERIMENT: Test on non-IID, non-stationary benchmarks like CIFAR-100 with clients experiencing sequential superclass shifts, measuring global model convergence rate, final accuracy on a held-out unbiased test set, and the adaptation speed of the CMB compared to FedAvg, FedProx, and personalization baselines.\n\nNOVELTY: It moves beyond monolithic client selection or model regularization by dynamically pruning updates at a representational level, guided by a globally coordinated but lightweight concept library that adapts to distributional shifts, surgically reducing aggregation noise.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:51.598805+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 3,
+    "text": "IDEA: A dynamic, task-aware federated learning framework that uses a learnable graph neural network to form temporary client subnetworks based on the multi-objective utility of their updates.\n\nBACKGROUND: In heterogeneous federated learning, static client clustering fails to adapt to evolving local data and cannot capture the complex, complementary utility clients provide to different global learning objectives. The core problem is selecting synergistic client coalitions for each round without accessing private data, moving beyond simple similarity to model how groups of updates jointly advance a multi-faceted learning goal.\n\nAPPROACH: A server-maintained graph neural network models clients as nodes, with edges representing predicted update compatibility for specific tasks. This GNN is trained via meta-learning on round outcomes to propose temporary client subnetworks, where clients within a subnetwork are selected based on the multi-objective utility (e.g., accuracy on distinct tasks or demographics) their aggregated update provides to a corresponding specialized model prototype.\n\nEXPERIMENT: Tested on non-IID splits of CIFAR-100 and FEMNIST with simulated concept drift, benchmarking against FedAvg, clustered FL, and selection heuristics on metrics of global accuracy, per-task performance, convergence velocity, and subnetwork dynamism.\n\nNOVELTY: It dynamically forms client groups based on learned, multi-objective synergy rather than static data similarity, combining the predictive selection of a GNN with the goal-oriented evaluation of multi-objective optimization to create transient, task-specific coalitions.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:14:32.279390+00:00"
+  },
+  {
+    "topic_id": "T7",
+    "topic": "Federated learning with heterogeneous and non-IID data",
+    "domain": "ML",
+    "idea_index": 4,
+    "text": "IDEA: Federated learning with dynamic, data-driven client coalitions formed via multi-armed bandits that optimize for latent task discovery and targeted model improvement.\n\nBACKGROUND: In federated learning with non-IID data, clients often belong to distinct latent tasks (e.g., different handwriting styles or medical imaging domains), not just label-skewed samples of one task. Existing methods fail to automatically discover and leverage this latent task structure, leading to a global model pulled toward a non-existent average and poor personalization.\n\nAPPROACH: We propose a framework where a central coordinator uses contextual multi-armed bandits to dynamically form client coalitions. Each bandit arm represents a candidate coalition, and the context is derived from privacy-preserving client data profiles. The reward is the accuracy improvement on a diverse set of meta-validation tasks, incentivizing the discovery of coalitions where clients share a beneficial latent task. Within each coalition, clients collaboratively train a specialized sub-model via a shared feature extractor with client-specific projection networks.\n\nEXPERIMENT: We will test on a novel latent-task benchmark merging related datasets (e.g., FMNIST, KMNIST) and standard non-IID splits, comparing to FedAvg, FedProx, and personalization baselines using accuracy on held-out client data and coalition purity metrics.\n\nNOVELTY: This integrates dynamic, reward-driven client selection with automatic latent task discovery, moving beyond static or random grouping to form coalitions that explicitly optimize for learning specialized, transferable representations for related client clusters.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:16.158795+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 0,
+    "text": "IDEA: To establish a quantum learning advantage, we propose a controlled experiment that directly correlates a quantum generative model's performance with the topological complexity of its training data, using a programmable quantum processor to generate and learn from benchmark distributions with precisely engineered latent manifolds.\n\nBACKGROUND: A central open problem is determining the precise conditions for a quantum learning advantage, moving beyond computational speed-ups to superior model performance. Current demonstrations lack a causal link between inherent quantum data structures and a quantum model's generalization capability.\n\nAPPROACH: We will engineer a family of synthetic datasets by sampling from quantum circuits with known and tunable topological order, creating benchmarks with quantifiable latent manifold complexity. A parameterized quantum generative model will be trained on these distributions, and its sample fidelity and generalization will be compared against state-of-the-art classical models.\n\nEXPERIMENT: The quantum advantage boundary will be identified by plotting model performance against a quantifiable measure of the data's topological complexity (e.g., the topological entanglement entropy of the source circuit), using statistical distance and generalization error as key metrics.\n\nNOVELTY: This moves beyond heuristic advantage by causally linking a specific, hard-to-classically-model data property (topological complexity) to quantum learning performance, using a unified quantum system to both generate the characterizing benchmarks and execute the learning model.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:12:25.783499+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 1,
+    "text": "IDEA: A quantum-walk algorithm on a coherent Ising machine will be used to generate approximate persistence diagrams, with the goal of demonstrating a quantum scaling advantage in topological feature detection for high-dimensional, sparse scientific data.\n\nBACKGROUND: Identifying complex topological features like persistent homology in high-dimensional, sparse datasets (e.g., from cosmology or genetics) is computationally prohibitive for classical algorithms, which scale poorly with data size and dimension. This bottleneck, particularly in calculating features like Betti numbers, presents a clear opportunity for a quantum computational advantage.\n\nAPPROACH: The core method reformulates the topological filtration process as a quantum-approximate-optimization problem. A time-multiplexed coherent Ising machine (CIM) will have its optical network couplings programmed to represent the combinatorial Laplacian of a data-derived graph, causing it to naturally sample low-energy states corresponding to candidate topological cycles and boundaries across a classically controlled filtration parameter.\n\nEXPERIMENT: The CIM's output will be used to construct a quantum-approximate persistence diagram for a high-dimensional point cloud (e.g., from a cosmological simulation), with its salient features and computational scaling directly benchmarked against classical software like Ripser on the same dataset.\n\nNOVELTY: This approach uniquely leverages the native physics of a non-circuit-based quantum system (the CIM) to directly map and solve the topological analysis problem, moving beyond NISQ-era variational algorithms to seek a more fundamental scaling advantage in a concrete, classically hard task.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:10.326510+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 2,
+    "text": "IDEA: Empirically determining the critical data size at which a quantum generative model surpasses classical models, by linking its data-efficiency advantage directly to the learnable geometric complexity of the target quantum data manifold.\n\nBACKGROUND: A central open problem is identifying the precise, practical conditions for a quantum learning advantage, moving beyond asymptotic claims. This proposal addresses when a quantum model becomes fundamentally more data-efficient than its best classical counterpart for learning complex, noisy quantum states from finite measurements.\n\nAPPROACH: We will train a quantum generative model (a Quantum Circuit Born Machine) and a state-of-the-art classical generative model (a Normalizing Flow) in parallel on classical shadows of increasing size, generated from a tunable quantum processor. The key innovation is to systematically vary the topological complexity of the generated quantum states (e.g., by tuning disorder to create states with specific entanglement features) and measure how the required critical data size for accurate learning scales with this geometric complexity.\n\nEXPERIMENT: We will compare the learning curves of both models on synthetic quantum data with calibrated topological complexity, using Maximum Mean Discrepancy on held-out measurements as the fidelity metric, to identify the data size and data geometry regime where the quantum model's learning trajectory diverges favorably.\n\nNOVELTY: This directly links the quantum data-efficiency advantage to a quantifiable property of the target data (its latent geometric complexity), providing an empirical, resource-scaling boundary for quantum generative modeling that is both concrete and rooted in a fundamental structural hypothesis.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:53.084334+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 3,
+    "text": "IDEA: Experimentally mapping the quantum inductive bias for topological feature detection to establish a provable, generalizable learning advantage in the few-shot regime.\n\nBACKGROUND: A central open problem is whether quantum models possess a fundamentally more useful inductive bias than classical models, enabling them to learn complex patterns from fewer examples. This is distinct from mere representational power and remains untested, especially for tasks like identifying topological features which are computationally expensive for classical algorithms but may be naturally encoded in quantum geometry.\n\nAPPROACH: We will design a controlled experiment to directly compare the few-shot learning performance of parameterized quantum circuits (PQCs) against classical neural networks on classifying synthetic datasets by their topological invariants (Betti numbers). The core method is to systematically vary the topological complexity of the data and the expressivity of the quantum model (via circuit depth) to find the regime where the PQC's inherent bias towards entangled states yields superior sample efficiency and generalization.\n\nEXPERIMENT: Using a superconducting quantum processor, we will train PQCs and classical controls on few-shot (5-10 examples) classification of point clouds from shapes with known homology, benchmarking generalization accuracy and analyzing learning trajectories via classical shadows of the quantum model's feature space.\n\nNOVELTY: This shifts the focus from quantum advantage in computation or representation to a demonstrable advantage in *learning efficiency*, uniquely combining the study of inductive bias with the natural alignment of quantum states to topological data structures.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:14:34.286661+00:00"
+  },
+  {
+    "topic_id": "T15",
+    "topic": "Quantum advantage in machine learning tasks",
+    "domain": "Quantum",
+    "idea_index": 4,
+    "text": "IDEA: Experimentally mapping the quantum expressivity threshold for topological feature detection in high-dimensional, noisy, real-world data.\n\nBACKGROUND: A central open problem is determining the precise, practical conditions under which quantum machine learning provides an advantage for real-world tasks. Specifically, it is unknown when quantum models can outperform optimized classical methods on authentic, high-dimensional data where identifying topological features is critical but classically costly, and how hardware noise affects this crossover.\n\nAPPROACH: We will use a programmable quantum processor to implement a quantum kernel method designed to approximate topological summaries (Betti numbers) of data. We will systematically vary the quantum circuit's expressivity (encoding and entangling depth) and measure performance against state-of-the-art classical topological data analysis algorithms and classical kernels on a curated suite of real-world datasets with suspected topological structure.\n\nEXPERIMENT: The core experiment benchmarks quantum and classical models on authentic, non-synthetic datasets (e.g., from genomics or materials science) with tunable label noise, measuring the generalization gap and resource scaling to produce a noise-aware \"phase diagram\" of quantum advantage as a function of data complexity, quantum circuit depth, and hardware fidelity.\n\nNOVELTY: This shifts the question from abstract capability to a data- and noise-aware empirical law, uniquely targeting the intersection of quantum kernel expressivity and computational topology for real-world data to define a verifiable threshold for practical quantum advantage.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:18.413925+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 0,
+    "text": "IDEA: Harnessing intrinsic stochastic ion dynamics in nanofluidic memristors to enable ultra-low-energy, noise-robust pattern completion via co-designed dendritic event processing.\n\nBACKGROUND: Current neuromorphic systems face a dual energy-efficiency bottleneck: deterministic memristive switching requires significant energy to overcome activation barriers, and subsequent processing of sparse sensory data is often computationally dense and noise-intolerant. This fails to emulate the biological synergy where stochastic ion-channel dynamics and sophisticated dendritic filtering enable robust computation at the thermodynamic limit.\n\nAPPROACH: We will fabricate a nanofluidic memristor using 2D material heterostructures, where synaptic weight is encoded in the stochastic gating of ions through atomic-scale defects, operating with sub-thermal voltages. This inherently probabilistic device will be integrated as the core element in a co-designed, event-driven dendritic processing unit (DPU) that filters and shapes its sparse input spike trains based on learned spatial-temporal gating rules.\n\nEXPERIMENT: We will benchmark the integrated system on event-based pattern completion tasks, using controlled noise injection to measure the \"noise benefit\"\u2014the specific condition where intrinsic stochasticity maximizes accuracy while minimizing required signal energy\u2014and the event compression ratio achieved by the DPU.\n\nNOVELTY: This moves beyond suppressing noise to exploiting the intrinsic thermodynamic stochasticity of nanofluidic ion transport as a computational feature, directly co-designed with a bio-inspired dendritic architecture to actively curate sparse event streams for ultra-low-energy probabilistic computation.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:12:24.354925+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 1,
+    "text": "IDEA: To engineer a neuromorphic system that exploits intrinsic device noise through adaptive stochastic resonance, enabling reliable, event-driven computation at deeply sub-threshold voltages for minimal energy use.\n\nBACKGROUND: A central problem in energy-efficient neuromorphic computing is the trade-off between ultra-low-power operation and robustness. Operating at deeply sub-threshold voltages is necessary for extreme efficiency, but it makes systems vulnerable to inherent device noise, which typically degrades signal integrity and computational accuracy.\n\nAPPROACH: We will design and fabricate a hybrid CMOS-memristor chip where diffusive memristive synapses, known for stochastic dynamics, are integrated with sub-threshold CMOS neurons featuring tunable noise injection circuits. A key innovation is a noise-adaptive feedback controller that dynamically tunes injected noise to match incoming signal statistics, seeking an optimal stochastic resonance point for the network.\n\nEXPERIMENT: We will train the system on an event-based vision task (DVS128 gesture) and then characterize its performance by sweeping the core supply voltage into the sub-threshold regime, measuring the resulting \"Energy-Accuracy Resonance Curve\" to identify the voltage and noise sweet spot for minimal energy per inference.\n\nNOVELTY: This moves beyond passive noise tolerance to actively co-opting noise as a computational resource via adaptive control, and uniquely combines the rich stochasticity of diffusive memristors with a circuit-level strategy to dynamically optimize the resonance effect for varying inputs.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:07.109805+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 2,
+    "text": "IDEA: Harnessing intrinsic nanofluidic stochasticity for ultra-low-energy, probabilistic neuromorphic computing via in-memory Boltzmann sampling.\n\nBACKGROUND: A fundamental tension exists in neuromorphic hardware between energy efficiency and reliable computation, especially for probabilistic algorithms. Current deterministic memristors consume significant energy to suppress inherent noise, wasting a potential computational resource and failing to natively emulate the brain's stochastic, uncertainty-aware processing.\n\nAPPROACH: We will fabricate nanofluidic memristors where synaptic weights are encoded in the stochastic configuration of ions within a confined aqueous electrolyte. These devices will serve as programmable stochastic resistors in a crossbar array, whose inherent thermal noise will be exploited as the physical primitive for Gibbs sampling in a hardware-implemented Boltzmann Machine.\n\nEXPERIMENT: We will benchmark a 32x32 nanofluidic crossbar on a probabilistic inference task (e.g., image denoising), directly measuring the energy per sampling event and inference accuracy against digital and deterministic analog baselines, seeking orders-of-magnitude energy reduction.\n\nNOVELTY: This moves beyond suppressing or engineering external noise; it uses the inherent, non-engineered stochasticity of a nanoscale physical system (ion transport in confinement) as the core computational mechanism for native probabilistic inference, co-locating sampling and memory.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:49.639838+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 3,
+    "text": "IDEA: To achieve extreme energy efficiency, we propose a neuromorphic system that co-designs a multi-gated ionic dendrite with a memristive crossbar, operating in a sub-threshold noise-optimized regime to physically embed stochastic, dendritic computation directly into synaptic signal integration.\n\nBACKGROUND: A major bottleneck in neuromorphic computing is the separation of signal integration and synaptic plasticity, which forces energy-intensive signal restoration. Current designs treat dendrites as passive or simplistic, missing the opportunity for the energy-efficient, local preprocessing that defines biological neural systems, and they waste energy fighting inherent device noise rather than exploiting it.\n\nAPPROACH: We will fabricate a multi-gated electrolyte-gated transistor (MG-EGT) as an active artificial dendrite, where independent ionic gates enable non-linear, history-dependent spatial integration. This dendrite will drive a crossbar of diffusive memristors operating deeply in the sub-threshold voltage regime. Instead of suppressing noise, we will use a programmable noise source to tune the system toward stochastic resonance, using noise as a resource to enable reliable computation with faint signals.\n\nEXPERIMENT: We will benchmark the system on temporal pattern recognition (e.g., spoken digits), performing a 2D parameter sweep of operating voltage and injected noise amplitude to identify a resonance peak in classification accuracy while measuring energy per inference, comparing it to a conventional noise-suppressed baseline.\n\nNOVELTY: This work moves beyond emulating simple synapses by physically embedding biologically plausible dendritic computation into device morphology and fundamentally inverts the noise paradigm, deliberately engineering a sub-threshold, noise-resonant operating point to turn inherent stochasticity into a computational asset.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:14:34.115327+00:00"
+  },
+  {
+    "topic_id": "T5",
+    "topic": "Energy-efficient neuromorphic computing",
+    "domain": "Hardware",
+    "idea_index": 4,
+    "text": "IDEA: To pioneer a neuromorphic design paradigm that treats intrinsic device noise as a computational resource, we propose engineering a memristive network to operate in a deep sub-threshold, noise-dominated regime and training it via in-situ learning rules to exploit stochastic resonance for ultra-low-energy pattern completion.\n\nBACKGROUND: The central problem in energy-efficient neuromorphic computing is the prohibitive energy cost of suppressing intrinsic device noise to ensure deterministic operation, which prevents reaching biological energy efficiency. This work directly addresses this by inverting the paradigm: instead of fighting noise, we deliberately operate in a sub-threshold regime where noise is dominant and harness it as a feature for computation.\n\nAPPROACH: We will fabricate a hybrid CMOS-memristor chip featuring a crossbar of diffusive memristors with pronounced stochastic dynamics, integrated with programmable noise sources and event-driven readout. The core methodology is to co-optimize the network's operating point and its synaptic weights through in-situ, stochastic local learning rules that adapt to the local noise profile, explicitly training the system to find the optimal resonance point for a given task.\n\nEXPERIMENT: We will train the physical network on associative memory and pattern completion tasks using corrupted image patterns (e.g., MNIST), measuring classification accuracy and energy per inference as a function of the supplied voltage to identify a non-monotonic \"resonance peak\" in performance at minimal energy.\n\nNOVELTY: This moves beyond merely demonstrating stochastic resonance as a physical effect; it integrates the deliberate engineering of a noise-dominated operating regime with in-situ learning that adapts the network to exploit that noise, establishing a complete \"noise-as-a-feature\" design framework for neuromorphic hardware.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:18.816038+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 0,
+    "text": "IDEA: A framework for causal discovery in high-dimensional, temporally sparse panel data that jointly infers a stable causal graph and latent, abrupt context shifts by integrating invariant prediction with segmented score-based learning.\n\nBACKGROUND: Current causal discovery methods fail on panel data with few time points and many variables, especially when unobserved, abrupt context shifts (e.g., silent policy changes, systemic shocks) alter causal mechanisms. These hidden shifts create spurious dependencies and violate standard stationarity assumptions, making it impossible to disentangle persistent causal structure from transient shock-induced correlations.\n\nAPPROACH: The method, **Context-Aware Discovery with Invariant Segmented DAGs (CADIS)**, first uses a neural context encoder to generate latent context embeddings from the observed data. It then performs score-based causal discovery under a Temporally Segmented DAG model, where the score function uniquely combines an invariance penalty\u2014rewarding parent sets whose predictive effect is stable across similar contexts\u2014with a segmentation penalty that discourages unnecessary breakpoints, jointly inferring the graph and shift points.\n\nEXPERIMENT: Validation will use semi-synthetic benchmarks simulating known graphs with injected hidden regime shifts and real-world datasets like macroeconomic indicators, measuring accuracy in recovering true causal edges and correctly identifying shift timings against baselines like PCMCI+ and grouped invariance methods.\n\nNOVELTY: It uniquely integrates the learning of latent context variables with a segmented causal model, using invariance across inferred contexts as a core regularization for structure learning instead of merely filtering shocks or assuming smooth non-stationarity.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:12:26.186382+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 1,
+    "text": "IDEA: A framework for causal discovery that jointly learns a parsimonious set of ephemeral latent regimes and a time-varying causal graph, where each latent state orchestrates distinct causal relationships among observed variables and is identified by synchronized, cross-modal discontinuities.\n\nBACKGROUND: A key open problem is discovering causal structures in non-stationary systems where relationships change due to brief, system-wide latent states (e.g., a neural population dynamic, a market panic). These ephemeral drivers are not single observed variables and leave no persistent signature, confounding methods that assume stationarity or static latent confounders.\n\nAPPROACH: The method combines a switching dynamical system with multi-modal change-point detection. It first identifies candidate moments for latent state activity via synchronized discontinuities across diverse data streams. Then, a variational model jointly clusters these moments into discrete latent regimes and learns a structural causal model over observed variables, whose structural equations are conditioned on the current latent regime.\n\nEXPERIMENT: Validate on synthetic data with known ephemeral regimes and ground-truth graphs, then apply to real-world multi-modal time-series like neural recordings (EEG/ECoG) to discover pre-ictal states governing seizure propagation, assessing predictive power and ecological/physiological plausibility.\n\nNOVELTY: It moves beyond segmenting time-series or modeling shocks to actively discovering the causal role of fleeting latent states, which are hypothesized and identified through their synchronous, cross-modal fingerprint rather than assumed to be persistent.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:11.480609+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 2,
+    "text": "IDEA: A Bayesian non-parametric framework for jointly discovering latent regime shifts and parsimonious, regime-specific causal graphs from non-stationary observational data.\n\nBACKGROUND: A major open problem in causal discovery is learning from data generated by systems undergoing fundamental but unobserved changes in dynamics, such as biological state transitions or economic shocks. Existing methods often fail by treating non-stationarity as noise, rather than targeting the latent regimes and the specific causal links they alter as the core objects of interest.\n\nAPPROACH: We combine a Hidden Markov Model (HMM) with regime-specific structural causal models, using a Dirichlet Process prior for an unknown number of regimes. The model enforces sparsity in differential causality, assuming shifts alter only a small subset of edges from a global background graph, and incorporates a latent low-rank shock variable to handle widespread confounding correlations during transitions.\n\nEXPERIMENT: Validate on synthetic data with known regime shifts and graphs, then apply to real-world episodic systems like high-frequency physiological signals during unobserved medical events or sparse panel macroeconomic data during crises, measuring accuracy in recovering transition points and regime-specific causal edges.\n\nNOVELTY: It reframes the goal to jointly infer latent regimes and their distinct causal models, explicitly modeling parsimonious changes between regimes and integrating the handling of widespread unobserved shocks within the regime-shift discovery process.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:55.801826+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 3,
+    "text": "IDEA: Causal discovery of persistent relationships in social systems by explicitly modeling and removing the confounding effects of adaptive algorithmic agents and unobserved external shocks.\n\nBACKGROUND: Observational data from digital platforms is corrupted by two pervasive, entangled sources of non-i.i.d. confounding: adaptive algorithmic feedback loops (\"algorithmic confounding\") and large, unobserved external shocks. Current methods fail to separate the persistent, user-level causal structure from these transient, system-wide biases, leading to spurious graphs.\n\nAPPROACH: We propose a unified framework that models the platform's recommendation algorithm as an active, estimable agent and treats unobserved shocks as a low-rank temporal component. Using a randomized instrument to temporarily disable personalization for a treatment group, we first learn the algorithmic policy. We then decompose the residual panel data to factor out shock effects, finally applying causal discovery on the purified data to recover the underlying persistent DAG.\n\nEXPERIMENT: We will collaborate with a platform to run the feed randomization experiment, using synthetic data with known ground truth for validation and real platform data to assess the plausibility and predictive power of the discovered persistent causal relationships.\n\nNOVELTY: This integrates the active modeling of an algorithmic confounder as an agent\u2014a novel causal angle\u2014with robust shock decomposition, creating a method specifically for the non-i.i.d., intervened-upon nature of modern digital data.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:14:37.186846+00:00"
+  },
+  {
+    "topic_id": "T4",
+    "topic": "Causal discovery from observational data",
+    "domain": "Statistics",
+    "idea_index": 4,
+    "text": "IDEA: A novel framework for causal discovery that jointly learns a stable causal graph over observed variables and a latent model of an adaptive, confounding data-generating process\u2014such as a recommendation algorithm or an evolving environmental context\u2014by enforcing invariance across inferred process states.\n\nBACKGROUND: Modern observational data, especially from digital platforms or sparse longitudinal studies, is often generated or filtered by an adaptive, non-stationary system. This \"algorithmic\" or dynamic confounding violates core i.i.d. assumptions, as the data-collection mechanism itself acts as an unobserved, evolving common cause, systematically distorting dependencies and rendering standard causal discovery methods unreliable.\n\nAPPROACH: The method integrates two core components: a neural model that infers the latent state of the confounding process (treating it as an intervenable agent or a dynamic context), and a differentiable causal discovery module that learns the graph over observed variables. These are jointly trained with a **counterfactual stability regularizer**, which penalizes graph structures that are sensitive to perturbations in the inferred latent process state, thereby selecting the most invariant causal explanation.\n\nEXPERIMENT: Validation uses semi-synthetic benchmarks where a known ground-truth user or panel-data graph is subjected to a simulated adaptive confounder (e.g., a RL-based recommender or a drifting environmental factor), with success measured by accurate graph recovery against baselines that assume i.i.d. data or stationary confounding.\n\nNOVELTY: It uniquely frames adaptive confounding as an intervenable agent within the causal model and introduces a stability-based invariance regularizer across its latent states, moving beyond stationary latent confounder models to address non-i.i.d. data generation directly.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:19.124269+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 0,
+    "text": "IDEA: We will causally map how transformers dynamically construct a transient, non-linear \"workspace\" in the residual stream to enable in-context learning by combining topological analysis of its structure with targeted surgical interventions.\n\nBACKGROUND: The core, unresolved problem is how transformers perform in-context learning (ICL) without weight updates. While specific circuits like induction heads are known, we lack a causal understanding of how the model's internal state is dynamically re-organized *during* the forward pass to create a structured format that later, simpler circuits can execute.\n\nAPPROACH: We will first use Topological Data Analysis (TDA) on residual stream activations from controlled ICL tasks to identify persistent, low-dimensional geometric structures (e.g., cycles, clusters) that correlate with task format. We will then perform causal mediation via \"topology-guided interventions,\" surgically ablating or transplanting the specific residual stream dimensions that constitute these geometric scaffolds between layers.\n\nEXPERIMENT: Using simplified transformers trained on algorithmic ICL tasks, we will extract residual stream states, compute their persistent homology to identify candidate scaffolds, and then test causality by clamping or transplanting these patterns while measuring ICL performance degradation and cross-task interference.\n\nNOVELTY: This moves beyond identifying static circuits to causally tracking the dynamic assembly of a geometric scaffold in the residual stream, using TDA to guide interventions toward invariant non-linear structures rather than individual neurons or linear subspaces.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:12:26.784160+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 1,
+    "text": "IDEA: To reveal the non-linear semantic coordinate system of transformer models by applying Topological Data Analysis to the manifold of contextual embeddings, and then functionally validating the discovered structures through controlled causal interventions.\n\nBACKGROUND: A core open problem in mechanistic interpretability is understanding the global, non-linear geometry of conceptual knowledge within a model's embedding space. Current methods fail to characterize the overarching, potentially curved axes and topological structures (like loops or hierarchies) that define the model's intrinsic semantic organization.\n\nAPPROACH: We will first use Topological Data Analysis (specifically, persistent homology and the Mapper algorithm) on a dense cloud of contextual embeddings from a middle layer to construct a simplicial complex graph\u2014a \"skeleton\" of the semantic manifold. We will then functionally test this map by identifying embedding subspaces corresponding to its key topological features and performing controlled activation steering to see if they causally control abstract concepts in generation.\n\nEXPERIMENT: We will extract embeddings from a diverse text corpus using a model like LLaMA, apply TDA to generate the topological map, and then validate it by creating a perturbation dataset to test if steering along discovered topological axes (e.g., a cycle) reliably manipulates corresponding abstract concepts (e.g., narrative tone) in the model's output.\n\nNOVELTY: This moves beyond linear probes and local circuit analysis by combining a global, geometric description of the embedding manifold from TDA with direct causal validation via intervention, aiming to reveal the model's own non-Euclidean conceptual axes.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:09.203775+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 2,
+    "text": "IDEA: We will causally map how transformer models dynamically compose a persistent, task-agnostic \"conceptual scaffolding\" within the residual stream to perform in-context learning.\n\nBACKGROUND: A central open problem is understanding the mechanistic basis of in-context learning (ICL). While circuits like induction heads are known, it remains unclear how models flexibly assemble novel tasks from fundamental computational primitives without weight updates, and what representational substrate enables this composition.\n\nAPPROACH: We will first use topological data analysis on early-layer residual streams to identify a low-dimensional manifold of persistent, reusable feature directions that form a static scaffolding. We will then use cross-task latent state transplantation to surgically test if these discovered directions function as composable primitives for ICL.\n\nEXPERIMENT: Using synthetic ICL tasks, we will ablate or transplant activation patterns along the discovered manifold directions between different tasks in a medium-scale model, measuring the causal impact on ICL performance and error patterns.\n\nNOVELTY: This moves beyond cataloguing circuits by causally testing a compositional theory of ICL, and uniquely combines topological discovery of a model's intrinsic feature geometry with direct mechanistic intervention to establish function.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:52.624448+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 3,
+    "text": "IDEA: Reverse-engineer the semantic coordinate system of transformer embeddings by surgically implanting a known basis during training and then analyzing how the model compositionally generalizes it to novel concepts.\n\nBACKGROUND: A core open problem is understanding the compositional \"algebra\" of meaning in transformer embeddings\u2014the set of interpretable, orthogonal axes that govern semantic transformations. While we can find isolated concept directions, we lack a predictive theory for how these axes combine to represent novel, complex concepts.\n\nAPPROACH: We will train small transformers on a procedurally generated textual universe where entities have composable attributes, but we will also inject rare \"marker tokens,\" each rigidly paired with a single fundamental attribute. This forces the model to develop clean, known basis vectors. We will then use causal interventions (vector additions) and circuit analysis to trace how the model uses these basis vectors to represent and compute with novel attribute combinations.\n\nEXPERIMENT: We will test by algorithmically discovering the basis from marker activations, then measuring our ability to predictably synthesize or edit valid, novel entity descriptions in the model's outputs via linear operations on that basis, comparing against a no-marker baseline.\n\nNOVELTY: This combines the surgical precision of concept injection to establish a known ground-truth basis with the rigorous, causal testing of concept perturbation and compositional generalization, moving from correlation to a controlled, mechanistic account of semantic composition.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:14:40.252910+00:00"
+  },
+  {
+    "topic_id": "T12",
+    "topic": "Mechanistic interpretability of transformer models",
+    "domain": "ML Safety",
+    "idea_index": 4,
+    "text": "IDEA: Use Topological Data Analysis to map the non-linear semantic manifolds in transformer activations and then mechanistically trace how attention heads read from and write to these topological features.\n\nBACKGROUND: A core problem in mechanistic interpretability is understanding how transformers internally organize abstract concepts into structured, non-linear representations. While linear relationships are often studied, we lack a framework to characterize the intrinsic geometric shapes\u2014like loops or hierarchies\u2014that concepts form in activation space and how these shapes are computationally used.\n\nAPPROACH: First, apply the Mapper algorithm from Topological Data Analysis to activation clusters from a controlled semantic dataset, creating a simplicial complex \"map\" of conceptual manifolds for a given layer. Second, use causal intervention methods like activation patching to trace how specific attention heads read from or modify the topological features (e.g., connections between clusters) identified in this map.\n\nEXPERIMENT: Using a model like GPT-2 and a dataset with clear semantic hierarchies (e.g., biological taxonomies), we will validate the approach by patching activations to alter the topological graph and predictably change the model's output on relational reasoning tasks.\n\nNOVELTY: This combines the geometric insight of TDA for discovering non-linear semantic structures with the causal methodology of circuit analysis to explain how those structures are actively computed, moving beyond static representation analysis.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:23.591033+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 0,
+    "text": "IDEA: A foundation model trained on multimodal single-cell perturbation data to learn a causal map of cellular state space, enabling the inverse design of interventions that steer cells from a diseased to a healthy state while filtering out stress-induced artifacts.\n\nBACKGROUND: A core challenge in therapeutic development is moving from descriptive single-cell atlases to actionable, causal models that can predict how to controllably perturb a cell from one state to another. Current models lack an integrated framework that both learns the rules of state transitions from perturbation data and is robust to the technical artifacts that confound biological interpretation in real-world samples.\n\nAPPROACH: We will train a Conditional State Transformer on a curated corpus of paired multiomic profiles from controlled perturbation experiments, including deliberate stress gradients. The model will learn to predict a post-perturbation state from a baseline state and an intervention token. Its key innovation is an inverse design module that, given a start and target state, optimizes in perturbation space to propose specific interventions, while a parallel integrity module deconvolves stress artifacts to ensure predictions are based on genuine biology.\n\nEXPERIMENT: We will prospectively validate the model by testing its top-predicted interventions for a defined state transition (e.g., exhausted to functional T-cells) using a pooled CRISPR screen, and benchmark its deconvolution power on held-out primary tumor samples against orthogonal spatial transcriptomics.\n\nNOVELTY: This integrates the forward prediction of perturbation effects with the inverse design of interventions and explicitly bakes in robustness to universal technical confounders, creating a closed-loop, causally-aware framework for therapeutic programming of cell state.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:12:26.682682+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 1,
+    "text": "IDEA: A foundation model that learns a universal \"regulatory grammar\" from cross-species single-cell data to predict how sequence edits in cis-regulatory elements will alter a cell's transcriptional state and evolutionary archetype.\n\nBACKGROUND: Current genomic foundation models treat DNA as text but fail to functionally link regulatory sequence to cell-type-specific transcriptional output and fate. Furthermore, models are taxonomically narrow, unable to distinguish species-specific expression from conserved, archetypal cellular programs, which limits our ability to predict the functional impact of regulatory perturbations across biology.\n\nAPPROACH: We will train a hierarchical transformer model, ARCHEO-Grammar, using a massive, paired scATAC-seq/scRNA-seq atlas spanning key metazoans. The model is pre-trained with a dual objective: first, to reconstruct a cell's transcriptome from its accessible regulatory sequences using a protein-family-embedded gene space, and second, a contrastive loss that aligns cells into evolutionarily conserved archetypal states. The model is then fine-tuned on cross-species single-cell CRISPRi perturbation data targeting regulatory elements.\n\nEXPERIMENT: We will validate the model by performing its top-predicted promoter/enhancer edits in a tractable model organism (e.g., *Nematostella vectensis*) and using single-cell multi-omics to assess if the predicted shift in both transcriptional state and cross-species cellular archetype is achieved.\n\nNOVELTY: This moves beyond sequence-language modeling by directly learning a function-aware, cell-type-specific regulatory code, and it uniquely grounds predictions in evolutionarily conserved cellular archetypes, enabling generalizable forecasts of how sequence changes alter fundamental cell identity.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:09.972913+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 2,
+    "text": "IDEA: A foundation model that learns a universal, cross-species \"regulatory grammar\" to predict single-cell fate decisions by interpreting perturbations within a cell's inferred tissue neighborhood.\n\nBACKGROUND: A core limitation in genomics is the inability to predict how a cellular perturbation, like a drug or genetic knockout, will alter a cell's fate, because current models ignore the critical context of a cell's evolutionary history and its local tissue microenvironment. This prevents generalizable insights from model organisms and reduces perturbation predictions to cell-autonomous effects, missing the systemic interactions that shape real biological outcomes.\n\nAPPROACH: We will train a multi-modal transformer model, **EvoNiched**, on a massive, curated corpus of paired single-cell multiome (ATAC+RNA) data from homologous tissues across species, integrated with spatial transcriptomic data where available. The model will be pre-trained with a novel dual objective: a contrastive loss to align the epigenetic and transcriptional latent spaces of orthologous regulatory elements across species, and a masked reconstruction task that forces the model to predict a cell's state using only its own pre-perturbation molecular profile and the anonymized, aggregated expression of its spatially-derived neighboring cells.\n\nEXPERIMENT: We will validate the model by its ability to accurately predict the branching outcomes of a novel combinatorial perturbation in human cells, first by *in silico* simulation using the aligned cross-species grammar, and then by wet-lab testing in a human iPSC system, measuring its success at forecasting rare fate branches that standard models miss.\n\nNOVELTY: This model uniquely combines evolutionary conservation and explicit spatial neighborhood modeling into a single framework for perturbation prediction, moving beyond single-species, cell-autonomous models to a systemic view where fate is governed by conserved regulatory rules modulated by local cellular context.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:54.696283+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 3,
+    "text": "IDEA: A foundation model that learns a universal, disentangled representation of cellular state space from multimodal single-cell atlases and uses it to predict the outcomes of novel perturbations directly from mixed-cell assay inputs.\n\nBACKGROUND: Current models cannot robustly predict cellular responses to unseen perturbations, a task requiring causal understanding of state transitions. This problem is exacerbated when the starting material is not pristine single-cell data but noisy, mixed-cell assays from complex tissues, which obscures the initial state and prevents precise forecasting.\n\nAPPROACH: We will train a dual-encoder diffusion model on a massive corpus of single-cell multimodal (RNA+ATAC) time-series perturbation data. The model learns a perturbation-aware latent state manifold from clean data, then is trained via a novel *mixture diffusion objective* to deconvolve in-silico bulk mixtures and predict their future state trajectories given an embedded perturbation vector, all within the learned manifold.\n\nEXPERIMENT: We will validate the model by experimentally creating ground-truth mixed-cell samples from defined cocultures, applying novel drug combinations, and measuring its accuracy in predicting both the deconvolved initial cell states and their final state compositions after perturbation against flow cytometry and single-cell RNA-seq.\n\nNOVELTY: This moves beyond descriptive or single-modality models by combining causal perturbation prediction with computational deconvolution, enabling \"what-if\" forecasting for novel interventions directly from the noisy, mixed-sample assays that are most common in real-world biomedical research.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:14:39.450858+00:00"
+  },
+  {
+    "topic_id": "T10",
+    "topic": "Foundation models for genomics and single-cell biology",
+    "domain": "Genomics",
+    "idea_index": 4,
+    "text": "IDEA: A foundation model pre-trained on a universe of synthetic cellular perturbation trajectories and fine-tuned on real multimodal, multispecies data to predict causal state transitions and enable cross-domain translation.\n\nBACKGROUND: Current single-cell foundation models are static and fail to predict the causal, dynamic outcomes of novel perturbations or to translate knowledge across species and modalities. This limits their utility in drug discovery and the use of model organisms, as they cannot reliably simulate how a cell transitions from one state to another under unseen conditions or map these states across biological contexts.\n\nAPPROACH: We will first train a transformer model on millions of in silico perturbation trajectories generated from diverse probabilistic gene regulatory networks, teaching it general causal dynamics. This pre-trained model will then be fine-tuned using a contrastive objective on aligned, real-world multimodal (e.g., scRNA-seq, scATAC-seq) and multispecies perturbation data, forcing it to align cellular states and their transitions into a unified, modality-invariant latent space.\n\nEXPERIMENT: We will test the model\u2019s ability for compositional generalization\u2014predicting the single-cell outcome of a novel drug combination or double knockout from single-intervention data\u2014and its cross-species translation accuracy by predicting human cellular drug responses from mouse perturbation data, benchmarking against held-out experimental datasets.\n\nNOVELTY: It uniquely combines training on a synthetic \"universe\" of regulatory dynamics to learn fundamental causal principles, with subsequent alignment to real biological data to achieve robust cross-domain and cross-species generalization for predicting cellular transitions.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:24.674116+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 0,
+    "text": "IDEA: A multi-fidelity, physics-constrained neural operator for sub-grid scale oceanic mixing, featuring online uncertainty-aware adaptation to prevent climate drift.\n\nBACKGROUND: A critical open problem is the parameterization of oceanic internal wave-driven mixing, which governs deep ocean heat transport and is a major source of uncertainty in climate projections. Current empirical schemes are simplistic, while existing deep learning emulators are static and risk instability when the host model's state drifts into poorly sampled regimes.\n\nAPPROACH: We will develop a Tide-Forced Fourier Neural Operator (TF-FNO) trained on a hierarchy of data, from high-resolution process models to multiple coarse GCM outputs, to emulate 3D mixing coefficients. The architecture explicitly conditions spectral transformations on tidal forcing and enforces physical constraints via a differentiable loss. An integrated uncertainty quantification module will trigger targeted retraining on strategic high-fidelity data during a running simulation to enable continuous adaptation.\n\nEXPERIMENT: After training on MITgcm outputs and coarse model data, we will integrate the emulator into a climate model like CESM for a 100-year simulation. Success will be measured by improved fidelity in deep ocean heat content trends and AMOC stability compared to standard schemes, while maintaining numerical stability through the adaptation cycle.\n\nNOVELTY: This moves beyond static emulation by combining a novel, forcing-conditioned neural operator architecture for a key ocean process with an online self-correcting mechanism, creating a pathway to stable, long-term, and physically trustworthy acceleration of climate projections.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:12:30.786788+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 1,
+    "text": "IDEA: A Differentiable, Compositional Emulator with Physics-Constrained Modules for Probing and Accelerating Climate Model Structural Uncertainty.\n\nBACKGROUND: A critical open problem is diagnosing the sources of structural uncertainty in climate projections\u2014understanding why different model physics schemes produce different outcomes. Current deep learning emulators are typically monolithic black boxes that replace single models, failing to illuminate the functional space of possible model architectures or enforce physical constraints within component processes.\n\nAPPROACH: We propose a modular emulator where each key physical parameterization (e.g., convection, cloud microphysics) is represented by a separate, interpretable neural operator trained with hardwired conservation laws. These modules can be compositionally assembled, conditioned on a disentangled latent vector that explicitly represents structural choices, creating a differentiable emulator of the entire model configuration space.\n\nEXPERIMENT: Using a plug-and-play climate model like CESM, we will generate a dataset by running short simulations with systematically swapped physics schemes. The emulator will be validated by its ability to reproduce the climate of known model configurations and, through gradient-based sensitivity analysis, quantitatively attribute output differences (e.g., cloud feedback strength) to specific structural decisions.\n\nNOVELTY: This moves emulators from pure acceleration tools to active instruments for model interrogation, uniquely combining a compositional, uncertainty-probing architecture from IDEA 3 with the embedded physics constraints and process-specific focus of IDEA 2, while eliminating redundant single-fidelity emulation.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:10.682782+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 2,
+    "text": "IDEA: A hybrid neural operator that dynamically infers region-specific, non-local influence graphs to emulate sub-grid cloud processes and their global teleconnections with statistical fidelity.\n\nBACKGROUND: Current deep learning emulators struggle to simultaneously capture regionally divergent sub-grid physics (like convection) and the non-local teleconnection patterns these processes influence. Monolithic or spatially rigid architectures fail to adapt to local regimes or efficiently model long-range dynamical interactions, compromising both regional accuracy and global climate fidelity.\n\nAPPROACH: We propose a Teleconnection-Aware Mixture of Experts (TAME) operator, which uses a lightweight gating network to dynamically select and blend specialized, region-conditioned expert networks for sub-grid cloud and convection tendencies. A novel topological reasoning module then infers a sparse, state-dependent graph of non-local influences from these local outputs, using a graph neural network to propagate their global impacts, with training losses that enforce both regional statistical realism and teleconnection pattern fidelity.\n\nEXPERIMENT: We will integrate TAME into an atmospheric model like SCREAM, training on high-resolution simulation data and validating via decade-long runs against CMIP6 baselines, using metrics for regional process statistics, extreme event distributions, and the phase/amplitude of key teleconnection indices.\n\nNOVELTY: This moves beyond static architectures by combining dynamic, regionally adaptive emulation of sub-grid physics with the learnable, state-dependent modeling of non-local dynamical graphs, explicitly constrained to preserve both local emergent statistics and global teleconnection patterns.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:53.700226+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 3,
+    "text": "IDEA: A differentiable, multi-fidelity emulator that uses causal routing over compositional physics kernels to generate probabilistic sub-grid scale responses for probing structural climate uncertainty.\n\nBACKGROUND: A core open problem is the black-box emulation of sub-grid cloud processes, which limits generalization under novel forcings, obscures sources of error, and fails to capture the full distribution of plausible high-fidelity responses. Current approaches lack the interpretable structure to disentangle physical mechanisms or rigorously quantify uncertainty arising from both model fidelity and parameterization choice.\n\nAPPROACH: We develop an emulator where a causal router network first selects discrete, interpretable physical pathways from coarse inputs. Specialized, interchangeable neural kernels then execute these sub-processes, but are trained simultaneously on a hierarchy of model fidelities (e.g., from GCM to LES data) using a diffusion model framework. This enables the generation of diverse, high-fidelity realizations while maintaining end-to-end differentiability across the entire compositional architecture.\n\nEXPERIMENT: We train on multi-fidelity data from a cloud-resolving model, then test in coupled simulations and on extrapolation tasks (e.g., novel climates). Success is measured by the emulator's statistical realism, generalization ability, and its novel use for gradient-based sensitivity analysis to attribute errors to specific kernel choices, directly comparing alternative physical representations.\n\nNOVELTY: It uniquely combines causal, compositional structure for generalization with multi-fidelity probabilistic generation, and leverages differentiability not just for training but as a diagnostic tool to quantify structural uncertainty, moving beyond acceleration to mechanistic insight.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:14:39.689335+00:00"
+  },
+  {
+    "topic_id": "T8",
+    "topic": "Deep learning emulators for climate model acceleration",
+    "domain": "Climate",
+    "idea_index": 4,
+    "text": "IDEA: A hybrid neuro-symbolic, physics-constrained emulator that learns stochastic sub-grid cloud states to capture non-linear climate feedbacks and tipping point precursors.\n\nBACKGROUND: The largest source of uncertainty in climate projections stems from sub-grid scale processes, particularly cloud feedbacks, which involve threshold-driven, discontinuous physics. Current deep learning emulators fail to capture these non-linearities and the rare-event signatures of system tipping points, leading to unreliable extrapolation under novel forcings.\n\nAPPROACH: The architecture combines a conditional variational autoencoder to generate stochastic, high-resolution cloud fields within a grid column, conditioned on the large-scale state, with a differentiable symbolic layer that applies learnable, interpretable rules for cloud regime transitions. This hybrid system is trained with a loss function that enforces physical conservation laws on the generated fields and uses a contrastive objective to disentangle latent representations of stable dynamics from anomalous precursors to tipping points.\n\nEXPERIMENT: The model is trained on paired high-resolution Large-Eddy Simulation/Cloud-Resolving Model and coarse-grained data, then validated by driving a simplified climate model with novel warming pathways. Performance is evaluated on its ability to reproduce abrupt cloud feedback discontinuities and the statistical precursors of tipping points, compared to full-complexity model benchmarks.\n\nNOVELTY: It moves beyond statistical interpolation by explicitly architecting for physical discontinuity and rare events, merging the generative modeling of stochastic sub-grid states with interpretable symbolic reasoning and a disentangled latent space to isolate emergent instability signals.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:25.681651+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 0,
+    "text": "IDEA: Engineer a structured, non-Markovian bath to passively suppress correlated errors in NISQ devices by converting error syndromes into irreversible environmental decay.\n\nBACKGROUND: Active quantum error correction is prohibitively expensive for NISQ devices, and correlated errors from crosstalk are particularly damaging as they violate standard correction assumptions. This proposal addresses the open problem of suppressing these correlated errors not by fighting the environment, but by co-designing it to autonomously correct specific error syndromes.\n\nAPPROACH: We will design a multi-qubit unit where data qubits are asymmetrically coupled to a dedicated, high-loss bosonic \"sink\" mode. The couplings are tuned so that a multi-qubit Pauli error (the syndrome) is resonant with the sink, causing it to irreversibly dissipate, while the logical computational states remain off-resonant and protected. This creates an always-on, passive error-suppression layer.\n\nEXPERIMENT: Using a superconducting processor, we will compare the fidelity of a logical Bell pair under a calibrated, pulsed multi-qubit error attack, both with and without the engineered sink mode actively coupled, measuring the extension of the logical state's coherence time.\n\nNOVELTY: This inverts the standard QEC paradigm by exploiting environmental dynamics for passive correction and specifically targets the suppression of correlated errors, moving beyond treating all noise as a Markovian nuisance to be actively measured and reversed.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:12:26.613451+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 1,
+    "text": "IDEA: To engineer a non-Markovian, structured environment that passively suppresses errors in NISQ devices by using adaptive, real-time characterization of coherent error signatures to tailor the protective bath dynamics.\n\nBACKGROUND: Active quantum error correction is too resource-intensive for NISQ devices, and standard codes fail because real hardware noise is coherent and structured, not the simple Pauli noise assumed by most models. This creates a critical mismatch where dominant physical error processes remain unchecked, while resources are wasted correcting imaginary errors.\n\nAPPROACH: We will design a small, tunable \"bath\" of auxiliary qubits coupled to a data qubit, with interactions engineered to create a non-Markovian environment that preferentially absorbs entropy from specific error channels. Crucially, we will use fast, repeated syndrome measurements on this cluster not for correction, but as an interferometer to resonantly amplify and characterize the hardware's dominant coherent errors in real-time, then adaptively tune the bath couplings to target those specific channels.\n\nEXPERIMENT: On a superconducting processor with tunable couplers, we will compare the idling coherence of a state encoded in a data qubit coupled to an adaptive auxiliary ring against controls, using quantum process tomography to measure non-Markovian backflow and syndrome statistics to validate the real-time error fingerprinting.\n\nNOVELTY: This moves beyond static bath engineering by closing the loop with adaptive, hardware-tailored calibration, and repurposes error-detecting circuits as sensitive diagnostic tools to shape passive protection against a device's actual, complex noise.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:14.222520+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 2,
+    "text": "IDEA: To design hardware-adaptive, lightweight quantum error correction by exploiting the spatio-temporal correlations of coherent errors, which are learned and then used to strategically synchronize gate operations with a qubit's non-Markovian \"quiet periods\" for passive suppression.\n\nBACKGROUND: Dominant coherent errors in NISQ devices are systematic and build up in correlated, circuit-dependent ways, but standard QEC treats them as stochastic. Simultaneously, the non-Markovian \"memory\" in a qubit's environment creates temporary, predictable windows of low decoherence. The open problem is to co-design an error correction strategy that actively uses a learned model of coherent error pathways to schedule operations within these naturally occurring error-suppressing states.\n\nAPPROACH: First, perform correlation tomography on a multi-qubit processor to construct a time-dependent map of how coherent errors (e.g., unwanted ZZ couplings) propagate and correlate during algorithm-like circuits. Second, use detailed noise spectroscopy to identify device-specific spectral \"quiet zones\" for each qubit. These two models are then fused to customize a small surface code patch, where stabilizer measurements are placed to detect the dominant correlated error modes and gate operations are dynamically timed to coincide with each qubit's high-fidelity windows.\n\nEXPERIMENT: Compare the logical state fidelity of a 4-6 qubit variational algorithm implemented on this adaptive, synchronized code against a generic code of equal qubit count, demonstrating a measurable advantage from the joint exploitation of error correlations and environmental memory.\n\nNOVELTY: It moves beyond treating coherent and non-Markovian noise as separate nuisances, instead learning their combined structure to co-optimize both the spatial layout of a QEC code and the temporal scheduling of operations, creating a unified, hardware-tailored suppression strategy.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:59.259672+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 3,
+    "text": "IDEA: Engineer a non-Markovian dissipative reservoir that passively and continuously stabilizes error syndromes in a multi-qubit array, turning syndrome extraction from a noisy measurement cycle into a coherent, always-on protection mechanism.\n\nBACKGROUND: In NISQ devices, the active process of measuring error syndromes introduces substantial noise and back-action, often negating the benefits of quantum error correction. The open problem is to protect quantum information during computation without the overhead of frequent, destructive measurements, by reimagining the syndrome as a dynamically protected degree of freedom rather than a readout signal.\n\nAPPROACH: We will use always-on couplings and multi-tone microwave drives on a superconducting processor to engineer a dissipative reservoir that actively pumps ancilla qubits into the correct syndrome state corresponding to the data qubits' parity. This creates a \"syndrome-dark\" condition, where the correct syndrome is a steady state of the engineered environment, continuously suppressing errors without projective measurement.\n\nEXPERIMENT: We will benchmark logical lifetime and fidelity on a small surface-code patch, comparing our reservoir-stabilized system against traditional pulsed syndrome extraction, using process tomography and logical error rate per cycle as key metrics.\n\nNOVELTY: This moves beyond treating non-Markovian dynamics as a filter for raw noise and instead coherently harnesses dissipation to autonomously stabilize error syndromes, merging the concepts of passive suppression and active correction into a single always-on process.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:14:41.769226+00:00"
+  },
+  {
+    "topic_id": "T3",
+    "topic": "Quantum error correction in NISQ devices",
+    "domain": "Physics",
+    "idea_index": 4,
+    "text": "IDEA: To engineer a structured, non-Markovian environment for a multi-qubit array that passively suppresses errors by creating a noise bandgap and stabilizing a logical subspace, without active syndrome measurement.\n\nBACKGROUND: Current quantum error correction is infeasible on NISQ devices due to high qubit overhead, and standard approaches treat environmental noise as a purely detrimental, memoryless process. This ignores the potential of structured, non-Markovian baths, which are typically seen as a nuisance but could be harnessed to create intrinsic hardware protection.\n\nAPPROACH: We will design a multi-qubit unit where data qubits are collectively coupled to an engineered bath (e.g., a low-Q resonator) and spectrally shielded by tunable buffer qubits. By tuning couplings and detunings, we will shape the bath's spectral density to create a noise bandgap for suppression, while simultaneously aligning degeneracies to form a passively protected logical subspace akin to a decoherence-free subspace.\n\nEXPERIMENT: Using a tunable superconducting processor, we will compare the fidelity and coherence time of a logical state encoded in the protected subspace against bare physical qubits under injected noise, with success defined by a measurable increase in logical state lifetime directly attributable to the engineered bath dynamics.\n\nNOVELTY: This inverts the standard paradigm by deliberately engineering non-Markovianity as a resource, combining spectral filtering for local suppression with collective encoding for correlated error protection in a single, hardware-native design.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:26.985090+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 0,
+    "text": "IDEA: Zero-shot generalization via causal affordance graphs learned through interventional skill discovery.\n\nBACKGROUND: Agents fail to generalize zero-shot when novel tasks require recomposing skills in unseen ways or when the causal rules governing object interactions change. Current methods lack structured representations that capture both the compositional affordances of objects and the invariant causal dynamics that make skills transferable.\n\nAPPROACH: We learn a library of parameterized skills by encouraging agents to perform targeted interventions to discover object properties, building disentangled causal factor representations. The preconditions and effects of each skill are then used to construct a dynamic affordance graph, where nodes are objects annotated with their discovered causal properties, and edges represent feasible, causally-valid skill transitions.\n\nEXPERIMENT: Using a modified CausalWorld/ProcTHOR benchmark with systematically altered causal graphs (e.g., color predicts mass in training, but elasticity in testing) and novel compositional goals, we measure zero-shot task success against baselines in domain randomization and hierarchical RL.\n\nNOVELTY: This uniquely combines causal representation learning through intervention with explicit, graph-based affordance reasoning, enabling generalization to both novel causal structures and novel skill compositions unseen in training.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:12:27.871413+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 1,
+    "text": "IDEA: Zero-shot generalization in reinforcement learning via causal skill abstraction and counterfactual environment inference.\n\nBACKGROUND: Agents fail on novel tasks because they conflate environmental correlations with causal mechanics and cannot recompose skills under new logical constraints. This limits generalization to settings where the underlying causal rules or the compositional structure of goals have changed.\n\nAPPROACH: We propose a two-level architecture where a low-level module learns skills grounded in a disentangled causal world model, distilled from environments varied along known causal factors. A high-level planner, given a novel task specification, performs counterfactual inference to hypothesize the latent environmental constraints that make the task solvable, then composes causal skills under these inferred rules to generate zero-shot behavior.\n\nEXPERIMENT: We will use a custom 3D physics simulator and a compositional instruction set, where evaluation measures success on novel tasks that simultaneously alter multiple causal properties (e.g., friction, object material) and require novel skill-object bindings and temporal logic not seen in training.\n\nNOVELTY: This uniquely combines causal representation learning for robust skill execution with counterfactual inference at the task level for compositional planning, enabling generalization to novel environments defined by both changed physics and novel goal semantics.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:13:14.368618+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 2,
+    "text": "IDEA: Zero-shot generalization in RL by learning a causal world model that disentangles environmental physics from style, enabling counterfactual planning with abstract skills and a spatial grammar for novel task composition.\n\nBACKGROUND: Agents fail in zero-shot settings due to causal confusion from spurious training correlations and an inability to recompose known skills into novel, physically valid sequences for unseen tasks. This is especially acute when both the causal rules and superficial styles of the environment change simultaneously.\n\nAPPROACH: We propose an agent that learns a disentangled causal world model separating invariant physics from style, and uses it to ground a library of abstract, parameterized skills. A grammar inference module, trained via meta-RL to predict skill sequence viability, then composes these skills into spatially-valid plans for novel goals by constructing executable skill parse trees.\n\nEXPERIMENT: We test in a custom 3D simulator where objects have latent physical properties and combinable rules, and where style factors are independently varied. Zero-shot evaluation requires novel property-rule-style combinations (e.g., \"make a sandwich\" with a fragile knife in a novel-textured kitchen), benchmarking against meta-RL and domain randomization.\n\nNOVELTY: It unifies causal disentanglement for robustness to spurious correlations with a spatial-syntactic grammar for generative skill composition, enabling counterfactual reasoning and planning in novel domains where both underlying physics and task structure are unfamiliar.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:14:00.180352+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 3,
+    "text": "IDEA: Zero-shot generalization in RL by planning with a Causal Skill Graph, a world model that distills intervention-based skill abstractions and enables counterfactual reasoning for novel task instructions.\n\nBACKGROUND: Agents fail on novel tasks not due to a lack of low-level skills, but because they cannot semantically recompose them in ways consistent with unseen goal specifications. This stems from learning superficial correlations rather than the underlying causal mechanics of object interactions, which limits compositional generalization.\n\nAPPROACH: Learn a disentangled causal world model and a library of abstract skills, each defined by pre- and post-conditions on object-state variables, forming a Causal Skill Graph (CSG). At test time, ground a novel language instruction to a target configuration in the CSG and use counterfactual queries on the model to generate a logically valid skill plan, which is then executed by grounding each abstract skill to low-level policies.\n\nEXPERIMENT: Benchmark on a robotic manipulation suite (e.g., CausalWorld or Isaac Gym) with held-out compositional tasks requiring novel skill sequences. Measure success rate, plan coherence, and efficiency against meta-RL and goal-conditioned RL baselines, with zero additional environment interaction.\n\nNOVELTY: Unifies causal reasoning with skill abstraction, moving beyond correlation by using a learned causal model for counterfactual planning, which enables interpretable and semantically valid skill recombination for unseen instructions.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:14:45.258828+00:00"
+  },
+  {
+    "topic_id": "T13",
+    "topic": "Zero-shot generalization in reinforcement learning",
+    "domain": "ML",
+    "idea_index": 4,
+    "text": "IDEA: Enable zero-shot generalization in RL by learning causally disentangled skill abstractions and an emergent skill grammar to guide the composition of these invariant skills in novel environments.\n\nBACKGROUND: Agents fail to generalize zero-shot because skills are often entangled with spurious environmental correlations and lack a high-level, interpretable structure for novel composition. This addresses the dual problem of causal confusion in skill execution and the combinatorial challenge of skill sequencing.\n\nAPPROACH: First, learn causally invariant skill policies through contrastive training across systematic interventions, isolating the minimal object-state variables each skill affects. Second, distill an Emergent Skill Grammar from successful multi-task trajectories to capture valid temporal and logical skill compositions.\n\nEXPERIMENT: Test in procedurally generated 3D environments (e.g., ProcTHOR) with novel object-affordance combinations and spatial constraints, measuring success rate and planning efficiency against skill-chaining and model-based RL baselines.\n\nNOVELTY: It unites causal skill learning for robust execution with grammatical skill composition for structured planning, moving beyond correlation-based policies and unstructured skill libraries.",
+    "system_version": "S2",
+    "model": "deepseek-chat",
+    "timestamp": "2026-04-20T00:15:27.975894+00:00"
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "role": "fixed_benchmark_human_eval",
+  "source_publish_dir": "results/publish_eval_20260413T163806Z",
+  "source_side": "S_paper",
+  "n_ideas_file": 30
+}
