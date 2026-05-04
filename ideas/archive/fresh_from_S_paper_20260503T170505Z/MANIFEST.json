@@ -1,0 +1,131 @@
+{
+  "created_utc": "20260503T170505Z",
+  "reason": "Archive prior S21-S27 SWE attempts and reset SWE memory/context for a clean run from S_paper.",
+  "current_version": "S_paper",
+  "moved": [
+    {
+      "from": "systems/S21.py",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/systems/S21.py"
+    },
+    {
+      "from": "systems/S21_r1.py",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/systems/S21_r1.py"
+    },
+    {
+      "from": "systems/S21_r2.py",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/systems/S21_r2.py"
+    },
+    {
+      "from": "systems/S21_r3.py",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/systems/S21_r3.py"
+    },
+    {
+      "from": "systems/S21_r4.py",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/systems/S21_r4.py"
+    },
+    {
+      "from": "systems/S21_r5.py",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/systems/S21_r5.py"
+    },
+    {
+      "from": "systems/S21_r6.py",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/systems/S21_r6.py"
+    },
+    {
+      "from": "systems/S22.py",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/systems/S22.py"
+    },
+    {
+      "from": "systems/S22_r1.py",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/systems/S22_r1.py"
+    },
+    {
+      "from": "systems/S22_r2.py",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/systems/S22_r2.py"
+    },
+    {
+      "from": "systems/S22_r3.py",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/systems/S22_r3.py"
+    },
+    {
+      "from": "systems/S23_r1.py",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/systems/S23_r1.py"
+    },
+    {
+      "from": "systems/S23_r2.py",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/systems/S23_r2.py"
+    },
+    {
+      "from": "systems/S23_r3.py",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/systems/S23_r3.py"
+    },
+    {
+      "from": "systems/S24_r1.py",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/systems/S24_r1.py"
+    },
+    {
+      "from": "systems/S25_r1.py",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/systems/S25_r1.py"
+    },
+    {
+      "from": "systems/S26_r1.py",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/systems/S26_r1.py"
+    },
+    {
+      "from": "systems/S27_r1.py",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/systems/S27_r1.py"
+    },
+    {
+      "from": "results/swe_log_S21.json",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/results/swe_log_S21.json"
+    },
+    {
+      "from": "results/swe_log_S22.json",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/results/swe_log_S22.json"
+    },
+    {
+      "from": "results/swe_log_S23.json",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/results/swe_log_S23.json"
+    },
+    {
+      "from": "results/swe_log_S24.json",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/results/swe_log_S24.json"
+    },
+    {
+      "from": "results/swe_log_S25.json",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/results/swe_log_S25.json"
+    },
+    {
+      "from": "results/swe_log_S26.json",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/results/swe_log_S26.json"
+    },
+    {
+      "from": "results/swe_log_S27.json",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/results/swe_log_S27.json"
+    },
+    {
+      "from": "results/compare_S12_vs_S21.json",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/results/compare_S12_vs_S21.json"
+    },
+    {
+      "from": "results/compare_S12_vs_S21_r2.json",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/results/compare_S12_vs_S21_r2.json"
+    },
+    {
+      "from": "results/S21",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/results/S21"
+    },
+    {
+      "from": "results/S21_r2",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/results/S21_r2"
+    },
+    {
+      "from": "results/swe_memory.json",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/results/swe_memory.json"
+    },
+    {
+      "from": "results/swe_context.json",
+      "to": "archive/fresh_from_S_paper_20260503T170505Z/results/swe_context.json"
+    }
+  ]
+}

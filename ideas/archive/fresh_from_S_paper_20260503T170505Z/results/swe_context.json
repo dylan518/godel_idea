@@ -1,0 +1,225 @@
+{
+  "pipeline_overview": "",
+  "judge_profile": {
+    "all_champion_win_reasoning": [
+      "Idea A achieves higher scores across most dimensions through superior experimental clarity (explicit falsification criteria, rigorous statistical design with 50+ runs), stronger scientific usefulness (addresses real-world deployment challenges with validated wireless noise models), and comparable no",
+      "Idea A presents a more focused and theoretically grounded contribution by systematically investigating how dynamic, empirically-motivated noise shapes emergent communication protocols with explicit architectural inductive biases (noise-aware VAE, communication bottlenecks). It has clearer falsifiabl",
+      "Idea A scores higher across all dimensions with a total of 29 vs. 23 for Idea B. Idea A presents a more grounded approach using RL within realistic hardware constraints, clearer experimental methodology with well-defined baselines, and higher feasibility since it avoids the substantial engineering o",
+      "Idea A scores higher overall (29 vs 26) with stronger novelty in demonstrating real-time adaptive feedback within coherence constraints and superior experimental clarity with well-defined latency budgets and rigorous controls. While Idea B addresses a complementary problem with slightly better feasi",
+      "Idea A scores 32/40 versus Idea B's 26/40. Idea A presents a more concrete, well-specified approach with clearer experimental methodology (precise metrics, statistical testing, ablation design) and stronger feasibility through structured pruning on standard architectures. Idea B, while addressing an",
+      "Idea A scores higher overall due to its superior feasibility and experimental clarity, presenting a focused, testable hypothesis with a clear implementation path. While Idea B is more novel in its conceptual framing, its higher complexity and less certain implementation make it a riskier proposition",
+      "Idea B edges out Idea A due to higher novelty and scientific usefulness, addressing a core challenge of learning generalizable representations. While Idea A is exceptionally clear and feasible, Idea B's focus on task-agnostic symbolic abstraction tackles a more fundamental and impactful open problem",
+      "While Idea B is more novel and addresses a fundamental problem, Idea A is more feasible and has superior experimental clarity. Its well-isolated, practical investigation into multi-modal perception provides a highly actionable and testable contribution, making it the stronger overall proposal.",
+      "Idea B presents a more novel and holistic co-design approach, addressing the critical system-level energy question which is of high scientific usefulness. While Idea A is clearer and more feasible, Idea B's ambitious, integrated methodology offers a more significant potential advance for the field.",
+      "Idea A proposes a novel hardware-centric solution with high potential impact on energy efficiency, a core bottleneck, and its system-level benchmarking approach is highly useful. While Idea B is exceptionally clear and feasible, its scope is narrower and more incremental, leading to a lower total sc",
+      "Idea B scores higher in novelty and scientific usefulness by proposing a new material integration to solve a core hardware energy problem. While Idea A is exceptionally clear and feasible, Idea B's potential impact on enabling scalable, energy-efficient neuromorphic hardware gives it the overall edg",
+      "Idea B scores higher on novelty and scientific usefulness by tackling a less-explored, fundamental problem of error correction under realistic constraints with a sophisticated, theory-driven approach. While Idea A is exceptionally clear and feasible, its contribution is more focused on a specific sc",
+      "Idea B scores higher on novelty and scientific usefulness by tackling the underexplored factor of sensory heterogeneity and its impact on generalization, a core challenge for real-world MAS. While Idea A is exceptionally clear and feasible, Idea B's total score is higher, addressing a more fundament",
+      "Idea A is more methodologically sound and feasible, with a clear, testable hypothesis and a well-defined experimental setup. While Idea B is highly novel and impactful, its experimental clarity is lower and its feasibility is more uncertain, making Idea A the stronger overall proposal.",
+      "Idea B is more directly actionable and feasible, offering a concrete path to improved performance on current hardware. While Idea A is highly novel and scientifically useful for understanding fundamental limitations, its experimental complexity and reliance on controlled ablation make it less immedi",
+      "Idea B edges out due to superior novelty and experimental clarity, proposing a new adaptive control framework. While Idea A is highly useful and feasible for diagnosing core QEC problems, Idea B's integrated approach to a dynamic NISQ challenge is more transformative, despite greater implementation ",
+      "Idea A is a novel, well-specified proposal with clear methodology and high scientific utility, while Idea B is a vague, template-like placeholder lacking a concrete hypothesis and experimental design.",
+      "Idea B scores higher overall, particularly in feasibility and experimental clarity, due to its more concrete and modular architectural change. While both are novel, Idea B's personalized feature transformation presents a more direct and testable mechanism for addressing feature-level heterogeneity, ",
+      "Idea B is a complete, novel, and actionable research proposal with clear experiments, while Idea A is only a vague hypothesis statement. The significant gap in novelty, scientific usefulness, and experimental clarity makes B the decisive winner.",
+      "Idea B is a fully developed, novel, and actionable research proposal with clear experiments, while Idea A is only a vague hypothesis statement. The total score difference is substantial, making B the clear winner for its specificity, novelty in using local meta-learning modules, and strong experimen"
+    ],
+    "all_candidate_win_reasoning": [
+      "Idea A scores higher overall (32 vs 27) with stronger novelty in its explicit multimodal cross-attention architecture and more rigorous experimental design with clearly defined unseen cell types. Idea B addresses an important problem but the multi-organ/multi-species integration is a more incrementa",
+      "Idea A scores higher overall (31 vs 29) with superior novelty in its rigorous multi-omic harmonization and GRN-specific application, greater scientific usefulness by addressing a more fundamental regulatory biology problem with clear biological validation (perturbation screens, motif enrichment), an",
+      "Idea A scores 30 total points versus Idea B's 24 points. Idea A presents a more grounded, hardware-aware approach with clearer experimental methodology, concrete pulse-level optimizations, and stronger feasibility on current NISQ devices. Idea B's adaptive RNN decoder, while conceptually interesting",
+      "Idea A scores higher overall (29 vs 24) with stronger experimental clarity, more concrete methodology (Bayesian/Kalman filtering with specific decoding algorithms), and better feasibility grounding on established platforms. Idea B references a future 2026 publication and proposes less clearly specif",
+      "Idea A scores higher overall (28 vs 26) due to superior novelty in combining erasure conversion with dynamic real-time switching and more comprehensive experimental design across multiple hardware platforms. However, Idea A's feasibility is slightly lower due to the complexity of implementing real-t",
+      "Idea A scores higher overall due to superior experimental clarity and a more feasible approach using verified causal graphs, which provides a cleaner test of the causal invariance principle. While both ideas are strong, Idea A's methodology is more precisely defined and its use of ablation with scra",
+      "Idea A scores higher due to superior experimental clarity and feasibility, offering a clear, testable extension of established methods. While Idea B is more novel in its core approach, its integration of online causal discovery presents greater technical risk and less methodological clarity for vali",
+      "Idea A addresses a more fundamental and impactful open problem (OOD detection and overconfidence) with a clear, novel integration of expressive density estimation. Its experimental design is exceptionally rigorous with falsifiable criteria. While slightly more complex, its potential scientific contr",
+      "Idea A is a highly feasible and clearly defined benchmarking study that provides directly actionable data for the field, addressing a critical gap. While Idea B is more novel and ambitious, its lower feasibility score, due to the complexity of fabricating and characterizing a novel hybrid device, gi",
+      "Idea A excels in experimental clarity and feasibility, offering a crucial, actionable simulation study that directly bridges device physics and system performance. While Idea B is highly novel, its lower feasibility score due to fabrication complexity and integration risks gives Idea A a higher tota",
+      "Idea A's strength lies in its exceptional scientific usefulness and clarity, offering a crucial controlled study to isolate a core problem. While Idea B is more novel, A's foundational contribution to understanding client drift is more immediately actionable for the research community, and its exper",
+      "Idea B scores higher due to superior experimental clarity and feasibility, with a sharp, testable hypothesis. While Idea A is highly useful and novel, its complex integration pipeline raises feasibility concerns, and its total score is lower by 3 points.",
+      "Idea A scores higher due to its exceptional clarity, immediate usefulness, and high feasibility for a direct, actionable benchmark. While Idea B is more novel in its integration, its experimental complexity and lower feasibility give Idea A the overall edge for its robust and practical contribution.",
+      "Idea A is highly novel and ambitious but faces significant feasibility challenges and has a less concrete experimental plan. Idea B, while less novel, offers exceptional scientific usefulness, clarity, and feasibility, providing an immediate, actionable benchmark for the field.",
+      "Idea B presents a more novel and fundamental scientific question with high usefulness for guiding research directions. While Idea A is clearer and more feasible, its incremental contribution is outweighed by Idea B's potential for a more impactful mechanistic insight.",
+      "Idea B is more novel and scientifically useful as it directly tests a foundational, unresolved theoretical debate with a clear, falsifiable hypothesis. While Idea A is a solid, feasible engineering extension, Idea B's controlled, hypothesis-driven design offers greater potential for actionable insig",
+      "Idea A excels in experimental clarity and scientific usefulness by proposing a decisive, well-controlled test for a foundational question in the field. While Idea B is highly novel, its methodology is less precise and its feasibility is lower due to the computational cost and validation complexity o",
+      "Idea A excels in experimental clarity with a precise, falsifiable hypothesis and detailed methodology, making it highly actionable. While Idea B is more novel and ambitious, its experimental plan is less concrete, and its dynamic clustering approach introduces higher complexity and feasibility conce",
+      "Idea A presents a more focused, testable hypothesis with superior experimental clarity, including specific thresholds, baseline comparisons, and analysis plans. While Idea B tackles an important problem, its methodology and predictions are less concrete, making it harder to evaluate and execute deci",
+      "Idea B edges out Idea A primarily due to superior feasibility and a highly novel, critical focus on distribution shift\u2014a key practical weakness for QML. While both are scientifically useful and clear, Idea B's use of established benchmarks and lower hardware demands makes it more reliably executable"
+    ],
+    "last_comparison": {
+      "champion_win_count": 67,
+      "candidate_win_count": 8,
+      "champion_win_reasoning": [
+        "Idea B scores higher overall, particularly in feasibility and experimental clarity, due to its more concrete and modular architectural change. While both are novel, Idea B's personalized feature transformation presents a more direct and testable mechanism for addressing feature-level heterogeneity, ",
+        "Idea B is a complete, novel, and actionable research proposal with clear experiments, while Idea A is only a vague hypothesis statement. The significant gap in novelty, scientific usefulness, and experimental clarity makes B the decisive winner.",
+        "Idea B is a fully developed, novel, and actionable research proposal with clear experiments, while Idea A is only a vague hypothesis statement. The total score difference is substantial, making B the clear winner for its specificity, novelty in using local meta-learning modules, and strong experimen"
+      ],
+      "candidate_win_reasoning": [
+        "Idea A excels in experimental clarity with a precise, falsifiable hypothesis and detailed methodology, making it highly actionable. While Idea B is more novel and ambitious, its experimental plan is less concrete, and its dynamic clustering approach introduces higher complexity and feasibility conce",
+        "Idea A presents a more focused, testable hypothesis with superior experimental clarity, including specific thresholds, baseline comparisons, and analysis plans. While Idea B tackles an important problem, its methodology and predictions are less concrete, making it harder to evaluate and execute deci",
+        "Idea B edges out Idea A primarily due to superior feasibility and a highly novel, critical focus on distribution shift\u2014a key practical weakness for QML. While both are scientifically useful and clear, Idea B's use of established benchmarks and lower hardware demands makes it more reliably executable"
+      ],
+      "quotes": [
+        "[champion won] Idea B scores higher overall, particularly in feasibility and experimental clarity, due to its more concrete and modular architectural change. While both are novel, Idea B's personalized feature transformation presents a more direct and testable mechanism for addressing feature-level heterogeneity, ",
+        "[champion won] Idea B is a complete, novel, and actionable research proposal with clear experiments, while Idea A is only a vague hypothesis statement. The significant gap in novelty, scientific usefulness, and experimental clarity makes B the decisive winner.",
+        "[champion won] Idea B is a fully developed, novel, and actionable research proposal with clear experiments, while Idea A is only a vague hypothesis statement. The total score difference is substantial, making B the clear winner for its specificity, novelty in using local meta-learning modules, and strong experimen",
+        "[candidate won] Idea A excels in experimental clarity with a precise, falsifiable hypothesis and detailed methodology, making it highly actionable. While Idea B is more novel and ambitious, its experimental plan is less concrete, and its dynamic clustering approach introduces higher complexity and feasibility conce",
+        "[candidate won] Idea A presents a more focused, testable hypothesis with superior experimental clarity, including specific thresholds, baseline comparisons, and analysis plans. While Idea B tackles an important problem, its methodology and predictions are less concrete, making it harder to evaluate and execute deci",
+        "[candidate won] Idea B edges out Idea A primarily due to superior feasibility and a highly novel, critical focus on distribution shift\u2014a key practical weakness for QML. While both are scientifically useful and clear, Idea B's use of established benchmarks and lower hardware demands makes it more reliably executable"
+      ]
+    }
+  },
+  "iteration_log": [
+    {
+      "version": "S12",
+      "champion_at_time": "S12",
+      "full_eval_win_rate": 0.8933333333333333,
+      "accepted": true,
+      "code_change_summary": "Tournament-selected strategy (11 candidates evaluated):\nApproach: Multi-Agent Roleplay Generation\nTarget: Hypothesis-Fir; Tournament-selected strategy (11 candidates evaluated):\nApproach: Constraint-Driven Bottom-Up Generation\nTarget: Feasibi; Tournament-selected strategy (10 candidates evaluated):\nApproach: Hypothesis-First Adversarial Loop\nTarget: Adversarial ",
+      "judge_patterns": {
+        "champion_wins": 8,
+        "candidate_wins": 67,
+        "sample_champion_wins": [
+          "Idea A addresses a more ambitious and underexplored problem (cross-protocol and cross-population generalization via domain adaptation) with genuine novelty in combining sparse transformers with adversarial training for genomics, despite lower experimental clarity and feasibility. Idea B, while metho",
+          "Idea B addresses a more pressing and underexplored problem (streaming persistent homology on edge devices with explicit accuracy-memory trade-offs) with genuinely novel technical contributions (adaptive compression + sketching integration), whereas Idea A represents a more straightforward extension "
+        ],
+        "sample_candidate_wins": [
+          "Idea A scores 29/40 while Idea B scores 26/40. Idea A presents a well-scoped, clearly executable study with strong experimental design and high feasibility using existing datasets and established methods, though with moderate novelty. Idea B tackles a more ambitious and novel problem (causal inferen",
+          "Idea A achieves a total score of 31 versus Idea B's 28. While Idea B tackles a more novel and scientifically ambitious problem (causal inference with confounders), it suffers from lower experimental clarity (vague on confounder modeling specifics) and significantly lower feasibility due to the compl"
+        ]
+      }
+    },
+    {
+      "version": "S14",
+      "champion_at_time": "S12",
+      "full_eval_win_rate": 0.54,
+      "accepted": false,
+      "code_change_summary": "",
+      "judge_patterns": {
+        "champion_wins": 34,
+        "candidate_wins": 40,
+        "sample_champion_wins": [
+          "Idea A presents a more novel and biologically grounded perspective by explicitly linking energy constraints to emergent language properties, with stronger scientific motivation rooted in neuroscience. While both ideas are well-articulated with clear experimental designs, Idea A's integration of spik",
+          "Idea A achieves higher scores across most dimensions through superior experimental clarity (explicit falsification criteria, rigorous statistical design with 50+ runs), stronger scientific usefulness (addresses real-world deployment challenges with validated wireless noise models), and comparable no"
+        ],
+        "sample_candidate_wins": [
+          "Idea B addresses a more fundamental and widespread problem (batch effects in multimodal integration) with a more novel approach (integrating batch correction into the contrastive learning objective rather than as preprocessing), whereas Idea A focuses on a narrower architectural improvement (cross-a",
+          "Idea A scores higher overall (32 vs 27) with stronger novelty in its explicit multimodal cross-attention architecture and more rigorous experimental design with clearly defined unseen cell types. Idea B addresses an important problem but the multi-organ/multi-species integration is a more incrementa"
+        ]
+      }
+    },
+    {
+      "version": "S15",
+      "champion_at_time": "S15",
+      "full_eval_win_rate": 0.5533333333333333,
+      "accepted": true,
+      "code_change_summary": "",
+      "judge_patterns": {
+        "champion_wins": 33,
+        "candidate_wins": 41,
+        "sample_champion_wins": [
+          "Idea A scores higher across all dimensions with a total of 29 vs. 23 for Idea B. Idea A presents a more grounded approach using RL within realistic hardware constraints, clearer experimental methodology with well-defined baselines, and higher feasibility since it avoids the substantial engineering o",
+          "Idea A scores higher overall (29 vs 26) with stronger novelty in demonstrating real-time adaptive feedback within coherence constraints and superior experimental clarity with well-defined latency budgets and rigorous controls. While Idea B addresses a complementary problem with slightly better feasi"
+        ],
+        "sample_candidate_wins": [
+          "Idea A scores 30 total points versus Idea B's 24 points. Idea A presents a more grounded, hardware-aware approach with clearer experimental methodology, concrete pulse-level optimizations, and stronger feasibility on current NISQ devices. Idea B's adaptive RNN decoder, while conceptually interesting",
+          "Idea A scores higher overall (29 vs 24) with stronger experimental clarity, more concrete methodology (Bayesian/Kalman filtering with specific decoding algorithms), and better feasibility grounding on established platforms. Idea B references a future 2026 publication and proposes less clearly specif"
+        ]
+      }
+    },
+    {
+      "version": "S16",
+      "champion_at_time": "S15",
+      "full_eval_win_rate": 0.4866666666666667,
+      "accepted": false,
+      "code_change_summary": "DIAGNOSIS: Step 4 (IDEA CONSTRUCTION) is the primary failure point, but the specific mechanism is that the construction ; DIAGNOSIS: Step 4 (IDEA CONSTRUCTION) is the primary failure point, but the specific mechanism is that the construct_pro",
+      "judge_patterns": {
+        "champion_wins": 38,
+        "candidate_wins": 36,
+        "sample_champion_wins": [
+          "Idea A scores higher overall due to its superior feasibility and experimental clarity, presenting a focused, testable hypothesis with a clear implementation path. While Idea B is more novel in its conceptual framing, its higher complexity and less certain implementation make it a riskier proposition",
+          "Idea B edges out Idea A due to higher novelty and scientific usefulness, addressing a core challenge of learning generalizable representations. While Idea A is exceptionally clear and feasible, Idea B's focus on task-agnostic symbolic abstraction tackles a more fundamental and impactful open problem"
+        ],
+        "sample_candidate_wins": [
+          "Idea A scores higher overall due to superior experimental clarity and a more feasible approach using verified causal graphs, which provides a cleaner test of the causal invariance principle. While both ideas are strong, Idea A's methodology is more precisely defined and its use of ablation with scra",
+          "Idea A scores higher due to superior experimental clarity and feasibility, offering a clear, testable extension of established methods. While Idea B is more novel in its core approach, its integration of online causal discovery presents greater technical risk and less methodological clarity for vali"
+        ]
+      }
+    },
+    {
+      "version": "S17",
+      "champion_at_time": "S15",
+      "full_eval_win_rate": 0.3333333333333333,
+      "accepted": false,
+      "code_change_summary": "DIAGNOSIS: The losing ideas (S16) consistently fail because the adversarial loop selects hypotheses that are *theoretica",
+      "judge_patterns": {
+        "champion_wins": 50,
+        "candidate_wins": 25,
+        "sample_champion_wins": [
+          "Idea B presents a more novel and holistic co-design approach, addressing the critical system-level energy question which is of high scientific usefulness. While Idea A is clearer and more feasible, Idea B's ambitious, integrated methodology offers a more significant potential advance for the field.",
+          "Idea A proposes a novel hardware-centric solution with high potential impact on energy efficiency, a core bottleneck, and its system-level benchmarking approach is highly useful. While Idea B is exceptionally clear and feasible, its scope is narrower and more incremental, leading to a lower total sc"
+        ],
+        "sample_candidate_wins": [
+          "Idea A is a highly feasible and clearly defined benchmarking study that provides directly actionable data for the field, addressing a critical gap. While Idea B is more novel and ambitious, its lower feasibility score, due to the complexity of fabricating and characterizing a novel hybrid device, gi",
+          "Idea A excels in experimental clarity and feasibility, offering a crucial, actionable simulation study that directly bridges device physics and system performance. While Idea B is highly novel, its lower feasibility score due to fabrication complexity and integration risks gives Idea A a higher tota"
+        ]
+      }
+    },
+    {
+      "version": "S18",
+      "champion_at_time": "S15",
+      "full_eval_win_rate": 0.43333333333333335,
+      "accepted": false,
+      "code_change_summary": "",
+      "judge_patterns": {
+        "champion_wins": 24,
+        "candidate_wins": 18,
+        "sample_champion_wins": [
+          "Idea B scores higher on novelty and scientific usefulness by tackling a less-explored, fundamental problem of error correction under realistic constraints with a sophisticated, theory-driven approach. While Idea A is exceptionally clear and feasible, its contribution is more focused on a specific sc",
+          "Idea B scores higher on novelty and scientific usefulness by tackling the underexplored factor of sensory heterogeneity and its impact on generalization, a core challenge for real-world MAS. While Idea A is exceptionally clear and feasible, Idea B's total score is higher, addressing a more fundament"
+        ],
+        "sample_candidate_wins": [
+          "Idea B scores higher due to superior experimental clarity and feasibility, with a sharp, testable hypothesis. While Idea A is highly useful and novel, its complex integration pipeline raises feasibility concerns, and its total score is lower by 3 points.",
+          "Idea A scores higher due to its exceptional clarity, immediate usefulness, and high feasibility for a direct, actionable benchmark. While Idea B is more novel in its integration, its experimental complexity and lower feasibility give Idea A the overall edge for its robust and practical contribution."
+        ]
+      }
+    },
+    {
+      "version": "S19",
+      "champion_at_time": "S15",
+      "full_eval_win_rate": 0.17333333333333334,
+      "accepted": false,
+      "code_change_summary": "DIAGNOSIS: The losing ideas (S18) consistently fail on two structural dimensions: (1) **experimental clarity/concretenes",
+      "judge_patterns": {
+        "champion_wins": 62,
+        "candidate_wins": 13,
+        "sample_champion_wins": [
+          "Idea B is more directly actionable and feasible, offering a concrete path to improved performance on current hardware. While Idea A is highly novel and scientifically useful for understanding fundamental limitations, its experimental complexity and reliance on controlled ablation make it less immedi",
+          "Idea B edges out due to superior novelty and experimental clarity, proposing a new adaptive control framework. While Idea A is highly useful and feasible for diagnosing core QEC problems, Idea B's integrated approach to a dynamic NISQ challenge is more transformative, despite greater implementation "
+        ],
+        "sample_candidate_wins": [
+          "Idea B presents a more novel and fundamental scientific question with high usefulness for guiding research directions. While Idea A is clearer and more feasible, its incremental contribution is outweighed by Idea B's potential for a more impactful mechanistic insight.",
+          "Idea B is more novel and scientifically useful as it directly tests a foundational, unresolved theoretical debate with a clear, falsifiable hypothesis. While Idea A is a solid, feasible engineering extension, Idea B's controlled, hypothesis-driven design offers greater potential for actionable insig"
+        ]
+      }
+    },
+    {
+      "version": "S19",
+      "champion_at_time": "S15",
+      "full_eval_win_rate": 0.10666666666666667,
+      "accepted": false,
+      "code_change_summary": "DIAGNOSIS: The losing ideas (S18) consistently fail on two structural dimensions: (1) **experimental clarity/concretenes",
+      "judge_patterns": {
+        "champion_wins": 67,
+        "candidate_wins": 8,
+        "sample_champion_wins": [
+          "Idea B scores higher overall, particularly in feasibility and experimental clarity, due to its more concrete and modular architectural change. While both are novel, Idea B's personalized feature transformation presents a more direct and testable mechanism for addressing feature-level heterogeneity, ",
+          "Idea B is a complete, novel, and actionable research proposal with clear experiments, while Idea A is only a vague hypothesis statement. The significant gap in novelty, scientific usefulness, and experimental clarity makes B the decisive winner."
+        ],
+        "sample_candidate_wins": [
+          "Idea A excels in experimental clarity with a precise, falsifiable hypothesis and detailed methodology, making it highly actionable. While Idea B is more novel and ambitious, its experimental plan is less concrete, and its dynamic clustering approach introduces higher complexity and feasibility conce",
+          "Idea A presents a more focused, testable hypothesis with superior experimental clarity, including specific thresholds, baseline comparisons, and analysis plans. While Idea B tackles an important problem, its methodology and predictions are less concrete, making it harder to evaluate and execute deci"
+        ]
+      }
+    }
+  ]
+}
